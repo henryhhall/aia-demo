@@ -1,12 +1,11 @@
 import type { APIRoute } from 'astro';
 
-const getRobotsTxt = (siteURL: string) => `User-agent: *
-Allow: /
-Disallow: /admin
-Sitemap: ${siteURL}sitemap-index.xml`;
+// Generate robots.txt contents to discourage all crawlers
+const getRobotsTxt = () => `User-agent: *
+Disallow: /`;
 
-export const GET: APIRoute = ({ site }) => {
-  return new Response(getRobotsTxt(site?.toString() || 'https://aia-danbury.com/'), {
+export const GET: APIRoute = () => {
+  return new Response(getRobotsTxt(), {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8'
     }
