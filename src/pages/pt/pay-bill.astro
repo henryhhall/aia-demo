@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const billingCarriers = [
+  { name: "Safeco", phone: "1-800-332-3226", payLinks: [{ url: "https://customer.safeco.com/accountservices/login.aspx", text: "Pagamento Online" }] },
+  { name: "Met Life", phone: "1-800-638-5433", payLinks: [{ url: "https://www.metlife.com/individual/index.html?WT.ac=GN_individual", text: "Pessoa Física" }, { url: "https://www.metlife.com/business/index.html?WT.ac=GN_business", text: "Pessoa Jurídica" }] },
+  { name: "The Hartford", phone: "1-877-896-9320", payLinks: [{ url: "https://service.thehartford.com/consumer/public/service/login", text: "Pagamento Online" }] },
+  { name: "Progressive", phone: "Geral: 1-800-776-4737\nComercial: 1-888-240-9839", payLinks: [{ url: "https://onlineservice7.progressive.com/SelfService.Web/SelfService.aspx?Page=Login.AuthenticateUser&QueryStringSetKey=SessionGateway&OfferingID=SelfService&SessionStart=TRUE", text: "Pagamento Online" }] },
+  { name: "Foremost", phone: "Auto: 1-888-888-0080\nOutros: 1-800-532-4221", payLinks: [{ url: "http://www.foremost.com/payonline/index.asp", text: "Pagamento Online" }] },
+  { name: "Travelers", phone: "1-800-842-5075", payLinks: [{ url: "https://www.travelers.com/login/#/", text: "Pagamento Online" }] },
+  { name: "Victoria Insurance", phone: "1-800-888-8424", payLinks: [{ url: "https://www.victoriainsurance.com/pay/SearchPayment.do?dispatch=search", text: "Pagamento Online" }] },
+  { name: "Guard Insurance", phone: "Não Disponível", payLinks: [{ url: "https://policyholder.guard.com/scripts/psc/psc.exe/showpage?page=/wwwroot/static/policyholders.htm", text: "Pagamento Online" }] },
+  { name: "Infinity", phone: "1-800-782-1020", payLinks: [{ url: "https://www.infinityauto.com/make-your-payments-go", text: "Pagamento Online" }] },
+  { name: "K & K Insurance", phone: "1-800-637-4757", payLinks: [{ url: "http://www.kandkinsurance.com/Pages/Home.aspx", text: "Pagamento Online" }] },
+  { name: "Utica First Insurance", phone: "1-315-736-8211", payLinks: [{ url: "https://www.uticafirst.com/dirbill.html", text: "Pagamento Online" }] }
+];
+
+const payBillStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Pagar sua Conta",
+  "description": "Efetue pagamentos de seguro de forma segura online diretamente com a sua seguradora. Números de telefone e portais de pagamento das seguradoras parceiras da AIA em CT."
+};
+---
+
+<BaseLayout
+  title="Pagar sua Conta Online | Associated Insurance Agency CT"
+  description="Pague sua parcela de seguro diretamente e de forma segura com sua seguradora. Telefones de cobrança direta e portais de pagamento online da AIA em CT."
+  structuredData={payBillStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Pagar sua Conta
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Efetue seus pagamentos de seguro de forma rápida e segura diretamente com a sua seguradora.
+      </p>
+    </div>
+  </section>
+
+  <!-- Directory Section -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <!-- Advisory Alert Banner -->
+      <div class="p-6 bg-bg-secondary border border-border-subtle rounded-lg text-left space-y-2">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-1.5">
+          <!-- Information Icon -->
+          <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 111.063.852l-.708 2.836a.75.75 0 001.063.852l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
+          </svg>
+          Aviso Importante
+        </h3>
+        <p class="text-xs text-text-secondary leading-relaxed">
+          Os números de telefone e links listados nesta página pertencem às suas respectivas companhias de seguros, não à Associated Insurance Agency. Os links direcionarão você para portais de pagamento externos e seguros sobre os quais não temos controle. Se você tiver alguma dúvida ou precisar de assistência, ligue diretamente para o nosso escritório.
+        </p>
+      </div>
+
+      <!-- Billing Table -->
+      <div class="rounded-lg border border-border-subtle bg-white overflow-hidden shadow-sm">
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm">
+            <thead>
+              <tr class="bg-bg-secondary border-b border-border-subtle font-semibold text-accent">
+                <th class="px-6 py-4">Seguradora</th>
+                <th class="px-6 py-4">Suporte Telefônico</th>
+                <th class="px-6 py-4 text-right">Pagamento de Contas Online</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-border-subtle text-text-secondary text-xs sm:text-sm">
+              {billingCarriers.map((carrier) => (
+                <tr class="hover:bg-bg-secondary/30 transition-colors">
+                  <td class="px-6 py-4 font-semibold text-accent">{carrier.name}</td>
+                  <td class="px-6 py-4 font-mono text-xs whitespace-pre-line">{carrier.phone}</td>
+                  <td class="px-6 py-4 text-right space-y-1 sm:space-y-0 sm:space-x-3">
+                    {carrier.payLinks.map((link, index) => (
+                      <>
+                        {index > 0 && <span class="hidden sm:inline text-border-subtle">|</span>}
+                        <a href={link.url} target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-semibold text-accent-gold hover:underline">
+                          {link.text}
+                        </a>
+                      </>
+                    ))}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import QuoteForm from '../../components/QuoteForm';
+
+const quoteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Solicitar una Cotización de Seguro Gratis",
+  "description": "Solicite una cotización gratuita de seguro de propietarios, automóviles, inquilinos o comercial de Associated Insurance Agency.",
+};
+---
+
+<BaseLayout
+  title="Solicitar una Cotización de Seguro Gratis | Associated Insurance Agency CT"
+  description="Solicite una cotización de seguro de propietario de vivienda, automóvil o comercial de forma gratuita y sin compromiso. Buscamos en el mercado de CT para encontrarle las tarifas más bajas."
+  structuredData={quoteStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+      <h1 class="text-4xl font-bold tracking-tighter text-accent leading-none">
+        Solicitar una Cotización Gratis
+      </h1>
+      <p class="text-sm text-text-secondary max-w-[60ch] mx-auto">
+        Complete nuestro sencillo formulario de 3 pasos para que nuestros agentes busquen en el mercado de CT su mejor tarifa.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quote Form Section -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- React multi-step quote form island -->
+      <QuoteForm client:load lang="es" />
+    </div>
+  </section>
+</BaseLayout>

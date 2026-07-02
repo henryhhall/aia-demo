@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const personalStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Líneas de Seguro Personal",
+  "description": "Pólizas integrales de seguros personales que incluyen seguro de propietarios, de automóviles, de inquilinos, de vehículos recreativos (RV), de responsabilidad paraguas y de mascotas en todo Connecticut.",
+  "provider": {
+    "@type": "InsuranceAgency",
+    "name": "Associated Insurance Agency"
+  }
+};
+---
+
+<BaseLayout
+  title="Pólizas de Seguro Personal CT | Hogar, Auto, Paraguas e Inquilinos"
+  description="Explore la cobertura de seguro personal de Associated Insurance Agency CT. Comparamos las tarifas de seguros de propietarios, autos, responsabilidad paraguas, inquilinos y mascotas."
+  structuredData={personalStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Líneas de Seguro Personal
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Protegiendo a su familia, hogar y vehículos con pólizas integrales adaptadas a las familias de Connecticut.
+      </p>
+    </div>
+  </section>
+
+  <!-- Detailed Sections -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-24">
+        
+        <!-- Homeowners Insurance -->
+        <div id="home" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle first:border-0 first:pt-0">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Home Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Seguro de Propietarios</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Su hogar es probablemente su mayor inversión financiera individual. Una póliza de propietarios protege la estructura física de su vivienda, edificios independientes, pertenencias personales y proporciona cobertura de responsabilidad civil si un invitado se lesiona en su propiedad.
+            </p>
+            <a href="/es/quote?type=home" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Solicitar Cotización de Hogar
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Áreas Clave de la Protección de Propietarios</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Cobertura de Vivienda</h4>
+                <p>Cubre la estructura física de su hogar contra peligros como incendios, tormentas de viento, granizo y daños por presas de hielo. Paga para reparar o reconstruir.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Propiedad Personal</h4>
+                <p>Protege sus muebles, ropa, productos electrónicos y electrodomésticos. La cobertura se aplica incluso cuando viaja fuera de su hogar.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Responsabilidad Personal</h4>
+                <p>Le protege económicamente si le demandan por lesiones corporales accidentales o daños materiales causados a terceros, ya sea en su casa o en cualquier otro lugar.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Pérdida de Uso</h4>
+                <p>Le reembolsa los gastos de manutención temporales (hotel, comidas, alquiler) si un siniestro cubierto hace que su hogar sea inhabitable durante las reparaciones.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auto & RV Insurance -->
+        <div id="auto" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Auto Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.129-1.125V14.25M3 14.25h18M3 14.25V9.75A2.25 2.25 0 0 1 5.25 7.5h13.5A2.25 2.25 0 0 1 21 9.75v4.5m-18 0h18M6.75 12h.008v.008H6.75V12Zm3.75 0h.008v.008h-.008V12Zm3.75 0h.008v.008h-.008V12Zm3.75 0h.008v.008h-.008V12Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Seguro de Auto y RV</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              La ley de Connecticut exige límites mínimos de responsabilidad de auto, pero la cobertura estándar rara vez es suficiente para protegerle en un accidente grave. Personalizamos sus límites y su cobertura de daños físicos, buscando aseguradoras nacionales para obtener descuentos por paquetes y de seguridad.
+            </p>
+            <a href="/es/quote?type=auto" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Solicitar Cotización de Auto
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Elementos Clave de la Póliza de Auto</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Responsabilidad por Lesiones Corporales y Daños Materiales</h4>
+                <p>Paga los costos médicos y las facturas de reparación de otros conductores y pasajeros si usted es el culpable en un accidente automovilístico.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Colisión y Cobertura Contra Todo Riesgo</h4>
+                <p>La cobertura de Colisión cubre los daños por impacto a su propio vehículo. La cobertura Contra Todo Riesgo cubre los daños ajenos a colisiones (robo, vandalismo, choques con animales, rotura de cristales).</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Conductor No Asegurado/Subasegurado</h4>
+                <p>Le protege a usted y a sus pasajeros si le choca un conductor que no tiene seguro o que tiene límites demasiado bajos para pagar sus facturas.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Cobertura de Vehículos Recreativos (RV)</h4>
+                <p>Pólizas especializadas para autocaravanas, remolques de viaje, casas rodantes y embarcaciones que cubren el remolque, almacenamiento y responsabilidad civil durante las vacaciones.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Umbrella Insurance -->
+        <div id="umbrella" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Umbrella Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0-18a8.25 8.25 0 0 1 8.25 8.25v.75H3.75v-.75A8.25 8.25 0 0 1 12 3Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Seguro Paraguas (Umbrella)</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              En nuestra sociedad altamente litigiosa, un solo accidente de auto grave o una lesión en la piscina de su propiedad puede resultar en juicios que excedan sus límites estándar de responsabilidad de auto o casa. El seguro paraguas personal agrega una capa adicional de protección de responsabilidad.
+            </p>
+            <a href="/es/quote" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Más Información
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Por Qué Importa el Seguro Paraguas</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Si su póliza de propietario tiene un límite de responsabilidad de $300,000, y un invitado se cae de una terraza y le demanda por $800,000, usted es responsable de los $500,000 restantes de su bolsillo. Eso podría poner en riesgo sus ahorros, inversiones y el valor de su vivienda.
+            </p>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Una póliza paraguas se sitúa encima de sus pólizas subyacentes (hogar, auto, embarcación) y entra en juego cuando se agotan sus límites. Las pólizas suelen comenzar en $1 millón de cobertura adicional por alrededor de $150 a $300 al año, lo que la convierte en una de las formas de protección patrimonial más rentables disponibles.
+            </p>
+          </div>
+        </div>
+
+        <!-- Renters & Specialty -->
+        <div id="renters" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Star/Specialty Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Inquilinos y Especialidades</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              También emitimos pólizas para inquilinos y líneas personales especializadas. El seguro de su arrendador solo cubre la estructura del edificio; no cubre sus pertenencias personales, muebles ni lesiones de invitados dentro de su apartamento.
+            </p>
+            <a href="/es/quote?type=renters" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Solicitar Cotización de Inquilinos
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Seguro de Inquilinos</h4>
+                <p>Cubre el reemplazo de ropa, computadoras y muebles en caso de robo o incendio. Incluye responsabilidad civil del inquilino en caso de accidentes menores dentro de la unidad alquilada.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Seguro para Mascotas</h4>
+                <p>Planes de accidentes y enfermedades para perros y gatos. Cubre visitas veterinarias, cirugías y recetas médicas para que nunca tenga que tomar decisiones de salud basadas en el costo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

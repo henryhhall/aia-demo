@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import QuoteForm from '../components/QuoteForm';
+
+const quoteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Request an Insurance Quote",
+  "description": "Request a free homeowners, auto, renters, or commercial business insurance quote from Associated Insurance Agency.",
+};
+---
+
+<BaseLayout
+  title="Request a Free Insurance Quote | Associated Insurance Agency CT"
+  description="Request a free, no-obligation homeowners, auto, or business insurance quote. We shop the market to find you the lowest rates in CT."
+  structuredData={quoteStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+      <h1 class="text-4xl font-bold tracking-tighter text-accent leading-none">
+        Request a Free Quote
+      </h1>
+      <p class="text-sm text-text-secondary max-w-[60ch] mx-auto">
+        Complete our simple 3-step form to have our agents shop the CT market for your best rate.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quote Form Section -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- React multi-step quote form island -->
+      <QuoteForm client:load />
+    </div>
+  </section>
+</BaseLayout>

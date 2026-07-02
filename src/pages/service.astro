@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQAccordion from '../components/FAQAccordion';
+
+const faqItems = [
+  {
+    question: "What is an independent insurance agency?",
+    answer: "An independent insurance agency, like Associated Insurance Agency, represents multiple insurance carriers rather than just one. This means we can compare coverage options and rates from different brands to find the best policy for your needs and budget, saving you time and money."
+  },
+  {
+    question: "What should I do immediately after a car accident?",
+    answer: "First, ensure everyone's safety and call 911 if there are injuries. Exchange contact and insurance information with the other driver(s), take photos of the scene and vehicle damage, and gather contact details from any witnesses. Finally, contact AIA as soon as possible, and we will help you file the claim with your carrier."
+  },
+  {
+    question: "Why do my homeowners insurance premiums change?",
+    answer: "Homeowners premiums can adjust due to changes in building material costs (inflation), regional storm activity, claims history on your property, or if you make improvements to your home (like adding a pool or renovating). We recommend reviewing your policy annually to ensure proper replacement values."
+  },
+  {
+    question: "Is flood insurance covered under standard homeowners policies?",
+    answer: "No, standard homeowners policies do not cover damage caused by rising surface water or floods. Flood insurance must be purchased as a separate policy, either through the National Flood Insurance Program (NFIP) or private flood insurers. We can help you check your flood zone risk and secure coverage."
+  }
+];
+
+const carriers = [
+  { name: "Safeco", phone: "1-800-332-3226", claimUrl: "http://www.safeco.com/claims-center", claimText: "Claims Center" },
+  { name: "Met Life", phone: "1-800-845-6011", claimUrl: "https://www.metlife.com/about/corporate-profile/pay-a-bill/claims/index.html", claimText: "Claims Center" },
+  { name: "The Hartford", phone: "1-800-243-5860", claimUrl: "http://www.thehartford.com/claims-center", claimText: "Claims Center" },
+  { name: "Progressive", phone: "General: 1-800-776-4737\nCommercial: 1-888-240-9839", claimUrl: "http://www.progressive.com/claims/", claimText: "Claims Center" },
+  { name: "Foremost", phone: "See Claims Center", claimUrl: "http://www.foremost.com/claims/", claimText: "Claims Center" },
+  { name: "Travelers", phone: "Personal: 1-800-252-4633\nBusiness: See Claims Center", claimUrl: "https://www.travelers.com/claim/index.aspx", claimText: "Claims Center" },
+  { name: "Victoria Insurance", phone: "1-800-926-3168", claimUrl: "https://www.victoriainsurance.com/ClaimsService.do", claimText: "Claims Center" },
+  { name: "Guard Insurance", phone: "1-888-639-2567", claimUrl: "http://www.guard.com/docs/ClaimReport.pdf", claimText: "Claim Report Form" },
+  { name: "Infinity", phone: "1-800-334-1661", claimUrl: "https://www.infinityauto.com/report-claim", claimText: "Claims Center" },
+  { name: "K & K Insurance", phone: "1-800-237-2917", claimUrl: "https://www.kandkinsurance.com/Pages/Claims.aspx", claimText: "Claims Center" },
+  { name: "Utica First Insurance", phone: "Call Associated Insurance Agency", claimUrl: "https://www.uticafirst.com/claims.html", claimText: "Claims Information" }
+];
+
+const serviceStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Customer Service Center | Associated Insurance Agency CT"
+  description="File claims, pay bills directly with major carriers, and find answers to frequently asked insurance questions at our CT service center."
+  structuredData={serviceStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Customer Service Center
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Submit payments, report claims, and find immediate solutions.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Sections -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      
+      <!-- Carrier Billing & Claims Directory -->
+      <div class="space-y-8">
+        <div class="max-w-3xl space-y-2 text-left">
+          <h2 class="text-2xl font-bold text-accent">Direct Carrier Directory</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            As an independent agency, your coverage is underwritten by one of our partner carriers. You can pay bills or report claims 24/7 directly with them using the contacts below.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-border-subtle bg-white overflow-hidden shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead>
+                <tr class="bg-bg-secondary border-b border-border-subtle font-semibold text-accent">
+                  <th class="px-6 py-4">Insurance Carrier</th>
+                  <th class="px-6 py-4">Phone Support</th>
+                  <th class="px-6 py-4 text-right">Online Claims</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border-subtle text-text-secondary text-xs sm:text-sm">
+                {carriers.map((carrier) => (
+                  <tr class="hover:bg-bg-secondary/30 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-accent">{carrier.name}</td>
+                    <td class="px-6 py-4 font-mono text-xs whitespace-pre-line">{carrier.phone}</td>
+                    <td class="px-6 py-4 text-right">
+                      <a href={carrier.claimUrl} target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-accent-gold hover:underline">{carrier.claimText}</a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- File a Claim Checklist -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+        <div class="lg:col-span-4 space-y-4 text-left">
+          <h2 class="text-2xl font-bold text-accent">Filing a Claim?</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Dealing with damage or an accident is stressful. Follow these standard guidelines to ensure your claims process runs smoothly.
+          </p>
+        </div>
+        <div class="lg:col-span-8 bg-bg-secondary border border-border-subtle p-8 rounded-lg space-y-6 text-left">
+          <h3 class="text-base font-bold text-accent">Immediate Action Checklist</h3>
+          <ol class="space-y-4 text-xs text-text-secondary leading-relaxed list-decimal list-inside">
+            <li>
+              <strong>Document the Damage:</strong> Take clear photographs or video footage of the damage to your property or vehicle before making any temporary repairs.
+            </li>
+            <li>
+              <strong>Prevent Further Loss:</strong> Take reasonable temporary steps to protect your property from further damage (for example, putting a tarp over a roof hole or sealing a broken window). Keep receipts for any materials purchased.
+            </li>
+            <li>
+              <strong>Contact Police if Applicable:</strong> In case of theft, vandalism, or auto accidents, ensure a police report is filed and request a copy of the report number.
+            </li>
+            <li>
+              <strong>File Promptly:</strong> Reach out to AIA or your carrier directly to start the claim as soon as possible. Delays can complicate the inspection and payout.
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Frequently Asked Questions -->
+      <div class="space-y-8 pt-12 border-t border-border-subtle">
+        <div class="text-center max-w-2xl mx-auto space-y-4">
+          <h2 class="text-2xl font-bold text-accent">Frequently Asked Questions</h2>
+          <p class="text-sm text-text-secondary">Quick answers to common questions about premiums, claims, and coverage.</p>
+        </div>
+        
+        <!-- React FAQ accordion island -->
+        <FAQAccordion client:visible items={faqItems} />
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const aboutStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Sobre a Associated Insurance Agency",
+  "description": "Conheça a Associated Insurance Agency, uma agência independente que fornece soluções personalizadas de seguros pessoais e comerciais em todo o Connecticut.",
+};
+---
+
+<BaseLayout
+  title="Sobre a Associated Insurance Agency | Agentes de Seguros Independentes de CT"
+  description="Conheça a Associated Insurance Agency, nossa história servindo CT desde 2016 e por que trabalhar com um agente independente protege sua propriedade e economiza seu dinheiro."
+  structuredData={aboutStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Sobre Nossa Agência
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Servindo Danbury, Watertown, Bridgeport e a comunidade de Connecticut em geral desde 2016.
+      </p>
+    </div>
+  </section>
+
+  <!-- Narrative Content (Split Screen) -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <!-- Text Content -->
+        <div class="lg:col-span-8 space-y-8 text-left">
+          <h2 class="text-2xl font-bold text-accent">Nossa Missão: Cobertura Personalizada, Taxas Competitivas</h2>
+          <div class="prose prose-zinc max-w-none text-sm sm:text-base text-text-secondary leading-relaxed space-y-6">
+            <p>
+              A Associated Insurance Agency (AIA) foi fundada sobre um princípio simples: os residentes de Connecticut merecem apólices de seguro adaptadas às suas vidas e negócios únicos, sem pagar preços inflacionados.
+            </p>
+            <p>
+              Como uma agência independente de serviço completo, não trabalhamos para nenhuma companhia de seguros específica. Em vez disso, temos parcerias com uma ampla rede de seguradoras mais bem avaliadas da região e do país. Essa independência nos permite pesquisar, comparar apólices e apresentar a você opções que oferecem a melhor cobertura com as taxas mais baixas disponíveis no mercado.
+            </p>
+            <p>
+              Se você estiver comprando sua primeira casa, adicionando um novo veículo à sua apólice familiar ou gerenciando uma empresa local em crescimento, nossos agentes experientes dedicam tempo para analisar seus riscos e combiná-lo com opções que protegem o que é mais importante.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-border-subtle">
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-accent">Por que escolher um agente independente?</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Quando você trabalha com um redator direto, ele só pode vender sua marca específica. Se suas tarifas aumentarem ou suas necessidades mudarem, você terá que começar a pesquisar tudo de novo. Com a AIA, representamos várias seguradoras, o que significa que podemos ajustar sua apólice ou pesquisar no mercado em seu nome sem que você precise mudar de agência.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-accent">Compromisso com Connecticut</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Com escritórios em Danbury, Watertown e Bridgeport, estamos profundamente enraizados nas comunidades locais de Connecticut. Conhecemos os riscos regionais, fatores climáticos (como invernos gelados e forte acúmulo de neve) e regulamentações estaduais de seguros, o que nos permite fornecer conselhos altamente precisos e locais.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar / Trust Signals -->
+        <div class="lg:col-span-4 space-y-8">
+          <div class="bg-bg-secondary border border-border-subtle p-6 rounded-lg shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2">Dados Rápidos da AIA</h3>
+            <ul class="space-y-3.5 text-xs text-text-secondary">
+              <li class="flex justify-between">
+                <span class="font-medium">Fundada:</span>
+                <span>2016</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Áreas de Atendimento:</span>
+                <span>Tudo de CT & NY</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Escritórios Principais:</span>
+                <span>Danbury, Watertown, Bridgeport</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Seguradoras Parceiras:</span>
+                <span>Progressive, Travelers, Liberty Mutual, etc.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-accent text-white p-6 rounded-lg space-y-4 shadow-md">
+            <h3 class="text-base font-bold text-accent-gold">Precisa de conselhos sobre uma apólice?</h3>
+            <p class="text-xs text-white/80 leading-relaxed">
+              Ofrecemos revisões de apólices gratuitas e sem compromisso. Traga-nos a página de declarações do seu seguro atual e diremos se você está pagando a mais ou se tem cobertura insuficiente.
+            </p>
+            <a
+              href="/pt/quote"
+              class="inline-flex items-center justify-center w-full px-4 py-2.5 text-xs font-semibold uppercase bg-accent-gold text-accent hover:bg-accent-gold-hover rounded transition-colors text-center"
+            >
+              Solicitar uma Revisão
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

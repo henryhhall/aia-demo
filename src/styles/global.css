@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Geist Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Geist Mono", monospace;
+  
+  --color-bg-primary: #fcfcfd;      /* Very clean, slightly warm off-white */
+  --color-bg-secondary: #f4f4f5;    /* Zinc 100 */
+  --color-bg-tertiary: #e4e4e7;     /* Zinc 200 */
+  
+  --color-text-primary: #09090b;    /* Zinc 950 */
+  --color-text-secondary: #52525b;  /* Zinc 600 */
+  --color-text-muted: #71717a;      /* Zinc 500 */
+  
+  --color-accent: #122b5f;          /* AIA Deep Corporate Blue */
+  --color-accent-gold: #bda07a;     /* Sophisticated gold accent */
+  --color-accent-gold-hover: #ab8e68;
+  
+  --color-border-subtle: #e4e4e7;   /* Zinc 200 */
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+  }
+}

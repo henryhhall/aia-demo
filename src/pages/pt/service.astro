@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQAccordion from '../../components/FAQAccordion';
+
+const faqItems = [
+  {
+    question: "O que é uma agência de seguros independente?",
+    answer: "Uma agência de seguros independente, como a Associated Insurance Agency, representa várias seguradoras em vez de apenas uma. Isso significa que podemos comparar opções de cobertura e taxas de diferentes marcas para encontrar a melhor apólice para suas necessidades e orçamento, economizando seu tempo e dinheiro."
+  },
+  {
+    question: "O que devo fazer imediatamente após um acidente de carro?",
+    answer: "Primeiro, garanta a segurança de todos e ligue para o 911 se houver feridos. Troque informações de contato e seguro com os outros motoristas, tire fotos do local e dos danos aos veículos e colete dados de contato de quaisquer testemunhas. Por fim, entre em contato com a AIA o mais rápido possível e nós o ajudaremos a registrar o sinistro na sua seguradora."
+  },
+  {
+    question: "Por que os prêmios do meu seguro residencial mudam?",
+    answer: "Os prêmios de seguro residencial podem mudar devido a alterações nos custos dos materiais de construção (inflação), atividade de tempestades regionais, histórico de sinistros em sua propriedade ou se você fizer melhorias em sua casa (como adicionar uma piscina ou reformar). Recomendamos revisar sua apólice anualmente para garantir valores de substituição adequados."
+  },
+  {
+    question: "O seguro contra inundações está coberto pelas apólices padrão de seguro residencial?",
+    answer: "Não, as apólices padrão de seguro residencial não cobrem danos causados por enchentes ou inundações. O seguro contra inundações deve ser adquirido como uma apólice separada, seja através do Programa Nacional de Seguro contra Inundações (NFIP) ou de seguradoras privadas. Podemos ajudá-lo a verificar o risco da sua zona de inundação e garantir a cobertura."
+  }
+];
+
+const carriers = [
+  { name: "Safeco", phone: "1-800-332-3226", claimUrl: "http://www.safeco.com/claims-center", claimText: "Central de Sinistros" },
+  { name: "Met Life", phone: "1-800-845-6011", claimUrl: "https://www.metlife.com/about/corporate-profile/pay-a-bill/claims/index.html", claimText: "Central de Sinistros" },
+  { name: "The Hartford", phone: "1-800-243-5860", claimUrl: "http://www.thehartford.com/claims-center", claimText: "Central de Sinistros" },
+  { name: "Progressive", phone: "Geral: 1-800-776-4737\nComercial: 1-888-240-9839", claimUrl: "http://www.progressive.com/claims/", claimText: "Central de Sinistros" },
+  { name: "Foremost", phone: "Ver Central de Sinistros", claimUrl: "http://www.foremost.com/claims/", claimText: "Central de Sinistros" },
+  { name: "Travelers", phone: "Pessoal: 1-800-252-4633\nComercial: Ver Central de Sinistros", claimUrl: "https://www.travelers.com/claim/index.aspx", claimText: "Central de Sinistros" },
+  { name: "Victoria Insurance", phone: "1-800-926-3168", claimUrl: "https://www.victoriainsurance.com/ClaimsService.do", claimText: "Central de Sinistros" },
+  { name: "Guard Insurance", phone: "1-888-639-2567", claimUrl: "http://www.guard.com/docs/ClaimReport.pdf", claimText: "Formulário de Relato de Sinistro" },
+  { name: "Infinity", phone: "1-800-334-1661", claimUrl: "https://www.infinityauto.com/report-claim", claimText: "Central de Sinistros" },
+  { name: "K & K Insurance", phone: "1-800-237-2917", claimUrl: "https://www.kandkinsurance.com/Pages/Claims.aspx", claimText: "Central de Sinistros" },
+  { name: "Utica First Insurance", phone: "Ligar para Associated Insurance Agency", claimUrl: "https://www.uticafirst.com/claims.html", claimText: "Informações de Sinistros" }
+];
+
+const serviceStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Central de Atendimento ao Cliente | Associated Insurance Agency CT"
+  description="Registre sinistros, pague contas diretamente com as principais seguradoras e encontre respostas a perguntas frequentes sobre seguros em nossa central de atendimento de CT."
+  structuredData={serviceStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Central de Atendimento ao Cliente
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Envie pagamentos, registre sinistros e encontre soluções imediatas.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Sections -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      
+      <!-- Carrier Billing & Claims Directory -->
+      <div class="space-y-8">
+        <div class="max-w-3xl space-y-2 text-left">
+          <h2 class="text-2xl font-bold text-accent">Diretório Direto de Seguradoras</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Como agência independente, sua cobertura é subscrita por uma de nossas seguradoras parceiras. Você pode pagar contas ou relatar sinistros 24 horas por dia, 7 dias por semana, diretamente com elas usando os contatos abaixo.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-border-subtle bg-white overflow-hidden shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead>
+                <tr class="bg-bg-secondary border-b border-border-subtle font-semibold text-accent">
+                  <th class="px-6 py-4">Seguradora</th>
+                  <th class="px-6 py-4">Suporte Telefônico</th>
+                  <th class="px-6 py-4 text-right">Sinistros Online</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border-subtle text-text-secondary text-xs sm:text-sm">
+                {carriers.map((carrier) => (
+                  <tr class="hover:bg-bg-secondary/30 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-accent">{carrier.name}</td>
+                    <td class="px-6 py-4 font-mono text-xs whitespace-pre-line">{carrier.phone}</td>
+                    <td class="px-6 py-4 text-right">
+                      <a href={carrier.claimUrl} target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-accent-gold hover:underline">{carrier.claimText}</a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- File a Claim Checklist -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+        <div class="lg:col-span-4 space-y-4 text-left">
+          <h2 class="text-2xl font-bold text-accent">Registrando um Sinistro?</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Lidar com danos ou acidentes é estresante. Siga estas diretrizes padrão para garantir que seu processo de sinistro transcorra sem problemas.
+          </p>
+        </div>
+        <div class="lg:col-span-8 bg-bg-secondary border border-border-subtle p-8 rounded-lg space-y-6 text-left">
+          <h3 class="text-base font-bold text-accent">Lista de Ações Imediatas</h3>
+          <ol class="space-y-4 text-xs text-text-secondary leading-relaxed list-decimal list-inside">
+            <li>
+              <strong>Documente os Danos:</strong> Tire fotos ou faça vídeos claros dos danos à sua propriedade ou veículo antes de realizar qualquer reparo temporário.
+            </li>
+            <li>
+              <strong>Evite Maiores Perdas:</strong> Tome medidas temporárias razoáveis para proteger sua propriedade de danos adicionais (por exemplo, colocar uma lona sobre um buraco no telhado ou vedar uma janela quebrada). Guarde os recibos de todos os materiais comprados.
+            </li>
+            <li>
+              <strong>Entre em Contato com a Polícia se Aplicável:</strong> Em caso de roubo, vandalismo ou acidentes de carro, certifique-se de registrar um boletim de ocorrência e solicite uma cópia com o número do registro.
+            </li>
+            <li>
+              <strong>Registre Rapidamente:</strong> Entre em contato com a AIA ou com sua seguradora diretamente para iniciar o sinistro o mais rápido possível. Atrasos podem complicar a inspeção e o pagamento.
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Frequently Asked Questions -->
+      <div class="space-y-8 pt-12 border-t border-border-subtle">
+        <div class="text-center max-w-2xl mx-auto space-y-4">
+          <h2 class="text-2xl font-bold text-accent">Perguntas Frequentes</h2>
+          <p class="text-sm text-text-secondary">Respostas rápidas para perguntas comuns sobre prêmios, sinistros e cobertura.</p>
+        </div>
+        
+        <!-- React FAQ accordion island -->
+        <FAQAccordion client:visible items={faqItems} />
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

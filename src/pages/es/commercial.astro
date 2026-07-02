@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const commercialStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Líneas de Seguro Comercial",
+  "description": "Soluciones integrales de seguros comerciales en Connecticut, que incluyen responsabilidad general, auto comercial, compensación de trabajadores y exceso de responsabilidad.",
+  "provider": {
+    "@type": "InsuranceAgency",
+    "name": "Associated Insurance Agency"
+  }
+};
+---
+
+<BaseLayout
+  title="Seguro Comercial para Empresas CT | GL, Auto Comercial y Compensación de Trabajadores"
+  description="Associated Insurance Agency CT ofrece seguros comerciales integrales. Comparamos responsabilidad general, auto comercial y compensación de trabajadores."
+  structuredData={commercialStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Líneas de Seguro Comercial
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Protegiendo a las empresas, los trabajadores y las flotas de vehículos comerciales de Connecticut con políticas sólidas de gestión de riesgos y responsabilidad civil.
+      </p>
+    </div>
+  </section>
+
+  <!-- Detailed Sections -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-24">
+        
+        <!-- General Liability Insurance -->
+        <div id="gl" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle first:border-0 first:pt-0">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Briefcase Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875c-.621 0-1.125-.504-1.125-1.125v-4.25m16.5 0a2.25 2.25 0 0 0-2.25-2.25H4.875a2.25 2.25 0 0 0-2.25 2.25m16.5 0V9.75A2.25 2.25 0 0 0 17.062 7.5h-10.12a2.25 2.25 0 0 0-2.25 2.25v4.4m12.43 0h-12.43M9 7.5v-1.5a2.25 2.25 0 0 1 2.25-2.25h1.5A2.25 2.25 0 0 1 15 6v1.5M9 10.5h.008v.008H9V10.5Zm3 0h.008v.008H12V10.5Zm3 0h.008v.008H15V10.5Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Responsabilidad General (GL)</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Cada negocio, sin importar su tamaño, enfrenta exposición a demandas de terceros. La Responsabilidad General cubre los riesgos principales de lesiones corporales y daños a la propiedad que ocurren durante las operaciones estándar.
+            </p>
+            <a href="/es/quote?type=business" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Solicitar Cotización de Negocios
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Lo que cubre la Responsabilidad General</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Lesiones Corporales</h4>
+                <p>Protege a su empresa si un cliente se resbala y cae en sus instalaciones, cubriendo gastos médicos y costos de defensa legal.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Daños a la Propiedad</h4>
+                <p>Cubre gastos si sus operaciones dañan la propiedad de otra persona (por ejemplo, si un contratista rompe accidentalmente una tubería dentro del edificio de un cliente).</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Operaciones Completadas por Productos</h4>
+                <p>Cubre reclamos de responsabilidad que surjan de productos fabricados, vendidos o servicios completados por su negocio que causen daños corporales o daños a la propiedad más adelante.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Daños de Publicidad</h4>
+                <p>Protege contra reclamos de difamación, calumnia, infracción de derechos de autor o apropiación indebida de ideas publicitarias en sus materiales de marketing.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Commercial Auto Insurance -->
+        <div id="auto" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Truck Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.129-1.125V14.25M3 14.25h18M3 14.25V9.75A2.25 2.25 0 0 1 5.25 7.5h13.5A2.25 2.25 0 0 1 21 9.75v4.5m-18 0h18M6.75 12h.008v.008H6.75V12Zm3.75 0h.008v.008h-.008V12Zm3.75 0h.008v.008h-.008V12Zm3.75 0h.008v.008h-.008V12Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Auto Comercial</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Si su empresa posee, arrienda o utiliza vehículos con fines comerciales (incluidas entregas, visitas de ventas o transporte de equipos), necesita una póliza de auto comercial dedicada. Las pólizas de auto personales casi siempre excluyen el uso comercial.
+            </p>
+            <a href="/es/quote?type=business" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Solicitar Cotización de Auto
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Colectivos de Flotas y Vehículos Individuales</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Protección de Responsabilidad Civil</h4>
+                <p>Cobertura de lesiones corporales y daños a la propiedad de alto límite para proteger los activos de su empresa si un empleado causa un accidente mientras conduce por trabajo.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Daño Físico</h4>
+                <p>Cobertura de Colisión y Cobertura Contra Todo Riesgo para camiones, camionetas y vehículos utilitarios de la empresa para mantener su flota operativa después de un accidente, vandalismo o tormenta.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Auto Rentado / No Propio</h4>
+                <p>Agrega protección de responsabilidad civil para su negocio si los empleados conducen sus vehículos personales o alquilan automóviles para asuntos de la empresa.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workers Compensation Insurance -->
+        <div id="wc" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Shield Check Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Compensación de Trabajadores</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              La ley de Connecticut exige que casi todas las empresas con uno o más empleados tengan un seguro de Compensación de Trabajadores. Paga los gastos médicos y los salarios perdidos de los empleados lesionados en el trabajo.
+            </p>
+            <a href="/es/quote" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Más Información
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Mandatos de Compensación de Trabajadores en CT</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Llevar la Compensación de Trabajadores protege tanto a su negocio como a su equipo. Al pagar beneficios reglamentarios a un trabajador lesionado, su empresa recibe protección contra demandas civiles por lesiones en el lugar de trabajo.
+            </p>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Auditamos sus códigos de clasificación y declaraciones de nómina, buscando en múltiples compañías de primer nivel para asegurarnos de que no pague de más en las primas, y le asistimos con la preparación de auditorías anuales para evitar facturas de ajuste de nómina inesperadas.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

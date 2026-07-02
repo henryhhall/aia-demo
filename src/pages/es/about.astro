@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const aboutStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Sobre Associated Insurance Agency",
+  "description": "Conozca sobre Associated Insurance Agency, una agencia independiente que ofrece soluciones de seguros personales y comerciales personalizadas en todo Connecticut.",
+};
+---
+
+<BaseLayout
+  title="Sobre Associated Insurance Agency | Agentes de Seguros Independientes de CT"
+  description="Conozca sobre Associated Insurance Agency, nuestra historia al servicio de CT desde 2016 y por qué trabajar con un agente independiente protege su propiedad y le ahorra dinero."
+  structuredData={aboutStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Sobre Nuestra Agencia
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Sirviendo a Danbury, Watertown, Bridgeport y a la comunidad de Connecticut en general desde 2016.
+      </p>
+    </div>
+  </section>
+
+  <!-- Narrative Content (Split Screen) -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <!-- Text Content -->
+        <div class="lg:col-span-8 space-y-8 text-left">
+          <h2 class="text-2xl font-bold text-accent">Nuestra Misión: Cobertura Personalizada, Tarifas Competitivas</h2>
+          <div class="prose prose-zinc max-w-none text-sm sm:text-base text-text-secondary leading-relaxed space-y-6">
+            <p>
+              Associated Insurance Agency (AIA) se fundó sobre un principio simple: los residentes de Connecticut merecen pólizas de seguro adaptadas a sus vidas y empresas únicas, sin pagar precios inflados.
+            </p>
+            <p>
+              Como agencia independiente de servicio completo, no trabajamos para ninguna compañía de seguros en particular. En su lugar, tenemos asociaciones con una amplia red de las aseguradoras mejor calificadas de la región y del país. Esta independencia nos permite comparar opciones de pólizas y presentarle las alternativas que ofrecen la mejor cobertura a las tarifas más bajas del mercado.
+            </p>
+            <p>
+              Ya sea que esté comprando su primera casa, agregando un vehículo nuevo a su póliza familiar o administrando un negocio local en crecimiento, nuestros agentes experimentados se toman el tiempo para analizar sus riesgos y emparejarlo con opciones que protegen lo que más importa.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-border-subtle">
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-accent">¿Por qué elegir un agente independiente?</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Cuando trabaja con un redactor directo, ellos solo pueden venderle su marca específica. Si sus tarifas aumentan o sus necesidades cambian, debe comenzar a buscar de nuevo. Con AIA, representamos a múltiples aseguradoras, lo que significa que podemos ajustar su póliza o comparar en el mercado en su nombre sin que tenga que cambiar de agencia.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-accent">Compromiso con Connecticut</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Con ubicaciones de oficinas en Danbury, Watertown y Bridgeport, estamos profundamente integrados en las comunidades locales de Connecticut. Conocemos los riesgos regionales, los factores climáticos (como inviernos helados y fuertes acumulaciones de nieve) y las regulaciones de seguros estatales, lo que nos permite brindar asesoramiento local altamente preciso.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar / Trust Signals -->
+        <div class="lg:col-span-4 space-y-8">
+          <div class="bg-bg-secondary border border-border-subtle p-6 rounded-lg shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2">Datos Rápidos de AIA</h3>
+            <ul class="space-y-3.5 text-xs text-text-secondary">
+              <li class="flex justify-between">
+                <span class="font-medium">Establecido:</span>
+                <span>2016</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Áreas de Servicio:</span>
+                <span>Todo CT y NY</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Oficinas Principales:</span>
+                <span>Danbury, Watertown, Bridgeport</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Aseguradoras Aliadas:</span>
+                <span>Progressive, Travelers, Liberty Mutual, etc.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-accent text-white p-6 rounded-lg space-y-4 shadow-md">
+            <h3 class="text-base font-bold text-accent-gold">¿Necesita asesoramiento sobre una póliza?</h3>
+            <p class="text-xs text-white/80 leading-relaxed">
+              Ofrecemos revisiones de pólizas gratuitas y sin compromiso. Tráiganos la página de declaraciones de su seguro actual y le diremos si está pagando de más o si tiene cobertura insuficiente.
+            </p>
+            <a
+              href="/es/quote"
+              class="inline-flex items-center justify-center w-full px-4 py-2.5 text-xs font-semibold uppercase bg-accent-gold text-accent hover:bg-accent-gold-hover rounded transition-colors text-center"
+            >
+              Solicitar una Revisión
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const personalStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Linhas de Seguro Pessoal",
+  "description": "Apólices abrangentes de seguros pessoais, incluindo seguro de proprietários de casas, automóveis, inquilinos, veículos recreativos (RV), responsabilidade guarda-chuva e seguro de animais de estimação em Connecticut.",
+  "provider": {
+    "@type": "InsuranceAgency",
+    "name": "Associated Insurance Agency"
+  }
+};
+---
+
+<BaseLayout
+  title="Apólices de Seguro Pessoal CT | Casa, Auto, Guarda-Chuva e Inquilinos"
+  description="Explore as coberturas de seguro pessoal da Associated Insurance Agency CT. Pesquisamos tarifas de seguros de proprietários de casas, automóveis, responsabilidade guarda-chuva, inquilinos e animais de estimação."
+  structuredData={personalStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Linhas de Seguro Pessoal
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Protegendo sua família, casa e veículos com apólices abrangentes personalizadas para as famílias de Connecticut.
+      </p>
+    </div>
+  </section>
+
+  <!-- Detailed Sections -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-24">
+        
+        <!-- Homeowners Insurance -->
+        <div id="home" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle first:border-0 first:pt-0">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Home Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Seguro de Proprietários</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Sua casa é provavelmente o seu maior investimento financeiro individual. Uma apólice de seguro de proprietário protege a estrutura física da sua moradia, edifícios separados, bens pessoais e fornece cobertura de responsabilidade se um convidado se machucar na sua propriedade.
+            </p>
+            <a href="/pt/quote?type=home" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Solicitar Cotação de Casa
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Áreas Principais de Proteção do Proprietário</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Cobertura da Moradia</h4>
+                <p>Cobre a estrutura física da sua casa contra riscos como fogo, vendavais, granizo e danos causados por barreiras de gelo. Ela paga para consertar ou reconstruir.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Bens Pessoais</h4>
+                <p>Protege seus móveis, roupas, eletrônicos e eletrodomésticos. A cobertura se aplica mesmo quando você estiver viajando longe de casa.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Responsabilidade Pessoal</h4>
+                <p>Protege você financeiramente se for processado por lesões corporais acidentais ou danos materiais causados a terceiros, em sua casa ou em qualquer outro lugar.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Perda de Uso</h4>
+                <p>Reembolsa suas despesas temporárias de subsistência (hotel, alimentação, aluguel) se um sinistro coberto tornar sua casa inabitável durante os reparos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Auto & RV Insurance -->
+        <div id="auto" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Auto Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.129-1.125V14.25M3 14.25h18M3 14.25V9.75A2.25 2.25 0 0 1 5.25 7.5h13.5A2.25 2.25 0 0 1 21 9.75v4.5m-18 0h18M6.75 12h.008v.008H6.75V12Zm3.75 0h.008v.008h-.008V12Zm3.75 0h.008v.008h-.008V12Zm3.75 0h.008v.008h-.008V12Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Seguro de Auto e RV</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              A lei de Connecticut exige limites mínimos de responsabilidade civil para automóveis, mas a cobertura padrão raramente é suficiente para protegê-lo em um acidente grave. Nós personalizamos seus limites e cobertura de danos físicos, pesquisando seguradoras nacionais para obter descontos em pacotes e de segurança.
+            </p>
+            <a href="/pt/quote?type=auto" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Solicitar Cotação de Automóvel
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Elementos Principais da Apólice de Automóvel</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Responsabilidade Civil por Danos Corporais e Materiais</h4>
+                <p>Paga custos médicos e contas de reparo de outros motoristas e passageiros se você for o culpado em um acidente de automóvel.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Colisão e Cobertura Compreensiva</h4>
+                <p>A cobertura de colisão cobre danos de impacto ao seu próprio veículo. A compreensiva cobre danos não decorrentes de colisão (roubo, vandalismo, atropelamento de animais, quebra de vidros).</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Motorista Não Seguro ou Subsegurado</h4>
+                <p>Protege você e seus passageiros se for atingido por um motorista que não possui seguro ou possui limites baixos demais para pagar suas contas.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Cobertura de Veículos Recreativos (RV)</h4>
+                <p>Apólices especializadas para motorhomes, trailers de viagem, campers e barcos que cobrem reboque, armazenamento e responsabilidade de férias.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Umbrella Insurance -->
+        <div id="umbrella" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Umbrella Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18m0-18a8.25 8.25 0 0 1 8.25 8.25v.75H3.75v-.75A8.25 8.25 0 0 1 12 3Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Seguro Guarda-Chuva (Umbrella)</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Em nossa sociedade altamente litigiosa, um único acidente de carro grave ou uma lesão na piscina da sua propriedade pode resultar em sentenças que excedam os seus limites padrão de responsabilidade de automóvel ou residência. O seguro guarda-chuva pessoal adiciona uma camada extra de proteção de responsabilidade.
+            </p>
+            <a href="/pt/quote" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Saiba Mais
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Por que o Seguro Guarda-Chuva é Importante</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Se sua apólice de proprietário de casa tiver um limite de responsabilidade de $300.000, e um convidado cair de um deck e processá-lo por $800.000, você será responsável pelos $500.000 restantes do próprio bolso. Isso pode colocar em risco suas economias, investimentos e o patrimônio da sua casa.
+            </p>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Uma apólice de seguro guarda-chuva fica acima de suas apólices subjacentes (casa, carro, barco) e entra em vigor quando os limites delas se esgotam. As apólices geralmente começam em $1 milhão em cobertura adicional por cerca de $150 a $300 por ano, tornando-se uma das formas mais econômicas de proteção de patrimônio disponíveis.
+            </p>
+          </div>
+        </div>
+
+        <!-- Renters & Specialty -->
+        <div id="renters" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Star/Specialty Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M11.48 3.499c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 0 0 .95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 0 0-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 0 0-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 0 0-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 0 0 .951-.69l1.519-4.674Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Inquilinos e Especialidades</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Também emitimos apólices para inquilinos e linhas pessoais de nicho. O seguro do seu locador cobre apenas a estrutura do prédio — não cobre seus pertences pessoais, móveis ou lesões de convidados dentro do seu apartamento.
+            </p>
+            <a href="/pt/quote?type=renters" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Solicitar Cotação de Inquilinos
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Seguro de Inquilinos</h4>
+                <p>Cobre a substituição de roupas, computadores e móveis em caso de roubo ou incêndio. Inclui responsabilidade do inquilino em caso de pequenos acidentes dentro da unidade alugada.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Seguro de Animais de Estimação</h4>
+                <p>Planos de acidentes e doenças para cães e gatos. Cobre consultas veterinárias, cirugías e receitas para que você nunca precise tomar decisões de saúde com base nas despesas.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

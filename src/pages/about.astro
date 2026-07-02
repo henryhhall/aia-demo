@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const aboutStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About Associated Insurance Agency",
+  "description": "Learn about Associated Insurance Agency, an independent agency providing customized personal and commercial insurance solutions across Connecticut.",
+};
+---
+
+<BaseLayout
+  title="About Associated Insurance Agency | Independent CT Insurance Agents"
+  description="Learn about Associated Insurance Agency, our history serving CT since 2016, and why working with an independent agent protects your property and saves you money."
+  structuredData={aboutStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        About Our Agency
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Serving Danbury, Watertown, Bridgeport, and the wider Connecticut community since 2016.
+      </p>
+    </div>
+  </section>
+
+  <!-- Narrative Content (Split Screen) -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <!-- Text Content -->
+        <div class="lg:col-span-8 space-y-8 text-left">
+          <h2 class="text-2xl font-bold text-accent">Our Mission: Personalized Coverage, Competitive Rates</h2>
+          <div class="prose prose-zinc max-w-none text-sm sm:text-base text-text-secondary leading-relaxed space-y-6">
+            <p>
+              Associated Insurance Agency (AIA) was founded on a simple principle: Connecticut residents deserve insurance policies tailored to their unique lives and businesses, without paying inflated prices.
+            </p>
+            <p>
+              As a full-service independent agency, we do not work for any single insurance company. Instead, we have partnerships with a wide network of the nation's and region's top-rated carriers. This independence allows us to shop around, compare policies, and present you with options that offer the best coverage at the lowest available market rates.
+            </p>
+            <p>
+              Whether you are buying your first home, adding a new vehicle to your family policy, or managing a growing local business, our experienced agents take the time to analyze your risks and match you with options that protect what matters most.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-border-subtle">
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-accent">Why Choose an Independent Agent?</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                When you work with a direct writer, they can only sell you their specific brand. If their rates increase or your needs change, you have to start shopping all over again. With AIA, we represent multiple carriers, meaning we can adjust your policy or shop the market on your behalf without you ever needing to switch agencies.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-accent">Commitment to Connecticut</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                With office locations in Danbury, Watertown, and Bridgeport, we are deeply embedded in local Connecticut communities. We know the regional risks, climate factors (like freezing winters and heavy snow load), and state insurance regulations, allowing us to provide highly accurate, local advice.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar / Trust Signals -->
+        <div class="lg:col-span-4 space-y-8">
+          <div class="bg-bg-secondary border border-border-subtle p-6 rounded-lg shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2">AIA Quick Facts</h3>
+            <ul class="space-y-3.5 text-xs text-text-secondary">
+              <li class="flex justify-between">
+                <span class="font-medium">Established:</span>
+                <span>2016</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Service Areas:</span>
+                <span>All of CT & NY</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Primary Offices:</span>
+                <span>Danbury, Watertown, Bridgeport</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Partner Carriers:</span>
+                <span>Progressive, Travelers, Liberty Mutual, etc.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-accent text-white p-6 rounded-lg space-y-4 shadow-md">
+            <h3 class="text-base font-bold text-accent-gold">Need advice on a policy?</h3>
+            <p class="text-xs text-white/80 leading-relaxed">
+              We offer free, no-obligation policy reviews. Bring us your current insurance declarations page, and we will tell you if you are overpaying or underinsured.
+            </p>
+            <a
+              href="/quote"
+              class="inline-flex items-center justify-center w-full px-4 py-2.5 text-xs font-semibold uppercase bg-accent-gold text-accent hover:bg-accent-gold-hover rounded transition-colors text-center"
+            >
+              Request a Review
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,80 @@
+---
+import SEOHead from '../components/SEOHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  ogType?: string;
+  canonicalUrl?: string;
+  author?: string;
+  publishDate?: string;
+  modifiedDate?: string;
+  tags?: string[];
+  structuredData?: object;
+}
+
+const props = Astro.props;
+const lang = Astro.currentLocale || 'en';
+
+// Default structured data for Associated Insurance Agency (AIA)
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "InsuranceAgency",
+  "name": "Associated Insurance Agency",
+  "image": "https://aia-danbury.com/images/logo.png",
+  "url": "https://aia-danbury.com",
+  "telephone": "+1-203-748-9272",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "50 Newtown Road, Suite 1",
+    "addressLocality": "Danbury",
+    "addressRegion": "CT",
+    "postalCode": "06810",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 41.4087,
+    "longitude": -73.4285
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "08:30",
+      "closes": "17:00"
+    }
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+1-203-748-9272",
+    "contactType": "customer service",
+    "areaServed": "US",
+    "availableLanguage": ["English", "Spanish", "Portuguese"]
+  }
+};
+
+const mergedStructuredData = props.structuredData 
+  ? [localBusinessSchema, props.structuredData] 
+  : localBusinessSchema;
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <SEOHead {...props} structuredData={mergedStructuredData} />
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+  <body class="min-h-[100dvh] flex flex-col bg-bg-primary text-text-primary">
+    <Header lang={lang} />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

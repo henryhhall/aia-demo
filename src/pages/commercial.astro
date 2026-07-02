@@ -1,0 +1,154 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const commercialStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Commercial Insurance Lines",
+  "description": "Comprehensive business insurance solutions in Connecticut, including general liability, commercial auto, workers compensation, and excess liability.",
+  "provider": {
+    "@type": "InsuranceAgency",
+    "name": "Associated Insurance Agency"
+  }
+};
+---
+
+<BaseLayout
+  title="Commercial Business Insurance CT | GL, Commercial Auto & Workers Comp"
+  description="Associated Insurance Agency CT provides comprehensive commercial business insurance. We compare general liability, commercial auto, and workers comp."
+  structuredData={commercialStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Commercial Insurance Lines
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Shielding Connecticut businesses, workers, and commercial vehicle fleets with robust risk management and liability policies.
+      </p>
+    </div>
+  </section>
+
+  <!-- Detailed Sections (Border-separated vertical stacks - Taste Skill Rule 4) -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="space-y-24">
+        
+        <!-- General Liability Insurance -->
+        <div id="gl" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle first:border-0 first:pt-0">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Briefcase Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 .621-.504 1.125-1.125 1.125H4.875c-.621 0-1.125-.504-1.125-1.125v-4.25m16.5 0a2.25 2.25 0 0 0-2.25-2.25H4.875a2.25 2.25 0 0 0-2.25 2.25m16.5 0V9.75A2.25 2.25 0 0 0 17.062 7.5h-10.12a2.25 2.25 0 0 0-2.25 2.25v4.4m12.43 0h-12.43M9 7.5v-1.5a2.25 2.25 0 0 1 2.25-2.25h1.5A2.25 2.25 0 0 1 15 6v1.5M9 10.5h.008v.008H9V10.5Zm3 0h.008v.008H12V10.5Zm3 0h.008v.008H15V10.5Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">General Liability (GL)</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Every business, regardless of size, faces exposure to lawsuits from third parties. General Liability covers core bodily injury and property damage risks that occur during standard operations.
+            </p>
+            <a href="/quote?type=business" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Request Business Quote
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">What General Liability Covers</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Bodily Injury</h4>
+                <p>Protects your company if a client or customer slips and falls on your premises, covering medical expenses and legal defense costs.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Property Damage</h4>
+                <p>Covers expenses if your operations damage someone else's property (for example, a contractor accidentally breaking a pipe inside a client's building).</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Products-Completed Operations</h4>
+                <p>Covers liability claims arising from products manufactured, sold, or services completed by your business that cause bodily harm or property damage later.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Advertising Injury</h4>
+                <p>Protects against claims of libel, slander, copyright infringement, or misappropriation of advertising ideas in your marketing materials.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Commercial Auto Insurance -->
+        <div id="auto" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Truck Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.129-1.125V14.25M3 14.25h18M3 14.25V9.75A2.25 2.25 0 0 1 5.25 7.5h13.5A2.25 2.25 0 0 1 21 9.75v4.5m-18 0h18M6.75 12h.008v.008H6.75V12Zm3.75 0h.008v.008h-.008V12Zm3.75 0h.008v.008h-.008V12Zm3.75 0h.008v.008h-.008V12Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Commercial Auto</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              If your company owns, leases, or uses vehicles for business purposes (including delivery, sales calls, or transporting equipment), you need a dedicated commercial auto policy. Personal auto policies almost always exclude business use.
+            </p>
+            <a href="/quote?type=business" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Request Auto Quote
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">Fleet & Single Vehicle Coverages</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary leading-relaxed">
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Liability Protection</h4>
+                <p>High-limit bodily injury and property damage cover to protect your business assets if an employee causes an accident while driving for work.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Physical Damage</h4>
+                <p>Collision and Comprehensive coverage for company trucks, vans, and utility vehicles to keep your fleet operational after an accident, vandalism, or storm.</p>
+              </div>
+              <div>
+                <h4 class="font-bold text-text-primary mb-1">Non-Owned / Hired Auto</h4>
+                <p>Adds liability protection for your business if employees drive their personal vehicles or rent cars for company business.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Workers Compensation Insurance -->
+        <div id="wc" class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+          <div class="lg:col-span-4 space-y-4">
+            <div class="w-10 h-10 rounded bg-accent/5 flex items-center justify-center text-accent">
+              <!-- Shield Check Icon -->
+              <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+              </svg>
+            </div>
+            <h2 class="text-2xl font-bold text-accent">Workers Comp</h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Connecticut law requires almost all businesses with one or more employees to carry Workers Compensation insurance. It pays medical expenses and lost wages for employees injured on the job.
+            </p>
+            <a href="/quote" class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold hover:text-accent-gold-hover transition-colors">
+              Learn More
+              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          </div>
+          <div class="lg:col-span-8 bg-bg-secondary p-8 rounded-lg border border-border-subtle space-y-6">
+            <h3 class="text-base font-bold text-accent">CT Workers Comp Mandates</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Carrying Workers Compensation protects both your business and your team. By paying statutory benefits to an injured worker, your company receives protection from civil lawsuits regarding workplace injuries.
+            </p>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              We audit your classification codes and payroll declarations, shopping multiple top-tier carriers to ensure you aren't overpaying on premiums, and we assist with annual audit preparation to avoid unexpected payroll adjustment bills.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
