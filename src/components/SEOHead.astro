@@ -1,4 +1,6 @@
 ---
+import { getLocalizedPath } from '../i18n/utils';
+
 interface Props {
   title: string;
   description: string;
@@ -12,7 +14,6 @@ interface Props {
   structuredData?: object;
   noindex?: boolean;
 }
-
 const {
   title,
   description,
@@ -29,6 +30,12 @@ const {
 
 const siteUrl = Astro.site?.toString() || 'https://aia-danbury.com';
 const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, siteUrl).toString();
+
+const currentPath = Astro.url.pathname;
+const urlEn = new URL(getLocalizedPath(currentPath, 'en'), siteUrl).toString();
+const urlEs = new URL(getLocalizedPath(currentPath, 'es'), siteUrl).toString();
+const urlPt = new URL(getLocalizedPath(currentPath, 'pt'), siteUrl).toString();
+const urlTr = new URL(getLocalizedPath(currentPath, 'tr'), siteUrl).toString();
 ---
 
 <meta charset="utf-8" />
@@ -40,8 +47,13 @@ const fullOgImage = ogImage.startsWith('http') ? ogImage : new URL(ogImage, site
 <meta name="description" content={description} />
 {noindex && <meta name="robots" content="noindex, nofollow" />}
 
-<!-- Canonical -->
+<!-- Canonical & Hreflang -->
 <link rel="canonical" href={canonicalUrl} />
+<link rel="alternate" hreflang="en" href={urlEn} />
+<link rel="alternate" hreflang="es" href={urlEs} />
+<link rel="alternate" hreflang="pt" href={urlPt} />
+<link rel="alternate" hreflang="tr" href={urlTr} />
+<link rel="alternate" hreflang="x-default" href={urlEn} />
 
 <!-- Open Graph -->
 <meta property="og:type" content={ogType} />

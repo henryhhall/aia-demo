@@ -18,6 +18,7 @@ const languages = [
   { code: 'en', label: 'EN' },
   { code: 'es', label: 'ES' },
   { code: 'pt', label: 'PT' },
+  { code: 'tr', label: 'TR' },
 ];
 
 export default function Navigation({

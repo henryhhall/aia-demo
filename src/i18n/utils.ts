@@ -17,7 +17,7 @@ export function getLocalizedPath(pathname: string, targetLang: string) {
   // Remove existing language prefix
   const parts = cleanPathname.split("/");
   // parts[0] is empty, parts[1] is the first segment (e.g. 'es' or 'pt')
-  if (parts[1] === "es" || parts[1] === "pt") {
+  if (parts[1] === "es" || parts[1] === "pt" || parts[1] === "tr") {
     parts.splice(1, 1);
   }
   const pathWithoutLang = parts.join("/");

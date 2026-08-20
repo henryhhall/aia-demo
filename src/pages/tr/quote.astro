@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import QuoteForm from '../../components/QuoteForm';
+
+const quoteStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": "Sigorta Teklifi İsteyin",
+  "description": "Associated Insurance Agency'den ücretsiz ev sahipleri, otomobil, kiracılar veya ticari iş sigortası teklifi isteyin.",
+};
+---
+
+<BaseLayout
+  title="Ücretsiz Sigorta Teklifi İsteyin | Associated Insurance Agency CT"
+  description="Ücretsiz, taahhütsüz ev sahipleri, otomobil veya iş sigortası teklifi isteyin. CT'deki en düşük oranları bulmak için piyasayı araştırıyoruz."
+  structuredData={quoteStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+      <h1 class="text-4xl font-bold tracking-tighter text-accent leading-none">
+        Ücretsiz Teklif İsteyin
+      </h1>
+      <p class="text-sm text-text-secondary max-w-[60ch] mx-auto">
+        Temsilcilerimizin en iyi oranınız için CT pazarını araştırmasını sağlamak üzere 3 adımlı basit formumuzu doldurun.
+      </p>
+    </div>
+  </section>
+
+  <!-- Quote Form Section -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- React multi-step quote form island -->
+      <QuoteForm client:load lang="tr" />
+    </div>
+  </section>
+</BaseLayout>

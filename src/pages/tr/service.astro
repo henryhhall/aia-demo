@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FAQAccordion from '../../components/FAQAccordion';
+
+const faqItems = [
+  {
+    question: "Bağımsız sigorta acentesi nedir?",
+    answer: "Associated Insurance Agency gibi bağımsız bir sigorta acentesi, sadece bir sigorta şirketini değil, birden fazla sigorta şirketini temsil eder. Bu, ihtiyaçlarınıza ve bütçenize en uygun poliçeyi bulmak için farklı markaların teminat seçeneklerini ve oranlarını karşılaştırabileceğimiz, size zaman ve para tasarrufu sağlayabileceğimiz anlamına gelir."
+  },
+  {
+    question: "Trafik kazasından hemen sonra ne yapmalıyım?",
+    answer: "Öncelikle herkesin güvenliğini sağlayın ve yaralanma varsa 911'i arayın. Diğer sürücü(ler) ile iletişim ve sigorta bilgilerini takas edin, olay yerinin ve araç hasarının fotoğraflarını çekin ve tanıkların iletişim bilgilerini toplayın. Son olarak, en kısa sürede AIA ile iletişime geçin; hasar bildirimini sigorta şirketinizle yapmanıza yardımcı olalım."
+  },
+  {
+    question: "Ev sahibi sigortası primlerim neden değişir?",
+    answer: "Ev sahibi primleri, yapı malzemesi maliyetlerindeki değişiklikler (enflasyon), bölgesel fırtına faaliyetleri, mülkünüzdeki hasar geçmişi veya evinizde iyileştirmeler yapmanız (havuz eklemek veya tadilat yapmak gibi) nedeniyle ayarlanabilir. Doğru ikame değerlerini sağlamak için poliçenizi yıllık olarak gözden geçirmenizi öneririz."
+  },
+  {
+    question: "Sel sigortası standart ev sahibi poliçelerine dahil midir?",
+    answer: "Hayır, standart ev sahibi poliçeleri yükselen yüzey sularının veya sellerin neden olduğu hasarları kapsamaz. Sel sigortası, Ulusal Sel Sigortası Programı (NFIP) veya özel sel sigortacıları aracılığıyla ayrı bir poliçe olarak satın alınmalıdır. Sel bölgesi riskinizi kontrol etmenize ve teminat sağlamanıza yardımcı olabiliriz."
+  }
+];
+
+const carriers = [
+  { name: "Safeco", phone: "1-800-332-3226", claimUrl: "http://www.safeco.com/claims-center", claimText: "Hasar Merkezi" },
+  { name: "Met Life", phone: "1-800-845-6011", claimUrl: "https://www.metlife.com/about/corporate-profile/pay-a-bill/claims/index.html", claimText: "Hasar Merkezi" },
+  { name: "The Hartford", phone: "1-800-243-5860", claimUrl: "http://www.thehartford.com/claims-center", claimText: "Hasar Merkezi" },
+  { name: "Progressive", phone: "Genel: 1-800-776-4737\nTicari: 1-888-240-9839", claimUrl: "http://www.progressive.com/claims/", claimText: "Hasar Merkezi" },
+  { name: "Foremost", phone: "Hasar Merkezine Bakın", claimUrl: "http://www.foremost.com/claims/", claimText: "Hasar Merkezi" },
+  { name: "Travelers", phone: "Bireysel: 1-800-252-4633\nTicari: Hasar Merkezine Bakın", claimUrl: "https://www.travelers.com/claim/index.aspx", claimText: "Hasar Merkezi" },
+  { name: "Victoria Insurance", phone: "1-800-926-3168", claimUrl: "https://www.victoriainsurance.com/ClaimsService.do", claimText: "Hasar Merkezi" },
+  { name: "Guard Insurance", phone: "1-888-639-2567", claimUrl: "http://www.guard.com/docs/ClaimReport.pdf", claimText: "Hasar Rapor Formu" },
+  { name: "Infinity", phone: "1-800-334-1661", claimUrl: "https://www.infinityauto.com/report-claim", claimText: "Hasar Merkezi" },
+  { name: "K & K Insurance", phone: "1-800-237-2917", claimUrl: "https://www.kandkinsurance.com/Pages/Claims.aspx", claimText: "Hasar Merkezi" },
+  { name: "Utica First Insurance", phone: "Associated Insurance Agency'yi Arayın", claimUrl: "https://www.uticafirst.com/claims.html", claimText: "Hasar Bilgisi" }
+];
+
+const serviceStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<BaseLayout
+  title="Müşteri Hizmetleri Merkezi | Associated Insurance Agency CT"
+  description="CT hizmet merkezimizde hasar bildiriminde bulunun, faturaları doğrudan büyük sigorta şirketleriyle ödeyin ve sık sorulan sigorta sorularının yanıtlarını bulun."
+  structuredData={serviceStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Müşteri Hizmetleri Merkezi
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        Ödemelerinizi yapın, hasar bildiriminde bulunun ve anında çözümler bulun.
+      </p>
+    </div>
+  </section>
+
+  <!-- Content Sections -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+      
+      <!-- Carrier Billing & Claims Directory -->
+      <div class="space-y-8">
+        <div class="max-w-3xl space-y-2 text-left">
+          <h2 class="text-2xl font-bold text-accent">Doğrudan Sigorta Şirketleri Rehberi</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Bağımsız bir acente olarak teminatınız ortak sigorta şirketlerimizden biri tarafından üstlenilmektedir. Aşağıdaki iletişim bilgilerini kullanarak 7/24 doğrudan onlarla fatura ödeyebilir veya hasar bildiriminde bulunabilirsiniz.
+          </p>
+        </div>
+
+        <div class="rounded-lg border border-border-subtle bg-white overflow-hidden shadow-sm">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm">
+              <thead>
+                <tr class="bg-bg-secondary border-b border-border-subtle font-semibold text-accent">
+                  <th class="px-6 py-4">Sigorta Şirketi</th>
+                  <th class="px-6 py-4">Telefon Desteği</th>
+                  <th class="px-6 py-4 text-right">Çevrimiçi Hasar Bildirimi</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border-subtle text-text-secondary text-xs sm:text-sm">
+                {carriers.map((carrier) => (
+                  <tr class="hover:bg-bg-secondary/30 transition-colors">
+                    <td class="px-6 py-4 font-semibold text-accent">{carrier.name}</td>
+                    <td class="px-6 py-4 font-mono text-xs whitespace-pre-line">{carrier.phone}</td>
+                    <td class="px-6 py-4 text-right">
+                      <a href={carrier.claimUrl} target="_blank" rel="noopener noreferrer" class="text-xs font-semibold text-accent-gold hover:underline">{carrier.claimText}</a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- File a Claim Checklist -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pt-12 border-t border-border-subtle">
+        <div class="lg:col-span-4 space-y-4 text-left">
+          <h2 class="text-2xl font-bold text-accent">Hasar Bildiriminde mi Bulunuyorsunuz?</h2>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Hasar veya kaza ile uğraşmak streslidir. Hasar sürecinizin sorunsuz işlemesini sağlamak için bu standart yönergeleri izleyin.
+          </p>
+        </div>
+        <div class="lg:col-span-8 bg-bg-secondary border border-border-subtle p-8 rounded-lg space-y-6 text-left">
+          <h3 class="text-base font-bold text-accent">Acil Eylem Kontrol Listesi</h3>
+          <ol class="space-y-4 text-xs text-text-secondary leading-relaxed list-decimal list-inside">
+            <li>
+              <strong>Hasarı Belgeleyin:</strong> Herhangi bir geçici onarım yapmadan önce mülkünüzdeki veya aracınızdaki hasarın net fotoğraflarını veya video görüntülerini çekin.
+            </li>
+            <li>
+              <strong>Daha Fazla Kaybı Önleyin:</strong> Mülkünüzü daha fazla hasardan korumak için makul geçici adımlar atın (örneğin çatıdaki bir deliğe muşamba örtmek veya kırık bir pencereyi kapatmak). Satın alınan malzemelerin fişlerini saklayın.
+            </li>
+            <li>
+              <strong>Geçerliyse Polisle İletişime Geçin:</strong> Hırsızlık, vandalizm veya trafik kazası durumunda polis raporunun tutulduğundan emin olun ve rapor numarasının bir kopyasını isteyin.
+            </li>
+            <li>
+              <strong>Hemen Bildirin:</strong> Hasar bildirimini en kısa sürede başlatmak için AIA veya doğrudan sigorta şirketinizle iletişime geçin. Gecikmeler incelemeyi ve ödemeyi karmaşıklaştırabilir.
+            </li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- Frequently Asked Questions -->
+      <div class="space-y-8 pt-12 border-t border-border-subtle">
+        <div class="text-center max-w-2xl mx-auto space-y-4">
+          <h2 class="text-2xl font-bold text-accent">Sıkça Sorulan Sorular</h2>
+          <p class="text-sm text-text-secondary">Primler, hasarlar ve teminatlar hakkında yaygın sorulara hızlı yanıtlar.</p>
+        </div>
+        
+        <!-- React FAQ accordion island -->
+        <FAQAccordion client:visible items={faqItems} />
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

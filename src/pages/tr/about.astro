@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const aboutStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Associated Insurance Agency Hakkında",
+  "description": "Connecticut genelinde kişiselleştirilmiş bireysel ve ticari sigorta çözümleri sunan bağımsız bir acente olan Associated Insurance Agency hakkında bilgi edinin.",
+};
+---
+
+<BaseLayout
+  title="Associated Insurance Agency Hakkında | Bağımsız CT Sigorta Temsilcileri"
+  description="Associated Insurance Agency, 2016'dan bu yana CT'ye hizmet veren tarihimiz ve bağımsız bir temsilciyle çalışmanın mülkünüzü korurken nasıl tasarruf sağladığı hakkında bilgi edinin."
+  structuredData={aboutStructuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        Acentemiz Hakkında
+      </h1>
+      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
+        2016'dan beri Danbury, Watertown, Bridgeport ve tüm Connecticut topluluğuna hizmet vermektedir.
+      </p>
+    </div>
+  </section>
+
+  <!-- Narrative Content -->
+  <section class="py-24 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+        <!-- Text Content -->
+        <div class="lg:col-span-8 space-y-8 text-left">
+          <h2 class="text-2xl font-bold text-accent">Misyonumuz: Kişiselleştirilmiş Teminat, Rekabetçi Oranlar</h2>
+          <div class="prose prose-zinc max-w-none text-sm sm:text-base text-text-secondary leading-relaxed space-y-6">
+            <p>
+              Associated Insurance Agency (AIA), basit bir ilke üzerine kurulmuştur: Connecticut sakinleri, şişirilmiş fiyatlar ödemeden, benzersiz yaşamlarına ve işletmelerine özel olarak uyarlanmış sigorta poliçelerini hak eder.
+            </p>
+            <p>
+              Tam hizmet sunan bağımsız bir acente olarak, tek bir sigorta şirketi için çalışmıyoruz. Bunun yerine, ülkenin ve bölgenin en yüksek puanlı sigorta şirketlerinden oluşan geniş bir ağ ile ortaklıklarımız bulunmaktadır. Bu bağımsızlık, piyasayı araştırmamıza, poliçeleri karşılaştırmamıza ve mevcut en düşük piyasa oranlarında en iyi teminatı sunan seçenekleri size sunmamıza olanak tanır.
+            </p>
+            <p>
+              İster ilk evinizi alıyor olun, ister aile poliçenize yeni bir araç ekliyor olun, ister büyüyen yerel bir işletmeyi yönetiyor olun, deneyimli temsilcilerimiz risklerinizi analiz etmek ve sizi en çok önemli olanı koruyan seçeneklerle eşleştirmek için zaman ayırır.
+            </p>
+            <p>
+              Çeşitli Connecticut topluluklarımıza daha iyi hizmet verebilmek için ekibimiz tamamen çok dillidir. Danışmanlık, poliçe hizmetleri ve hasar desteğini İngilizce, İspanyolca, Portekizce ve Türkçe dillerinde sunmaktan gurur duyuyoruz ve dilin ihtiyacınız olan korumayı almanıza asla engel olmamasını sağlıyoruz.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6 border-t border-border-subtle">
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-accent">Neden Bağımsız Bir Acente Seçmelisiniz?</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Doğrudan bir sigortacı ile çalıştığınızda, size yalnızca kendi markalarını satabilirler. Oranları artarsa veya ihtiyaçlarınız değişirse, her şeye sıfırdan başlamanız gerekir. AIA ile birden fazla sigorta şirketini temsil ediyoruz; bu da acente değiştirmenize gerek kalmadan poliçenizi ayarlayabileceğimiz veya sizin adınıza piyasayı araştırabileceğimiz anlamına gelir.
+              </p>
+            </div>
+            <div class="space-y-2">
+              <h3 class="text-base font-bold text-accent">Connecticut'a Taahhüdümüz</h3>
+              <p class="text-xs text-text-secondary leading-relaxed">
+                Danbury, Watertown ve Bridgeport'taki ofis konumlarımızla, yerel Connecticut topluluklarına derinlemesine entegreyiz. Bölgesel riskleri, iklim faktörlerini (dondurucu kışlar ve ağır kar yükü gibi) ve eyalet sigorta düzenlemelerini biliyoruz, bu da oldukça doğru ve yerel tavsiyeler sunmamızı sağlıyor.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="lg:col-span-4 space-y-8">
+          <div class="bg-bg-secondary border border-border-subtle p-6 rounded-lg shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2">AIA Hızlı Bilgiler</h3>
+            <ul class="space-y-3.5 text-xs text-text-secondary">
+              <li class="flex justify-between">
+                <span class="font-medium">Kuruluş:</span>
+                <span>2016</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Hizmet Bölgeleri:</span>
+                <span>Tüm CT ve NY</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Ana Ofisler:</span>
+                <span>Danbury, Watertown, Bridgeport</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Diller:</span>
+                <span>İngilizce, İspanyolca, Portekizce, Türkçe</span>
+              </li>
+              <li class="flex justify-between">
+                <span class="font-medium">Ortak Sigortacılar:</span>
+                <span>Progressive, Travelers, Liberty Mutual vb.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-accent text-white p-6 rounded-lg space-y-4 shadow-md">
+            <h3 class="text-base font-bold text-accent-gold">Poliçeniz hakkında tavsiyeye mi ihtiyacınız var?</h3>
+            <p class="text-xs text-white/80 leading-relaxed">
+              Ücretsiz ve taahhütsüz poliçe incelemeleri sunuyoruz. Mevcut sigorta beyan sayfanızı bize getirin; fazla ödeme yapıp yapmadığınızı veya eksik sigortalı olup olmadığınızı size bildirelim.
+            </p>
+            <a
+              href="/tr/quote"
+              class="inline-flex items-center justify-center w-full px-4 py-2.5 text-xs font-semibold uppercase bg-accent-gold text-accent hover:bg-accent-gold-hover rounded transition-colors text-center"
+            >
+              İnceleme Talep Edin
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

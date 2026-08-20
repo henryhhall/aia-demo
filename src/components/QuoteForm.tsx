@@ -3,7 +3,7 @@ import { useState } from 'react';
 type Step = 1 | 2 | 3 | 4;
 type InsuranceType = 'home' | 'auto' | 'renters' | 'business' | 'workers-comp' | '';
 
-export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' }) {
+export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' | 'tr' }) {
   const [step, setStep] = useState<Step>(1);
   const [insuranceType, setInsuranceType] = useState<InsuranceType>('');
   const [formData, setFormData] = useState({
@@ -129,6 +129,43 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' }
       successHeader: 'Solicitação de Cotação Recebida!',
       successDesc: (name: string, location: string) => `Obrigado, ${name}. Um agente da AIA do nosso escritório de ${location} revisará sua solicitação e entrará em contato dentro de 24 horas úteis.`,
       startAnother: 'Iniciar Outra Cotação',
+    },
+    tr: {
+      stepOf: (s: number) => `Adım ${s} / 3`,
+      selectCoverage: 'Teminat Seçin',
+      contactDetails: 'İletişim Bilgileri',
+      specificDetails: 'Detaylar',
+      whatCoverage: 'Hangi teminata ihtiyacınız var?',
+      selectInsuranceType: 'Fiyat karşılaştırmasına başlamak için bir sigorta türü seçin.',
+      homeowners: 'Ev Sahibi Sigortası',
+      homeownersDesc: 'Evinizi ve kişisel mülkünüzü koruyun.',
+      auto: 'Otomobil ve Karavan',
+      autoDesc: 'Sorumluluk, çarpışma ve kapsamlı teminat.',
+      renters: 'Kiracı Sigortası',
+      rentersDesc: 'Uygun fiyatlı kiracı mülk ve sorumluluk teminatı.',
+      commercial: 'Ticari Mülk ve Genel Sorumluluk',
+      commercialDesc: 'Genel sorumluluk, mülk ve paket çözümler.',
+      tellUs: 'Bize kendinizden bahsedin',
+      provideContact: 'Teklif seçeneklerinizi gönderebilmemiz için iletişim bilgilerinizi girin.',
+      fullName: 'Ad Soyad',
+      emailAddress: 'E-posta Adresi',
+      phone: 'Telefon Numarası',
+      localOffice: 'Tercih Edilen Yerel Ofis',
+      validationError: 'Lütfen tüm iletişim bilgilerini doldurun.',
+      back: 'Geri',
+      continue: 'Devam Et',
+      almostDone: 'Neredeyse bitti!',
+      extraInfo: 'Ek bilgi vermeniz daha düşük prim oranları sağlamamıza yardımcı olur.',
+      currentCarrier: 'Mevcut Sigorta Şirketi',
+      startDate: 'İstenen Başlangıç Tarihi',
+      notes: 'Ek Notlar veya Varlıklar',
+      carrierPlaceholder: 'Örn. Yok, Geico, State Farm',
+      notesPlaceholder: 'Örn. Araç için 2 sürücü; evde odun sobası; paket indirimi',
+      submitting: 'Gönderiliyor...',
+      submitBtn: 'Teklif Talebini Gönder',
+      successHeader: 'Teklif Talebi Alındı!',
+      successDesc: (name: string, location: string) => `Teşekkürler, ${name}. ${location} ofisimizdeki bir AIA temsilcisi talebinizi inceleyecek ve 24 iş saati içinde sizinle iletişime geçecektir.`,
+      startAnother: 'Başka Bir Teklif Başlat',
     }
   }[lang];
 
@@ -167,7 +204,15 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' }
       await new Promise((resolve) => setTimeout(resolve, 1500));
       setStep(4);
     } catch {
-      setErrorMessage(lang === 'es' ? 'Algo salió mal. Por favor verifique su conexión e intente nuevamente.' : lang === 'pt' ? 'Algo deu errado. Verifique sua conexão e tente novamente.' : 'Something went wrong. Please check your connection and try again.');
+      setErrorMessage(
+        lang === 'es'
+          ? 'Algo salió mal. Por favor verifique su conexión e intente nuevamente.'
+          : lang === 'pt'
+          ? 'Algo deu errado. Verifique sua conexão e tente novamente.'
+          : lang === 'tr'
+          ? 'Bir şeyler yanlış gitti. Lütfen bağlantınızı kontrol edip tekrar deneyin.'
+          : 'Something went wrong. Please check your connection and try again.'
+      );
     } finally {
       setIsSubmitting(false);
     }
