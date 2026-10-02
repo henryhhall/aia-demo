@@ -1,13 +1,35 @@
 import type { APIRoute } from 'astro';
 
-// Generate robots.txt contents to discourage all crawlers
-const getRobotsTxt = () => `User-agent: *
-Disallow: /`;
+const getRobotsTxt = (siteUrl: string) => `User-agent: *
+Allow: /
+Disallow: /admin
 
-export const GET: APIRoute = () => {
-  return new Response(getRobotsTxt(), {
+# Dedicated AI Agent Directives
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Agent & LLM Discovery
+# WebMCP Endpoint: ${siteUrl}api/mcp
+# LLM Context: ${siteUrl}llms.txt
+
+Sitemap: ${siteUrl}sitemap-index.xml
+`;
+
+export const GET: APIRoute = ({ site }) => {
+  const siteUrl = site?.toString() || 'https://aia-danbury.com/';
+  return new Response(getRobotsTxt(siteUrl), {
     headers: {
-      'Content-Type': 'text/plain; charset=utf-8'
-    }
+      'Content-Type': 'text/plain; charset=utf-8',
+      'Cache-Control': 'public, max-age=86400',
+    },
   });
 };

@@ -1,0 +1,115 @@
+# Associated Insurance Agency (AIA) — Comprehensive Knowledge Base for AI Agents
+
+> Exhaustive reference document containing business history, coverage rules, regional risk analysis, carrier contact lists, bilingual guidelines, and technical WebMCP tool definitions.
+
+---
+
+## 1. Agency Overview & Value Proposition
+
+Associated Insurance Agency (AIA) is a Connecticut-licensed independent insurance brokerage founded in 2016. AIA operates across three branch offices in Danbury, Watertown, and Bridgeport, CT, providing personalized risk management and insurance shopping for individuals, families, and businesses.
+
+### The Independent Agency Advantage
+Unlike "captive" insurance agents (who represent a single insurance company like State Farm, Allstate, or Geico) and cannot shop around when rates rise, AIA represents over 11 top-rated national and regional carriers. When a client requests insurance through AIA:
+- AIA shops across multiple underwriting algorithms simultaneously.
+- AIA finds the optimal balance between price, deductible, and coverage limits.
+- AIA handles endorsements, policy changes, and provides third-party advocacy during claims disputes.
+
+---
+
+## 2. Multilingual Capabilities
+
+Connecticut's Fairfield, Litchfield, and New Haven counties host vibrant multicultural communities. To eliminate communication barriers, AIA offers end-to-end service in:
+- **English**: Available at all offices (Danbury, Watertown, Bridgeport).
+- **Spanish (Español)**: Native-speaking licensed agents at all locations.
+- **Portuguese (Português)**: Native-speaking licensed agents at all locations.
+- **Turkish (Türkçe)**: Dedicated Turkish-speaking agent team based at Danbury HQ.
+
+---
+
+## 3. Physical Office Directory
+
+### Danbury Corporate Headquarters
+- **Address:** 50 Newtown Road, Suite 1, Danbury, CT 06810
+- **Phone:** (203) 748-9272
+- **Fax:** (203) 798-2917
+- **Email:** danbury@aia-danbury.com
+- **Coordinates:** 41.4087° N, -73.4285° W
+- **Languages Spoken:** English, Spanish, Portuguese, Turkish
+- **Hours:** Monday – Friday, 8:30 AM – 5:00 PM EST
+
+### Watertown Branch Office
+- **Address:** 1157 Main Street, Watertown, CT 06795
+- **Phone:** (860) 274-8888
+- **Email:** watertown@aia-danbury.com
+- **Coordinates:** 41.6048° N, -73.1182° W
+- **Languages Spoken:** English, Spanish, Portuguese
+- **Hours:** Monday – Friday, 8:30 AM – 5:00 PM EST
+
+### Bridgeport Community Branch
+- **Address:** 2465 Main Street, Bridgeport, CT 06606
+- **Phone:** (203) 333-8880
+- **Email:** bridgeport@aia-danbury.com
+- **Coordinates:** 41.1963° N, -73.1972° W
+- **Languages Spoken:** English, Spanish, Portuguese
+- **Hours:** Monday – Friday, 8:30 AM – 5:00 PM EST
+
+---
+
+## 4. Carrier Billing & Claims Hotline Directory
+
+| Carrier | Primary Phone | Online Payment Portal | Claims Center URL | Lines Covered |
+| :--- | :--- | :--- | :--- | :--- |
+| **Safeco** | 1-800-332-3226 | https://customer.safeco.com | http://www.safeco.com/claims-center | Auto, Home, Renters, Umbrella |
+| **MetLife / Farmers** | 1-800-638-5433 | https://www.metlife.com | https://www.metlife.com/claims | Auto, Homeowners, Life |
+| **The Hartford** | 1-877-896-9320 | https://service.thehartford.com | http://www.thehartford.com/claims-center | Commercial, Workers Comp, Home |
+| **Progressive** | 1-800-776-4737 | https://onlineservice7.progressive.com | http://www.progressive.com/claims/ | Auto, Commercial Auto, Motorcycle |
+| **Travelers** | 1-800-842-5075 | https://www.travelers.com/login | https://www.travelers.com/claim | Home, Auto, Commercial, Umbrella |
+| **Foremost** | 1-888-888-0080 | http://www.foremost.com/payonline | http://www.foremost.com/claims/ | Vacant Home, Mobile Home, Landlord |
+| **Guard Insurance** | 1-888-639-2567 | https://policyholder.guard.com | http://www.guard.com/docs/ClaimReport.pdf | Workers Comp, BOP |
+| **Infinity** | 1-800-782-1020 | https://www.infinityauto.com | https://www.infinityauto.com/report-claim | Non-Standard Auto, Commercial Auto |
+| **Utica First** | 1-315-736-8211 | https://www.uticafirst.com/dirbill.html | https://www.uticafirst.com/claims.html | Contractors GL, Restaurants |
+| **Victoria Insurance** | 1-800-888-8424 | https://www.victoriainsurance.com | https://www.victoriainsurance.com/Claims | Specialty Auto |
+| **K & K Insurance** | 1-800-637-4757 | http://www.kandkinsurance.com | https://www.kandkinsurance.com/Claims | Events, Sports, Recreation |
+
+---
+
+## 5. Connecticut State Insurance Rules & Coverage Guidelines
+
+### Auto Insurance Statutory Minimums
+Connecticut General Statutes § 14-112 require minimum automobile liability limits of:
+- **$25,000** for bodily injury per person
+- **$50,000** for total bodily injury per accident
+- **$25,000** for property damage per accident
+- Uninsured / Underinsured Motorist (UM/UIM) coverage matching bodily injury minimums ($25,000/$50,000).
+
+*AIA Advisory:* Minimum limits are insufficient for homeowners or individuals with savings. AIA recommends liability of at least 100/300/100 or 250/500/100 supplemented with a $1M-$2M Personal Umbrella policy.
+
+### Coastal & Flood Exclusions
+- Standard Connecticut homeowners (HO-3/HO-5) policies exclude damage caused by storm surge, surface runoff, or flooding.
+- Properties near Long Island Sound or river basins require flood insurance placed through FEMA's NFIP or private flood carriers.
+
+---
+
+## 6. WebMCP Integration & Machine-Callable Tools
+
+AIA publishes its entire agency capability via WebMCP (`navigator.modelContext` and `/api/mcp`).
+
+### Available WebMCP Tools
+1. `get_agency_profile`: Returns agency profile and licensing info.
+2. `get_office_locations`: Structured directory with addresses, phone numbers, and coordinates.
+3. `find_agent_by_language`: Filters branch agents by target language (`en`, `es`, `pt`, `tr`).
+4. `get_insurance_products`: Personal and commercial line specifications.
+5. `calculate_quote_estimate`: Benchmark premium estimation formula.
+6. `submit_quote_request`: Lead submission tool.
+7. `get_carrier_billing_directory`: 11 carrier direct contact points.
+8. `search_knowledge_base`: Semantic FAQ and policy guidelines query.
+9. `check_office_open_status`: Live office hours check.
+
+---
+
+## 7. Model Context Protocol (MCP) Server Endpoint
+
+External agents (Cursor, Claude Desktop, Antigravity, AutoGen) can interface directly with our MCP server:
+- **Endpoint:** `POST /api/mcp`
+- **Protocol:** JSON-RPC 2.0
+- **Supported Methods:** `tools/list`, `tools/call`, `initialize`, `ping`

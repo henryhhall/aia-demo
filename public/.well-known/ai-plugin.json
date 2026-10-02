@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_model": "aia_insurance_agent",
+  "name_for_human": "Associated Insurance Agency (AIA)",
+  "description_for_model": "Provides Connecticut insurance shopping, coverage calculations, multilingual agent matching, carrier payment URLs, and claims guidance for Associated Insurance Agency.",
+  "description_for_human": "Associated Insurance Agency CT tools for quotes, multilingual offices, and carrier services.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://aia-danbury.com/api/mcp"
+  },
+  "logo_url": "https://aia-danbury.com/favicon.svg",
+  "contact_email": "info@aia-danbury.com",
+  "legal_info_url": "https://aia-danbury.com/about"
+}

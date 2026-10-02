@@ -83,6 +83,15 @@ const urlTr = new URL(getLocalizedPath(currentPath, 'tr'), siteUrl).toString();
 
 <!-- Favicon -->
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+<!-- WebMCP & AI Agent Discovery -->
+<link rel="model-context" href="/api/mcp" type="application/json" />
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="LLM Documentation" />
+<link rel="help" href="/.well-known/mcp.json" type="application/json" />
+<meta name="webmcp-version" content="1.0" />
+<meta name="ai-agent-ready" content="true" />
+<meta name="ai-agent-mcp-endpoint" content="/api/mcp" />
+
 <!-- Structured Data -->
 {structuredData && (
   <script type="application/ld+json" is:inline set:html={JSON.stringify(structuredData)} />

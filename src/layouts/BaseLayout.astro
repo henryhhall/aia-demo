@@ -2,6 +2,7 @@
 import SEOHead from '../components/SEOHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import WebMcpInspector from '../components/WebMcpInspector';
 import '../styles/global.css';
 
 interface Props {
@@ -69,6 +70,7 @@ const mergedStructuredData = props.structuredData
   <head>
     <SEOHead {...props} structuredData={mergedStructuredData} />
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <script src="../lib/webmcp/init.ts"></script>
   </head>
   <body class="min-h-[100dvh] flex flex-col bg-bg-primary text-text-primary">
     <Header lang={lang} />
@@ -76,5 +78,8 @@ const mergedStructuredData = props.structuredData
       <slot />
     </main>
     <Footer lang={lang} />
+    <!-- WebMCP Client Inspector & Agent Sandbox -->
+    <WebMcpInspector client:idle />
   </body>
 </html>
+

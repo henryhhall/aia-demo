@@ -1,0 +1,55 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/server-manifest.json",
+  "name": "associated-insurance-agency-mcp",
+  "displayName": "Associated Insurance Agency (AIA) MCP Server",
+  "description": "Model Context Protocol interface providing insurance quote estimates, agency office directory, multilingual agent matching, carrier portals, and policy assistance across Connecticut.",
+  "version": "1.0.0",
+  "homepage": "https://aia-danbury.com",
+  "transport": {
+    "type": "http",
+    "endpoint": "/api/mcp"
+  },
+  "capabilities": {
+    "tools": true,
+    "resources": false,
+    "prompts": false
+  },
+  "tools": [
+    {
+      "name": "get_agency_profile",
+      "description": "Retrieve high-level profile, mission, licensing, languages, and contact points for AIA."
+    },
+    {
+      "name": "get_office_locations",
+      "description": "Get structured branch office information (Danbury HQ, Watertown, Bridgeport)."
+    },
+    {
+      "name": "find_agent_by_language",
+      "description": "Search for AIA branches and consultation contacts that speak a specific language."
+    },
+    {
+      "name": "get_insurance_products",
+      "description": "List all insurance coverage options available at Associated Insurance Agency."
+    },
+    {
+      "name": "calculate_quote_estimate",
+      "description": "Calculates an instant benchmark premium estimate for CT insurance policies."
+    },
+    {
+      "name": "submit_quote_request",
+      "description": "Submit an insurance quote request to Associated Insurance Agency."
+    },
+    {
+      "name": "get_carrier_billing_directory",
+      "description": "Lookup online payment links and claims hotlines for all 11 partner insurance carriers."
+    },
+    {
+      "name": "search_knowledge_base",
+      "description": "Search insurance FAQs, Connecticut state liability regulations, and claims steps."
+    },
+    {
+      "name": "check_office_open_status",
+      "description": "Determine if Associated Insurance Agency offices are currently open based on Eastern Time."
+    }
+  ]
+}

@@ -88,11 +88,19 @@ const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
 
     <!-- Bottom Copy -->
     <div class="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
-      <p>Copyright &copy; {currentYear} Associated Insurance Agency. {t('footer.copyright')}</p>
-      <div class="flex gap-6">
-        <span class="hover:text-white transition-colors">Danbury</span>
-        <span class="hover:text-white transition-colors">Watertown</span>
-        <span class="hover:text-white transition-colors">Bridgeport</span>
+      <div class="flex items-center gap-3">
+        <p>Copyright &copy; {currentYear} Associated Insurance Agency. {t('footer.copyright')}</p>
+      </div>
+      <div class="flex items-center gap-4 text-[11px]">
+        <a href="/llms.txt" class="text-accent-gold/80 hover:text-accent-gold transition-colors font-mono">
+          /llms.txt (AI Context)
+        </a>
+        <span class="text-zinc-700">•</span>
+        <a href="/api/mcp" class="text-accent-gold/80 hover:text-accent-gold transition-colors font-mono">
+          /api/mcp (WebMCP)
+        </a>
+        <span class="text-zinc-700">•</span>
+        <span class="text-zinc-500">Danbury • Watertown • Bridgeport</span>
       </div>
     </div>
   </div>

@@ -1,0 +1,59 @@
+# Associated Insurance Agency (AIA) — AI & LLM Context Summary
+
+> Full-service independent insurance agency in Connecticut offering personal and commercial lines across three offices with native multilingual support in English, Spanish, Portuguese, and Turkish.
+
+## Business Profile
+- **Agency Name:** Associated Insurance Agency (AIA)
+- **Tagline:** We Shop. You Save. Insurance Built For You.
+- **Headquarters:** 50 Newtown Road, Suite 1, Danbury, CT 06810
+- **Phone:** 203-748-9272 | **Fax:** 203-798-2917
+- **Email:** info@aia-danbury.com
+- **Website:** https://aia-danbury.com
+- **Licensed States:** Connecticut (CT), New York (NY), New Jersey (NJ), Massachusetts (MA)
+- **Business Model:** Independent insurance brokerage representing 11+ premier carriers (Safeco, Travelers, The Hartford, Progressive, Foremost, Guard, Infinity, etc.).
+
+## Physical Office Locations
+1. **Danbury Headquarters (HQ):**
+   - Address: 50 Newtown Road, Suite 1, Danbury, CT 06810
+   - Phone: 203-748-9272
+   - Languages: English, Spanish, Portuguese, Turkish
+   - Hours: Mon - Fri: 8:30 AM - 5:00 PM EST
+
+2. **Watertown Branch Office:**
+   - Address: 1157 Main Street, Watertown, CT 06795
+   - Phone: 860-274-8888
+   - Languages: English, Spanish, Portuguese
+   - Hours: Mon - Fri: 8:30 AM - 5:00 PM EST
+
+3. **Bridgeport Community Branch:**
+   - Address: 2465 Main Street, Bridgeport, CT 06606
+   - Phone: 203-333-8880
+   - Languages: English, Spanish, Portuguese
+   - Hours: Mon - Fri: 8:30 AM - 5:00 PM EST
+
+## Core Insurance Lines Offered
+- **Personal Lines:** Auto, Homeowners, Renters, Condo, Umbrella Liability, Motorcycle, Boat/RV.
+- **Commercial Lines:** General Liability (GL), Commercial Property, Workers' Compensation, Commercial Auto & Fleet, Business Owners Policy (BOP), Cyber Liability.
+
+## WebMCP (Web Model Context Protocol) & AI Agent Tools
+This site implements browser-native WebMCP (`navigator.modelContext` / `window.modelContext`) and a server-side JSON-RPC endpoint at `/api/mcp`.
+
+Available Tools:
+1. `get_agency_profile()` — Comprehensive overview of AIA, licensing, and contact info.
+2. `get_office_locations({ city? })` — Query branch details, phones, GPS, and languages.
+3. `find_agent_by_language({ language, preferredCity? })` — Match agents by English, Spanish, Portuguese, or Turkish.
+4. `get_insurance_products({ category? })` — Browse personal and commercial coverage options.
+5. `calculate_quote_estimate({ insuranceType, location?, estimatedValueOrVehicles?, bundleWithOtherPolicy?, deductible? })` — Deterministic price estimator.
+6. `submit_quote_request({ name, email, phone, insuranceType, preferredOffice?, preferredLanguage?, notes? })` — Submit official quote request.
+7. `get_carrier_billing_directory({ carrierName? })` — Retrieve direct payment URLs and claims hotlines for all 11 carriers.
+8. `search_knowledge_base({ query })` — Search FAQs, CT state minimums, flood rules, and claims advice.
+9. `check_office_open_status({ branchId? })` — Verify real-time open/closed status based on CT business hours.
+
+## Key URLs
+- Home: https://aia-danbury.com/
+- Get a Quote: https://aia-danbury.com/quote
+- Customer Service: https://aia-danbury.com/service
+- Direct Bill Pay: https://aia-danbury.com/pay-bill
+- About Us: https://aia-danbury.com/about
+- Full LLM Knowledge Base: https://aia-danbury.com/llms-full.txt
+- Model Context Protocol Endpoint: https://aia-danbury.com/api/mcp
