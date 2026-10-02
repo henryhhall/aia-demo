@@ -21,48 +21,185 @@ interface Props {
 const props = Astro.props;
 const lang = Astro.currentLocale || 'en';
 
-// Default structured data for Associated Insurance Agency (AIA)
-const localBusinessSchema = {
-  "@context": "https://schema.org",
-  "@type": "InsuranceAgency",
-  "name": "Associated Insurance Agency",
-  "image": "https://aia-danbury.com/images/logo.png",
-  "url": "https://aia-danbury.com",
-  "telephone": "+1-203-748-9272",
-  "priceRange": "$$",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "50 Newtown Road, Suite 1",
-    "addressLocality": "Danbury",
-    "addressRegion": "CT",
-    "postalCode": "06810",
-    "addressCountry": "US"
-  },
-  "geo": {
-    "@type": "GeoCoordinates",
-    "latitude": 41.4087,
-    "longitude": -73.4285
-  },
-  "openingHoursSpecification": [
-    {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-      "opens": "08:30",
-      "closes": "17:00"
-    }
-  ],
-  "contactPoint": {
-    "@type": "ContactPoint",
+// Default structured data for Associated Insurance Agency (AIA) - Multi-Location Graph
+const baseAgencyGraph = [
+  {
+    "@type": "InsuranceAgency",
+    "@id": "https://aia-danbury.com/#organization",
+    "name": "Associated Insurance Agency",
+    "alternateName": ["AIA Connecticut", "Associated Insurance Agency CT"],
+    "image": "https://aia-danbury.com/images/logo.png",
+    "url": "https://aia-danbury.com",
     "telephone": "+1-203-748-9272",
-    "contactType": "customer service",
-    "areaServed": "US",
-    "availableLanguage": ["English", "Spanish", "Portuguese", "Turkish"]
+    "priceRange": "$$",
+    "foundingDate": "2016",
+    "description": "Full-service independent insurance agency in Connecticut serving Danbury, Watertown, and Bridgeport. Providing homeowners, auto, commercial, workers comp, and umbrella liability with multilingual support in English, Spanish, Portuguese, and Turkish.",
+    "areaServed": [
+      { "@type": "State", "name": "Connecticut" },
+      { "@type": "State", "name": "New York" },
+      { "@type": "City", "name": "Danbury" },
+      { "@type": "City", "name": "Watertown" },
+      { "@type": "City", "name": "Bridgeport" }
+    ],
+    "knowsAbout": [
+      "Homeowners Insurance",
+      "Automobile Insurance",
+      "Commercial General Liability",
+      "Workers Compensation Insurance",
+      "Personal Umbrella Liability Insurance",
+      "National Flood Insurance Program (NFIP)",
+      "Connecticut Insurance Law CGS 14-112"
+    ],
+    "knowsLanguage": ["en", "es", "pt", "tr"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "50 Newtown Road, Suite 1",
+      "addressLocality": "Danbury",
+      "addressRegion": "CT",
+      "postalCode": "06810",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 41.4087,
+      "longitude": -73.4285
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "08:30",
+        "closes": "17:00"
+      }
+    ],
+    "subOrganization": [
+      {
+        "@type": "InsuranceAgency",
+        "@id": "https://aia-danbury.com/#danbury-hq",
+        "name": "Associated Insurance Agency - Danbury HQ",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.4087,
+          "longitude": -73.4285
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:30",
+            "closes": "17:00"
+          }
+        ],
+        "knowsLanguage": ["en", "es", "pt", "tr"]
+      },
+      {
+        "@type": "InsuranceAgency",
+        "@id": "https://aia-danbury.com/#watertown",
+        "name": "Associated Insurance Agency - Watertown Branch",
+        "telephone": "+1-860-274-8888",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "1157 Main Street",
+          "addressLocality": "Watertown",
+          "addressRegion": "CT",
+          "postalCode": "06795",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.6048,
+          "longitude": -73.1182
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:30",
+            "closes": "17:00"
+          }
+        ],
+        "knowsLanguage": ["en", "es", "pt"]
+      },
+      {
+        "@type": "InsuranceAgency",
+        "@id": "https://aia-danbury.com/#bridgeport",
+        "name": "Associated Insurance Agency - Bridgeport Branch",
+        "telephone": "+1-203-333-8880",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "2465 Main Street",
+          "addressLocality": "Bridgeport",
+          "addressRegion": "CT",
+          "postalCode": "06606",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.1963,
+          "longitude": -73.1972
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:30",
+            "closes": "17:00"
+          }
+        ],
+        "knowsLanguage": ["en", "es", "pt"]
+      }
+    ],
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+1-203-748-9272",
+        "contactType": "customer service",
+        "areaServed": "US-CT",
+        "availableLanguage": ["English", "Spanish", "Portuguese", "Turkish"]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+1-860-274-8888",
+        "contactType": "customer service",
+        "areaServed": "US-CT",
+        "availableLanguage": ["English", "Spanish", "Portuguese"]
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+1-203-333-8880",
+        "contactType": "customer service",
+        "areaServed": "US-CT",
+        "availableLanguage": ["English", "Spanish", "Portuguese"]
+      }
+    ]
   }
-};
+];
 
-const mergedStructuredData = props.structuredData 
-  ? [localBusinessSchema, props.structuredData] 
-  : localBusinessSchema;
+// Merge page-specific structured data into the Schema.org graph
+const pageGraphItems: any[] = [];
+if (props.structuredData) {
+  if (Array.isArray((props.structuredData as any)['@graph'])) {
+    pageGraphItems.push(...(props.structuredData as any)['@graph']);
+  } else if (Array.isArray(props.structuredData)) {
+    pageGraphItems.push(...props.structuredData);
+  } else {
+    pageGraphItems.push(props.structuredData);
+  }
+}
+
+const mergedStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [...baseAgencyGraph, ...pageGraphItems]
+};
 ---
 
 <!doctype html>
