@@ -1,59 +1,53 @@
-# Associated Insurance Agency (AIA) — AI & LLM Context Summary
+# Associated Insurance Agency
 
-> Full-service independent insurance agency in Connecticut offering personal and commercial lines across three offices with native multilingual support in English, Spanish, Portuguese, and Turkish.
+> Independent insurance agency in Connecticut providing personal and commercial insurance across three branch offices (Danbury, Watertown, Bridgeport) with native multilingual support in English, Spanish, Portuguese, and Turkish.
 
-## Business Profile
-- **Agency Name:** Associated Insurance Agency (AIA)
-- **Tagline:** We Shop. You Save. Insurance Built For You.
-- **Headquarters:** 50 Newtown Road, Suite 1, Danbury, CT 06810
-- **Phone:** 203-748-9272 | **Fax:** 203-798-2917
-- **Email:** info@aia-danbury.com
-- **Website:** https://aia-danbury.com
-- **Licensed States:** Connecticut (CT), New York (NY), New Jersey (NJ), Massachusetts (MA)
-- **Business Model:** Independent insurance brokerage representing 11+ premier carriers (Safeco, Travelers, The Hartford, Progressive, Foremost, Guard, Infinity, etc.).
+Associated Insurance Agency (AIA) is a Connecticut-licensed independent insurance brokerage founded in 2016. AIA represents over 11 premier regional and national insurance carriers (including Safeco, Travelers, The Hartford, Progressive, Foremost, Guard, and Infinity) to provide competitive rate comparisons, policy administration, and claims advocacy.
 
-## Physical Office Locations
-1. **Danbury Headquarters (HQ):**
-   - Address: 50 Newtown Road, Suite 1, Danbury, CT 06810
-   - Phone: 203-748-9272
-   - Languages: English, Spanish, Portuguese, Turkish
-   - Hours: Mon - Fri: 8:30 AM - 5:00 PM EST
+## Core Pages
 
-2. **Watertown Branch Office:**
-   - Address: 1157 Main Street, Watertown, CT 06795
-   - Phone: 860-274-8888
-   - Languages: English, Spanish, Portuguese
-   - Hours: Mon - Fri: 8:30 AM - 5:00 PM EST
+- [Home Page](https://aia-danbury.com/): Primary agency portal with carrier overview, coverage options, and agency background.
+- [Request a Quote](https://aia-danbury.com/quote): Interactive quote request tool for Connecticut homeowners, automobile, renters, and commercial business insurance.
+- [Customer Service Center](https://aia-danbury.com/service): Claims filing guidance, policy change instructions, and Connecticut insurance FAQs.
+- [Direct Carrier Bill Pay Directory](https://aia-danbury.com/pay-bill): Complete directory of online bill pay links and 24/7 payment phone numbers for all 11 partner insurance carriers.
+- [About AIA](https://aia-danbury.com/about): Agency history, independent brokerage advantage, and physical branch locations.
+- [Personal Insurance](https://aia-danbury.com/personal): Coverage details for homeowners, auto, renters, condominium, and personal umbrella liability policies.
+- [Commercial Insurance](https://aia-danbury.com/commercial): Business owners policies (BOP), commercial general liability, commercial property, and workers compensation.
 
-3. **Bridgeport Community Branch:**
-   - Address: 2465 Main Street, Bridgeport, CT 06606
-   - Phone: 203-333-8880
-   - Languages: English, Spanish, Portuguese
-   - Hours: Mon - Fri: 8:30 AM - 5:00 PM EST
+## Guides & Articles
 
-## Core Insurance Lines Offered
-- **Personal Lines:** Auto, Homeowners, Renters, Condo, Umbrella Liability, Motorcycle, Boat/RV.
-- **Commercial Lines:** General Liability (GL), Commercial Property, Workers' Compensation, Commercial Auto & Fleet, Business Owners Policy (BOP), Cyber Liability.
+- [Preventing Ice Dams on Homes](https://aia-danbury.com/blog/preventing-ice-dams-on-homes): Guide to winter weather roof protection, ice dam prevention, and Connecticut homeowners insurance claims.
+- [Travel & Adventure Insurance Tips](https://aia-danbury.com/blog/travel-adventure-6-essential-tips): Six essential insurance tips for international trips, rental cars, and adventure activities.
+- [Wedding & Special Event Insurance](https://aia-danbury.com/blog/wedding-insurance-need): Event cancellation, venue liability, and vendor failure insurance considerations.
 
-## WebMCP (Web Model Context Protocol) & AI Agent Tools
-This site implements browser-native WebMCP (`navigator.modelContext` / `window.modelContext`) and a server-side JSON-RPC endpoint at `/api/mcp`.
+## Multilingual Support
 
-Available Tools:
-1. `get_agency_profile()` — Comprehensive overview of AIA, licensing, and contact info.
-2. `get_office_locations({ city? })` — Query branch details, phones, GPS, and languages.
-3. `find_agent_by_language({ language, preferredCity? })` — Match agents by English, Spanish, Portuguese, or Turkish.
-4. `get_insurance_products({ category? })` — Browse personal and commercial coverage options.
-5. `calculate_quote_estimate({ insuranceType, location?, estimatedValueOrVehicles?, bundleWithOtherPolicy?, deductible? })` — Deterministic price estimator.
-6. `submit_quote_request({ name, email, phone, insuranceType, preferredOffice?, preferredLanguage?, notes? })` — Submit official quote request.
-7. `get_carrier_billing_directory({ carrierName? })` — Retrieve direct payment URLs and claims hotlines for all 11 carriers.
-8. `search_knowledge_base({ query })` — Search FAQs, CT state minimums, flood rules, and claims advice.
-9. `check_office_open_status({ branchId? })` — Verify real-time open/closed status based on CT business hours.
+- [English Services](https://aia-danbury.com/): Comprehensive insurance representation available across all branch offices.
+- [Servicios en Español](https://aia-danbury.com/es): Agentes de seguros independientes de habla hispana en Danbury, Watertown y Bridgeport.
+- [Serviços em Português](https://aia-danbury.com/pt): Corretores de seguros fluentes em português atendendo a comunidade de Connecticut.
+- [Türkçe Sigorta Hizmetleri](https://aia-danbury.com/tr): Danbury genel merkezimizde lisanslı Türkçe konuşan sigorta uzmanları.
 
-## Key URLs
-- Home: https://aia-danbury.com/
-- Get a Quote: https://aia-danbury.com/quote
-- Customer Service: https://aia-danbury.com/service
-- Direct Bill Pay: https://aia-danbury.com/pay-bill
-- About Us: https://aia-danbury.com/about
-- Full LLM Knowledge Base: https://aia-danbury.com/llms-full.txt
-- Model Context Protocol Endpoint: https://aia-danbury.com/api/mcp
+## AI & Developer Endpoints
+
+- [Model Context Protocol (MCP) Endpoint](https://aia-danbury.com/api/mcp): Live JSON-RPC 2.0 endpoint enabling AI agents (Claude, Cursor, Antigravity) to list and execute 9 insurance tools over HTTP.
+- [Full LLM Knowledge Base](https://aia-danbury.com/llms-full.txt): Comprehensive unstructured documentation including state statutory insurance minimums and carrier hotlines.
+
+## Physical Branch Directory
+
+- **Danbury Headquarters (HQ):** 50 Newtown Road, Suite 1, Danbury, CT 06810 | Phone: 203-748-9272 | Languages: English, Spanish, Portuguese, Turkish | Hours: Mon–Fri 8:30 AM – 5:00 PM EST
+- **Watertown Branch Office:** 1157 Main Street, Watertown, CT 06795 | Phone: 860-274-8888 | Languages: English, Spanish, Portuguese | Hours: Mon–Fri 8:30 AM – 5:00 PM EST
+- **Bridgeport Community Branch:** 2465 Main Street, Bridgeport, CT 06606 | Phone: 203-333-8880 | Languages: English, Spanish, Portuguese | Hours: Mon–Fri 8:30 AM – 5:00 PM EST
+
+## WebMCP Callable Tools
+
+The following tools are exposed natively in the browser via `document.modelContext` and on the HTTP MCP server at `/api/mcp`:
+
+1. `get_agency_profile`: Retrieve high-level agency profile, licensing, states, and contact points.
+2. `get_office_locations`: Branch addresses, phone numbers, GPS coordinates, and languages.
+3. `find_agent_by_language`: Match offices with agents fluent in Spanish, Portuguese, Turkish, or English.
+4. `get_insurance_products`: Detailed personal and commercial coverage descriptions and discounts.
+5. `calculate_quote_estimate`: Benchmark premium estimation formula for home, auto, renters, and commercial lines.
+6. `submit_quote_request`: Staged lead submission endpoint.
+7. `get_carrier_billing_directory`: 11 carrier direct contact points and payment links.
+8. `search_knowledge_base`: Semantic FAQ, Connecticut liability minimums, and claims guidelines.
+9. `check_office_open_status`: Real-time branch open/closed verification based on Eastern Time.

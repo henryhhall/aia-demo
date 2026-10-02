@@ -59,17 +59,17 @@ Connecticut's Fairfield, Litchfield, and New Haven counties host vibrant multicu
 
 | Carrier | Primary Phone | Online Payment Portal | Claims Center URL | Lines Covered |
 | :--- | :--- | :--- | :--- | :--- |
-| **Safeco** | 1-800-332-3226 | https://customer.safeco.com | http://www.safeco.com/claims-center | Auto, Home, Renters, Umbrella |
-| **MetLife / Farmers** | 1-800-638-5433 | https://www.metlife.com | https://www.metlife.com/claims | Auto, Homeowners, Life |
-| **The Hartford** | 1-877-896-9320 | https://service.thehartford.com | http://www.thehartford.com/claims-center | Commercial, Workers Comp, Home |
-| **Progressive** | 1-800-776-4737 | https://onlineservice7.progressive.com | http://www.progressive.com/claims/ | Auto, Commercial Auto, Motorcycle |
-| **Travelers** | 1-800-842-5075 | https://www.travelers.com/login | https://www.travelers.com/claim | Home, Auto, Commercial, Umbrella |
-| **Foremost** | 1-888-888-0080 | http://www.foremost.com/payonline | http://www.foremost.com/claims/ | Vacant Home, Mobile Home, Landlord |
-| **Guard Insurance** | 1-888-639-2567 | https://policyholder.guard.com | http://www.guard.com/docs/ClaimReport.pdf | Workers Comp, BOP |
-| **Infinity** | 1-800-782-1020 | https://www.infinityauto.com | https://www.infinityauto.com/report-claim | Non-Standard Auto, Commercial Auto |
-| **Utica First** | 1-315-736-8211 | https://www.uticafirst.com/dirbill.html | https://www.uticafirst.com/claims.html | Contractors GL, Restaurants |
-| **Victoria Insurance** | 1-800-888-8424 | https://www.victoriainsurance.com | https://www.victoriainsurance.com/Claims | Specialty Auto |
-| **K & K Insurance** | 1-800-637-4757 | http://www.kandkinsurance.com | https://www.kandkinsurance.com/Claims | Events, Sports, Recreation |
+| **Safeco** | 1-800-332-3226 | [Safeco Portal](https://customer.safeco.com) | [Safeco Claims](http://www.safeco.com/claims-center) | Auto, Home, Renters, Umbrella |
+| **MetLife / Farmers** | 1-800-638-5433 | [MetLife Portal](https://www.metlife.com) | [MetLife Claims](https://www.metlife.com/claims) | Auto, Homeowners, Life |
+| **The Hartford** | 1-877-896-9320 | [The Hartford Portal](https://service.thehartford.com) | [The Hartford Claims](http://www.thehartford.com/claims-center) | Commercial, Workers Comp, Home |
+| **Progressive** | 1-800-776-4737 | [Progressive Portal](https://onlineservice7.progressive.com) | [Progressive Claims](http://www.progressive.com/claims/) | Auto, Commercial Auto, Motorcycle |
+| **Travelers** | 1-800-842-5075 | [Travelers Portal](https://www.travelers.com/login) | [Travelers Claims](https://www.travelers.com/claim) | Home, Auto, Commercial, Umbrella |
+| **Foremost** | 1-888-888-0080 | [Foremost Portal](http://www.foremost.com/payonline) | [Foremost Claims](http://www.foremost.com/claims/) | Vacant Home, Mobile Home, Landlord |
+| **Guard Insurance** | 1-888-639-2567 | [Guard Portal](https://policyholder.guard.com) | [Guard Claims](http://www.guard.com/docs/ClaimReport.pdf) | Workers Comp, BOP |
+| **Infinity** | 1-800-782-1020 | [Infinity Portal](https://www.infinityauto.com) | [Infinity Claims](https://www.infinityauto.com/report-claim) | Non-Standard Auto, Commercial Auto |
+| **Utica First** | 1-315-736-8211 | [Utica First Portal](https://www.uticafirst.com/dirbill.html) | [Utica First Claims](https://www.uticafirst.com/claims.html) | Contractors GL, Restaurants |
+| **Victoria Insurance** | 1-800-888-8424 | [Victoria Portal](https://www.victoriainsurance.com) | [Victoria Claims](https://www.victoriainsurance.com/Claims) | Specialty Auto |
+| **K & K Insurance** | 1-800-637-4757 | [K&K Portal](http://www.kandkinsurance.com) | [K&K Claims](https://www.kandkinsurance.com/Claims) | Events, Sports, Recreation |
 
 ---
 
