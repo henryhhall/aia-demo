@@ -13,20 +13,31 @@ import type {
 
 class WebMCPRuntime implements ModelContextAPI {
   public version = '1.0.0';
+  public ontoolchange: ((...args: any[]) => void) | null = null;
+  public ontoolactivated: ((...args: any[]) => void) | null = null;
+  public ontoolcancel: ((...args: any[]) => void) | null = null;
   private tools: Map<string, WebMCPTool> = new Map();
   private history: WebMCPCallLog[] = [];
   private eventTarget = new EventTarget();
   private toolsChangedCallbacks: Set<() => void> = new Set();
   private lastResult: any = null;
+  private nativeBackend: any = null;
 
   constructor() {
     this.setupMessageBridge();
+  }
+
+  public setNativeBackend(backend: any) {
+    if (backend && backend !== this) {
+      this.nativeBackend = backend;
+    }
   }
 
   /**
    * Primary method used by WebMCP Inspector Chrome Extension
    */
   public listTools(): any[] {
+    const currentWindow = typeof window !== 'undefined' ? window : null;
     return Array.from(this.tools.values()).map((tool) => ({
       name: tool.name,
       description: tool.description,
@@ -36,10 +47,11 @@ class WebMCPRuntime implements ModelContextAPI {
       kind: tool.kind || 'function',
       source: tool.source || 'script',
       execute: tool.execute,
+      window: currentWindow,
     }));
   }
 
-  public getTools(): WebMCPToolDefinition[] {
+  public getTools(options?: { fromOrigins?: any }): any[] {
     return this.listTools();
   }
 
@@ -51,7 +63,26 @@ class WebMCPRuntime implements ModelContextAPI {
     if (!tool.name) {
       throw new Error('WebMCP: Tool name is required');
     }
+    const currentWindow = typeof window !== 'undefined' ? window : null;
+    tool.window = currentWindow;
     this.tools.set(tool.name, tool);
+
+    // Also register on native browser WebMCP engine if available
+    if (this.nativeBackend && typeof this.nativeBackend.registerTool === 'function') {
+      try {
+        this.nativeBackend.registerTool({
+          name: tool.name,
+          description: tool.description,
+          inputSchema: tool.inputSchema,
+          annotations: tool.annotations,
+          execute: async (params: any) => {
+            return await this.executeTool(tool.name, params);
+          },
+        });
+      } catch (err) {
+        console.debug('[WebMCP] Native browser registerTool delegation:', err);
+      }
+    }
 
     const definition = this.getToolDefinition(tool);
 
@@ -74,6 +105,11 @@ class WebMCPRuntime implements ModelContextAPI {
   public unregisterTool(toolName: string): boolean {
     const deleted = this.tools.delete(toolName);
     if (deleted) {
+      if (this.nativeBackend && typeof this.nativeBackend.unregisterTool === 'function') {
+        try {
+          this.nativeBackend.unregisterTool(toolName);
+        } catch {}
+      }
       this.notifyToolsChanged();
       const event = new CustomEvent('modelcontexttoolremoved', {
         detail: { toolName },
@@ -111,13 +147,20 @@ class WebMCPRuntime implements ModelContextAPI {
         console.debug('[WebMCP] Error notifying tools changed:', err);
       }
     }
+    if (typeof this.ontoolchange === 'function') {
+      try {
+        this.ontoolchange();
+      } catch (err) {
+        console.debug('[WebMCP] Error calling ontoolchange:', err);
+      }
+    }
   }
 
   /**
    * Execution method called by WebMCP Inspector Chrome Extension
    */
   public async executeTool(
-    nameOrEnvelope: string | { name: string; inputArgs: any },
+    nameOrEnvelope: any,
     inputArgs?: any
   ): Promise<any> {
     let toolName = '';
@@ -125,7 +168,15 @@ class WebMCPRuntime implements ModelContextAPI {
 
     if (typeof nameOrEnvelope === 'object' && nameOrEnvelope !== null) {
       toolName = nameOrEnvelope.name;
-      parsedParams = nameOrEnvelope.inputArgs;
+      // In the extension: document.modelContext.executeTool(tool, JSON.parse(inputArgs))
+      // 2nd argument takes precedence if provided!
+      if (inputArgs !== undefined) {
+        parsedParams = inputArgs;
+      } else if (nameOrEnvelope.inputArgs !== undefined) {
+        parsedParams = nameOrEnvelope.inputArgs;
+      } else if (nameOrEnvelope.params !== undefined) {
+        parsedParams = nameOrEnvelope.params;
+      }
     } else {
       toolName = String(nameOrEnvelope || '');
       parsedParams = inputArgs;
@@ -161,11 +212,15 @@ class WebMCPRuntime implements ModelContextAPI {
 
     try {
       if (typeof window !== 'undefined') {
-        window.dispatchEvent(
-          new CustomEvent('toolactivated', {
-            detail: { toolName },
-          })
-        );
+        const actEvent = new CustomEvent('toolactivated', { detail: { toolName } });
+        this.eventTarget.dispatchEvent(actEvent);
+        window.dispatchEvent(actEvent);
+        if (typeof document !== 'undefined') document.dispatchEvent(actEvent);
+        if (typeof this.ontoolactivated === 'function') {
+          try {
+            (this.ontoolactivated as any)({ toolName });
+          } catch {}
+        }
       }
 
       const result = await tool.execute(parsedParams || {});
@@ -204,11 +259,17 @@ class WebMCPRuntime implements ModelContextAPI {
       this.dispatchExecutionEvent(errLog);
 
       if (typeof window !== 'undefined') {
-        window.dispatchEvent(
-          new CustomEvent('toolcancel', {
-            detail: { toolName, error: errorMessage },
-          })
-        );
+        const cancelEvent = new CustomEvent('toolcancel', {
+          detail: { toolName, error: errorMessage },
+        });
+        this.eventTarget.dispatchEvent(cancelEvent);
+        window.dispatchEvent(cancelEvent);
+        if (typeof document !== 'undefined') document.dispatchEvent(cancelEvent);
+        if (typeof this.ontoolcancel === 'function') {
+          try {
+            (this.ontoolcancel as any)({ toolName, error: errorMessage });
+          } catch {}
+        }
       }
 
       throw err;
@@ -279,6 +340,7 @@ class WebMCPRuntime implements ModelContextAPI {
   }
 
   private getToolDefinition(tool: WebMCPTool): WebMCPToolDefinition {
+    const currentWindow = typeof window !== 'undefined' ? window : null;
     return {
       name: tool.name,
       description: tool.description,
@@ -287,6 +349,8 @@ class WebMCPRuntime implements ModelContextAPI {
       type: tool.type || 'imperative',
       kind: tool.kind || 'function',
       source: tool.source || 'script',
+      window: currentWindow,
+      execute: tool.execute,
     };
   }
 
@@ -362,11 +426,29 @@ export function initWebMCP(): WebMCPRuntime {
   const runtime = getWebMCPRuntime();
 
   if (typeof window !== 'undefined') {
+    // Detect existing native implementations before assignment
+    const existingDoc = typeof document !== 'undefined' ? (document as any).modelContext : null;
+    const existingNav = typeof navigator !== 'undefined' ? (navigator as any).modelContext : null;
+    if (existingDoc && existingDoc !== runtime && typeof existingDoc.registerTool === 'function') {
+      runtime.setNativeBackend(existingDoc);
+    } else if (existingNav && existingNav !== runtime && typeof existingNav.registerTool === 'function') {
+      runtime.setNativeBackend(existingNav);
+    }
+
     // 1. window.modelContext & window.modelContextTesting
     window.modelContext = runtime;
     window.modelContextTesting = runtime;
 
-    // 2. navigator.modelContext & navigator.modelContextTesting
+    // 2. window.WebMCP (WebMCP standard shorthand)
+    window.WebMCP = {
+      registerTool: (t: any) => runtime.registerTool(t),
+      unregisterTool: (name: string) => runtime.unregisterTool(name),
+      listTools: () => runtime.listTools(),
+      getTools: (opts?: any) => runtime.getTools(opts),
+      executeTool: (name: any, args?: any) => runtime.executeTool(name, args),
+    };
+
+    // 3. navigator.modelContext & navigator.modelContextTesting
     if (typeof navigator !== 'undefined') {
       try {
         Object.defineProperty(navigator, 'modelContext', {
@@ -389,7 +471,7 @@ export function initWebMCP(): WebMCPRuntime {
       }
     }
 
-    // 3. document.modelContext
+    // 4. document.modelContext
     if (typeof document !== 'undefined') {
       try {
         Object.defineProperty(document, 'modelContext', {

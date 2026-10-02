@@ -31,6 +31,7 @@ export interface WebMCPTool {
   type?: string;
   kind?: string;
   source?: string;
+  window?: any;
   execute: (params: any) => Promise<any> | any;
 }
 
@@ -42,6 +43,8 @@ export interface WebMCPToolDefinition {
   type?: string;
   kind?: string;
   source?: string;
+  window?: any;
+  execute?: (params: any) => Promise<any> | any;
 }
 
 export interface WebMCPCallLog {
@@ -57,10 +60,13 @@ export interface WebMCPCallLog {
 
 export interface ModelContextAPI {
   version: string;
+  ontoolchange?: ((...args: any[]) => void) | null;
+  ontoolactivated?: ((...args: any[]) => void) | null;
+  ontoolcancel?: ((...args: any[]) => void) | null;
   listTools: () => any[];
-  getTools: () => any[];
+  getTools: (options?: { fromOrigins?: any }) => any[] | Promise<any[]>;
   getTool: (toolName: string) => WebMCPTool | undefined;
-  executeTool: (nameOrEnvelope: string | { name: string; inputArgs: any }, inputArgs?: any) => Promise<any>;
+  executeTool: (nameOrEnvelopeOrTool: any, inputArgs?: any) => Promise<any>;
   callTool: (toolName: string, params?: any) => Promise<{ content: Array<{ type: 'text' | 'json'; text?: string; json?: any }>; isError?: boolean }>;
   registerTool: (tool: WebMCPTool) => void;
   unregisterTool: (toolName: string) => boolean;
@@ -86,6 +92,8 @@ declare global {
   interface Window {
     modelContext?: ModelContextAPI;
     modelContextTesting?: ModelContextAPI;
+    WebMCP?: any;
+    __AIA_WEBMCP__?: any;
     __WEBMCP_INITIALIZED__?: boolean;
     __WEBMCP_TOOLS__?: any[];
   }

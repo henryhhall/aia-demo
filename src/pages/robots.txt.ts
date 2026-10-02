@@ -1,27 +1,13 @@
 import type { APIRoute } from 'astro';
 
-const getRobotsTxt = (siteUrl: string) => `User-agent: *
-Allow: /
-Disallow: /admin
+const getRobotsTxt = (siteUrl: string) => `# Associated Insurance Agency (Demo / Development Site)
+# Discourage all search engine crawlers from indexing
+User-agent: *
+Disallow: /
 
-# Dedicated AI Agent Directives
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-# Agent & LLM Discovery
+# Agent & LLM Discovery (Permitted for AI Assistants & WebMCP Tools)
 # WebMCP Endpoint: ${siteUrl}api/mcp
 # LLM Context: ${siteUrl}llms.txt
-
-Sitemap: ${siteUrl}sitemap-index.xml
 `;
 
 export const GET: APIRoute = ({ site }) => {
