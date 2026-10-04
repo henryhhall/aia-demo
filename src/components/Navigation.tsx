@@ -99,7 +99,7 @@ export default function Navigation({
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="absolute top-16 left-0 right-0 w-full bg-white/95 backdrop-blur-md border-b border-border-subtle shadow-lg z-50 transition-all duration-300 ease-in-out md:hidden">
+        <div className="absolute top-full left-0 right-0 w-full bg-white/95 backdrop-blur-md border-b border-border-subtle shadow-lg z-50 transition-all duration-300 ease-in-out md:hidden">
           <nav className="flex flex-col p-6 gap-4">
             {navLinks.map((link) => (
               <a

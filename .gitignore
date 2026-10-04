@@ -38,5 +38,17 @@ $RECYCLE.BIN/
 .vscode/*
 !.vscode/extensions.json
 !.vscode/launch.json
+.vs/
 *.sublime-project
 *.sublime-workspace
+
+# Testing, Coverage & Caches
+coverage/
+.nyc_output/
+.cache/
+.parcel-cache/
+
+# Agent / Scratch directories
+scratch/
+.gemini/scratch/
+.agents/scratch/

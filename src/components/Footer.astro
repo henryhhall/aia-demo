@@ -1,6 +1,8 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import { useTranslations } from '../i18n/utils';
+import { Image } from 'astro:assets';
+import aiaLogo from '../assets/aia-logo.webp';
 
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as any);
@@ -21,14 +23,16 @@ const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
       <!-- Brand & Info -->
       <div class="space-y-4">
         <a href={homeUrl} class="flex items-center gap-3">
-          <svg class="w-7 h-7 text-zinc-100" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L4 5V11C4 16.5 8 21 12 22C16 21 20 16.5 20 11V5L12 2Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
-            <path d="M12 6V18" stroke="var(--color-accent-gold)" stroke-width="2" stroke-linecap="round"/>
-            <path d="M8 12H16" stroke="var(--color-accent-gold)" stroke-width="2" stroke-linecap="round"/>
-          </svg>
+          <!-- AIA Brand Logo -->
+          <Image
+            src={aiaLogo}
+            alt={`${t('header.title')} ${t('header.subtitle')}`}
+            class="h-12 w-auto object-contain"
+            loading="lazy"
+          />
           <div class="flex flex-col">
-            <span class="text-xs font-semibold tracking-tight text-zinc-100 leading-none">{t('header.title')}</span>
-            <span class="text-[10px] font-light tracking-widest text-zinc-400">{t('header.subtitle')}</span>
+            <span class="text-xs sm:text-sm font-semibold tracking-tight text-zinc-100 leading-none">{t('header.title')}</span>
+            <span class="text-[10px] sm:text-xs font-light tracking-widest text-zinc-400">{t('header.subtitle')}</span>
           </div>
         </a>
         <p class="text-sm leading-relaxed">

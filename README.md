@@ -25,6 +25,8 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 ### 🏛️ Digital Agency Portal
 - **Independent Carrier Comparison**: Informs customers of coverage lines across personal (Auto, Homeowners, Renters, Condo, Umbrella) and commercial (BOP, General Liability, Commercial Property, Workers' Comp, Commercial Auto) products.
 - **Multilingual Support (i18n)**: Fully localized experiences with native content in **English (EN)**, **Spanish (ES)**, **Portuguese (PT)**, and **Turkish (TR)**.
+- **Interactive Team Showcase & Bio Modals**: Accessible, interactive employee profile cards on the About page featuring agency leadership and insurance specialists (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus) with complete biographical pop-up modals translated into all 4 languages.
+- **Optimized Asset Pipeline**: Leverages Astro's native `astro:assets` image engine for zero-CLS responsive image serving, automatic WebP format conversion, and lazy loading.
 - **Direct Carrier Bill Pay & Claims Directory**: Fast access to 24/7 direct phone lines and self-service online payment links for all 11 partnered insurance carriers.
 - **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, and Connecticut state insurance regulations.
 - **Content Collections**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance.
@@ -47,6 +49,7 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 | **Framework** | [Astro v7.0.5](https://astro.build) | Island architecture, hybrid static & serverless rendering |
 | **Adapter** | [@astrojs/vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/) | Serverless edge & API route hosting |
 | **UI Components** | [React v19.2.7](https://react.dev) | Interactive islands with [Framer Motion v12.42](https://www.framer.com/motion/) |
+| **Asset Engine** | [Astro Assets](https://docs.astro.build/en/guides/images/) | Build-time image optimization, WebP generation & responsive sizing |
 | **Styling** | [Tailwind CSS v4.3.2](https://tailwindcss.com) | Integrated via `@tailwindcss/vite` with custom theme tokens |
 | **Typography** | [Geist Sans & Mono](https://fontsource.org) | Loaded via `@fontsource/geist-sans` and `@fontsource/geist-mono` |
 | **Icons** | [Phosphor Icons](https://phosphoricons.com) | Provided by `@phosphor-icons/react` |
@@ -81,25 +84,36 @@ aia/
 │   ├── .well-known/
 │   │   ├── ai-plugin.json      # OpenAI / generic AI plugin manifest
 │   │   └── mcp.json            # Model Context Protocol service discovery
+│   ├── images/
+│   │   ├── logo.webp           # Static brand logo fallback
+│   │   └── logo.png            # Static brand logo fallback for Schema.org
 │   ├── favicon.ico
 │   ├── favicon.svg
 │   ├── llms.txt                # Curated AI knowledge base and endpoint index
 │   ├── llms-full.txt           # Comprehensive LLM documentation & carrier directory
 │   └── robots.txt              # Search engine & AI crawler directives
 ├── src/
+│   ├── assets/                 # Optimized static assets (processed via astro:assets)
+│   │   ├── aia-logo.webp       # Official AIA oval brand emblem
+│   │   ├── aia_ronald.png      # Ronald T. Boucher portrait
+│   │   ├── aia_yesica.png      # Yesica D. Ramirez-Mendez portrait
+│   │   ├── aia_batania.png     # Betania Almeida portrait
+│   │   └── aia_camila.png      # Camila Macedo de Jesus portrait
 │   ├── components/             # Astro & React UI components
 │   │   ├── FAQAccordion.tsx     # Animated interactive FAQ accordion
-│   │   ├── Footer.astro        # Agency footer with branch details & carrier list
-│   │   ├── Header.astro        # Agency header with navigation island & office status
+│   │   ├── Footer.astro        # Agency footer with brand badge, branch info & carriers
+│   │   ├── Header.astro        # Agency header with brand badge, navigation & office hours
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
 │   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder
 │   │   ├── SEOHead.astro       # OpenGraph, Twitter, canonical, and JSON-LD schema
+│   │   ├── TeamSection.astro   # Multilingual team cards & interactive bio pop-up modal
 │   │   └── WebMcpInspector.tsx # Floating in-browser WebMCP debugging & execution modal
 │   ├── content/                # Content collections
 │   │   ├── blog/               # Localized Markdown articles (en, es, pt, tr)
 │   │   └── testimonials/       # Customer review JSON data (en, es, pt, tr)
 │   ├── content.config.ts       # Astro Content Collections schemas (Zod)
 │   ├── i18n/                   # Internationalization utilities & UI string mappings
+│   │   ├── team.ts             # Localized team biographies & modal UI strings (en, es, pt, tr)
 │   │   ├── ui.ts               # Localized navigation and UI strings
 │   │   └── utils.ts            # Locale resolution & route translation helpers
 │   ├── layouts/
