@@ -25,7 +25,7 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 ### 🏛️ Digital Agency Portal
 - **Independent Carrier Comparison**: Informs customers of coverage lines across personal (Auto, Homeowners, Renters, Condo, Umbrella) and commercial (BOP, General Liability, Commercial Property, Workers' Comp, Commercial Auto) products.
 - **Multilingual Support (i18n)**: Fully localized experiences with native content in **English (EN)**, **Spanish (ES)**, **Portuguese (PT)**, and **Turkish (TR)**.
-- **Interactive Team Showcase & Bio Modals**: Accessible, interactive employee profile cards on the About page featuring agency leadership and insurance specialists (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus) with complete biographical pop-up modals translated into all 4 languages.
+- **Interactive Team Showcase & Bio Modals**: Accessible, interactive employee profile cards on the About page featuring all 9 team members across agency leadership and customer service representatives (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus, Isayeli Perez De La Mora, Ema Rego, Clara De Barros, Ashley L. Mercan, Janaija S. Hammer) with spoken language badges, specialty tags, and complete biographical pop-up modals translated into English, Spanish, Portuguese, and Turkish.
 - **Optimized Asset Pipeline**: Leverages Astro's native `astro:assets` image engine for zero-CLS responsive image serving, automatic WebP format conversion, and lazy loading.
 - **Direct Carrier Bill Pay & Claims Directory**: Fast access to 24/7 direct phone lines and self-service online payment links for all 11 partnered insurance carriers.
 - **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, and Connecticut state insurance regulations.
@@ -98,7 +98,12 @@ aia/
 │   │   ├── aia_ronald.png      # Ronald T. Boucher portrait
 │   │   ├── aia_yesica.png      # Yesica D. Ramirez-Mendez portrait
 │   │   ├── aia_batania.png     # Betania Almeida portrait
-│   │   └── aia_camila.png      # Camila Macedo de Jesus portrait
+│   │   ├── aia_camila.png      # Camila Macedo de Jesus portrait
+│   │   ├── aia_isayeli.png     # Isayeli Perez De La Mora portrait
+│   │   ├── aia_ema.png         # Ema Rego portrait
+│   │   ├── aia_clara.png       # Clara De Barros portrait
+│   │   ├── Ashley_AIA-Meet-the-team.png # Ashley L. Mercan portrait
+│   │   └── aia_janaija.png     # Janaija S. Hammer portrait
 │   ├── components/             # Astro & React UI components
 │   │   ├── FAQAccordion.tsx     # Animated interactive FAQ accordion
 │   │   ├── Footer.astro        # Agency footer with brand badge, branch info & carriers
@@ -106,14 +111,14 @@ aia/
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
 │   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder
 │   │   ├── SEOHead.astro       # OpenGraph, Twitter, canonical, and JSON-LD schema
-│   │   ├── TeamSection.astro   # Multilingual team cards & interactive bio pop-up modal
+│   │   ├── TeamSection.astro   # Multilingual 9-member team grid & interactive bio pop-up modal
 │   │   └── WebMcpInspector.tsx # Floating in-browser WebMCP debugging & execution modal
 │   ├── content/                # Content collections
 │   │   ├── blog/               # Localized Markdown articles (en, es, pt, tr)
 │   │   └── testimonials/       # Customer review JSON data (en, es, pt, tr)
 │   ├── content.config.ts       # Astro Content Collections schemas (Zod)
 │   ├── i18n/                   # Internationalization utilities & UI string mappings
-│   │   ├── team.ts             # Localized team biographies & modal UI strings (en, es, pt, tr)
+│   │   ├── team.ts             # Localized team bios, language proficiencies & modal UI strings (en, es, pt, tr)
 │   │   ├── ui.ts               # Localized navigation and UI strings
 │   │   └── utils.ts            # Locale resolution & route translation helpers
 │   ├── layouts/
@@ -268,7 +273,7 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 | Office | Address | Phone | Languages Spoken |
 | :--- | :--- | :--- | :--- |
 | **Danbury Corporate HQ** | 50 Newtown Road, Suite 1, Danbury, CT 06810 | (203) 748-9272 | English, Spanish, Portuguese, Turkish |
-| **Watertown Branch** | 1157 Main Street, Watertown, CT 06795 | (860) 274-8888 | English, Spanish, Portuguese |
+| **Watertown Branch** | 1157 Main Street, Watertown, CT 06795 | (860) 274-8888 | English, Spanish, Portuguese, Turkish |
 | **Bridgeport Branch** | 2465 Main Street, Bridgeport, CT 06606 | (203) 333-8880 | English, Spanish, Portuguese |
 
 **Hours of Operation**: Monday – Friday: 8:30 AM – 5:00 PM EST

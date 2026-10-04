@@ -33,7 +33,7 @@ export const AIA_LOCATIONS = [
     phone: '860-274-8888',
     email: 'watertown@aia-danbury.com',
     hours: 'Monday - Friday: 8:30 AM - 5:00 PM EST',
-    languages: ['English', 'Spanish', 'Portuguese'],
+    languages: ['English', 'Spanish', 'Portuguese', 'Turkish'],
     latitude: 41.6048,
     longitude: -73.1182,
     isHeadquarters: false,

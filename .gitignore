@@ -1,6 +1,7 @@
 # Build output & generated types
 dist/
 .vercel/
+.vercel_build_output/
 .astro/
 *.tsbuildinfo
 
@@ -13,6 +14,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+lerna-debug.log*
 
 # Environment variables & secrets
 .env
@@ -32,6 +34,15 @@ ehthumbs.db
 ehthumbs_vista.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
+*.lnk
+
+# Temporary & backup files
+*~
+*.swp
+*.swo
+*.bak
+*.tmp
+*.temp
 
 # IDE & Editor files
 .idea/
@@ -39,6 +50,11 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 !.vscode/launch.json
 .vs/
+*.suo
+*.ntvs*
+*.njsproj
+*.user
+*.sln.docstates
 *.sublime-project
 *.sublime-workspace
 
@@ -47,8 +63,10 @@ coverage/
 .nyc_output/
 .cache/
 .parcel-cache/
+.npm/
+.yarn/
 
-# Agent / Scratch directories
+# Agent & Scratch directories
 scratch/
 .gemini/scratch/
 .agents/scratch/

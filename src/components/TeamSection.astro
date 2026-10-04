@@ -1,9 +1,15 @@
 ---
 import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
 import ronaldImg from '../assets/aia_ronald.png';
 import yesicaImg from '../assets/aia_yesica.png';
 import betaniaImg from '../assets/aia_batania.png';
 import camilaImg from '../assets/aia_camila.png';
+import isayeliImg from '../assets/aia_isayeli.png';
+import emaImg from '../assets/aia_ema.png';
+import claraImg from '../assets/aia_clara.png';
+import ashleyImg from '../assets/Ashley_AIA-Meet-the-team.png';
+import janaijaImg from '../assets/aia_janaija.png';
 import { teamData } from '../i18n/team';
 
 interface Props {
@@ -20,6 +26,11 @@ const imageMap: Record<string, ImageMetadata> = {
   'yesica-ramirez': yesicaImg,
   'betania-almeida': betaniaImg,
   'camila-macedo': camilaImg,
+  'isayeli-perez': isayeliImg,
+  'ema-rego': emaImg,
+  'clara-de-barros': claraImg,
+  'ashley-mercan': ashleyImg,
+  'janaija-hammer': janaijaImg,
 };
 
 const localizedMembers = members.map((member) => ({
@@ -44,8 +55,8 @@ const localizedMembers = members.map((member) => ({
       </p>
     </div>
 
-    <!-- Cards Grid -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+    <!-- Cards Grid (3 Columns for 9 members = clean 3x3 layout) -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
       {localizedMembers.map((member) => (
         <button
           type="button"
@@ -55,12 +66,18 @@ const localizedMembers = members.map((member) => ({
         >
           <!-- Portrait Image Container -->
           <div class="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-zinc-100">
-            <Image
-              src={member.image}
-              alt={member.name}
-              class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
-              loading="lazy"
-            />
+            {member.image ? (
+              <Image
+                src={member.image}
+                alt={member.name}
+                class="w-full h-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
+                loading="lazy"
+              />
+            ) : (
+              <div class="w-full h-full flex items-center justify-center bg-zinc-200 text-zinc-400">
+                <span class="text-sm font-medium">{member.name}</span>
+              </div>
+            )}
             <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
               <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent text-white text-xs font-semibold shadow-md">
                 <span>{ui.viewBio}</span>
@@ -86,6 +103,16 @@ const localizedMembers = members.map((member) => ({
               <p class="mt-1 text-xs font-medium text-text-secondary leading-normal">
                 {member.role}
               </p>
+              <!-- Languages badges -->
+              {member.languages && member.languages.length > 0 && (
+                <div class="mt-2.5 flex flex-wrap gap-1">
+                  {member.languages.map((lang) => (
+                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-accent/5 text-accent border border-accent/10">
+                      {lang}
+                    </span>
+                  ))}
+                </div>
+              )}
               <p class="mt-2.5 text-xs text-text-muted line-clamp-2 leading-relaxed">
                 {member.shortBio}
               </p>
@@ -178,8 +205,17 @@ const localizedMembers = members.map((member) => ({
           </p>
         </div>
 
+        <!-- Languages Spoken Section -->
+        <div class="space-y-2 pt-1">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-accent-gold">
+            {ui.languagesHeading}
+          </h4>
+          <div id="modal-member-languages" class="flex flex-wrap gap-2">
+          </div>
+        </div>
+
         <!-- Specialties Tags -->
-        <div class="space-y-2 pt-2">
+        <div class="space-y-2 pt-1">
           <h4 class="text-xs font-bold uppercase tracking-wider text-accent-gold">
             {ui.specialtiesHeading}
           </h4>
@@ -210,6 +246,7 @@ const localizedMembers = members.map((member) => ({
   const bioEl = document.getElementById('modal-member-bio');
   const imgEl = document.getElementById('modal-member-img');
   const specsEl = document.getElementById('modal-member-specialties');
+  const langsEl = document.getElementById('modal-member-languages');
   const highlightEl = document.getElementById('modal-member-highlight');
 
   let activeCard = null;
@@ -220,18 +257,37 @@ const localizedMembers = members.map((member) => ({
     roleEl.textContent = member.role;
     badgeEl.textContent = member.experienceBadge;
     bioEl.textContent = member.fullBio;
-    imgEl.src = member.image.src;
-    imgEl.alt = member.name;
+    if (member.image) {
+      imgEl.src = member.image.src;
+      imgEl.alt = member.name;
+    }
     highlightEl.textContent = member.personalHighlight;
 
+    // Populate languages
+    if (langsEl) {
+      langsEl.innerHTML = '';
+      if (member.languages) {
+        member.languages.forEach(lang => {
+          const tag = document.createElement('span');
+          tag.className = 'px-3 py-1 rounded-full text-xs font-semibold bg-accent/10 text-accent border border-accent/20';
+          tag.textContent = lang;
+          langsEl.appendChild(tag);
+        });
+      }
+    }
+
     // Populate specialties
-    specsEl.innerHTML = '';
-    member.specialties.forEach(spec => {
-      const tag = document.createElement('span');
-      tag.className = 'px-3 py-1 rounded-full text-xs font-medium bg-bg-secondary text-text-primary border border-border-subtle';
-      tag.textContent = spec;
-      specsEl.appendChild(tag);
-    });
+    if (specsEl) {
+      specsEl.innerHTML = '';
+      if (member.specialties) {
+        member.specialties.forEach(spec => {
+          const tag = document.createElement('span');
+          tag.className = 'px-3 py-1 rounded-full text-xs font-medium bg-bg-secondary text-text-primary border border-border-subtle';
+          tag.textContent = spec;
+          specsEl.appendChild(tag);
+        });
+      }
+    }
 
     // Show modal with animation
     modal.classList.remove('hidden');
