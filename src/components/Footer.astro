@@ -16,6 +16,7 @@ const serviceUrl = getRelativeLocaleUrl(lang, 'service');
 const payBillUrl = getRelativeLocaleUrl(lang, 'pay-bill');
 const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
 const contactUrl = getRelativeLocaleUrl(lang, 'contact');
+const sitemapUrl = getRelativeLocaleUrl(lang, 'sitemap');
 ---
 
 <footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-16 pb-8">
@@ -52,6 +53,7 @@ const contactUrl = getRelativeLocaleUrl(lang, 'contact');
           <li><a href={payBillUrl} class="hover:text-white transition-colors">{t('footer.payBill')}</a></li>
           <li><a href={quoteUrl} class="hover:text-white transition-colors">{t('footer.quote')}</a></li>
           <li><a href={contactUrl} class="hover:text-white transition-colors">{t('footer.contactLink')}</a></li>
+          <li><a href={sitemapUrl} class="hover:text-white transition-colors">{t('footer.sitemap')}</a></li>
         </ul>
       </div>
 
@@ -104,7 +106,15 @@ const contactUrl = getRelativeLocaleUrl(lang, 'contact');
       <div class="flex items-center gap-3">
         <p>Copyright &copy; {currentYear} Associated Insurance Agency. {t('footer.copyright')}</p>
       </div>
-      <div class="flex items-center gap-4 text-[11px]">
+      <div class="flex flex-wrap items-center gap-4 text-[11px]">
+        <a href={sitemapUrl} class="text-zinc-400 hover:text-white transition-colors">
+          {t('footer.sitemap')}
+        </a>
+        <span class="text-zinc-700">•</span>
+        <a href="/sitemap-index.xml" target="_blank" class="text-accent-gold/80 hover:text-accent-gold transition-colors font-mono">
+          XML Sitemap
+        </a>
+        <span class="text-zinc-700">•</span>
         <a href="/llms.txt" class="text-accent-gold/80 hover:text-accent-gold transition-colors font-mono">
           /llms.txt (AI Context)
         </a>

@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { useTranslations } from '../i18n/utils';
+
+const lang = 'en';
+const t = useTranslations(lang);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Associated Insurance Agency Sitemap",
+  "description": "HTML & XML Sitemap directory for Associated Insurance Agency. Quick navigation across personal, commercial, and local Connecticut branch pages.",
+};
+---
+
+<BaseLayout
+  title="Sitemap & Page Directory | Associated Insurance Agency CT"
+  description="Explore the full directory of Associated Insurance Agency pages, personal and commercial insurance lines, branch locations, and XML sitemaps."
+  structuredData={structuredData}
+>
+  <!-- Page Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 text-accent text-xs font-semibold mb-2">
+        <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+        Directory & Crawler Feeds
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        {t('sitemap.title')}
+      </h1>
+      <p class="text-sm sm:text-base text-text-secondary max-w-[65ch] mx-auto leading-relaxed">
+        {t('sitemap.subtitle')}
+      </p>
+    </div>
+  </section>
+
+  <!-- Sitemap Categories Grid -->
+  <section class="py-16 sm:py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- XML Feeds Banner -->
+      <div class="mb-12 p-6 bg-zinc-950 text-white rounded-xl border border-zinc-800 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 shadow-lg">
+        <div class="space-y-1.5">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 19.5v-.75a7.5 7.5 0 0 0-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+            </svg>
+            <h2 class="text-lg font-bold">Search Engine & AI Discovery Feeds</h2>
+          </div>
+          <p class="text-xs text-zinc-400">
+            Machine-readable XML sitemaps and Model Context Protocol feeds for Googlebot, Bingbot, and LLMs.
+          </p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3 text-xs">
+          <a
+            href="/sitemap-index.xml"
+            target="_blank"
+            class="px-4 py-2 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white font-mono transition-colors"
+          >
+            /sitemap-index.xml
+          </a>
+          <a
+            href="/sitemap.xml"
+            target="_blank"
+            class="px-4 py-2 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white font-mono transition-colors"
+          >
+            /sitemap.xml
+          </a>
+          <a
+            href="/llms.txt"
+            target="_blank"
+            class="px-4 py-2 rounded bg-accent-gold/20 hover:bg-accent-gold/30 text-accent-gold font-mono transition-colors"
+          >
+            /llms.txt
+          </a>
+        </div>
+      </div>
+
+      <!-- Categories 3-Column Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- Column 1: Core Navigation & Customer Service -->
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              Core Pages
+            </h3>
+            <ul class="space-y-2.5 text-sm text-text-secondary">
+              <li><a href="/" class="hover:text-accent font-medium transition-colors">Home Page</a></li>
+              <li><a href="/about" class="hover:text-accent font-medium transition-colors">About AIA & Leadership Team</a></li>
+              <li><a href="/contact" class="hover:text-accent font-medium transition-colors">Contact Us & Maps</a></li>
+              <li><a href="/quote" class="hover:text-accent font-medium transition-colors">Request a Quote (3-Step Builder)</a></li>
+              <li><a href="/service" class="hover:text-accent font-medium transition-colors">Customer Service Center</a></li>
+              <li><a href="/pay-bill" class="hover:text-accent font-medium transition-colors">Direct Carrier Bill Pay Directory</a></li>
+              <li><a href="/blog" class="hover:text-accent font-medium transition-colors">Blog & Insurance Insights</a></li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              Connecticut Branch Offices
+            </h3>
+            <ul class="space-y-2.5 text-sm text-text-secondary">
+              <li>
+                <a href="/contact#danbury" class="hover:text-accent font-medium transition-colors">Danbury Headquarters (HQ)</a>
+                <span class="block text-xs text-text-muted">50 Newtown Rd, Suite 1 • (203) 748-9272</span>
+              </li>
+              <li>
+                <a href="/contact#watertown" class="hover:text-accent font-medium transition-colors">Watertown Branch</a>
+                <span class="block text-xs text-text-muted">1157 Main St • (860) 274-8888</span>
+              </li>
+              <li>
+                <a href="/contact#bridgeport" class="hover:text-accent font-medium transition-colors">Bridgeport Branch</a>
+                <span class="block text-xs text-text-muted">2465 Main St • (203) 333-8880</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Column 2: Personal & Commercial Solutions -->
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              Personal Insurance Lines
+            </h3>
+            <ul class="space-y-2.5 text-sm text-text-secondary">
+              <li><a href="/personal" class="hover:text-accent font-medium transition-colors">Personal Insurance Overview</a></li>
+              <li><a href="/personal#home" class="hover:text-accent font-medium transition-colors">Homeowners Insurance</a></li>
+              <li><a href="/personal#auto" class="hover:text-accent font-medium transition-colors">Automobile & RV Coverage</a></li>
+              <li><a href="/personal#renters" class="hover:text-accent font-medium transition-colors">Renters Insurance</a></li>
+              <li><a href="/personal#umbrella" class="hover:text-accent font-medium transition-colors">Personal Umbrella Liability</a></li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              Commercial Insurance Lines
+            </h3>
+            <ul class="space-y-2.5 text-sm text-text-secondary">
+              <li><a href="/commercial" class="hover:text-accent font-medium transition-colors">Commercial Insurance Overview</a></li>
+              <li><a href="/commercial#bop" class="hover:text-accent font-medium transition-colors">Business Owners Policy (BOP)</a></li>
+              <li><a href="/commercial#gl" class="hover:text-accent font-medium transition-colors">Commercial General Liability</a></li>
+              <li><a href="/commercial#property" class="hover:text-accent font-medium transition-colors">Commercial Property Insurance</a></li>
+              <li><a href="/commercial#wc" class="hover:text-accent font-medium transition-colors">Workers' Compensation</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Column 3: Multilingual Portals & Articles -->
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              Multilingual Language Portals
+            </h3>
+            <ul class="space-y-2.5 text-sm text-text-secondary">
+              <li>
+                <a href="/es" class="hover:text-accent font-medium transition-colors">Español (Spanish Portal)</a>
+                <span class="block text-xs text-text-muted">/es, /es/about, /es/quote, /es/contact, /es/service</span>
+              </li>
+              <li>
+                <a href="/pt" class="hover:text-accent font-medium transition-colors">Português (Portuguese Portal)</a>
+                <span class="block text-xs text-text-muted">/pt, /pt/about, /pt/quote, /pt/contact, /pt/service</span>
+              </li>
+              <li>
+                <a href="/tr" class="hover:text-accent font-medium transition-colors">Türkçe (Turkish Portal)</a>
+                <span class="block text-xs text-text-muted">/tr, /tr/about, /tr/quote, /tr/contact, /tr/service</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h3 class="text-base font-bold text-accent border-b border-border-subtle pb-2 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              Guides & Advisory Articles
+            </h3>
+            <ul class="space-y-2.5 text-sm text-text-secondary">
+              <li><a href="/blog/preventing-ice-dams-on-homes" class="hover:text-accent font-medium transition-colors">Preventing Ice Dams on CT Homes</a></li>
+              <li><a href="/blog/travel-adventure-6-essential-tips" class="hover:text-accent font-medium transition-colors">Travel & Adventure Insurance Tips</a></li>
+              <li><a href="/blog/wedding-insurance-need" class="hover:text-accent font-medium transition-colors">Wedding & Special Event Insurance</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

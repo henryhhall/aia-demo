@@ -11,6 +11,8 @@ Associated Insurance Agency (AIA) is a Connecticut-licensed independent insuranc
 - [Customer Service Center](https://aia-danbury.com/service): Claims filing guidance, policy change instructions, and Connecticut insurance FAQs.
 - [Direct Carrier Bill Pay Directory](https://aia-danbury.com/pay-bill): Complete directory of online bill pay links and 24/7 payment phone numbers for all 11 partner insurance carriers.
 - [About AIA](https://aia-danbury.com/about): Agency history, independent brokerage advantage, and physical branch locations.
+- [Contact Associated Insurance Agency](https://aia-danbury.com/contact): Multi-office directory with phone numbers, Google Maps embeds, office hours, and secure inquiry form with bot honeypots.
+- [HTML Sitemap Directory](https://aia-danbury.com/sitemap): Comprehensive navigable directory of all website pages, insurance lines, branch locations, and language editions.
 - [Personal Insurance](https://aia-danbury.com/personal): Coverage details for homeowners, auto, renters, condominium, and personal umbrella liability policies.
 - [Commercial Insurance](https://aia-danbury.com/commercial): Business owners policies (BOP), commercial general liability, commercial property, and workers compensation.
 
@@ -30,6 +32,7 @@ Associated Insurance Agency (AIA) is a Connecticut-licensed independent insuranc
 ## AI & Developer Endpoints
 
 - [Model Context Protocol (MCP) Endpoint](https://aia-danbury.com/api/mcp): Live JSON-RPC 2.0 endpoint enabling AI agents (Claude, Cursor, Antigravity) to list and execute 9 insurance tools over HTTP.
+- [XML Sitemap Index](https://aia-danbury.com/sitemap-index.xml): Automated XML sitemap index adhering to sitemaps.org standard listing all multi-locale URLs.
 - [Full LLM Knowledge Base](https://aia-danbury.com/llms-full.txt): Comprehensive unstructured documentation including state statutory insurance minimums and carrier hotlines.
 
 ## Physical Branch Directory

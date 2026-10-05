@@ -45,6 +45,9 @@ export const ui = {
     'contact.hqTitle': 'Danbury Headquarters',
     'contact.getDirections': 'Get Directions',
     'contact.branchLocations': 'All Office Locations',
+    'footer.sitemap': 'Sitemap',
+    'sitemap.title': 'HTML & XML Sitemap Directory',
+    'sitemap.subtitle': 'Explore all personal and commercial insurance lines, branch locations, guides, and XML feeds.',
   },
   es: {
     'nav.about': 'Nosotros',
@@ -83,6 +86,9 @@ export const ui = {
     'contact.hqTitle': 'Sede Central en Danbury',
     'contact.getDirections': 'Obtener Direcciones',
     'contact.branchLocations': 'Nuestras Oficinas',
+    'footer.sitemap': 'Mapa del Sitio',
+    'sitemap.title': 'Directorio del Mapa del Sitio (HTML y XML)',
+    'sitemap.subtitle': 'Explore todas las líneas de seguros personales y comerciales, ubicaciones de sucursales, guías y fuentes XML.',
   },
   pt: {
     'nav.about': 'Sobre Nós',
@@ -121,6 +127,9 @@ export const ui = {
     'contact.hqTitle': 'Sede em Danbury',
     'contact.getDirections': 'Como Chegar',
     'contact.branchLocations': 'Nossas Agências',
+    'footer.sitemap': 'Mapa do Site',
+    'sitemap.title': 'Diretório do Mapa do Site (HTML e XML)',
+    'sitemap.subtitle': 'Explore todas as linhas de seguros pessoais e comerciais, agências, guias e feeds XML.',
   },
   tr: {
     'nav.about': 'Hakkımızda',
@@ -159,5 +168,8 @@ export const ui = {
     'contact.hqTitle': 'Danbury Merkez Ofisi',
     'contact.getDirections': 'Yol Tarifi Al',
     'contact.branchLocations': 'Tüm Ofislerimiz',
+    'footer.sitemap': 'Site Haritası',
+    'sitemap.title': 'Site Haritası Dizini (HTML ve XML)',
+    'sitemap.subtitle': 'Tüm bireysel ve ticari sigorta branşlarını, şubelerimizi, rehberleri ve XML beslemelerini keşfedin.',
   },
 } as const;

@@ -20,6 +20,9 @@ export default defineConfig({
       prefixDefaultLocale: false
     }
   },
+  redirects: {
+    '/sitemap.xml': '/sitemap-index.xml'
+  },
   integrations: [
     react(),
     sitemap({

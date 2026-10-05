@@ -31,6 +31,7 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 - **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, and Connecticut state insurance regulations.
 - **Multilingual Contact Hub & Interactive Map**: Fully localized contact pages (`/contact`, `/es/contact`, `/pt/contact`, `/tr/contact`) featuring an embedded Google Map of Danbury HQ, full branch directories, and an interactive contact form protected by bot honeypots.
 - **Regulatory Compliance & Disclaimers**: Prominent coverage binding notices across the global footer, quote builder, and contact pages in all four supported languages confirming that coverage cannot be bound, altered, or cancelled via website form, email, or voicemail.
+- **Comprehensive XML & HTML Sitemaps**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all 50+ localized pages, paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`).
 - **Content Collections**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance.
 
 ### 🤖 WebMCP & Agentic AI Integration
@@ -148,7 +149,8 @@ aia/
 │   │   ├── pay-bill.astro      # 11-carrier online payment & claims directory
 │   │   ├── personal.astro      # Personal lines (Home, Auto, Renters, Umbrella)
 │   │   ├── quote.astro         # Quote intake page embedding QuoteForm.tsx
-│   │   └── service.astro       # Customer support, claims steps, and FAQs
+│   │   ├── service.astro       # Customer support, claims steps, and FAQs
+│   │   └── sitemap.astro       # HTML sitemap directory & XML crawler index
 │   └── styles/
 │       └── global.css          # Tailwind CSS v4 @theme design tokens
 ├── astro.config.mjs            # Astro configuration (Vercel adapter, i18n, Sitemap, React)
