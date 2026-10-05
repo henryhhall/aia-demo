@@ -29,6 +29,8 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 - **Optimized Asset Pipeline**: Leverages Astro's native `astro:assets` image engine for zero-CLS responsive image serving, automatic WebP format conversion, and lazy loading.
 - **Direct Carrier Bill Pay & Claims Directory**: Fast access to 24/7 direct phone lines and self-service online payment links for all 11 partnered insurance carriers.
 - **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, and Connecticut state insurance regulations.
+- **Multilingual Contact Hub & Interactive Map**: Fully localized contact pages (`/contact`, `/es/contact`, `/pt/contact`, `/tr/contact`) featuring an embedded Google Map of Danbury HQ, full branch directories, and an interactive contact form protected by bot honeypots.
+- **Regulatory Compliance & Disclaimers**: Prominent coverage binding notices across the global footer, quote builder, and contact pages in all four supported languages confirming that coverage cannot be bound, altered, or cancelled via website form, email, or voicemail.
 - **Content Collections**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance.
 
 ### 🤖 WebMCP & Agentic AI Integration
@@ -105,7 +107,8 @@ aia/
 │   │   ├── Ashley_AIA-Meet-the-team.png # Ashley L. Mercan portrait
 │   │   └── aia_janaija.png     # Janaija S. Hammer portrait
 │   ├── components/             # Astro & React UI components
-│   │   ├── FAQAccordion.tsx     # Animated interactive FAQ accordion
+│   │   ├── ContactForm.tsx     # Interactive contact form with bot honeypots & multi-lingual validation
+│   │   ├── FAQAccordion.tsx    # Animated interactive FAQ accordion
 │   │   ├── Footer.astro        # Agency footer with brand badge, branch info & carriers
 │   │   ├── Header.astro        # Agency header with brand badge, navigation & office hours
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
@@ -131,6 +134,7 @@ aia/
 │   │       └── types.ts        # TypeScript interfaces for MCP JSON-RPC & tools
 │   ├── pages/                  # File-based routing
 │   │   ├── api/
+│   │   │   ├── contact.ts      # REST endpoint for contact inquiries with honeypot bot validation
 │   │   │   ├── mcp.ts          # JSON-RPC 2.0 MCP endpoint (GET/POST)
 │   │   │   └── quote.ts        # REST endpoint for lead submission & retrieval
 │   │   ├── blog/               # Blog index and dynamic [slug].astro routes
@@ -139,6 +143,7 @@ aia/
 │   │   ├── tr/                 # Turkish localized pages
 │   │   ├── about.astro         # Agency history, credentials, and office profiles
 │   │   ├── commercial.astro    # Commercial lines (BOP, GL, Property, Workers' Comp)
+│   │   ├── contact.astro       # Contact page embedding ContactForm.tsx & Google Maps
 │   │   ├── index.astro         # Main homepage with hero, carrier grid, and testimonials
 │   │   ├── pay-bill.astro      # 11-carrier online payment & claims directory
 │   │   ├── personal.astro      # Personal lines (Home, Auto, Renters, Umbrella)
@@ -212,7 +217,7 @@ npm run preview
 ### Deployment Configuration
 
 The application is pre-configured with `@astrojs/vercel` for zero-configuration deployment to [Vercel](https://vercel.com):
-- Serverless API routes (`/api/mcp`, `/api/quote`) are rendered dynamically (`prerender = false`).
+- Serverless API routes (`/api/mcp`, `/api/quote`, `/api/contact`) are rendered dynamically (`prerender = false`).
 - Content and marketing pages are pre-rendered statically for high performance and low latency.
 - Dynamic localized paths adhere to Astro 7 i18n specifications.
 
@@ -265,6 +270,13 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 
 - **POST `/api/quote`**: Submits a lead payload (`name`, `email`, `phone`, `insuranceType`, `preferredOffice`, `preferredLanguage`, `notes`). Returns a confirmation code (`AIA-XXXXXX`).
 - **GET `/api/quote`**: Returns recent submissions count and metadata for internal testing.
+
+### 3. Contact Inquiries & Bot Defense (`/api/contact`)
+
+- **POST `/api/contact`**: Ingests direct customer inquiries (`name`, `email`, `phone`, `preferredOffice`, `subject`, `message`, `preferredLanguage`).
+  - **Honeypot Validation**: Inspects hidden form trap fields (`hp_website`, `hp_company`) and evaluates submission elapsed time (`form_rendered_at`) to proactively block automated bot submissions.
+  - Returns an inquiry confirmation reference ID (`inq_XXXXXX`).
+- **GET `/api/contact`**: Returns recent submission counts for internal monitoring.
 
 ---
 

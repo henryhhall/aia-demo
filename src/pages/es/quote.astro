@@ -1,6 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import QuoteForm from '../../components/QuoteForm';
+import { useTranslations } from '../../i18n/utils';
+
+const t = useTranslations('es');
 
 const quoteStructuredData = {
   "@context": "https://schema.org",
@@ -32,6 +35,13 @@ const quoteStructuredData = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <!-- React multi-step quote form island -->
       <QuoteForm client:load lang="es" />
+
+      <!-- Legal Disclaimer directly beneath form -->
+      <div class="mt-8 max-w-xl mx-auto text-center px-4">
+        <p class="text-xs sm:text-sm text-text-secondary font-medium leading-relaxed">
+          {t('quote.disclaimer')}
+        </p>
+      </div>
     </div>
   </section>
 </BaseLayout>

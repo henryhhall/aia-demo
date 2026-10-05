@@ -15,6 +15,7 @@ const commercialUrl = getRelativeLocaleUrl(lang, 'commercial');
 const serviceUrl = getRelativeLocaleUrl(lang, 'service');
 const payBillUrl = getRelativeLocaleUrl(lang, 'pay-bill');
 const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
+const contactUrl = getRelativeLocaleUrl(lang, 'contact');
 ---
 
 <footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-16 pb-8">
@@ -50,6 +51,7 @@ const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
           <li><a href={serviceUrl} class="hover:text-white transition-colors">{t('footer.service')}</a></li>
           <li><a href={payBillUrl} class="hover:text-white transition-colors">{t('footer.payBill')}</a></li>
           <li><a href={quoteUrl} class="hover:text-white transition-colors">{t('footer.quote')}</a></li>
+          <li><a href={contactUrl} class="hover:text-white transition-colors">{t('footer.contactLink')}</a></li>
         </ul>
       </div>
 
@@ -90,8 +92,15 @@ const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
       </div>
     </div>
 
+    <!-- Legal Disclaimer -->
+    <div class="border-t border-zinc-900 pt-8 pb-6">
+      <p class="text-sm sm:text-base text-zinc-200 font-medium text-center max-w-4xl mx-auto leading-relaxed">
+        {t('footer.disclaimer')}
+      </p>
+    </div>
+
     <!-- Bottom Copy -->
-    <div class="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
+    <div class="border-t border-zinc-900/60 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs">
       <div class="flex items-center gap-3">
         <p>Copyright &copy; {currentYear} Associated Insurance Agency. {t('footer.copyright')}</p>
       </div>
