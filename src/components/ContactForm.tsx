@@ -39,6 +39,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
       emailPlaceholder: 'john@example.com',
       phone: 'Phone Number',
       phonePlaceholder: '(203) 555-0123',
+      phoneNotice: 'Providing a number permits calls/texts from us regarding the message.',
       office: 'Preferred Office',
       offices: {
         Danbury: 'Danbury (HQ) - 50 Newtown Rd',
@@ -73,6 +74,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
       emailPlaceholder: 'juan@ejemplo.com',
       phone: 'Número de Teléfono',
       phonePlaceholder: '(203) 555-0123',
+      phoneNotice: 'Proporcionar un número permite llamadas/mensajes de texto de nuestra parte sobre el mensaje.',
       office: 'Oficina Preferida',
       offices: {
         Danbury: 'Danbury (Sede) - 50 Newtown Rd',
@@ -107,6 +109,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
       emailPlaceholder: 'joao@exemplo.com',
       phone: 'Número de Telefone',
       phonePlaceholder: '(203) 555-0123',
+      phoneNotice: 'Fornecer um número autoriza chamadas/mensagens nossas sobre a mensagem.',
       office: 'Agência de Preferência',
       offices: {
         Danbury: 'Danbury (Sede) - 50 Newtown Rd',
@@ -141,6 +144,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
       emailPlaceholder: 'ahmet@ornek.com',
       phone: 'Telefon Numarası',
       phonePlaceholder: '(203) 555-0123',
+      phoneNotice: 'Bir numara belirtmek, mesajınızla ilgili olarak tarafımızdan arama/kısa mesaj yapılmasına izin verir.',
       office: 'Tercih Edilen Ofis',
       offices: {
         Danbury: 'Danbury (Merkez) - 50 Newtown Rd',
@@ -364,6 +368,10 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full px-3.5 py-2.5 bg-bg-secondary/40 border border-border-subtle rounded-lg text-sm text-text-primary focus:border-accent focus:bg-white focus:outline-none transition-colors"
                 />
+                {/* Phone communication consent disclosure */}
+                <p className="text-xs text-text-secondary mt-1.5 leading-normal">
+                  {t.phoneNotice}
+                </p>
               </div>
 
               <div>

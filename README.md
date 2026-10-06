@@ -30,8 +30,11 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 - **Direct Carrier Bill Pay & Claims Directory**: Fast access to 24/7 direct phone lines and self-service online payment links for all 11 partnered insurance carriers.
 - **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, and Connecticut state insurance regulations.
 - **Multilingual Contact Hub & Interactive Map**: Fully localized contact pages (`/contact`, `/es/contact`, `/pt/contact`, `/tr/contact`) featuring an embedded Google Map of Danbury HQ, full branch directories, and an interactive contact form protected by bot honeypots.
-- **Regulatory Compliance & Disclaimers**: Prominent coverage binding notices across the global footer, quote builder, and contact pages in all four supported languages confirming that coverage cannot be bound, altered, or cancelled via website form, email, or voicemail.
-- **Comprehensive XML & HTML Sitemaps**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all 50+ localized pages, paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`).
+- **Regulatory Compliance & Disclaimers**: Prominent coverage binding notices across the global footer, quote builder, and contact pages in all four supported languages confirming that coverage cannot be bound, altered, or cancelled via website form, email, or voicemail until directly confirmed in writing by a licensed agent.
+- **TCPA & 10DLC Communications Consent**: Standardized telephone and SMS consent disclosure embedded across all intake forms (`QuoteForm.tsx`, `ContactForm.tsx`): *"Providing a number permits calls/texts from us regarding the message."*
+- **Terms of Service (Multilingual)**: Comprehensive boilerplate terms pages (`/terms`, `/es/terms`, `/pt/terms`, `/tr/terms`) detailing independent brokerage representation, non-binding quote estimates, carrier portal links, user conduct, and Connecticut governing law.
+- **Privacy Policy & GLBA Consumer Financial Notice (Multilingual)**: Complete privacy disclosure pages (`/privacy`, `/es/privacy`, `/pt/privacy`, `/tr/privacy`) detailing Title V Gramm-Leach-Bliley Act (GLBA) compliance, Connecticut Data Privacy Act (CTDPA) standards, carrier underwriting data sharing, and strict 10DLC mobile confidentiality rules prohibiting any third-party sharing of mobile numbers or SMS opt-in data for marketing purposes.
+- **Comprehensive XML & HTML Sitemaps**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all localized pages, paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`) linking to all core insurance lines, branch offices, and legal pages.
 - **Content Collections**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance.
 
 ### 🤖 WebMCP & Agentic AI Integration
@@ -139,18 +142,20 @@ aia/
 │   │   │   ├── mcp.ts          # JSON-RPC 2.0 MCP endpoint (GET/POST)
 │   │   │   └── quote.ts        # REST endpoint for lead submission & retrieval
 │   │   ├── blog/               # Blog index and dynamic [slug].astro routes
-│   │   ├── es/                 # Spanish localized landing and section pages
-│   │   ├── pt/                 # Portuguese localized pages
-│   │   ├── tr/                 # Turkish localized pages
+│   │   ├── es/                 # Spanish localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap)
+│   │   ├── pt/                 # Portuguese localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap)
+│   │   ├── tr/                 # Turkish localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap)
 │   │   ├── about.astro         # Agency history, credentials, and office profiles
 │   │   ├── commercial.astro    # Commercial lines (BOP, GL, Property, Workers' Comp)
 │   │   ├── contact.astro       # Contact page embedding ContactForm.tsx & Google Maps
 │   │   ├── index.astro         # Main homepage with hero, carrier grid, and testimonials
 │   │   ├── pay-bill.astro      # 11-carrier online payment & claims directory
 │   │   ├── personal.astro      # Personal lines (Home, Auto, Renters, Umbrella)
+│   │   ├── privacy.astro       # Privacy Policy & GLBA consumer financial notice
 │   │   ├── quote.astro         # Quote intake page embedding QuoteForm.tsx
 │   │   ├── service.astro       # Customer support, claims steps, and FAQs
-│   │   └── sitemap.astro       # HTML sitemap directory & XML crawler index
+│   │   ├── sitemap.astro       # HTML sitemap directory & XML crawler index
+│   │   └── terms.astro         # Terms of Service & regulatory disclosures
 │   └── styles/
 │       └── global.css          # Tailwind CSS v4 @theme design tokens
 ├── astro.config.mjs            # Astro configuration (Vercel adapter, i18n, Sitemap, React)
@@ -235,6 +240,8 @@ The site supports four primary languages with route prefixing for non-default lo
 | **Español** (Spanish) | `/es` | Danbury, Watertown, Bridgeport |
 | **Português** (Portuguese) | `/pt` | Danbury, Watertown, Bridgeport |
 | **Türkçe** (Turkish) | `/tr` | Danbury Headquarters |
+
+All legal agreements and consumer disclosures—including the **Terms of Service** (`/terms`), **Privacy Policy & GLBA Notices** (`/privacy`), **HTML Sitemaps** (`/sitemap`), and form TCPA consent language—are 100% translated and localized into Spanish, Portuguese, and Turkish.
 
 Localization helpers are located in [`src/i18n/utils.ts`](src/i18n/utils.ts) and [`src/i18n/ui.ts`](src/i18n/ui.ts).
 

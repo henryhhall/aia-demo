@@ -1,0 +1,334 @@
+---
+/**
+ * Privacy Policy (Portuguese) - Associated Insurance Agency
+ * Política de Privacidade em Português para corretora de seguros independente,
+ * abordando GLBA (Gramm-Leach-Bliley Act), proteção de dados financeiros NPI,
+ * compartilhamento com seguradoras e confidencialidade estrita de SMS / telefonia móvel.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'pt';
+const t = useTranslations(lang);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Política de Privacidade | Associated Insurance Agency",
+  "description": "Política de privacidade e aviso financeiro do consumidor GLBA para Associated Insurance Agency em Connecticut.",
+  "inLanguage": "pt",
+  "publisher": {
+    "@type": "InsuranceAgency",
+    "name": "Associated Insurance Agency",
+    "telephone": "+1-203-748-9272",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "50 Newtown Road, Suite 1",
+      "addressLocality": "Danbury",
+      "addressRegion": "CT",
+      "postalCode": "06810",
+      "addressCountry": "US"
+    }
+  }
+};
+---
+
+<BaseLayout
+  title="Política de Privacidade | Associated Insurance Agency CT"
+  description="Leia a Política de Privacidade da Associated Insurance Agency. Saiba como protegemos suas informações pessoais, privacidade financeira GLBA e confidencialidade móvel estrita."
+  structuredData={structuredData}
+>
+  <!-- Cabeçalho da Página / Hero -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/5 text-accent text-xs font-semibold uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-accent-gold animate-pulse"></span>
+        Privacidade e Proteção de Dados
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        {t('privacy.title')}
+      </h1>
+      <p class="text-sm sm:text-base text-text-secondary max-w-[65ch] mx-auto leading-relaxed">
+        {t('privacy.subtitle')}
+      </p>
+      <div class="pt-2 flex items-center justify-center gap-3 text-xs text-text-muted">
+        <span>Data de Vigência: Outubro de 2026</span>
+        <span>•</span>
+        <span>Última Atualização: Outubro de 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Conteúdo Principal -->
+  <section class="py-16 sm:py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Índice Fixo (Desktop) -->
+        <aside class="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h2 class="text-sm font-bold text-accent uppercase tracking-wider border-b border-border-subtle pb-3 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              Índice de Conteúdo
+            </h2>
+            <nav class="space-y-1.5 text-xs text-text-secondary">
+              <a href="#visao-geral" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">1. Visão Geral e Aviso GLBA</a>
+              <a href="#informacoes-coletadas" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">2. Informações que Coletamos</a>
+              <a href="#privacidade-movel" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors text-accent font-semibold">3. Confidencialidade Móvel e SMS</a>
+              <a href="#uso-informacoes" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">4. Como Usamos as Informações</a>
+              <a href="#compartilhamento-seguradoras" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">5. Compartilhamento com Seguradoras</a>
+              <a href="#cookies-registros" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">6. Cookies e Registros Técnicos</a>
+              <a href="#seguranca-dados" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">7. Segurança e Proteção</a>
+              <a href="#retencao-dados" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">8. Prazos de Retenção</a>
+              <a href="#direitos-usuario" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">9. Seus Direitos de Privacidade</a>
+              <a href="#privacidade-menores" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">10. Privacidade de Menores</a>
+              <a href="#alteracoes" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">11. Alterações nesta Política</a>
+              <a href="#contato-privacidade" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">12. Contato de Privacidade</a>
+            </nav>
+          </div>
+
+          <!-- Caixa de Apoio Rápido -->
+          <div class="bg-accent text-white p-6 rounded-xl shadow-md space-y-3">
+            <h3 class="text-sm font-bold text-accent-gold">Dúvidas sobre sua Privacidade?</h3>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Nossa equipe licenciada tem o compromisso de proteger suas informações financeiras não públicas (NPI). Fale conosco em português.
+            </p>
+            <div class="pt-2">
+              <a href="tel:2037489272" class="inline-flex items-center gap-2 text-xs font-semibold text-white hover:text-accent-gold transition-colors">
+                <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg>
+                (203) 748-9272
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Seções de Conteúdo -->
+        <div class="lg:col-span-8 space-y-10 text-left">
+          
+          <!-- Resumo de Compromisso -->
+          <div class="p-5 sm:p-6 bg-accent/5 border-l-4 border-accent-gold rounded-r-xl space-y-2">
+            <h2 class="text-base font-bold text-accent">Nosso Compromisso com sua Privacidade</h2>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              A <strong>Associated Insurance Agency</strong> ("AIA", "nós" ou "nosso") valoriza sua confiança. Como agência independente em Danbury, Watertown e Bridgeport, Connecticut, tratamos informações pessoais e financeiras essenciais para cotar, emitir e gerenciar apólices de seguro. Jamais vendemos seus dados ou números de telefone para listas de telemarketing ou terceiros.
+            </p>
+          </div>
+
+          <!-- Seção 1 -->
+          <article id="visao-geral" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 1</span>
+              Visão Geral e Aviso da Lei Gramm-Leach-Bliley (GLBA)
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Esta Política de Privacidade descreve como a Associated Insurance Agency coleta, utiliza, protege e compartilha informações pessoais e informações financeiras pessoais não públicas (NPI) através do nosso site (<a href="https://aia-danbury.com/pt" class="text-accent underline font-medium">https://aia-danbury.com/pt</a>), simuladores de cotação online, ligações telefônicas e atendimento presencial.
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              De acordo com a Lei Gramm-Leach-Bliley (GLBA) e os regulamentos do Departamento de Seguros de Connecticut, as instituições financeiras e corretoras de seguros credenciadas são obrigadas a apresentar suas diretrizes de privacidade aos consumidores.
+            </p>
+          </article>
+
+          <!-- Seção 2 -->
+          <article id="informacoes-coletadas" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 2</span>
+              Informações que Coletamos
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Para avaliar riscos e solicitar propostas competitivas junto às seguradoras parceiras, coletamos as seguintes categorias de dados:
+            </p>
+            <div class="space-y-2.5 text-xs text-text-secondary">
+              <div class="p-3 bg-bg-secondary rounded-lg border border-border-subtle">
+                <strong class="text-text-primary block mb-0.5">Informações de Contato</strong>
+                Nome completo, endereço residencial e de correspondência, e-mail, telefones e agência de preferência.
+              </div>
+              <div class="p-3 bg-bg-secondary rounded-lg border border-border-subtle">
+                <strong class="text-text-primary block mb-0.5">Dados de Seguro e Subscrição</strong>
+                Número de Chassi do Veículo (VIN), histórico de condução, ano e características do imóvel, credores hipotecários, seguradora anterior e registros de sinistros passados.
+              </div>
+              <div class="p-3 bg-bg-secondary rounded-lg border border-border-subtle">
+                <strong class="text-text-primary block mb-0.5">Informações Empresariais</strong>
+                Razão social, número de identificação fiscal (FEIN), folha de pagamento, faturamento e classificação de atividades comerciais.
+              </div>
+              <div class="p-3 bg-bg-secondary rounded-lg border border-border-subtle">
+                <strong class="text-text-primary block mb-0.5">Dados Técnicos e de Segurança</strong>
+                Endereço IP, navegador, sistema operacional, registros de data/hora e filtros de segurança honeypot para evitar spam automatizado.
+              </div>
+            </div>
+          </article>
+
+          <!-- Seção 3: Confidencialidade Móvel Estrita (10DLC / CTIA) -->
+          <article id="privacidade-movel" class="space-y-4 scroll-mt-28 p-6 bg-accent/5 border border-accent/20 rounded-xl">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+              </svg>
+              <div>
+                <h2 class="text-lg font-bold text-accent">
+                  Seção 3: Confidencialidade Estrita de Telefonia Móvel e Mensagens SMS (10DLC / CTIA)
+                </h2>
+                <div class="mt-2 p-3 bg-white border border-border-subtle rounded-lg text-sm text-text-primary font-medium leading-relaxed">
+                  "Nenhuma informação móvel será compartilhada com terceiros/afiliados para fins de marketing ou promocionais. Todas as outras categorias excluem dados e consentimento do originador de mensagens de texto; essas informações não serão compartilhadas com terceiros."
+                </div>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Em nossos formulários, destacamos expressamente: <em>"Fornecer um número autoriza chamadas/mensagens nossas sobre a mensagem."</em>
+            </p>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Seu telefone celular e os dados de consentimento para SMS são utilizados <strong>exclusivamente</strong> pela Associated Insurance Agency para falar diretamente com você sobre cotações solicitadas, apólices e renovações. Nunca vendemos, alugamos ou transferimos seus dados móveis para terceiros ou listas de marketing.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary pl-5 list-disc">
+              <li>Você pode revogar o envio de SMS a qualquer momento respondendo <strong>STOP</strong>.</li>
+              <li>Responda <strong>HELP</strong> para obter ajuda ou suporte.</li>
+            </ul>
+          </article>
+
+          <!-- Seção 4 -->
+          <article id="uso-informacoes" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 4</span>
+              Como Usamos as Informações
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Utilizamos as informações coletadas estritamente para atividades operacionais legítimas de corretagem:
+            </p>
+            <ul class="space-y-2 text-xs sm:text-sm text-text-secondary pl-5 list-disc">
+              <li><strong>Pesquisa de Tarifas:</strong> Enviar dados preliminares a seguradoras parceiras para encontrar a melhor apólice e preço.</li>
+              <li><strong>Serviços de Apólice:</strong> Auxiliar na inclusão de veículos, emissão de certificados de seguro (COI) e suporte de pagamentos.</li>
+              <li><strong>Contato Direto:</strong> Comunicarmo-nos por telefone, e-mail ou SMS sobre cotações e esclarecimento de dúvidas.</li>
+              <li><strong>Prevenção a Fraudes:</strong> Proteger nossos sistemas contra acessos indevidos e envios automatizados.</li>
+              <li><strong>Obrigações Regulatórias:</strong> Cumprir as exigências do Departamento de Seguros de Connecticut.</li>
+            </ul>
+          </article>
+
+          <!-- Seção 5 -->
+          <article id="compartilhamento-seguradoras" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 5</span>
+              Compartilhamento com Seguradoras e Terceiros
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Como agência independente, compartilhamos suas informações somente com entidades indispensáveis ao trâmite do seguro:
+            </p>
+            <ul class="space-y-2 text-xs sm:text-sm text-text-secondary pl-5 list-disc">
+              <li><strong>Seguradoras Parceiras:</strong> Para cotar e emitir apólices (Safeco, Travelers, Progressive, The Hartford, Foremost, Guard etc.).</li>
+              <li><strong>Bancos de Dados de Sinistros e Trânsito:</strong> As seguradoras podem consultar históricos de direção (MVR) e sinistros (C.L.U.E.).</li>
+              <li><strong>Provedores de Tecnologia:</strong> Empresas que hospedam nossos softwares sob rigorosos acordos de sigilo contratual.</li>
+              <li><strong>Órgãos Oficiais:</strong> Em atendimento a determinações legais ou solicitações do Departamento de Seguros de Connecticut.</li>
+            </ul>
+            <p class="text-xs font-semibold text-accent pt-1">
+              NÃO COMERCIALIZAMOS SUAS INFORMAÇÕES PESSOAIS PARA FINALIDADES PUBLICITÁRIAS DE TERCEIROS.
+            </p>
+          </article>
+
+          <!-- Seção 6 -->
+          <article id="cookies-registros" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 6</span>
+              Cookies e Registros Técnicos
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Nosso site utiliza cookies de sessão e parâmetros de segurança básicos para assegurar a estabilidade do sistema e bloquear mensagens maliciosas. Não empregamos rastreadores invasivos de comportamento para terceiros.
+            </p>
+          </article>
+
+          <!-- Seção 7 -->
+          <article id="seguranca-dados" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 7</span>
+              Medidas de Segurança e Proteção
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              A AIA mantém medidas físicas, digitais e administrativas em conformidade com as diretrizes da GLBA e da Lei de Privacidade de Dados de Connecticut (CTDPA). Isso engloba criptografia SSL/TLS, firewalls e controle rigoroso de acesso concedido exclusivamente a corretores autorizados.
+            </p>
+          </article>
+
+          <!-- Seção 8 -->
+          <article id="retencao-dados" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 8</span>
+              Prazos de Retenção de Documentos
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Agências de seguros estão sujeitas a prazos legais de guarda de documentos estipulados pelas autoridades de Connecticut. Mantemos cadastros de clientes, propostas e mensagens durante os períodos regulamentares (geralmente entre 5 e 7 anos após o encerramento da apólice).
+            </p>
+          </article>
+
+          <!-- Seção 9 -->
+          <article id="direitos-usuario" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 9</span>
+              Seus Direitos de Privacidade
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Ressalvadas as obrigações legais de guarda de documentos de seguros, você tem o direito de:
+            </p>
+            <ul class="space-y-1.5 text-xs sm:text-sm text-text-secondary pl-5 list-disc">
+              <li>Solicitar acesso aos dados constantes em seu prontuário ativo de segurado.</li>
+              <li>Solicitar correções de informações imprecisas ou desatualizadas.</li>
+              <li>Cancelar o recebimento de mensagens promocionais (respondendo STOP aos SMS ou via e-mail).</li>
+            </ul>
+          </article>
+
+          <!-- Seção 10 -->
+          <article id="privacidade-menores" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 10</span>
+              Privacidade de Menores (COPPA)
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Nossos serviços destinam-se a adultos e empresários. Não coletamos intencionalmente informações de crianças menores de 13 anos. Caso tome conhecimento de que um menor enviou dados em nosso site, contate-nos para providenciarmos a exclusão.
+            </p>
+          </article>
+
+          <!-- Seção 11 -->
+          <article id="alteracoes" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 11</span>
+              Alterações nesta Política
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              A AIA pode atualizar esta Política de Privacidade a qualquer momento para refletir melhorias em nossos procedimentos ou novas imposições legais. As alterações entram em vigor a partir da data publicada no topo da página.
+            </p>
+          </article>
+
+          <!-- Seção 12: Contato -->
+          <article id="contato-privacidade" class="space-y-4 scroll-mt-28 pt-6 border-t border-border-subtle">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Seção 12</span>
+              Contato com o Encarregado de Privacidade
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Para esclarecer dúvidas sobre esta Política de Privacidade ou solicitar alterações em seus dados, entre em contato:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Sede Danbury</span>
+                <span class="text-text-secondary block">50 Newtown Road, Suite 1</span>
+                <span class="text-text-secondary block">Danbury, CT 06810</span>
+                <a href="tel:2037489272" class="text-accent font-semibold hover:underline block pt-1">(203) 748-9272</a>
+              </div>
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Agência Watertown</span>
+                <span class="text-text-secondary block">1157 Main Street</span>
+                <span class="text-text-secondary block">Watertown, CT 06795</span>
+                <a href="tel:8602747100" class="text-accent font-semibold hover:underline block pt-1">(860) 274-7100</a>
+              </div>
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Agência Bridgeport</span>
+                <span class="text-text-secondary block">2465 Main Street</span>
+                <span class="text-text-secondary block">Bridgeport, CT 06606</span>
+                <a href="tel:2033675300" class="text-accent font-semibold hover:underline block pt-1">(203) 367-5300</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

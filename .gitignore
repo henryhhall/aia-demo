@@ -65,8 +65,14 @@ coverage/
 .parcel-cache/
 .npm/
 .yarn/
+test-results/
+playwright-report/
+
+# Vite & build temporary artifacts
+vite.config.*.timestamp-*
 
 # Agent & Scratch directories
 scratch/
-.gemini/scratch/
+.gemini/
 .agents/scratch/
+.antigravity/

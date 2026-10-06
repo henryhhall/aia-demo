@@ -40,6 +40,7 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
       fullName: 'Full Name',
       emailAddress: 'Email Address',
       phone: 'Phone Number',
+      phoneNotice: 'Providing a number permits calls/texts from us regarding the message.',
       localOffice: 'Preferred Local Office',
       validationError: 'Please fill in all contact details.',
       back: 'Back',
@@ -77,6 +78,7 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
       fullName: 'Nombre Completo',
       emailAddress: 'Correo Electrónico',
       phone: 'Número de Teléfono',
+      phoneNotice: 'Proporcionar un número permite llamadas/mensajes de texto de nuestra parte sobre el mensaje.',
       localOffice: 'Oficina Local Preferida',
       validationError: 'Por favor, complete todos los datos de contacto.',
       back: 'Atrás',
@@ -114,6 +116,7 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
       fullName: 'Nome Completo',
       emailAddress: 'Endereço de E-mail',
       phone: 'Número de Telefone',
+      phoneNotice: 'Fornecer um número autoriza chamadas/mensagens nossas sobre a mensagem.',
       localOffice: 'Escritório Local Preferido',
       validationError: 'Por favor, preencha todos os detalhes de contato.',
       back: 'Voltar',
@@ -151,6 +154,7 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
       fullName: 'Ad Soyad',
       emailAddress: 'E-posta Adresi',
       phone: 'Telefon Numarası',
+      phoneNotice: 'Bir numara belirtmek, mesajınızla ilgili olarak tarafımızdan arama/kısa mesaj yapılmasına izin verir.',
       localOffice: 'Tercih Edilen Yerel Ofis',
       validationError: 'Lütfen tüm iletişim bilgilerini doldurun.',
       back: 'Geri',
@@ -346,6 +350,10 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
                 className="w-full px-4 py-3 border border-border-subtle rounded bg-bg-secondary focus:outline-none focus:border-accent transition-colors"
                 placeholder="E.g. 203-555-0199"
               />
+              {/* Phone communication consent disclosure */}
+              <p className="text-xs text-text-secondary mt-1 leading-normal">
+                {dict.phoneNotice}
+              </p>
             </div>
           </div>
 

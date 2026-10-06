@@ -1,0 +1,321 @@
+---
+/**
+ * Terms of Service (Spanish) - Associated Insurance Agency
+ * Términos de Servicio en Español que cubren el estado de agencia independiente,
+ * consentimiento de comunicaciones y TCPA, avisos de cobertura no vinculante en línea,
+ * limitación de responsabilidad y legislación aplicable de Connecticut.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'es';
+const t = useTranslations(lang);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Términos de Servicio | Associated Insurance Agency",
+  "description": "Términos legales de servicio y acuerdo de uso del sitio web para Associated Insurance Agency en Connecticut.",
+  "inLanguage": "es",
+  "publisher": {
+    "@type": "InsuranceAgency",
+    "name": "Associated Insurance Agency",
+    "telephone": "+1-203-748-9272",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "50 Newtown Road, Suite 1",
+      "addressLocality": "Danbury",
+      "addressRegion": "CT",
+      "postalCode": "06810",
+      "addressCountry": "US"
+    }
+  }
+};
+---
+
+<BaseLayout
+  title="Términos de Servicio | Associated Insurance Agency CT"
+  description="Lea los Términos de Servicio de Associated Insurance Agency. Conozca los términos de uso del sitio web, avisos sobre cotizaciones, consentimiento de comunicaciones y relaciones con aseguradoras."
+  structuredData={structuredData}
+>
+  <!-- Encabezado de Página / Hero -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/5 text-accent text-xs font-semibold uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-accent-gold animate-pulse"></span>
+        Cumplimiento Legal y Normativo
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        {t('terms.title')}
+      </h1>
+      <p class="text-sm sm:text-base text-text-secondary max-w-[65ch] mx-auto leading-relaxed">
+        {t('terms.subtitle')}
+      </p>
+      <div class="pt-2 flex items-center justify-center gap-3 text-xs text-text-muted">
+        <span>Fecha de Entrada en Vigor: Octubre 2026</span>
+        <span>•</span>
+        <span>Última Actualización: Octubre 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenido Principal de Términos -->
+  <section class="py-16 sm:py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Tabla de Contenidos Fija (Barra Lateral Desktop) -->
+        <aside class="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h2 class="text-sm font-bold text-accent uppercase tracking-wider border-b border-border-subtle pb-3 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              Índice de Contenido
+            </h2>
+            <nav class="space-y-1.5 text-xs text-text-secondary">
+              <a href="#aceptacion" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">1. Aceptación de los Términos</a>
+              <a href="#rol-agencia" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">2. Rol de Agencia Independiente</a>
+              <a href="#no-vinculante" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors text-red-600 font-semibold">3. Cobertura No Vinculante por la Web</a>
+              <a href="#cotizaciones" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">4. Cotizaciones y Tarifas</a>
+              <a href="#comunicaciones" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors text-accent font-semibold">5. Consentimiento Telefónico y SMS</a>
+              <a href="#aseguradoras" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">6. Compañías Aseguradoras Terceras</a>
+              <a href="#conducta-usuario" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">7. Conducta y Veracidad de Información</a>
+              <a href="#propiedad-intelectual" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">8. Propiedad Intelectual</a>
+              <a href="#limitacion-responsabilidad" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">9. Limitación de Responsabilidad</a>
+              <a href="#ley-aplicable" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">10. Ley Aplicable (Connecticut)</a>
+              <a href="#modificaciones" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">11. Modificaciones a los Términos</a>
+              <a href="#contacto" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">12. Información de Contacto</a>
+            </nav>
+          </div>
+
+          <!-- Asistencia Inmediata -->
+          <div class="bg-accent text-white p-6 rounded-xl shadow-md space-y-3">
+            <h3 class="text-sm font-bold text-accent-gold">¿Tiene Preguntas sobre su Cobertura?</h3>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Nuestros agentes de seguros con licencia están a su disposición para explicar términos de pólizas y normativas estatales.
+            </p>
+            <div class="pt-2">
+              <a href="tel:2037489272" class="inline-flex items-center gap-2 text-xs font-semibold text-white hover:text-accent-gold transition-colors">
+                <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg>
+                Llamar al (203) 748-9272
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Cláusulas de los Términos -->
+        <div class="lg:col-span-8 space-y-10 text-left">
+          
+          <!-- Resumen del Acuerdo -->
+          <div class="p-5 sm:p-6 bg-accent/5 border-l-4 border-accent-gold rounded-r-xl space-y-2">
+            <h2 class="text-base font-bold text-accent">Resumen del Acuerdo</h2>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Estos Términos de Servicio ("Términos") rigen su acceso y uso del sitio web, solicitudes de cotización en línea, formularios de contacto y servicios digitales operados por <strong>Associated Insurance Agency</strong> ("AIA", "nosotros" o "nuestro"). Al navegar por nuestro sitio o enviar formularios, usted acepta cumplir estos Términos y las normas aplicables.
+            </p>
+          </div>
+
+          <!-- Sección 1 -->
+          <article id="aceptacion" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 1</span>
+              Aceptación de los Términos
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Al acceder, navegar o utilizar este sitio web (<a href="https://aia-danbury.com/es" class="text-accent underline font-medium">https://aia-danbury.com/es</a>) y sus aplicaciones web asociadas, usted confirma que ha leído, comprendido y acordado quedar legalmente obligado por estos Términos. Si no está de acuerdo, debe suspender el uso del sitio de inmediato.
+            </p>
+          </article>
+
+          <!-- Sección 2 -->
+          <article id="rol-agencia" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 2</span>
+              Naturaleza de los Servicios y Rol de Agencia Independiente
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Associated Insurance Agency es una agencia y correduría de seguros independiente de servicio completo con sede principal en Danbury, Connecticut, y sucursales en Watertown y Bridgeport. Como agencia independiente, AIA representa a múltiples compañías aseguradoras terceras (incluyendo Safeco, Travelers, Progressive, The Hartford, Foremost, entre otras).
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              AIA no es una compañía aseguradora y no asume directamente el riesgo de suscripción de seguros. Todas las pólizas, coberturas, endosos, tarifas, exclusiones, resoluciones de reclamos y cancelaciones se rigen estrictamente por los contratos de póliza emitidos por las respectivas aseguradoras suscriptoras.
+            </p>
+          </article>
+
+          <!-- Sección 3: Aviso Regulatorio Crítico -->
+          <article id="no-vinculante" class="space-y-4 scroll-mt-28 p-6 bg-red-500/5 border border-red-500/20 rounded-xl">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-red-600 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126ZM12 15.75h.007v.008H12v-.008Z" />
+              </svg>
+              <div>
+                <h2 class="text-lg font-bold text-red-700">
+                  Sección 3: Aviso Obligatorio — Cobertura No Vinculante por Medios Electrónicos
+                </h2>
+                <p class="mt-2 text-sm text-red-950 font-medium leading-relaxed">
+                  <strong>LA COBERTURA NO PUEDE SER VINCULADA, MODIFICADA NI CANCELADA A TRAVÉS DE FORMULARIOS DEL SITIO WEB, CORREO ELECTRÓNICO, MENSAJE DE TEXTO O CORREO DE VOZ.</strong>
+                </p>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              El envío de una solicitud de cotización, consulta de formulario de contacto o mensaje electrónico no constituye cobertura vinculante ni modifica ninguna póliza de seguro existente. La cobertura solo entra en vigencia una vez que un agente de seguros con licencia autorizado haya confirmado directamente por escrito su emisión o modificación, y el pago inicial obligatorio haya sido procesado por la compañía aseguradora correspondiente.
+            </p>
+          </article>
+
+          <!-- Sección 4 -->
+          <article id="cotizaciones" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 4</span>
+              Cotizaciones, Estimaciones de Tarifas y Exactitud
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Todas las cotizaciones, comparaciones de primas y cálculos de tarifas en este sitio web son estimaciones no vinculantes basadas únicamente en la información preliminar provista por usted.
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Las tarifas finales y la elegibilidad de cobertura están sujetas a la aprobación de suscripción de la aseguradora, verificación del número de identificación vehicular (VIN), inspecciones de propiedad, informes C.L.U.E., antecedentes de conducción (MVR) y puntajes de seguros basados en crédito permitidos por la ley de Connecticut y federal. En caso de discrepancia, prevalecerá el contrato de póliza emitido por la compañía aseguradora.
+            </p>
+          </article>
+
+          <!-- Sección 5: Consentimiento Telefónico y SMS -->
+          <article id="comunicaciones" class="space-y-4 scroll-mt-28 p-6 bg-accent/5 border border-accent/15 rounded-xl">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a.75.75 0 0 1-.974-.943 4.464 4.464 0 0 0 1.04-2.887A8.19 8.19 0 0 1 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+              </svg>
+              <div>
+                <h2 class="text-lg font-bold text-accent">
+                  Sección 5: Consentimiento para Comunicaciones Telefónicas y Mensajes SMS (TCPA / 10DLC)
+                </h2>
+                <div class="mt-2 p-3 bg-white border border-border-subtle rounded-lg text-sm text-text-primary font-medium">
+                  "Proporcionar un número permite llamadas/mensajes de texto de nuestra parte sobre el mensaje."
+                </div>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Al proporcionar su número de teléfono en cualquier formulario de este sitio web, usted autoriza expresamente a Associated Insurance Agency y a sus representantes con licencia a comunicarse con usted mediante llamadas telefónicas y mensajes de texto (SMS) con respecto a su solicitud de cotización, servicio de póliza o mensaje.
+            </p>
+            <ul class="space-y-1.5 text-xs text-text-secondary pl-5 list-disc">
+              <li><strong>Frecuencia:</strong> La frecuencia de los mensajes varía según su consulta y gestiones de la póliza.</li>
+              <li><strong>Tarifas:</strong> Pueden aplicarse tarifas estándar de mensajes y datos de su operador telefónico.</li>
+              <li><strong>Baja (Opt-Out):</strong> Puede revocar su consentimiento en cualquier momento respondiendo <strong>STOP</strong> a cualquier mensaje de texto recibido.</li>
+              <li><strong>Asistencia:</strong> Responda <strong>HELP</strong> para obtener ayuda o llame a nuestra oficina en Danbury al <a href="tel:2037489272" class="text-accent underline font-semibold">(203) 748-9272</a>.</li>
+            </ul>
+          </article>
+
+          <!-- Sección 6 -->
+          <article id="aseguradoras" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 6</span>
+              Portales de Aseguradoras Terceras y Enlaces Externos
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Nuestro sitio web proporciona enlaces directos a portales externos de compañías aseguradoras para el pago de facturas en línea y reporte de reclamos (tales como Progressive, Safeco, Travelers y MetLife). Dichos sitios son propiedad de terceros y operados independientemente de AIA.
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              AIA no controla, respalda ni asume responsabilidad por el contenido, políticas de privacidad, procesamiento de pagos o disponibilidad operativa de sitios de terceros. Al acceder a dichos enlaces, usted se rige por los términos y avisos de privacidad de dichos servicios externos.
+            </p>
+          </article>
+
+          <!-- Sección 7 -->
+          <article id="conducta-usuario" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 7</span>
+              Conducta del Usuario y Obligación de Veracidad
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Usted se compromete a proporcionar información verdadera, exacta, actual y completa al enviar solicitudes de cotización o consultas. Proporcionar intencionalmente información falsa o engañosa puede anular la cobertura de seguro según la legislación estatal aplicable y puede constituir fraude de seguros.
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Queda terminantemente prohibido el uso de bots automatizados, rastreadores (spiders), scripts de scraping o herramientas no autorizadas para extraer datos del sitio o saturar nuestros sistemas con envíos masivos.
+            </p>
+          </article>
+
+          <!-- Sección 8 -->
+          <article id="propiedad-intelectual" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 8</span>
+              Derechos de Propiedad Intelectual
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Todo el contenido, diseño, textos, gráficos, logotipos, iconos, guías y código de software del sitio web son propiedad intelectual de Associated Insurance Agency y están protegidos por las leyes de propiedad intelectual y marcas de los Estados Unidos e internacionales.
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Se otorga una licencia limitada, revocable y no exclusiva para ver e imprimir páginas para uso personal y no comercial con el fin exclusivo de evaluar opciones de seguros.
+            </p>
+          </article>
+
+          <!-- Sección 9 -->
+          <article id="limitacion-responsabilidad" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 9</span>
+              Descargo de Garantías y Limitación de Responsabilidad
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              ESTE SITIO WEB Y TODO SU CONTENIDO SE PROPORCIONAN "TAL CUAL" Y "SEGÚN DISPONIBILIDAD" SIN GARANTÍAS DE NINGÚN TIPO, EXPRESAS O IMPLÍCITAS. AIA RECHAZA EXPRESAMENTE TODAS LAS GARANTÍAS, INCLUIDAS LAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN.
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              EN NINGÚN CASO ASSOCIATED INSURANCE AGENCY, SUS AGENTES LICENCIADOS O EMPLEADOS SERÁN RESPONSABLES POR DAÑOS DIRECTOS, INDIRECTOS, INCIDENTALES O CONSECUENTES DERIVADOS DEL USO O IMPOSIBILIDAD DE USO DE ESTE SITIO WEB.
+            </p>
+          </article>
+
+          <!-- Sección 10 -->
+          <article id="ley-aplicable" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 10</span>
+              Ley Aplicable y Jurisdicción
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Estos Términos de Servicio y cualquier controversia derivada del uso del sitio web se regirán e interpretarán de acuerdo con las leyes del <strong>Estado de Connecticut</strong>, sin tener en cuenta sus principios de conflicto de leyes.
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Cualquier acción legal o procedimiento se someterá exclusivamente a los tribunales estatales o federales con sede en el Condado de Fairfield o el Condado de Hartford, Connecticut.
+            </p>
+          </article>
+
+          <!-- Sección 11 -->
+          <article id="modificaciones" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 11</span>
+              Modificaciones a los Términos
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              AIA se reserva el derecho de modificar o actualizar estos Términos en cualquier momento sin previo aviso. Los cambios entrarán en vigencia inmediatamente tras su publicación en el sitio web con una fecha actualizada. El uso continuo del sitio constituye su aceptación de los Términos revisados.
+            </p>
+          </article>
+
+          <!-- Sección 12: Contacto -->
+          <article id="contacto" class="space-y-4 scroll-mt-28 pt-6 border-t border-border-subtle">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Sección 12</span>
+              Información de Contacto y Oficinas
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Si tiene preguntas con respecto a estos Términos de Servicio, puede comunicarse con nosotros:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Sede Danbury</span>
+                <span class="text-text-secondary block">50 Newtown Road, Suite 1</span>
+                <span class="text-text-secondary block">Danbury, CT 06810</span>
+                <a href="tel:2037489272" class="text-accent font-semibold hover:underline block pt-1">(203) 748-9272</a>
+              </div>
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Oficina Watertown</span>
+                <span class="text-text-secondary block">1157 Main Street</span>
+                <span class="text-text-secondary block">Watertown, CT 06795</span>
+                <a href="tel:8602747100" class="text-accent font-semibold hover:underline block pt-1">(860) 274-7100</a>
+              </div>
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Oficina Bridgeport</span>
+                <span class="text-text-secondary block">2465 Main Street</span>
+                <span class="text-text-secondary block">Bridgeport, CT 06606</span>
+                <a href="tel:2033675300" class="text-accent font-semibold hover:underline block pt-1">(203) 367-5300</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>

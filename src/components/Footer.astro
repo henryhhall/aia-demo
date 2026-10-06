@@ -16,6 +16,8 @@ const serviceUrl = getRelativeLocaleUrl(lang, 'service');
 const payBillUrl = getRelativeLocaleUrl(lang, 'pay-bill');
 const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
 const contactUrl = getRelativeLocaleUrl(lang, 'contact');
+const termsUrl = getRelativeLocaleUrl(lang, 'terms');
+const privacyUrl = getRelativeLocaleUrl(lang, 'privacy');
 const sitemapUrl = getRelativeLocaleUrl(lang, 'sitemap');
 ---
 
@@ -53,6 +55,8 @@ const sitemapUrl = getRelativeLocaleUrl(lang, 'sitemap');
           <li><a href={payBillUrl} class="hover:text-white transition-colors">{t('footer.payBill')}</a></li>
           <li><a href={quoteUrl} class="hover:text-white transition-colors">{t('footer.quote')}</a></li>
           <li><a href={contactUrl} class="hover:text-white transition-colors">{t('footer.contactLink')}</a></li>
+          <li><a href={termsUrl} class="hover:text-white transition-colors">{t('footer.terms')}</a></li>
+          <li><a href={privacyUrl} class="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
           <li><a href={sitemapUrl} class="hover:text-white transition-colors">{t('footer.sitemap')}</a></li>
         </ul>
       </div>
@@ -107,6 +111,14 @@ const sitemapUrl = getRelativeLocaleUrl(lang, 'sitemap');
         <p>Copyright &copy; {currentYear} Associated Insurance Agency. {t('footer.copyright')}</p>
       </div>
       <div class="flex flex-wrap items-center gap-4 text-[11px]">
+        <a href={privacyUrl} class="text-zinc-400 hover:text-white transition-colors">
+          {t('footer.privacy')}
+        </a>
+        <span class="text-zinc-700">•</span>
+        <a href={termsUrl} class="text-zinc-400 hover:text-white transition-colors">
+          {t('footer.terms')}
+        </a>
+        <span class="text-zinc-700">•</span>
         <a href={sitemapUrl} class="text-zinc-400 hover:text-white transition-colors">
           {t('footer.sitemap')}
         </a>

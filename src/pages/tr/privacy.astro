@@ -1,0 +1,334 @@
+---
+/**
+ * Privacy Policy (Turkish) - Associated Insurance Agency
+ * Türkçe Gizlilik Politikası: Bağımsız sigorta acentesi veri işleme ilkeleri,
+ * GLBA (Gramm-Leach-Bliley Act) tüketici finansal bildirimleri, sigorta şirketleri ile veri paylaşımı
+ * ve sıkı 10DLC / SMS mobil gizlilik kuralları.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Gizlilik Politikası | Associated Insurance Agency",
+  "description": "Associated Insurance Agency gizlilik politikası ve GLBA tüketici finansal gizlilik bildirimi (Connecticut).",
+  "inLanguage": "tr",
+  "publisher": {
+    "@type": "InsuranceAgency",
+    "name": "Associated Insurance Agency",
+    "telephone": "+1-203-748-9272",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "50 Newtown Road, Suite 1",
+      "addressLocality": "Danbury",
+      "addressRegion": "CT",
+      "postalCode": "06810",
+      "addressCountry": "US"
+    }
+  }
+};
+---
+
+<BaseLayout
+  title="Gizlilik Politikası | Associated Insurance Agency CT"
+  description="Associated Insurance Agency Gizlilik Politikasını inceleyin. Kişisel bilgilerinizin korunması, GLBA sigorta finansal gizliliği ve SMS iletişim güvenliği hakkında bilgi alın."
+  structuredData={structuredData}
+>
+  <!-- Sayfa Başlığı / Hero -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-accent/5 text-accent text-xs font-semibold uppercase tracking-wider">
+        <span class="w-2 h-2 rounded-full bg-accent-gold animate-pulse"></span>
+        Gizlilik ve Veri Koruma Bildirimi
+      </div>
+      <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
+        {t('privacy.title')}
+      </h1>
+      <p class="text-sm sm:text-base text-text-secondary max-w-[65ch] mx-auto leading-relaxed">
+        {t('privacy.subtitle')}
+      </p>
+      <div class="pt-2 flex items-center justify-center gap-3 text-xs text-text-muted">
+        <span>Yürürlük Tarihi: Ekim 2026</span>
+        <span>•</span>
+        <span>Son Güncelleme: Ekim 2026</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gizlilik Politikası Ana İçeriği -->
+  <section class="py-16 sm:py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Sabit İçindekiler Tablosu (Masaüstü Kenar Çubuğu) -->
+        <aside class="hidden lg:block lg:col-span-4 sticky top-28 space-y-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+            <h2 class="text-sm font-bold text-accent uppercase tracking-wider border-b border-border-subtle pb-3 flex items-center gap-2">
+              <span class="w-1.5 h-4 bg-accent-gold rounded-full"></span>
+              İçindekiler
+            </h2>
+            <nav class="space-y-1.5 text-xs text-text-secondary">
+              <a href="#genel-bakis" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">1. Genel Bakış ve GLBA Bildirimi</a>
+              <a href="#toplanan-bilgiler" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">2. Topladığımız Bilgiler</a>
+              <a href="#mobil-sms-gizliligi" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors text-accent font-semibold">3. Mobil ve SMS Gizliliği</a>
+              <a href="#kullanim-amaclari" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">4. Bilgilerin Kullanım Amaçları</a>
+              <a href="#bilgi-paylasimi" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">5. Sigorta Şirketleri ile Paylaşım</a>
+              <a href="#cerezler" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">6. Çerezler ve Teknik Günlükler</a>
+              <a href="#veri-guvenligi" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">7. Veri Güvenliği ve Önlemler</a>
+              <a href="#saklama-sureleri" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">8. Yasal Saklama Süreleri</a>
+              <a href="#kullanici-haklari" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">9. Gizlilik Haklarınız</a>
+              <a href="#cocuk-gizliligi" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">10. Çocukların Gizliliği</a>
+              <a href="#degisiklikler" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">11. Politika Değişiklikleri</a>
+              <a href="#iletisim-sorumlusu" class="block py-1.5 px-2.5 rounded hover:bg-bg-secondary hover:text-accent font-medium transition-colors">12. Gizlilik İletişim Bilgileri</a>
+            </nav>
+          </div>
+
+          <!-- Hızlı Destek Kutusu -->
+          <div class="bg-accent text-white p-6 rounded-xl shadow-md space-y-3">
+            <h3 class="text-sm font-bold text-accent-gold">Gizliliğiniz Hakkında Sorularınız mı Var?</h3>
+            <p class="text-xs text-zinc-300 leading-relaxed">
+              Lisanslı sigorta ekibimiz kişisel finansal verilerinizin (NPI) korunmasına büyük önem verir. Danbury ofisimizle iletişime geçebilirsiniz.
+            </p>
+            <div class="pt-2">
+              <a href="tel:2037489272" class="inline-flex items-center gap-2 text-xs font-semibold text-white hover:text-accent-gold transition-colors">
+                <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                </svg>
+                (203) 748-9272
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Maddeler -->
+        <div class="lg:col-span-8 space-y-10 text-left">
+          
+          <!-- Taahhüt Özeti -->
+          <div class="p-5 sm:p-6 bg-accent/5 border-l-4 border-accent-gold rounded-r-xl space-y-2">
+            <h2 class="text-base font-bold text-accent">Gizliliğinize Olan Bağlılığımız</h2>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              <strong>Associated Insurance Agency</strong> ("AIA", "biz" veya "bizim") güveninize değer verir. Danbury, Watertown ve Bridgeport, Connecticut şubelerimizde bağımsız bir sigorta acentesi olarak poliçe teklifleri hazırlamak, teminat başlatmak ve hizmet sunmak için gerekli kişisel ve finansal bilgileri titizlikle işleriz. Kişisel bilgilerinizi veya telefon numaralarınızı hiçbir zaman üçüncü taraf pazarlamacılara satmayız.
+            </p>
+          </div>
+
+          <!-- Madde 1 -->
+          <article id="genel-bakis" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 1</span>
+              Genel Bakış ve Gramm-Leach-Bliley Yasası (GLBA) Bildirimi
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Bu Gizlilik Politikası, Associated Insurance Agency'nin web sitemiz (<a href="https://aia-danbury.com/tr" class="text-accent underline font-medium">https://aia-danbury.com/tr</a>), teklif formları, telefon görüşmeleri ve yüz yüze danışmanlıklar aracılığıyla kamuya açık olmayan kişisel finansal bilgileri (NPI) nasıl topladığını, koruduğunu ve işlediğini açıklar.
+            </p>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Gramm-Leach-Bliley Yasası (GLBA) Başlık V ve Connecticut Sigorta Departmanı mevzuatı uyarınca, lisanslı sigorta acenteleri de dahil olmak üzere finansal kuruluşların gizlilik uygulamalarını tüketicilere bildirmesi yasal bir zorunluluktur.
+            </p>
+          </article>
+
+          <!-- Madde 2 -->
+          <article id="toplanan-bilgiler" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 2</span>
+              Topladığımız Bilgiler
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Sigorta riskinizi değerlendirmek ve anlaşmalı sigorta şirketlerinden en uygun teklifleri alabilmek için aşağıdaki veri kategorilerini toplarız:
+            </p>
+            <div class="space-y-2.5 text-xs text-text-secondary">
+              <div class="p-3 bg-bg-secondary rounded-lg border border-border-subtle">
+                <strong class="text-text-primary block mb-0.5">İletişim Bilgileri</strong>
+                Ad soyad, ikamet ve posta adresi, e-posta adresi, telefon numaraları ve tercih edilen şube.
+              </div>
+              <div class="p-3 bg-bg-secondary rounded-lg border border-border-subtle">
+                <strong class="text-text-primary block mb-0.5">Sigorta ve Risk Verileri</strong>
+                Araç Şasi Numarası (VIN), sürücü geçmişi, gayrimenkul yaşı ve yapı özellikleri, ipotek alacaklıları, önceki sigorta şirketi ve geçmiş hasar kayıtları.
+              </div>
+              <div class="p-3 bg-bg-secondary rounded-lg border border-border-subtle">
+                <strong class="text-text-primary block mb-0.5">Ticari Bilgiler</strong>
+                Şirket unvanı, işveren vergi numarası (FEIN), bordro tutarları, brüt satışlar ve ticari faaliyet sınıflandırmaları.
+              </div>
+              <div class="p-3 bg-bg-secondary rounded-lg border border-border-subtle">
+                <strong class="text-text-primary block mb-0.5">Teknik Güvenlik Verileri</strong>
+                IP adresi, tarayıcı türü, işletim sistemi, erişim zaman damgaları ve istenmeyen bot mesajlarını önlemeye yönelik honeypot form parametreleri.
+              </div>
+            </div>
+          </article>
+
+          <!-- Madde 3: Mobil ve SMS Gizliliği (10DLC / CTIA) -->
+          <article id="mobil-sms-gizliligi" class="space-y-4 scroll-mt-28 p-6 bg-accent/5 border border-accent/20 rounded-xl">
+            <div class="flex items-start gap-3">
+              <svg class="w-6 h-6 text-accent shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" />
+              </svg>
+              <div>
+                <h2 class="text-lg font-bold text-accent">
+                  Madde 3: Kesin Mobil İletişim ve SMS Gizlilik Taahhüdü (10DLC / CTIA)
+                </h2>
+                <div class="mt-2 p-3 bg-white border border-border-subtle rounded-lg text-sm text-text-primary font-medium leading-relaxed">
+                  "Pazarlama/promosyon amacıyla üçüncü taraflarla/iştiraklerle hiçbir mobil bilgi paylaşılmayacaktır. Diğer tüm kategoriler, kısa mesaj göndericisi katılım verilerini ve onayını hariç tutar; bu bilgiler hiçbir üçüncü tarafla paylaşılmayacaktır."
+                </div>
+              </div>
+            </div>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Web sitemizdeki formlarda belirttiğimiz üzere: <em>"Bir numara belirtmek, mesajınızla ilgili olarak tarafımızdan arama/kısa mesaj yapılmasına izin verir."</em>
+            </p>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Cep telefonu numaranız ve SMS onayınız <strong>yalnızca</strong> Associated Insurance Agency tarafından teklif talepleriniz, poliçe işlemleriniz ve yenilemeleriniz hakkında sizinle doğrudan iletişim kurmak amacıyla kullanılır. Telefon bilgilerinizi üçüncü taraf pazarlama ağlarına veya veri aracılarına asla satmayız veya kiralamayız.
+            </p>
+            <ul class="space-y-1 text-xs text-text-secondary pl-5 list-disc">
+              <li>İstediğiniz zaman <strong>STOP</strong> yazarak SMS iletişiminden çıkabilirsiniz.</li>
+              <li>Bilgi ve destek almak için <strong>HELP</strong> yazabilirsiniz.</li>
+            </ul>
+          </article>
+
+          <!-- Madde 4 -->
+          <article id="kullanim-amaclari" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 4</span>
+              Bilgilerin Kullanım Amaçları
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Toplanan bilgileri yalnızca meşru sigorta aracılık işlemleri doğrultusunda kullanırız:
+            </p>
+            <ul class="space-y-2 text-xs sm:text-sm text-text-secondary pl-5 list-disc">
+              <li><strong>Fiyat Araştırması:</strong> Sizin adınıza en uygun poliçe ve primi bulmak için anlaşmalı sigorta şirketlerine ön risk verilerini iletmek.</li>
+              <li><strong>Poliçe Hizmetleri:</strong> Araç veya sürücü ekleme, sigorta sertifikası (COI) düzenleme ve prim ödeme desteği sağlamak.</li>
+              <li><strong>Doğrudan İletişim:</strong> Teklif ve poliçelerinizle ilgili olarak telefon, e-posta veya SMS yoluyla bilgilendirme yapmak.</li>
+              <li><strong>Güvenlik ve Dolandırıcılık Önleme:</strong> Sistemlerimizi kötü amaçlı yazılımlardan ve yetkisiz erişimlerden korumak.</li>
+              <li><strong>Yasal Uyumluluk:</strong> Connecticut Sigorta Departmanı düzenlemelerine ve denetim standartlarına tam uyum sağlamak.</li>
+            </ul>
+          </article>
+
+          <!-- Madde 5 -->
+          <article id="bilgi-paylasimi" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 5</span>
+              Sigorta Şirketleri ile Paylaşım ve Üçüncü Taraflar
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Bağımsız bir acente olarak bilgilerinizi yalnızca sigorta işlemlerinizin tamamlanması için zorunlu olan taraflarla paylaşırız:
+            </p>
+            <ul class="space-y-2 text-xs sm:text-sm text-text-secondary pl-5 list-disc">
+              <li><strong>Sigorta Şirketleri:</strong> Teklif hazırlamak ve poliçe düzenlemek amacıyla (Safeco, Travelers, Progressive, The Hartford, Foremost vb.).</li>
+              <li><strong>Tüketici Raporlama Kuruluşları:</strong> Sigorta şirketlerince yapılan sürücü belgesi (MVR) ve hasar geçmişi (C.L.U.E.) sorgulamaları.</li>
+              <li><strong>Teknoloji Hizmet Sağlayıcıları:</strong> Acente yönetim sistemlerimizi ve güvenli veri tabanlarımızı barındıran yetkili yazılım ortaklarımız.</li>
+              <li><strong>Resmi Makamlar:</strong> Yasal mahkeme celpleri veya Connecticut Sigorta Departmanı resmi talepleri doğrultusunda.</li>
+            </ul>
+            <p class="text-xs font-semibold text-accent pt-1">
+              KİŞİSEL VERİLERİNİZİ TİCARİ REKLAM AMACIYLA ÜÇÜNCÜ TARAFLARA SATMIYOR VEYA KİRALAMIYORUZ.
+            </p>
+          </article>
+
+          <!-- Madde 6 -->
+          <article id="cerezler" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 6</span>
+              Çerezler ve Teknik Günlükler
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Web sitemiz sayfa geçişlerinin düzgün çalışması ve sahte form gönderimlerinin engellenmesi için standart oturum çerezleri kullanır. Üçüncü taraf reklam amaçlı izleme çerezleri barındırmamaktayız.
+            </p>
+          </article>
+
+          <!-- Madde 7 -->
+          <article id="veri-guvenligi" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 7</span>
+              Veri Güvenliği ve Alınan Önlemler
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              AIA, GLBA standartları ve Connecticut Veri Gizliliği Yasası (CTDPA) gerekliliklerine uygun fiziksel, elektronik ve idari güvenlik önlemleri uygular. Web sitemizdeki tüm iletişim SSL/TLS şifrelemesi ile korunmaktadır ve verilere erişim yalnızca lisanslı temsilcilerle sınırlıdır.
+            </p>
+          </article>
+
+          <!-- Madde 8 -->
+          <article id="saklama-sureleri" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 8</span>
+              Yasal Saklama Süreleri
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Sigorta acenteleri eyalet ve federal yasalara göre müşteri ve poliçe kayıtlarını belirli bir süre saklamakla yükümlüdür (poliçe bitimi veya iptalini takiben genellikle 5 ila 7 yıl).
+            </p>
+          </article>
+
+          <!-- Madde 9 -->
+          <article id="kullanici-haklari" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 9</span>
+              Gizlilik Haklarınız
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Yasal sigorta saklama gerekliliklerine tabi olmak kaydıyla:
+            </p>
+            <ul class="space-y-1.5 text-xs sm:text-sm text-text-secondary pl-5 list-disc">
+              <li>Dosyanızdaki kişisel bilgilere erişim talep etme hakkına sahipsiniz.</li>
+              <li>Hatalı veya güncelliğini yitirmiş bilgilerin düzeltilmesini isteyebilirsiniz.</li>
+              <li>Tanıtım amaçlı iletişimlerden dilediğiniz an ayrılabilirsiniz (STOP yazarak).</li>
+            </ul>
+          </article>
+
+          <!-- Madde 10 -->
+          <article id="cocuk-gizliligi" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 10</span>
+              Çocukların Gizliliği (COPPA)
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Web sitemiz 13 yaş altındaki çocuklara yönelik değildir ve bilerek çocuklardan veri toplanmaz. 13 yaşından küçük birinin veri sağladığını düşünüyorsanız lütfen bizimle iletişime geçin.
+            </p>
+          </article>
+
+          <!-- Madde 11 -->
+          <article id="degisiklikler" class="space-y-3 scroll-mt-28">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 11</span>
+              Gizlilik Politikasında Değişiklikler
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              AIA bu Gizlilik Politikasını zaman zaman güncelleyebilir. Değişiklikler bu sayfada yayımlandığı anda yürürlüğe girer.
+            </p>
+          </article>
+
+          <!-- Madde 12: İletişim -->
+          <article id="iletisim-sorumlusu" class="space-y-4 scroll-mt-28 pt-6 border-t border-border-subtle">
+            <h2 class="text-xl font-bold text-accent flex items-center gap-2">
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-accent/10 text-accent">Madde 12</span>
+              Gizlilik İletişim Bilgileri ve Şubelerimiz
+            </h2>
+            <p class="text-sm text-text-secondary leading-relaxed">
+              Gizlilik Politikamızla ilgili sorularınız ve talepleriniz için bize ulaşabilirsiniz:
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Danbury Merkez</span>
+                <span class="text-text-secondary block">50 Newtown Road, Suite 1</span>
+                <span class="text-text-secondary block">Danbury, CT 06810</span>
+                <a href="tel:2037489272" class="text-accent font-semibold hover:underline block pt-1">(203) 748-9272</a>
+              </div>
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Watertown Şubesi</span>
+                <span class="text-text-secondary block">1157 Main Street</span>
+                <span class="text-text-secondary block">Watertown, CT 06795</span>
+                <a href="tel:8602747100" class="text-accent font-semibold hover:underline block pt-1">(860) 274-7100</a>
+              </div>
+              <div class="p-4 bg-bg-secondary rounded-lg border border-border-subtle space-y-1 text-xs">
+                <span class="font-bold text-accent block">Bridgeport Şubesi</span>
+                <span class="text-text-secondary block">2465 Main Street</span>
+                <span class="text-text-secondary block">Bridgeport, CT 06606</span>
+                <a href="tel:2033675300" class="text-accent font-semibold hover:underline block pt-1">(203) 367-5300</a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+</BaseLayout>
