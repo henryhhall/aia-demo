@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/pt/commercial/general-liability#service",
+      "name": "Seguro de Responsabilidade Civil Geral Comercial Connecticut",
+      "serviceType": "Commercial General Liability",
+      "description": "Seguro de Responsabilidade Civil Geral Comercial (CGL) e Apólices de Donos de Negócios (BOP) em Connecticut. Cobertura para danos corporais, materiais e emissão de Certificados de Seguro (COI) no mesmo dia.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://aia-danbury.com/pt"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Seguros Comerciais",
+          "item": "https://aia-danbury.com/pt/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Responsabilidade Geral",
+          "item": "https://aia-danbury.com/pt/commercial/general-liability"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O seguro de Responsabilidade Civil Geral é obrigatório por lei em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Embora a legislação de Connecticut não o exija de forma universal para todas as empresas, ele é indispensável na prática. Proprietários de imóveis comerciais exigem apólice antes de assinar contratos de locação, empreiteiros gerais exigem prova de cobertura (COI) para permitir o trabalho em obras e as ordens de licenciamento exigem seguro ativo."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Com que rapidez a Associated Insurance Agency emite um Certificado de Seguro (COI)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para segurados ativos, a Associated Insurance Agency emite Certificados de Seguro padrão ACORD 25 no mesmo dia, frequentemente em minutos. Isso permite que empreiteiros e prestadores de serviços fechem contratos e acessem locais de trabalho sem atrasos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais são os limites padrão de apólice em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O padrão adotado no mercado de Connecticut é de $1,000,000 por ocorrência e $2,000,000 de limite agregado total ($1M/$2M). Empreiteiros com contratos maiores costumam contratar apólices Umbrella Comercial para elevar a proteção para $5,000,000 ou mais."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Qual é a diferença entre uma apólice isolada e um pacote BOP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uma apólice avulsa cobre estritamente processos judiciais de terceiros por lesões corporais e danos materiais. A Apólice de Dono de Negócio (BOP) reúne Responsabilidade Geral, Seguro de Propriedade Comercial e Lucros Cessantes em um pacote integrado com tarifas reduzidas."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Seguro de Responsabilidade Civil Geral CT | AIA Danbury"
+  description="Seguro abrangente de Responsabilidade Civil Geral em Connecticut. Certificados COI no mesmo dia, proteção contra processos e suporte em português."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/pt" class="hover:text-accent transition-colors">Início</a>
+      <span>/</span>
+      <a href="/pt/commercial" class="hover:text-accent transition-colors">Seguros Comerciais</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Responsabilidade Geral</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Proteção para Negócios em Connecticut
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Seguro de Responsabilidade Civil Geral Comercial em Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Proteja o patrimônio de sua empresa, seu contrato de aluguel comercial e sua reputação profissional contra processos de terceiros por lesões corporais, danos materiais e custos advocatícios. Emissão ágil de Certificados COI no mesmo dia.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/pt/quote?type=commercial&coverage=gl"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Solicitar Cotação de Responsabilidade Geral
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Ligue para (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">Mesmo Dia</span>
+          <span class="text-xs text-text-muted">Emissão de Certificados COI</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">$1M / $2M</span>
+          <span class="text-xs text-text-muted">Limites Padrão de Cobertura</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">Seguradoras de Primeira Linha</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">3 Agências</span>
+          <span class="text-xs text-text-muted">Danbury, Watertown, Bridgeport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- What is GL / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            O que cobre o Seguro de Responsabilidade Civil Geral em Connecticut?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              O seguro CGL protege os proprietários de empresas em Connecticut contra processos de terceiros por lesões corporais, danos acidentais à propriedade, incidentes de escorregões e quedas em instalações comerciais ou canteiros de obras. A apólice financia despesas hospitalares, advogados de defesa e indenizações fixadas pela justiça.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Se um cliente escorrega em sua loja ou sua equipe de pintura ou encanamento causa uma infiltração acidental em um prédio comercial em Danbury, um único processo judicial pode fechar as portas de uma empresa desprotegida. A cobertura CGL é o alicerce de qualquer negócio em Connecticut.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Exigências de Locadores e Empreiteiros
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Em Connecticut, praticamente nenhum proprietário entrega as chaves de um ponto comercial sem comprovação de ao menos $1,000,000 em Responsabilidade Geral nomeando-o como <strong>Segurado Adicional</strong> (Additional Insured).
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Da mesma forma, empreiteiros gerais exigem que eletricistas, carpinteiros, pedreiros e técnicos de HVAC apresentem um certificado ACORD ativo antes de pisar na obra.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Dimensões de Cobertura da Apólice</h2>
+          <p class="text-sm text-text-secondary">Conheça os itens fundamentais garantidos pelo seu seguro comercial.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Lesões Corporais a Terceiros</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cobre atendimento médico, hospitalização e indenizações se um cliente, visitante ou entregador se acidentar fisicamente em seu estabelecimento.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Danos Materiais a Terceiros</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Paga reparos ou reposição caso você ou seus colaboradores danifiquem acidentalmente bens ou imóveis do cliente durante a execução dos serviços.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Operações Concluídas e Produtos</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Garante proteção após a conclusão do trabalho. Se um cano instalado vazar ou uma estrutura ceder semanas depois, a apólice assume o sinistro.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Danos Morais e Publicitários</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protege contra processos civis por uso indevido de direitos autorais em campanhas, calúnia, difamação comercial ou violação involuntária de privacidade.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Danos ao Imóvel Locado</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cobre danos por incêndio ou fumaça no ponto comercial, escritório ou galpão que sua empresa aluga, cumprindo as exigências do locador.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Honorários de Defesa Jurídica</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              As despesas com advogados de defesa são pagas além do limite da apólice na maioria dos contratos, preservando o valor total de indenização.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Perguntas Frequentes</h2>
+          <p class="text-sm text-text-secondary">Dúvidas comuns sobre o seguro de Responsabilidade Geral em Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">O seguro de Responsabilidade Civil Geral é obrigatório por lei em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Embora a legislação de Connecticut não o exija de forma universal para todas as empresas, ele é indispensável na prática. Proprietários de imóveis comerciais exigem apólice antes de assinar contratos de locação, empreiteiros gerais exigem prova de cobertura (COI) para permitir o trabalho em obras e as ordens de licenciamento exigem seguro ativo.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Com que rapidez a Associated Insurance Agency emite um Certificado de Seguro (COI)?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Para segurados ativos, a Associated Insurance Agency emite Certificados de Seguro padrão ACORD 25 no mesmo dia, frequentemente em minutos. Isso permite que empreiteiros e prestadores de serviços fechem contratos e acessem locais de trabalho sem atrasos.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Quais são os limites padrão de apólice em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              O padrão adotado no mercado de Connecticut é de $1,000,000 por ocorrência e $2,000,000 de limite agregado total ($1M/$2M). Empreiteiros com contratos maiores costumam contratar apólices Umbrella Comercial para elevar a proteção para $5,000,000 ou mais.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Qual é a diferença entre uma apólice isolada e um pacote BOP?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Uma apólice avulsa cobre estritamente processos judiciais de terceiros por lesões corporais e danos materiais. A Apólice de Dono de Negócio (BOP) reúne Responsabilidade Geral, Seguro de Propriedade Comercial e Lucros Cessantes em um pacote integrado com tarifas reduzidas.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Precisa de uma Cotação ou Certificado COI Rápido?</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Nossa equipe fala português e compara mais de 20 seguradoras para encontrar o melhor preço para sua empresa em Danbury, Watertown e Bridgeport.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/pt/quote?type=commercial&coverage=gl"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Cotar Seguro Comercial
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

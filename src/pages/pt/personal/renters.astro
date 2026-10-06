@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/pt/personal/renters#service",
+      "name": "Seguro de Inquilinos Connecticut",
+      "serviceType": "Renters Insurance",
+      "description": "Seguro acessível para inquilinos e locatários em Connecticut. Proteção a custo de reposição para móveis, eletrônicos, responsabilidade civil e despesas de moradia a partir de $15/mês.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://aia-danbury.com/pt"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Seguros Pessoais",
+          "item": "https://aia-danbury.com/pt/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Seguro de Inquilinos",
+          "item": "https://aia-danbury.com/pt/personal/renters"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Por que os proprietários e administradoras em Connecticut exigem seguro de inquilino?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A quase totalidade das administradoras de condomínios e locadores em Connecticut exige uma apólice de seguro de inquilino com pelo menos $100,000 em responsabilidade civil antes de entregar as chaves. Isso garante que, se você acidentalmente causar um vazamento de água ou fogo na cozinha, o seguro cobrirá os reparos sem litígios caros contra o proprietário do prédio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O seguro do condomínio ou do dono do prédio cobre minhas coisas?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O seguro comercial do proprietário cobre exclusivamente as paredes externas, telhado, áreas comuns e estrutura física. Ele oferece zero cobertura para seus móveis, roupas, computadores, televisores ou aparelhos. Sem um seguro de inquilino (HO-4), você terá que pagar tudo do próprio bolso se houver incêndio, furto ou vazamento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto custa o seguro de inquilino por mês em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É uma das apólices mais acessíveis, custando entre $15 e $25 por mês ($180–$250 por ano) para uma cobertura de $25,000 a $40,000 em bens pessoais e $100,000 a $300,000 em responsabilidade civil. Ao combinar com o seguro do seu carro, o desconto concedido no veículo cobre quase o valor inteiro do seguro de inquilino."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Meus pertences continuam protegidos se forem roubados fora do meu apartamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim! O seguro de inquilino possui cobertura mundial para bens fora da residência. Se seu laptop for furtado do porta-malas do carro ou sua bagagem sumir em um aeroporto, a apólice cobre a reposição, descontada a franquia."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  lang="pt"
+  title="Seguro de Inquilinos em Connecticut | Cobertura para Aluguel | AIA"
+  description="Seguro acessível para quem aluga em CT. Proteja seus pertences e sua responsabilidade civil a partir de apenas $15 ao mês. Emissão rápida de apólices."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/pt" class="hover:text-accent transition-colors">Início</a>
+      <span>/</span>
+      <a href="/pt/personal" class="hover:text-accent transition-colors">Seguros Pessoais</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Seguro de Inquilinos</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Proteção para Locatários em Connecticut
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Seguro de Inquilinos em Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          O seguro do dono do imóvel protege o prédio dele — não as suas coisas. Proteja seus móveis, eletrônicos, roupas e sua responsabilidade civil a partir de apenas $15 por mês. Emissão imediata do comprovante para o seu contrato de locação.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/pt/quote?type=renters"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Cotar Seguro de Inquilino
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Ligar para (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">~$15 / Mês</span>
+          <span class="text-xs text-text-muted">Custo Médio em CT</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Mesmo Dia</span>
+          <span class="text-xs text-text-muted">Certificado para o Proprietário</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Valor de Novo</span>
+          <span class="text-xs text-text-muted">Reposição Sem Desvalorização</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Mundial</span>
+          <span class="text-xs text-text-muted">Proteção Contra Furto Fora de Casa</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- The Landlord Myth Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            O Mito do Seguro do Proprietário do Imóvel
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Muitos inquilinos em Connecticut acreditam equivocadamente que, se houver um incêndio no prédio ou o cano do apartamento de cima estourar, o seguro do proprietário pagará pelos móveis e roupas danificados. Na realidade, a apólice do proprietário cobre exclusivamente a estrutura física. Os inquilinos são 100% responsáveis legal e financeiramente por suas próprias posses.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            A apólice de inquilino (HO-4) resolve essa vulnerabilidade. Seja você morador de um apartamento em Danbury, Bridgeport ou Watertown, nossas apólices protegem seu estilo de vida por menos do que você gasta em um lanche de fim de semana.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Exigência do Contrato de Aluguel
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Praticamente todas as administradoras de imóveis em Connecticut exigem comprovante de seguro com pelo menos <strong>$100,000 em responsabilidade civil</strong> antes de entregar as chaves.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            A Associated Insurance Agency emite o certificado na hora, incluindo o nome do proprietário ou da imobiliária como <strong>Interessado Adicional (Interested Party)</strong> para você mudar sem contratempos.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">O Que Está Coberto no Seguro de Inquilinos?</h2>
+          <p class="text-sm text-text-secondary">Proteção completa para seus bens, sua moradia e sua tranquilidade jurídica.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Bens Pessoais (Custo de Reposição)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Paga o valor de novo para repor roupas, sofás, computadores, televisores e eletrodomésticos perdidos em incêndio, fumaça, vazamento de canos ou furto.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Responsabilidade Civil do Locatário</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protege você se um convidado escorregar no seu apartamento ou se uma torneira esquecida aberta causar infiltração no apartamento de baixo.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Despesas de Moradia Temporária</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Se o prédio for atingido por um incêndio ou encanamento estourado, o seguro paga seu hotel, aluguel temporário e alimentação durante as obras.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Proteção Fora do Domicílio</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Seus pertences estão segurados em qualquer lugar do mundo. Se sua bagagem for roubada em viagem ou o computador levado do carro, o seguro cobre.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Despesas Médicas para Terceiros</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cobre atendimento médico de emergência para convidados que sofram pequenos acidentes no seu apartamento, sem burocracia ou disputas judiciais.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Proteção Contra Furto de Identidade</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Endossos opcionais para restaurar seus documentos e cobrir custos jurídicos caso fraudadores usem seus dados de crédito indevidamente.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Perguntas Frequentes</h2>
+          <p class="text-sm text-text-secondary">Dúvidas comuns sobre o seguro de inquilino em Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Por que os proprietários e administradoras exigem seguro de inquilino?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              A quase totalidade das administradoras de condomínios e locadores em Connecticut exige uma apólice de seguro de inquilino com pelo menos $100,000 em responsabilidade civil antes de entregar as chaves. Isso garante que, se você acidentalmente causar um vazamento de água ou fogo na cozinha, o seguro cobrirá os reparos sem litígios caros contra o proprietário do prédio.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">O seguro do dono do prédio cobre minhas coisas?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Não. O seguro comercial do proprietário cobre exclusivamente as paredes externas, telhado, áreas comuns e estrutura física. Ele oferece zero cobertura para seus móveis, roupas, computadores, televisores ou aparelhos. Sem um seguro de inquilino (HO-4), você terá que pagar tudo do próprio bolso se houver incêndio, furto ou vazamento.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Quanto custa o seguro de inquilino por mês em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              É uma das apólices mais acessíveis, custando entre $15 e $25 por mês ($180–$250 por ano) para uma cobertura de $25,000 a $40,000 em bens pessoais e $100,000 a $300,000 em responsabilidade civil. Ao combinar com o seguro do seu carro, o desconto concedido no veículo cobre quase o valor inteiro do seguro de inquilino.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Meus pertences continuam protegidos se forem roubados fora de casa?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Sim! O seguro de inquilino possui cobertura mundial para bens fora da residência. Se seu laptop for furtado do porta-malas do carro ou sua bagagem sumir em um aeroporto, a apólice cobre a reposição, descontada a franquia.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Emita Seu Comprovante de Seguro Hoje Mesmo</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Atenda aos requisitos do seu contrato de aluguel em minutos. Ajudamos você a economizar combinando com seu seguro de carro.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/pt/quote?type=renters"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Cotar Seguro de Inquilino
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

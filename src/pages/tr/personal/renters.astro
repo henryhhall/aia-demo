@@ -1,0 +1,325 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/tr/personal/renters#service",
+      "name": "Kiracı Sigortası Connecticut",
+      "serviceType": "Renters Insurance",
+      "description": "Connecticut'ta uygun fiyatlı kiracı sigortası (HO-4). Kişisel eşyaların yeni alım bedeliyle karşılanması, kiracı sorumluluğu ve geçici barınma masrafları ayda 15 $'dan başlayan fiyatlarla.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://aia-danbury.com/tr"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bireysel Sigorta",
+          "item": "https://aia-danbury.com/tr/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Kiracı Sigortası",
+          "item": "https://aia-danbury.com/tr/personal/renters"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta ev sahipleri ve site yönetimleri neden kiracı sigortası talep eder?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Connecticut'taki neredeyse tüm apartman ve site yönetimleri, anahtarları teslim etmeden önce en az $100,000 kişisel sorumluluk teminatı içeren bir kiracı sigortası belgesi şart koşar. Bu sayede kiracının küveti taşırması veya mutfakta yağ yangını başlatması durumunda ortaya çıkan zararı sigorta öder ve bina sahibiyle pahalı hukuki ihtilaflar önlenir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Bina sahibinin sigortası benim eşyalarımı karşılar mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Ev sahibinin ticari bina sigortası yalnızca dış duvarları, çatıyı, merdiven boşluklarını ve fiziksel yapıyı kapsar. Mobilyalarınız, giysileriniz, bilgisayarlarınız veya televizyonunuz için hiçbir teminat sunmaz. Kiracı sigortanız (HO-4) olmadan, yangın veya hırsızlık durumunda tüm eşyalarınızı sıfırdan kendi cebinizden almak zorunda kalırsınız."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta kiracı sigortasının aylık maliyeti ne kadardır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kiracı sigortası son derece uygundur; $25,000 ile $40,000 kişisel eşya ve $100,000 ile $300,000 sorumluluk teminatı için ayda ortalama 15 $ ile 25 $ (yılda 180–250 $) arasındadır. Araç sigortanızla birleştirdiğinizde elde edeceğiniz araç indirimi, kiracı sigortasının maliyetini neredeyse tamamen amorti eder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Eşyalarım daire dışındayken çalınırsa sigorta geçerli midir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet! Kiracı sigortası dünya çapında daire dışı eşya koruması içerir. Dizüstü bilgisayarınız kilitli arabanızın bagajından çalınırsa veya seyahatte valiziniz kaybolursa, poliçeniz muafiyet tenziliyle hasarı karşılar."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  lang="tr"
+  title="Connecticut Kiracı Sigortası | Daire ve Eşya Güvencesi | AIA Danbury"
+  description="Connecticut'ta uygun fiyatlı kiracı sigortası. Eşyalarınızı ve kişisel sorumluluğunuzu ayda 15 $'dan başlayan fiyatlarla koruyun. Hızlı poliçe belgesi."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/tr" class="hover:text-accent transition-colors">Ana Sayfa</a>
+      <span>/</span>
+      <a href="/tr/personal" class="hover:text-accent transition-colors">Bireysel Sigorta</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Kiracı Sigortası</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Kiracı ve Daire Güvencesi
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Kiracı Sigortası (Renters)
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Ev sahibinizin sigortası binayı korur — eşyalarınızı değil. Mobilyalarınızı, elektronik cihazlarınızı, kıyafetlerinizi ve yasal sorumluluğunuzu ayda sadece 15 $'dan başlayan fiyatlarla güvenceye alın. Kira sözleşmeniz için aynı gün sigorta belgesi.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/tr/quote?type=renters"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Kiracı Sigortası Teklifi Al
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            (203) 748-9272 Numarasını Arayın
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">~15 $ / Ay</span>
+          <span class="text-xs text-text-muted">Ortalama CT Aylık Maliyeti</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Aynı Gün</span>
+          <span class="text-xs text-text-muted">Ev Sahibine İbraz Edilebilir Belge</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Yeni Değer</span>
+          <span class="text-xs text-text-muted">Eskime Payı Düşülmeden İkame</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Dünya Çapında</span>
+          <span class="text-xs text-text-muted">Ev Dışı Hırsızlık Teminatı</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- The Landlord Myth Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Ev Sahibi Sigortası Yanılgısı
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Connecticut'taki birçok kiracı, apartmanda yangın çıktığında veya üst kattan su sızdığında ev sahibinin sigortasının kendi eşyalarını da ödeyeceğini zanneder. Gerçekte mülk sahibinin poliçesi sadece beton yapıyı kapsar. Kiracılar kendi eşyalarından ve istem dışı verdikleri zararlardan hukuken %100 kendileri sorumludur.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Bir HO-4 kiracı poliçesi bu büyük riski tamamen ortadan kaldırır. Danbury, Bridgeport veya Watertown'da bir daire kiralıyor olun, poliçelerimiz aylık bir pizza siparişinden daha ucuza tam güvenlik sağlar.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Kira Sözleşmesi Zorunluluğu
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Connecticut'taki kurumsal emlak yönetimlerinin neredeyse tamamı, daire anahtarlarını vermeden önce en az <strong>$100,000 sorumluluk teminatlı</strong> kiracı sigortası poliçesi ister.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Associated Insurance Agency ev sahibinizin veya site yönetiminizin adını <strong>İlgili Taraf (Interested Party)</strong> olarak ekleyen resmi belgeyi anında hazırlar ve taşınmanızı kolaylaştırır.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Kiracı Sigortası Neleri Kapsar?</h2>
+          <p class="text-sm text-text-secondary">Eşyalarınız, sorumluluğunuz ve konaklama giderleriniz için tam güvence.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Kişisel Eşyalar (Yeni Alım Bedeli)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Yangın, duman, su borusu patlaması veya hırsızlık durumunda giysilerinizin, koltuklarınızın, bilgisayar ve TV'lerinizin yeni değerini öder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Kiracı Kişisel Sorumluluğu</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Dairenizde bir misafir kayıp düştüğünde ya da açık kalan bir musluk alt kattaki komşunun tavanına zarar verdiğinde tazminat ve avukat ücretlerini karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Kullanım Kaybı / Yaşam Giderleri</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Yangın veya donan boru sebebiyle daireniz oturulamaz hale gelirse onarım süresince otel konaklama, geçici kira ve yemek masraflarını karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Ev Dışı Dünya Çapında Koruma</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Eşyalarınız dünya genelinde güvencededir. Aracınızın kilitli bagajından bilgisayarınız veya havaalanında bavulunuz çalınırsa sigorta devreye girer.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Misafir Tıbbi Ödemeleri</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Evinizde ufak bir kaza geçiren misafirlerin acil tıbbi tedavi masraflarını mahkeme sürecine gerek kalmaksızın karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Kimlik Hırsızlığı Koruması</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Kişisel bilgilerinizin çalınması durumunda kimlik yenileme masraflarını ve yasal giderleri karşılayan opsiyonel ek teminattır.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Sıkça Sorulan Sorular</h2>
+          <p class="text-sm text-text-secondary">Connecticut kiracı sigortası hakkında sorular.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Site yönetimleri neden kiracı sigortası talep eder?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Connecticut'taki neredeyse tüm apartman ve site yönetimleri, anahtarları teslim etmeden önce en az $100,000 kişisel sorumluluk teminatı içeren bir kiracı sigortası belgesi şart koşar. Bu sayede kiracının küveti taşırması veya mutfakta yağ yangını başlatması durumunda ortaya çıkan zararı sigorta öder ve bina sahibiyle pahalı hukuki ihtilaflar önlenir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Bina sahibinin sigortası benim eşyalarımı karşılar mı?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Hayır. Ev sahibinin ticari bina sigortası yalnızca dış duvarları, çatıyı, merdiven boşluklarını ve fiziksel yapıyı kapsar. Mobilyalarınız, giysileriniz, bilgisayarlarınız veya televizyonunuz için hiçbir teminat sunmaz. Kiracı sigortanız (HO-4) olmadan, yangın veya hırsızlık durumunda tüm eşyalarınızı sıfırdan kendi cebinizden almak zorunda kalırsınız.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Connecticut'ta kiracı sigortasının aylık maliyeti ne kadardır?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Kiracı sigortası son derece uygundur; $25,000 ile $40,000 kişisel eşya ve $100,000 ile $300,000 sorumluluk teminatı için ayda ortalama 15 $ ile 25 $ (yılda 180–250 $) arasındadır. Araç sigortanızla birleştirdiğinizde elde edeceğiniz araç indirimi, kiracı sigortasının maliyetini neredeyse tamamen amorti eder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Eşyalarım daire dışındayken çalınırsa sigorta geçerli midir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Evet! Kiracı sigortası dünya çapında daire dışı eşya koruması içerir. Dizüstü bilgisayarınız kilitli arabanızın bagajından çalınırsa veya seyahatte valiziniz kaybolursa, poliçeniz muafiyet tenziliyle hasarı karşılar.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Kira Sözleşmesi Sigorta Belgenizi Bugün Alın</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Taşınma işlemlerinizi geciktirmeyin. Dakikalar içinde kira sözleşmesine uygun sigorta belgenizi hazırlayalım.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/tr/quote?type=renters"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Kiracı Teklifi Al
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

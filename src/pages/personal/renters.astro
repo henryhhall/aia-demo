@@ -1,0 +1,349 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/personal/renters#service",
+      "name": "Renters and Tenant Insurance Connecticut",
+      "serviceType": "Renters Insurance",
+      "description": "Affordable renters and tenant insurance (HO-4) in Connecticut. Personal property replacement cost, apartment liability, and loss of use coverage starting at $15/month.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aia-danbury.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Personal Insurance",
+          "item": "https://aia-danbury.com/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Renters Insurance",
+          "item": "https://aia-danbury.com/personal/renters"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why do Connecticut landlords and property managers require renters insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most apartment communities and landlords in Connecticut require tenants to carry at least $100,000 in personal liability before lease signing. This guarantees that if a tenant accidentally causes water damage from an overflowing tub or starts a kitchen grease fire, the tenant's insurance pays for repairs rather than forcing an expensive dispute or claim against the landlord's policy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does my landlord's building insurance cover any of my belongings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. A landlord's commercial property policy covers only the exterior walls, roof, structural framing, and common stairwells. It provides zero coverage for your furniture, clothing, computers, TVs, or personal items. Without a renters policy (HO-4), you must pay 100% out-of-pocket to replace your belongings after a fire, storm, or burglary."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does renters insurance cost per month in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Renters insurance is extremely affordable, typically costing between $15 and $25 per month ($180–$250/year) for $25,000 to $40,000 in personal property protection and $100,000 to $300,000 in liability coverage. When bundled with your auto policy, multi-policy discounts often offset nearly the entire cost of the renters policy."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are my belongings covered if they are stolen outside my apartment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes! Renters insurance includes worldwide off-premises personal property coverage. If your laptop or luggage is stolen from your locked car, or your bicycle is stolen outside a coffee shop, your renters policy covers the loss subject to your deductible."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Connecticut Renters Insurance | Apartment Coverage & Rates | AIA Danbury"
+  description="Affordable renters insurance in CT. Protect your furniture, electronics, and personal liability starting at $15/month. Fast lease-compliant policies."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/" class="hover:text-accent transition-colors">Home</a>
+      <span>/</span>
+      <a href="/personal" class="hover:text-accent transition-colors">Personal Insurance</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Renters Insurance</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Tenant Protection
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Renters Insurance
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Your landlord's insurance protects their building—not your stuff. Protect your furniture, electronics, clothes, and liability with comprehensive tenant coverage starting at just $15 a month. Fast proof of insurance for your lease.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/quote?type=renters"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Request Renters Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Call (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">~$15 / Mo</span>
+          <span class="text-xs text-text-muted">Average CT Monthly Cost</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Same-Day</span>
+          <span class="text-xs text-text-muted">Proof of Coverage for Landlords</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Replacement Cost</span>
+          <span class="text-xs text-text-muted">New Items for Old Valuations</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Worldwide</span>
+          <span class="text-xs text-text-muted">Off-Premises Theft Protection</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- The Landlord Myth / Answer Framing Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            The Dangerous Landlord Insurance Myth
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Many Connecticut renters mistakenly believe that if their apartment building catches fire or a pipe bursts upstairs, the landlord's insurance policy covers their damaged furniture and personal belongings. In reality, landlord policies strictly cover building structures. Tenants bear 100% legal responsibility for their personal possessions and accidental liabilities.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            A standard HO-4 Renters Policy bridges this critical gap. Whether you are leasing a loft in Danbury, an apartment in Bridgeport, or renting a townhouse in Watertown, our policies safeguard your personal lifestyle for less than the price of a takeout pizza each month.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Satisfying Lease Agreement Requirements
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Virtually every professional property management company in Connecticut requires proof of an active renters policy with at least <strong>$100,000 in tenant liability coverage</strong> before handing over your keys.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Associated Insurance Agency issues lease-compliant certificates naming your landlord or management company as an <strong>Interested Party</strong> immediately, ensuring a smooth move-in.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">What Does Renters Insurance Cover?</h2>
+          <p class="text-sm text-text-secondary">Comprehensive protections for your belongings, liability, and living costs.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Personal Property (Replacement Cost)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Pays to replace your clothing, couches, computers, flat screens, beds, and kitchenware if damaged by fire, smoke, lightning, wind, or sudden pipe bursts.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Tenant Personal Liability</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Shields your finances if a visitor trips and breaks an ankle in your apartment, or if you accidentally overflow a bathtub and cause water damage to the unit below you.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Loss of Use / Living Expenses</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              If a fire or frozen pipe damages your apartment complex, your policy pays for hotel stays, short-term rental accommodation, food, and laundry costs while repairs are underway.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Worldwide Off-Premises Protection</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Your possessions are covered even when away from home. If your laptop is stolen from your locked vehicle trunk or luggage vanishes at an airport, your policy responds.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Guest Medical Payments</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Covers immediate medical treatment for guests injured inside your home without needing to establish legal fault, avoiding awkward disputes with friends and family.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Identity Theft & Fraud Options</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Optional endorsements provide identity restoration services and reimbursement for legal fees, unauthorized charges, and lost wages resulting from identity theft.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bundling Savings Strip -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Bundle with Auto to Make It Virtually Free</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            When you bundle Connecticut renters insurance with your auto policy through Associated Insurance Agency, the multi-policy auto discount often covers almost the entire cost of the renters policy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-text-secondary">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle space-y-2">
+            <strong class="text-accent text-sm block">Auto Discount Savings</strong>
+            <p>Carriers grant 5% to 15% discounts on your primary auto insurance premium when paired with an active renters policy.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-border-subtle space-y-2">
+            <strong class="text-accent text-sm block">Single Deductible Per Incident</strong>
+            <p>If a severe storm or burglary damages both your vehicle and personal belongings at your residence, many carriers apply only one deductible.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-border-subtle space-y-2">
+            <strong class="text-accent text-sm block">Consolidated Billing</strong>
+            <p>Manage all your insurance policies through a single customer portal with coordinated payments and dedicated local agent support.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Frequently Asked Questions</h2>
+          <p class="text-sm text-text-secondary">Common questions about renters and tenant insurance in Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Why do Connecticut landlords and property managers require renters insurance?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Most apartment communities and landlords in Connecticut require tenants to carry at least $100,000 in personal liability before lease signing. This guarantees that if a tenant accidentally causes water damage from an overflowing tub or starts a kitchen grease fire, the tenant's insurance pays for repairs rather than forcing an expensive dispute or claim against the landlord's policy.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Does my landlord's building insurance cover any of my belongings?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              No. A landlord's commercial property policy covers only the exterior walls, roof, structural framing, and common stairwells. It provides zero coverage for your furniture, clothing, computers, TVs, or personal items. Without a renters policy (HO-4), you must pay 100% out-of-pocket to replace your belongings after a fire, storm, or burglary.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">How much does renters insurance cost per month in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Renters insurance is extremely affordable, typically costing between $15 and $25 per month ($180–$250/year) for $25,000 to $40,000 in personal property protection and $100,000 to $300,000 in liability coverage. When bundled with your auto policy, multi-policy discounts often offset nearly the entire cost of the renters policy.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Are my belongings covered if they are stolen outside my apartment?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Yes! Renters insurance includes worldwide off-premises personal property coverage. If your laptop or luggage is stolen from your locked car, or your bicycle is stolen outside a coffee shop, your renters policy covers the loss subject to your deductible.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Get Fast Proof of Renters Insurance</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Meet your lease requirements today. Our Danbury agents deliver instant policy certificates and find you the lowest bundled rates across Connecticut.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/quote?type=renters"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Get a Renters Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

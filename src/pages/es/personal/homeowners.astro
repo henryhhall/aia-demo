@@ -1,0 +1,354 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/es/personal/homeowners#service",
+      "name": "Seguro de Propietarios de Vivienda Connecticut",
+      "serviceType": "Homeowners Insurance",
+      "description": "Seguro integral para propietarios de viviendas en Connecticut. Cobertura para estructura (costo de reemplazo), bienes personales, responsabilidad civil y endosos para tormentas de invierno.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://aia-danbury.com/es"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Seguros Personales",
+          "item": "https://aia-danbury.com/es/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Seguro de Propietarios",
+          "item": "https://aia-danbury.com/es/personal/homeowners"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre el costo de reemplazo y el valor de mercado en Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El valor de mercado es lo que un comprador pagaría por su casa incluyendo el terreno y la ubicación. El costo de reemplazo de la vivienda es el gasto real de construcción necesario para reconstruir su casa desde cero con materiales y tarifas de mano de obra locales de Connecticut. En nuestro estado, los costos de construcción son altos, por lo que el costo de reconstrucción suele ser muy diferente del valor de tasación inmobiliaria."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cubre el seguro de hogar de Connecticut los daños por congelación de tuberías y acumulación de hielo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sí, las pólizas estándar HO-3 y HO-5 generalmente cubren la rotura accidental de tuberías por frío y filtraciones causadas por presas de hielo en el techo (ice dams), siempre que se haya mantenido una calefacción adecuada. Associated Insurance Agency también recomienda añadir endosos para respaldo de agua y drenajes subterráneos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Están cubiertas las inundaciones en una póliza de propietarios estándar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. El seguro de propietario estándar excluye daños por inundaciones causadas por agua de lluvia en la superficie, desbordamiento de ríos o marejadas. La cobertura contra inundaciones requiere una póliza separada a través del Programa Nacional de Seguros contra Inundaciones (NFIP) o aseguradoras privadas, que nuestros agentes pueden gestionar por usted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto puedo ahorrar al combinar seguro de auto y casa en Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Al agrupar sus pólizas de vivienda y auto con la misma compañía a través de Associated Insurance Agency, normalmente obtiene descuentos por paquete de entre el 15% y el 25% en ambas primas, además de unificar la facturación."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  lang="es"
+  title="Seguro de Propietarios en Connecticut | Cobertura de Hogar | AIA Danbury"
+  description="Seguro integral de hogar en CT. Proteja su vivienda, pertenencias y responsabilidad frente a tormentas de invierno, hielo y nor'easters."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/es" class="hover:text-accent transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="/es/personal" class="hover:text-accent transition-colors">Seguros Personales</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Seguro de Propietarios</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Protección Residencial en Connecticut
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Seguro de Propietarios de Vivienda en Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Proteja la mayor inversión de su familia contra los inviernos de Nueva Inglaterra, tormentas nor'easter y demandas de responsabilidad civil. Comparamos más de 20 aseguradoras líderes para ofrecerle cobertura total a costo de reemplazo y excelentes descuentos.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/es/quote?type=home"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Solicitar Cotización de Hogar
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Llamar al (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">15% - 25%</span>
+          <span class="text-xs text-text-muted">Ahorro al Combinar Auto y Hogar</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">100%</span>
+          <span class="text-xs text-text-muted">Costo de Reemplazo Extendido</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">Aseguradoras Calificadas</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">3 Oficinas</span>
+          <span class="text-xs text-text-muted">Danbury, Watertown, Bridgeport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- Answer Framing Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            ¿Qué Cubre el Seguro de Propietarios en Connecticut?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              El seguro de propietarios en Connecticut brinda compensación económica para reparar o reconstruir su vivienda y reemplazar sus pertenencias personales frente a peligros cubiertos como incendio, rayos, granizo, vientos huracanados, acumulación de nieve y vandalismo. También proporciona defensa de responsabilidad civil si un visitante sufre un accidente en su propiedad.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Desde casas históricas en Litchfield hasta residencias en Fairfield, las viviendas en el oeste de Connecticut tienen exigencias climáticas únicas. En Associated Insurance Agency colaboramos con aseguradoras de prestigio como Travelers, Safeco, Hanover y Liberty Mutual para estructurar pólizas adaptadas a sus necesidades reales.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Costo de Reemplazo vs. Valor de Mercado
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Muchos propietarios confunden el valor de mercado con el monto que deben asegurar. En realidad, los costos de materiales de construcción y mano de obra calificada en Connecticut determinan el verdadero <strong>Costo de Reemplazo</strong>.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Calculamos su cobertura utilizando índices locales de reconstrucción y ofrecemos <strong>Endosos de Reemplazo Extendido</strong> (hasta 125%–150%) para que la inflación no lo deje desprotegido ante un siniestro mayor.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Pilares Fundamentales de su Póliza</h2>
+          <p class="text-sm text-text-secondary">Conozca las coberturas principales de una póliza HO-3 y HO-5.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">A</div>
+            <h3 class="text-base font-bold text-text-primary">Cobertura A: Estructura Principal</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Paga los costos de reparación o reconstrucción de su casa (paredes, techo, cimientos e instalaciones fijas) tras siniestros como incendios o vientos fuertes.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">B</div>
+            <h3 class="text-base font-bold text-text-primary">Cobertura B: Otras Estructuras</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cubre garajes independientes, cobertizos, cercas, piscinas y caminos de entrada ubicados dentro de los límites de su propiedad residencial.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">C</div>
+            <h3 class="text-base font-bold text-text-primary">Cobertura C: Bienes Personales</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Reembolsa el costo de reemplazo de muebles, ropa, aparatos electrónicos y electrodomésticos en caso de robo, daño accidental o siniestro en el hogar o al viajar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">D</div>
+            <h3 class="text-base font-bold text-text-primary">Cobertura D: Pérdida de Uso</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cubre gastos de vida temporales (hotel, alquiler y alimentación) si un siniestro cubierto obliga a evacuar su casa mientras se llevan a cabo las reparaciones.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">E</div>
+            <h3 class="text-base font-bold text-text-primary">Cobertura E: Responsabilidad Civil</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Financia los costos legales y acuerdos si alguien resulta lesionado en su propiedad o si usted causa daños materiales involuntarios a terceros.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">F</div>
+            <h3 class="text-base font-bold text-text-primary">Cobertura F: Pagos Médicos</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cubre la atención médica inmediata de visitantes lesionados accidentalmente en su propiedad sin necesidad de determinar culpabilidad legal.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Endorsements Section -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Endosos Esenciales para Connecticut</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Proteja su vivienda frente a situaciones no cubiertas por las pólizas básicas:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Respaldo de Agua y Drenajes</strong>
+            <p class="text-text-muted">Protege sótanos y áreas subterráneas contra desbordamiento de bombas sumidero y alcantarillas durante tormentas intensas.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Líneas de Servicio Subterráneas</strong>
+            <p class="text-text-muted">Cubre reparaciones y excavaciones costosas cuando fallan las tuberías de agua, desagüe o cables eléctricos bajo su terreno.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Avería de Equipos</strong>
+            <p class="text-text-muted">Reembolsa fallas mecánicas de calderas, sistemas de aire acondicionado central, bombas de calor y paneles eléctricos.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Artículos Valiosos y Joyería</strong>
+            <p class="text-text-muted">Cobertura sin deducible para joyas de alto valor, anillos de compromiso, obras de arte y colecciones especiales.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Preguntas Frecuentes</h2>
+          <p class="text-sm text-text-secondary">Respuestas sobre el seguro de propietarios en Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Cuál es la diferencia entre el costo de reemplazo y el valor de mercado?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              El valor de mercado es lo que un comprador pagaría por su casa incluyendo el terreno y la ubicación. El costo de reemplazo de la vivienda es el gasto real de construcción necesario para reconstruir su casa desde cero con materiales y tarifas de mano de obra locales de Connecticut. En nuestro estado, los costos de construcción son altos, por lo que el costo de reconstrucción suele ser muy diferente del valor de tasación inmobiliaria.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Cubre el seguro de hogar de Connecticut los daños por congelación de tuberías y acumulación de hielo?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Sí, las pólizas estándar HO-3 y HO-5 generalmente cubren la rotura accidental de tuberías por frío y filtraciones causadas por presas de hielo en el techo (ice dams), siempre que se haya mantenido una calefacción adecuada. Associated Insurance Agency también recomienda añadir endosos para respaldo de agua y drenajes subterráneos.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Están cubiertas las inundaciones en una póliza de propietarios estándar?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              No. El seguro de propietario estándar excluye daños por inundaciones causadas por agua de lluvia en la superficie, desbordamiento de ríos o marejadas. La cobertura contra inundaciones requiere una póliza separada a través del Programa Nacional de Seguros contra Inundaciones (NFIP) o aseguradoras privadas, que nuestros agentes pueden gestionar por usted.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Cuánto puedo ahorrar al combinar seguro de auto y casa en Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Al agrupar sus pólizas de vivienda y auto con la misma compañía a través de Associated Insurance Agency, normalmente obtiene descuentos por paquete de entre el 15% y el 25% en ambas primas, además de unificar la facturación.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Proteja su Hogar y Patrimonio Familiar</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Nuestros agentes bilingües comparan opciones entre las aseguradoras más sólidas de Connecticut para conseguirle mejor protección y tarifas competitivas.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/es/quote?type=home"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Cotizar Seguro de Hogar
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

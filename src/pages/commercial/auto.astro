@@ -1,0 +1,369 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/commercial/auto#service",
+      "name": "Commercial Auto & Fleet Insurance Connecticut",
+      "serviceType": "Commercial Automobile Insurance",
+      "description": "Comprehensive commercial auto, work van, truck, and fleet insurance across Connecticut. Coverage for commercial liability, collision, comprehensive, and hired/non-owned auto.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aia-danbury.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Commercial Insurance",
+          "item": "https://aia-danbury.com/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Commercial Auto & Fleet",
+          "item": "https://aia-danbury.com/commercial/auto"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does my personal auto insurance cover driving for business in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Almost universally, personal auto policies contain strict business-use exclusions. If you or an employee is involved in an accident while transporting tools, carrying commercial cargo, delivering goods, or traveling between client job sites, the personal insurer can deny the claim entirely, exposing your company to catastrophic personal liability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Hired and Non-Owned Auto (HNOA) insurance?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hired and Non-Owned Auto (HNOA) covers liability when your business rents or leases vehicles, or when employees drive their personal cars to run company errands (such as driving to the bank, picking up supplies, or meeting clients). If they cause an accident, HNOA protects your company against third-party lawsuits once the employee's personal policy limits are exhausted."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does commercial auto insurance cover tools and cargo inside company trucks?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard commercial auto policies cover the physical vehicle and permanently attached fixtures (like tool racks or utility bodies), but they do NOT automatically cover loose tools, specialized equipment, or client cargo. To protect hand tools, diagnostic gear, and materials, AIA adds an Inland Marine / Tool and Equipment Floater endorsement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What commercial liability limits should Connecticut businesses carry?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While Connecticut minimum financial responsibility limits under CGS § 14-112 are only $25k/$50k/$25k, these are woefully inadequate for businesses. Commercial trucks and fleets typically carry at least a $500,000 to $1,000,000 Combined Single Limit (CSL), frequently paired with a Commercial Umbrella policy for broader asset protection."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Commercial Auto & Fleet Insurance CT | Associated Insurance Agency"
+  description="Dedicated commercial auto and fleet insurance in Connecticut. High-limit liability, hired/non-owned auto, physical damage, and cargo protections."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/" class="hover:text-accent transition-colors">Home</a>
+      <span>/</span>
+      <a href="/commercial" class="hover:text-accent transition-colors">Commercial Insurance</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Commercial Auto & Fleet</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Fleet & Work Vehicle Shield
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Commercial Auto & Fleet Insurance in Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          From single contractor pickup trucks to multi-vehicle delivery and service fleets, protect your business assets, drivers, and vehicles with dedicated commercial coverage tailored for Connecticut roads.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/quote?type=commercial&coverage=auto"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Request Commercial Auto Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Call (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">$1,000,000</span>
+          <span class="text-xs text-text-muted">Combined Single Limit (CSL)</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Single & Fleet</span>
+          <span class="text-xs text-text-muted">1 to 50+ Commercial Units</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">HNOA Included</span>
+          <span class="text-xs text-text-muted">Hired & Non-Owned Auto Option</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Multi-Carrier</span>
+          <span class="text-xs text-text-muted">Progressive, Travelers & More</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- Why Personal Policies Fail / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Why Personal Auto Insurance Won't Protect Your Connecticut Business
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Personal automobile policies explicitly exclude accidents occurring while carrying commercial cargo, transporting trade tools, charging for deliveries, or performing company errands. If an employee causes a severe crash during business hours, the personal carrier will typically deny coverage, exposing your business bank accounts to immediate civil liability.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            A dedicated commercial auto policy provides enterprise-grade liability limits, physical damage reimbursement, and legal defense costs specifically structured for business operations, fleet management, and commercial vehicle registrations in Connecticut.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Types of Commercial Vehicles We Insure
+          </h3>
+          <ul class="space-y-2 text-xs text-text-secondary">
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Contractor pickups (F-150, F-250, Silverado, Ram)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Cargo vans & high-roof Sprinter vans
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Box trucks, straight trucks & flatbeds
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Service utility bodies & maintenance rigs
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Landscaping dump trucks & equipment trailers
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Corporate passenger sedans & executive SUVs
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Core Commercial Auto Protections</h2>
+          <p class="text-sm text-text-secondary">Essential layers of protection for company vehicles and commercial drivers.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Combined Single Limit (CSL) Liability</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Provides robust bodily injury and property damage protection up to $500,000 or $1,000,000+ per occurrence, shielding corporate reserves from multimillion-dollar highway accident lawsuits.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Collision & Comprehensive</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Collision repairs or replaces your vehicles following roadway collisions. Comprehensive covers theft, vandalism, windshield damage, falling tree limbs, and storm flooding.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Hired & Non-Owned Auto (HNOA)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Extends liability protection when employees drive their personal cars on company errands or when you rent vans for overflow projects, eliminating hidden vicarious liability.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Uninsured & Underinsured Motorist</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protects your employed drivers and passengers if your work vehicle is struck by an illegal, hit-and-run, or underinsured driver on Connecticut highways like I-84 or I-95.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Medical Payments Coverage</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Provides immediate no-fault medical payment reimbursement for driver and passenger emergency hospital expenses following an accident, regardless of who caused the collision.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Inland Marine / Tool Floaters</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Commercial auto only protects the chassis. We seamlessly attach mobile inland marine endorsements to safeguard power tools, copper piping, and equipment stored inside the vehicle.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connecticut Statutory Limits & Fleet Guidance -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Connecticut State Compliance & DOT Guidelines</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Operating commercial vehicles in Connecticut involves strict DMV and Department of Transportation (DOT) compliance:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-text-secondary">
+          <div class="bg-white p-5 rounded-xl border border-border-subtle space-y-2">
+            <h4 class="font-bold text-accent text-sm">Commercial Plates & Registration</h4>
+            <p class="leading-relaxed">
+              Vehicles displaying commercial lettering or carrying business equipment exceeding gross weight ratings must carry commercial registration and commercial insurance filings.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-border-subtle space-y-2">
+            <h4 class="font-bold text-accent text-sm">Driver Screening & MVR Checks</h4>
+            <p class="leading-relaxed">
+              Insurers review Motor Vehicle Records (MVR) for all licensed drivers. AIA helps establish safety guidelines to qualify your business for fleet driver discounts.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-border-subtle space-y-2">
+            <h4 class="font-bold text-accent text-sm">Federal & State Filings</h4>
+            <p class="leading-relaxed">
+              If your trucks cross state lines into New York, Massachusetts, or Rhode Island, we handle interstate USDOT and FMCSA liability filing verifications.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Frequently Asked Questions</h2>
+          <p class="text-sm text-text-secondary">Expert guidance on Connecticut commercial auto and fleet insurance.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Does my personal auto insurance cover driving for business in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Almost universally, personal auto policies contain strict business-use exclusions. If you or an employee is involved in an accident while transporting tools, carrying commercial cargo, delivering goods, or traveling between client job sites, the personal insurer can deny the claim entirely, exposing your company to catastrophic personal liability.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What is Hired and Non-Owned Auto (HNOA) insurance?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Hired and Non-Owned Auto (HNOA) covers liability when your business rents or leases vehicles, or when employees drive their personal cars to run company errands (such as driving to the bank, picking up supplies, or meeting clients). If they cause an accident, HNOA protects your company against third-party lawsuits once the employee's personal policy limits are exhausted.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Does commercial auto insurance cover tools and cargo inside company trucks?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Standard commercial auto policies cover the physical vehicle and permanently attached fixtures (like tool racks or utility bodies), but they do NOT automatically cover loose tools, specialized equipment, or client cargo. To protect hand tools, diagnostic gear, and materials, AIA adds an Inland Marine / Tool and Equipment Floater endorsement.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What commercial liability limits should Connecticut businesses carry?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              While Connecticut minimum financial responsibility limits under CGS § 14-112 are only $25k/$50k/$25k, these are woefully inadequate for businesses. Commercial trucks and fleets typically carry at least a $500,000 to $1,000,000 Combined Single Limit (CSL), frequently paired with a Commercial Umbrella policy for broader asset protection.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Protect Your Fleet on Connecticut Highways</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Whether you have one work van or thirty commercial trucks, we compare top commercial carriers to find competitive premiums and custom limits.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/quote?type=commercial&coverage=auto"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Request Fleet Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

@@ -10,8 +10,63 @@ const t = useTranslations(lang as any);
 
 const navLinks = [
   { href: getRelativeLocaleUrl(lang, 'about'), label: t('nav.about') },
-  { href: getRelativeLocaleUrl(lang, 'personal'), label: t('nav.personal') },
-  { href: getRelativeLocaleUrl(lang, 'commercial'), label: t('nav.commercial') },
+  {
+    href: getRelativeLocaleUrl(lang, 'personal'),
+    label: t('nav.personal'),
+    children: [
+      {
+        href: getRelativeLocaleUrl(lang, 'personal'),
+        label: t('nav.personalOverview'),
+        description: t('nav.personalOverviewDesc'),
+      },
+      {
+        href: getRelativeLocaleUrl(lang, 'personal/homeowners'),
+        label: t('nav.homeowners'),
+        description: t('nav.homeownersDesc'),
+      },
+      {
+        href: getRelativeLocaleUrl(lang, 'personal/auto'),
+        label: t('nav.personalAuto'),
+        description: t('nav.personalAutoDesc'),
+      },
+      {
+        href: getRelativeLocaleUrl(lang, 'personal/umbrella'),
+        label: t('nav.umbrella'),
+        description: t('nav.umbrellaDesc'),
+      },
+      {
+        href: getRelativeLocaleUrl(lang, 'personal/renters'),
+        label: t('nav.renters'),
+        description: t('nav.rentersDesc'),
+      },
+    ],
+  },
+  {
+    href: getRelativeLocaleUrl(lang, 'commercial'),
+    label: t('nav.commercial'),
+    children: [
+      {
+        href: getRelativeLocaleUrl(lang, 'commercial'),
+        label: t('nav.commercialOverview'),
+        description: t('nav.commercialOverviewDesc'),
+      },
+      {
+        href: getRelativeLocaleUrl(lang, 'commercial/general-liability'),
+        label: t('nav.gl'),
+        description: t('nav.glDesc'),
+      },
+      {
+        href: getRelativeLocaleUrl(lang, 'commercial/auto'),
+        label: t('nav.commercialAuto'),
+        description: t('nav.commercialAutoDesc'),
+      },
+      {
+        href: getRelativeLocaleUrl(lang, 'commercial/workers-compensation'),
+        label: t('nav.wc'),
+        description: t('nav.wcDesc'),
+      },
+    ],
+  },
   { href: getRelativeLocaleUrl(lang, 'service'), label: t('nav.service') },
   { href: getRelativeLocaleUrl(lang, 'pay-bill'), label: t('nav.payBill') },
   { href: getRelativeLocaleUrl(lang, 'contact'), label: t('nav.contact') },

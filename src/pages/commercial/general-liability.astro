@@ -1,0 +1,353 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/commercial/general-liability#service",
+      "name": "Commercial General Liability Insurance Connecticut",
+      "serviceType": "Commercial General Liability",
+      "description": "Comprehensive General Liability insurance (CGL) and Business Owner Policies (BOP) in Connecticut. Coverage for bodily injury, property damage, completed operations, and fast ACORD Certificates of Insurance (COI).",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aia-danbury.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Commercial Insurance",
+          "item": "https://aia-danbury.com/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "General Liability",
+          "item": "https://aia-danbury.com/commercial/general-liability"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is General Liability insurance required by law in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "While Connecticut state statutes do not universally mandate general liability for every business entity, it is practically mandatory. Commercial landlords require it before signing leases, municipal agencies and general contractors demand proof of coverage (COI) before awarding contracts, and Connecticut licensing boards for trades (electricians, plumbers, home improvement contractors) require active liability policies."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How quickly can Associated Insurance Agency issue a Certificate of Insurance (COI)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For active policyholders, Associated Insurance Agency issues standard ACORD 25 Certificates of Insurance (COIs) same-day, often within minutes of receiving your request. This ensures contractors and vendors can bid on jobs, enter job sites, and satisfy client requirements without project delays."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What policy limits are standard for General Liability in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The standard baseline for commercial general liability in Connecticut is $1,000,000 per occurrence and $2,000,000 general aggregate ($1M/$2M). High-risk contractors, commercial tenants, or businesses working on municipal projects often purchase Commercial Umbrella or Excess Liability policies to increase limits to $5,000,000 or $10,000,000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a standalone General Liability policy and a BOP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A standalone General Liability policy strictly covers third-party bodily injury and property damage claims. A Business Owner's Policy (BOP) bundles General Liability with Commercial Property insurance and Business Interruption coverage into one discounted package, ideal for small-to-medium retail, office, and service businesses."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Commercial General Liability Insurance CT | AIA Danbury"
+  description="Comprehensive General Liability insurance in CT. Fast same-day Certificates of Insurance (COI), slip-and-fall protection, and contractor liability coverage."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/" class="hover:text-accent transition-colors">Home</a>
+      <span>/</span>
+      <a href="/commercial" class="hover:text-accent transition-colors">Commercial Insurance</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">General Liability</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Business Risk Shield
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Commercial General Liability Insurance in Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Shield your business assets, commercial lease, and corporate reputation against third-party bodily injury, property damage, and legal defense costs. With same-day Certificate of Insurance (COI) issuance, we keep your jobsites moving.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/quote?type=commercial&coverage=gl"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Request General Liability Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Call (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">Same-Day</span>
+          <span class="text-xs text-text-muted">COI & Certificate Turnaround</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">$1M / $2M</span>
+          <span class="text-xs text-text-muted">Standard Occurrence / Aggregate</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">A-Rated Commercial Insurers</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">3 CT Offices</span>
+          <span class="text-xs text-text-muted">Danbury, Watertown, Bridgeport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- What is GL / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            What Does Commercial General Liability Cover in Connecticut?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Commercial General Liability (CGL) protects Connecticut business owners against claims alleging third-party bodily injury, property damage, personal and advertising injury, and slip-and-fall accidents occurring on commercial premises or job sites. Policies cover medical payments, attorney fees, settlement negotiations, and court judgments.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Whether a customer slips on wet pavement in your Danbury retail store, or your plumbing crew accidentally causes water damage in a Fairfield County commercial building, a single lawsuit can wipe out an uninsured small business. CGL is the cornerstone of every Connecticut commercial risk plan.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Why General Contractors & Landlords Demand It
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            In Connecticut, virtually no commercial landlord will hand over the keys to a retail storefront or warehouse without proof of at least $1,000,000 in General Liability coverage naming them as an <strong>Additional Insured</strong>.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Similarly, general contractors (GCs) require all subcontractors—including electricians, framers, roofers, and HVAC technicians—to provide an active ACORD certificate before stepping foot on a job site.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Comprehensive Coverage Dimensions</h2>
+          <p class="text-sm text-text-secondary">Understanding the protections included within your commercial policy.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Third-Party Bodily Injury</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Pays medical expenses, emergency ambulance services, rehabilitation, and legal damages if a client, customer, delivery driver, or vendor is physically injured on your property.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Third-Party Property Damage</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Covers repair or replacement expenses if you or your employees accidentally damage someone else’s physical property while conducting business or performing services.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Products & Completed Operations</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protects your business after work is finished. If an installed fixture collapses or a manufactured product malfunctions weeks later, this coverage pays the resulting damages.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Personal & Advertising Injury</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Shields against non-physical civil offenses including libel, slander, false arrest, copyright infringement in marketing materials, or privacy invasion.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Damage to Premises Rented to You</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Covers fire or smoke damage caused to a rented office, retail store, or workshop where your company leases space, satisfying commercial tenancy lease obligations.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Legal Defense & Court Fees</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Litigation defense costs are provided outside policy limits with most carriers, meaning legal representation is funded without eroding your available judgment payout pool.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Who Needs It in Connecticut -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Connecticut Industries We Frequently Insure</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Associated Insurance Agency tailors specialized General Liability programs across diverse business sectors throughout Western Connecticut:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Contractors & Trades</strong>
+            <p class="text-text-muted">Carpenters, plumbers, electricians, roofers, painters, and HVAC contractors needing immediate certificates.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Restaurants & Food Service</strong>
+            <p class="text-text-muted">Diners, pizzerias, food trucks, and caterers requiring food safety and slip-and-fall protections.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Retail & Commercial Tenants</strong>
+            <p class="text-text-muted">Boutiques, salons, fitness studios, and offices needing lease-compliant landlord certificate endorsements.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Landscaping & Property Care</strong>
+            <p class="text-text-muted">Lawn care, tree removal, and snow plowing operations facing heavy equipment and property risk exposures.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Frequently Asked Questions</h2>
+          <p class="text-sm text-text-secondary">Common questions from Connecticut business owners about General Liability.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Is General Liability insurance required by law in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              While Connecticut state statutes do not universally mandate general liability for every business entity, it is practically mandatory. Commercial landlords require it before signing leases, municipal agencies and general contractors demand proof of coverage (COI) before awarding contracts, and Connecticut licensing boards for trades (electricians, plumbers, home improvement contractors) require active liability policies.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">How quickly can Associated Insurance Agency issue a Certificate of Insurance (COI)?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              For active policyholders, Associated Insurance Agency issues standard ACORD 25 Certificates of Insurance (COIs) same-day, often within minutes of receiving your request. This ensures contractors and vendors can bid on jobs, enter job sites, and satisfy client requirements without project delays.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What policy limits are standard for General Liability in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              The standard baseline for commercial general liability in Connecticut is $1,000,000 per occurrence and $2,000,000 general aggregate ($1M/$2M). High-risk contractors, commercial tenants, or businesses working on municipal projects often purchase Commercial Umbrella or Excess Liability policies to increase limits to $5,000,000 or $10,000,000.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What is the difference between a standalone General Liability policy and a BOP?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              A standalone General Liability policy strictly covers third-party bodily injury and property damage claims. A Business Owner's Policy (BOP) bundles General Liability with Commercial Property insurance and Business Interruption coverage into one discounted package, ideal for small-to-medium retail, office, and service businesses.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Need a General Liability Quote or Same-Day COI?</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Our licensed commercial agents compare rates across 20+ top-rated insurers to ensure you receive maximum protection at the most competitive local rates.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/quote?type=commercial&coverage=gl"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Get a Business Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

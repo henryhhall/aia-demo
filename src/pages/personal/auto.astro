@@ -1,0 +1,375 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/personal/auto#service",
+      "name": "Personal Auto and RV Insurance Connecticut",
+      "serviceType": "Auto and Recreational Vehicle Insurance",
+      "description": "Comprehensive auto, truck, RV, camper, and motorcycle insurance in Connecticut. Statutory CGS § 14-112 compliance, collision, comprehensive, and uninsured motorist protection.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aia-danbury.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Personal Insurance",
+          "item": "https://aia-danbury.com/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Auto & RV Insurance",
+          "item": "https://aia-danbury.com/personal/auto"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are the mandatory auto insurance minimums in Connecticut (CGS § 14-112)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under Connecticut General Statutes (CGS § 14-112), all registered drivers must carry minimum liability coverage of $25,000 for bodily injury per person, $50,000 total bodily injury per accident, and $25,000 for property damage (25/50/25). Connecticut also mandates matching Uninsured and Underinsured Motorist (UM/UIM) coverage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why are Connecticut state minimum limits dangerously inadequate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "With the average price of a new vehicle exceeding $48,000, a $25,000 property damage limit will not even pay to replace a single totaled car in a multi-vehicle highway crash. If medical costs exceed $50,000, injured parties can pursue personal civil judgments against your savings, home equity, and garnish future earnings. Associated Insurance Agency strongly recommends at least 100/300/100 or 250/500/100 liability limits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between Collision and Comprehensive coverage in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Collision coverage pays for physical damage to your vehicle when you strike another car, object (such as a guardrail or tree), or roll over. Comprehensive (Other Than Collision) covers incidents outside your direct control, such as deer and animal collisions (common on CT rural roads), windshield glass chips, theft, vandalism, fire, and falling tree limbs during severe storms."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I insure my RV, camper, or travel trailer on the same policy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Associated Insurance Agency provides specialized recreational vehicle (RV) policies that cover motorhomes, travel trailers, campers, and boat trailers. These policies include custom personal effects replacement, campsite liability, and emergency roadside assistance."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Connecticut Auto & RV Insurance | CGS § 14-112 Coverage | AIA Danbury"
+  description="Personal car, truck, RV, and camper insurance in CT. Understand CGS § 14-112 minimum limits, collision, comprehensive, and bundling discounts."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/" class="hover:text-accent transition-colors">Home</a>
+      <span>/</span>
+      <a href="/personal" class="hover:text-accent transition-colors">Personal Insurance</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Auto & RV Insurance</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Road & Recreation Shield
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Auto & RV Insurance
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Navigate I-84, Route 7, and local CT roads with superior liability, collision, and comprehensive coverage. We protect drivers, family vehicles, motorhomes, and campers with customized policy limits that safeguard your family finances.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/quote?type=auto"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Request Auto & RV Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Call (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">CGS § 14-112</span>
+          <span class="text-xs text-text-muted">Statutory Minimum Compliance</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">100/300/100</span>
+          <span class="text-xs text-text-muted">Recommended Financial Defense</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">Top Auto Carriers Shopped</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Auto + Home</span>
+          <span class="text-xs text-text-muted">Up to 25% Multi-Policy Discount</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- Statutory Mandate & Risk Framing -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Connecticut Auto Insurance Mandates (CGS § 14-112)
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Connecticut law requires every motor vehicle owner to maintain financial responsibility with minimum liability limits of $25,000 bodily injury per person, $50,000 per accident, and $25,000 property damage (25/50/25), plus matching Uninsured/Underinsured Motorist (UM/UIM) protection.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            While these statutory limits satisfy state DMV registration requirements, they leave Connecticut drivers catastrophically exposed. If you cause a highway collision involving luxury vehicles or multiple occupants with hospital admissions, costs exceed $25,000 within hours. Our independent agents help you secure real financial defense without breaking your budget.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Why 25/50/25 Limits Put Your Assets at Risk
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            With the median price of new automobiles in Connecticut topping $48,000, state minimum property damage covers only half the cost of a modern vehicle.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            When insurance limits are exhausted, Connecticut courts permit injured parties to place judicial liens on your real estate, attach investment accounts, and garnish your future wages. Increasing your policy limits to <strong>100/300/100 or 250/500/100</strong> costs surprisingly little and shields your family's future.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Essential Vehicle Coverages</h2>
+          <p class="text-sm text-text-secondary">Comprehensive protections designed for Connecticut driving conditions.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Bodily Injury Liability</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Pays medical expenses, rehabilitation, pain and suffering settlements, and legal representation when you are at fault in an accident causing injury to other drivers or pedestrians.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Property Damage Liability</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Pays to repair or replace vehicles, fences, commercial storefronts, or public utility poles damaged when your vehicle is involved in an at-fault accident.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Collision Coverage</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Covers physical repair or actual cash value of your car if you hit another vehicle, crash into a guardrail on an icy road, or experience a rollover collision.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Comprehensive (Other Than Collision)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Covers non-collision hazards common in Connecticut: deer and animal strikes, cracked windshields, vehicle theft, vandalism, hail, and fallen tree limbs.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Uninsured / Underinsured Motorist (UM/UIM)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protects you and your passengers if struck by an uninsured driver, a hit-and-run motorist, or a driver carrying only state minimums that fail to cover your medical bills.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Roadside Assistance & Rental Reimbursement</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Covers 24/7 emergency towing, battery jump-starts, flat tire changes, and rental car reimbursements while your primary vehicle is undergoing repairs after a claim.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RV, Camper & Recreational Vehicles -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">RV, Motorhome, Camper & Trailer Insurance</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Recreational vehicles require specialized policies that go far beyond standard auto coverage. We protect weekend road trips and cross-country adventures:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Motorhomes (Class A, B, C)</strong>
+            <p class="text-text-muted">Comprehensive liability and collision protection tailored to high-value drivable RVs and custom luxury conversions.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Travel Trailers & Campers</strong>
+            <p class="text-text-muted">Protects fifth wheels, popup campers, and toy haulers both while being towed on highways and unhitched at campgrounds.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Vacation Campsite Liability</strong>
+            <p class="text-text-muted">Extends personal liability protection when your RV is parked at state parks or private campgrounds acting as a temporary residence.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Personal Effects Replacement</strong>
+            <p class="text-text-muted">Full replacement cost coverage for camping equipment, electronics, clothing, and gear stored inside your RV.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connecticut Discounts Strip -->
+      <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+        <h2 class="text-2xl font-bold text-accent">Ways to Save on Connecticut Auto Insurance</h2>
+        <p class="text-sm text-text-secondary leading-relaxed">
+          Associated Insurance Agency shops across 20+ top auto insurance carriers to maximize discounts for our clients:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2 text-xs text-text-secondary">
+          <div class="space-y-1">
+            <strong class="text-accent block">Multi-Policy Bundling</strong>
+            <p>Save 15% to 25% when you insure your vehicles and home or apartment together with the same company.</p>
+          </div>
+          <div class="space-y-1">
+            <strong class="text-accent block">Telematics & Safe Driver</strong>
+            <p>Enroll in voluntary mobile app driving monitors for safe driver discounts up to 30% based on low mileage and smooth braking.</p>
+          </div>
+          <div class="space-y-1">
+            <strong class="text-accent block">Student & Defensive Driving</strong>
+            <p>Good student discounts for B-averages, student-away-at-school credits, and mature driver state-approved defensive driving course discounts.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Frequently Asked Questions</h2>
+          <p class="text-sm text-text-secondary">Answers to common Connecticut auto and RV insurance questions.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What are Connecticut's mandatory auto insurance minimums (CGS § 14-112)?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Under Connecticut General Statutes (CGS § 14-112), all registered drivers must carry minimum liability coverage of $25,000 for bodily injury per person, $50,000 total bodily injury per accident, and $25,000 for property damage (25/50/25). Connecticut also mandates matching Uninsured and Underinsured Motorist (UM/UIM) coverage.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Why are Connecticut state minimum limits dangerously inadequate?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              With the average price of a new vehicle exceeding $48,000, a $25,000 property damage limit will not even pay to replace a single totaled car in a multi-vehicle highway crash. If medical costs exceed $50,000, injured parties can pursue personal civil judgments against your savings, home equity, and garnish future earnings. Associated Insurance Agency strongly recommends at least 100/300/100 or 250/500/100 liability limits.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What is the difference between Collision and Comprehensive coverage in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Collision coverage pays for physical damage to your vehicle when you strike another car, object (such as a guardrail or tree), or roll over. Comprehensive (Other Than Collision) covers incidents outside your direct control, such as deer and animal collisions (common on CT rural roads), windshield glass chips, theft, vandalism, fire, and falling tree limbs during severe storms.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Can I insure my RV, camper, or travel trailer on the same policy?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Yes. Associated Insurance Agency provides specialized recreational vehicle (RV) policies that cover motorhomes, travel trailers, campers, and boat trailers. These policies include custom personal effects replacement, campsite liability, and emergency roadside assistance.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Compare Connecticut Auto & RV Rates</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Don't overpay for auto coverage. Our independent agents will shop top carriers, optimize your discounts, and safeguard your financial security.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/quote?type=auto"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Get an Auto Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

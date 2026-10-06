@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/tr/personal/umbrella#service",
+      "name": "Kişisel Şemsiye Sorumluluk Sigortası Connecticut",
+      "serviceType": "Personal Umbrella Liability",
+      "description": "Connecticut'ta 1M $ ile 5M $+ arasında kişisel şemsiye (Umbrella) aşan sorumluluk sigortası. Evinizi, emeklilik birikimlerinizi ve gelecekteki maaşınızı yüksek tazminat davalarına karşı korur.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://aia-danbury.com/tr"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bireysel Sigorta",
+          "item": "https://aia-danbury.com/tr/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Şemsiye Sorumluluk",
+          "item": "https://aia-danbury.com/tr/personal/umbrella"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Kişisel Şemsiye (Umbrella) Sigortası nedir ve nasıl çalışır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Kişisel Şemsiye Sigortası, mevcut araç ve ev sigortası poliçelerinizin sorumluluk tavanlarının üzerine ek bir koruma katmanı ekler. Temel poliçe limitiniz büyük bir tazminat davasında tükendiğinde, şemsiye poliçesi devreye girerek kalan tutarı seçtiğiniz limite kadar ($1M ila $5M+) karşılar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta kimlerin şemsiye sigortasına ihtiyacı vardır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bir eve, birikimlere, emeklilik fonlarına veya düzenli bir gelire sahip olan herkesin şemsiye poliçesine ihtiyacı vardır. Dava edilmek için milyoner olmanız gerekmez. Genç sürücü çocukların bulunması, köpek sahipliği, bahçede yüzme havuzu veya trambolin bulunması, evde davetler verilmesi riski ciddi oranda artırır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "1,000,000 $'lık bir şemsiye poliçesinin maliyeti Connecticut'ta ne kadardır?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Şemsiye sigortası ikincil aşan sorumluluk olarak çalıştığı için son derece ekonomiktir. 1,000,000 $'lık standart bir poliçe genellikle yılda 150 $ ila 300 $ arasında tutar (ayda 25 $'dan az). İlave her bir milyon dolarlık teminat artışı ise çok daha cüzi bir fiyata eklenir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Şemsiye poliçesi yaptırmak için temel poliçelerde hangi limitler gereklidir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sigorta şirketleri temel poliçelerinizde asgari limit şartı arar: araç sigortasında genellikle $250,000/$500,000 bedensel yaralanma ve ev sigortasında $300,000 ila $500,000 kişisel sorumluluk limiti gereklidir. Associated Insurance Agency açık kalmaması için tüm poliçelerinizi birbiriyle uyumlu hale getirir."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  lang="tr"
+  title="Kişisel Şemsiye Sorumluluk Sigortası CT | Varlık Koruma | AIA"
+  description="Connecticut'ta 1M $ - 5M $+ şemsiye (Umbrella) sorumluluk sigortası. Evinizi, birikimlerinizi ve maaşınızı büyük davalara karşı koruyun."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/tr" class="hover:text-accent transition-colors">Ana Sayfa</a>
+      <span>/</span>
+      <a href="/tr/personal" class="hover:text-accent transition-colors">Bireysel Sigorta</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Şemsiye Sorumluluk</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Yüksek Limitli Aile Varlık Kalkanı
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Kişisel Şemsiye (Umbrella) Sigortası
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Davalara sıkça başvurulan günümüz dünyasında, büyük bir trafik kazası veya ev kazası milyon dolarlık tazminat kararlarıyla sonuçlanabilir. Şemsiye sigortası, evinizi, emeklilik hesaplarınızı ve gelecekteki maaşınızı korumak için 1,000,000 $ ile 5,000,000 $+ arasında ek sorumluluk sağlar.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/tr/quote?type=umbrella"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Şemsiye Sigortası Teklifi Al
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            (203) 748-9272 Numarasını Arayın
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">1M $ - 5M $+</span>
+          <span class="text-xs text-text-muted">Aşan Sorumluluk Güvencesi</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">~20 $ / Ay</span>
+          <span class="text-xs text-text-muted">Ortalama Başlangıç Primi</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Dünya Çapında</span>
+          <span class="text-xs text-text-muted">Seyahat ve Araç Kiralama Koruması</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Hukuki Savunma</span>
+          <span class="text-xs text-text-muted">Poliçe Limitini Aşındırmadan Dahil</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- How it Works Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Şemsiye Sigortası Nasıl Çalışır?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Şemsiye poliçesi, Connecticut'taki mevcut araç ve konut poliçelerinizin doğrudan üzerine yerleşir. Ciddi bir kaza veya mahkeme tazminatı temel poliçenizin tavanını (örneğin $300,000 veya $500,000) aştığında, şemsiye poliçesi devreye girerek aradaki farkı karşılar.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Şemsiye güvenceniz olmadığında Connecticut mahkemeleri evinizin değerine, banka hesaplarınıza, emeklilik fonlarınıza haciz koyabilir ve borç ödenene kadar maaşınızın %25'ine kadar kesinti uygulayabilir.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Gerçek Bir Vaka Örneği
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Genç sürücünüz I-84 otoyolunda ağır yaralanmalı bir zincirleme kazaya sebep olur. Mahkeme 1,500,000 $ tazminata hükmeder.
+          </p>
+          <div class="space-y-1.5 text-xs text-text-secondary bg-bg-secondary p-3 rounded-lg border border-border-subtle">
+            <p><strong>Araç Poliçesi Tavanı:</strong> 500,000 $ öder</p>
+            <p><strong>Açıkta Kalan Tutar:</strong> 1,000,000 $</p>
+            <p class="text-accent font-semibold">Şemsiye ile: Kalan 1,000,000 $'lık fark eksiksiz ödenir. Eviniz ve birikimleriniz korunur.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- High-Risk Triggers Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Şemsiye Koruması Gerektiren Günlük Riskler</h2>
+          <p class="text-sm text-text-secondary">Dava edilmek için zengin olmanız gerekmez.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Genç Sürücüler</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Direksiyona yeni geçen gençlerin ağır kaza yapma olasılığı istatistiki olarak daha yüksektir. Şemsiye poliçesi ailenize huzur sağlar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Havuz ve Trambolinler</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Yasal olarak cazip tehlike sayılırlar. Havuzda meydana gelebilecek trajik bir kaza milyonlarca dolarlık tazminat davalarına dönüşebilir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Evcil Hayvan (Köpek) Sahipliği</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Connecticut'ın katı sorumluluk yasası altında köpek ısırıkları ve düşürmeleri, konut sorumluluk tazminatlarının üçte birini oluşturur.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Evde Davet ve Kutlamalar</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Evde misafir ağırlamak; alkol alan bir konuğun kaza yapması veya mülkünüzde sakatlanması durumunda ev sahibi sorumluluğu doğurur.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Tekne ve Su Araçları</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Candlewood Gölü veya deniz kıyısında tekne kullanmak, temel tekne sigortasının aşabileceği yüksek kaza riskleri taşır.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">İtibar ve Sosyal Medya İddiaları</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Standart ev sigortasının hariç tuttuğu iftira, hakaret, haksız gözaltı veya gizlilik ihlali iddialarına karşı savunma masraflarını karşılar.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Sıkça Sorulan Sorular</h2>
+          <p class="text-sm text-text-secondary">Connecticut şemsiye sigortası hakkında sorular.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Kişisel Şemsiye Sigortası nedir ve nasıl çalışır?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Kişisel Şemsiye Sigortası, mevcut araç ve ev sigortası poliçelerinizin sorumluluk tavanlarının üzerine ek bir koruma katmanı ekler. Temel poliçe limitiniz büyük bir tazminat davasında tükendiğinde, şemsiye poliçesi devreye girerek kalan tutarı seçtiğiniz limite kadar ($1M ila $5M+) karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Kimlerin şemsiye sigortasına ihtiyacı vardır?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Bir eve, birikimlere, emeklilik fonlarına veya düzenli bir gelire sahip olan herkesin şemsiye poliçesine ihtiyacı vardır. Dava edilmek için milyoner olmanız gerekmez. Genç sürücü çocukların bulunması, köpek sahipliği, bahçede yüzme havuzu veya trambolin bulunması, evde davetler verilmesi riski ciddi oranda artırır.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">1,000,000 $'lık bir şemsiye poliçesinin maliyeti ne kadardır?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Şemsiye sigortası ikincil aşan sorumluluk olarak çalıştığı için son derece ekonomiktir. 1,000,000 $'lık standart bir poliçe genellikle yılda 150 $ ila 300 $ arasında tutar (ayda 25 $'dan az). İlave her bir milyon dolarlık teminat artışı ise çok daha cüzi bir fiyata eklenir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Şemsiye poliçesi için temel poliçelerde hangi limitler gereklidir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Sigorta şirketleri temel poliçelerinizde asgari limit şartı arar: araç sigortasında genellikle $250,000/$500,000 bedensel yaralanma ve ev sigortasında $300,000 ila $500,000 kişisel sorumluluk limiti gereklidir. Associated Insurance Agency açık kalmaması için tüm poliçelerinizi birbiriyle uyumlu hale getirir.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Elde Ettiğiniz Tüm Birikimleri Koruyun</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Günde 1 dolardan daha az bir maliyetle şemsiye sigortası geleceğinizi tam güvenceye alır. Danbury, Watertown ve Bridgeport ofislerimizle iletişime geçin.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/tr/quote?type=umbrella"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Şemsiye Teklifi Al
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

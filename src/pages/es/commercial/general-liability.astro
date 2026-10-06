@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/es/commercial/general-liability#service",
+      "name": "Seguro de Responsabilidad Civil General Comercial Connecticut",
+      "serviceType": "Commercial General Liability",
+      "description": "Seguro de Responsabilidad Civil General Comercial (CGL) y Pólizas para Propietarios de Negocios (BOP) en Connecticut. Cobertura para lesiones corporales, daños a la propiedad y Certificados de Seguro (COI) en el mismo día.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://aia-danbury.com/es"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Seguros Comerciales",
+          "item": "https://aia-danbury.com/es/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Responsabilidad General",
+          "item": "https://aia-danbury.com/es/commercial/general-liability"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Es obligatorio por ley el seguro de Responsabilidad Civil General en Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aunque los estatutos de Connecticut no exigen universalmente la responsabilidad civil general para todas las empresas, es prácticamente indispensable. Los arrendadores comerciales la exigen para firmar contratos de alquiler, las agencias municipales y contratistas generales solicitan pruebas de cobertura (COI) antes de otorgar obras, y las juntas de licencias de oficios exigen pólizas vigentes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Con qué rapidez puede Associated Insurance Agency emitir un Certificado de Seguro (COI)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Para asegurados activos, Associated Insurance Agency emite Certificados de Seguro estándar ACORD 25 el mismo día, frecuentemente en cuestión de minutos. Esto permite a los contratistas licitar trabajos, ingresar a sitios de construcción y cumplir con los requisitos del cliente sin retrasos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuáles son los límites de póliza habituales en Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "El estándar de referencia para responsabilidad general comercial en Connecticut es de $1,000,000 por incidente y $2,000,000 acumulado general ($1M/$2M). Contratistas de mayor riesgo o empresas que realizan obras públicas suelen adquirir pólizas Paraguas Comercial para elevar los límites a $5,000,000 o más."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuál es la diferencia entre una póliza de Responsabilidad General independiente y una BOP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una póliza independiente solo cubre reclamos de terceros por lesiones y daños materiales. Una Póliza para Propietarios de Negocios (BOP) combina la Responsabilidad General con el Seguro de Propiedad Comercial y la Pérdida de Ingresos en un solo paquete con tarifa reducida, ideal para pequeños comercios y oficinas."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Seguro de Responsabilidad Civil General CT | AIA Danbury"
+  description="Seguro integral de Responsabilidad Civil General en Connecticut. Certificados COI el mismo día, cobertura de resbalones y protección para contratistas."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/es" class="hover:text-accent transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="/es/commercial" class="hover:text-accent transition-colors">Seguros Comerciales</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Responsabilidad General</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Protección Empresarial en Connecticut
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Seguro de Responsabilidad Civil General en Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Proteja los activos de su empresa, su contrato de alquiler comercial y su reputación contra reclamos de terceros por lesiones, daños materiales y gastos de defensa legal. Emisión rápida de Certificados de Seguro (COI) en el mismo día.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/es/quote?type=commercial&coverage=gl"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Solicitar Cotización de Responsabilidad General
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Llamar al (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">Mismo Día</span>
+          <span class="text-xs text-text-muted">Entrega de Certificados COI</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">$1M / $2M</span>
+          <span class="text-xs text-text-muted">Límites Estándar por Evento / Total</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">Aseguradoras Calificadas</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">3 Oficinas</span>
+          <span class="text-xs text-text-muted">Danbury, Watertown, Bridgeport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- What is GL / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            ¿Qué cubre la Responsabilidad Civil General Comercial en Connecticut?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              La Responsabilidad Civil General Comercial (CGL) protege a las empresas contra demandas de terceros por lesiones físicas, daños materiales, difamación comercial y caídas o resbalones en locales o proyectos de trabajo. La póliza costea gastos médicos de terceros, representación jurídica y acuerdos dictados por tribunales.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Si un cliente se resbala en su negocio en Danbury o su equipo de construcción causa un daño accidental por agua en una propiedad comercial en Fairfield County, una sola demanda puede arruinar un negocio sin seguro. La póliza CGL es la base de toda empresa en Connecticut.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Requisitos de Contratistas y Arrendadores
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            En Connecticut, prácticamente ningún dueño de local comercial entregará las llaves sin una prueba de al menos $1,000,000 en Responsabilidad General nombrándolo como <strong>Asegurado Adicional</strong>.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Asimismo, los contratistas generales exigen a carpinteros, plomeros, electricistas y techadores un certificado ACORD vigente antes de permitirles el ingreso a la obra.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Coberturas Incluidas en su Póliza</h2>
+          <p class="text-sm text-text-secondary">Conozca cada una de las protecciones incluidas en su seguro comercial.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Lesiones Corporales a Terceros</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cubre costos de hospital, traslados en ambulancia y compensaciones si un cliente, visitante o repartidor se lesiona dentro de sus instalaciones.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Daños Materiales a Terceros</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Paga los costos de reparación o reemplazo si usted o sus empleados dañan accidentalmente la propiedad de un cliente durante el trabajo.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Productos y Operaciones Terminadas</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protege su empresa después de concluir el trabajo. Si una instalación falla o un producto comercializado causa daños semanas después, esta cobertura responde.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Responsabilidad por Publicidad y Calumnia</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protección legal frente a demandas por infracción de derechos de autor en anuncios publicitarios, calumnia o competencia desleal involuntaria.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Daños al Local Alquilado</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cubre daños por fuego o humo al local, oficina o taller comercial que su empresa renta, satisfaciendo los acuerdos del contrato de arrendamiento.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Defensa Legal y Honorarios</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Los costos de defensa jurídica son cubiertos por la aseguradora por fuera del límite de la póliza, garantizando que los honorarios no agoten su suma asegurada.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Preguntas Frecuentes</h2>
+          <p class="text-sm text-text-secondary">Respuestas claras sobre el seguro de Responsabilidad Civil General en Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Es obligatorio por ley el seguro de Responsabilidad Civil General en Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Aunque los estatutos de Connecticut no exigen universalmente la responsabilidad civil general para todas las empresas, es prácticamente indispensable. Los arrendadores comerciales la exigen para firmar contratos de alquiler, las agencias municipales y contratistas generales solicitan pruebas de cobertura (COI) antes de otorgar obras, y las juntas de licencias de oficios exigen pólizas vigentes.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Con qué rapidez puede Associated Insurance Agency emitir un Certificado de Seguro (COI)?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Para asegurados activos, Associated Insurance Agency emite Certificados de Seguro estándar ACORD 25 el mismo día, frecuentemente en cuestión de minutos. Esto permite a los contratistas licitar trabajos, ingresar a sitios de construcción y cumplir con los requisitos del cliente sin retrasos.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Cuáles son los límites de póliza habituales en Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              El estándar de referencia para responsabilidad general comercial en Connecticut es de $1,000,000 por incidente y $2,000,000 acumulado general ($1M/$2M). Contratistas de mayor riesgo o empresas que realizan obras públicas suelen adquirir pólizas Paraguas Comercial para elevar los límites a $5,000,000 o más.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Cuál es la diferencia entre una póliza de Responsabilidad General independiente y una BOP?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Una póliza independiente solo cubre reclamos de terceros por lesiones y daños materiales. Una Póliza para Propietarios de Negocios (BOP) combina la Responsabilidad General con el Seguro de Propiedad Comercial y la Pérdida de Ingresos en un solo paquete con tarifa reducida, ideal para pequeños comercios y oficinas.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">¿Necesita una Cotización o Certificado COI Inmediato?</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Nuestros agentes con licencia hablan español y comparan tarifas entre más de 20 aseguradoras de primer nivel para brindarle la mejor protección al menor costo.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/es/quote?type=commercial&coverage=gl"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Cotizar Seguro Comercial
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

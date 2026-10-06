@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/pt/personal/umbrella#service",
+      "name": "Seguro de Responsabilidade Guarda-Chuva Connecticut",
+      "serviceType": "Personal Umbrella Liability",
+      "description": "Seguro de responsabilidade civil guarda-chuva (Umbrella) de $1M a $5M+ em Connecticut. Protege o valor de sua casa, contas de aposentadoria e patrimônio familiar contra ações judiciais graves.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://aia-danbury.com/pt"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Seguros Pessoais",
+          "item": "https://aia-danbury.com/pt/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Responsabilidade Guarda-Chuva",
+          "item": "https://aia-danbury.com/pt/personal/umbrella"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O que é uma apólice Guarda-Chuva (Umbrella) e como ela funciona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uma apólice Guarda-Chuva (Personal Umbrella) fornece uma camada extra de proteção de responsabilidade civil acima dos limites máximos de suas apólices normais de carro, casa ou barco. Quando o limite básico é consumido por uma indenização judicial de alto valor, a apólice guarda-chuva assume o saldo restante até o limite contratado ($1,000,000 ou mais)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quem precisa de um seguro guarda-chuva em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Qualquer pessoa que seja proprietária de um imóvel, possua economias, investimentos ou receba salário fixo. Não é preciso ser milionário para ser processado. Fatores comuns de risco incluem motoristas jovens na família, posse de cachorros, piscina no quintal, festas em casa ou ser voluntário."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto custa uma apólice guarda-chuva de $1,000,000 em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É uma das proteções mais econômicas do mercado securitário. Uma apólice padrão de $1,000,000 geralmente custa entre $150 e $300 por ano (menos de $25 por mês). Adicionar milhões adicionais de cobertura tem um custo proporcional ainda menor."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais são os limites básicos exigidos para poder contratar a guarda-chuva?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "As seguradoras exigem limites mínimos nas apólices primárias: normalmente $250,000/$500,000 de responsabilidade no automóvel e $300,000 a $500,000 na apólice residencial. A Associated Insurance Agency alinha todas as suas apólices para evitar lacunas de proteção."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  lang="pt"
+  title="Seguro Guarda-Chuva (Umbrella) em CT | Proteção de Patrimônio | AIA"
+  description="Apólice de responsabilidade civil guarda-chuva em CT de $1M a $5M+. Proteja sua casa, investimentos e renda familiar contra processos judiciais."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/pt" class="hover:text-accent transition-colors">Início</a>
+      <span>/</span>
+      <a href="/pt/personal" class="hover:text-accent transition-colors">Seguros Pessoais</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Responsabilidade Guarda-Chuva</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Blindagem Patrimonial de Alto Limite
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Seguro de Responsabilidade Guarda-Chuva (Umbrella) em Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Em uma sociedade onde processos judiciais são frequentes, uma única colisão de trânsito ou acidente em casa pode gerar condenações milionárias. A apólice guarda-chuva adiciona de $1,000,000 a mais de $5,000,000 em cobertura extra para blindar sua casa, contas de aposentadoria e rendimentos futuros.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/pt/quote?type=umbrella"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Cotar Apólice Guarda-Chuva
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Ligar para (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">$1M - $5M+</span>
+          <span class="text-xs text-text-muted">Cobertura Adicional de Responsabilidade</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">~$20 / Mês</span>
+          <span class="text-xs text-text-muted">Custo Inicial Médio</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Mundial</span>
+          <span class="text-xs text-text-muted">Proteção em Viagens e Carros Alugados</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Defesa Jurídica</span>
+          <span class="text-xs text-text-muted">Inclusa Além do Limite da Apólice</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- How it Works Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Como Funciona o Seguro Guarda-Chuva Pessoal?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              A apólice guarda-chuva atua como uma proteção complementar sobre suas apólices já existentes de automóvel e residência em Connecticut. Quando uma indenização supera o teto de sua apólice primária (como $300,000 ou $500,000), a guarda-chuva assume imediatamente o valor excedente até o limite escolhido.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Sem essa cobertura, os tribunais de Connecticut podem determinar a penhora do patrimônio acumulado na sua residência, contas bancárias, contas 401(k) e até 25% de seus salários futuros para satisfazer uma sentença judicial não coberta.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Um Exemplo Real
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Seu filho adolescente se envolve em um acidente grave na I-84 com lesões corporais severas. A justiça determina uma indenização de $1,500,000.
+          </p>
+          <div class="space-y-1.5 text-xs text-text-secondary bg-bg-secondary p-3 rounded-lg border border-border-subtle">
+            <p><strong>Apólice de Auto:</strong> Paga o limite de $500,000</p>
+            <p><strong>Saldo a Pagar:</strong> $1,000,000</p>
+            <p class="text-accent font-semibold">Com Guarda-Chuva: O saldo de $1,000,000 é pago integralmente. Seus bens ficam seguros.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- High-Risk Triggers Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Situações Cotidianas Que Exigem Proteção Guarda-Chuva</h2>
+          <p class="text-sm text-text-secondary">Você não precisa ser milionário para ser processado.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Filhos Jovens ao Volante</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Motoristas inexperientes apresentam índices maiores de acidentes severos. A apólice guarda-chuva dá tranquilidade enquanto aprendem a dirigir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Piscinas e Camas Elásticas</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Consideradas perigos atraentes pela justiça. Qualquer acidente com crianças na piscina pode se transformar em um litígio milionário.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Ter Animais de Estimação (Cães)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Sob a lei estrita de Connecticut, donos de cachorros respondem por mordidas e lesões causadas pelo animal mesmo sem histórico de agressão.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Recepções e Churrascos em Casa</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Receber amigos em casa gera responsabilidade civil caso um convidado se machuque ou provoque acidentes após consumir bebidas alcoólicas.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Lanchas, Barcos e Jetskis</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Navegar no Lago Candlewood ou Long Island Sound envolve riscos de acidentes náuticos que ultrapassam os limites das apólices marítimas básicas.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Difamação e Redes Sociais</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cobre alegações de injúria, difamação ou invasão de privacidade, situações excluídas do seguro residencial habitual.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Perguntas Frequentes</h2>
+          <p class="text-sm text-text-secondary">Dúvidas sobre o seguro guarda-chuva em Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">O que é uma apólice Guarda-Chuva (Umbrella) e como ela funciona?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Uma apólice Guarda-Chuva (Personal Umbrella) fornece uma camada extra de proteção de responsabilidade civil acima dos limites máximos de suas apólices normais de carro, casa ou barco. Quando o limite básico é consumido por uma indenização judicial de alto valor, a apólice guarda-chuva assume o saldo restante até o limite contratado ($1,000,000 ou mais).
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Quem precisa de um seguro guarda-chuva em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Qualquer pessoa que seja proprietária de um imóvel, possua economias, investimentos ou receba salário fixo. Não é preciso ser milionário para ser processado. Fatores comuns de risco incluem motoristas jovens na família, posse de cachorros, piscina no quintal, festas em casa ou ser voluntário.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Quanto custa uma apólice guarda-chuva de $1,000,000 em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              É uma das proteções mais econômicas do mercado securitário. Uma apólice padrão de $1,000,000 geralmente custa entre $150 e $300 por ano (menos de $25 por mês). Adicionar milhões adicionais de cobertura tem um custo proporcional ainda menor.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Quais são os limites básicos exigidos para poder contratar a guarda-chuva?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              As seguradoras exigem limites mínimos nas apólices primárias: normalmente $250,000/$500,000 de responsabilidade no automóvel e $300,000 a $500,000 na apólice residencial. A Associated Insurance Agency alinha todas as suas apólices para evitar lacunas de proteção.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Proteja Tudo o Que Você Conquistou</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Por menos de um dólar ao dia, uma apólice guarda-chuva garante paz de espírito para você e sua família. Converse com nossa equipe hoje mesmo.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/pt/quote?type=umbrella"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Cotar Seguro Guarda-Chuva
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

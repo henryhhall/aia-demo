@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { getLocalizedPath } from '../i18n/utils';
 
-interface NavLink {
+export interface SubLink {
   href: string;
   label: string;
+  description?: string;
+}
+
+export interface NavLink {
+  href: string;
+  label: string;
+  children?: SubLink[];
 }
 
 interface NavigationProps {
@@ -29,21 +36,136 @@ export default function Navigation({
   quoteHref,
 }: NavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<Record<string, boolean>>({
+    commercial: true, // Default open for ease of access
+  });
+
+  const toggleMobileSub = (label: string) => {
+    setMobileExpanded((prev) => ({
+      ...prev,
+      [label]: !prev[label],
+    }));
+  };
 
   return (
     <div className="flex items-center">
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-8">
-        {navLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className="text-sm font-medium text-text-secondary hover:text-accent transition-colors duration-200 relative group py-2"
-          >
-            {link.label}
-            <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-accent-gold transition-all duration-300 group-hover:w-full"></span>
-          </a>
-        ))}
+      <nav className="hidden md:flex items-center gap-7 lg:gap-8">
+        {navLinks.map((link) => {
+          const hasChildren = Boolean(link.children && link.children.length > 0);
+          const isDropdownActive =
+            hasChildren &&
+            (currentPath.startsWith(link.href) ||
+              link.children?.some((child) => currentPath === child.href));
+
+          if (!hasChildren) {
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                className={`text-sm font-medium transition-colors duration-200 relative group py-2 ${
+                  currentPath === link.href ? 'text-accent font-semibold' : 'text-text-secondary hover:text-accent'
+                }`}
+              >
+                {link.label}
+                <span
+                  className={`absolute bottom-0 left-0 h-[2px] bg-accent-gold transition-all duration-300 ${
+                    currentPath === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                ></span>
+              </a>
+            );
+          }
+
+          return (
+            <div
+              key={link.href}
+              className="relative group py-2"
+              onMouseEnter={() => setOpenDropdown(link.label)}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
+              {/* Trigger Link */}
+              <a
+                href={link.href}
+                className={`inline-flex items-center gap-1.5 text-sm font-medium transition-colors duration-200 py-1 ${
+                  isDropdownActive ? 'text-accent font-semibold' : 'text-text-secondary hover:text-accent'
+                }`}
+                aria-haspopup="true"
+                aria-expanded={openDropdown === link.label}
+              >
+                <span>{link.label}</span>
+                {/* Subtle Chevron */}
+                <svg
+                  className="w-3.5 h-3.5 text-text-muted group-hover:text-accent transition-transform duration-200 group-hover:rotate-180"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                </svg>
+                <span
+                  className={`absolute bottom-0 left-0 h-[2px] bg-accent-gold transition-all duration-300 ${
+                    isDropdownActive ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}
+                ></span>
+              </a>
+
+              {/* Hover bridge & Dropdown container */}
+              <div
+                className="absolute top-full left-1/2 -translate-x-1/2 pt-2 z-50 w-80 transition-all duration-200 opacity-0 invisible translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-hover:pointer-events-auto focus-within:opacity-100 focus-within:visible focus-within:translate-y-0 focus-within:pointer-events-auto"
+              >
+                <div className="bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-border-subtle p-2 space-y-1">
+                  {link.children?.map((child, idx) => {
+                    const isChildActive = currentPath === child.href;
+                    const isFirst = idx === 0;
+
+                    return (
+                      <a
+                        key={child.href}
+                        href={child.href}
+                        className={`group/item block p-3 rounded-lg transition-colors ${
+                          isChildActive
+                            ? 'bg-accent/10 border-l-2 border-accent-gold'
+                            : 'hover:bg-accent/5'
+                        } ${isFirst ? 'border-b border-border-subtle mb-1' : ''}`}
+                      >
+                        <div className="flex items-center justify-between">
+                          <span
+                            className={`text-sm font-semibold transition-colors ${
+                              isChildActive
+                                ? 'text-accent'
+                                : 'text-text-primary group-hover/item:text-accent'
+                            }`}
+                          >
+                            {child.label}
+                          </span>
+                          <svg
+                            className="w-3.5 h-3.5 text-text-muted opacity-0 -translate-x-1 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-200"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                          </svg>
+                        </div>
+                        {child.description && (
+                          <p className="text-xs text-text-secondary mt-0.5 leading-snug">
+                            {child.description}
+                          </p>
+                        )}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          );
+        })}
+
+        {/* Quote Button */}
         <a
           href={quoteHref}
           className="inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold tracking-wider uppercase text-white bg-accent hover:bg-accent/90 active:scale-[0.98] rounded transition-all duration-200 shadow-sm"
@@ -99,22 +221,85 @@ export default function Navigation({
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 w-full bg-white/95 backdrop-blur-md border-b border-border-subtle shadow-lg z-50 transition-all duration-300 ease-in-out md:hidden">
-          <nav className="flex flex-col p-6 gap-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-base font-semibold text-text-secondary hover:text-accent py-2 transition-colors border-b border-zinc-100 last:border-0"
-              >
-                {link.label}
-              </a>
-            ))}
+        <div className="absolute top-full left-0 right-0 w-full bg-white/95 backdrop-blur-md border-b border-border-subtle shadow-lg z-50 transition-all duration-300 ease-in-out md:hidden max-h-[85vh] overflow-y-auto">
+          <nav className="flex flex-col p-6 gap-2">
+            {navLinks.map((link) => {
+              const hasChildren = Boolean(link.children && link.children.length > 0);
+              const isExpanded = mobileExpanded[link.label] ?? false;
+
+              if (!hasChildren) {
+                return (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setIsOpen(false)}
+                    className="text-base font-semibold text-text-secondary hover:text-accent py-2.5 transition-colors border-b border-zinc-100 last:border-0"
+                  >
+                    {link.label}
+                  </a>
+                );
+              }
+
+              return (
+                <div key={link.href} className="border-b border-zinc-100 py-1">
+                  <div className="flex items-center justify-between py-2">
+                    <a
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="text-base font-semibold text-text-primary hover:text-accent"
+                    >
+                      {link.label}
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => toggleMobileSub(link.label)}
+                      className="p-1 text-text-muted hover:text-accent"
+                      aria-label={`Toggle ${link.label} sub-pages`}
+                    >
+                      <svg
+                        className={`w-5 h-5 transition-transform duration-200 ${
+                          isExpanded ? 'rotate-180 text-accent' : ''
+                        }`}
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {isExpanded && (
+                    <div className="pl-3 pr-1 pb-2 space-y-1 border-l-2 border-accent-gold/40 ml-2 mt-1">
+                      {link.children?.map((child) => (
+                        <a
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setIsOpen(false)}
+                          className="block py-2 px-2 rounded hover:bg-accent/5 transition-colors"
+                        >
+                          <span className="block text-sm font-semibold text-text-primary">
+                            {child.label}
+                          </span>
+                          {child.description && (
+                            <span className="block text-xs text-text-muted mt-0.5">
+                              {child.description}
+                            </span>
+                          )}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {/* Mobile Quote Button */}
             <a
               href={quoteHref}
               onClick={() => setIsOpen(false)}
-              className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-semibold tracking-wider uppercase text-white bg-accent hover:bg-accent/90 rounded mt-2 transition-all"
+              className="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-semibold tracking-wider uppercase text-white bg-accent hover:bg-accent/90 rounded mt-3 transition-all"
             >
               {quoteLabel}
             </a>
@@ -142,4 +327,3 @@ export default function Navigation({
     </div>
   );
 }
-

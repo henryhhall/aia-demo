@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/pt/commercial/auto#service",
+      "name": "Seguro de Veículos Comerciais e Frotas Connecticut",
+      "serviceType": "Commercial Automobile Insurance",
+      "description": "Seguro de veículos comerciais, vans de carga, caminhões de serviço e frotas em Connecticut. Cobertura de colisão, responsabilidade civil e veículos alugados/não próprios (HNOA).",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://aia-danbury.com/pt"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Seguros Comerciais",
+          "item": "https://aia-danbury.com/pt/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Veículos Comerciais e Frotas",
+          "item": "https://aia-danbury.com/pt/commercial/auto"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O seguro de carro pessoal cobre o uso para o trabalho em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Quase todas as apólices pessoais contêm cláusulas estritas de exclusão de uso comercial. Se você ou um funcionário sofrer um acidente transportando ferramentas, materiais ou fazendo entregas, a seguradora pessoal negará a cobertura, deixando sua empresa desprotegida contra processos milionários."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é a cobertura de Veículos Alugados e Não Próprios (HNOA)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A cobertura HNOA protege sua empresa quando colaboradores utilizam seus próprios carros pessoais para tarefas da firma (como comprar materiais, ir ao banco ou atender clientes) ou quando a empresa aluga vans temporárias. Ela blinda o patrimônio da empresa caso os limites do motorista se esgotem."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O seguro comercial de veículos cobre as ferramentas deixadas no carro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A apólice de auto comercial cobre apenas a estrutura do veículo e peças permanentemente instaladas. Para proteger ferramentas elétricas, máquinas e materiais guardados na caçamba ou baú, a AIA anexa uma extensão de 'Inland Marine' para equipamentos móveis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais limites de responsabilidade são recomendados em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Os limites mínimos da lei estadual (CGS § 14-112) de $25k/$50k/$25k são muito baixos para proteger uma empresa. Veículos comerciais e frotas contratam limites combinados (CSL) de no mínimo $500,000 a $1,000,000, comumente acompanhados de uma apólice Umbrella."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Seguro de Veículos Comerciais e Frotas CT | Associated Insurance Agency"
+  description="Seguro especializado para caminhonetes, vans de trabalho e frotas em Connecticut. Altos limites de responsabilidade, colisão e suporte em português."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/pt" class="hover:text-accent transition-colors">Início</a>
+      <span>/</span>
+      <a href="/pt/commercial" class="hover:text-accent transition-colors">Seguros Comerciais</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Veículos Comerciais e Frotas</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Frotas e Utilitários Comerciais em CT
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Seguro de Veículos Comerciais e Frotas em Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          De uma única caminhonete de empreiteiro a frotas completas de vans e caminhões baú, proteja os seus motoristas, veículos e o patrimônio da sua empresa com apólices sob medida para as estradas de Connecticut.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/pt/quote?type=commercial&coverage=auto"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Cotar Seguro de Auto Comercial
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Ligue para (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">$1,000,000</span>
+          <span class="text-xs text-text-muted">Limite Único Combinado (CSL)</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">1 a 50+</span>
+          <span class="text-xs text-text-muted">Unidades Individuais e Frotas</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Cobertura HNOA</span>
+          <span class="text-xs text-text-muted">Carros Particulares de Empregados</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Líderes Nacionais</span>
+          <span class="text-xs text-text-muted">Progressive, Travelers e Outras</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- Why Personal Policies Fail / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Por que o seguro de carro pessoal não protege seu trabalho?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Apólices de automóvel pessoal excluem expressamente acidentes ocorridos durante o transporte de ferramentas profissionais, transporte remunerado de mercadorias ou deslocamentos de negócios. Se o seu funcionário provocar um acidente em horário de serviço, a seguradora pessoal não pagará a indenização, deixando as contas da sua empresa sob risco de penhora.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            A apólice de veículo comercial oferece limites substanciais de indenização corporativa, advogados de defesa e reparo dos utilitários da firma, garantindo a conformidade perante o Departamento de Veículos Motorizados (DMV) de Connecticut.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Veículos que Seguramos com Frequência
+          </h3>
+          <ul class="space-y-2 text-xs text-text-secondary">
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Caminhonetes pickup (F-150, F-250, Silverado, Ram)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Vans de carga e furgões Sprinter de teto alto
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Caminhões baú (Box trucks) e pranchas/plataformas
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Carrocerias utilitárias e veículos de manutenção
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Caminhões basculantes para paisagismo e carretas
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Sedãs e SUVs executivos da diretoria
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Coberturas do Seguro de Veículos Comerciais</h2>
+          <p class="text-sm text-text-secondary">Segurança abrangente para veículos, motoristas e terceiros.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Responsabilidade Civil de Límite Único (CSL)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cobre lesões corporais e danos à propriedade de terceiros até $500,000 ou $1,000,000+ por ocorrência, protegendo a estabilidade financeira da firma.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Colisão e Compreensiva (Total)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Conserta ou indeniza seus utilitários após colisões, capotamentos, furtos, vandalismo, galhos caídos ou inundações durante o inverno de Connecticut.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Veículos Não Próprios e Alugados (HNOA)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Ampara a responsabilidade jurídica se os funcionários usarem os próprios carros em recados da firma ou quando você aluga vans temporariamente.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Motoristas Sem Seguro ou com Seguro Insuficiente</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protege sua equipe se o veículo da empresa for atingido por condutores foragidos ou sem apólice em rodovias como a I-84 ou Route 7.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Despesas Médicas para Ocupantes</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Reembolsa de imediato o socorro médico e hospitalar dos ocupantes do veículo, independentemente de quem teve a responsabilidade pelo acidente.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Equipamentos e Ferramentas Móveis</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Vinculamos coberturas adicionais para indenizar o roubo ou estrago de geradores, ferramentas e materiais guardados dentro do veículo de trabalho.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Perguntas Frecuentes</h2>
+          <p class="text-sm text-text-secondary">Informações essenciais para frotas e veículos comerciais em Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">O seguro de carro pessoal cobre o uso para o trabalho em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Não. Quase todas as apólices pessoais contêm cláusulas estritas de exclusão de uso comercial. Se você ou um funcionário sofrer um acidente transportando ferramentas, materiais ou fazendo entregas, a seguradora pessoal negará a cobertura, deixando sua empresa desprotegida contra processos milionários.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">O que é a cobertura de Veículos Alugados e Não Próprios (HNOA)?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              A cobertura HNOA protege sua empresa quando colaboradores utilizam seus próprios carros pessoais para tarefas da firma (como comprar materiais, ir ao banco ou atender clientes) ou quando a empresa aluga vans temporárias. Ela blinda o patrimônio da empresa caso os limites do motorista se esgotem.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">O seguro comercial de veículos cobre as ferramentas deixadas no carro?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              A apólice de auto comercial cobre apenas a estrutura do veículo e peças permanentemente instaladas. Para proteger ferramentas elétricas, máquinas e materiais guardados na caçamba ou baú, a AIA anexa uma extensão de 'Inland Marine' para equipamentos móveis.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Quais limites de responsabilidade são recomendados em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Os limites mínimos da lei estadual (CGS § 14-112) de $25k/$50k/$25k são muito baixos para proteger uma empresa. Veículos comerciais e frotas contratam limites combinados (CSL) de no mínimo $500,000 a $1,000,000, comumente acompanhados de uma apólice Umbrella.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Proteja sua Frota nas Rodovias de Connecticut</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Temos atendimento em português e cotamos com mais de 20 seguradoras para encontrar as melhores taxas para seus veículos de trabalho.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/pt/quote?type=commercial&coverage=auto"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Cotação de Frota
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

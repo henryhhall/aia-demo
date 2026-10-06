@@ -1,0 +1,327 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/es/personal/umbrella#service",
+      "name": "Seguro de Responsabilidad Sombrilla Personal Connecticut",
+      "serviceType": "Personal Umbrella Liability",
+      "description": "Seguro de responsabilidad civil sombrilla (Umbrella) de $1M a $5M+ en Connecticut. Protege el valor de su vivienda, ahorros de jubilación e ingresos frente a demandas millonarias.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Inicio",
+          "item": "https://aia-danbury.com/es"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Seguros Personales",
+          "item": "https://aia-danbury.com/es/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Responsabilidad Sombrilla",
+          "item": "https://aia-danbury.com/es/personal/umbrella"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "¿Qué es una póliza Sombrilla (Umbrella) y cómo funciona?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Una póliza de seguro sombrilla personal proporciona cobertura adicional de responsabilidad civil por encima de los límites de sus pólizas básicas de auto, casa o inquilinos. Cuando los límites de su póliza primaria se agotan ante un juicio o acuerdo costoso, la póliza sombrilla asume el pago restante hasta el límite contratado ($1,000,000 o más)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Quién necesita un seguro sombrilla en Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cualquier persona que sea dueña de una vivienda, tenga ahorros para su retiro o fondos universitarios, o reciba un salario regular. No necesita ser millonario para ser demandado. Los factores comunes de riesgo incluyen tener hijos adolescentes que manejan, tener perro, piscina en el patio, organizar eventos sociales o ser voluntario."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuánto cuesta una póliza sombrilla de $1,000,000 en Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Es una de las pólizas más accesibles del mercado porque funciona como cobertura secundaria. Una póliza típica de $1,000,000 cuesta entre $150 y $300 al año (menos de $25 al mes). Cada millón adicional de cobertura cuesta aún menos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "¿Cuáles son los límites básicos requeridos antes de contratar una sombrilla?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Las compañías exigen límites mínimos en sus pólizas base: normalmente $250,000/$500,000 en responsabilidad de auto y $300,000 a $500,000 en responsabilidad de vivienda. Associated Insurance Agency coordina sus pólizas para garantizar que no existan brechas de cobertura."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  lang="es"
+  title="Seguro Sombrilla Personal en Connecticut | Protección de Patrimonio | AIA"
+  description="Póliza sombrilla (Umbrella) en CT de $1M a $5M+. Cobertura de responsabilidad en exceso para resguardar su casa, ahorros e ingresos futuros."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/es" class="hover:text-accent transition-colors">Inicio</a>
+      <span>/</span>
+      <a href="/es/personal" class="hover:text-accent transition-colors">Seguros Personales</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Responsabilidad Sombrilla</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Protección Patrimonial de Alto Límite
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Seguro de Responsabilidad Sombrilla (Umbrella) en Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          En un entorno con demandas frecuentes, un accidente de tránsito grave o un reclamo en su vivienda puede resultar en una sentencia millonaria. La póliza sombrilla añade entre $1,000,000 y $5,000,000+ en cobertura adicional para proteger su casa, fondos de retiro e ingresos.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/es/quote?type=umbrella"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Solicitar Cotización Sombrilla
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Llamar al (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">$1M - $5M+</span>
+          <span class="text-xs text-text-muted">Límites Adicionales de Responsabilidad</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">~$20 / Mes</span>
+          <span class="text-xs text-text-muted">Costo Promedio Inicial</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Mundial</span>
+          <span class="text-xs text-text-muted">Protección en Viajes y Alquileres</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Defensa Legal</span>
+          <span class="text-xs text-text-muted">Cubierta Fuera del Límite de Póliza</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- How it Works Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            ¿Cómo Funciona la Cobertura Sombrilla Personal?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              La póliza sombrilla se coloca directamente sobre sus pólizas existentes de auto y hogar en Connecticut. Cuando un siniestro grave o indemnización judicial supera el límite de su póliza básica (por ejemplo $300,000 o $500,000), la sombrilla absorbe inmediatamente el exceso hasta el límite seleccionado.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Sin una póliza sombrilla, los tribunales de Connecticut pueden dictaminar embargos judiciales sobre el patrimonio acumulado en su casa, cuentas de inversión, cuentas 401(k) y hasta el 25% de sus ingresos laborales para liquidar una demanda no cubierta.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Un Caso de la Vida Real
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Un miembro de su familia provoca involuntariamente una colisión grave en la I-84 que deja lesiones permanentes. El tribunal ordena una indemnización de $1,500,000.
+          </p>
+          <div class="space-y-1.5 text-xs text-text-secondary bg-bg-secondary p-3 rounded-lg border border-border-subtle">
+            <p><strong>Póliza de Auto:</strong> Paga el tope de $500,000</p>
+            <p><strong>Restante sin Cobertura:</strong> $1,000,000</p>
+            <p class="text-accent font-semibold">Con Sombrilla: El $1,000,000 restante queda 100% cubierto. Sus ahorros y casa quedan a salvo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- High-Risk Triggers Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Situaciones Cotidianas que Exigen Cobertura Sombrilla</h2>
+          <p class="text-sm text-text-secondary">Riesgos comunes que pueden desencadenar demandas costosas.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Conductores Jóvenes</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Los conductores adolescentes tienen tasas de siniestros más altas. La póliza sombrilla le brinda tranquilidad mientras aprenden a conducir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Piscinas y Trampolines</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Considerados peligros atractivos por la ley. Una lesión grave en la piscina puede convertirse rápidamente en una demanda multimillonaria.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Tener Mascotas (Perros)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Las mordeduras caninas representan más de un tercio de los pagos por reclamos de responsabilidad bajo las leyes estrictas de Connecticut.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Reuniones Sociales en Casa</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Organizar parrilladas o fiestas familiares genera responsabilidad si un invitado consume bebidas y luego sufre o provoca un accidente.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Botes y Embarcaciones</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Pasear en barco en el lago Candlewood o Long Island Sound conlleva riesgos mayores que exceden las pólizas marinas básicas.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Difamación y Redes Sociales</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Cubre acusaciones de difamación, calumnia o invasión de privacidad, áreas expresamente excluidas en las pólizas normales de vivienda.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Preguntas Frecuentes</h2>
+          <p class="text-sm text-text-secondary">Dudas comunes sobre el seguro sombrilla en Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Qué es una póliza Sombrilla (Umbrella) y cómo funciona?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Una póliza de seguro sombrilla personal proporciona cobertura adicional de responsabilidad civil por encima de los límites de sus pólizas básicas de auto, casa o inquilinos. Cuando los límites de su póliza primaria se agotan ante un juicio o acuerdo costoso, la póliza sombrilla asume el pago restante hasta el límite contratado ($1,000,000 o más).
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Quién necesita un seguro sombrilla en Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Cualquier persona que sea dueña de una vivienda, tenga ahorros para su retiro o fondos universitarios, o reciba un salario regular. No necesita ser millonario para ser demandado. Los factores comunes de riesgo incluyen tener hijos adolescentes que manejan, tener perro, piscina en el patio, organizar eventos sociales o ser voluntario.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Cuánto cuesta una póliza sombrilla de $1,000,000 en Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Es una de las pólizas más accesibles del mercado porque funciona como cobertura secundaria. Una póliza típica de $1,000,000 cuesta entre $150 y $300 al año (menos de $25 al mes). Cada millón adicional de cobertura cuesta aún menos.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">¿Cuáles son los límites básicos requeridos antes de contratar una sombrilla?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Las compañías exigen límites mínimos en sus pólizas base: normalmente $250,000/$500,000 en responsabilidad de auto y $300,000 a $500,000 en responsabilidad de vivienda. Associated Insurance Agency coordina sus pólizas para garantizar que no existan brechas de cobertura.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Proteja Todo por lo que ha Trabajado</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Por menos de un dólar al día, una póliza sombrilla le da total tranquilidad para el futuro de su familia. Hable con un asesor de AIA hoy mismo.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/es/quote?type=umbrella"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Cotizar Seguro Sombrilla
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

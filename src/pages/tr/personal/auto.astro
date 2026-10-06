@@ -1,0 +1,354 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/tr/personal/auto#service",
+      "name": "Otomobil ve Karavan Sigortası Connecticut",
+      "serviceType": "Auto and Recreational Vehicle Insurance",
+      "description": "Connecticut'ta bireysel otomobil, SUV, kamyonet, karavan ve motorhome sigortası. CGS § 14-112 yasal uyumluluğu, kasko (çarpışma/kapsamlı) ve sigortasız sürücü teminatları.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://aia-danbury.com/tr"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bireysel Sigorta",
+          "item": "https://aia-danbury.com/tr/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Otomobil ve Karavan",
+          "item": "https://aia-danbury.com/tr/personal/auto"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Connecticut zorunlu araç sigortası yasal alt limitleri nelerdir (CGS § 14-112)?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Connecticut Genel Kanunları (CGS § 14-112) uyarınca trafiğe çıkan tüm sürücüler kişi başına en az $25,000 bedensel yaralanma, kaza başına toplam $50,000 bedensel yaralanma ve $25,000 maddi hasar (25/50/25) sorumluluk teminatı ve buna denk Sigortasız/Yetersiz Sigortalı Sürücü (UM/UIM) teminatı taşımak zorundadır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Eyalet asgari limitleri neden finansal açıdan tehlikelidir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Günümüzde yeni bir aracın ortalama satış fiyatı $48,000'ı aşmaktadır. Eyaletin $25,000'lık maddi hasar tavanı, orta segment tek bir aracın perte çıkmasını dahi karşılamaz. Tıbbi giderlerin $50,000'ı aşması durumunda, mahkemeler birikimlerinize, evinizin değerine haciz koyabilir ve gelecekteki maaşınızdan kesinti yapabilir. En az 100/300/100 veya 250/500/100 limitlerini öneriyoruz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Çarpışma (Collision) ile Kapsamlı (Comprehensive) teminat farkı nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Çarpışma teminatı aracınızın başka bir araca çarpması, bariyerlere vurması veya buzda kayıp devrilmesi sonucu oluşan hasarları karşılar. Kapsamlı (Comprehensive) teminat ise kontrolünüz dışındaki olayları kapsar: yaban hayvanı (geyik) çarpması, ön cam çatlaması, hırsızlık, yangın, dolu ve fırtınada düşen ağaç dalları."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Karavan, çekme karavan veya motorhome araçlarımı aynı acenteden sigortalayabilir miyim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Associated Insurance Agency; motorhome, çekme karavan, kamp römorku ve tekne römorkları için kamp alanı sorumluluğu, kişisel kamp eşyaları teminatı ve 7/24 yol yardımını içeren özel rekreasyonel araç (RV) poliçeleri sunar."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  lang="tr"
+  title="Connecticut Otomobil ve Karavan Sigortası | CGS § 14-112 | AIA"
+  description="Connecticut'ta araba, SUV ve karavan sigortası. Yasal limitler CGS § 14-112, kasko, sigortasız sürücü ve paket indirimleri."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/tr" class="hover:text-accent transition-colors">Ana Sayfa</a>
+      <span>/</span>
+      <a href="/tr/personal" class="hover:text-accent transition-colors">Bireysel Sigorta</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Otomobil ve Karavan</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Yol ve Sürüş Güvencesi
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Otomobil ve Karavan (RV) Sigortası
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          I-84, Route 7 ve yerel Connecticut yollarında tam güvenceyle sürün. Aile araçlarınızı, pikaplarınızı, motokaravanlarınızı ve kamp römorklarınızı varlıklarınızı koruyan güçlü limitlerle sigortalıyoruz.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/tr/quote?type=auto"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Araç Sigortası Teklifi Al
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            (203) 748-9272 Numarasını Arayın
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">CGS § 14-112</span>
+          <span class="text-xs text-text-muted">Eyalet Yasal Zorunluluk Uyumu</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">100/300/100</span>
+          <span class="text-xs text-text-muted">Tavsiye Edilen Koruma Limiti</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">Lider Sigorta Şirketi</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Ev + Araç</span>
+          <span class="text-xs text-text-muted">%25'e Varan Paket Tasarrufu</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- Statutory Mandate & Risk Framing -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Connecticut Araç Sigortası Zorunlulukları (CGS § 14-112)
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Connecticut yasaları, her sürücünün kişi başı $25,000 bedensel yaralanma, kaza başı $50,000 toplam bedensel yaralanma ve $25,000 maddi hasar (25/50/25) asgari limitlerine ve sigortasız sürücü korumasına (UM/UIM) sahip olmasını şart koşar.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Bu yasal asgari limitler DMV tescili için yeterli olsa da ciddi bir kazada sürücüleri büyük bir finansal çöküşle baş başa bırakır. Lüks araçların karıştığı zincirleme bir kazada $25,000 limiti dakikalar içinde tükenir. Bağımsız acentelerimiz bütçenizi aşmadan gerçek koruma sağlayan poliçeler sunar.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Yalnızca Yasal Asgariyi Seçmenin Tehlikeleri
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Bugün yeni bir aracın ortalama piyasa değeri $48,000'ı geçmektedir; eyaletin $25,000'lık sınırı sadece tek bir aracın perte çıkışını bile karşılamaz.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Poliçe limitiniz tükendiğinde Connecticut mahkemeleri kişisel birikimlerinize, evinizin tapusuna haciz koyabilir ve gelecekteki maaşınızdan kesinti yapabilir. Teminatınızı <strong>100/300/100 veya 250/500/100</strong> seviyesine yükseltmek cüzi bir prim farkıyla tam güvence sağlar.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Temel Araç Sigortası Teminatları</h2>
+          <p class="text-sm text-text-secondary">Connecticut yol ve kış koşullarına özel korumalar.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Bedensel Yaralanma Sorumluluğu</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Kusurlu olduğunuz bir kazada karşı taraftaki sürücü ve yolcuların hastane faturalarını, rehabilitasyonunu ve yasal savunma ücretlerini öder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Maddi Hasar Sorumluluğu</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Karşı tarafın aracında veya kamu direkleri, dükkan vitrinleri gibi yapılarda oluşan maddi hasarları karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Çarpışma (Collision) Kaskosu</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Başka bir araca çarpmanız, bariyerlere vurmanız veya karlı yolda şarampole devrilmeniz durumunda kendi aracınızın tamirini veya rayiç bedelini öder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Kapsamlı (Comprehensive) Kasko</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Trafik kazası dışındaki tehlikeleri karşılar: geyik çarpması, taş sıçramasıyla cam çatlaması, hırsızlık, yangın, dolu ve düşen ağaç dalları.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Sigortasız Sürücü (UM/UIM) Koruması</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Sigortasız bir sürücünün veya vurup kaçan (hit-and-run) bir aracın çarpması durumunda tıbbi faturalarınızı ve yaralanmalarınızı güvenceye alır.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">7/24 Yol Yardım ve İkame Araç</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Acil çekici, akü takviyesi, lastik değişimi ve aracınız servisteyken günlük kiralık araç ücretlerinin karşılanmasını içerir.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RV & Campers Section -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Karavan, Motorhome ve Kamp Römorku Sigortası</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Rekreasyonel araçlar standart araba sigortasından çok daha geniş teminatlar gerektirir:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Motokaravanlar (A, B, C Sınıfı)</strong>
+            <p class="text-text-muted">Yüksek değerli entegre ve alkovenli motorhome araçları için tam kasko ve sorumluluk güvencesi.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Çekme Karavanlar (Trailer)</strong>
+            <p class="text-text-muted">Otoyolda çekilme anında ve kamp alanında park halindeyken tam koruma sağlar.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Kamp Alanı Sorumluluk Teminatı</strong>
+            <p class="text-text-muted">Karavanınız park halindeyken misafirlerin uğrayabileceği kazalara karşı üçüncü şahıs koruması.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Karavan İçi Kişisel Eşyalar</strong>
+            <p class="text-text-muted">Karavan içinde taşınan kamp malzemeleri, elektronikler ve giysiler için yeni alım bedeli koruması.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Sıkça Sorulan Sorular</h2>
+          <p class="text-sm text-text-secondary">Connecticut araç ve karavan sigortası hakkında sorular.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Connecticut yasal zorunlu araç sigortası limitleri nelerdir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Connecticut Genel Kanunları (CGS § 14-112) uyarınca trafiğe çıkan tüm sürücüler kişi başına en az $25,000 bedensel yaralanma, kaza başına toplam $50,000 bedensel yaralanma ve $25,000 maddi hasar (25/50/25) sorumluluk teminatı ve buna denk Sigortasız/Yetersiz Sigortalı Sürücü (UM/UIM) teminatı taşımak zorundadır.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Eyalet asgari limitleri neden finansal açıdan tehlikelidir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Günümüzde yeni bir aracın ortalama satış fiyatı $48,000'ı aşmaktadır. Eyaletin $25,000'lık maddi hasar tavanı, orta segment tek bir aracın perte çıkmasını dahi karşılamaz. Tıbbi giderlerin $50,000'ı aşması durumunda, mahkemeler birikimlerinize, evinizin değerine haciz koyabilir ve gelecekteki maaşınızdan kesinti yapabilir. En az 100/300/100 veya 250/500/100 limitlerini öneriyoruz.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Çarpışma (Collision) ile Kapsamlı (Comprehensive) teminat farkı nedir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Çarpışma teminatı aracınızın başka bir araca çarpması, bariyerlere vurması veya buzda kayıp devrilmesi sonucu oluşan hasarları karşılar. Kapsamlı (Comprehensive) teminat ise kontrolünüz dışındaki olayları kapsar: yaban hayvanı (geyik) çarpması, ön cam çatlaması, hırsızlık, yangın, dolu ve fırtınada düşen ağaç dalları.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Karavan ve motorhome araçlarımı aynı acenteden sigortalayabilir miyim?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Evet. Associated Insurance Agency; motorhome, çekme karavan, kamp römorku ve tekne römorkları için kamp alanı sorumluluğu, kişisel kamp eşyaları teminatı ve 7/24 yol yardımını içeren özel rekreasyonel araç (RV) poliçeleri sunar.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Connecticut Araç Sigortası Fiyatlarını Karşılaştırın</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Aracınız için fazla ödemeyin. Acentelerimiz en iyi indirimleri uygulayarak sizin için piyasanın en rekabetçi tekliflerini bulsun.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/tr/quote?type=auto"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Araç Teklifi İsteyin
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

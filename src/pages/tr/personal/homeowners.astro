@@ -1,0 +1,354 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/tr/personal/homeowners#service",
+      "name": "Ev Sahibi Sigortası Connecticut",
+      "serviceType": "Homeowners Insurance",
+      "description": "Connecticut'ta kapsamlı konut ve ev sahibi sigortası. Yeniden inşa bedeli (replacement cost), kişisel eşyalar, üçüncü şahıs sorumluluğu ve kış fırtınası teminatları.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://aia-danbury.com/tr"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Bireysel Sigorta",
+          "item": "https://aia-danbury.com/tr/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ev Sahibi Sigortası",
+          "item": "https://aia-danbury.com/tr/personal/homeowners"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta yeniden inşa bedeli ile piyasa değeri arasındaki fark nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Piyasa değeri, arsa ve konumu içeren gayrimenkul satış fiyatıdır. Yeniden inşa maliyeti (replacement cost) ise evinizi mevcut yerel malzeme ve işçilik fiyatlarıyla sıfırdan inşa etmek için gereken fiili tutardır. Connecticut'ta inşaat maliyetleri yüksek olduğundan, yeniden inşa bedeli emlak değerinden belirgin şekilde farklı olabilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Connecticut ev sigortası kışın donan boruları ve çatıdaki buz birikintilerini (ice dam) karşılar mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet, evde makul bir ısı korunduğu sürece, standart HO-3 ve HO-5 poliçeleri ani donan boru patlamalarını ve çatıdaki buz bentlerinden sızan suların yol açtığı hasarları kapsar. Associated Insurance Agency ayrıca kanalizasyon ve su basması ek teminatlarını da tavsiye eder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Su baskını ve taşkın hasarları standart ev poliçesine dahil midir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Standart ev sahibi sigortası nehir taşkınları, yoğun yüzey suları veya deniz kabarmalarından kaynaklanan sel hasarlarını kapsamaz. Sel teminatı için Ulusal Sel Sigortası Programı (NFIP) veya özel sel poliçeleri gereklidir ve acentemiz bunu sizin için düzenleyebilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ev ve araç sigortasını birleştirerek ne kadar tasarruf edebilirim?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ev ve kasko poliçelerinizi Associated Insurance Agency aracılığıyla aynı sigorta şirketinde birleştirdiğinizde, her iki poliçede %15 ile %25 arasında paket indirimi elde edebilir ve fatura takibini kolaylaştırabilirsiniz."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  lang="tr"
+  title="Connecticut Ev Sahibi Sigortası | Konut Güvencesi | AIA Danbury"
+  description="Connecticut'ta kapsamlı ev ve konut sigortası. Evinizi, eşyalarınızı ve ailenizi kış fırtınalarına, boru donmalarına ve hasarlara karşı koruyun."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/tr" class="hover:text-accent transition-colors">Ana Sayfa</a>
+      <span>/</span>
+      <a href="/tr/personal" class="hover:text-accent transition-colors">Bireysel Sigorta</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Ev Sahibi Sigortası</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Konut ve Mülk Güvencesi
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Ev Sahibi Sigortası (Homeowners)
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Ailenizin en değerli yatırımını New England kış şartlarına, fırtınalara ve hukuki tazminat risklerine karşı güvence altına alın. 20'den fazla birinci sınıf sigorta şirketini karşılaştırarak tam yeniden inşa teminatı ve paket indirimleri sağlıyoruz.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/tr/quote?type=home"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Ev Sigortası Teklifi Al
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            (203) 748-9272 Numarasını Arayın
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">%15 - %25</span>
+          <span class="text-xs text-text-muted">Ev + Araç Paket İndirimi</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">%100</span>
+          <span class="text-xs text-text-muted">Genişletilmiş Yeniden İnşa Teminatı</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">Karşılaştırılan A-Sınıfı Şirket</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">3 Ofis</span>
+          <span class="text-xs text-text-muted">Danbury, Watertown, Bridgeport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- What is covered Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Connecticut Ev Sigortası Neleri Kapsar?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Connecticut ev sahibi sigortası; yangın, yıldırım, dolu, fırtına, yoğun kar yükü ve hırsızlık gibi poliçe kapsamındaki tehlikeler neticesinde evinizin tamir masraflarını, yeniden inşasını ve eşyalarınızın bedelini karşılar. Ayrıca mülkünüzde bir ziyaretçinin yaralanması durumunda yasal savunma ve tazminat koruması sağlar.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Litchfield'daki tarihi evlerden Fairfield kıyı bölgesindeki konutlara kadar batı Connecticut'taki gayrimenkuller zorlu iklim koşullarıyla karşı karşıyadır. Associated Insurance Agency, Travelers, Safeco, Hanover ve Liberty Mutual gibi saygın sigorta şirketleriyle çalışarak mülkünüze tam uyumlu poliçeler oluşturur.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Yeniden İnşa Bedeli ile Piyasa Değeri Farkı
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Pek çok ev sahibi poliçe limitini evin satış fiyatına veya emlak vergisi değerine göre belirleme yanılgısına düşer. Oysa Connecticut'taki ahşap, çimento ve işçilik maliyetleri gerçek <strong>Yeniden İnşa Bedelini</strong> belirler.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Poliçenizi yerel inşaat endekslerine göre hesaplıyor ve enflasyon dalgalanmalarına karşı <strong>Genişletilmiş Yeniden İnşa Klozu</strong> (%125–%150'ye kadar) ekleyerek sizi olası zararlardan koruyoruz.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Poliçenizin Ana Güvence Başlıkları</h2>
+          <p class="text-sm text-text-secondary">Standart HO-3 ve kapsamlı HO-5 poliçe teminatları.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">A</div>
+            <h3 class="text-base font-bold text-text-primary">Teminat A: Ana Konut Yapısı</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Evinizin çatısı, duvarları, temeli ve sabit tesisatının yangın, rüzgar veya fırtına sonrası yeniden inşasını karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">B</div>
+            <h3 class="text-base font-bold text-text-primary">Teminat B: Diğer Yapılar</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Ana binadan bağımsız garajlar, alet kulübeleri, bahçe çitleri, yüzme havuzları ve araba yollarını korur.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">C</div>
+            <h3 class="text-base font-bold text-text-primary">Teminat C: Kişisel Eşyalar</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Mobilya, giyim eşyaları, elektronik cihazlar ve beyaz eşyaların zarar görmesi veya çalınması halinde yeni bedellerini tazmin eder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">D</div>
+            <h3 class="text-base font-bold text-text-primary">Teminat D: Kullanım Kaybı (Kira ve Yaşam Masrafı)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Hasar nedeniyle ev oturulamaz hale geldiğinde otel, geçici kiralık daire ve yemek giderlerini karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">E</div>
+            <h3 class="text-base font-bold text-text-primary">Teminat E: Kişisel Sorumluluk</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Mülkünüzde bir misafirin düşüp sakatlanması veya istem dışı başkalarının mülküne zarar vermeniz durumunda tazminat ve avukat ücretlerini öder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">F</div>
+            <h3 class="text-base font-bold text-text-primary">Teminat F: Tıbbi Ödemeler</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Evinizde ufak kaza geçiren ziyaretçilerin acil hastane ve tedavi masraflarını mahkeme sürecine gerek kalmadan karşılar.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Critical Endorsements -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Connecticut İçin Önemli Ek Teminatlar</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Standart poliçelerde yer almayan ancak bölgemiz için hayati olan ek klozlardır:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Su ve Kanalizasyon Geri Tepmesi</strong>
+            <p class="text-text-muted">Aşırı yağışlarda drenaj pompası arızası veya kanalizasyon taşması sonucu bodrum katında oluşabilecek hasarları karşılar.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Yeraltı Tesisat Hatları</strong>
+            <p class="text-text-muted">Arsanızın altından geçen su, kanalizasyon ve elektrik hatlarının arızalanması durumunda kazı ve onarım masraflarını öder.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Kazan ve Ekipman Arızası</strong>
+            <p class="text-text-muted">Isıtma kazanları, merkezi klima kompresörleri ve ana elektrik panellerinin mekanik arızalarını teminat altına alır.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Değerli Eşya ve Mücevher</strong>
+            <p class="text-text-muted">Pırlanta yüzükler, lüks saatler ve sanat eserleri için muafiyetsiz ve dünya genelinde geçerli mutabakatlı değer koruması.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Sıkça Sorulan Sorular</h2>
+          <p class="text-sm text-text-secondary">Connecticut ev sahibi sigortası hakkında merak edilenler.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Yeniden inşa bedeli ile piyasa değeri arasındaki fark nedir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Piyasa değeri, arsa ve konumu içeren gayrimenkul satış fiyatıdır. Yeniden inşa maliyeti (replacement cost) ise evinizi mevcut yerel malzeme ve işçilik fiyatlarıyla sıfırdan inşa etmek için gereken fiili tutardır. Connecticut'ta inşaat maliyetleri yüksek olduğundan, yeniden inşa bedeli emlak değerinden belirgin şekilde farklı olabilir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Donan borular ve buz bentleri (ice dams) sigortaya dahil midir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Evet, evde makul bir ısı korunduğu sürece, standart HO-3 ve HO-5 poliçeleri ani donan boru patlamalarını ve çatıdaki buz bentlerinden sızan suların yol açtığı hasarları kapsar. Associated Insurance Agency ayrıca kanalizasyon ve su basması ek teminatlarını da tavsiye eder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Su baskını ve taşkın hasarları standart ev poliçesine dahil midir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Hayır. Standart ev sahibi sigortası nehir taşkınları, yoğun yüzey suları veya deniz kabarmalarından kaynaklanan sel hasarlarını kapsamaz. Sel teminatı için Ulusal Sel Sigortası Programı (NFIP) veya özel sel poliçeleri gereklidir ve acentemiz bunu sizin için düzenleyebilir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Ev ve araç sigortasını birleştirerek ne kadar tasarruf edebilirim?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Ev ve kasko poliçelerinizi Associated Insurance Agency aracılığıyla aynı sigorta şirketinde birleştirdiğinizde, her iki poliçede %15 ile %25 arasında paket indirimi elde edebilir ve fatura takibini kolaylaştırabilirsiniz.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Evinizi ve Ailenizi Güvence Altına Alın</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Danbury, Watertown ve Bridgeport'taki lisanslı acentelerimiz en iyi fiyat ve teminatı bulmak için hizmetinizde.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/tr/quote?type=home"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Ev Teklifi İsteyin
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

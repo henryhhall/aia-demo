@@ -1,0 +1,356 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/commercial/workers-compensation#service",
+      "name": "Workers' Compensation Insurance Connecticut",
+      "serviceType": "Workers' Compensation Insurance",
+      "description": "Statutory Connecticut Workers' Compensation insurance (CGS § 31-284). Coverage for employee medical care, lost wages, employer liability, and NCCI payroll classification audit support.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aia-danbury.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Commercial Insurance",
+          "item": "https://aia-danbury.com/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Workers' Compensation",
+          "item": "https://aia-danbury.com/commercial/workers-compensation"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is Workers' Compensation mandatory for small businesses in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Under the Connecticut Workers' Compensation Act (CGS § 31-284), any business that employs one or more individuals—regardless of whether they are full-time, part-time, seasonal, or family members—must maintain active workers' compensation insurance. Failure to do so can result in state-issued stop-work orders and civil fines starting at $500 per day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can business owners or LLC members exclude themselves from Workers' Comp coverage?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Sole proprietors, single-member LLCs, and corporate officers in Connecticut have the legal option to exclude themselves from coverage using state Form 6B or Form 75 to reduce premium costs. However, if they hire even one part-time assistant or apprentice, they must purchase a policy covering that employee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a 'Ghost Policy' in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A 'Ghost Policy' (or minimum premium policy) is an affordable workers' compensation policy purchased by a self-employed sole proprietor or independent contractor with zero employees. It provides a valid Certificate of Insurance (COI) to satisfy general contractor or client contract mandates without paying for unnecessary payroll coverage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does the annual Workers' Compensation payroll audit work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At policy expiration, your insurance carrier compares your estimated payroll against your actual state wage filings (Forms CT-941 and W-2/1099s). If your payroll was higher or if subcontractors lacked certificates, you receive an adjustment bill. Associated Insurance Agency works with you throughout the policy term to adjust payroll declarations and verify classification codes so you avoid unexpected audit bills."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Workers' Compensation Insurance CT | CGS § 31-284 Compliance | AIA"
+  description="Mandatory Connecticut Workers' Comp insurance. Ensure full CGS § 31-284 compliance, optimize NCCI payroll codes, and avoid surprise audit bills."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/" class="hover:text-accent transition-colors">Home</a>
+      <span>/</span>
+      <a href="/commercial" class="hover:text-accent transition-colors">Commercial Insurance</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Workers' Compensation</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut CGS § 31-284 Statutory Protection
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Workers' Compensation Insurance in Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Ensure total statutory compliance with Connecticut labor laws, protect injured employees with medical and wage indemnity, and shield your company from devastating negligence lawsuits and stop-work penalties.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/quote?type=commercial&coverage=wc"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Request Workers' Comp Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Call (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">1+ Worker</span>
+          <span class="text-xs text-text-muted">Mandatory Under CT Law</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">NCCI Audits</span>
+          <span class="text-xs text-text-muted">Accurate Class Code Alignment</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Ghost Policies</span>
+          <span class="text-xs text-text-muted">Available for Solo Contractors</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Pay-As-You-Go</span>
+          <span class="text-xs text-text-muted">Payroll Integrated Billing Options</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- CT Legal Mandate / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Connecticut Workers' Compensation Laws (CGS § 31-284)
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Under the Connecticut Workers' Compensation Act (CGS § 31-284), all employers regularly employing one or more workers must provide proof of solvent workers' compensation insurance. The policy covers statutory medical care, rehabilitation, and temporary or permanent wage replacement. In exchange, the law establishes an "exclusive remedy" doctrine granting employers immunity from civil personal injury lawsuits.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Operating without workers' compensation in Connecticut is a class D felony risk. The Workers' Compensation Commission and Department of Labor conduct active workplace investigations. Uninsured employers face mandatory stop-work orders and civil fines starting at $500 per day, plus personal liability for all injured worker medical costs.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Penalties for Non-Compliance in CT
+          </h3>
+          <div class="space-y-3 text-xs text-text-secondary">
+            <div class="p-3 bg-red-50 text-red-900 rounded border border-red-200">
+              <strong>Mandatory Stop-Work Orders:</strong> The state can shut down all job sites and business premises until compliant coverage is verified.
+            </div>
+            <div class="p-3 bg-zinc-50 rounded border border-border-subtle">
+              <strong>$500 Daily Fines:</strong> Fines accumulate daily for every calendar day an employer operated without active coverage.
+            </div>
+            <div class="p-3 bg-zinc-50 rounded border border-border-subtle">
+              <strong>Unlimited Civil Liability:</strong> If an employee is injured without insurance, the exclusive remedy defense is nullified, opening personal bank accounts to civil litigation.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Core Parts of a Policy -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">How Workers' Compensation Protects Both Parties</h2>
+          <p class="text-sm text-text-secondary">A standard policy consists of two distinct statutory parts.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent font-bold text-base">Part 1</div>
+            <h3 class="text-xl font-bold text-text-primary">Workers' Compensation (Statutory Benefits)</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Provides direct benefits mandated by Connecticut law to employees injured on the job, regardless of fault:
+            </p>
+            <ul class="space-y-2 text-xs text-text-secondary pt-2">
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Medical Care:</strong> 100% of hospital, doctor, surgical, prescription, and physical therapy expenses.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Wage Replacement:</strong> Temporary Total (TT) or Temporary Partial (TP) disability benefits equal to 75% of spendable weekly wage.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Vocational Rehab:</strong> Retraining benefits if the employee cannot return to their previous trade.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Death Benefits:</strong> Funeral expense stipends and financial support for surviving dependents.
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent font-bold text-base">Part 2</div>
+            <h3 class="text-xl font-bold text-text-primary">Employers' Liability (Civil Defense Shield)</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Shields the employer against third-party lawsuits and civil damages that fall outside statutory workers' compensation:
+            </p>
+            <ul class="space-y-2 text-xs text-text-secondary pt-2">
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Third-Party Action Over:</strong> Protects when an injured employee sues a general contractor or property owner who in turn sues you.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Dual Capacity Lawsuits:</strong> Defends against claims that you injured an employee in a role other than direct employer.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Loss of Consortium:</strong> Covers civil claims brought by an injured employee’s spouse or family members.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Legal Defense:</strong> Pays attorney retainers, depositions, and litigation defense fees.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Audits & Payroll Optimization -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-3xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">How AIA Prevents Surprise Premium Audit Bills</h2>
+          <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+            Workers' compensation premiums are calculated per $100 of payroll multiplied by your NCCI classification code rate. A common nightmare for Connecticut business owners is receiving an unexpected bill for thousands of dollars after the annual carrier audit.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-text-secondary">
+          <div class="bg-white p-5 rounded-xl border border-border-subtle space-y-2">
+            <h4 class="font-bold text-accent text-sm">Class Code Auditing</h4>
+            <p class="leading-relaxed">
+              We ensure your clerical and sales employees are never erroneously pooled into higher-risk field contractor codes, dramatically lowering your base rate.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-border-subtle space-y-2">
+            <h4 class="font-bold text-accent text-sm">Subcontractor Certificates</h4>
+            <p class="leading-relaxed">
+              If an uninsured 1099 subcontractor works on your site, state auditors will bill your business for their payroll. We teach you how to collect compliant COIs.
+            </p>
+          </div>
+          <div class="bg-white p-5 rounded-xl border border-border-subtle space-y-2">
+            <h4 class="font-bold text-accent text-sm">Pay-As-You-Go Billing</h4>
+            <p class="leading-relaxed">
+              Eliminate lump-sum guesswork by syncing premiums directly to real-time payroll cycles, guaranteeing near-zero year-end audit adjustments.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Frequently Asked Questions</h2>
+          <p class="text-sm text-text-secondary">Answers to critical questions regarding Connecticut Workers' Compensation.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Is Workers' Compensation mandatory for small businesses in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Yes. Under the Connecticut Workers' Compensation Act (CGS § 31-284), any business that employs one or more individuals—regardless of whether they are full-time, part-time, seasonal, or family members—must maintain active workers' compensation insurance. Failure to do so can result in state-issued stop-work orders and civil fines starting at $500 per day.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Can business owners or LLC members exclude themselves from Workers' Comp coverage?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Yes. Sole proprietors, single-member LLCs, and corporate officers in Connecticut have the legal option to exclude themselves from coverage using state Form 6B or Form 75 to reduce premium costs. However, if they hire even one part-time assistant or apprentice, they must purchase a policy covering that employee.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What is a 'Ghost Policy' in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              A 'Ghost Policy' (or minimum premium policy) is an affordable workers' compensation policy purchased by a self-employed sole proprietor or independent contractor with zero employees. It provides a valid Certificate of Insurance (COI) to satisfy general contractor or client contract mandates without paying for unnecessary payroll coverage.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">How does the annual Workers' Compensation payroll audit work?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              At policy expiration, your insurance carrier compares your estimated payroll against your actual state wage filings (Forms CT-941 and W-2/1099s). If your payroll was higher or if subcontractors lacked certificates, you receive an adjustment bill. Associated Insurance Agency works with you throughout the policy term to adjust payroll declarations and verify classification codes so you avoid unexpected audit bills.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Need Workers' Comp Compliance in Connecticut?</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            We compare leading state-approved carriers, classify your employees correctly, and issue instantaneous certificates of insurance to protect your business.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/quote?type=commercial&coverage=wc"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Request Workers' Comp Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

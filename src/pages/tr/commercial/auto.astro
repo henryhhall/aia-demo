@@ -1,0 +1,338 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/tr/commercial/auto#service",
+      "name": "Ticari Araç ve Filo Sigortası Connecticut",
+      "serviceType": "Commercial Automobile Insurance",
+      "description": "Connecticut'ta ticari araç, van, kamyonet ve filo sigortası. Çarpışma, üçüncü şahıs mali mesuliyet, kiralanan ve şahsi araç (HNOA) ve yük teminatları.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://aia-danbury.com/tr"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ticari Sigortalar",
+          "item": "https://aia-danbury.com/tr/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ticari Araç ve Filo",
+          "item": "https://aia-danbury.com/tr/commercial/auto"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Şahsi oto sigortam iş amaçlı araç kullanımını karşılar mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayır. Bireysel otomobil poliçeleri ticari malzeme taşıma, iş yeri teslimatları veya şantiyeler arası seyahatler sırasında meydana gelen kazaları açıkça teminat dışı bırakır. Ağır bir kaza durumunda kişisel sigorta şirketi hasarı ödemez ve firmanız doğrudan tazminat davalarıyla karşı karşıya kalır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kiralanan ve Şirket Dışı Araç (HNOA) teminatı nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HNOA teminatı, çalışanlarınız şirketin bir işi için (bankaya gitmek, malzeme almak vb.) kendi şahsi arabalarını kullandıklarında ya da firmanız kiralık araç tuttuğunda şirketinizi korur. Çalışanın kişisel poliçe limiti yetersiz kaldığında şirketinize açılabilecek davaları üstlenir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ticari oto sigortası aracın içindeki el aletlerini ve yükü kapsar mı?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standart ticari araç poliçesi yalnızca aracın gövdesini ve araca sabitlenmiş parçaları karşılar. Kasadaki aletleri, jeneratörleri ve malzemeleri hırsızlığa veya hasara karşı korumak için AIA poliçenize 'Inland Marine / Seyyar Ekipman' teminatı ekler."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta ticari araçlar için hangi sorumluluk limitleri önerilir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eyalet yasal alt limiti (CGS § 14-112) olan 25k/50k/25k $ şirketler için son derece yetersizdir. Ticari araçlar ve filolar için genellikle en az 500.000 $ ile 1.000.000 $ arası Tek Birleşik Limit (CSL) tercih edilir."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Ticari Araç ve Filo Sigortası CT | Associated Insurance Agency"
+  description="Connecticut'ta ticari araç, van ve kamyonet filo sigortası. Yüksek limitli sorumluluk, kasko, HNOA koruması ve Türkçe danışmanlık."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/tr" class="hover:text-accent transition-colors">Ana Sayfa</a>
+      <span>/</span>
+      <a href="/tr/commercial" class="hover:text-accent transition-colors">Ticari Sigortalar</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Ticari Araç ve Filo</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Ticari Filo Güvencesi
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Ticari Araç ve Filo Sigortası
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Tek bir ustanın kamyonetinden onlarca servis vanı ve nakliye kamyonuna kadar, sürücülerinizi, araçlarınızı ve şirket sermayenizi Connecticut yollarında güvence altına alın.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/tr/quote?type=commercial&coverage=auto"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Filo Sigortası Teklifi Alın
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Ara: (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">1.000.000 $</span>
+          <span class="text-xs text-text-muted">Tek Birleşik Limit (CSL)</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">1 - 50+</span>
+          <span class="text-xs text-text-muted">Müstakil Araç veya Filo</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">HNOA Opsiyonu</span>
+          <span class="text-xs text-text-muted">Personel Şahsi Araçları</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Öncü Şirketler</span>
+          <span class="text-xs text-text-muted">Progressive, Travelers ve Fazlası</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- Why Personal Policies Fail / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Şahsi Araba Sigortası Neden Ticari Kullanımda Yetersiz Kalır?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Şahsi araç sigortaları, mesleki alet taşıma, ücretli teslimat yapma veya işle ilgili sevkiyatlar sırasındaki kazaları açıkça kapsam dışı tutar. Çalışanınız mesai saatinde kazaya karışırsa şahsi poliçe ödeme yapmaz ve tüm maddi yükümlülük doğrudan şirketinizin banka hesaplarına yansır.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Müstakil bir ticari oto poliçesi yüksek tutarlı kurumsal tazminat limitleri, avukatlık savunması ve araç tamir ödemeleri sunarak Connecticut Motorlu Araçlar Dairesi (DMV) mevzuatına tam uyum sağlar.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Sigortaladığımız Ticari Araç Tipleri
+          </h3>
+          <ul class="space-y-2 text-xs text-text-secondary">
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Müteahhit ve usta kamyonetleri (Ford F-Series, Silverado, Ram)
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Yüksek tavanlı Sprinter ve kargo vanları
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Kapalı kasa kamyonlar (Box trucks) ve çekiciler
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Servis ve montaj kasa gövdeli araçlar
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Peyzaj damperli kamyonları ve iş römorkları
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-accent-gold font-bold">✓</span> Şirket makam ve yönetici binek otomobilleri
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Ticari Araç Poliçesi Teminatları</h2>
+          <p class="text-sm text-text-secondary">Yollarda araçlarınızı ve sürücülerinizi koruyan temel unsurlar.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Tek Birleşik Limitli Mali Mesuliyet</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Olay başına 500.000 $ veya 1.000.000 $+ teminatla üçüncü şahıs bedeni hasarlarını ve karşı araç zararlarını karşılayarak firmanızı korur.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Kasko ve Çarpışma Teminatı</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Trafik kazası, devrilme, hırsızlık, yangın, sel baskını veya fırtınada ağaç devrilmesi sonucu aracınızda oluşan zararları tazmin eder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Kiralanan / Şahsi Araç Sorumluluğu (HNOA)</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Personelinizin kendi arabasıyla şirket işine çıktığı anlarda veya geçici van kiraladığınızda şirketinize gelebilecek davaları karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Sigortasız Sürücü Koruması</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Aracınıza çarpan ve sigortası olmayan ya da kaçan sürücülerin neden olduğu bedeni ve maddi kayıpları karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Sürücü ve Yolcu Tıbbi Giderleri</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Kaza anında kusur oranına bakılmaksızın sürücünüzün ve yolcuların acil hastane ve ilk yardım masraflarını derhal öder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Seyyar Alet ve Ekipman Koruması</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Araç içinde taşınan pahalı el aletlerini, cihazları ve montaj malzemelerini hırsızlığa karşı teminat altına alan ek klozlardır.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Sıkça Sorulan Sorular</h2>
+          <p class="text-sm text-text-secondary">Connecticut ticari araç sigortaları hakkında merak edilenler.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Şahsi oto sigortam iş amaçlı araç kullanımını karşılar mı?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Hayır. Bireysel otomobil poliçeleri ticari malzeme taşıma, iş yeri teslimatları veya şantiyeler arası seyahatler sırasında meydana gelen kazaları açıkça teminat dışı bırakır. Ağır bir kaza durumunda kişisel sigorta şirketi hasarı ödemez ve firmanız doğrudan tazminat davalarıyla karşı karşıya kalır.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Kiralanan ve Şirket Dışı Araç (HNOA) teminatı nedir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              HNOA teminatı, çalışanlarınız şirketin bir işi için (bankaya gitmek, malzeme almak vb.) kendi şahsi arabalarını kullandıklarında ya da firmanız kiralık araç tuttuğunda şirketinizi korur. Çalışanın kişisel poliçe limiti yetersiz kaldığında şirketinize açılabilecek davaları üstlenir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Ticari oto sigortası aracın içindeki el aletlerini ve yükü kapsar mı?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Standart ticari araç poliçesi yalnızca aracın gövdesini ve araca sabitlenmiş parçaları karşılar. Kasadaki aletleri, jeneratörleri ve malzemeleri hırsızlığa veya hasara karşı korumak için AIA poliçenize 'Inland Marine / Seyyar Ekipman' teminatı ekler.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Connecticut'ta ticari araçlar için hangi sorumluluk limitleri önerilir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Eyalet yasal alt limiti (CGS § 14-112) olan 25k/50k/25k $ şirketler için son derece yetersizdir. Ticari araçlar ve filolar için genellikle en az 500.000 $ ile 1.000.000 $ arası Tek Birleşik Limit (CSL) tercih edilir.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Ticari Filolarınız İçin En Uygun Teklifi Alın</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            İster tek bir van ister büyük bir filo olsun, 20'den fazla sigorta şirketini karşılaştırarak en iyi fiyatları ve Türkçe desteği sunuyoruz.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/tr/quote?type=commercial&coverage=auto"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Filo Teklifi Alın
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

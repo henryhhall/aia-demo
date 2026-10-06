@@ -1,0 +1,347 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/personal/umbrella#service",
+      "name": "Personal Umbrella Liability Insurance Connecticut",
+      "serviceType": "Personal Umbrella Liability",
+      "description": "Personal umbrella excess liability insurance from $1,000,000 to $5,000,000+ in Connecticut. Shields home equity, retirement savings, and future income from catastrophic lawsuits.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aia-danbury.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Personal Insurance",
+          "item": "https://aia-danbury.com/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Personal Umbrella Liability",
+          "item": "https://aia-danbury.com/personal/umbrella"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Personal Umbrella Insurance and how does it work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Personal Umbrella Insurance provides extra liability coverage above and beyond the limits of your standard auto, homeowners, boat, or renters insurance policies. Once your base liability limits are exhausted by a major lawsuit or catastrophic settlement, your umbrella policy kicks in to cover the remaining damages up to your policy limit ($1M to $5M+)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who needs a Personal Umbrella policy in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Anyone who owns a home, has accumulated retirement or college savings, or earns a steady income should carry an umbrella policy. You do not have to be wealthy to be sued. Common risk amplifiers include having teenage drivers in the household, owning a dog, having a backyard pool or trampoline, hosting social gatherings, or serving on non-profit boards."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a $1,000,000 personal umbrella policy cost in CT?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Personal umbrella insurance is surprisingly affordable because it functions as secondary excess coverage. A standard $1,000,000 umbrella policy typically costs between $150 and $300 per year (less than $25 a month). Adding each additional $1,000,000 in coverage is even less expensive."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What underlying insurance limits are required before purchasing an umbrella?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Carriers require minimum underlying limits on your base policies—typically $250,000/$500,000 bodily injury liability on auto policies and $300,000 to $500,000 personal liability on homeowners policies. Associated Insurance Agency coordinates your underlying limits so there are no coverage gaps."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Personal Umbrella Liability Insurance CT | Asset Protection | AIA Danbury"
+  description="Personal umbrella liability in CT. Secure $1M to $5M+ excess liability coverage over home and auto to protect savings, home equity, and future wages."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/" class="hover:text-accent transition-colors">Home</a>
+      <span>/</span>
+      <a href="/personal" class="hover:text-accent transition-colors">Personal Insurance</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Personal Umbrella Liability</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut High-Limit Wealth Defense
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Personal Umbrella Liability Insurance in Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          In a litigious world, a single major auto crash or household accident can result in a multimillion-dollar civil judgment. Personal umbrella insurance adds $1,000,000 to $5,000,000+ in excess liability to protect your family home, retirement savings, and future earnings.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/quote?type=umbrella"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Request Umbrella Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Call (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">$1M - $5M+</span>
+          <span class="text-xs text-text-muted">Excess Liability Protection</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">~$20 / Mo</span>
+          <span class="text-xs text-text-muted">Average Starting Premium</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Worldwide</span>
+          <span class="text-xs text-text-muted">Travel & Rental Protection</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Legal Defense</span>
+          <span class="text-xs text-text-muted">Included Outside Policy Limits</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- What is Umbrella / Risk Definition Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            How Does a Personal Umbrella Policy Work?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              A Personal Umbrella policy sits directly atop your existing Connecticut auto and homeowners liability policies. When a serious claim or judgment exceeds your base coverage limit (such as $300,000 or $500,000), the umbrella policy immediately absorbs the excess liability up to your chosen limit ($1,000,000 or more).
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Without an umbrella policy, your personal assets—including your home equity, bank savings, mutual funds, 401(k) / IRA accounts, and up to 25% of your future disposable wages—can be seized or garnished under Connecticut court judgments to satisfy an unpaid liability award.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            A Real-World Example
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Your teen driver accidentally causes a major highway collision on I-84 involving severe spinal injuries. The injured driver wins a $1,500,000 judgment.
+          </p>
+          <div class="space-y-1.5 text-xs text-text-secondary bg-bg-secondary p-3 rounded-lg border border-border-subtle">
+            <p><strong>Your Auto Policy Limit:</strong> Pays $500,000</p>
+            <p><strong>Remaining Out-of-Pocket:</strong> $1,000,000</p>
+            <p class="text-accent font-semibold">With an Umbrella: The $1,000,000 excess is fully covered. Your savings and home are 100% safe.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- High-Risk Triggers Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Everyday Situations That Need Umbrella Coverage</h2>
+          <p class="text-sm text-text-secondary">You don't need to be a millionaire to be sued like one.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Teen & Young Drivers</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Inexperienced drivers have a statistically higher incidence of severe accidents. An umbrella policy provides peace of mind while they learn the road.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Swimming Pools & Trampolines</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Attractive nuisances carry immense liability exposure. Accidental drownings or spinal injuries can quickly generate multimillion-dollar lawsuits.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Dog Ownership</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Dog bites and animal knock-downs account for over one-third of all homeowners liability claim payouts nationwide under Connecticut strict liability statutes.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Entertaining & Social Hosting</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Hosting dinner parties, holiday dinners, or pool barbecues introduces social host liability if an intoxicated guest later causes an accident.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Boats, Watercraft & ATVs</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Recreational boating on Candlewood Lake or Long Island Sound involves heavy liability exposures that base watercraft policies may not sufficiently cover.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Libel, Slander & Social Media</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Personal umbrella policies include coverage for personal offenses—such as defamation, libel, slander, false arrest, and invasion of privacy—which standard home policies exclude.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Underlying Requirements Strip -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Required Underlying Coverage Limits</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Because an umbrella acts as secondary protection, insurance companies require your primary base policies to meet minimum thresholds before attachment:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs text-text-secondary">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle space-y-2">
+            <h3 class="text-base font-bold text-accent">Auto Liability Requirements</h3>
+            <p>Typically requires $250,000 / $500,000 bodily injury liability and $100,000 property damage (or $500,000 combined single limit).</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-border-subtle space-y-2">
+            <h3 class="text-base font-bold text-accent">Homeowners Liability Requirements</h3>
+            <p>Typically requires $300,000 to $500,000 in personal liability (Coverage E) on your primary residence and any secondary properties.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Frequently Asked Questions</h2>
+          <p class="text-sm text-text-secondary">Common questions about personal umbrella liability in Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What is Personal Umbrella Insurance and how does it work?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Personal Umbrella Insurance provides extra liability coverage above and beyond the limits of your standard auto, homeowners, boat, or renters insurance policies. Once your base liability limits are exhausted by a major lawsuit or catastrophic settlement, your umbrella policy kicks in to cover the remaining damages up to your policy limit ($1M to $5M+).
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Who needs a Personal Umbrella policy in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Anyone who owns a home, has accumulated retirement or college savings, or earns a steady income should carry an umbrella policy. You do not have to be wealthy to be sued. Common risk amplifiers include having teenage drivers in the household, owning a dog, having a backyard pool or trampoline, hosting social gatherings, or serving on non-profit boards.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">How much does a $1,000,000 personal umbrella policy cost in CT?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Personal umbrella insurance is surprisingly affordable because it functions as secondary excess coverage. A standard $1,000,000 umbrella policy typically costs between $150 and $300 per year (less than $25 a month). Adding each additional $1,000,000 in coverage is even less expensive.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What underlying insurance limits are required before purchasing an umbrella?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Carriers require minimum underlying limits on your base policies—typically $250,000/$500,000 bodily injury liability on auto policies and $300,000 to $500,000 personal liability on homeowners policies. Associated Insurance Agency coordinates your underlying limits so there are no coverage gaps.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Protect Everything You've Worked For</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            For less than a dollar a day, an umbrella policy gives you total peace of mind. Speak with an AIA advisor in Danbury, Watertown, or Bridgeport.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/quote?type=umbrella"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Get an Umbrella Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

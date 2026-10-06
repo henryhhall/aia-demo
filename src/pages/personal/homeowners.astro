@@ -1,0 +1,364 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/personal/homeowners#service",
+      "name": "Homeowners Insurance Connecticut",
+      "serviceType": "Homeowners Insurance",
+      "description": "Comprehensive homeowners insurance (HO-3 and HO-5) in Connecticut. Dwelling replacement cost, personal property, liability, and endorsements for water backup and New England winter storms.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://aia-danbury.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Personal Insurance",
+          "item": "https://aia-danbury.com/personal"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Homeowners Insurance",
+          "item": "https://aia-danbury.com/personal/homeowners"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the difference between dwelling replacement cost and market value in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Market value is what a buyer will pay for your home including the land and neighborhood location. Dwelling replacement cost is the actual construction expenditure required to rebuild your physical house from the ground up using modern materials and local labor rates. In Connecticut, construction and labor costs are among the highest in the country, meaning replacement cost often differs significantly from assessed real estate value."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does standard Connecticut homeowners insurance cover winter freeze damage and ice dams?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, standard HO-3 and HO-5 policies typically cover sudden and accidental burst pipes and water damage caused by winter roof ice dams, provided reasonable heat was maintained in the home. Associated Insurance Agency recommends adding extended water backup endorsements to cover subterranean drain backups."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is flood damage covered under a standard homeowners policy?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Standard homeowners insurance strictly excludes flood damage resulting from rising outdoor surface water, river overflows, or storm surges. Flood coverage requires a separate policy through the National Flood Insurance Program (NFIP) or private flood carriers, which Associated Insurance Agency can bind on your behalf."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much can I save by bundling home and auto insurance in Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Bundling your homeowners and personal auto policies with the same carrier through Associated Insurance Agency typically generates multi-policy discounts between 15% and 25% on both premiums, while simplifying billing and streamlining claims resolution."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Connecticut Homeowners Insurance | Rates & Coverage | AIA Danbury"
+  description="Comprehensive homeowners insurance in CT. Protect your dwelling, personal property, and liability against Nor'easters, winter ice dams, and storm damage."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/" class="hover:text-accent transition-colors">Home</a>
+      <span>/</span>
+      <a href="/personal" class="hover:text-accent transition-colors">Personal Insurance</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Homeowners Insurance</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut Home & Dwelling Shield
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Homeowners Insurance
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Safeguard your family's biggest investment against New England nor'easters, severe winter freeze, and liability exposures. We compare top-rated regional and national insurers to tailor complete replacement cost protection at competitive rates.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/quote?type=home"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Request Homeowners Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Call (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">15% - 25%</span>
+          <span class="text-xs text-text-muted">Multi-Policy Bundle Savings</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">100%</span>
+          <span class="text-xs text-text-muted">Extended Replacement Cost</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">A-Rated Carriers Compared</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">3 CT Offices</span>
+          <span class="text-xs text-text-muted">Danbury, Watertown, Bridgeport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- What is Homeowners / Answer Framing Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            What Does Homeowners Insurance Cover in Connecticut?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Connecticut homeowners insurance provides financial reimbursement to repair or rebuild your home and replace personal property after covered perils such as fire, lightning, windstorms, hail, snow load, and vandalism. It also provides essential liability protection if visitors are injured on your property.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            From historic homes in Litchfield County to coastal Fairfield County residences, properties across Western Connecticut face distinct architectural and climatic demands. Associated Insurance Agency works with top carriers like Travelers, Safeco, Hanover, and Liberty Mutual to build policies customized to your exact replacement needs.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Replacement Cost vs. Market Value
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Many homeowners mistakenly base their policy limit on market purchase price or municipal tax assessment. In reality, lumber, materials, and skilled labor rates in Connecticut determine true <strong>Dwelling Replacement Cost</strong>.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            We calculate your coverage using local rebuilding cost indexes, and provide <strong>Extended Replacement Cost Endorsements</strong> (up to 125%–150%) so inflation spikes won't leave you underinsured after a catastrophic loss.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Core Pillars of Your Home Policy</h2>
+          <p class="text-sm text-text-secondary">Understanding standard HO-3 and comprehensive HO-5 coverage sections.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">A</div>
+            <h3 class="text-base font-bold text-text-primary">Coverage A: Dwelling</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Pays to repair or reconstruct the physical structure of your house—including foundation, roof, framed walls, and built-in appliances—after fire, wind, or storm damage.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">B</div>
+            <h3 class="text-base font-bold text-text-primary">Coverage B: Other Structures</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Protects detached garages, storage sheds, fences, swimming pools, gazebos, and driveways located on your residential premises.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">C</div>
+            <h3 class="text-base font-bold text-text-primary">Coverage C: Personal Property</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Reimburses replacement cost for furniture, clothing, electronics, sports gear, and household goods if damaged, destroyed, or stolen at home or while traveling.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">D</div>
+            <h3 class="text-base font-bold text-text-primary">Coverage D: Loss of Use</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Funds temporary living expenses—hotel bills, apartment rent, food, and storage—if a covered disaster makes your home uninhabitable during repairs.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">E</div>
+            <h3 class="text-base font-bold text-text-primary">Coverage E: Personal Liability</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Provides legal defense and judgment settlements if a guest is injured on your property (slip-and-fall, dog bites) or you cause accidental damage to someone else's property.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">F</div>
+            <h3 class="text-base font-bold text-text-primary">Coverage F: Medical Payments</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Covers immediate medical treatment and ambulance bills for guests accidentally injured on your property, regardless of legal fault, avoiding costly lawsuits.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Critical Connecticut Endorsements -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Essential Connecticut Policy Endorsements</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Standard policies contain notable exclusions. We recommend these vital riders to protect against common local hazards:
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Water Backup & Sump Overflow</strong>
+            <p class="text-text-muted">Protects against finished basement damage from clogged municipal drains, sewers, or failed sump pumps during severe rain.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Service Line Protection</strong>
+            <p class="text-text-muted">Covers thousands in excavation and repair costs when underground water, sewer, or electrical lines fail on your property.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Equipment Breakdown</strong>
+            <p class="text-text-muted">Reimburses mechanical and electrical failure of costly furnaces, central AC compressors, heat pumps, and home electrical panels.</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-border-subtle">
+            <strong class="text-accent block mb-1">Scheduled Valuables (Floaters)</strong>
+            <p class="text-text-muted">Provides zero-deductible worldwide agreed-value coverage for expensive jewelry, engagement rings, fine art, and firearms.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- New England Climate & Seasonal Exposures -->
+      <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+        <h2 class="text-2xl font-bold text-accent">Built for Connecticut Winters & Nor'easters</h2>
+        <p class="text-sm text-text-secondary leading-relaxed">
+          Connecticut homeowners face severe seasonal weather patterns—sub-zero temperatures that cause frozen water pipes, heavy snow loads that trigger roof leaks and ice dams, and seasonal nor'easters that drop mature oak limbs onto roofs and power lines.
+        </p>
+        <p class="text-sm text-text-secondary leading-relaxed">
+          Associated Insurance Agency helps you select sensible wind/hail and winter storm deductibles, coordinates rapid claims adjusters with regional carriers, and advises on proper winterization practices to safeguard your home year-round.
+        </p>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Frequently Asked Questions</h2>
+          <p class="text-sm text-text-secondary">Answers to common Connecticut home insurance inquiries.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">What is the difference between dwelling replacement cost and market value?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Market value is what a buyer will pay for your home including the land and neighborhood location. Dwelling replacement cost is the actual construction expenditure required to rebuild your physical house from the ground up using modern materials and local labor rates. In Connecticut, construction and labor costs are among the highest in the country, meaning replacement cost often differs significantly from assessed real estate value.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Does standard Connecticut homeowners insurance cover winter freeze damage and ice dams?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Yes, standard HO-3 and HO-5 policies typically cover sudden and accidental burst pipes and water damage caused by winter roof ice dams, provided reasonable heat was maintained in the home. Associated Insurance Agency recommends adding extended water backup endorsements to cover subterranean drain backups.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Is flood damage covered under a standard homeowners policy?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              No. Standard homeowners insurance strictly excludes flood damage resulting from rising outdoor surface water, river overflows, or storm surges. Flood coverage requires a separate policy through the National Flood Insurance Program (NFIP) or private flood carriers, which Associated Insurance Agency can bind on your behalf.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">How much can I save by bundling home and auto insurance in Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Bundling your homeowners and personal auto policies with the same carrier through Associated Insurance Agency typically generates multi-policy discounts between 15% and 25% on both premiums, while simplifying billing and streamlining claims resolution.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Protect Your Home & Family Assets</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Let our independent agents compare quotes across top Connecticut insurers to get you better coverage, lower deductibles, and big bundle discounts.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/quote?type=home"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Get a Home Quote
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

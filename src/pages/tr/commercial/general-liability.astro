@@ -1,0 +1,324 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/tr/commercial/general-liability#service",
+      "name": "Ticari Genel Sorumluluk Sigortası Connecticut",
+      "serviceType": "Commercial General Liability",
+      "description": "Connecticut'ta kapsamlı Ticari Genel Sorumluluk Sigortası (CGL) ve İşletme Sahibi Poliçeleri (BOP). Bedeni hasar, maddi zarar ve aynı gün Sigorta Sertifikası (COI) teminatı.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://aia-danbury.com/tr"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ticari Sigortalar",
+          "item": "https://aia-danbury.com/tr/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Genel Sorumluluk",
+          "item": "https://aia-danbury.com/tr/commercial/general-liability"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta Genel Sorumluluk sigortası yasal olarak zorunlu mu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Eyalet yasaları her işletme için evrensel bir zorunluluk getirmese de ticari hayatta fiilen zorunludur. Ticari mülk sahipleri kira sözleşmelerinden önce, ana müteahhitler şantiye girişlerinden önce ve eyalet meslek odaları ruhsat verirken aktif sorumluluk sigortası kanıtı (COI) talep eder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Associated Insurance Agency sigorta sertifikasını (COI) ne kadar sürede düzenler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Aktif poliçe sahiplerimiz için standart ACORD 25 Sigorta Sertifikalarını (COI) aynı gün, genellikle talep geldikten birkaç dakika sonra düzenliyoruz. Bu sayede müteahhitler ve esnaflar iş tekliflerini gecikmeksizin sunabilir ve şantiyelere hemen başlayabilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta standart poliçe limitleri nelerdir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Connecticut'ta kabul gören piyasa standardı olay başına 1.000.000 $ ve toplam yıllık 2.000.000 $ (1M/2M $) limittir. Yüksek riskli müteahhitler veya kamu ihalelerine giren işletmeler için Ticari Şemsiye (Umbrella) poliçeleriyle bu limit 5.000.000 $'a veya daha fazlasına çıkarılabilir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Tek başına Genel Sorumluluk poliçesi ile BOP arasındaki fark nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Müstakil Genel Sorumluluk poliçesi yalnızca üçüncü şahıslara verilen bedeni ve maddi zararları karşılar. İşletme Sahibi Paketi (BOP) ise Genel Sorumluluk ile birlikte Ticari Mülk Sigortası ve İş Kesintisi teminatlarını tek ve indirimli bir pakette birleştirir."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Ticari Genel Sorumluluk Sigortası CT | AIA Danbury"
+  description="Connecticut'ta kapsamlı Ticari Genel Sorumluluk Sigortası. Aynı gün COI sertifikası, üçüncü şahıs tazminat koruması ve Türkçe danışmanlık."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/tr" class="hover:text-accent transition-colors">Ana Sayfa</a>
+      <span>/</span>
+      <a href="/tr/commercial" class="hover:text-accent transition-colors">Ticari Sigortalar</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Genel Sorumluluk</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Connecticut İşletme Güvencesi
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut Ticari Genel Sorumluluk Sigortası
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Şirketinizin varlıklarını, ticari kira sözleşmenizi ve itibarınızı üçüncü şahıs bedeni hasarları, mülk zararları ve hukuki savunma giderlerine karşı koruyun. Aynı gün Sigorta Sertifikası (COI) teslimi ile işleriniz kesintisiz sürsün.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/tr/quote?type=commercial&coverage=gl"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Genel Sorumluluk Teklifi Alın
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Ara: (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">Aynı Gün</span>
+          <span class="text-xs text-text-muted">COI Sertifika Teslimi</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">1M $ / 2M $</span>
+          <span class="text-xs text-text-muted">Standart Olay / Toplam Limit</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">20+</span>
+          <span class="text-xs text-text-muted">Güçlü Sigorta Şirketi</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">3 Şube</span>
+          <span class="text-xs text-text-muted">Danbury, Watertown, Bridgeport</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- What is GL / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Connecticut'ta Ticari Genel Sorumluluk Sigortası Neleri Kapsar?
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Ticari Genel Sorumluluk Sigortası (CGL), işletme sahiplerini üçüncü şahıslara ait bedeni yaralanmalar, maddi hasarlar, düşme ve kayma kazaları ile reklam ihlalleri davalarına karşı korur. Poliçe acil tıbbi masrafları, avukatlık ücretlerini ve mahkemece kararlaştırılan tazminatları karşılar.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            İster Danbury'deki mağazanızda bir müşteri kaza geçirsin ister şantiyenizdeki montaj ekibi bir binada su baskınına neden olsun, sigortasız bir işletme tek bir davayla kapanma noktasına gelebilir. CGL, her Connecticut şirketinin temel kalkanıdır.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Mülk Sahipleri ve Müteahhit Şartları
+          </h3>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Connecticut'ta ticari mülk sahipleri, kendilerini <strong>Ek Sigortalı</strong> (Additional Insured) olarak gösteren en az 1.000.000 $'lık bir sorumluluk poliçesi olmadan dükkan veya depo anahtarlarını teslim etmezler.
+          </p>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Benzer şekilde, ana müteahhitler de elektrikçi, su tesisatçısı ve boyacı gibi alt yüklenicilerden şantiyeye adım atmadan önce güncel bir ACORD sertifikası talep eder.
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Coverage Grid -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Poliçenizdeki Ana Teminatlar</h2>
+          <p class="text-sm text-text-secondary">İşletmenizi koruyan başlıca teminat katmanları.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
+            <h3 class="text-base font-bold text-text-primary">Üçüncü Şahıs Bedeni Hasarları</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Müşteri, kurye veya ziyaretçilerin iş yerinizde geçirdiği kazalardaki ambulans, hastane, tedavi ve tazminat giderlerini karşılar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
+            <h3 class="text-base font-bold text-text-primary">Üçüncü Şahıs Maddi Zararları</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              İş faaliyetleriniz sırasında müşterinin veya başkalarının malına kazara verilen hasarların tamir ve ikame masraflarını öder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
+            <h3 class="text-base font-bold text-text-primary">Tamamlanan İşler ve Ürün Sorumluluğu</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              İş teslim edildikten sonra ortaya çıkan zararları karşılar. Örneğin yapılan tesisat haftalar sonra su sızdırırsa hasarı poliçe öder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
+            <h3 class="text-base font-bold text-text-primary">Kişisel ve Reklam Hakları İhlali</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Reklam ve pazarlama materyallerinde telif hakkı ihlali, karalama, haksız rekabet ve itibar zedeleme iddialarına karşı hukuki koruma sağlar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
+            <h3 class="text-base font-bold text-text-primary">Kiralanan Mülke Verilen Zararlar</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Kiraladığınız dükkan, ofis veya atölyede meydana gelebilecek yangın ve duman hasarlarını teminat altına alarak kira şartlarını sağlar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
+            <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
+            <h3 class="text-base font-bold text-text-primary">Hukuki Savunma ve Avukat Masrafları</h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Dava masrafları ve avukat ücretleri çoğu poliçede tazminat limitini eritmeden sigorta şirketi tarafından doğrudan üstlenilir.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Sıkça Sorulan Sorular</h2>
+          <p class="text-sm text-text-secondary">Connecticut Genel Sorumluluk Sigortası hakkında merak edilenler.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Connecticut'ta Genel Sorumluluk sigortası yasal olarak zorunlu mu?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Eyalet yasaları her işletme için evrensel bir zorunluluk getirmese de ticari hayatta fiilen zorunludur. Ticari mülk sahipleri kira sözleşmelerinden önce, ana müteahhitler şantiye girişlerinden önce ve eyalet meslek odaları ruhsat verirken aktif sorumluluk sigortası kanıtı (COI) talep eder.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Associated Insurance Agency sigorta sertifikasını (COI) ne kadar sürede düzenler?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Aktif poliçe sahiplerimiz için standart ACORD 25 Sigorta Sertifikalarını (COI) aynı gün, genellikle talep geldikten birkaç dakika sonra düzenliyoruz. Bu sayede müteahhitler ve esnaflar iş tekliflerini gecikmeksizin sunabilir ve şantiyelere hemen başlayabilir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Connecticut'ta standart poliçe limitleri nelerdir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Connecticut'ta kabul gören piyasa standardı olay başına 1.000.000 $ ve toplam yıllık 2.000.000 $ (1M/2M $) limittir. Yüksek riskli müteahhitler veya kamu ihalelerine giren işletmeler için Ticari Şemsiye (Umbrella) poliçeleriyle bu limit 5.000.000 $'a veya daha fazlasına çıkarılabilir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Tek başına Genel Sorumluluk poliçesi ile BOP arasındaki fark nedir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Müstakil Genel Sorumluluk poliçesi yalnızca üçüncü şahıslara verilen bedeni ve maddi zararları karşılar. İşletme Sahibi Paketi (BOP) ise Genel Sorumluluk ile birlikte Ticari Mülk Sigortası ve İş Kesintisi teminatlarını tek ve indirimli bir pakette birleştirir.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Hızlı Fiyat Teklifi veya COI Sertifikası mı Lazım?</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Danbury, Watertown ve Bridgeport ofislerimizde Türkçe bilen uzmanlarımızla en uygun fiyatlı ve kapsamlı poliçeleri 20'den fazla sigorta şirketinden karşılaştırıyoruz.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/tr/quote?type=commercial&coverage=gl"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Fiyat Teklifi Alın
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

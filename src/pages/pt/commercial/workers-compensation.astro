@@ -1,0 +1,322 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/pt/commercial/workers-compensation#service",
+      "name": "Seguro de Compensação de Trabalhadores Connecticut",
+      "serviceType": "Workers' Compensation Insurance",
+      "description": "Seguro obrigatório de compensação de trabalhadores em Connecticut (CGS § 31-284). Benefícios médicos estatutários, reposição de salário e assessoria em auditorias de folha de pagamento NCCI.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://aia-danbury.com/pt"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Seguros Comerciais",
+          "item": "https://aia-danbury.com/pt/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Compensação de Trabalhadores",
+          "item": "https://aia-danbury.com/pt/commercial/workers-compensation"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O seguro de Workers' Comp é obrigatório para pequenas empresas em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Pela Lei de Compensação de Trabalhadores de Connecticut (CGS § 31-284), qualquer empresa que contrate um ou mais trabalhadores (sejam em tempo integral, meio período ou temporários) deve manter uma apólice ativa. A falta do seguro acarreta ordens imediatas de paralisação e multas de no mínimo $500 por dia."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Donos de empresa e membros de LLC podem se excluir da apólice?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Proprietários individuais e membros de LLC em Connecticut podem solicitar a exclusão formal por meio do Formulário estadual 6B ou 75 para baratear a apólice. No entanto, se contratarem qualquer ajudante ou aprendiz, são obrigados por lei a manter cobertura para esse trabalhador."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O que é uma 'Ghost Policy' (Apólice Fantasma) em Connecticut?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Uma 'Ghost Policy' é uma apólice de custo mínimo adquirida por prestadores autônomos sem empregados. Ela serve para emitir um Certificado de Seguro (COI) válido que o empreiteiro geral exige para permitir sua entrada na obra, sem pagar taxas sobre folha desnecessária."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona a auditoria anual de folha de pagamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ao final de cada ano de apólice, a seguradora compara os valores estimados de salários com os registros oficiais (W-2 e 1099). Caso subcontratados sem seguro tenham trabalhado para você, a seguradora cobrará esse custo de sua empresa. Na AIA, orientamos sua gestão para evitar surpresas no acerto final."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Seguro Workers' Comp CT | Lei CGS § 31-284 | AIA Danbury"
+  description="Seguro obrigatório de Workers' Comp em Connecticut. Conformidade legal CGS § 31-284, auditorias de folha NCCI e atendimento fluente em português."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/pt" class="hover:text-accent transition-colors">Início</a>
+      <span>/</span>
+      <a href="/pt/commercial" class="hover:text-accent transition-colors">Seguros Comerciais</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">Compensação de Trabalhadores</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          Conformidade com a Lei CGS § 31-284
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Seguro de Workers' Compensation em Connecticut
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Atenda rigorosamente às leis trabalhistas de Connecticut, garanta tratamento médico e reposição salarial para sua equipe em caso de acidentes e blinde sua empresa contra ordens de paralisação e processos de indenização.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/pt/quote?type=commercial&coverage=wc"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Solicitar Cotação de Workers' Comp
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Ligue para (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">1+ Empregado</span>
+          <span class="text-xs text-text-muted">Exigência Legal no Estado</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Auditorias NCCI</span>
+          <span class="text-xs text-text-muted">Classificação Correta de Funções</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Ghost Policies</span>
+          <span class="text-xs text-text-muted">Para Profissionais Autônomos</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Pay-As-You-Go</span>
+          <span class="text-xs text-text-muted">Cobrança Integrada à Folha</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- CT Legal Mandate / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Exigências da Lei de Compensação de Trabalhadores em CT (CGS § 31-284)
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              A Lei de Compensação de Trabalhadores de Connecticut estipula que todo empregador com um ou mais empregados deve manter seguro ativo. A apólice financia despesas hospitalares e repõe salários decorrentes de sinistros no local de trabalho. Em contrapartida, estabelece a imunidade do empregador frente a ações cíveis por danos pessoais ("exclusive remedy").
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Trabalhar sem Workers' Comp em Connecticut sujeita sua empresa ao embargo imediato das obras ("Stop-Work Orders") e a multas estaduais acumulativas de $500 por dia, além da cobrança pessoal integral de todos os custos médicos do acidentado.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Penalidades por Falta de Seguro em CT
+          </h3>
+          <div class="space-y-3 text-xs text-text-secondary">
+            <div class="p-3 bg-red-50 text-red-900 rounded border border-red-200">
+              <strong>Embargo Imediato da Obra:</strong> O estado paralisa as atividades da empresa até que uma apólice válida seja confirmada.
+            </div>
+            <div class="p-3 bg-zinc-50 rounded border border-border-subtle">
+              <strong>Multas Diárias de $500:</strong> Cobradas por cada dia útil ou de calendário em que a empresa funcionou sem apólice.
+            </div>
+            <div class="p-3 bg-zinc-50 rounded border border-border-subtle">
+              <strong>Responsabilidade Civil Pessoal:</strong> O patrimônio particular dos sócios responde diretamente pelo tratamento e indenizações.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Core Parts of a Policy -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">As Duas Partes Fundamentais da Apólice</h2>
+          <p class="text-sm text-text-secondary">Tratamento digno para o colaborador e segurança jurídica para o negócio.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent font-bold text-base">Parte 1</div>
+            <h3 class="text-xl font-bold text-text-primary">Benefícios Médicos e Salariais Estatutários</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Garante os direitos do funcionário acidentado previstos na legislação de Connecticut:
+            </p>
+            <ul class="space-y-2 text-xs text-text-secondary pt-2">
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Tratamento Médico a 100%:</strong> Consultas, cirurgias, medicamentos e fisioterapia sem dedutíveis.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Reposição de Salário:</strong> Pagamento semanal de 75% do salário líquido durante a recuperação.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Reabilitação Profissional:</strong> Custeio de cursos caso o empregado precise mudar de função.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Pensão por Falecimento:</strong> Assistência funeral e apoio financeiro aos dependentes legais.
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent font-bold text-base">Parte 2</div>
+            <h3 class="text-xl font-bold text-text-primary">Responsabilidade do Empregador (Defesa)</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Protege sua empresa de processos judiciais que ultrapassem a compensação trabalhista padrão:
+            </p>
+            <ul class="space-y-2 text-xs text-text-secondary pt-2">
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Ações Regressivas de Terceiros:</strong> Se o dono do prédio for processado e acionar a sua empresa.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Ações de Familiares:</strong> Ampara processos por perda de sustento conjugal ou familiar.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Honorários de Advogados:</strong> Custas processuais e honorários advocatícios pagos pela seguradora.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Perguntas Frequentes</h2>
+          <p class="text-sm text-text-secondary">Respostas diretas sobre o seguro de Workers' Comp em Connecticut.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">O seguro de Workers' Comp é obrigatório para pequenas empresas em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Sim. Pela Lei de Compensação de Trabalhadores de Connecticut (CGS § 31-284), qualquer empresa que contrate um ou mais trabalhadores (sejam em tempo integral, meio período ou temporários) deve manter uma apólice ativa. A falta do seguro acarreta ordens imediatas de paralisação e multas de no mínimo $500 por dia.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Donos de empresa e membros de LLC podem se excluir da apólice?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Sim. Proprietários individuais e membros de LLC em Connecticut podem solicitar a exclusão formal por meio do Formulário estadual 6B ou 75 para baratear a apólice. No entanto, se contratarem qualquer ajudante ou aprendiz, são obrigados por lei a manter cobertura para esse trabalhador.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">O que é uma 'Ghost Policy' (Apólice Fantasma) em Connecticut?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Uma 'Ghost Policy' é uma apólice de custo mínimo adquirida por prestadores autônomos sem empregados. Ela serve para emitir um Certificado de Seguro (COI) válido que o empreiteiro geral exige para permitir sua entrada na obra, sem pagar taxas sobre folha desnecessária.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Como funciona a auditoria anual de folha de pagamento?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Ao final de cada ano de apólice, a seguradora compara os valores estimados de salários com os registros oficiais (W-2 e 1099). Caso subcontratados sem seguro tenham trabalhado para você, a seguradora cobrará esse custo de sua empresa. Na AIA, orientamos sua gestão para evitar surpresas no acerto final.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Regularize sua Empresa e Evite Multas</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Emitimos certificados de seguro no mesmo dia e explicamos detalhadamente as regras estaduais de Connecticut em português em nossas agências de Danbury, Watertown e Bridgeport.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/pt/quote?type=commercial&coverage=wc"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Cotar Workers' Comp
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

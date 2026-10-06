@@ -24,6 +24,16 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 
 ### 🏛️ Digital Agency Portal
 - **Independent Carrier Comparison**: Informs customers of coverage lines across personal (Auto, Homeowners, Renters, Condo, Umbrella) and commercial (BOP, General Liability, Commercial Property, Workers' Comp, Commercial Auto) products.
+- **Dedicated Personal SEO Landing Pages (Hub & Spoke Architecture)**: In-depth, targeted guides with dedicated `Service`, `BreadcrumbList`, and `FAQPage` schema across English, Spanish, Portuguese, and Turkish:
+  - **Homeowners Insurance** (`/personal/homeowners`, `/es/...`, `/pt/...`, `/tr/...`): Dwelling replacement cost vs market value, winter freeze & ice damming, water backup endorsements, flood exclusions, and 15%–25% multi-policy bundling discounts.
+  - **Auto & RV Insurance** (`/personal/auto`, `/es/...`, `/pt/...`, `/tr/...`): Connecticut General Statutes (CGS § 14-112) minimums (25/50/25), recommended 100/300/100 defense limits, collision, comprehensive (animal strikes, storm debris), UM/UIM coverage, and recreational vehicle (RV/camper/trailer) riders.
+  - **Personal Umbrella Liability** (`/personal/umbrella`, `/es/...`, `/pt/...`, `/tr/...`): $1M to $5M+ excess liability safeguarding home equity, retirement savings (401k/IRA), and future wages against catastrophic litigation for ~$20/month.
+  - **Renters & Tenant Insurance** (`/personal/renters`, `/es/...`, `/pt/...`, `/tr/...`): Debunking the landlord building insurance myth, personal property replacement cost, apartment guest liability, loss of use, and instant proof of coverage for lease signings starting at $15/month.
+- **Dedicated Commercial SEO Landing Pages (Hub & Spoke Architecture)**: In-depth, targeted guides with dedicated `Service`, `BreadcrumbList`, and `FAQPage` schema across English, Spanish, Portuguese, and Turkish:
+  - **Commercial General Liability** (`/commercial/general-liability`, `/es/...`, `/pt/...`, `/tr/...`): Slip-and-fall protections, completed operations, $1M/$2M standard limits, and same-day ACORD 25 Certificate of Insurance (COI) issuance for contractors.
+  - **Commercial Auto & Fleet** (`/commercial/auto`, `/es/...`, `/pt/...`, `/tr/...`): Work vans, trucks, high-limit Combined Single Limit (CSL) liability, CGS § 14-112 compliance, tool floaters, and Hired/Non-Owned Auto (HNOA).
+  - **Workers' Compensation & Compliance** (`/commercial/workers-compensation`, `/es/...`, `/pt/...`, `/tr/...`): Statutory benefits under CGS § 31-284, stop-work order defense, sole-proprietor Ghost Policies, and NCCI payroll classification audit assistance.
+- **Rich Multi-Tier Navigation Dropdowns**: Interactive desktop hover cards with glassmorphism and mobile accordion drill-downs for both **Personal** and **Commercial** coverage clusters across all four languages.
 - **Multilingual Support (i18n)**: Fully localized experiences with native content in **English (EN)**, **Spanish (ES)**, **Portuguese (PT)**, and **Turkish (TR)**.
 - **Interactive Team Showcase & Bio Modals**: Accessible, interactive employee profile cards on the About page featuring all 9 team members across agency leadership and customer service representatives (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus, Isayeli Perez De La Mora, Ema Rego, Clara De Barros, Ashley L. Mercan, Janaija S. Hammer) with spoken language badges, specialty tags, and complete biographical pop-up modals translated into English, Spanish, Portuguese, and Turkish.
 - **Optimized Asset Pipeline**: Leverages Astro's native `astro:assets` image engine for zero-CLS responsive image serving, automatic WebP format conversion, and lazy loading.
@@ -142,11 +152,20 @@ aia/
 │   │   │   ├── mcp.ts          # JSON-RPC 2.0 MCP endpoint (GET/POST)
 │   │   │   └── quote.ts        # REST endpoint for lead submission & retrieval
 │   │   ├── blog/               # Blog index and dynamic [slug].astro routes
-│   │   ├── es/                 # Spanish localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap)
-│   │   ├── pt/                 # Portuguese localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap)
-│   │   ├── tr/                 # Turkish localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap)
+│   │   ├── commercial/         # Dedicated commercial cluster pages
+│   │   │   ├── auto.astro      # Commercial Auto & Fleet guide
+│   │   │   ├── general-liability.astro # Commercial General Liability guide & COI details
+│   │   │   └── workers-compensation.astro # CT Workers' Comp & CGS § 31-284 compliance guide
+│   │   ├── personal/           # Dedicated personal cluster pages
+│   │   │   ├── auto.astro      # Personal Auto & RV guide (CGS § 14-112 limits)
+│   │   │   ├── homeowners.astro # Homeowners & Dwelling guide (replacement cost, storms)
+│   │   │   ├── renters.astro   # Renters & Tenant insurance guide (HO-4, liability)
+│   │   │   └── umbrella.astro  # Personal Umbrella excess liability guide ($1M-$5M+)
+│   │   ├── es/                 # Spanish localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── pt/                 # Portuguese localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── tr/                 # Turkish localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
 │   │   ├── about.astro         # Agency history, credentials, and office profiles
-│   │   ├── commercial.astro    # Commercial lines (BOP, GL, Property, Workers' Comp)
+│   │   ├── commercial.astro    # Commercial lines overview pillar (BOP, GL, Property, Workers' Comp)
 │   │   ├── contact.astro       # Contact page embedding ContactForm.tsx & Google Maps
 │   │   ├── index.astro         # Main homepage with hero, carrier grid, and testimonials
 │   │   ├── pay-bill.astro      # 11-carrier online payment & claims directory

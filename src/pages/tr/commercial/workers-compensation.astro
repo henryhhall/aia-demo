@@ -1,0 +1,322 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/tr/commercial/workers-compensation#service",
+      "name": "İşçi Tazminatı Sigortası Connecticut",
+      "serviceType": "Workers' Compensation Insurance",
+      "description": "Connecticut zorunlu İşçi Tazminatı Sigortası (CGS § 31-284). Sağlık giderleri, maaş kaybı ödemeleri, işveren hukuki koruması ve NCCI bordro denetim desteği.",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Ana Sayfa",
+          "item": "https://aia-danbury.com/tr"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Ticari Sigortalar",
+          "item": "https://aia-danbury.com/tr/commercial"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "İşçi Tazminatı (Workers' Comp)",
+          "item": "https://aia-danbury.com/tr/commercial/workers-compensation"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta küçük işletmeler için İşçi Tazminatı sigortası zorunlu mu?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Connecticut İşçi Tazminatı Yasası (CGS § 31-284) uyarınca, 1 veya daha fazla çalışanı (tam zamanlı, yarı zamanlı veya mevsimlik fark etmeksizin) olan her işletme aktif işçi tazminatı sigortası yaptırmak zorundadır. Sigortasız çalışmanın cezası derhal iş durdurma kararı ve günlük en az 500 $ para cezasıdır."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Şirket sahipleri veya LLC ortakları kendilerini poliçeden muaf tutabilir mi?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Evet. Şahıs şirketi sahipleri ve LLC üyeleri prim maliyetini düşürmek için eyalet Form 6B veya Form 75'i doldurarak kendilerini teminat dışı bırakabilir. Ancak tek bir yardımcı veya çırak dahi işe alsalar o personel için poliçe yaptırmak mecburidir."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Connecticut'ta Hayalet Poliçe ('Ghost Policy') nedir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hayalet poliçe, çalışanı olmayan tek kişilik bağımsız ustaların ve müteahhitlerin satın aldığı taban primli bir Workers' Comp poliçesidir. Ana müteahhitlerin ve iş sahiplerinin şantiyeye giriş için zorunlu kıldığı geçerli bir Sigorta Sertifikası (COI) sağlar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Yıllık bordro denetimi (Payroll Audit) nasıl işler?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Poliçe dönemi sonunda sigorta şirketi tahmini bordro tutarınızı eyalet vergi bildirimleriyle karşılaştırır. Kendi sigortası olmayan alt taşeron çalıştırdıysanız onların bedeli de size fatura edilir. AIA, sürpriz borçlarla karşılaşmamanız için çalışanlarınızı doğru NCCI kodlarına yerleştirir."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="İşçi Tazminatı Sigortası CT | CGS § 31-284 | AIA Danbury"
+  description="Connecticut zorunlu İşçi Tazminatı (Workers' Comp) sigortası. CGS § 31-284 uyumu, NCCI bordro kodlama danışmanlığı ve Türkçe uzman desteği."
+  structuredData={structuredData}
+>
+  <!-- Breadcrumb -->
+  <nav class="bg-bg-secondary border-b border-border-subtle py-3 text-xs text-text-muted" aria-label="Breadcrumb">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2">
+      <a href="/tr" class="hover:text-accent transition-colors">Ana Sayfa</a>
+      <span>/</span>
+      <a href="/tr/commercial" class="hover:text-accent transition-colors">Ticari Sigortalar</a>
+      <span>/</span>
+      <span class="text-text-primary font-medium">İşçi Tazminatı (Workers' Comp)</span>
+    </div>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl space-y-4">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          CGS § 31-284 Yasal Zorunluluk Güvencesi
+        </div>
+        <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
+          Connecticut İşçi Tazminatı Sigortası (Workers' Comp)
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
+          Connecticut çalışma kanunlarına eksiksiz uyum sağlayın, iş kazalarında personelinize kesintisiz tıbbi tedavi ve maaş güvencesi sunun ve firmanızı ağır durdurma cezaları ile tazminat davalarından koruyun.
+        </p>
+        <div class="flex flex-wrap items-center gap-4 pt-2">
+          <a
+            href="/tr/quote?type=commercial&coverage=wc"
+            class="px-6 py-3 rounded-lg bg-accent text-white font-semibold text-sm hover:bg-accent/90 transition-all shadow-sm"
+          >
+            Workers' Comp Teklifi Alın
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg border border-border-subtle bg-white text-text-primary font-semibold text-sm hover:bg-bg-secondary transition-all"
+          >
+            Ara: (203) 748-9272
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Highlights Strip -->
+  <section class="border-b border-border-subtle bg-white py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div>
+          <span class="block text-2xl font-bold text-accent">1+ Çalışan</span>
+          <span class="text-xs text-text-muted">Eyalet Kanunu Gereği Şart</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">NCCI Kodları</span>
+          <span class="text-xs text-text-muted">Hatasız Meslek Sınıflandırması</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Hayalet Poliçe</span>
+          <span class="text-xs text-text-muted">Tek Kişilik Ustalar İçin</span>
+        </div>
+        <div>
+          <span class="block text-2xl font-bold text-accent">Bordro Entegre</span>
+          <span class="text-xs text-text-muted">Pay-As-You-Go Kolaylığı</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Sections -->
+  <section class="py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+
+      <!-- CT Legal Mandate / Search Intent Snippet -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        <div class="lg:col-span-7 space-y-5">
+          <h2 class="text-3xl font-bold text-accent tracking-tight">
+            Connecticut İşçi Tazminatı Kanunları (CGS § 31-284)
+          </h2>
+          <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
+            <p class="font-medium text-text-primary">
+              Connecticut İşçi Tazminatı Yasası, en az bir çalışanı bulunan her işverenin geçerli bir sigorta poliçesi bulundurmasını şart koşar. Poliçe iş kazalarında tüm tedavi harcamalarını ve yasal gelir kaybı ödemelerini üstlenir. Karşılığında işverene bireysel tazminat davalarına karşı hukuki dokunulmazlık sağlar.
+            </p>
+          </div>
+          <p class="text-sm text-text-secondary leading-relaxed">
+            Connecticut'ta sigortasız işçi çalıştırmak eyalet müfettişlerince şantiyelerin mühürlenmesine ("Stop-Work Order") ve her takvim günü için en az 500 $ para cezasına yol açar. Ayrıca yaralanan işçinin tüm hastane borçlarından şirket sahipleri şahsi mal varlıklarıyla sorumlu tutulur.
+          </p>
+        </div>
+
+        <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-accent flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+            Sigortasız Çalıştırmanın Ağır Yaptırımları
+          </h3>
+          <div class="space-y-3 text-xs text-text-secondary">
+            <div class="p-3 bg-red-50 text-red-900 rounded border border-red-200">
+              <strong>İş Durdurma Emri (Stop-Work):</strong> Eyalet müfettişleri geçerli poliçe ibraz edilene kadar dükkan veya şantiyeyi derhal kapatır.
+            </div>
+            <div class="p-3 bg-zinc-50 rounded border border-border-subtle">
+              <strong>Günlük 500 $ Ceza:</strong> Sigortasız geçen her gün için birikerek devam eden ağır idari para cezaları.
+            </div>
+            <div class="p-3 bg-zinc-50 rounded border border-border-subtle">
+              <strong>Kişisel Hukuki Sorumluluk:</strong> İş kazası geçiren çalışanın tüm hastane ve ameliyat masrafları şirket ortaklarına rücu edilir.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Two Core Parts of a Policy -->
+      <div class="space-y-8">
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Poliçenin İki Temel Ayağı</h2>
+          <p class="text-sm text-text-secondary">Çalışana insani güvence, işletmeye hukuki zırh.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent font-bold text-base">Bölüm 1</div>
+            <h3 class="text-xl font-bold text-text-primary">Çalışan Yasal Hak ve Menfaatleri</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              İş yerinde kaza geçiren personelin Connecticut yasalarınca garanti altına alınan tüm haklarını öder:
+            </p>
+            <ul class="space-y-2 text-xs text-text-secondary pt-2">
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>%100 Tıbbi Tedavi:</strong> Doktor, cerrahi, ilaç ve fizik tedavi muafiyetsiz ödenir.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Maaş Telafisi:</strong> İyileşme sürecinde net gelirin %75'i tutarında haftalık geçici iş göremezlik ödeneği.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Mesleki Rehabilitasyon:</strong> Eski işine dönemeyecek personele yeni meslek eğitimi masrafları.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Vefat Tazminatı:</strong> Cenaze masrafları ve bakmakla yükümlü olunan aile fertlerine maaş desteği.
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+            <div class="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center text-accent font-bold text-base">Bölüm 2</div>
+            <h3 class="text-xl font-bold text-text-primary">İşveren Sorumluluğu ve Hukuki Kalkan</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Standart işçi tazminatı rejiminin dışına taşan davalara karşı şirketinizi korur:
+            </p>
+            <ul class="space-y-2 text-xs text-text-secondary pt-2">
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Üçüncü Şahıs Rücu Davaları:</strong> Mülk sahibine açılan davaların şirketinize yansıtılması hallerinde savunma sağlar.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Aile Bireyi Talepleri:</strong> Yaralanan çalışanın eşi veya yakınlarının açabileceği davaları karşılar.
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-accent-gold font-bold">✓</span> <strong>Avukatlık Masrafları:</strong> Şirketinizin mahkeme ve hukuki temsil giderleri sigortacı tarafından ödenir.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Section -->
+      <div class="space-y-8 max-w-4xl mx-auto">
+        <div class="text-center space-y-2">
+          <h2 class="text-3xl font-bold text-accent">Sıkça Sorulan Sorular</h2>
+          <p class="text-sm text-text-secondary">Connecticut İşçi Tazminatı Sigortası hakkında pratik bilgiler.</p>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Connecticut'ta küçük işletmeler için İşçi Tazminatı sigortası zorunlu mu?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Evet. Connecticut İşçi Tazminatı Yasası (CGS § 31-284) uyarınca, 1 veya daha fazla çalışanı (tam zamanlı, yarı zamanlı veya mevsimlik fark etmeksizin) olan her işletme aktif işçi tazminatı sigortası yaptırmak zorundadır. Sigortasız çalışmanın cezası derhal iş durdurma kararı ve günlük en az 500 $ para cezasıdır.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Şirket sahipleri veya LLC ortakları kendilerini poliçeden muaf tutabilir mi?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Evet. Şahıs şirketi sahipleri ve LLC üyeleri prim maliyetini düşürmek için eyalet Form 6B veya Form 75'i doldurarak kendilerini teminat dışı bırakabilir. Ancak tek bir yardımcı veya çırak dahi işe alsalar o personel için poliçe yaptırmak mecburidir.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Connecticut'ta Hayalet Poliçe ('Ghost Policy') nedir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Hayalet poliçe, çalışanı olmayan tek kişilik bağımsız ustaların ve müteahhitlerin satın aldığı taban primli bir Workers' Comp poliçesidir. Ana müteahhitlerin ve iş sahiplerinin şantiyeye giriş için zorunlu kıldığı geçerli bir Sigorta Sertifikası (COI) sağlar.
+            </p>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
+            <h3 class="text-base font-bold text-accent">Yıllık bordro denetimi (Payroll Audit) nasıl işler?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Poliçe dönemi sonunda sigorta şirketi tahmini bordro tutarınızı eyalet vergi bildirimleriyle karşılaştırır. Kendi sigortası olmayan alt taşeron çalıştırdıysanız onların bedeli de size fatura edilir. AIA, sürpriz borçlarla karşılaşmamanız için çalışanlarınızı doğru NCCI kodlarına yerleştirir.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Conversion Banner -->
+      <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="space-y-2 text-center md:text-left">
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">İşinizi Güvenceye Alın ve Cezalardan Korunun</h2>
+          <p class="text-sm text-zinc-300 max-w-xl">
+            Danbury, Watertown ve Bridgeport şubelerimizde Türkçe danışmanlık veriyor, personelinizi doğru NCCI sınıflarına yerleştirerek en uygun primlerle aynı gün sertifika sağlıyoruz.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 shrink-0">
+          <a
+            href="/tr/quote?type=commercial&coverage=wc"
+            class="px-6 py-3 rounded-lg bg-accent-gold hover:bg-accent-gold-hover text-zinc-950 font-bold text-sm transition-colors text-center"
+          >
+            Fiyat Teklifi Alın
+          </a>
+          <a
+            href="tel:2037489272"
+            class="px-6 py-3 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-sm transition-colors text-center"
+          >
+            (203) 748-9272
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</BaseLayout>

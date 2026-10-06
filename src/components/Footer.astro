@@ -19,6 +19,13 @@ const contactUrl = getRelativeLocaleUrl(lang, 'contact');
 const termsUrl = getRelativeLocaleUrl(lang, 'terms');
 const privacyUrl = getRelativeLocaleUrl(lang, 'privacy');
 const sitemapUrl = getRelativeLocaleUrl(lang, 'sitemap');
+const homeownersUrl = getRelativeLocaleUrl(lang, 'personal/homeowners');
+const personalAutoUrl = getRelativeLocaleUrl(lang, 'personal/auto');
+const umbrellaUrl = getRelativeLocaleUrl(lang, 'personal/umbrella');
+const rentersUrl = getRelativeLocaleUrl(lang, 'personal/renters');
+const glUrl = getRelativeLocaleUrl(lang, 'commercial/general-liability');
+const commercialAutoUrl = getRelativeLocaleUrl(lang, 'commercial/auto');
+const wcUrl = getRelativeLocaleUrl(lang, 'commercial/workers-compensation');
 ---
 
 <footer class="bg-zinc-950 text-zinc-400 border-t border-zinc-900 pt-16 pb-8">
@@ -65,11 +72,13 @@ const sitemapUrl = getRelativeLocaleUrl(lang, 'sitemap');
       <div>
         <h3 class="text-sm font-semibold text-zinc-100 tracking-wider uppercase mb-4">{t('footer.solutions')}</h3>
         <ul class="space-y-2.5 text-sm">
-          <li><a href={`${personalUrl}#home`} class="hover:text-white transition-colors">{t('footer.homeowners')}</a></li>
-          <li><a href={`${personalUrl}#auto`} class="hover:text-white transition-colors">{t('footer.auto')}</a></li>
-          <li><a href={`${personalUrl}#umbrella`} class="hover:text-white transition-colors">{t('footer.umbrella')}</a></li>
-          <li><a href={`${commercialUrl}#gl`} class="hover:text-white transition-colors">{t('footer.gl')}</a></li>
-          <li><a href={`${commercialUrl}#wc`} class="hover:text-white transition-colors">{t('footer.wc')}</a></li>
+          <li><a href={homeownersUrl} class="hover:text-white transition-colors">{t('footer.homeowners')}</a></li>
+          <li><a href={personalAutoUrl} class="hover:text-white transition-colors">{t('footer.auto')}</a></li>
+          <li><a href={umbrellaUrl} class="hover:text-white transition-colors">{t('footer.umbrella')}</a></li>
+          <li><a href={rentersUrl} class="hover:text-white transition-colors">{t('footer.renters')}</a></li>
+          <li><a href={glUrl} class="hover:text-white transition-colors">{t('footer.gl')}</a></li>
+          <li><a href={commercialAutoUrl} class="hover:text-white transition-colors">{t('footer.commercialAuto')}</a></li>
+          <li><a href={wcUrl} class="hover:text-white transition-colors">{t('footer.wc')}</a></li>
         </ul>
       </div>
 
