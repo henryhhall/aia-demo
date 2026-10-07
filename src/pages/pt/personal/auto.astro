@@ -9,7 +9,7 @@ const structuredData = {
       "@id": "https://aia-danbury.com/pt/personal/auto#service",
       "name": "Seguro de Automóvel e RV Connecticut",
       "serviceType": "Auto and Recreational Vehicle Insurance",
-      "description": "Seguro completo de automóveis, utilitários e veículos recreativos (RV) em Connecticut. Conformidade legal CGS § 14-112, colisão, cobertura compreensiva e motoristas sem seguro.",
+      "description": "Seguro de automóveis, utilitários e veículos recreativos em Connecticut. Conformidade legal CGS § 14-112, colisão, cobertura compreensiva e motoristas sem seguro.",
       "provider": {
         "@type": "InsuranceAgency",
         "name": "Associated Insurance Agency",
@@ -60,31 +60,31 @@ const structuredData = {
           "name": "Quais são os limites mínimos obrigatórios de seguro auto em Connecticut (CGS § 14-112)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pelas leis de Connecticut (CGS § 14-112), todo condutor registrado deve manter limites mínimos de responsabilidade civil de $25,000 para lesões corporais por pessoa, $50,000 por acidente e $25,000 para danos materiais a terceiros (25/50/25), além de cobertura idêntica para motoristas não segurados ou com seguro insuficiente (UM/UIM)."
+            "text": "Pela legislação de Connecticut (CGS § 14-112), todo condutor deve manter cobertura mínima de responsabilidade civil de $25,000 por lesão corporal individual, $50,000 por acidente e $25,000 para danos materiais (25/50/25), além de cobertura idêntica para motoristas não segurados ou com seguro insuficiente (UM/UIM)."
           }
         },
         {
           "@type": "Question",
-          "name": "Por que os limites mínimos da lei representam um risco para suas economias?",
+          "name": "Por que os limites mínimos da lei são insuficientes para a maioria dos motoristas?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "O valor médio de um veículo novo hoje ultrapassa $48,000. O limite estatal de $25,000 não cobre nem a perda total de um carro comum em uma batida. Se os gastos hospitalares ultrapassarem $50,000, as partes lesadas podem buscar seus bens na justiça, penhorar o valor da sua casa e reter salários futuros. Recomendamos limites de pelo menos 100/300/100 ou 250/500/100."
+            "text": "O valor médio de um carro novo hoje passa de $48,000. Se você provocar um acidente com perda total de um carro recente, o teto de $25,000 para danos materiais deixa uma diferença de mais de $20,000 que você terá de pagar do próprio bolso. Se os custos médicos dos feridos ultrapassarem os $50,000 da apólice, eles podem acionar a justiça contra suas economias e sua casa. Recomendamos limites de pelo menos 100/300/100 ou 250/500/100."
           }
         },
         {
           "@type": "Question",
-          "name": "Qual é a diferença entre cobertura de Colisão e Compreensiva (Comprehensive)?",
+          "name": "Qual é a diferença entre cobertura de Colisão e Compreensiva em Connecticut?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A cobertura de Colisão paga pelo conserto do seu carro se você bater em outro veículo, poste ou escorregar no gelo. A cobertura Compreensiva cobre sinistros fora do seu controle: colisão com animais (como cervos comuns nas estradas de CT), quebra de para-brisa, furto, vandalismo, granizo e galhos caídos durante tempestades."
+            "text": "A cobertura de Colisão paga pelo conserto ou reposição do seu carro se você bater em outro veículo, em uma defensa metálica ou capotar. A cobertura Compreensiva protege contra sinistros fora de uma colisão: atropelamento de animais (veados), pedras no para-brisa, furto, vandalismo, incêndio e galhos caídos durante tempestades."
           }
         },
         {
           "@type": "Question",
-          "name": "Posso segurar meu trailer, motorhome ou camper com a mesma agência?",
+          "name": "Posso segurar meu motorhome, trailer ou camper na mesma apólice?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. A Associated Insurance Agency oferece apólices especializadas para veículos recreativos (RVs, trailers de viagem e motorhomes), incluindo reposição de pertences de acampamento, responsabilidade civil no camping e assistência 24 horas na estrada."
+            "text": "A maioria das seguradoras exige uma apólice especializada para veículos recreativos em vez de incluí-los na apólice de carro comum. Podemos emitir as duas apólices com a mesma companhia para aproveitar descontos e cobrir responsabilidade em áreas de camping, reboque e pertences pessoais a bordo."
           }
         }
       ]
@@ -96,7 +96,7 @@ const structuredData = {
 <BaseLayout
   lang="pt"
   title="Seguro de Carro e RV em Connecticut | CGS § 14-112 | AIA Danbury"
-  description="Seguro de automóveis, picapes e veículos recreativos em CT. Conheça as exigências legais CGS § 14-112, colisão, compreensiva e descontos de pacote."
+  description="Seguro de automóveis, picapes e veículos recreativos em CT. Compare exigências CGS § 14-112, colisão, compreensiva e descontos com mais de 20 seguradoras."
   structuredData={structuredData}
 >
   <!-- Breadcrumb -->
@@ -116,13 +116,13 @@ const structuredData = {
       <div class="max-w-3xl space-y-4">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
           <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
-          Proteção nas Estradas de Connecticut
+          Seguro Automotivo em Danbury e Região
         </div>
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
-          Seguro de Automóveis e Veículos Recreativos (RV) em Connecticut
+          Seguro de Automóveis e Veículos Recreativos em Connecticut
         </h1>
         <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
-          Dirija com segurança na I-84, na Rota 7 e em todas as rodovias de Connecticut. Protegemos seu carro da família, utilitários, motorhomes e trailers com apólices personalizadas que resguardam seu bolso e seu patrimônio.
+          Quer você encare a I-84 e a Rota 7 todos os dias ou pegue a estrada no fim de semana com um trailer ou motorhome, os limites mínimos exigidos por Connecticut raramente cobrem uma batida grave. Comparamos mais de 20 seguradoras para garantir limites adequados de responsabilidade, colisão e cobertura compreensiva com preços que cabem no seu orçamento.
         </p>
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <a
@@ -148,15 +148,15 @@ const structuredData = {
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
         <div>
           <span class="block text-2xl font-bold text-accent">CGS § 14-112</span>
-          <span class="text-xs text-text-muted">Conformidade Legal do Estado</span>
+          <span class="text-xs text-text-muted">Mínimo Legal de CT</span>
         </div>
         <div>
           <span class="block text-2xl font-bold text-accent">100/300/100</span>
-          <span class="text-xs text-text-muted">Limites Fortes Recomendados</span>
+          <span class="text-xs text-text-muted">Cobertura Recomendada</span>
         </div>
         <div>
           <span class="block text-2xl font-bold text-accent">20+</span>
-          <span class="text-xs text-text-muted">Companhias de Seguro Comparadas</span>
+          <span class="text-xs text-text-muted">Seguradoras Comparadas</span>
         </div>
         <div>
           <span class="block text-2xl font-bold text-accent">Auto + Casa</span>
@@ -178,24 +178,23 @@ const structuredData = {
           </h2>
           <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
             <p class="font-medium text-text-primary">
-              A lei de Connecticut exige que todo condutor possua seguro com limites mínimos de $25,000 por lesão corporal individual, $50,000 por acidente coletivo e $25,000 para danos materiais (25/50/25), além de proteção contra motoristas sem seguro (UM/UIM).
+              A legislação de Connecticut exige que todo motorista mantenha cobertura mínima de responsabilidade civil: $25,000 por lesão corporal individual, $50,000 por acidente e $25,000 para danos materiais (25/50/25), além de proteção contra motoristas sem seguro (UM/UIM).
             </p>
           </div>
           <p class="text-sm text-text-secondary leading-relaxed">
-            Mesmo sendo suficientes para renovar seu documento no DMV, esses valores mínimos deixam os motoristas extremamente vulneráveis. Em acidentes envolvendo carros novos ou múltiplas pessoas, as despesas médicas ultrapassam $25,000 rapidamente. Nossos agentes independentes ajudam você a obter coberturas reais por valores que cabem no seu orçamento.
+            Cumprir esse mínimo permite registrar seu carro no DMV, mas $25,000 para danos materiais não paga a reposição da maioria dos carros em circulação hoje. Em acidentes com vários veículos ou vítimas feridas, as despesas médicas e de oficina ultrapassam os mínimos do estado rapidamente. Qualquer valor que exceder sua apólice terá de sair do seu próprio bolso.
           </p>
         </div>
 
         <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
-          <h3 class="text-base font-bold text-accent flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
-            O Risco do Limite Mínimo da Lei
+          <h3 class="text-base font-bold text-accent">
+            Por que o limite de 25/50/25 coloca seus bens em risco
           </h3>
           <p class="text-xs text-text-secondary leading-relaxed">
-            Os preços dos veículos modernos superam com folga o limite de $25,000 de danos materiais do estado.
+            O preço médio de um veículo novo hoje ultrapassa $48,000. Se o seu limite de danos materiais for de $25,000, você responde pessoalmente pela diferença.
           </p>
           <p class="text-xs text-text-secondary leading-relaxed">
-            Se a apólice esgotar, os tribunais de Connecticut autorizam a penhora de contas poupança, patrimônio da casa e retenção de salários para quitar a dívida. Aumentar para <strong>100/300/100 ou 250/500/100</strong> custa pouco a mais por mês e garante tranquilidade absoluta.
+            Quando a apólice atinge o teto, a justiça de Connecticut pode determinar penhora de contas bancárias, do patrimônio da sua casa ou descontos em salários futuros. Elevar a cobertura para 100/300/100 ou 250/500/100 costuma custar pouco a mais por mês e protege seu patrimônio.
           </p>
         </div>
       </div>
@@ -203,8 +202,8 @@ const structuredData = {
       <!-- Core Coverage Grid -->
       <div class="space-y-8">
         <div class="text-center max-w-2xl mx-auto space-y-2">
-          <h2 class="text-3xl font-bold text-accent">Coberturas Fundamentais do Veículo</h2>
-          <p class="text-sm text-text-secondary">Proteções abrangentes para as condições de trânsito em Connecticut.</p>
+          <h2 class="text-3xl font-bold text-accent">Como Funcionam as Coberturas em Connecticut</h2>
+          <p class="text-sm text-text-secondary">Entenda as proteções obrigatórias de responsabilidade e as coberturas para danos físicos ao veículo.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -212,7 +211,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
             <h3 class="text-base font-bold text-text-primary">Responsabilidade por Lesões Corporais</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Paga despesas médicas, reabilitação e honorários advocatícios se você for considerado culpado por ferimentos causados a outros condutores ou pedestres.
+              Cobre despesas médicas, reabilitação e honorários advocatícios caso você seja responsável por ferimentos causados a outros motoristas ou pedestres.
             </p>
           </div>
 
@@ -220,7 +219,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
             <h3 class="text-base font-bold text-text-primary">Danos Materiais a Terceiros</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Conserta ou repõe veículos de terceiros, postes ou muros danificados em acidentes onde a responsabilidade foi sua.
+              Paga pelo conserto de veículos de terceiros, defensas metálicas, postes ou imóveis danificados em um acidente provocado por você.
             </p>
           </div>
 
@@ -228,31 +227,31 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
             <h3 class="text-base font-bold text-text-primary">Cobertura de Colisão</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Conserta seu próprio automóvel se você colidir com outro veículo, capotar ou derrapar em pistas com neve ou gelo.
+              Conserta ou repõe o valor do seu próprio carro se você colidir com outro veículo, derrapar no gelo ou capotar, descontada a franquia.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
-            <h3 class="text-base font-bold text-text-primary">Cobertura Compreensiva (Não-Colisão)</h3>
+            <h3 class="text-base font-bold text-text-primary">Cobertura Compreensiva</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Cobre riscos imprevisíveis: colisão com animais silvestres (veados), vidros trincados, furto, vandalismo e quedas de galhos de árvores.
+              Cobre sinistros fora de uma batida: atropelamento de animais (veados), pedras no para-brisa, furto, vandalismo, alagamentos e galhos caídos em tempestades.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
-            <h3 class="text-base font-bold text-text-primary">Motoristas Não Segurados (UM/UIM)</h3>
+            <h3 class="text-base font-bold text-text-primary">Motoristas Sem Seguro (UM/UIM)</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Protege sua família se você for atingido por um condutor sem seguro ou que fuja do local da batida (hit-and-run).
+              Garante a sua segurança e a dos passageiros caso um condutor sem seguro ou que fuja do local cause o acidente e não pague o atendimento médico.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
-            <h3 class="text-base font-bold text-text-primary">Socorro 24 Horas e Carro Reserva</h3>
+            <h3 class="text-base font-bold text-text-primary">Guincho 24 Horas e Carro Reserva</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Serviço de reboque emergencial, carga de bateria, troca de pneus furados e reembolso de locação de veículo enquanto o seu é consertado.
+              Reboque de emergência, recarga de bateria, troca de pneu furado e reembolso de locação de veículo enquanto o seu estiver na oficina após um sinistro.
             </p>
           </div>
         </div>
@@ -261,28 +260,50 @@ const structuredData = {
       <!-- RV & Campers Section -->
       <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
         <div class="max-w-2xl space-y-2">
-          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Seguros para Motorhomes, Trailers e RVs</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Seguro para Motorhomes, Trailers e Campers</h2>
           <p class="text-xs sm:text-sm text-text-secondary">
-            Veículos recreativos exigem apólices muito mais detalhadas do que o seguro automotivo regular:
+            O seguro automotivo comum não cobre instalações residenciais nem responsabilidade em áreas de camping. Emitimos apólices feitas sob medida para veículos de lazer:
           </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           <div class="bg-white p-4 rounded-lg border border-border-subtle">
             <strong class="text-accent block mb-1">Motorhomes (Classes A, B, C)</strong>
-            <p class="text-text-muted">Proteção completa e responsabilidade civil personalizada para veículos motorizados de alto padrão.</p>
+            <p class="text-text-muted">Proteção para danos físicos e responsabilidade civil personalizada para motorhomes e vans adaptadas.</p>
           </div>
           <div class="bg-white p-4 rounded-lg border border-border-subtle">
             <strong class="text-accent block mb-1">Trailers e Campers</strong>
-            <p class="text-text-muted">Proteção enquanto rebocado nas rodovias e quando estacionado em campings.</p>
+            <p class="text-text-muted">Proteção para trailers de engate e modelos dobráveis, tanto em trânsito quanto parados no acampamento.</p>
           </div>
           <div class="bg-white p-4 rounded-lg border border-border-subtle">
-            <strong class="text-accent block mb-1">Responsabilidade no Camping</strong>
-            <p class="text-text-muted">Protege você caso visitantes se machuquem no espaço onde seu trailer está acampado.</p>
+            <strong class="text-accent block mb-1">Responsabilidade em Camping</strong>
+            <p class="text-text-muted">Cobertura caso um visitante tropece ou sofra um acidente perto do seu veículo estacionado.</p>
           </div>
           <div class="bg-white p-4 rounded-lg border border-border-subtle">
-            <strong class="text-accent block mb-1">Bens Pessoais a Bordo</strong>
-            <p class="text-text-muted">Cobre reposição a valor de novo para roupas, equipamentos eletrônicos e itens guardados no RV.</p>
+            <strong class="text-accent block mb-1">Pertences Pessoais a Bordo</strong>
+            <p class="text-text-muted">Reposição de equipamentos de acampamento, roupas e aparelhos eletrônicos transportados no veículo.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Connecticut Discounts Strip -->
+      <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
+        <h2 class="text-2xl font-bold text-accent">Como Economizar no Seguro de Automóvel em Connecticut</h2>
+        <p class="text-sm text-text-secondary leading-relaxed">
+          A Associated Insurance Agency pesquisa mais de 20 seguradoras para aplicar todos os descontos aos quais você tem direito:
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2 text-xs text-text-secondary">
+          <div class="space-y-1">
+            <strong class="text-accent block">Pacotes Multipolítica</strong>
+            <p>Economize de 15% a 25% ao combinar o seguro do carro com o residencial, de condomínio ou de locatário na mesma seguradora.</p>
+          </div>
+          <div class="space-y-1">
+            <strong class="text-accent block">Telemática e Direção Segura</strong>
+            <p>Aplicativos móveis ou aparelhos opcionais que acompanham quilometragem e frenagens suaves geram descontos de até 30%.</p>
+          </div>
+          <div class="space-y-1">
+            <strong class="text-accent block">Bons Estudantes e Cursos de Direção</strong>
+            <p>Descontos para estudantes com boas notas, jovens que estudam longe sem carro e motoristas de 60+ que concluírem cursos estaduais de direção defensiva.</p>
           </div>
         </div>
       </div>
@@ -290,36 +311,36 @@ const structuredData = {
       <!-- FAQ Section -->
       <div class="space-y-8 max-w-4xl mx-auto">
         <div class="text-center space-y-2">
-          <h2 class="text-3xl font-bold text-accent">Perguntas Frecuentes</h2>
-          <p class="text-sm text-text-secondary">Dúvidas comuns sobre o seguro de auto e RV em Connecticut.</p>
+          <h2 class="text-3xl font-bold text-accent">Perguntas Frequentes</h2>
+          <p class="text-sm text-text-secondary">Respostas diretas sobre seguro de automóvel e veículos recreativos em Connecticut.</p>
         </div>
 
         <div class="space-y-4">
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
-            <h3 class="text-base font-bold text-accent">Quais são os limites mínimos de seguro auto em CT (CGS § 14-112)?</h3>
+            <h3 class="text-base font-bold text-accent">Quais são os limites mínimos obrigatórios de seguro auto em Connecticut (CGS § 14-112)?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              Pelas leis de Connecticut (CGS § 14-112), todo condutor registrado deve manter limites mínimos de responsabilidade civil de $25,000 para lesões corporais por pessoa, $50,000 por acidente e $25,000 para danos materiais a terceiros (25/50/25), além de cobertura idêntica para motoristas não segurados ou com seguro insuficiente (UM/UIM).
+              Pela legislação de Connecticut (CGS § 14-112), todo condutor deve manter cobertura mínima de responsabilidade civil de $25,000 por lesão corporal individual, $50,000 por acidente e $25,000 para danos materiais (25/50/25), além de cobertura idêntica para motoristas não segurados ou com seguro insuficiente (UM/UIM).
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
-            <h3 class="text-base font-bold text-accent">Por que os limites mínimos da lei representam um risco para suas economias?</h3>
+            <h3 class="text-base font-bold text-accent">Por que os limites mínimos da lei são insuficientes para a maioria dos motoristas?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              O valor médio de um veículo novo hoje ultrapassa $48,000. O limite estatal de $25,000 não cobre nem a perda total de um carro comum em uma batida. Se os gastos hospitalares ultrapassarem $50,000, as partes lesadas podem buscar seus bens na justiça, penhorar o valor da sua casa e reter salários futuros. Recomendamos limites de pelo menos 100/300/100 ou 250/500/100.
+              O valor médio de um carro novo hoje passa de $48,000. Se você provocar um acidente com perda total de um carro recente, o teto de $25,000 para danos materiais deixa uma diferença de mais de $20,000 que você terá de pagar do próprio bolso. Se os custos médicos dos feridos ultrapassarem os $50,000 da apólice, eles podem acionar a justiça contra suas economias e sua casa. Recomendamos limites de pelo menos 100/300/100 ou 250/500/100.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
-            <h3 class="text-base font-bold text-accent">Qual é a diferença entre cobertura de Colisão e Compreensiva?</h3>
+            <h3 class="text-base font-bold text-accent">Qual é a diferença entre cobertura de Colisão e Compreensiva em Connecticut?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              A cobertura de Colisão paga pelo conserto do seu carro se você bater em outro veículo, poste ou escorregar no gelo. A cobertura Compreensiva cobre sinistros fora do seu controle: colisão com animais (como cervos comuns nas estradas de CT), quebra de para-brisa, furto, vandalismo, granizo e galhos caídos durante tempestades.
+              A cobertura de Colisão paga pelo conserto ou reposição do seu carro se você bater em outro veículo, em uma defensa metálica ou capotar. A cobertura Compreensiva protege contra sinistros fora de uma colisão: atropelamento de animais (veados), pedras no para-brisa, furto, vandalismo, incêndio e galhos caídos durante tempestades.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
-            <h3 class="text-base font-bold text-accent">Posso segurar meu trailer, motorhome ou camper na mesma apólice?</h3>
+            <h3 class="text-base font-bold text-accent">Posso segurar meu motorhome, trailer ou camper na mesma apólice?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              Sim. A Associated Insurance Agency oferece apólices especializadas para veículos recreativos (RVs, trailers de viagem e motorhomes), incluindo reposição de pertences de acampamento, responsabilidade civil no camping e assistência 24 horas na estrada.
+              A maioria das seguradoras exige uma apólice especializada para veículos recreativos em vez de incluí-los na apólice de carro comum. Podemos emitir as duas apólices com a mesma companhia para aproveitar descontos e cobrir responsabilidade em áreas de camping, reboque e pertences pessoais a bordo.
             </p>
           </div>
         </div>
@@ -328,9 +349,9 @@ const structuredData = {
       <!-- Conversion Banner -->
       <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="space-y-2 text-center md:text-left">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Compare Cotações de Auto e RV em Connecticut</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Fale com um Corretor em Danbury Sobre seu Seguro de Carro</h2>
           <p class="text-sm text-zinc-300 max-w-xl">
-            Economize no seguro do seu veículo com o apoio de corretores que falam o seu idioma. Comparamos as seguradoras líderes do mercado para você.
+            Comparamos sua apólice em mais de 20 seguradoras para encontrar o equilíbrio ideal entre preço e proteção para seus carros e veículos recreativos.
           </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 shrink-0">

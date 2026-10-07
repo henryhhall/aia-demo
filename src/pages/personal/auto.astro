@@ -9,7 +9,7 @@ const structuredData = {
       "@id": "https://aia-danbury.com/personal/auto#service",
       "name": "Personal Auto and RV Insurance Connecticut",
       "serviceType": "Auto and Recreational Vehicle Insurance",
-      "description": "Comprehensive auto, truck, RV, camper, and motorcycle insurance in Connecticut. Statutory CGS § 14-112 compliance, collision, comprehensive, and uninsured motorist protection.",
+      "description": "Auto, truck, RV, camper, and motorcycle insurance in Connecticut. Statutory CGS § 14-112 compliance, collision, comprehensive, and uninsured motorist protection.",
       "provider": {
         "@type": "InsuranceAgency",
         "name": "Associated Insurance Agency",
@@ -57,18 +57,18 @@ const structuredData = {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What are the mandatory auto insurance minimums in Connecticut (CGS § 14-112)?",
+          "name": "What are Connecticut's mandatory auto insurance minimums (CGS § 14-112)?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Under Connecticut General Statutes (CGS § 14-112), all registered drivers must carry minimum liability coverage of $25,000 for bodily injury per person, $50,000 total bodily injury per accident, and $25,000 for property damage (25/50/25). Connecticut also mandates matching Uninsured and Underinsured Motorist (UM/UIM) coverage."
+            "text": "Under Connecticut General Statutes (CGS § 14-112), registered drivers must carry liability coverage of at least $25,000 bodily injury per person, $50,000 total bodily injury per accident, and $25,000 property damage (25/50/25), along with matching Uninsured and Underinsured Motorist (UM/UIM) coverage."
           }
         },
         {
           "@type": "Question",
-          "name": "Why are Connecticut state minimum limits dangerously inadequate?",
+          "name": "Why are Connecticut state minimum limits inadequate for most drivers?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "With the average price of a new vehicle exceeding $48,000, a $25,000 property damage limit will not even pay to replace a single totaled car in a multi-vehicle highway crash. If medical costs exceed $50,000, injured parties can pursue personal civil judgments against your savings, home equity, and garnish future earnings. Associated Insurance Agency strongly recommends at least 100/300/100 or 250/500/100 liability limits."
+            "text": "New vehicles in Connecticut now average around $48,000. If you cause a crash that totals a late-model car, a $25,000 property damage cap leaves a $23,000 gap that you have to pay out of pocket. If medical expenses for other passengers exceed your $50,000 bodily injury limit, injured parties can seek judgments against your personal savings and real estate. We recommend carrying at least 100/300/100 or 250/500/100 in liability."
           }
         },
         {
@@ -76,7 +76,7 @@ const structuredData = {
           "name": "What is the difference between Collision and Comprehensive coverage in Connecticut?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Collision coverage pays for physical damage to your vehicle when you strike another car, object (such as a guardrail or tree), or roll over. Comprehensive (Other Than Collision) covers incidents outside your direct control, such as deer and animal collisions (common on CT rural roads), windshield glass chips, theft, vandalism, fire, and falling tree limbs during severe storms."
+            "text": "Collision pays to repair or replace your vehicle when you hit another vehicle, hit a fixed object like a guardrail or tree, or roll over. Comprehensive covers damage from incidents outside a crash: hitting a deer or wild animal, windshield chips and cracks, theft, vandalism, fire, and branches knocked down during storms."
           }
         },
         {
@@ -84,7 +84,7 @@ const structuredData = {
           "name": "Can I insure my RV, camper, or travel trailer on the same policy?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Associated Insurance Agency provides specialized recreational vehicle (RV) policies that cover motorhomes, travel trailers, campers, and boat trailers. These policies include custom personal effects replacement, campsite liability, and emergency roadside assistance."
+            "text": "Most carriers require a dedicated recreational vehicle policy rather than adding an RV directly to a standard auto policy. We can bundle both policies with the same carrier or place your RV with a specialized insurer to cover campsite liability, roadside towing, and contents replacement."
           }
         }
       ]
@@ -95,7 +95,7 @@ const structuredData = {
 
 <BaseLayout
   title="Connecticut Auto & RV Insurance | CGS § 14-112 Coverage | AIA Danbury"
-  description="Personal car, truck, RV, and camper insurance in CT. Understand CGS § 14-112 minimum limits, collision, comprehensive, and bundling discounts."
+  description="Personal car, truck, RV, and camper insurance in CT. Compare CGS § 14-112 minimum limits, collision, comprehensive, and bundling discounts across 20+ carriers."
   structuredData={structuredData}
 >
   <!-- Breadcrumb -->
@@ -115,13 +115,13 @@ const structuredData = {
       <div class="max-w-3xl space-y-4">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-semibold">
           <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
-          Connecticut Road & Recreation Shield
+          Danbury & Greater Western CT Auto Coverage
         </div>
         <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-accent leading-tight">
           Connecticut Auto & RV Insurance
         </h1>
         <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
-          Navigate I-84, Route 7, and local CT roads with superior liability, collision, and comprehensive coverage. We protect drivers, family vehicles, motorhomes, and campers with customized policy limits that safeguard your family finances.
+          Whether you commute on I-84 and Route 7 or tow a camper up to Litchfield County on weekends, state minimum coverage rarely covers a serious crash. We compare rates across 20+ carriers to get you real liability limits, collision, and comprehensive coverage at a rate that makes sense.
         </p>
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <a
@@ -151,15 +151,15 @@ const structuredData = {
         </div>
         <div>
           <span class="block text-2xl font-bold text-accent">100/300/100</span>
-          <span class="text-xs text-text-muted">Recommended Financial Defense</span>
+          <span class="text-xs text-text-muted">Recommended Minimum Liability</span>
         </div>
         <div>
           <span class="block text-2xl font-bold text-accent">20+</span>
-          <span class="text-xs text-text-muted">Top Auto Carriers Shopped</span>
+          <span class="text-xs text-text-muted">Regional & National Carriers</span>
         </div>
         <div>
           <span class="block text-2xl font-bold text-accent">Auto + Home</span>
-          <span class="text-xs text-text-muted">Up to 25% Multi-Policy Discount</span>
+          <span class="text-xs text-text-muted">Save up to 25% with Multi-Policy Bundles</span>
         </div>
       </div>
     </div>
@@ -177,24 +177,23 @@ const structuredData = {
           </h2>
           <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
             <p class="font-medium text-text-primary">
-              Connecticut law requires every motor vehicle owner to maintain financial responsibility with minimum liability limits of $25,000 bodily injury per person, $50,000 per accident, and $25,000 property damage (25/50/25), plus matching Uninsured/Underinsured Motorist (UM/UIM) protection.
+              Connecticut law requires every motor vehicle owner to maintain financial responsibility with minimum liability limits of $25,000 bodily injury per person, $50,000 per accident, and $25,000 property damage (25/50/25), plus matching Uninsured and Underinsured Motorist (UM/UIM) protection.
             </p>
           </div>
           <p class="text-sm text-text-secondary leading-relaxed">
-            While these statutory limits satisfy state DMV registration requirements, they leave Connecticut drivers catastrophically exposed. If you cause a highway collision involving luxury vehicles or multiple occupants with hospital admissions, costs exceed $25,000 within hours. Our independent agents help you secure real financial defense without breaking your budget.
+            Meeting that minimum lets you legally register a car with the DMV, but $25,000 in property damage does not even cover the replacement cost of an average vehicle on Connecticut roads today. If you cause an accident with multiple injuries or total a newer car, repair and medical bills exceed state minimums fast. Any balance beyond your policy limits comes out of your own pocket.
           </p>
         </div>
 
         <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
-          <h3 class="text-base font-bold text-accent flex items-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
+          <h3 class="text-base font-bold text-accent">
             Why 25/50/25 Limits Put Your Assets at Risk
           </h3>
           <p class="text-xs text-text-secondary leading-relaxed">
-            With the median price of new automobiles in Connecticut topping $48,000, state minimum property damage covers only half the cost of a modern vehicle.
+            The average new car sold today costs over $48,000. If your property damage cap is $25,000, you are personally liable for the rest.
           </p>
           <p class="text-xs text-text-secondary leading-relaxed">
-            When insurance limits are exhausted, Connecticut courts permit injured parties to place judicial liens on your real estate, attach investment accounts, and garnish your future wages. Increasing your policy limits to <strong>100/300/100 or 250/500/100</strong> costs surprisingly little and shields your family's future.
+            If damages exceed your policy, the other driver's attorney can pursue your personal bank accounts, place liens on your home, or garnish future wages under Connecticut court judgments. Stepping up to 100/300/100 or 250/500/100 liability usually adds only a modest amount to your monthly bill while protecting your assets.
           </p>
         </div>
       </div>
@@ -202,8 +201,8 @@ const structuredData = {
       <!-- Core Coverage Grid -->
       <div class="space-y-8">
         <div class="text-center max-w-2xl mx-auto space-y-2">
-          <h2 class="text-3xl font-bold text-accent">Essential Vehicle Coverages</h2>
-          <p class="text-sm text-text-secondary">Comprehensive protections designed for Connecticut driving conditions.</p>
+          <h2 class="text-3xl font-bold text-accent">How Auto Coverage Works in Connecticut</h2>
+          <p class="text-sm text-text-secondary">A breakdown of mandatory liability and physical damage protections.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -211,7 +210,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
             <h3 class="text-base font-bold text-text-primary">Bodily Injury Liability</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Pays medical expenses, rehabilitation, pain and suffering settlements, and legal representation when you are at fault in an accident causing injury to other drivers or pedestrians.
+              Pays medical expenses, rehabilitation, and legal representation when you are at fault in an accident causing injury to other drivers or pedestrians.
             </p>
           </div>
 
@@ -219,7 +218,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
             <h3 class="text-base font-bold text-text-primary">Property Damage Liability</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Pays to repair or replace vehicles, fences, commercial storefronts, or public utility poles damaged when your vehicle is involved in an at-fault accident.
+              Pays to repair or replace vehicles, guardrails, utility poles, or buildings damaged in an accident where you are at fault.
             </p>
           </div>
 
@@ -227,15 +226,15 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
             <h3 class="text-base font-bold text-text-primary">Collision Coverage</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Covers physical repair or actual cash value of your car if you hit another vehicle, crash into a guardrail on an icy road, or experience a rollover collision.
+              Pays to repair or replace your car if you hit another vehicle, slide off an icy road into a guardrail, or roll over, minus your deductible.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-3">
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
-            <h3 class="text-base font-bold text-text-primary">Comprehensive (Other Than Collision)</h3>
+            <h3 class="text-base font-bold text-text-primary">Comprehensive Coverage</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Covers non-collision hazards common in Connecticut: deer and animal strikes, cracked windshields, vehicle theft, vandalism, hail, and fallen tree limbs.
+              Pays for damage from hazards other than crashes: hitting a deer on a rural backroad, stone chips on the windshield, theft, vandalism, storm flooding, and fallen tree branches.
             </p>
           </div>
 
@@ -243,7 +242,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
             <h3 class="text-base font-bold text-text-primary">Uninsured / Underinsured Motorist (UM/UIM)</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Protects you and your passengers if struck by an uninsured driver, a hit-and-run motorist, or a driver carrying only state minimums that fail to cover your medical bills.
+              Protects you and your passengers if struck by an uninsured driver, a hit-and-run motorist, or a driver whose policy limits fall short of your medical bills.
             </p>
           </div>
 
@@ -251,7 +250,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
             <h3 class="text-base font-bold text-text-primary">Roadside Assistance & Rental Reimbursement</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Covers 24/7 emergency towing, battery jump-starts, flat tire changes, and rental car reimbursements while your primary vehicle is undergoing repairs after a claim.
+              Covers 24/7 towing, jump-starts, flat tire changes, and rental car reimbursements while your vehicle is in the repair shop following a claim.
             </p>
           </div>
         </div>
@@ -260,28 +259,28 @@ const structuredData = {
       <!-- RV, Camper & Recreational Vehicles -->
       <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
         <div class="max-w-2xl space-y-2">
-          <h2 class="text-2xl sm:text-3xl font-bold text-accent">RV, Motorhome, Camper & Trailer Insurance</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">RV, Motorhome, and Camper Insurance</h2>
           <p class="text-xs sm:text-sm text-text-secondary">
-            Recreational vehicles require specialized policies that go far beyond standard auto coverage. We protect weekend road trips and cross-country adventures:
+            A standard auto policy does not cover living quarters, detached trailers, or campsite liability. We write specialized policies for recreational vehicles:
           </p>
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-xs">
           <div class="bg-white p-4 rounded-lg border border-border-subtle">
             <strong class="text-accent block mb-1">Motorhomes (Class A, B, C)</strong>
-            <p class="text-text-muted">Comprehensive liability and collision protection tailored to high-value drivable RVs and custom luxury conversions.</p>
+            <p class="text-text-muted">Physical damage and liability coverage tailored to drivable motorhomes, camper vans, and custom conversions.</p>
           </div>
           <div class="bg-white p-4 rounded-lg border border-border-subtle">
             <strong class="text-accent block mb-1">Travel Trailers & Campers</strong>
-            <p class="text-text-muted">Protects fifth wheels, popup campers, and toy haulers both while being towed on highways and unhitched at campgrounds.</p>
+            <p class="text-text-muted">Protection for fifth wheels, pop-up campers, and toy haulers both while being towed on highways and unhitched at campsites.</p>
           </div>
           <div class="bg-white p-4 rounded-lg border border-border-subtle">
-            <strong class="text-accent block mb-1">Vacation Campsite Liability</strong>
-            <p class="text-text-muted">Extends personal liability protection when your RV is parked at state parks or private campgrounds acting as a temporary residence.</p>
+            <strong class="text-accent block mb-1">Campsite Liability</strong>
+            <p class="text-text-muted">Premises liability protection if a visitor trips or is injured around your parked RV at a campground.</p>
           </div>
           <div class="bg-white p-4 rounded-lg border border-border-subtle">
-            <strong class="text-accent block mb-1">Personal Effects Replacement</strong>
-            <p class="text-text-muted">Full replacement cost coverage for camping equipment, electronics, clothing, and gear stored inside your RV.</p>
+            <strong class="text-accent block mb-1">Personal Effects Coverage</strong>
+            <p class="text-text-muted">Replacement coverage for camping equipment, cooking gear, clothing, and electronics kept inside your vehicle.</p>
           </div>
         </div>
       </div>
@@ -290,20 +289,20 @@ const structuredData = {
       <div class="bg-white p-8 rounded-2xl border border-border-subtle shadow-sm space-y-4">
         <h2 class="text-2xl font-bold text-accent">Ways to Save on Connecticut Auto Insurance</h2>
         <p class="text-sm text-text-secondary leading-relaxed">
-          Associated Insurance Agency shops across 20+ top auto insurance carriers to maximize discounts for our clients:
+          Associated Insurance Agency shops across 20+ top auto insurance carriers to apply every discount you qualify for:
         </p>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2 text-xs text-text-secondary">
           <div class="space-y-1">
-            <strong class="text-accent block">Multi-Policy Bundling</strong>
-            <p>Save 15% to 25% when you insure your vehicles and home or apartment together with the same company.</p>
+            <strong class="text-accent block">Multi-Policy Bundles</strong>
+            <p>Save 15% to 25% when you combine auto coverage with homeowners, condo, or renters insurance under the same carrier.</p>
           </div>
           <div class="space-y-1">
             <strong class="text-accent block">Telematics & Safe Driver</strong>
-            <p>Enroll in voluntary mobile app driving monitors for safe driver discounts up to 30% based on low mileage and smooth braking.</p>
+            <p>Optional mobile apps or plug-in devices reward safe driving habits, low mileage, and gentle braking with discounts up to 30%.</p>
           </div>
           <div class="space-y-1">
             <strong class="text-accent block">Student & Defensive Driving</strong>
-            <p>Good student discounts for B-averages, student-away-at-school credits, and mature driver state-approved defensive driving course discounts.</p>
+            <p>Discounts for full-time students maintaining a B average, college students away at school without a car, and drivers age 60+ who complete an approved defensive driving course.</p>
           </div>
         </div>
       </div>
@@ -319,28 +318,28 @@ const structuredData = {
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
             <h3 class="text-base font-bold text-accent">What are Connecticut's mandatory auto insurance minimums (CGS § 14-112)?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              Under Connecticut General Statutes (CGS § 14-112), all registered drivers must carry minimum liability coverage of $25,000 for bodily injury per person, $50,000 total bodily injury per accident, and $25,000 for property damage (25/50/25). Connecticut also mandates matching Uninsured and Underinsured Motorist (UM/UIM) coverage.
+              Under Connecticut General Statutes (CGS § 14-112), registered drivers must carry liability coverage of at least $25,000 bodily injury per person, $50,000 total bodily injury per accident, and $25,000 property damage (25/50/25), along with matching Uninsured and Underinsured Motorist (UM/UIM) coverage.
             </p>
           </div>
 
-          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
-            <h3 class="text-base font-bold text-accent">Why are Connecticut state minimum limits dangerously inadequate?</h3>
+          <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-y-2">
+            <h3 class="text-base font-bold text-accent">Why are Connecticut state minimum limits inadequate for most drivers?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              With the average price of a new vehicle exceeding $48,000, a $25,000 property damage limit will not even pay to replace a single totaled car in a multi-vehicle highway crash. If medical costs exceed $50,000, injured parties can pursue personal civil judgments against your savings, home equity, and garnish future earnings. Associated Insurance Agency strongly recommends at least 100/300/100 or 250/500/100 liability limits.
+              New vehicles in Connecticut now average around $48,000. If you cause a crash that totals a late-model car, a $25,000 property damage cap leaves a $23,000 gap that you have to pay out of pocket. If medical expenses for other passengers exceed your $50,000 bodily injury limit, injured parties can seek judgments against your personal savings and real estate. We recommend carrying at least 100/300/100 or 250/500/100 in liability.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
             <h3 class="text-base font-bold text-accent">What is the difference between Collision and Comprehensive coverage in Connecticut?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              Collision coverage pays for physical damage to your vehicle when you strike another car, object (such as a guardrail or tree), or roll over. Comprehensive (Other Than Collision) covers incidents outside your direct control, such as deer and animal collisions (common on CT rural roads), windshield glass chips, theft, vandalism, fire, and falling tree limbs during severe storms.
+              Collision pays to repair or replace your vehicle when you hit another vehicle, hit a fixed object like a guardrail or tree, or roll over. Comprehensive covers damage from incidents outside a crash: hitting a deer or wild animal, windshield chips and cracks, theft, vandalism, fire, and branches knocked down during storms.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
             <h3 class="text-base font-bold text-accent">Can I insure my RV, camper, or travel trailer on the same policy?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              Yes. Associated Insurance Agency provides specialized recreational vehicle (RV) policies that cover motorhomes, travel trailers, campers, and boat trailers. These policies include custom personal effects replacement, campsite liability, and emergency roadside assistance.
+              Most carriers require a dedicated recreational vehicle policy rather than adding an RV directly to a standard auto policy. We can bundle both policies with the same carrier or place your RV with a specialized insurer to cover campsite liability, roadside towing, and contents replacement.
             </p>
           </div>
         </div>
@@ -349,9 +348,9 @@ const structuredData = {
       <!-- Conversion Banner -->
       <div class="bg-accent text-white p-8 sm:p-12 rounded-2xl shadow-xl flex flex-col md:flex-row justify-between items-center gap-8">
         <div class="space-y-2 text-center md:text-left">
-          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Compare Connecticut Auto & RV Rates</h2>
+          <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Talk to a Danbury Agent About Auto Coverage</h2>
           <p class="text-sm text-zinc-300 max-w-xl">
-            Don't overpay for auto coverage. Our independent agents will shop top carriers, optimize your discounts, and safeguard your financial security.
+            We shop your policy across more than 20 carriers to find the right balance of price and protection for your cars and recreational vehicles.
           </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 shrink-0">

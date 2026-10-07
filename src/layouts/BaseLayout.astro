@@ -16,10 +16,11 @@ interface Props {
   modifiedDate?: string;
   tags?: string[];
   structuredData?: object;
+  lang?: string;
 }
 
 const props = Astro.props;
-const lang = Astro.currentLocale || 'en';
+const lang = props.lang || Astro.currentLocale || 'en';
 
 // Default structured data for Associated Insurance Agency (AIA) - Multi-Location Graph
 const baseAgencyGraph = [
