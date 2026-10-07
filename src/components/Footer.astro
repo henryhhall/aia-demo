@@ -10,6 +10,7 @@ const currentYear = new Date().getFullYear();
 
 const homeUrl = getRelativeLocaleUrl(lang, '');
 const aboutUrl = getRelativeLocaleUrl(lang, 'about');
+const teamUrl = getRelativeLocaleUrl(lang, 'team');
 const personalUrl = getRelativeLocaleUrl(lang, 'personal');
 const commercialUrl = getRelativeLocaleUrl(lang, 'commercial');
 const serviceUrl = getRelativeLocaleUrl(lang, 'service');
@@ -56,6 +57,7 @@ const wcUrl = getRelativeLocaleUrl(lang, 'commercial/workers-compensation');
         <h3 class="text-sm font-semibold text-zinc-100 tracking-wider uppercase mb-4">{t('footer.links')}</h3>
         <ul class="space-y-2.5 text-sm">
           <li><a href={aboutUrl} class="hover:text-white transition-colors">{t('footer.about')}</a></li>
+          <li><a href={teamUrl} class="hover:text-white transition-colors">{t('footer.team')}</a></li>
           <li><a href={personalUrl} class="hover:text-white transition-colors">{t('footer.personal')}</a></li>
           <li><a href={commercialUrl} class="hover:text-white transition-colors">{t('footer.commercial')}</a></li>
           <li><a href={serviceUrl} class="hover:text-white transition-colors">{t('footer.service')}</a></li>

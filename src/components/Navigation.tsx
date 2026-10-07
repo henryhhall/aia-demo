@@ -48,16 +48,21 @@ export default function Navigation({
     }));
   };
 
+  const normalizePath = (p: string) => (p ? p.replace(/\/$/, '') || '/' : '');
+
   return (
     <div className="flex items-center">
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center gap-7 lg:gap-8">
         {navLinks.map((link) => {
           const hasChildren = Boolean(link.children && link.children.length > 0);
+          const currentNorm = normalizePath(currentPath);
+          const linkNorm = normalizePath(link.href);
           const isDropdownActive =
             hasChildren &&
-            (currentPath.startsWith(link.href) ||
-              link.children?.some((child) => currentPath === child.href));
+            (currentNorm === linkNorm ||
+              (linkNorm !== '/' && currentNorm.startsWith(`${linkNorm}/`)) ||
+              link.children?.some((child) => currentNorm === normalizePath(child.href)));
 
           if (!hasChildren) {
             return (
@@ -65,13 +70,13 @@ export default function Navigation({
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium transition-colors duration-200 relative group py-2 ${
-                  currentPath === link.href ? 'text-accent font-semibold' : 'text-text-secondary hover:text-accent'
+                  currentNorm === linkNorm ? 'text-accent font-semibold' : 'text-text-secondary hover:text-accent'
                 }`}
               >
                 {link.label}
                 <span
                   className={`absolute bottom-0 left-0 h-[2px] bg-accent-gold transition-all duration-300 ${
-                    currentPath === link.href ? 'w-full' : 'w-0 group-hover:w-full'
+                    currentNorm === linkNorm ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 ></span>
               </a>
@@ -118,7 +123,7 @@ export default function Navigation({
               >
                 <div className="bg-white/95 backdrop-blur-md rounded-xl shadow-2xl border border-border-subtle p-2 space-y-1">
                   {link.children?.map((child, idx) => {
-                    const isChildActive = currentPath === child.href;
+                    const isChildActive = normalizePath(currentPath) === normalizePath(child.href);
                     const isFirst = idx === 0;
 
                     return (
@@ -272,23 +277,32 @@ export default function Navigation({
 
                   {isExpanded && (
                     <div className="pl-3 pr-1 pb-2 space-y-1 border-l-2 border-accent-gold/40 ml-2 mt-1">
-                      {link.children?.map((child) => (
-                        <a
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => setIsOpen(false)}
-                          className="block py-2 px-2 rounded hover:bg-accent/5 transition-colors"
-                        >
-                          <span className="block text-sm font-semibold text-text-primary">
-                            {child.label}
-                          </span>
-                          {child.description && (
-                            <span className="block text-xs text-text-muted mt-0.5">
-                              {child.description}
+                      {link.children?.map((child) => {
+                        const isChildActive = normalizePath(currentPath) === normalizePath(child.href);
+                        return (
+                          <a
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setIsOpen(false)}
+                            className={`block py-2 px-2 rounded transition-colors ${
+                              isChildActive ? 'bg-accent/10 font-semibold' : 'hover:bg-accent/5'
+                            }`}
+                          >
+                            <span
+                              className={`block text-sm font-semibold ${
+                                isChildActive ? 'text-accent' : 'text-text-primary'
+                              }`}
+                            >
+                              {child.label}
                             </span>
-                          )}
-                        </a>
-                      ))}
+                            {child.description && (
+                              <span className="block text-xs text-text-muted mt-0.5">
+                                {child.description}
+                              </span>
+                            )}
+                          </a>
+                        );
+                      })}
                     </div>
                   )}
                 </div>

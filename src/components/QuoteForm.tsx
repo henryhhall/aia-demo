@@ -367,7 +367,7 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
               className="w-full px-4 py-3 border border-border-subtle rounded bg-bg-secondary focus:outline-none focus:border-accent transition-colors"
             >
               <option value="Danbury">Danbury, CT (50 Newtown Rd)</option>
-              <option value="Watertown">Watertown, CT (Main St)</option>
+              <option value="Watertown">Watertown, CT (51 Depot St)</option>
               <option value="Bridgeport">Bridgeport, CT</option>
             </select>
           </div>

@@ -60,7 +60,7 @@ const structuredData = {
           "name": "¿Por qué los propietarios y administradores en Connecticut exigen seguro de inquilinos?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "La mayoría de los complejos de apartamentos y propietarios en Connecticut exigen un comprobante de póliza con al menos $100,000 en responsabilidad civil antes de entregar las llaves. Esto garantiza que si un inquilino provoca involuntariamente un daño por agua o un incendio en la cocina, su seguro cubrirá las reparaciones en lugar de generar un conflicto legal costoso."
+            "text": "La mayoría de los complejos de apartamentos y propietarios en Connecticut exigen un comprobante de póliza con al menos $100,000 en responsabilidad civil antes de entregar las llaves. Si un inquilino provoca un daño por agua o un incendio en la cocina, su seguro cubre las reparaciones en lugar de la póliza del propietario."
           }
         },
         {
@@ -68,7 +68,7 @@ const structuredData = {
           "name": "¿Cubre el seguro del edificio del propietario mis pertenencias personales?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. La póliza comercial del arrendador cubre exclusivamente las paredes, el tejado, los cimientos y los pasillos comunitarios. No ofrece ninguna protección para sus muebles, ropa, ordenadores, televisores o efectos personales. Sin una póliza de inquilinos (HO-4), usted deberá reponerlo todo de su propio bolsillo tras un incendio, robo o siniestro."
+            "text": "No. La póliza del arrendador cubre exclusivamente la estructura física, el techo y las áreas comunes. No ofrece protección para muebles, ropa, aparatos electrónicos o efectos personales. Sin una póliza de inquilinos (HO-4), el costo de reposición tras un incendio o robo corre por su cuenta."
           }
         },
         {
@@ -76,7 +76,7 @@ const structuredData = {
           "name": "¿Cuánto cuesta el seguro de inquilinos al mes en Connecticut?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Es muy económico: suele costar entre $15 y $25 al mes ($180–$250 al año) por una cobertura de entre $25,000 y $40,000 para sus bienes personales y $100,000 a $300,000 en responsabilidad civil. Al agruparlo con su seguro de auto, el descuento resultante prácticamente cubre el costo de la póliza de inquilinos."
+            "text": "El seguro de inquilinos suele costar entre $15 y $25 al mes ($180–$250 al año) por una cobertura de entre $25,000 y $40,000 para bienes personales y $100,000 a $300,000 en responsabilidad civil. Al combinarlo con el seguro de auto, los descuentos reducen significativamente el costo final."
           }
         },
         {
@@ -84,7 +84,7 @@ const structuredData = {
           "name": "¿Están protegidas mis pertenencias si me las roban fuera de mi apartamento?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "¡Sí! El seguro de inquilinos incluye cobertura mundial para bienes personales fuera del domicilio. Si le roban su computadora portátil o equipaje del maletero de su coche, o su bicicleta frente a una tienda, la póliza responde descontando el deducible."
+            "text": "El seguro de inquilinos incluye cobertura mundial para bienes personales fuera del domicilio. Si le roban una computadora portátil del maletero de su auto o el equipaje durante un viaje, la póliza responde descontando el deducible."
           }
         }
       ]
@@ -122,7 +122,7 @@ const structuredData = {
           Seguro de Inquilinos en Connecticut
         </h1>
         <p class="text-base sm:text-lg text-text-secondary leading-relaxed">
-          El seguro de su arrendador protege su edificio, no sus cosas. Resguarde sus muebles, tecnología, ropa y responsabilidad civil con una cobertura integral desde solo $15 al mes. Certificados rápidos para su contrato de alquiler.
+          La póliza del arrendador cubre únicamente la estructura del edificio. El seguro de inquilinos protege sus muebles, aparatos electrónicos, ropa y responsabilidad civil desde unos $15 al mes, con certificados emitidos rápidamente para su contrato de alquiler.
         </p>
         <div class="flex flex-wrap items-center gap-4 pt-2">
           <a
@@ -148,19 +148,19 @@ const structuredData = {
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
         <div>
           <span class="block text-2xl font-bold text-accent">~$15 / Mes</span>
-          <span class="text-xs text-text-muted">Costo Promedio en CT</span>
+          <span class="text-xs text-text-muted">Costo Típico en CT</span>
         </div>
         <div>
           <span class="block text-2xl font-bold text-accent">Mismo Día</span>
           <span class="text-xs text-text-muted">Certificados para Arrendadores</span>
         </div>
         <div>
-          <span class="block text-2xl font-bold text-accent">Costo Nuevo</span>
-          <span class="text-xs text-text-muted">Valor de Reemplazo para sus Bienes</span>
+          <span class="block text-2xl font-bold text-accent">Costo de Reemplazo</span>
+          <span class="text-xs text-text-muted">Cobertura de Bienes Personales</span>
         </div>
         <div>
           <span class="block text-2xl font-bold text-accent">Mundial</span>
-          <span class="text-xs text-text-muted">Protección ante Robo Fuera de Casa</span>
+          <span class="text-xs text-text-muted">Robo Fuera del Domicilio</span>
         </div>
       </div>
     </div>
@@ -174,28 +174,28 @@ const structuredData = {
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
         <div class="lg:col-span-7 space-y-5">
           <h2 class="text-3xl font-bold text-accent tracking-tight">
-            El Peligroso Mito del Seguro del Propietario
+            Lo que no cubre el seguro del propietario
           </h2>
           <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
             <p class="font-medium text-text-primary">
-              Muchos inquilinos en Connecticut creen erróneamente que si el edificio de apartamentos sufre un incendio o una tubería se rompe en el piso de arriba, el seguro del casero cubrirá sus muebles y pertenencias dañadas. En realidad, la póliza del propietario cubre únicamente la estructura física. Los inquilinos son 100% responsables legal y financieramente de sus propias cosas.
+              Muchos inquilinos asumen erróneamente que el seguro del arrendador cubre daños por fuego, goteras o tuberías rotas. La póliza del propietario cubre únicamente la estructura física. Los inquilinos son legalmente responsables de sus propias pertenencias y de cualquier daño accidental que causen a otras unidades.
             </p>
           </div>
           <p class="text-sm text-text-secondary leading-relaxed">
-            Una póliza de inquilinos (HO-4) soluciona este problema por completo. Ya sea que rente un apartamento en Danbury, Bridgeport o Watertown, nuestras pólizas protegen su patrimonio personal por menos de lo que cuesta una cena rápida.
+            Una póliza de inquilinos (HO-4) cubre esas diferencias. Ya sea que alquile un apartamento en Danbury, una casa en Bridgeport o un townhouse en Watertown, la póliza protege sus bienes y su responsabilidad civil con tarifas mensuales reducidas.
           </p>
         </div>
 
         <div class="lg:col-span-5 bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-4">
           <h3 class="text-base font-bold text-accent flex items-center gap-2">
             <span class="w-2 h-2 rounded-full bg-accent-gold"></span>
-            Requisito Obligatorio del Contrato de Alquiler
+            Requisitos del Contrato de Alquiler
           </h3>
           <p class="text-xs text-text-secondary leading-relaxed">
-            Casi todas las empresas de administración de propiedades en Connecticut requieren prueba de una póliza activa con al menos <strong>$100,000 en cobertura de responsabilidad</strong> antes de entregarle las llaves.
+            La mayoría de las empresas administradoras de propiedades en Connecticut exigen prueba de una póliza activa con al menos <strong>$100,000 en cobertura de responsabilidad personal</strong> antes de la mudanza.
           </p>
           <p class="text-xs text-text-secondary leading-relaxed">
-            Associated Insurance Agency emite certificados inmediatos nombrando a su arrendador o inmobiliaria como <strong>Parte Interesada</strong>, facilitando su mudanza sin retrasos.
+            Associated Insurance Agency emite certificados el mismo día nombrando a su arrendador o inmobiliaria como <strong>Parte Interesada</strong> para evitar retrasos.
           </p>
         </div>
       </div>
@@ -204,7 +204,7 @@ const structuredData = {
       <div class="space-y-8">
         <div class="text-center max-w-2xl mx-auto space-y-2">
           <h2 class="text-3xl font-bold text-accent">¿Qué Cubre el Seguro de Inquilinos?</h2>
-          <p class="text-sm text-text-secondary">Protección integral para sus pertenencias, responsabilidad civil y vivienda.</p>
+          <p class="text-sm text-text-secondary">Coberturas principales incluidas en una póliza HO-4 para arrendatarios.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -212,7 +212,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">01</div>
             <h3 class="text-base font-bold text-text-primary">Bienes Personales (Costo de Reemplazo)</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Paga el reemplazo de su ropa, muebles, computadoras, televisores y vajilla si resultan dañados por fuego, humo, agua de tuberías rotas o robo.
+              Paga el reemplazo de su ropa, muebles, computadoras, televisores y enseres si resultan dañados por fuego, humo, agua de tuberías rotas o robo.
             </p>
           </div>
 
@@ -220,7 +220,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">02</div>
             <h3 class="text-base font-bold text-text-primary">Responsabilidad Civil del Inquilino</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Le protege si un invitado tropieza en su apartamento o si usted accidentalmente desborda la tina y causa daños por agua a los vecinos de abajo.
+              Cubre su defensa legal e indemnizaciones si un visitante se lesiona en su apartamento o si un descuido causa daños por agua en una unidad vecina.
             </p>
           </div>
 
@@ -228,7 +228,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">03</div>
             <h3 class="text-base font-bold text-text-primary">Pérdida de Uso / Gastos de Hospedaje</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Si un incendio o problema grave deja su vivienda inhabitable, la póliza paga su estadía de hotel, alquiler temporal y alimentación durante las reparaciones.
+              Si un incendio o problema cubierto deja su vivienda inhabitable, la póliza paga hotel, alquiler temporal y gastos adicionales de alimentación mientras duran las reparaciones.
             </p>
           </div>
 
@@ -236,7 +236,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">04</div>
             <h3 class="text-base font-bold text-text-primary">Protección Fuera del Domicilio</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Sus cosas están cubiertas en cualquier parte del mundo. Si le roban una maleta en un aeropuerto o una laptop del maletero de su auto, el seguro responde.
+              Sus pertenencias están cubiertas fuera de casa en cualquier parte del mundo, incluidos artículos sustraídos de un vehículo cerrado o equipaje durante viajes.
             </p>
           </div>
 
@@ -244,7 +244,7 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">05</div>
             <h3 class="text-base font-bold text-text-primary">Pagos Médicos a Terceros</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Cubre la atención de urgencia para invitados que se lesionen levemente en su casa sin necesidad de presentar demandas judiciales.
+              Cubre la atención médica inmediata para invitados lesionados en su vivienda, sin necesidad de determinar culpas legales.
             </p>
           </div>
 
@@ -252,8 +252,33 @@ const structuredData = {
             <div class="w-10 h-10 rounded-lg bg-accent/10 flex items-center justify-center text-accent font-bold text-sm">06</div>
             <h3 class="text-base font-bold text-text-primary">Protección Contra Robo de Identidad</h3>
             <p class="text-xs text-text-secondary leading-relaxed">
-              Endosos opcionales para restituir su identidad y cubrir gastos legales si alguien abre cuentas bancarias o de crédito a su nombre.
+              Endosos opcionales cubren honorarios legales, trámites de restauración de documentos y pérdida de salarios en caso de robo de identidad.
             </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bundling Savings Strip -->
+      <div class="bg-bg-secondary p-8 sm:p-10 rounded-2xl border border-border-subtle space-y-6">
+        <div class="max-w-2xl space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-bold text-accent">Combine con Seguro de Auto para Ahorrar</h2>
+          <p class="text-xs sm:text-sm text-text-secondary">
+            Al combinar su seguro de inquilinos en Connecticut con su póliza de auto, el descuento por múltiples pólizas compensa la mayor parte de la prima de inquilinos.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-text-secondary">
+          <div class="bg-white p-6 rounded-xl border border-border-subtle space-y-2">
+            <strong class="text-accent text-sm block">Descuento Multipóliza</strong>
+            <p>La mayoría de las aseguradoras ofrece entre 5% y 15% de descuento en la prima del auto al añadir una póliza de inquilinos.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-border-subtle space-y-2">
+            <strong class="text-accent text-sm block">Deducible Único por Siniestro</strong>
+            <p>Si una tormenta o robo daña su vehículo y sus bienes en la residencia, muchas compañías aplican un solo deducible.</p>
+          </div>
+          <div class="bg-white p-6 rounded-xl border border-border-subtle space-y-2">
+            <strong class="text-accent text-sm block">Facturación Centralizada</strong>
+            <p>Gestione ambas pólizas en una sola cuenta con pagos coordinados y el respaldo de nuestros asesores locales.</p>
           </div>
         </div>
       </div>
@@ -269,28 +294,28 @@ const structuredData = {
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
             <h3 class="text-base font-bold text-accent">¿Por qué exigen seguro de inquilinos los administradores de edificios?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              La mayoría de los complejos de apartamentos y propietarios en Connecticut exigen un comprobante de póliza con al menos $100,000 en responsabilidad civil antes de entregar las llaves. Esto garantiza que si un inquilino provoca involuntariamente un daño por agua o un incendio en la cocina, su seguro cubrirá las reparaciones en lugar de generar un conflicto legal costoso.
+              La mayoría de los complejos de apartamentos y propietarios en Connecticut exigen un comprobante de póliza con al menos $100,000 en responsabilidad civil antes de entregar las llaves. Si un inquilino provoca un daño por agua o un incendio en la cocina, su seguro cubre las reparaciones en lugar de la póliza del propietario.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
             <h3 class="text-base font-bold text-accent">¿Cubre el seguro del edificio del propietario mis pertenencias?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              No. La póliza comercial del arrendador cubre exclusivamente las paredes, el tejado, los cimientos y los pasillos comunitarios. No ofrece ninguna protección para sus muebles, ropa, ordenadores, televisores o efectos personales. Sin una póliza de inquilinos (HO-4), usted deberá reponerlo todo de su propio bolsillo tras un incendio, robo o siniestro.
+              No. La póliza del arrendador cubre exclusivamente la estructura física, el techo y las áreas comunes. No ofrece protección para muebles, ropa, aparatos electrónicos o efectos personales. Sin una póliza de inquilinos (HO-4), el costo de reposición tras un incendio o robo corre por su cuenta.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
             <h3 class="text-base font-bold text-accent">¿Cuánto cuesta el seguro de inquilinos al mes en Connecticut?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              Es muy económico: suele costar entre $15 y $25 al mes ($180–$250 al año) por una cobertura de entre $25,000 y $40,000 para sus bienes personales y $100,000 a $300,000 en responsabilidad civil. Al agruparlo con su seguro de auto, el descuento resultante prácticamente cubre el costo de la póliza de inquilinos.
+              El seguro de inquilinos suele costar entre $15 y $25 al mes ($180–$250 al año) por una cobertura de entre $25,000 y $40,000 para bienes personales y $100,000 a $300,000 en responsabilidad civil. Al combinarlo con el seguro de auto, los descuentos reducen significativamente el costo final.
             </p>
           </div>
 
           <div class="bg-white p-6 rounded-xl border border-border-subtle shadow-sm space-y-2">
             <h3 class="text-base font-bold text-accent">¿Están protegidas mis pertenencias si me las roban fuera de mi apartamento?</h3>
             <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
-              ¡Sí! El seguro de inquilinos incluye cobertura mundial para bienes personales fuera del domicilio. Si le roban su computadora portátil o equipaje del maletero de su coche, o su bicicleta frente a una tienda, la póliza responde descontando el deducible.
+              El seguro de inquilinos incluye cobertura mundial para bienes personales fuera del domicilio. Si le roban una computadora portátil del maletero de su auto o el equipaje durante un viaje, la póliza responde descontando el deducible.
             </p>
           </div>
         </div>
@@ -301,7 +326,7 @@ const structuredData = {
         <div class="space-y-2 text-center md:text-left">
           <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Obtenga su Certificado de Inquilinos Hoy Mismo</h2>
           <p class="text-sm text-zinc-300 max-w-xl">
-            Cumpla con los requisitos de su contrato de arrendamiento al instante. Emitimos certificados en minutos y le ayudamos a ahorrar al combinar con su seguro de auto.
+            Cumpla con los requisitos de su contrato de arrendamiento sin demoras. Emitimos certificados el mismo día y le ayudamos a ahorrar al combinar con su seguro de auto.
           </p>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 shrink-0">

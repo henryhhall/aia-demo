@@ -1,0 +1,546 @@
+---
+// Office Locations Map Component
+// Interactive Google Maps viewer with selectable office location cards (Danbury HQ, Watertown, Bridgeport)
+
+interface Props {
+  lang?: 'en' | 'es' | 'pt' | 'tr';
+}
+
+const { lang = 'en' } = Astro.props;
+
+interface OfficeLocation {
+  id: 'danbury' | 'watertown' | 'bridgeport';
+  tag: string;
+  title: string;
+  shortName: string;
+  addressLine: string;
+  cityStateZip: string;
+  phoneDisplay: string;
+  phoneRaw: string;
+  hours: string;
+  directionsUrl: string;
+  embedUrl: string;
+  isHQ: boolean;
+}
+
+const officeData: Record<'en' | 'es' | 'pt' | 'tr', OfficeLocation[]> = {
+  en: [
+    {
+      id: 'danbury',
+      tag: 'Headquarters',
+      title: 'Danbury Headquarters',
+      shortName: 'Danbury HQ',
+      addressLine: '50 Newtown Road, Suite 1',
+      cityStateZip: 'Danbury, CT 06810',
+      phoneDisplay: '(203) 748-9272',
+      phoneRaw: '2037489272',
+      hours: 'Mon - Fri 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=50+Newtown+Road,+Suite+1,+Danbury,+CT+06810',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2879.6344940730055!2d-73.42662732423537!3d41.403672894985256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7ff217cb29b37%3A0x264721e992b3c2ee!2sAssociated%20Insurance%20Agency%20LLC!5e1!3m2!1sen!2sus!4v1791229405450!5m2!1sen!2sus',
+      isHQ: true,
+    },
+    {
+      id: 'watertown',
+      tag: 'Branch Office',
+      title: 'Watertown Branch',
+      shortName: 'Watertown',
+      addressLine: '51 Depot St Ste 112',
+      cityStateZip: 'Watertown, CT 06795',
+      phoneDisplay: '(860) 274-8888',
+      phoneRaw: '8602748888',
+      hours: 'Mon - Fri 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=51+Depot+St+Ste+112,+Watertown,+CT+06795',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1435.4183773278282!2d-73.113893!3d41.6018117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7eac9777b827b%3A0x67e441f80fbeaede!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394791132!5m2!1sen!2sus',
+      isHQ: false,
+    },
+    {
+      id: 'bridgeport',
+      tag: 'Branch Office',
+      title: 'Bridgeport Branch',
+      shortName: 'Bridgeport',
+      addressLine: '2465 Main Street',
+      cityStateZip: 'Bridgeport, CT 06606',
+      phoneDisplay: '(203) 333-8880',
+      phoneRaw: '2033338880',
+      hours: 'Mon - Fri 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=2465+Main+Street,+Bridgeport,+CT+06606',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021.0695509775729!2d-73.2120973643344!3d41.214073760533175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80e8ad160179d%3A0x2174691e2b983696!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394610287!5m2!1sen!2sus',
+      isHQ: false,
+    },
+  ],
+  es: [
+    {
+      id: 'danbury',
+      tag: 'Sede Central',
+      title: 'Sede Central en Danbury',
+      shortName: 'Danbury (HQ)',
+      addressLine: '50 Newtown Road, Suite 1',
+      cityStateZip: 'Danbury, CT 06810',
+      phoneDisplay: '(203) 748-9272',
+      phoneRaw: '2037489272',
+      hours: 'Lun - Vie 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=50+Newtown+Road,+Suite+1,+Danbury,+CT+06810',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2879.6344940730055!2d-73.42662732423537!3d41.403672894985256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7ff217cb29b37%3A0x264721e992b3c2ee!2sAssociated%20Insurance%20Agency%20LLC!5e1!3m2!1sen!2sus!4v1791229405450!5m2!1sen!2sus',
+      isHQ: true,
+    },
+    {
+      id: 'watertown',
+      tag: 'Sucursal',
+      title: 'Sucursal Watertown',
+      shortName: 'Watertown',
+      addressLine: '51 Depot St Ste 112',
+      cityStateZip: 'Watertown, CT 06795',
+      phoneDisplay: '(860) 274-8888',
+      phoneRaw: '8602748888',
+      hours: 'Lun - Vie 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=51+Depot+St+Ste+112,+Watertown,+CT+06795',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1435.4183773278282!2d-73.113893!3d41.6018117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7eac9777b827b%3A0x67e441f80fbeaede!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394791132!5m2!1sen!2sus',
+      isHQ: false,
+    },
+    {
+      id: 'bridgeport',
+      tag: 'Sucursal',
+      title: 'Sucursal Bridgeport',
+      shortName: 'Bridgeport',
+      addressLine: '2465 Main Street',
+      cityStateZip: 'Bridgeport, CT 06606',
+      phoneDisplay: '(203) 333-8880',
+      phoneRaw: '2033338880',
+      hours: 'Lun - Vie 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=2465+Main+Street,+Bridgeport,+CT+06606',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021.0695509775729!2d-73.2120973643344!3d41.214073760533175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80e8ad160179d%3A0x2174691e2b983696!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394610287!5m2!1sen!2sus',
+      isHQ: false,
+    },
+  ],
+  pt: [
+    {
+      id: 'danbury',
+      tag: 'Sede Principal',
+      title: 'Sede em Danbury',
+      shortName: 'Danbury (HQ)',
+      addressLine: '50 Newtown Road, Suite 1',
+      cityStateZip: 'Danbury, CT 06810',
+      phoneDisplay: '(203) 748-9272',
+      phoneRaw: '2037489272',
+      hours: 'Seg - Sex 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=50+Newtown+Road,+Suite+1,+Danbury,+CT+06810',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2879.6344940730055!2d-73.42662732423537!3d41.403672894985256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7ff217cb29b37%3A0x264721e992b3c2ee!2sAssociated%20Insurance%20Agency%20LLC!5e1!3m2!1sen!2sus!4v1791229405450!5m2!1sen!2sus',
+      isHQ: true,
+    },
+    {
+      id: 'watertown',
+      tag: 'Agência',
+      title: 'Agência Watertown',
+      shortName: 'Watertown',
+      addressLine: '51 Depot St Ste 112',
+      cityStateZip: 'Watertown, CT 06795',
+      phoneDisplay: '(860) 274-8888',
+      phoneRaw: '8602748888',
+      hours: 'Seg - Sex 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=51+Depot+St+Ste+112,+Watertown,+CT+06795',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1435.4183773278282!2d-73.113893!3d41.6018117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7eac9777b827b%3A0x67e441f80fbeaede!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394791132!5m2!1sen!2sus',
+      isHQ: false,
+    },
+    {
+      id: 'bridgeport',
+      tag: 'Agência',
+      title: 'Agência Bridgeport',
+      shortName: 'Bridgeport',
+      addressLine: '2465 Main Street',
+      cityStateZip: 'Bridgeport, CT 06606',
+      phoneDisplay: '(203) 333-8880',
+      phoneRaw: '2033338880',
+      hours: 'Seg - Sex 8:30 AM - 5:00 PM',
+      directionsUrl: 'https://maps.google.com/?q=2465+Main+Street,+Bridgeport,+CT+06606',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021.0695509775729!2d-73.2120973643344!3d41.214073760533175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80e8ad160179d%3A0x2174691e2b983696!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394610287!5m2!1sen!2sus',
+      isHQ: false,
+    },
+  ],
+  tr: [
+    {
+      id: 'danbury',
+      tag: 'Genel Merkez',
+      title: 'Danbury Merkez Ofisi',
+      shortName: 'Danbury (HQ)',
+      addressLine: '50 Newtown Road, Suite 1',
+      cityStateZip: 'Danbury, CT 06810',
+      phoneDisplay: '(203) 748-9272',
+      phoneRaw: '2037489272',
+      hours: 'Pzt - Cum 8:30 - 17:00',
+      directionsUrl: 'https://maps.google.com/?q=50+Newtown+Road,+Suite+1,+Danbury,+CT+06810',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2879.6344940730055!2d-73.42662732423537!3d41.403672894985256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7ff217cb29b37%3A0x264721e992b3c2ee!2sAssociated%20Insurance%20Agency%20LLC!5e1!3m2!1sen!2sus!4v1791229405450!5m2!1sen!2sus',
+      isHQ: true,
+    },
+    {
+      id: 'watertown',
+      tag: 'Şube',
+      title: 'Watertown Şubesi',
+      shortName: 'Watertown',
+      addressLine: '51 Depot St Ste 112',
+      cityStateZip: 'Watertown, CT 06795',
+      phoneDisplay: '(860) 274-8888',
+      phoneRaw: '8602748888',
+      hours: 'Pzt - Cum 8:30 - 17:00',
+      directionsUrl: 'https://maps.google.com/?q=51+Depot+St+Ste+112,+Watertown,+CT+06795',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1435.4183773278282!2d-73.113893!3d41.6018117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7eac9777b827b%3A0x67e441f80fbeaede!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394791132!5m2!1sen!2sus',
+      isHQ: false,
+    },
+    {
+      id: 'bridgeport',
+      tag: 'Şube',
+      title: 'Bridgeport Şubesi',
+      shortName: 'Bridgeport',
+      addressLine: '2465 Main Street',
+      cityStateZip: 'Bridgeport, CT 06606',
+      phoneDisplay: '(203) 333-8880',
+      phoneRaw: '2033338880',
+      hours: 'Pzt - Cum 8:30 - 17:00',
+      directionsUrl: 'https://maps.google.com/?q=2465+Main+Street,+Bridgeport,+CT+06606',
+      embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021.0695509775729!2d-73.2120973643344!3d41.214073760533175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80e8ad160179d%3A0x2174691e2b983696!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394610287!5m2!1sen!2sus',
+      isHQ: false,
+    },
+  ],
+};
+
+const uiTexts = {
+  en: {
+    getDirections: 'Get Directions',
+    allLocations: 'All Office Locations',
+    viewingOnMap: 'Viewing Map',
+    clickToView: 'View Map',
+    selectMap: 'Select Office Map:',
+    hint: 'Click any office card below to display its location on the map.',
+  },
+  es: {
+    getDirections: 'Obtener Direcciones',
+    allLocations: 'Nuestras Oficinas',
+    viewingOnMap: 'Viendo en el Mapa',
+    clickToView: 'Ver Mapa',
+    selectMap: 'Seleccionar Mapa:',
+    hint: 'Haga clic en cualquier sucursal para ver su ubicación en el mapa.',
+  },
+  pt: {
+    getDirections: 'Como Chegar',
+    allLocations: 'Nossas Agências',
+    viewingOnMap: 'Visualizando no Mapa',
+    clickToView: 'Ver Mapa',
+    selectMap: 'Selecionar Mapa:',
+    hint: 'Clique em qualquer agência abaixo para exibir sua localização no mapa.',
+  },
+  tr: {
+    getDirections: 'Yol Tarifi Al',
+    allLocations: 'Tüm Ofislerimiz',
+    viewingOnMap: 'Haritada Görülüyor',
+    clickToView: 'Haritada Gör',
+    selectMap: 'Harita Seçin:',
+    hint: 'Haritada görüntülemek için aşağıdaki ofislerden birine tıklayın.',
+  },
+};
+
+const currentLang = (lang in officeData ? lang : 'en') as 'en' | 'es' | 'pt' | 'tr';
+const offices = officeData[currentLang];
+const t = uiTexts[currentLang];
+---
+
+<div data-office-map-component class="space-y-8">
+  <!-- Interactive Google Maps Showcase Card -->
+  <div id="office-map-card" class="border border-border-subtle bg-white shadow-xl rounded-xl overflow-hidden transition-all duration-300">
+    <!-- Card Header with Location Details & Tab Selector -->
+    <div class="p-6 border-b border-border-subtle bg-white">
+      <!-- Office Switcher Pill Tabs -->
+      <div class="flex items-center justify-between flex-wrap gap-3 pb-4 mb-4 border-b border-border-subtle/70">
+        <span class="text-xs font-semibold text-text-muted tracking-wide flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+          </svg>
+          {t.selectMap}
+        </span>
+        <div class="inline-flex items-center p-1 bg-bg-secondary rounded-lg border border-border-subtle gap-1" role="tablist" aria-label="Office locations map tabs">
+          {offices.map((office) => (
+            <button
+              type="button"
+              role="tab"
+              data-office-tab={office.id}
+              aria-selected={office.id === 'danbury' ? 'true' : 'false'}
+              aria-controls={`map-frame-${office.id}`}
+              class={office.id === 'danbury'
+                ? 'office-tab-btn px-3 py-1.5 rounded-md text-xs font-semibold transition-all bg-accent text-white shadow-sm'
+                : 'office-tab-btn px-3 py-1.5 rounded-md text-xs font-semibold transition-all text-text-secondary hover:text-accent hover:bg-white/80'}
+            >
+              {office.shortName}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Detail Panels per Office -->
+      {offices.map((office) => (
+        <div
+          data-office-header={office.id}
+          class={`office-header-panel ${office.id === 'danbury' ? 'block' : 'hidden'} transition-all duration-200`}
+        >
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-accent-gold">{office.tag}</span>
+              <h2 class="text-xl font-bold text-accent mt-0.5">{office.title}</h2>
+            </div>
+            <a
+              href={office.directionsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-bg-secondary text-xs font-semibold text-accent hover:bg-accent hover:text-white transition-all shrink-0 shadow-xs"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 21 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+              </svg>
+              {t.getDirections}
+            </a>
+          </div>
+
+          <p class="text-sm text-text-secondary mt-2">
+            {office.addressLine}, {office.cityStateZip}
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 text-xs text-text-muted mt-3 pt-3 border-t border-border-subtle/60">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+              </svg>
+              <a href={`tel:${office.phoneRaw}`} class="hover:text-accent font-semibold transition-colors">
+                {office.phoneDisplay}
+              </a>
+            </span>
+            <span class="text-zinc-300">•</span>
+            <span class="flex items-center gap-1.5">
+              <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+              </svg>
+              {office.hours}
+            </span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Responsive Multi-Office Google Maps Viewport with Smooth Crossfade -->
+    <div class="w-full aspect-[4/3] sm:h-[350px] bg-bg-secondary relative overflow-hidden">
+      {offices.map((office) => (
+        <iframe
+          id={`map-frame-${office.id}`}
+          data-office-frame={office.id}
+          src={office.embedUrl}
+          width="100%"
+          height="100%"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          class={`w-full h-full border-0 absolute inset-0 transition-opacity duration-300 ease-in-out ${
+            office.id === 'danbury' ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none'
+          }`}
+          title={`Associated Insurance Agency - ${office.title} Google Map`}
+        />
+      ))}
+    </div>
+  </div>
+
+  <!-- Interactive Office Selection Cards Grid -->
+  <div class="border border-border-subtle bg-white shadow-xl rounded-xl p-6 sm:p-8 space-y-6">
+    <div class="flex items-center justify-between border-b border-border-subtle pb-3">
+      <h3 class="text-lg font-bold text-accent tracking-tight">
+        {t.allLocations}
+      </h3>
+      <span class="text-xs text-text-muted hidden sm:inline">
+        {t.hint}
+      </span>
+    </div>
+
+    <div class="grid grid-cols-1 gap-3.5">
+      {offices.map((office) => {
+        const isDefault = office.id === 'danbury';
+        return (
+          <div
+            role="button"
+            tabindex="0"
+            data-office-card={office.id}
+            data-text-viewing={t.viewingOnMap}
+            data-text-view={t.clickToView}
+            aria-pressed={isDefault ? 'true' : 'false'}
+            aria-label={`Select ${office.title} map`}
+            class={`office-select-card group relative p-4 sm:p-5 rounded-xl border transition-all duration-200 cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-left select-none hover:shadow-md ${
+              isDefault
+                ? 'border-accent bg-accent/[0.04] ring-2 ring-accent/25 shadow-md'
+                : 'border-border-subtle bg-bg-secondary/40 hover:border-accent/60 hover:bg-white'
+            }`}
+          >
+            <div class="space-y-1 sm:space-y-1.5 flex-1 min-w-0">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-accent-gold">
+                  {office.tag}
+                </span>
+                <span class="text-zinc-300 hidden sm:inline">•</span>
+                <h4 class="text-sm font-bold text-accent group-hover:text-accent-gold transition-colors">
+                  {office.title}
+                </h4>
+              </div>
+
+              <p class="text-xs text-text-secondary leading-relaxed">
+                {office.addressLine}, {office.cityStateZip}
+              </p>
+
+              <div class="pt-0.5">
+                <a
+                  href={`tel:${office.phoneRaw}`}
+                  onclick="event.stopPropagation();"
+                  class="text-xs font-semibold text-accent hover:text-accent-gold transition-colors inline-flex items-center gap-1.5"
+                  title={`Call ${office.shortName}`}
+                >
+                  <svg class="w-3.5 h-3.5 text-accent-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                  </svg>
+                  {office.phoneDisplay}
+                </a>
+              </div>
+            </div>
+
+            <div class="shrink-0 flex items-center justify-between sm:justify-end gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-border-subtle/60">
+              <span
+                data-office-status={office.id}
+                class={`office-card-badge text-xs px-3 py-1.5 rounded-lg transition-all duration-200 font-semibold inline-flex items-center gap-1.5 ${
+                  isDefault
+                    ? 'bg-accent text-white shadow-xs'
+                    : 'bg-white border border-border-subtle text-text-secondary group-hover:bg-accent group-hover:text-white group-hover:border-accent'
+                }`}
+              >
+                <span>{isDefault ? t.viewingOnMap : t.clickToView}</span>
+                <span class="group-hover:translate-x-0.5 transition-transform">→</span>
+              </span>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupOfficeMap() {
+    const root = document.querySelector('[data-office-map-component]');
+    if (!root) return;
+
+    const cards = root.querySelectorAll<HTMLElement>('[data-office-card]');
+    const tabs = root.querySelectorAll<HTMLElement>('[data-office-tab]');
+    const iframes = root.querySelectorAll<HTMLIFrameElement>('[data-office-frame]');
+    const headers = root.querySelectorAll<HTMLElement>('[data-office-header]');
+
+    function setActiveOffice(officeId: string, shouldScroll = false) {
+      // 1. Update quick pill tabs
+      tabs.forEach((tab) => {
+        const isCurrent = tab.dataset.officeTab === officeId;
+        tab.setAttribute('aria-selected', isCurrent ? 'true' : 'false');
+        if (isCurrent) {
+          tab.className = 'office-tab-btn px-3 py-1.5 rounded-md text-xs font-semibold transition-all bg-accent text-white shadow-sm';
+        } else {
+          tab.className = 'office-tab-btn px-3 py-1.5 rounded-md text-xs font-semibold transition-all text-text-secondary hover:text-accent hover:bg-white/80';
+        }
+      });
+
+      // 2. Update office detail header panels
+      headers.forEach((header) => {
+        const isCurrent = header.dataset.officeHeader === officeId;
+        if (isCurrent) {
+          header.classList.remove('hidden');
+          header.classList.add('block');
+        } else {
+          header.classList.remove('block');
+          header.classList.add('hidden');
+        }
+      });
+
+      // 3. Update map iframes with smooth opacity crossfade
+      iframes.forEach((iframe) => {
+        const isCurrent = iframe.dataset.officeFrame === officeId;
+        if (isCurrent) {
+          iframe.classList.remove('opacity-0', 'pointer-events-none', 'z-0');
+          iframe.classList.add('opacity-100', 'pointer-events-auto', 'z-10');
+        } else {
+          iframe.classList.remove('opacity-100', 'pointer-events-auto', 'z-10');
+          iframe.classList.add('opacity-0', 'pointer-events-none', 'z-0');
+        }
+      });
+
+      // 4. Update office selector cards
+      cards.forEach((card) => {
+        const isCurrent = card.dataset.officeCard === officeId;
+        const statusBadge = card.querySelector<HTMLElement>('[data-office-status]');
+        const viewingText = card.dataset.textViewing || 'Viewing Map';
+        const viewText = card.dataset.textView || 'View Map';
+
+        if (isCurrent) {
+          card.classList.remove('border-border-subtle', 'bg-bg-secondary/40', 'hover:border-accent/60', 'hover:bg-white');
+          card.classList.add('border-accent', 'bg-accent/[0.04]', 'ring-2', 'ring-accent/25', 'shadow-md');
+          card.setAttribute('aria-pressed', 'true');
+          if (statusBadge) {
+            statusBadge.innerHTML = `<span>${viewingText}</span><span class="group-hover:translate-x-0.5 transition-transform">→</span>`;
+            statusBadge.className = 'office-card-badge text-xs px-3 py-1.5 rounded-lg transition-all duration-200 font-semibold inline-flex items-center gap-1.5 bg-accent text-white shadow-xs';
+          }
+        } else {
+          card.classList.remove('border-accent', 'bg-accent/[0.04]', 'ring-2', 'ring-accent/25', 'shadow-md');
+          card.classList.add('border-border-subtle', 'bg-bg-secondary/40', 'hover:border-accent/60', 'hover:bg-white');
+          card.setAttribute('aria-pressed', 'false');
+          if (statusBadge) {
+            statusBadge.innerHTML = `<span>${viewText}</span><span class="group-hover:translate-x-0.5 transition-transform">→</span>`;
+            statusBadge.className = 'office-card-badge text-xs px-3 py-1.5 rounded-lg transition-all duration-200 font-semibold inline-flex items-center gap-1.5 bg-white border border-border-subtle text-text-secondary group-hover:bg-accent group-hover:text-white group-hover:border-accent';
+          }
+        }
+      });
+
+      // 5. Scroll map card into view if needed (useful on mobile devices)
+      if (shouldScroll) {
+        const mapCard = document.getElementById('office-map-card');
+        if (mapCard) {
+          const rect = mapCard.getBoundingClientRect();
+          if (rect.top < 0) {
+            mapCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }
+    }
+
+    // Attach card click & keyboard handlers
+    cards.forEach((card) => {
+      const officeId = card.dataset.officeCard;
+      if (!officeId) return;
+
+      card.addEventListener('click', () => {
+        setActiveOffice(officeId, true);
+      });
+
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          setActiveOffice(officeId, true);
+        }
+      });
+    });
+
+    // Attach tab button click handlers
+    tabs.forEach((tab) => {
+      const officeId = tab.dataset.officeTab;
+      if (!officeId) return;
+
+      tab.addEventListener('click', () => {
+        setActiveOffice(officeId, false);
+      });
+    });
+  }
+
+  // Bind to DOM ready and Astro page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupOfficeMap);
+  } else {
+    setupOfficeMap();
+  }
+  document.addEventListener('astro:page-load', setupOfficeMap);
+</script>

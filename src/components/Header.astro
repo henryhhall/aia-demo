@@ -9,7 +9,22 @@ const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as any);
 
 const navLinks = [
-  { href: getRelativeLocaleUrl(lang, 'about'), label: t('nav.about') },
+  {
+    href: getRelativeLocaleUrl(lang, 'about'),
+    label: t('nav.about'),
+    children: [
+      {
+        href: getRelativeLocaleUrl(lang, 'about'),
+        label: t('nav.aboutOverview'),
+        description: t('nav.aboutOverviewDesc'),
+      },
+      {
+        href: getRelativeLocaleUrl(lang, 'team'),
+        label: t('nav.meetTeam'),
+        description: t('nav.meetTeamDesc'),
+      },
+    ],
+  },
   {
     href: getRelativeLocaleUrl(lang, 'personal'),
     label: t('nav.personal'),

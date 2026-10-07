@@ -14,9 +14,10 @@ import { teamData } from '../i18n/team';
 
 interface Props {
   lang?: 'en' | 'es' | 'pt' | 'tr';
+  hideHeader?: boolean;
 }
 
-const { lang } = Astro.props;
+const { lang, hideHeader = false } = Astro.props;
 const currentLang = ((lang || Astro.currentLocale || 'en') as 'en' | 'es' | 'pt' | 'tr');
 const activeLocaleData = teamData[currentLang] || teamData.en;
 const { ui, members } = activeLocaleData;
@@ -42,18 +43,20 @@ const localizedMembers = members.map((member) => ({
 <section class="py-20 bg-bg-secondary/60 border-t border-border-subtle" id="team">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Header -->
-    <div class="text-left mb-12">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 border border-accent/10 text-accent text-xs font-semibold uppercase tracking-wider mb-3">
-        <span class="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
-        {ui.badge}
+    {!hideHeader && (
+      <div class="text-left mb-12">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 border border-accent/10 text-accent text-xs font-semibold uppercase tracking-wider mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
+          {ui.badge}
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-accent">
+          {ui.title}
+        </h2>
+        <p class="mt-3 text-sm sm:text-base text-text-secondary max-w-[65ch]">
+          {ui.subtitle}
+        </p>
       </div>
-      <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-accent">
-        {ui.title}
-      </h2>
-      <p class="mt-3 text-sm sm:text-base text-text-secondary max-w-[65ch]">
-        {ui.subtitle}
-      </p>
-    </div>
+    )}
 
     <!-- Cards Grid (3 Columns for 9 members = clean 3x3 layout) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">

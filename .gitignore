@@ -58,6 +58,18 @@ $RECYCLE.BIN/
 *.sublime-project
 *.sublime-workspace
 
+# Security credentials, certificates & keys
+*.pem
+*.key
+*.cert
+*.crt
+
+# SQLite & local database stores
+*.sqlite
+*.sqlite3
+*.db-shm
+*.db-wal
+
 # Testing, Coverage & Caches
 coverage/
 .nyc_output/
@@ -65,14 +77,24 @@ coverage/
 .parcel-cache/
 .npm/
 .yarn/
+.turbo/
 test-results/
 playwright-report/
 
-# Vite & build temporary artifacts
+# Linter & Formatter caches
+.eslintcache
+.stylelintcache
+.prettiercache
+
+# Vite, build & preview temporary artifacts
 vite.config.*.timestamp-*
+out/
+build/
 
 # Agent & Scratch directories
 scratch/
 .gemini/
 .agents/scratch/
 .antigravity/
+.tempmediaStorage/
+*.patch

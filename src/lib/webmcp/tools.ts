@@ -26,7 +26,7 @@ export const AIA_LOCATIONS = [
   {
     id: 'watertown',
     name: 'Watertown Branch Office',
-    streetAddress: '1157 Main Street',
+    streetAddress: '51 Depot St Ste 112',
     city: 'Watertown',
     state: 'CT',
     postalCode: '06795',
@@ -34,8 +34,8 @@ export const AIA_LOCATIONS = [
     email: 'watertown@aia-danbury.com',
     hours: 'Monday - Friday: 8:30 AM - 5:00 PM EST',
     languages: ['English', 'Spanish', 'Portuguese', 'Turkish'],
-    latitude: 41.6048,
-    longitude: -73.1182,
+    latitude: 41.6018,
+    longitude: -73.1139,
     isHeadquarters: false,
   },
   {

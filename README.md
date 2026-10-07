@@ -35,11 +35,11 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
   - **Workers' Compensation & Compliance** (`/commercial/workers-compensation`, `/es/...`, `/pt/...`, `/tr/...`): Statutory benefits under CGS § 31-284, stop-work order defense, sole-proprietor Ghost Policies, and NCCI payroll classification audit assistance.
 - **Rich Multi-Tier Navigation Dropdowns**: Interactive desktop hover cards with glassmorphism and mobile accordion drill-downs for both **Personal** and **Commercial** coverage clusters across all four languages.
 - **Multilingual Support (i18n)**: Fully localized experiences with native content in **English (EN)**, **Spanish (ES)**, **Portuguese (PT)**, and **Turkish (TR)**.
-- **Interactive Team Showcase & Bio Modals**: Accessible, interactive employee profile cards on the About page featuring all 9 team members across agency leadership and customer service representatives (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus, Isayeli Perez De La Mora, Ema Rego, Clara De Barros, Ashley L. Mercan, Janaija S. Hammer) with spoken language badges, specialty tags, and complete biographical pop-up modals translated into English, Spanish, Portuguese, and Turkish.
+- **Dedicated Team Directory & Bio Modals**: Accessible, interactive employee profile cards on dedicated Team pages (`/team`, `/es/team`, `/pt/team`, `/tr/team`) and the About page featuring all 9 team members across agency leadership and customer service representatives (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus, Isayeli Perez De La Mora, Ema Rego, Clara De Barros, Ashley L. Mercan, Janaija S. Hammer) with spoken language badges, specialty tags, direct customer support access, and complete biographical pop-up modals translated into English, Spanish, Portuguese, and Turkish.
 - **Optimized Asset Pipeline**: Leverages Astro's native `astro:assets` image engine for zero-CLS responsive image serving, automatic WebP format conversion, and lazy loading.
 - **Direct Carrier Bill Pay & Claims Directory**: Fast access to 24/7 direct phone lines and self-service online payment links for all 11 partnered insurance carriers.
 - **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, and Connecticut state insurance regulations.
-- **Multilingual Contact Hub & Interactive Map**: Fully localized contact pages (`/contact`, `/es/contact`, `/pt/contact`, `/tr/contact`) featuring an embedded Google Map of Danbury HQ, full branch directories, and an interactive contact form protected by bot honeypots.
+- **Multilingual Contact Hub, Team Photo Hero & Interactive Map Switcher**: Fully localized contact pages (`/contact`, `/es/contact`, `/pt/contact`, `/tr/contact`) featuring an executive Team Photo Hero section (`ContactHero.astro`) showcasing the full Associated Insurance Agency team (`Photo-of-the-Associated-Insurance-Agency-Team-1536x926.jpg`) with unobstructed portraits, quick direct calling, operating hours, and trust badges, paired with an interactive multi-office Google Maps showcase (`OfficeLocationsMap.astro`) enabling seamless tab switching between Danbury Headquarters, Watertown Branch (51 Depot St Ste 112), and Bridgeport Branch (2465 Main Street), complete with one-click driving directions, direct phone dialing, and honeypot-protected inquiry forms.
 - **Regulatory Compliance & Disclaimers**: Prominent coverage binding notices across the global footer, quote builder, and contact pages in all four supported languages confirming that coverage cannot be bound, altered, or cancelled via website form, email, or voicemail until directly confirmed in writing by a licensed agent.
 - **TCPA & 10DLC Communications Consent**: Standardized telephone and SMS consent disclosure embedded across all intake forms (`QuoteForm.tsx`, `ContactForm.tsx`): *"Providing a number permits calls/texts from us regarding the message."*
 - **Terms of Service (Multilingual)**: Comprehensive boilerplate terms pages (`/terms`, `/es/terms`, `/pt/terms`, `/tr/terms`) detailing independent brokerage representation, non-binding quote estimates, carrier portal links, user conduct, and Connecticut governing law.
@@ -119,13 +119,16 @@ aia/
 │   │   ├── aia_ema.png         # Ema Rego portrait
 │   │   ├── aia_clara.png       # Clara De Barros portrait
 │   │   ├── Ashley_AIA-Meet-the-team.png # Ashley L. Mercan portrait
-│   │   └── aia_janaija.png     # Janaija S. Hammer portrait
+│   │   ├── aia_janaija.png     # Janaija S. Hammer portrait
+│   │   └── Photo-of-the-Associated-Insurance-Agency-Team-1536x926.jpg # Full agency team photo
 │   ├── components/             # Astro & React UI components
 │   │   ├── ContactForm.tsx     # Interactive contact form with bot honeypots & multi-lingual validation
+│   │   ├── ContactHero.astro   # Multilingual Contact Page Hero showcasing full team photo & trust stats
 │   │   ├── FAQAccordion.tsx    # Animated interactive FAQ accordion
 │   │   ├── Footer.astro        # Agency footer with brand badge, branch info & carriers
 │   │   ├── Header.astro        # Agency header with brand badge, navigation & office hours
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
+│   │   ├── OfficeLocationsMap.astro # Interactive multi-office Google Maps embed showcase & switcher
 │   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder
 │   │   ├── SEOHead.astro       # OpenGraph, Twitter, canonical, and JSON-LD schema
 │   │   ├── TeamSection.astro   # Multilingual 9-member team grid & interactive bio pop-up modal
@@ -161,12 +164,12 @@ aia/
 │   │   │   ├── homeowners.astro # Homeowners & Dwelling guide (replacement cost, storms)
 │   │   │   ├── renters.astro   # Renters & Tenant insurance guide (HO-4, liability)
 │   │   │   └── umbrella.astro  # Personal Umbrella excess liability guide ($1M-$5M+)
-│   │   ├── es/                 # Spanish localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
-│   │   ├── pt/                 # Portuguese localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
-│   │   ├── tr/                 # Turkish localized pages (index, about, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── es/                 # Spanish localized pages (index, about, team, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── pt/                 # Portuguese localized pages (index, about, team, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── tr/                 # Turkish localized pages (index, about, team, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
 │   │   ├── about.astro         # Agency history, credentials, and office profiles
 │   │   ├── commercial.astro    # Commercial lines overview pillar (BOP, GL, Property, Workers' Comp)
-│   │   ├── contact.astro       # Contact page embedding ContactForm.tsx & Google Maps
+│   │   ├── contact.astro       # Contact page embedding ContactForm.tsx & OfficeLocationsMap.astro
 │   │   ├── index.astro         # Main homepage with hero, carrier grid, and testimonials
 │   │   ├── pay-bill.astro      # 11-carrier online payment & claims directory
 │   │   ├── personal.astro      # Personal lines (Home, Auto, Renters, Umbrella)
@@ -174,6 +177,7 @@ aia/
 │   │   ├── quote.astro         # Quote intake page embedding QuoteForm.tsx
 │   │   ├── service.astro       # Customer support, claims steps, and FAQs
 │   │   ├── sitemap.astro       # HTML sitemap directory & XML crawler index
+│   │   ├── team.astro          # Dedicated agency team directory & staff profiles
 │   │   └── terms.astro         # Terms of Service & regulatory disclosures
 │   └── styles/
 │       └── global.css          # Tailwind CSS v4 @theme design tokens
@@ -313,7 +317,7 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 | Office | Address | Phone | Languages Spoken |
 | :--- | :--- | :--- | :--- |
 | **Danbury Corporate HQ** | 50 Newtown Road, Suite 1, Danbury, CT 06810 | (203) 748-9272 | English, Spanish, Portuguese, Turkish |
-| **Watertown Branch** | 1157 Main Street, Watertown, CT 06795 | (860) 274-8888 | English, Spanish, Portuguese, Turkish |
+| **Watertown Branch** | 51 Depot St Ste 112, Watertown, CT 06795 | (860) 274-8888 | English, Spanish, Portuguese, Turkish |
 | **Bridgeport Branch** | 2465 Main Street, Bridgeport, CT 06606 | (203) 333-8880 | English, Spanish, Portuguese |
 
 **Hours of Operation**: Monday – Friday: 8:30 AM – 5:00 PM EST

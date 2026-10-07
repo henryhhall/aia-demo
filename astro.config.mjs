@@ -21,7 +21,11 @@ export default defineConfig({
     }
   },
   redirects: {
-    '/sitemap.xml': '/sitemap-index.xml'
+    '/sitemap.xml': '/sitemap-index.xml',
+    '/meet-the-team': '/team',
+    '/es/meet-the-team': '/es/team',
+    '/pt/meet-the-team': '/pt/team',
+    '/tr/meet-the-team': '/tr/team'
   },
   integrations: [
     react(),

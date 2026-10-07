@@ -42,7 +42,9 @@ export default function WebMcpInspector() {
   useEffect(() => {
     // Initial fetch of tools
     if (typeof window !== 'undefined' && window.modelContext) {
-      setTools(window.modelContext.getTools());
+      Promise.resolve(window.modelContext.getTools()).then((toolsList) => {
+        setTools(toolsList);
+      });
       setLogs(window.modelContext.getHistory());
     } else {
       // Fallback from static definitions

@@ -43,7 +43,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
       office: 'Preferred Office',
       offices: {
         Danbury: 'Danbury (HQ) - 50 Newtown Rd',
-        Watertown: 'Watertown - 1157 Main St',
+        Watertown: 'Watertown - 51 Depot St Ste 112',
         Bridgeport: 'Bridgeport - 2465 Main St',
       },
       subject: 'Inquiry Topic',
@@ -78,7 +78,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
       office: 'Oficina Preferida',
       offices: {
         Danbury: 'Danbury (Sede) - 50 Newtown Rd',
-        Watertown: 'Watertown - 1157 Main St',
+        Watertown: 'Watertown - 51 Depot St Ste 112',
         Bridgeport: 'Bridgeport - 2465 Main St',
       },
       subject: 'Tema de la Consulta',
@@ -113,7 +113,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
       office: 'Agência de Preferência',
       offices: {
         Danbury: 'Danbury (Sede) - 50 Newtown Rd',
-        Watertown: 'Watertown - 1157 Main St',
+        Watertown: 'Watertown - 51 Depot St Ste 112',
         Bridgeport: 'Bridgeport - 2465 Main St',
       },
       subject: 'Assunto da Consulta',
@@ -148,7 +148,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
       office: 'Tercih Edilen Ofis',
       offices: {
         Danbury: 'Danbury (Merkez) - 50 Newtown Rd',
-        Watertown: 'Watertown - 1157 Main St',
+        Watertown: 'Watertown - 51 Depot St Ste 112',
         Bridgeport: 'Bridgeport - 2465 Main St',
       },
       subject: 'Görüşme Konusu',
