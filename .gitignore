@@ -97,6 +97,9 @@ scratch/
 .agents/scratch/
 .antigravity/
 .tempmediaStorage/
+.system_generated/
+artifacts/
+*.jsonl
 *.patch
 
 # Python Environments, Bytecode & Cache

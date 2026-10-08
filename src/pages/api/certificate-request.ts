@@ -101,6 +101,7 @@ export const POST: APIRoute = async ({ request }) => {
       // Honeypots
       hp_website = '',
       hp_company = '',
+      form_rendered_at,
     } = data;
 
     // 1. Honeypot check
@@ -116,6 +117,26 @@ export const POST: APIRoute = async ({ request }) => {
           headers: { 'Content-Type': 'application/json' },
         }
       );
+    }
+
+    // Time-based honeypot: humans take at least 1.2s to fill a certificate form
+    if (form_rendered_at) {
+      const elapsed = Date.now() - Number(form_rendered_at);
+      if (elapsed < 1200) {
+        console.warn('[Security / Honeypot] Certificate request blocked via rapid form submission:', {
+          elapsedMs: elapsed,
+        });
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: 'Submission was too fast. Please verify you are human.',
+          }),
+          {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+      }
     }
 
     // 2. Google reCAPTCHA v3 verification

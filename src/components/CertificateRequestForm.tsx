@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { getRecaptchaToken } from '../lib/recaptcha';
 import RecaptchaLegalNotice from './RecaptchaLegalNotice';
 
@@ -22,6 +22,12 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
   const [confirmationCode, setConfirmationCode] = useState('');
   const [copiedCode, setCopiedCode] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [renderedAt, setRenderedAt] = useState<number>(0);
+
+  useEffect(() => {
+    // Record render timestamp for time-based honeypot bot defense
+    setRenderedAt(Date.now());
+  }, []);
 
   // Form State
   const [formData, setFormData] = useState({
@@ -736,13 +742,21 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
 
     setIsSubmitting(true);
     setErrorMessage('');
+
+    // Client-side Honeypot Check: if bot filled either hidden trap field, silently reject
+    if (formData.hp_website || formData.hp_company) {
+      console.warn('[Security / Honeypot] Bot submission blocked via honeypot trap field.');
+      setIsSubmitting(false);
+      // Generate synthetic confirmation code to fool automated bots without hitting backend
+      const fakeCode = `COI-CT-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+      setConfirmationCode(fakeCode);
+      setStep(5);
+      return;
+    }
+
     try {
-      // Execute Google reCAPTCHA v3 with timeout fallback
-      const recaptchaToken =
-        (await Promise.race([
-          getRecaptchaToken('certificate_request'),
-          new Promise<null>((res) => setTimeout(() => res(null), 1500)),
-        ])) || 'test-fallback-token';
+      // Execute Google reCAPTCHA v3
+      const recaptchaToken = await getRecaptchaToken('certificate_request');
 
       const payload = {
         requestorName: formData.requestorName,
@@ -791,6 +805,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
         recaptchaToken,
         hp_website: formData.hp_website,
         hp_company: formData.hp_company,
+        form_rendered_at: renderedAt,
       };
 
       const res = await fetch('/api/certificate-request', {
@@ -867,6 +882,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       hp_website: '',
       hp_company: '',
     });
+    setRenderedAt(Date.now());
     setStep(1);
     setConfirmationCode('');
     setErrorMessage('');
@@ -874,23 +890,42 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      {/* Honeypots hidden from real users */}
-      <div className="hidden" aria-hidden="true">
+      {/* ============================================================ */}
+      {/* BOT HONEYPOT FIELDS (Invisible to human users, traps bots)   */}
+      {/* ============================================================ */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          opacity: 0,
+          zIndex: -1,
+          width: 0,
+          height: 0,
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <label htmlFor="coi_hp_website">Leave this field empty if human</label>
         <input
+          id="coi_hp_website"
           type="text"
           name="hp_website"
+          tabIndex={-1}
+          autoComplete="off"
           value={formData.hp_website}
           onChange={handleInputChange}
-          tabIndex={-1}
-          autoComplete="off"
         />
+        <label htmlFor="coi_hp_company">Company Website</label>
         <input
+          id="coi_hp_company"
           type="text"
           name="hp_company"
-          value={formData.hp_company}
-          onChange={handleInputChange}
           tabIndex={-1}
           autoComplete="off"
+          value={formData.hp_company}
+          onChange={handleInputChange}
         />
       </div>
 
@@ -1708,6 +1743,43 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
         {/* Step 4: Special Instructions, Upload & Binding Agreement */}
         {step === 4 && (
           <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
+            {/* Form-level Honeypot Trap for automated form submittors */}
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute',
+                opacity: 0,
+                zIndex: -1,
+                width: 0,
+                height: 0,
+                overflow: 'hidden',
+                pointerEvents: 'none',
+                margin: 0,
+                padding: 0,
+              }}
+            >
+              <label htmlFor="coi_form_hp_website">Leave empty</label>
+              <input
+                id="coi_form_hp_website"
+                type="text"
+                name="hp_website"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.hp_website}
+                onChange={handleInputChange}
+              />
+              <label htmlFor="coi_form_hp_company">Company Website</label>
+              <input
+                id="coi_form_hp_company"
+                type="text"
+                name="hp_company"
+                tabIndex={-1}
+                autoComplete="off"
+                value={formData.hp_company}
+                onChange={handleInputChange}
+              />
+            </div>
+
             <div>
               <label className="block text-xs font-semibold text-text-primary uppercase tracking-wider mb-1.5">
                 {dict.specialInstructionsLabel}
@@ -1791,7 +1863,8 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
               </label>
             </div>
 
-            <RecaptchaLegalNotice />
+            {/* Google reCAPTCHA v3 Compliance Notice */}
+            <RecaptchaLegalNotice lang={lang} className="pt-2" />
 
             {/* Stepper Buttons */}
             <div className="pt-6 border-t border-border-subtle flex justify-between items-center">
@@ -1933,6 +2006,14 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
           </div>
         )}
 
+      </div>
+
+      {/* Legal Disclaimer & Security Notice directly beneath the form across all languages */}
+      <div className="mt-6 text-center px-4 space-y-2">
+        <p className="text-xs sm:text-sm text-text-secondary font-medium leading-relaxed max-w-3xl mx-auto">
+          {dict.disclaimerText}
+        </p>
+        <RecaptchaLegalNotice lang={lang} className="pt-1 text-center" />
       </div>
     </div>
   );

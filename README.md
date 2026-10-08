@@ -29,7 +29,7 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
   - **4-Step Interactive ACORD 25 Wizard** (`CertificateRequestForm.tsx`): Guides requestors through named insured verification, certificate holder & delivery dispatch (direct email & fax), contract endorsement terms (Additional Insured CG 20 10 / CG 20 37, Waiver of Subrogation, Primary & Non-Contributory wording), and project specifications upload.
   - **Emergency Rush Processing**: Same-day issuance dispatch callout for active job sites, municipal permits, and contractor bid deadlines with direct hotline access to Danbury HQ.
   - **Full ACORD 25 Educational Guide**: Explains Connecticut commercial insurance requirements, statutory limitations, and the legal distinction between informational certificates and policy endorsements.
-  - **Dedicated Serverless API Endpoint** (`/api/certificate-request`): Generates unique audit references (`COI-CT-2026-XXXXXX`) with dual honeypot traps and reCAPTCHA v3 verification.
+  - **Dedicated Serverless API Endpoint** (`/api/certificate-request`): Generates unique audit references (`COI-CT-2026-XXXXXX`) with dual honeypot traps (client-side spoofing & server-side rejection), time-based submission velocity tracking (`form_rendered_at`), and Google reCAPTCHA v3 verification.
 - **Dedicated Personal SEO Landing Pages (Hub & Spoke Architecture)**: In-depth, targeted guides with dedicated `Service`, `BreadcrumbList`, and `FAQPage` schema across English, Spanish, Portuguese, and Turkish:
   - **Homeowners Insurance** (`/personal/homeowners`, `/es/...`, `/pt/...`, `/tr/...`): Dwelling replacement cost vs market value, winter freeze & ice damming, water backup endorsements, flood exclusions, and 15%–25% multi-policy bundling discounts.
   - **Auto & RV Insurance** (`/personal/auto`, `/es/...`, `/pt/...`, `/tr/...`): Connecticut General Statutes (CGS § 14-112) minimums (25/50/25), recommended 100/300/100 defense limits, collision, comprehensive (animal strikes, storm debris), UM/UIM coverage, and recreational vehicle (RV/camper/trailer) riders.
@@ -131,7 +131,7 @@ aia/
 │   │   ├── aia_janaija.png     # Janaija S. Hammer portrait
 │   │   └── Photo-of-the-Associated-Insurance-Agency-Team-1536x926.jpg # Full agency team photo
 │   ├── components/             # Astro & React UI components
-│   │   ├── CertificateRequestForm.tsx # 4-step interactive ACORD 25 Certificate of Insurance request island
+│   │   ├── CertificateRequestForm.tsx # 4-step interactive ACORD 25 COI wizard with honeypots & reCAPTCHA v3
 │   │   ├── ContactForm.tsx     # Interactive contact form with bot honeypots & multi-lingual validation
 │   │   ├── ContactHero.astro   # Multilingual Contact Page Hero showcasing full team photo & trust stats
 │   │   ├── FAQAccordion.tsx    # Animated interactive FAQ accordion
@@ -140,6 +140,7 @@ aia/
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
 │   │   ├── OfficeLocationsMap.astro # Interactive multi-office Google Maps embed showcase & switcher
 │   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder
+│   │   ├── RecaptchaLegalNotice.tsx # Localized on-form Google reCAPTCHA compliance notice (en, es, pt, tr)
 │   │   ├── SEOHead.astro       # OpenGraph, Twitter, canonical, and JSON-LD schema
 │   │   ├── TeamSection.astro   # Multilingual 9-member team grid & interactive bio pop-up modal
 │   │   └── WebMcpInspector.tsx # Floating in-browser WebMCP debugging & execution modal (12 tools)
@@ -343,27 +344,29 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 
 ### 4. Certificate of Insurance Intake (`/api/certificate-request`)
 
-- **POST `/api/certificate-request`**: Processes commercial ACORD 25 Certificate of Insurance requests (`requestorName`, `requestorEmail`, `requestorPhone`, `insuredName`, `holderName`, `holderAddress1`, `holderCity`, `holderState`, `holderZip`, `deliveryMethod`, `coverages`, `isAdditionalInsured`, `hasWrittenContract`, `waiverSubrogationLines`, `primaryNonContributory`, `jobNumber`, `specialInstructions`, `agreementAccepted`, `recaptchaToken`).
-  - **Bot Mitigation**: Enforces dual invisible honeypots (`hp_website`, `hp_company`) and Google reCAPTCHA v3 verification (`certificate_request` action).
+- **POST `/api/certificate-request`**: Processes commercial ACORD 25 Certificate of Insurance requests (`requestorName`, `requestorEmail`, `requestorPhone`, `insuredName`, `holderName`, `holderAddress1`, `holderCity`, `holderState`, `holderZip`, `deliveryMethod`, `coverages`, `isAdditionalInsured`, `hasWrittenContract`, `waiverSubrogationLines`, `primaryNonContributory`, `jobNumber`, `specialInstructions`, `agreementAccepted`, `recaptchaToken`, `hp_website`, `hp_company`, `form_rendered_at`).
+  - **Bot Mitigation**: Enforces dual invisible honeypots (`hp_website`, `hp_company`), client-side silent bot rejection with synthetic confirmation code spoofing, time-based velocity checks (`form_rendered_at < 1200ms`), and Google reCAPTCHA v3 verification (`certificate_request` action, score $\ge 0.5$).
   - Returns a unique commercial tracking reference (`COI-CT-2026-XXXXXX`) and 2–4 hour turnaround commitment during business hours.
 - **GET `/api/certificate-request`**: Returns recent submission counts for internal administrative auditing.
 
 ---
 
-## 🛡️ Bot Defense & Security (reCAPTCHA v3)
+## 🛡️ Bot Defense & Security (reCAPTCHA v3 & Honeypots)
 
-All lead generation and inquiry forms across the site employ a layered, frictionless security model:
+All lead generation, certificate intake, and customer inquiry forms across the site employ a layered, frictionless security model:
 
 1. **Google reCAPTCHA v3 (Invisible)**:
    - Client utility (`src/lib/recaptcha.ts`) dynamically loads Google's verification script on demand only on interactive form views, maintaining Core Web Vitals.
-   - Generates semantic action tokens (`contact_form`, `quote_form`).
+   - Generates semantic action tokens (`contact_form`, `quote_form`, `certificate_request`).
    - Server-side verification (`src/lib/recaptchaVerify.ts`) inspects the returned token, validates action matching, and enforces a minimum human score of `0.5`.
-2. **Invisible Decoy Honeypots**:
-   - Hidden off-screen form inputs (`hp_website`, `hp_company`) invisible to real users but populated by automated script bots.
-   - Time-delta tracking (`form_rendered_at`) detects inhuman instant submissions (< 1.2s).
-3. **Multilingual Legal Compliance**:
-   - Explicit on-form branding component (`RecaptchaLegalNotice.tsx`) linking to Google's Privacy Policy & Terms of Service across **English**, **Spanish**, **Portuguese**, and **Turkish**.
+2. **Invisible Decoy Honeypots & Submission Velocity Traps**:
+   - Hidden off-screen form inputs (`hp_website`, `hp_company`) rendered with zero-size clipping (`width: 0; height: 0; opacity: 0; pointer-events: none`) and `aria-hidden="true"` at the container level and inside form bodies, invisible to human users but populated by automated script bots.
+   - Client-side interception silently spoofs confirmation receipt codes to mislead spam bots without incurring backend compute overhead.
+   - Time-delta tracking (`form_rendered_at`) detects inhuman instant submissions (< 1.2s) across contact and certificate intake endpoints.
+3. **Multilingual Legal Compliance & reCAPTCHA Disclaimers**:
+   - Explicit on-form branding component (`RecaptchaLegalNotice.tsx`) dynamically passed the active language prop (`lang={lang}`) linking to Google's Privacy Policy & Terms of Service in **English**, **Spanish**, **Portuguese**, and **Turkish** on all form views, review steps, and directly beneath form cards.
    - Global CSS styling (`src/styles/global.css`) suppresses the default floating `.grecaptcha-badge`, keeping the WebMCP inspector and mobile navigation clean while maintaining full Google Terms compliance.
+   - Standardized statutory insurance disclaimers displayed directly below form containers across all four languages confirming coverage non-binding status until written agent confirmation.
 
 ## 🏢 Physical Office Locations
 
