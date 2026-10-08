@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CertificateRequestForm from '../../components/CertificateRequestForm';
+import { useTranslations } from '../../i18n/utils';
+
+const lang = 'tr';
+const t = useTranslations(lang);
+
+const certificateStructuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": "https://aia-danbury.com/tr/certificate-request#webpage",
+      "name": "Sigorta Sertifikası (COI) Talebi | Associated Insurance Agency",
+      "description": "Ek sigortalı (Additional Insured) ve rücu feragati bildirimleri içeren resmi ACORD 25 sigorta sertifikası talep edin. Connecticut'ta aynı gün hızlı teslimat.",
+      "url": "https://aia-danbury.com/tr/certificate-request"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://aia-danbury.com/tr/certificate-request#service",
+      "name": "ACORD 25 Sigorta Sertifikası Düzenleme",
+      "serviceType": "Ticari Sigorta Belgesi",
+      "provider": {
+        "@type": "InsuranceAgency",
+        "name": "Associated Insurance Agency",
+        "telephone": "+1-203-748-9272",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "50 Newtown Road, Suite 1",
+          "addressLocality": "Danbury",
+          "addressRegion": "CT",
+          "postalCode": "06810"
+        }
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Connecticut" },
+        { "@type": "City", "name": "Danbury" },
+        { "@type": "City", "name": "Watertown" },
+        { "@type": "City", "name": "Bridgeport" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://aia-danbury.com/tr/certificate-request#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Sigorta sertifikası ne kadar sürede düzenlenir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standart ACORD 25 sertifikaları mesai saatleri içinde (Pazartesi-Cuma 8:30 - 17:00 EST) 2 ila 4 iş saati içerisinde düzenlenir. Şantiyede veya ihalede acil ihtiyaçlarınız için Danbury merkezimizi doğrudan (203) 748-9272 numarasından arayabilirsiniz."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ek Sigortalı (Additional Insured) ne anlama gelir?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ana yüklenicinin, belediyenin veya mülk sahibinin sizin yürüttüğünüz faaliyetlerden doğabilecek davalara karşı poliçenizden hukuki koruma talep etmesidir. Yazılı sözleşme şartına bağlı olarak poliçeye eklenir."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<BaseLayout
+  title="Sigorta Sertifikası Talebi (COI) | Associated Insurance Agency CT"
+  description="Ek sigortalı bildirimleri ve rücu feragatleri içeren resmi ACORD 25 sigorta sertifikası (COI) talep edin. Danbury, Watertown ve Bridgeport'ta Türkçe destek."
+  structuredData={certificateStructuredData}
+  lang={lang}
+>
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-b from-bg-secondary via-bg-primary to-bg-primary py-16 sm:py-20 border-b border-border-subtle overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(#122b5f_1px,transparent_1px)] [background-size:24px_24px] opacity-[0.03] pointer-events-none" aria-hidden="true"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 border border-accent/15 text-accent text-xs font-semibold">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent-gold animate-pulse"></span>
+        <span>{t('certificate.heroTag')}</span>
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-accent leading-[1.15]">
+        {t('certificate.title')}
+      </h1>
+
+      <p class="text-sm sm:text-base text-text-secondary max-w-[65ch] mx-auto leading-relaxed">
+        {t('certificate.subtitle')}
+      </p>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6 pt-3 text-xs font-medium text-text-muted">
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>2–4 İş Saati İçinde Düzenleme</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Resmi ACORD 25 Standart Formatı</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Doğrudan E-posta ve Faks Teslimi</span>
+        </div>
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-emerald-600 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+          <span>Lisanslı Türkçe Konuşan Temsilciler</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Form Section -->
+  <section class="py-12 sm:py-16 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <!-- Specialized COI Rush Banner -->
+      <div class="max-w-4xl mx-auto p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-accent/5 via-accent/10 to-accent-gold/10 border border-accent/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-accent-gold">Acil Teslimat</span>
+            <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Aynı Gün</span>
+          </div>
+          <h2 class="text-sm sm:text-base font-bold text-accent">Bugün Şantiyede veya İhalede Sertifika mı Gerekiyor?</h2>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Müşterinizin sözleşme sigorta şartnamesini aşağıdaki forma ekleyerek tüm zeyilnamelerin ilk seferde eksiksiz çıkmasını sağlayın.
+          </p>
+        </div>
+        <a
+          href="tel:2037489272"
+          class="shrink-0 px-4 py-2.5 rounded-xl bg-accent text-white text-xs font-bold hover:bg-accent/90 transition-all shadow-xs flex items-center gap-2"
+        >
+          <span>Danbury Merkezini Arayın: 203 748 9272</span>
+        </a>
+      </div>
+
+      <!-- React Island Form -->
+      <CertificateRequestForm client:load lang={lang} />
+
+      <!-- Educational Guidance & FAQ Section -->
+      <div class="max-w-4xl mx-auto pt-12 border-t border-border-subtle space-y-10">
+        <div class="text-center space-y-2">
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-accent tracking-tight">
+            Connecticut Sigorta Sertifikaları (COI) Rehberi
+          </h2>
+          <p class="text-sm text-text-secondary max-w-2xl mx-auto">
+            ACORD 25 gereksinimleri, ek sigortalı şartları ve rücu feragati klozu hakkında bilmeniz gerekenler.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="p-6 rounded-2xl border border-border-subtle bg-white shadow-xs space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center font-bold text-base">
+              01
+            </div>
+            <h3 class="text-base font-bold text-accent">ACORD 25 Nedir?</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              ABD genelinde sigorta brokerleri tarafından yürürlükteki poliçelerin varlığını belgelemek için kullanılan resmi standart formdur. Genel Sorumluluk, Ticari Araç ve İşçi Tazminatı limitlerini özetler.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-border-subtle bg-white shadow-xs space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center font-bold text-base">
+              02
+            </div>
+            <h3 class="text-base font-bold text-accent">Ek Sigortalı (Additional Insured)</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Ana müteahhitler veya mülk sahipleri, işinizden kaynaklanabilecek sorumluluk davalarına karşı korunmak için bu şartı (CG 20 10 ve CG 20 37) zorunlu kılar.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-border-subtle bg-white shadow-xs space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center font-bold text-base">
+              03
+            </div>
+            <h3 class="text-base font-bold text-accent">Rücu Feragati (Waiver of Subrogation)</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Bir hasar tazmin edildikten sonra sigorta şirketinizin sertifika sahibine dava açıp rücu etmesini engeller. Bu kloz ticari ilişkileri güvenceye alır.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl border border-border-subtle bg-white shadow-xs space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-accent/10 text-accent flex items-center justify-center font-bold text-base">
+              04
+            </div>
+            <h3 class="text-base font-bold text-accent">Birincil ve Katkısız Şartı</h3>
+            <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+              Sözleşme şartnamesinde istendiğinde, poliçeniz karşı tarafın kendi sigortasından önce ilk sırada devreye girer.
+            </p>
+          </div>
+        </div>
+
+        <!-- Agency Support Contacts -->
+        <div class="p-6 sm:p-8 rounded-2xl bg-zinc-950 text-white border border-zinc-800 space-y-6">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-zinc-800 pb-4">
+            <div>
+              <h3 class="text-lg font-bold text-white">Connecticut Ofislerimiz</h3>
+              <p class="text-xs text-zinc-400 mt-0.5">Türkçe konuşan acentelerimizle doğrudan görüşün:</p>
+            </div>
+            <span class="px-3 py-1 rounded-full bg-accent-gold/20 text-accent-gold text-xs font-mono font-medium">
+              Pzt–Cum 8:30 - 17:00 EST
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-zinc-300">
+            <div class="space-y-1.5">
+              <p class="font-bold text-white text-sm">Danbury Merkez (HQ)</p>
+              <p>50 Newtown Road, Suite 1</p>
+              <p>Danbury, CT 06810</p>
+              <p class="pt-1">
+                <a href="tel:2037489272" class="text-accent-gold font-bold hover:underline">203 748 9272</a>
+              </p>
+            </div>
+
+            <div class="space-y-1.5">
+              <p class="font-bold text-white text-sm">Watertown Şubesi</p>
+              <p>51 Depot St, Suite 112</p>
+              <p>Watertown, CT 06795</p>
+              <p class="pt-1">
+                <a href="tel:8602748888" class="text-accent-gold font-bold hover:underline">860 274 8888</a>
+              </p>
+            </div>
+
+            <div class="space-y-1.5">
+              <p class="font-bold text-white text-sm">Bridgeport Şubesi</p>
+              <p>2465 Main Street</p>
+              <p>Bridgeport, CT 06606</p>
+              <p class="pt-1">
+                <a href="tel:2033338880" class="text-accent-gold font-bold hover:underline">203 333 8880</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

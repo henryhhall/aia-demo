@@ -6,7 +6,7 @@
 [![Framework: Astro 7](https://img.shields.io/badge/Framework-Astro%20v7.0.5-orange.svg)](https://astro.build)
 [![UI: React 19](https://img.shields.io/badge/UI-React%20v19.2.7-blue.svg)](https://react.dev)
 [![Styling: Tailwind CSS v4](https://img.shields.io/badge/Styling-Tailwind%20CSS%20v4.3.2-38bdf8.svg)](https://tailwindcss.com)
-[![WebMCP Enabled](https://img.shields.io/badge/WebMCP-JSON--RPC%202.0-8b5cf6.svg)](#-webmcp--agentic-ai-integration)
+[![WebMCP Enabled](https://img.shields.io/badge/WebMCP-12%20Tools%20Active-8b5cf6.svg)](#-webmcp--agentic-ai-integration)
 [![Bot Defense: reCAPTCHA v3](https://img.shields.io/badge/Bot%20Defense-reCAPTCHA%20v3-emerald.svg)](#-bot-defense--security-recaptcha-v3)
 [![Multilingual](https://img.shields.io/badge/Locales-EN%20%7C%20ES%20%7C%20PT%20%7C%20TR-emerald.svg)](#-multilingual-architecture-i18n)
 [![Deployment: Vercel](https://img.shields.io/badge/Deploy-Vercel-black.svg)](https://vercel.com)
@@ -25,6 +25,11 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 
 ### 🏛️ Digital Agency Portal
 - **Independent Carrier Comparison**: Informs customers of coverage lines across personal (Auto, Homeowners, Renters, Condo, Umbrella) and commercial (BOP, General Liability, Commercial Property, Workers' Comp, Commercial Auto) products.
+- **Certificate of Insurance (COI / ACORD 25) Hub**: Dedicated multilingual request portals (`/certificate-request`, `/es/certificate-request`, `/pt/certificate-request`, `/tr/certificate-request`, with `/coi` and `/certificates` aliases):
+  - **4-Step Interactive ACORD 25 Wizard** (`CertificateRequestForm.tsx`): Guides requestors through named insured verification, certificate holder & delivery dispatch (direct email & fax), contract endorsement terms (Additional Insured CG 20 10 / CG 20 37, Waiver of Subrogation, Primary & Non-Contributory wording), and project specifications upload.
+  - **Emergency Rush Processing**: Same-day issuance dispatch callout for active job sites, municipal permits, and contractor bid deadlines with direct hotline access to Danbury HQ.
+  - **Full ACORD 25 Educational Guide**: Explains Connecticut commercial insurance requirements, statutory limitations, and the legal distinction between informational certificates and policy endorsements.
+  - **Dedicated Serverless API Endpoint** (`/api/certificate-request`): Generates unique audit references (`COI-CT-2026-XXXXXX`) with dual honeypot traps and reCAPTCHA v3 verification.
 - **Dedicated Personal SEO Landing Pages (Hub & Spoke Architecture)**: In-depth, targeted guides with dedicated `Service`, `BreadcrumbList`, and `FAQPage` schema across English, Spanish, Portuguese, and Turkish:
   - **Homeowners Insurance** (`/personal/homeowners`, `/es/...`, `/pt/...`, `/tr/...`): Dwelling replacement cost vs market value, winter freeze & ice damming, water backup endorsements, flood exclusions, and 15%–25% multi-policy bundling discounts.
   - **Auto & RV Insurance** (`/personal/auto`, `/es/...`, `/pt/...`, `/tr/...`): Connecticut General Statutes (CGS § 14-112) minimums (25/50/25), recommended 100/300/100 defense limits, collision, comprehensive (animal strikes, storm debris), UM/UIM coverage, and recreational vehicle (RV/camper/trailer) riders.
@@ -34,25 +39,25 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
   - **Commercial General Liability** (`/commercial/general-liability`, `/es/...`, `/pt/...`, `/tr/...`): Slip-and-fall protections, completed operations, $1M/$2M standard limits, and same-day ACORD 25 Certificate of Insurance (COI) issuance for contractors.
   - **Commercial Auto & Fleet** (`/commercial/auto`, `/es/...`, `/pt/...`, `/tr/...`): Work vans, trucks, high-limit Combined Single Limit (CSL) liability, CGS § 14-112 compliance, tool floaters, and Hired/Non-Owned Auto (HNOA).
   - **Workers' Compensation & Compliance** (`/commercial/workers-compensation`, `/es/...`, `/pt/...`, `/tr/...`): Statutory benefits under CGS § 31-284, stop-work order defense, sole-proprietor Ghost Policies, and NCCI payroll classification audit assistance.
-- **Rich Multi-Tier Navigation Dropdowns**: Interactive desktop hover cards with glassmorphism and mobile accordion drill-downs for both **Personal** and **Commercial** coverage clusters across all four languages.
+- **Rich Multi-Tier Navigation Dropdowns**: Interactive desktop hover cards with glassmorphism and mobile accordion drill-downs for both **Personal** and **Commercial** coverage clusters across all four languages, featuring direct links to Certificate Requests in main and sub navigation.
 - **Multilingual Support (i18n)**: Fully localized experiences with native content in **English (EN)**, **Spanish (ES)**, **Portuguese (PT)**, and **Turkish (TR)**.
 - **Dedicated Team Directory & Bio Modals**: Accessible, interactive employee profile cards on dedicated Team pages (`/team`, `/es/team`, `/pt/team`, `/tr/team`) and the About page featuring all 9 team members across agency leadership and customer service representatives (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus, Isayeli Perez De La Mora, Ema Rego, Clara De Barros, Ashley L. Mercan, Janaija S. Hammer) with spoken language badges, specialty tags, direct customer support access, and complete biographical pop-up modals translated into English, Spanish, Portuguese, and Turkish.
 - **Optimized Asset Pipeline**: Leverages Astro's native `astro:assets` image engine for zero-CLS responsive image serving, automatic WebP format conversion, and lazy loading.
 - **Direct Carrier Bill Pay & Claims Directory**: Fast access to 24/7 direct phone lines and self-service online payment links for all 11 partnered insurance carriers.
-- **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, and Connecticut state insurance regulations.
+- **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, certificate request routing, and Connecticut state insurance regulations.
 - **Multilingual Contact Hub, Team Photo Hero & Interactive Map Switcher**: Fully localized contact pages (`/contact`, `/es/contact`, `/pt/contact`, `/tr/contact`) featuring an executive Team Photo Hero section (`ContactHero.astro`) showcasing the full Associated Insurance Agency team (`Photo-of-the-Associated-Insurance-Agency-Team-1536x926.jpg`) with unobstructed portraits, quick direct calling, operating hours, and trust badges, paired with an interactive multi-office Google Maps showcase (`OfficeLocationsMap.astro`) enabling seamless tab switching between Danbury Headquarters, Watertown Branch (51 Depot St Ste 112), and Bridgeport Branch (2465 Main Street), complete with one-click driving directions, direct phone dialing, and honeypot-protected inquiry forms.
-- **Regulatory Compliance & Disclaimers**: Prominent coverage binding notices across the global footer, quote builder, and contact pages in all four supported languages confirming that coverage cannot be bound, altered, or cancelled via website form, email, or voicemail until directly confirmed in writing by a licensed agent.
-- **TCPA & 10DLC Communications Consent**: Standardized telephone and SMS consent disclosure embedded across all intake forms (`QuoteForm.tsx`, `ContactForm.tsx`): *"Providing a number permits calls/texts from us regarding the message."*
+- **Regulatory Compliance & Disclaimers**: Prominent coverage binding notices across the global footer, quote builder, certificate request forms, and contact pages in all four supported languages confirming that coverage cannot be bound, altered, or cancelled via website form, email, or voicemail until directly confirmed in writing by a licensed agent.
+- **TCPA & 10DLC Communications Consent**: Standardized telephone and SMS consent disclosure embedded across all intake forms (`QuoteForm.tsx`, `ContactForm.tsx`, `CertificateRequestForm.tsx`): *"Providing a number permits calls/texts from us regarding the message."*
 - **Terms of Service (Multilingual)**: Comprehensive boilerplate terms pages (`/terms`, `/es/terms`, `/pt/terms`, `/tr/terms`) detailing independent brokerage representation, non-binding quote estimates, carrier portal links, user conduct, and Connecticut governing law.
 - **Privacy Policy & GLBA Consumer Financial Notice (Multilingual)**: Complete privacy disclosure pages (`/privacy`, `/es/privacy`, `/pt/privacy`, `/tr/privacy`) detailing Title V Gramm-Leach-Bliley Act (GLBA) compliance, Connecticut Data Privacy Act (CTDPA) standards, carrier underwriting data sharing, and strict 10DLC mobile confidentiality rules prohibiting any third-party sharing of mobile numbers or SMS opt-in data for marketing purposes.
-- **Comprehensive XML & HTML Sitemaps**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all localized pages, paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`) linking to all core insurance lines, branch offices, and legal pages.
+- **Comprehensive XML & HTML Sitemaps**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all localized pages including Certificate Request pages, paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`) linking to all core insurance lines, certificate requests, branch offices, and legal pages.
 - **Content Collections**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance.
 
 ### 🤖 WebMCP & Agentic AI Integration
 - **Dual-Layer Tool Calling**:
   - **Browser Runtime (`WebMCP`)**: Registers tools onto `window.modelContext` / `document.modelContext` for in-browser AI agents and automated assistants.
   - **HTTP JSON-RPC 2.0 Endpoint (`/api/mcp`)**: Server-side standard Model Context Protocol endpoint for external agents (Claude Desktop, Cursor, Antigravity CLI, custom LLM workflows).
-- **Interactive WebMCP Inspector**: A built-in floating developer UI component (`WebMcpInspector.tsx`) allowing real-time testing, inspection of JSON schemas, and live execution of all 9 agency tools.
+- **Interactive WebMCP Inspector**: A built-in floating developer UI component (`WebMcpInspector.tsx`) allowing real-time testing, inspection of JSON schemas, and live execution of all 12 agency tools.
 - **Generative Engine Optimization (GEO)**:
   - Standardized LLM indexing via [`/llms.txt`](public/llms.txt) and [`/llms-full.txt`](public/llms-full.txt).
   - Open discovery manifests via [`/.well-known/mcp.json`](public/.well-known/mcp.json) and [`/.well-known/ai-plugin.json`](public/.well-known/ai-plugin.json).
@@ -77,12 +82,14 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 
 ## 🧰 WebMCP Tool Catalog
 
-The platform exposes **9 standardized tools** callable through both the browser runtime and `/api/mcp`:
+The platform exposes **12 standardized tools** callable through both the browser runtime and `/api/mcp`:
 
 | Tool Name | Type | Description |
 | :--- | :---: | :--- |
 | `get_agency_profile` | Read-only | Agency background, licensing in CT/NY/NJ/MA, corporate contact info, carrier count. |
 | `get_office_locations` | Read-only | Addresses, phone/fax, office hours, GPS coordinates, and supported languages for branches. |
+| `get_team_members` | Read-only | Directory of licensed agents filtered by office, language spoken, or specialty lines. |
+| `get_employee_profile` | Read-only | Detailed biography, NPN credentials, languages, and direct servicing office for staff members. |
 | `find_agent_by_language` | Read-only | Finds AIA branches and licensed personnel fluent in English, Spanish, Portuguese, or Turkish. |
 | `get_insurance_products` | Read-only | Detailed breakdown of personal and commercial policies, limit recommendations, and bundle discounts. |
 | `calculate_quote_estimate` | Read-only | Instant premium estimations factoring location, replacement value, deductible, and multi-policy bundling. |
@@ -90,6 +97,7 @@ The platform exposes **9 standardized tools** callable through both the browser 
 | `get_carrier_billing_directory` | Read-only | Customer service phone numbers, claims lines, and online payment URLs for all 11 carriers. |
 | `search_knowledge_base` | Read-only | Query Connecticut statutory liability minimums (25/50/25), flood exclusions, claims procedures, and FAQs. |
 | `check_office_open_status` | Read-only | Real-time Eastern Time evaluation of office operating status (Mon–Fri 8:30 AM – 5:00 PM EST). |
+| `request_certificate_of_insurance` | Action | Submits official ACORD 25 Certificate of Insurance (COI) requests with Additional Insured and Waiver of Subrogation terms. |
 
 ---
 
@@ -123,6 +131,7 @@ aia/
 │   │   ├── aia_janaija.png     # Janaija S. Hammer portrait
 │   │   └── Photo-of-the-Associated-Insurance-Agency-Team-1536x926.jpg # Full agency team photo
 │   ├── components/             # Astro & React UI components
+│   │   ├── CertificateRequestForm.tsx # 4-step interactive ACORD 25 Certificate of Insurance request island
 │   │   ├── ContactForm.tsx     # Interactive contact form with bot honeypots & multi-lingual validation
 │   │   ├── ContactHero.astro   # Multilingual Contact Page Hero showcasing full team photo & trust stats
 │   │   ├── FAQAccordion.tsx    # Animated interactive FAQ accordion
@@ -133,7 +142,7 @@ aia/
 │   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder
 │   │   ├── SEOHead.astro       # OpenGraph, Twitter, canonical, and JSON-LD schema
 │   │   ├── TeamSection.astro   # Multilingual 9-member team grid & interactive bio pop-up modal
-│   │   └── WebMcpInspector.tsx # Floating in-browser WebMCP debugging & execution modal
+│   │   └── WebMcpInspector.tsx # Floating in-browser WebMCP debugging & execution modal (12 tools)
 │   ├── content/                # Content collections
 │   │   ├── blog/               # Localized Markdown articles (en, es, pt, tr)
 │   │   └── testimonials/       # Customer review JSON data (en, es, pt, tr)
@@ -148,10 +157,11 @@ aia/
 │   │   └── webmcp/             # WebMCP implementation
 │   │       ├── init.ts         # Browser window.modelContext bootstrap
 │   │       ├── runtime.ts      # WebMCP execution engine & event emitter
-│   │       ├── tools.ts        # 9 AIA tool definitions, schemas, and implementations
+│   │       ├── tools.ts        # 12 AIA tool definitions, schemas, and implementations
 │   │       └── types.ts        # TypeScript interfaces for MCP JSON-RPC & tools
 │   ├── pages/                  # File-based routing
 │   │   ├── api/
+│   │   │   ├── certificate-request.ts # REST endpoint for ACORD 25 COI issuance with bot defense
 │   │   │   ├── contact.ts      # REST endpoint for contact inquiries with honeypot bot validation
 │   │   │   ├── mcp.ts          # JSON-RPC 2.0 MCP endpoint (GET/POST)
 │   │   │   └── quote.ts        # REST endpoint for lead submission & retrieval
@@ -165,10 +175,11 @@ aia/
 │   │   │   ├── homeowners.astro # Homeowners & Dwelling guide (replacement cost, storms)
 │   │   │   ├── renters.astro   # Renters & Tenant insurance guide (HO-4, liability)
 │   │   │   └── umbrella.astro  # Personal Umbrella excess liability guide ($1M-$5M+)
-│   │   ├── es/                 # Spanish localized pages (index, about, team, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
-│   │   ├── pt/                 # Portuguese localized pages (index, about, team, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
-│   │   ├── tr/                 # Turkish localized pages (index, about, team, personal, commercial, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── es/                 # Spanish localized pages (index, about, team, personal, commercial, certificate-request, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── pt/                 # Portuguese localized pages (index, about, team, personal, commercial, certificate-request, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── tr/                 # Turkish localized pages (index, about, team, personal, commercial, certificate-request, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
 │   │   ├── about.astro         # Agency history, credentials, and office profiles
+│   │   ├── certificate-request.astro # ACORD 25 Certificate of Insurance landing & request page
 │   │   ├── commercial.astro    # Commercial lines overview pillar (BOP, GL, Property, Workers' Comp)
 │   │   ├── contact.astro       # Contact page embedding ContactForm.tsx & OfficeLocationsMap.astro
 │   │   ├── index.astro         # Main homepage with hero, carrier grid, and testimonials
@@ -264,7 +275,7 @@ npm run preview
 ### Deployment Configuration
 
 The application is pre-configured with `@astrojs/vercel` for zero-configuration deployment to [Vercel](https://vercel.com):
-- Serverless API routes (`/api/mcp`, `/api/quote`, `/api/contact`) are rendered dynamically (`prerender = false`).
+- Serverless API routes (`/api/mcp`, `/api/quote`, `/api/contact`, `/api/certificate-request`) are rendered dynamically (`prerender = false`).
 - Content and marketing pages are pre-rendered statically for high performance and low latency.
 - Dynamic localized paths adhere to Astro 7 i18n specifications.
 
@@ -329,6 +340,13 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
   - **Honeypot Validation**: Inspects hidden decoy trap fields (`hp_website`, `hp_company`) and evaluates submission elapsed time (`form_rendered_at < 1200ms`) to proactively drop automated scraper traffic.
   - Returns an inquiry confirmation reference ID (`inq_XXXXXX`).
 - **GET `/api/contact`**: Returns recent submission counts for internal monitoring.
+
+### 4. Certificate of Insurance Intake (`/api/certificate-request`)
+
+- **POST `/api/certificate-request`**: Processes commercial ACORD 25 Certificate of Insurance requests (`requestorName`, `requestorEmail`, `requestorPhone`, `insuredName`, `holderName`, `holderAddress1`, `holderCity`, `holderState`, `holderZip`, `deliveryMethod`, `coverages`, `isAdditionalInsured`, `hasWrittenContract`, `waiverSubrogationLines`, `primaryNonContributory`, `jobNumber`, `specialInstructions`, `agreementAccepted`, `recaptchaToken`).
+  - **Bot Mitigation**: Enforces dual invisible honeypots (`hp_website`, `hp_company`) and Google reCAPTCHA v3 verification (`certificate_request` action).
+  - Returns a unique commercial tracking reference (`COI-CT-2026-XXXXXX`) and 2–4 hour turnaround commitment during business hours.
+- **GET `/api/certificate-request`**: Returns recent submission counts for internal administrative auditing.
 
 ---
 

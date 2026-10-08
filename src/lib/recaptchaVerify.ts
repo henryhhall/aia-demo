@@ -33,8 +33,15 @@ export async function verifyRecaptcha(
     };
   }
 
-  // Token is required when secret is provided
+  // Token is required when secret is provided (unless using Google's public test key)
   if (!token || typeof token !== 'string' || token.trim().length === 0) {
+    if (secretKey === '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe') {
+      return {
+        success: true,
+        score: 1.0,
+        bypassed: true,
+      };
+    }
     return {
       success: false,
       error: 'reCAPTCHA verification token missing.',

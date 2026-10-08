@@ -20,6 +20,7 @@ const contactUrl = getRelativeLocaleUrl(lang, 'contact');
 const termsUrl = getRelativeLocaleUrl(lang, 'terms');
 const privacyUrl = getRelativeLocaleUrl(lang, 'privacy');
 const sitemapUrl = getRelativeLocaleUrl(lang, 'sitemap');
+const certificateUrl = getRelativeLocaleUrl(lang, 'certificate-request');
 const homeownersUrl = getRelativeLocaleUrl(lang, 'personal/homeowners');
 const personalAutoUrl = getRelativeLocaleUrl(lang, 'personal/auto');
 const umbrellaUrl = getRelativeLocaleUrl(lang, 'personal/umbrella');
@@ -64,6 +65,7 @@ const wcUrl = getRelativeLocaleUrl(lang, 'commercial/workers-compensation');
           <li><a href={payBillUrl} class="hover:text-white transition-colors">{t('footer.payBill')}</a></li>
           <li><a href={quoteUrl} class="hover:text-white transition-colors">{t('footer.quote')}</a></li>
           <li><a href={contactUrl} class="hover:text-white transition-colors">{t('footer.contactLink')}</a></li>
+          <li><a href={certificateUrl} class="hover:text-white transition-colors text-accent-gold/90">{t('footer.certificateRequest')}</a></li>
           <li><a href={termsUrl} class="hover:text-white transition-colors">{t('footer.terms')}</a></li>
           <li><a href={privacyUrl} class="hover:text-white transition-colors">{t('footer.privacy')}</a></li>
           <li><a href={sitemapUrl} class="hover:text-white transition-colors">{t('footer.sitemap')}</a></li>
@@ -81,6 +83,7 @@ const wcUrl = getRelativeLocaleUrl(lang, 'commercial/workers-compensation');
           <li><a href={glUrl} class="hover:text-white transition-colors">{t('footer.gl')}</a></li>
           <li><a href={commercialAutoUrl} class="hover:text-white transition-colors">{t('footer.commercialAuto')}</a></li>
           <li><a href={wcUrl} class="hover:text-white transition-colors">{t('footer.wc')}</a></li>
+          <li><a href={certificateUrl} class="hover:text-white transition-colors font-medium text-accent-gold/90">{t('footer.certificate')}</a></li>
         </ul>
       </div>
 
@@ -132,6 +135,10 @@ const wcUrl = getRelativeLocaleUrl(lang, 'commercial/workers-compensation');
         <span class="text-zinc-700">•</span>
         <a href={sitemapUrl} class="text-zinc-400 hover:text-white transition-colors">
           {t('footer.sitemap')}
+        </a>
+        <span class="text-zinc-700">•</span>
+        <a href={certificateUrl} class="text-zinc-400 hover:text-white transition-colors">
+          {t('footer.certificate')}
         </a>
         <span class="text-zinc-700">•</span>
         <a href="/sitemap-index.xml" target="_blank" class="text-accent-gold/80 hover:text-accent-gold transition-colors font-mono">

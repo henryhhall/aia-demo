@@ -28,6 +28,19 @@ const SAMPLE_INPUTS: Record<string, any> = {
   get_carrier_billing_directory: { carrierName: 'Progressive' },
   search_knowledge_base: { query: 'minimum liability' },
   check_office_open_status: { branchId: 'danbury-hq' },
+  request_certificate_of_insurance: {
+    insuredName: 'Apex Contracting LLC',
+    requestorName: 'Carlos Mendez',
+    requestorEmail: 'carlos@apexcontracting.com',
+    requestorPhone: '203-748-9272',
+    holderName: 'City of Danbury',
+    holderAddress: '155 Deer Hill Ave, Danbury, CT 06810',
+    deliveryMethod: 'Email',
+    coverages: ['General Liability', "Workers' Compensation"],
+    isAdditionalInsured: true,
+    waiverOfSubrogation: true,
+    jobNumberOrContract: 'BID-2026-089',
+  },
 };
 
 export default function WebMcpInspector() {
@@ -42,22 +55,29 @@ export default function WebMcpInspector() {
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
 
   useEffect(() => {
+    const normalizeTool = (t: any): WebMCPToolDefinition => ({
+      name: t.name,
+      description: t.description || '',
+      inputSchema: t.inputSchema || t.parameters || { type: 'object', properties: {} },
+      annotations: t.annotations,
+      type: t.type || 'imperative',
+      kind: t.kind || 'function',
+      source: t.source || 'script',
+    });
+
     // Initial fetch of tools
     if (typeof window !== 'undefined' && window.modelContext) {
       Promise.resolve(window.modelContext.getTools()).then((toolsList) => {
-        setTools(toolsList);
+        if (Array.isArray(toolsList)) {
+          setTools(toolsList.map(normalizeTool));
+        }
       });
-      setLogs(window.modelContext.getHistory());
+      if (typeof window.modelContext.getHistory === 'function') {
+        setLogs(window.modelContext.getHistory());
+      }
     } else {
       // Fallback from static definitions
-      setTools(
-        aiaWebMcpTools.map((t) => ({
-          name: t.name,
-          description: t.description,
-          inputSchema: t.inputSchema,
-          annotations: t.annotations,
-        }))
-      );
+      setTools(aiaWebMcpTools.map(normalizeTool));
     }
 
     const handleToolExecuted = (e: any) => {
@@ -71,6 +91,17 @@ export default function WebMcpInspector() {
       window.removeEventListener('modelcontexttoolexecuted', handleToolExecuted);
     };
   }, []);
+
+  // Keyboard shortcut to close inspector with Escape
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen]);
 
   useEffect(() => {
     if (selectedTool && SAMPLE_INPUTS[selectedTool] !== undefined) {
@@ -157,9 +188,13 @@ export default function WebMcpInspector() {
 
       {/* Slide-over Inspector Modal */}
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-end bg-black/50 backdrop-blur-sm animate-fadeIn">
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-end bg-black/60 backdrop-blur-sm"
+          onClick={() => setIsOpen(false)}
+        >
           <div
-            className="w-full max-w-2xl h-full max-h-[100dvh] bg-[#0d1117] text-zinc-100 flex flex-col shadow-2xl border-l border-zinc-800 animate-slideInRight"
+            className="w-full max-w-2xl h-full max-h-[100dvh] bg-[#0d1117] text-zinc-100 flex flex-col shadow-2xl border-l border-zinc-800"
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-zinc-800 bg-[#161b22]">
@@ -314,7 +349,7 @@ export default function WebMcpInspector() {
                         <div className="bg-[#0d1117] p-2.5 rounded border border-zinc-800/80 font-mono text-[11px] text-zinc-400">
                           <span className="text-zinc-500 uppercase text-[9px] block mb-1">Input Parameters Schema:</span>
                           <pre className="overflow-x-auto text-zinc-300">
-                            {JSON.stringify(tool.inputSchema.properties || {}, null, 2)}
+                            {JSON.stringify(tool.inputSchema?.properties || (tool as any)?.parameters?.properties || {}, null, 2)}
                           </pre>
                         </div>
                       </div>
@@ -337,7 +372,7 @@ export default function WebMcpInspector() {
                     >
                       {tools.map((t) => (
                         <option key={t.name} value={t.name}>
-                          {t.name} — {t.description.substring(0, 50)}...
+                          {t.name} — {(t.description || '').substring(0, 50)}...
                         </option>
                       ))}
                     </select>

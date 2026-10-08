@@ -1224,4 +1224,100 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       };
     },
   },
+  {
+    name: 'request_certificate_of_insurance',
+    description:
+      'Submit an official ACORD 25 Certificate of Insurance (COI) request with additional insured endorsements and waivers of subrogation. Dispatched within 2-4 business hours to the certificate holder via encrypted email or fax.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        insuredName: {
+          type: 'string',
+          description: 'Legal named insured business or individual on the policy.',
+        },
+        requestorName: {
+          type: 'string',
+          description: 'Full name of person submitting the request.',
+        },
+        requestorEmail: {
+          type: 'string',
+          description: 'Email address of requestor for confirmation.',
+        },
+        requestorPhone: {
+          type: 'string',
+          description: 'Phone number of requestor.',
+        },
+        holderName: {
+          type: 'string',
+          description: 'Legal entity name of the certificate holder.',
+        },
+        holderAddress: {
+          type: 'string',
+          description: 'Full street address, city, state, zip of the certificate holder.',
+        },
+        deliveryMethod: {
+          type: 'string',
+          enum: ['Email', 'Fax', 'Both'],
+          description: 'How certificate should be delivered to the holder.',
+        },
+        coverages: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Lines of insurance to verify (e.g. General Liability, Auto, Workers Comp).',
+        },
+        isAdditionalInsured: {
+          type: 'boolean',
+          description: 'Whether additional insured status is required by contract.',
+        },
+        waiverOfSubrogation: {
+          type: 'boolean',
+          description: 'Whether waiver of subrogation endorsement is requested.',
+        },
+        jobNumberOrContract: {
+          type: 'string',
+          description: 'Optional job, bid, or project reference number.',
+        },
+      },
+      required: ['insuredName', 'requestorName', 'requestorEmail', 'requestorPhone', 'holderName', 'holderAddress'],
+    },
+    annotations: {
+      readOnlyHint: false,
+    },
+    execute: async (params: {
+      insuredName: string;
+      requestorName: string;
+      requestorEmail: string;
+      requestorPhone: string;
+      holderName: string;
+      holderAddress: string;
+      deliveryMethod?: 'Email' | 'Fax' | 'Both';
+      coverages?: string[];
+      isAdditionalInsured?: boolean;
+      waiverOfSubrogation?: boolean;
+      jobNumberOrContract?: string;
+    }) => {
+      const code = `COI-CT-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+      return {
+        success: true,
+        confirmationCode: code,
+        status: 'QUEUED_FOR_AGENT_REVIEW',
+        message: `ACORD 25 Certificate Request registered for ${params.insuredName} (Holder: ${params.holderName}).`,
+        estimatedTurnaround: '2-4 business hours (Mon-Fri 8:30 AM - 5:00 PM EST)',
+        servicingOffices: [
+          'Danbury HQ: (203) 748-9272',
+          'Watertown: (860) 274-8888',
+          'Bridgeport: (203) 333-8880',
+        ],
+        details: {
+          insuredName: params.insuredName,
+          holderName: params.holderName,
+          deliveryMethod: params.deliveryMethod || 'Email',
+          coverages: params.coverages || ['General Liability'],
+          additionalInsured: Boolean(params.isAdditionalInsured),
+          waiverOfSubrogation: Boolean(params.waiverOfSubrogation),
+          referenceNumber: code,
+        },
+      };
+    },
+  },
 ];

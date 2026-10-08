@@ -41,7 +41,7 @@ class WebMCPRuntime implements ModelContextAPI {
     return Array.from(this.tools.values()).map((tool) => ({
       name: tool.name,
       description: tool.description,
-      inputSchema: tool.inputSchema,
+      inputSchema: tool.inputSchema || (tool as any).parameters || { type: 'object', properties: {} },
       annotations: tool.annotations,
       type: tool.type || 'imperative',
       kind: tool.kind || 'function',
@@ -344,7 +344,7 @@ class WebMCPRuntime implements ModelContextAPI {
     return {
       name: tool.name,
       description: tool.description,
-      inputSchema: tool.inputSchema,
+      inputSchema: tool.inputSchema || (tool as any).parameters || { type: 'object', properties: {} },
       annotations: tool.annotations,
       type: tool.type || 'imperative',
       kind: tool.kind || 'function',

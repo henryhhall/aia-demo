@@ -25,7 +25,12 @@ export default defineConfig({
     '/meet-the-team': '/team',
     '/es/meet-the-team': '/es/team',
     '/pt/meet-the-team': '/pt/team',
-    '/tr/meet-the-team': '/tr/team'
+    '/tr/meet-the-team': '/tr/team',
+    '/coi': '/certificate-request',
+    '/certificates': '/certificate-request',
+    '/es/coi': '/es/certificate-request',
+    '/pt/coi': '/pt/certificate-request',
+    '/tr/coi': '/tr/certificate-request'
   },
   integrations: [
     react(),

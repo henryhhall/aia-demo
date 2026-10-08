@@ -53,7 +53,7 @@ export default function Navigation({
   return (
     <div className="flex items-center">
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center gap-7 lg:gap-8">
+      <nav className="hidden lg:flex items-center gap-2.5 xl:gap-5">
         {navLinks.map((link) => {
           const hasChildren = Boolean(link.children && link.children.length > 0);
           const currentNorm = normalizePath(currentPath);
@@ -179,7 +179,7 @@ export default function Navigation({
         </a>
 
         {/* Desktop Language Switcher */}
-        <div className="flex items-center gap-2 border-l border-zinc-200 pl-4 py-1 ml-2">
+        <div className="flex items-center gap-1.5 xl:gap-2 border-l border-zinc-200 pl-3 xl:pl-4 py-1 ml-1 xl:ml-2">
           {languages.map((l, index) => (
             <span key={l.code} className="flex items-center gap-2">
               <a
@@ -201,7 +201,7 @@ export default function Navigation({
       </nav>
 
       {/* Mobile Menu Button */}
-      <div className="md:hidden flex items-center">
+      <div className="lg:hidden flex items-center">
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 text-text-primary hover:text-accent focus:outline-none"
@@ -226,7 +226,7 @@ export default function Navigation({
 
       {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="absolute top-full left-0 right-0 w-full bg-white/95 backdrop-blur-md border-b border-border-subtle shadow-lg z-50 transition-all duration-300 ease-in-out md:hidden max-h-[85vh] overflow-y-auto">
+        <div className="absolute top-full left-0 right-0 w-full bg-white/95 backdrop-blur-md border-b border-border-subtle shadow-lg z-50 transition-all duration-300 ease-in-out lg:hidden max-h-[85vh] overflow-y-auto">
           <nav className="flex flex-col p-6 gap-2">
             {navLinks.map((link) => {
               const hasChildren = Boolean(link.children && link.children.length > 0);

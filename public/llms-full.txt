@@ -88,6 +88,12 @@ Connecticut General Statutes § 14-112 require minimum automobile liability limi
 - Standard Connecticut homeowners (HO-3/HO-5) policies exclude damage caused by storm surge, surface runoff, or flooding.
 - Properties near Long Island Sound or river basins require flood insurance placed through FEMA's NFIP or private flood carriers.
 
+### Certificates of Insurance (COI & ACORD 25)
+- **Standard Format:** AIA issues official ACORD 25 Certificates of Liability Insurance for commercial clients, contractors, vendors, and property owners.
+- **Turnaround:** Standard requests are dispatched within 2 to 4 business hours during agency hours (Mon–Fri 8:30 AM – 5:00 PM EST).
+- **Endorsements Handled:** Additional Insured (CG 20 10 / CG 20 37), Waiver of Subrogation (GL, Auto, WC), Primary and Non-Contributory wording, and 30-day notice of cancellation.
+- **Online Form:** https://aia-danbury.com/certificate-request (available in English, Spanish `/es/certificate-request`, Portuguese `/pt/certificate-request`, and Turkish `/tr/certificate-request`).
+
 ---
 
 ## 6. WebMCP Integration & Machine-Callable Tools

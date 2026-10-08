@@ -99,8 +99,20 @@ scratch/
 .tempmediaStorage/
 *.patch
 
-# Python Bytecode & Cache
+# Python Environments, Bytecode & Cache
 __pycache__/
 *.py[cod]
 *$py.class
 *.pyo
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+*.egg-info/
+.coverage
+htmlcov/
+
+# Local testing & browser recordings
+test-screenshots/
+.playwright/

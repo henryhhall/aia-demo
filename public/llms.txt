@@ -15,6 +15,7 @@ Associated Insurance Agency (AIA) is a Connecticut-licensed independent insuranc
 - [HTML Sitemap Directory](https://aia-danbury.com/sitemap): Comprehensive navigable directory of all website pages, insurance lines, branch locations, and language editions.
 - [Personal Insurance](https://aia-danbury.com/personal): Coverage details for homeowners, auto, renters, condominium, and personal umbrella liability policies.
 - [Commercial Insurance](https://aia-danbury.com/commercial): Business owners policies (BOP), commercial general liability, commercial property, and workers compensation.
+- [Certificate of Insurance Request](https://aia-danbury.com/certificate-request): Fast ACORD 25 certificate generation tool with additional insured endorsements, waivers of subrogation, contract spec attachments, and same-day delivery.
 
 ## Guides & Articles
 
