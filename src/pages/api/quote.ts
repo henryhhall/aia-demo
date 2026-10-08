@@ -48,6 +48,7 @@ export const POST: APIRoute = async ({ request }) => {
       currentCarrier,
       notes,
       source,
+      ratingPayload: data.ratingPayload || null,
       submittedAt: new Date().toISOString(),
     };
 

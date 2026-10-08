@@ -33,6 +33,29 @@ const quoteStructuredData = {
   <!-- Quote Form Section -->
   <section class="py-20 bg-bg-primary">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Specialized Homeowners Quote Banner -->
+      <div class="mb-10 max-w-2xl mx-auto p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-accent/5 via-accent/10 to-accent-gold/10 border border-accent/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div class="space-y-1">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-accent-gold">Özel Araç</span>
+            <span class="text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">Yeni</span>
+          </div>
+          <h2 class="text-base font-bold text-accent">Connecticut Konut Sigortası mı Arıyorsunuz?</h2>
+          <p class="text-xs text-text-secondary leading-relaxed">
+            Bina özellikleri, hidrant mesafesi ve yeniden inşa hesabı içeren 4 adımlı teklif sihirbazımızı kullanın.
+          </p>
+        </div>
+        <a
+          href="/tr/quote/homeowners"
+          class="shrink-0 px-4 py-2.5 rounded-xl bg-accent text-white text-xs font-bold hover:bg-accent/90 transition-all shadow-xs flex items-center gap-1.5"
+        >
+          <span>Konut Formunu Aç</span>
+          <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+          </svg>
+        </a>
+      </div>
+
       <!-- React multi-step quote form island -->
       <QuoteForm client:load lang="tr" />
 
