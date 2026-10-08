@@ -4,68 +4,199 @@
  */
 
 import type { WebMCPTool } from './types.ts';
+import { teamData } from '../../i18n/team.ts';
 
-// Agency Data Constants
-export const AIA_LOCATIONS = [
+export interface AIAStaffMember {
+  id: string;
+  name: string;
+  role: string;
+  isProducer: boolean;
+  npn?: string;
+  languages: string[];
+  specialties: string[];
+}
+
+export interface AIAOfficeLocation {
+  id: string;
+  aliases: string[];
+  name: string;
+  tag: string;
+  shortName: string;
+  streetAddress: string;
+  city: string;
+  state: string;
+  postalCode: string;
+  fullAddress: string;
+  phone: string;
+  phoneFormatted: string;
+  phoneRaw: string;
+  fax?: string;
+  email: string;
+  hours: string;
+  directionsUrl: string;
+  embedUrl: string;
+  languages: string[];
+  latitude: number;
+  longitude: number;
+  isHeadquarters: boolean;
+  staff: AIAStaffMember[];
+}
+
+// Agency Data Constants with comprehensive office metadata and staff rosters
+export const AIA_LOCATIONS: AIAOfficeLocation[] = [
   {
     id: 'danbury-hq',
+    aliases: ['danbury', 'danbury-hq'],
     name: 'Danbury Corporate Office (HQ)',
+    tag: 'Headquarters',
+    shortName: 'Danbury HQ',
     streetAddress: '50 Newtown Road, Suite 1',
     city: 'Danbury',
     state: 'CT',
     postalCode: '06810',
+    fullAddress: '50 Newtown Road, Suite 1, Danbury, CT 06810',
     phone: '203-748-9272',
+    phoneFormatted: '(203) 748-9272',
+    phoneRaw: '2037489272',
     fax: '203-798-2917',
     email: 'danbury@aia-danbury.com',
     hours: 'Monday - Friday: 8:30 AM - 5:00 PM EST',
+    directionsUrl: 'https://maps.google.com/?q=50+Newtown+Road,+Suite+1,+Danbury,+CT+06810',
+    embedUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2879.6344940730055!2d-73.42662732423537!3d41.403672894985256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7ff217cb29b37%3A0x264721e992b3c2ee!2sAssociated%20Insurance%20Agency%20LLC!5e1!3m2!1sen!2sus!4v1791229405450!5m2!1sen!2sus',
     languages: ['English', 'Spanish', 'Portuguese', 'Turkish'],
     latitude: 41.4087,
     longitude: -73.4285,
     isHeadquarters: true,
     staff: [
-      { name: 'Ronald T. Boucher', role: 'Principal & Founder', isProducer: true, npn: '8963915' },
-      { name: 'Isayeli Perez De La Mora', role: 'Customer Service Representative', isProducer: true, npn: '20265776' },
-      { name: 'Ema Rego', role: 'Customer Service Representative', isProducer: true, npn: '21656039' },
-      { name: 'Yesica D. Ramirez-Mendez', role: 'Customer Service Representative', isProducer: false },
-      { name: 'Clara De Barros', role: 'Customer Service Representative', isProducer: false },
+      {
+        id: 'ronald-boucher',
+        name: 'Ronald T. Boucher',
+        role: 'Principal & Founder',
+        isProducer: true,
+        npn: '8963915',
+        languages: ['English'],
+        specialties: ['Commercial Lines', 'Construction Risks', 'Business Liability', 'Agency Leadership'],
+      },
+      {
+        id: 'yesica-ramirez',
+        name: 'Yesica D. Ramirez-Mendez',
+        role: 'Customer Service Representative',
+        isProducer: false,
+        languages: ['English', 'Spanish', 'Portuguese'],
+        specialties: ['Truckers & Transportation', 'Contractors Insurance', 'Personal Policies', 'Commercial Coverage'],
+      },
+      {
+        id: 'isayeli-perez',
+        name: 'Isayeli Perez De La Mora',
+        role: 'Customer Service Representative',
+        isProducer: true,
+        npn: '20265776',
+        languages: ['English', 'Portuguese', 'Spanish'],
+        specialties: ['Multifamily Dwellings', 'General Liability', 'Property Policies', 'Personal & Commercial Lines'],
+      },
+      {
+        id: 'ema-rego',
+        name: 'Ema Rego',
+        role: 'Customer Service Representative',
+        isProducer: true,
+        npn: '21656039',
+        languages: ['English', 'Portuguese', 'Spanish'],
+        specialties: ['Personal Lines', 'Commercial Coverage', 'Client Consultation', 'Multilingual Support'],
+      },
+      {
+        id: 'clara-de-barros',
+        name: 'Clara De Barros',
+        role: 'Customer Service Representative',
+        isProducer: false,
+        languages: ['English', 'Portuguese', 'Spanish'],
+        specialties: ['Client Support', 'Policy Guidance', 'Inquiry Resolution', 'Customer Care'],
+      },
     ],
   },
   {
     id: 'watertown',
+    aliases: ['watertown'],
     name: 'Watertown Branch Office',
+    tag: 'Branch Office',
+    shortName: 'Watertown',
     streetAddress: '51 Depot St Ste 112',
     city: 'Watertown',
     state: 'CT',
     postalCode: '06795',
+    fullAddress: '51 Depot St Ste 112, Watertown, CT 06795',
     phone: '860-274-8888',
+    phoneFormatted: '(860) 274-8888',
+    phoneRaw: '8602748888',
     email: 'watertown@aia-danbury.com',
     hours: 'Monday - Friday: 8:30 AM - 5:00 PM EST',
+    directionsUrl: 'https://maps.google.com/?q=51+Depot+St+Ste+112,+Watertown,+CT+06795',
+    embedUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1435.4183773278282!2d-73.113893!3d41.6018117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e7eac9777b827b%3A0x67e441f80fbeaede!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394791132!5m2!1sen!2sus',
     languages: ['English', 'Spanish', 'Portuguese', 'Turkish'],
     latitude: 41.6018,
     longitude: -73.1139,
     isHeadquarters: false,
     staff: [
-      { name: 'Ashley L. Mercan', role: 'Customer Service Representative', isProducer: false },
-      { name: 'Janaija S. Hammer', role: 'Front Desk CSR', isProducer: false },
+      {
+        id: 'ashley-mercan',
+        name: 'Ashley L. Mercan',
+        role: 'Customer Service Representative',
+        isProducer: false,
+        languages: ['English', 'Turkish'],
+        specialties: ['Home & Auto', 'Umbrella Liability', 'Dwelling Fire', 'Classic Vehicles & Pets'],
+      },
+      {
+        id: 'janaija-hammer',
+        name: 'Janaija S. Hammer',
+        role: 'Customer Service Representative',
+        isProducer: false,
+        languages: ['English'],
+        specialties: ['Front Desk Reception', 'Policy Inquiries', 'Payment Processing', 'Customer Support'],
+      },
     ],
   },
   {
     id: 'bridgeport',
+    aliases: ['bridgeport'],
     name: 'Bridgeport Community Branch',
+    tag: 'Branch Office',
+    shortName: 'Bridgeport',
     streetAddress: '2465 Main Street',
     city: 'Bridgeport',
     state: 'CT',
     postalCode: '06606',
+    fullAddress: '2465 Main Street, Bridgeport, CT 06606',
     phone: '203-333-8880',
+    phoneFormatted: '(203) 333-8880',
+    phoneRaw: '2033338880',
     email: 'bridgeport@aia-danbury.com',
     hours: 'Monday - Friday: 8:30 AM - 5:00 PM EST',
+    directionsUrl: 'https://maps.google.com/?q=2465+Main+Street,+Bridgeport,+CT+06606',
+    embedUrl:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021.0695509775729!2d-73.2120973643344!3d41.214073760533175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80e8ad160179d%3A0x2174691e2b983696!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394610287!5m2!1sen!2sus',
     languages: ['English', 'Spanish', 'Portuguese'],
     latitude: 41.1963,
     longitude: -73.1972,
     isHeadquarters: false,
     staff: [
-      { name: 'Camila Macedo de Jesus', role: 'Customer Service Representative', isProducer: true, npn: '19946151' },
-      { name: 'Betania Almeida', role: 'Customer Service Representative', isProducer: false },
+      {
+        id: 'camila-macedo',
+        name: 'Camila Macedo de Jesus',
+        role: 'Customer Service Representative',
+        isProducer: true,
+        npn: '19946151',
+        languages: ['English', 'Portuguese', 'Spanish'],
+        specialties: ['Commercial Coverage', 'Personal Insurance', 'Coverage Consultations', 'Policy Servicing'],
+      },
+      {
+        id: 'betania-almeida',
+        name: 'Betania Almeida',
+        role: 'Customer Service Representative',
+        isProducer: false,
+        languages: ['English', 'Spanish', 'Portuguese'],
+        specialties: ['Commercial Risk', 'Small Business Solutions', 'Personal Lines', 'Client Advocacy'],
+      },
     ],
   },
 ];
@@ -188,7 +319,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
   {
     name: 'get_agency_profile',
     description:
-      'Retrieve high-level profile, mission, licensing, languages, and contact points for Associated Insurance Agency (AIA) in Connecticut.',
+      'Retrieve high-level profile, mission, licensing, languages, branch network, and contact points for Associated Insurance Agency (AIA) in Connecticut.',
     inputSchema: {
       type: 'object',
       properties: {},
@@ -201,15 +332,18 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       return {
         agencyName: 'Associated Insurance Agency (AIA)',
         tagline: 'We Shop. You Save. Insurance Built For You.',
-        foundedYear: 2016,
+        foundedYear: 2008,
+        founder: 'Ronald T. Boucher (Principal & Founder)',
         type: 'Full-Service Independent Insurance Brokerage',
         headquarters: '50 Newtown Road, Suite 1, Danbury, CT 06810',
-        phone: '203-748-9272',
-        email: 'info@aia-danbury.com',
+        phone: '(203) 748-9272',
+        email: 'danbury@aia-danbury.com',
         website: 'https://aia-danbury.com',
         licensedStates: ['CT', 'NY', 'NJ', 'MA'],
         supportedLanguages: ['English', 'Spanish', 'Portuguese', 'Turkish'],
-        branchCount: 3,
+        branchCount: AIA_LOCATIONS.length,
+        totalStaffCount: teamData.en.members.length,
+        licensedProducersCount: teamData.en.members.filter((m) => m.isProducer).length,
         partnerCarriersCount: AIA_CARRIERS.length,
         linesOfInsurance: [
           'Personal Auto & Motorcycle',
@@ -229,13 +363,26 @@ export const aiaWebMcpTools: WebMCPTool[] = [
   {
     name: 'get_office_locations',
     description:
-      'Get structured branch office information (Danbury HQ, Watertown, Bridgeport), including addresses, phones, office hours, GPS coordinates, and languages spoken.',
+      'Get structured branch office information (Danbury HQ, Watertown, Bridgeport), including full addresses, direct phone numbers, office hours, GPS coordinates, Google Maps directions links, and assigned staff rosters.',
     inputSchema: {
       type: 'object',
       properties: {
+        officeId: {
+          type: 'string',
+          description: 'Filter by office ID ("all", "danbury", "danbury-hq", "watertown", "bridgeport")',
+          enum: ['all', 'danbury', 'danbury-hq', 'watertown', 'bridgeport'],
+        },
         city: {
           type: 'string',
           description: 'Optional filter by city name (e.g., Danbury, Watertown, Bridgeport)',
+        },
+        language: {
+          type: 'string',
+          description: 'Optional filter for branches supporting a specific language (e.g., Spanish, Portuguese, Turkish, English)',
+        },
+        includeStaffRoster: {
+          type: 'boolean',
+          description: 'Whether to include the full staff roster for each office. Defaults to true.',
         },
       },
     },
@@ -243,19 +390,292 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params: { city?: string }) => {
-      if (params?.city) {
-        const filtered = AIA_LOCATIONS.filter((loc) =>
-          loc.city.toLowerCase().includes(params.city!.toLowerCase())
+    execute: async (params?: {
+      officeId?: string;
+      city?: string;
+      language?: string;
+      includeStaffRoster?: boolean;
+    }) => {
+      let filtered = [...AIA_LOCATIONS];
+
+      if (params?.officeId && params.officeId !== 'all') {
+        const target = params.officeId.toLowerCase();
+        filtered = filtered.filter(
+          (loc) => loc.id.toLowerCase() === target || loc.aliases.includes(target)
         );
+      }
+
+      if (params?.city) {
+        const cityLower = params.city.toLowerCase();
+        filtered = filtered.filter((loc) =>
+          loc.city.toLowerCase().includes(cityLower)
+        );
+      }
+
+      if (params?.language) {
+        const langLower = params.language.toLowerCase();
+        filtered = filtered.filter((loc) =>
+          loc.languages.some((l) => l.toLowerCase().includes(langLower))
+        );
+      }
+
+      const includeStaff = params?.includeStaffRoster !== false;
+      const results = filtered.map((loc) => {
+        if (!includeStaff) {
+          const { staff, ...rest } = loc;
+          return rest;
+        }
+        return loc;
+      });
+
+      return {
+        total: results.length,
+        locations: results,
+      };
+    },
+  },
+
+  {
+    name: 'get_team_members',
+    description:
+      'Search and filter Associated Insurance Agency (AIA) employees and licensed insurance agents across Danbury, Watertown, and Bridgeport branches by office, language, specialty, or licensing status.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        office: {
+          type: 'string',
+          description: 'Filter by office branch ID ("all", "danbury", "danbury-hq", "watertown", "bridgeport")',
+          enum: ['all', 'danbury', 'danbury-hq', 'watertown', 'bridgeport'],
+        },
+        language: {
+          type: 'string',
+          description: 'Filter by spoken language (e.g., "Spanish", "Portuguese", "Turkish", "English", "es", "pt", "tr", "en")',
+        },
+        specialty: {
+          type: 'string',
+          description: 'Filter by specialty, line of insurance, or keyword (e.g., "Commercial", "Truckers", "Contractors", "Home & Auto", "Multifamily", "General Liability", "Umbrella")',
+        },
+        producersOnly: {
+          type: 'boolean',
+          description: 'If true, returns only licensed insurance producers with an active National Producer Number (NPN).',
+        },
+        locale: {
+          type: 'string',
+          description: 'Language locale for titles and bios ("en", "es", "pt", "tr"). Defaults to "en".',
+          enum: ['en', 'es', 'pt', 'tr'],
+        },
+      },
+    },
+    annotations: {
+      readOnlyHint: true,
+      idempotentHint: true,
+    },
+    execute: async (params?: {
+      office?: string;
+      language?: string;
+      specialty?: string;
+      producersOnly?: boolean;
+      locale?: 'en' | 'es' | 'pt' | 'tr';
+    }) => {
+      const activeLocale = params?.locale && teamData[params.locale] ? params.locale : 'en';
+      const allMembers = teamData[activeLocale].members;
+
+      const langMap: Record<string, string> = {
+        en: 'English',
+        es: 'Spanish',
+        pt: 'Portuguese',
+        tr: 'Turkish',
+        english: 'English',
+        spanish: 'Spanish',
+        portuguese: 'Portuguese',
+        turkish: 'Turkish',
+        inglés: 'English',
+        español: 'Spanish',
+        português: 'Portuguese',
+        türkçe: 'Turkish',
+      };
+
+      let filtered = allMembers;
+
+      // 1. Office filter
+      if (params?.office && params.office !== 'all') {
+        const targetOffice = params.office.toLowerCase().replace('-hq', '');
+        filtered = filtered.filter((m) => m.officeId.toLowerCase() === targetOffice);
+      }
+
+      // 2. Language filter
+      if (params?.language) {
+        const normalized = langMap[params.language.toLowerCase()] || params.language.toLowerCase();
+        filtered = filtered.filter((m) =>
+          m.languages.some((l) => {
+            const lNorm = langMap[l.toLowerCase()] || l.toLowerCase();
+            return lNorm.toLowerCase() === normalized.toLowerCase() || l.toLowerCase().includes(normalized.toLowerCase());
+          })
+        );
+      }
+
+      // 3. Specialty or keyword filter
+      if (params?.specialty) {
+        const specQuery = params.specialty.toLowerCase();
+        filtered = filtered.filter(
+          (m) =>
+            m.specialties.some((s) => s.toLowerCase().includes(specQuery)) ||
+            m.shortBio.toLowerCase().includes(specQuery) ||
+            m.role.toLowerCase().includes(specQuery)
+        );
+      }
+
+      // 4. Producers only filter
+      if (params?.producersOnly) {
+        filtered = filtered.filter((m) => m.isProducer);
+      }
+
+      // Enrich with office contact information
+      const enrichedMembers = filtered.map((m) => {
+        const office =
+          AIA_LOCATIONS.find(
+            (loc) => loc.id === m.officeId || loc.aliases.includes(m.officeId)
+          ) || AIA_LOCATIONS[0];
+
         return {
-          total: filtered.length,
-          locations: filtered,
+          id: m.id,
+          name: m.name,
+          role: m.role,
+          officeId: m.officeId,
+          officeName: m.officeName,
+          isProducer: m.isProducer,
+          npn: m.npn || null,
+          languages: m.languages,
+          experienceBadge: m.experienceBadge,
+          shortBio: m.shortBio,
+          specialties: m.specialties,
+          personalHighlight: m.personalHighlight,
+          officeContact: {
+            phone: office.phoneFormatted,
+            phoneRaw: office.phoneRaw,
+            email: office.email,
+            fullAddress: office.fullAddress,
+            directionsUrl: office.directionsUrl,
+          },
+        };
+      });
+
+      return {
+        total: enrichedMembers.length,
+        locale: activeLocale,
+        filtersApplied: {
+          office: params?.office || 'all',
+          language: params?.language || null,
+          specialty: params?.specialty || null,
+          producersOnly: Boolean(params?.producersOnly),
+        },
+        members: enrichedMembers,
+      };
+    },
+  },
+
+  {
+    name: 'get_employee_profile',
+    description:
+      'Retrieve full biography, National Producer Number (NPN), credentials, areas of specialty, languages spoken, and assigned office contact details for a specific AIA team member by employee ID or name.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        memberIdOrName: {
+          type: 'string',
+          description:
+            'Employee ID (e.g., "ronald-boucher", "yesica-ramirez", "camila-macedo", "ashley-mercan", "isayeli-perez", "ema-rego", "clara-de-barros", "betania-almeida", "janaija-hammer") or employee full/partial name.',
+        },
+        locale: {
+          type: 'string',
+          description: 'Language locale for biography and titles ("en", "es", "pt", "tr"). Defaults to "en".',
+          enum: ['en', 'es', 'pt', 'tr'],
+        },
+      },
+      required: ['memberIdOrName'],
+    },
+    annotations: {
+      readOnlyHint: true,
+      idempotentHint: true,
+    },
+    execute: async (params: { memberIdOrName: string; locale?: 'en' | 'es' | 'pt' | 'tr' }) => {
+      const activeLocale = params?.locale && teamData[params.locale] ? params.locale : 'en';
+      const allMembers = teamData[activeLocale].members;
+      const query = (params?.memberIdOrName || '').trim().toLowerCase();
+
+      if (!query) {
+        return {
+          found: false,
+          error: 'Parameter "memberIdOrName" cannot be empty.',
+          availableMembers: teamData.en.members.map((m) => ({ id: m.id, name: m.name, role: m.role })),
         };
       }
+
+      // Exact ID match first, then partial name match, then partial ID match
+      let member = allMembers.find((m) => m.id.toLowerCase() === query);
+      if (!member) {
+        member = allMembers.find((m) => m.name.toLowerCase().includes(query));
+      }
+      if (!member) {
+        member = allMembers.find((m) => m.id.toLowerCase().includes(query));
+      }
+
+      if (!member) {
+        return {
+          found: false,
+          searchedTerm: params.memberIdOrName,
+          error: `No employee matching "${params.memberIdOrName}" was found.`,
+          availableMembers: teamData.en.members.map((m) => ({
+            id: m.id,
+            name: m.name,
+            role: m.role,
+            office: m.officeName,
+          })),
+        };
+      }
+
+      const office =
+        AIA_LOCATIONS.find(
+          (loc) => loc.id === member!.officeId || loc.aliases.includes(member!.officeId)
+        ) || AIA_LOCATIONS[0];
+
       return {
-        total: AIA_LOCATIONS.length,
-        locations: AIA_LOCATIONS,
+        found: true,
+        locale: activeLocale,
+        profile: {
+          id: member.id,
+          name: member.name,
+          role: member.role,
+          officeId: member.officeId,
+          officeName: member.officeName,
+          isProducer: member.isProducer,
+          npn: member.npn || null,
+          languages: member.languages,
+          experienceBadge: member.experienceBadge,
+          shortBio: member.shortBio,
+          fullBio: member.fullBio,
+          specialties: member.specialties,
+          personalHighlight: member.personalHighlight,
+          officeContact: {
+            branchName: office.name,
+            streetAddress: office.streetAddress,
+            city: office.city,
+            state: office.state,
+            postalCode: office.postalCode,
+            fullAddress: office.fullAddress,
+            phone: office.phoneFormatted,
+            phoneRaw: office.phoneRaw,
+            fax: office.fax || null,
+            email: office.email,
+            hours: office.hours,
+            directionsUrl: office.directionsUrl,
+          },
+          consultation: {
+            directPhone: office.phoneFormatted,
+            quoteUrl: activeLocale === 'en' ? '/quote' : `/${activeLocale}/quote`,
+            bookingNote: `To consult with ${member.name}, call ${office.phoneFormatted} and request them by name or ask for ${member.officeName}.`,
+          },
+        },
       };
     },
   },
@@ -263,7 +683,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
   {
     name: 'find_agent_by_language',
     description:
-      'Search for AIA branches and consultation contacts that speak a specific language (e.g., Spanish, Portuguese, Turkish, English).',
+      'Search for AIA licensed insurance agents and customer service representatives that speak a specific language (Spanish, Portuguese, Turkish, English), including their assigned branch office and contact details.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -276,6 +696,10 @@ export const aiaWebMcpTools: WebMCPTool[] = [
           type: 'string',
           description: 'Optional preferred city (Danbury, Watertown, Bridgeport)',
         },
+        producersOnly: {
+          type: 'boolean',
+          description: 'If true, only returns licensed insurance producers fluent in the requested language.',
+        },
       },
       required: ['language'],
     },
@@ -283,7 +707,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params: { language: string; preferredCity?: string }) => {
+    execute: async (params: { language: string; preferredCity?: string; producersOnly?: boolean }) => {
       const langMap: Record<string, string> = {
         en: 'English',
         es: 'Spanish',
@@ -296,25 +720,79 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       };
       const normalizedLang = langMap[params.language.toLowerCase()] || params.language;
 
+      // Find matching branch offices
       const matchingLocations = AIA_LOCATIONS.filter((loc) =>
         loc.languages.some((l) => l.toLowerCase() === normalizedLang.toLowerCase())
       );
 
-      let primary = matchingLocations[0];
+      let primaryBranch = matchingLocations[0];
       if (params.preferredCity) {
         const cityMatch = matchingLocations.find((l) =>
           l.city.toLowerCase().includes(params.preferredCity!.toLowerCase())
         );
-        if (cityMatch) primary = cityMatch;
+        if (cityMatch) primaryBranch = cityMatch;
       }
+
+      // Find all matching agents from teamData
+      let matchingMembers = teamData.en.members.filter((m) =>
+        m.languages.some((l) => l.toLowerCase() === normalizedLang.toLowerCase())
+      );
+
+      if (params.preferredCity) {
+        const prefCity = params.preferredCity.toLowerCase();
+        matchingMembers = [...matchingMembers].sort((a, b) => {
+          const aMatch = a.officeName.toLowerCase().includes(prefCity) ? -1 : 1;
+          const bMatch = b.officeName.toLowerCase().includes(prefCity) ? -1 : 1;
+          return aMatch - bMatch;
+        });
+      }
+
+      if (params.producersOnly) {
+        matchingMembers = matchingMembers.filter((m) => m.isProducer);
+      }
+
+      const formattedAgents = matchingMembers.map((m) => {
+        const office =
+          AIA_LOCATIONS.find(
+            (loc) => loc.id === m.officeId || loc.aliases.includes(m.officeId)
+          ) || AIA_LOCATIONS[0];
+
+        return {
+          id: m.id,
+          name: m.name,
+          role: m.role,
+          officeId: m.officeId,
+          officeName: m.officeName,
+          isProducer: m.isProducer,
+          npn: m.npn || null,
+          specialties: m.specialties,
+          languages: m.languages,
+          officePhone: office.phoneFormatted,
+        };
+      });
+
+      // Recommended agent: prefer licensed producer in preferred city, or first producer
+      const recommendedAgent =
+        formattedAgents.find(
+          (a) =>
+            a.isProducer &&
+            (!params.preferredCity || a.officeName.toLowerCase().includes(params.preferredCity.toLowerCase()))
+        ) ||
+        formattedAgents.find((a) => a.isProducer) ||
+        formattedAgents[0] ||
+        null;
 
       return {
         languageRequested: normalizedLang,
-        supported: matchingLocations.length > 0,
-        matchingBranchesCount: matchingLocations.length,
-        recommendedBranch: primary || null,
+        supported: matchingLocations.length > 0 && formattedAgents.length > 0,
+        matchingAgentsCount: formattedAgents.length,
+        matchingAgents: formattedAgents,
+        recommendedAgent,
+        recommendedBranch: primaryBranch || null,
         allMatchingBranches: matchingLocations,
-        bookingNote: `Call ${primary ? primary.phone : '203-748-9272'} to speak directly with an AIA ${normalizedLang}-speaking agent.`,
+        bookingNote: recommendedAgent
+          ? `Call ${recommendedAgent.officePhone} to speak with ${recommendedAgent.name} (${recommendedAgent.role}, ${recommendedAgent.officeName}) fluent in ${normalizedLang}.`
+          : `Call ${primaryBranch ? primaryBranch.phone : '203-748-9272'} to speak directly with an AIA ${normalizedLang}-speaking representative.`,
       };
     },
   },

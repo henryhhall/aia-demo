@@ -31,7 +31,7 @@ Associated Insurance Agency (AIA) is a Connecticut-licensed independent insuranc
 
 ## AI & Developer Endpoints
 
-- [Model Context Protocol (MCP) Endpoint](https://aia-danbury.com/api/mcp): Live JSON-RPC 2.0 endpoint enabling AI agents (Claude, Cursor, Antigravity) to list and execute 9 insurance tools over HTTP.
+- [Model Context Protocol (MCP) Endpoint](https://aia-danbury.com/api/mcp): Live JSON-RPC 2.0 endpoint enabling AI agents (Claude, Cursor, Antigravity) to list and execute 11 insurance tools over HTTP.
 - [XML Sitemap Index](https://aia-danbury.com/sitemap-index.xml): Automated XML sitemap index adhering to sitemaps.org standard listing all multi-locale URLs.
 - [Full LLM Knowledge Base](https://aia-danbury.com/llms-full.txt): Comprehensive unstructured documentation including state statutory insurance minimums and carrier hotlines.
 
@@ -45,12 +45,14 @@ Associated Insurance Agency (AIA) is a Connecticut-licensed independent insuranc
 
 The following tools are exposed natively in the browser via `document.modelContext` and on the HTTP MCP server at `/api/mcp`:
 
-1. `get_agency_profile`: Retrieve high-level agency profile, licensing, states, and contact points.
-2. `get_office_locations`: Branch addresses, phone numbers, GPS coordinates, and languages.
-3. `find_agent_by_language`: Match offices with agents fluent in Spanish, Portuguese, Turkish, or English.
-4. `get_insurance_products`: Detailed personal and commercial coverage descriptions and discounts.
-5. `calculate_quote_estimate`: Benchmark premium estimation formula for home, auto, renters, and commercial lines.
-6. `submit_quote_request`: Staged lead submission endpoint.
-7. `get_carrier_billing_directory`: 11 carrier direct contact points and payment links.
-8. `search_knowledge_base`: Semantic FAQ, Connecticut liability minimums, and claims guidelines.
-9. `check_office_open_status`: Real-time branch open/closed verification based on Eastern Time.
+1. `get_agency_profile`: Retrieve high-level agency profile, licensing, states, branch network, and contact points.
+2. `get_office_locations`: Branch addresses, phone numbers, GPS coordinates, Google Maps directions links, and assigned staff rosters.
+3. `get_team_members`: Search and filter employee directory across Danbury, Watertown, and Bridgeport by branch, language, specialty, or licensed producer status.
+4. `get_employee_profile`: Retrieve full biography, National Producer Number (NPN), credentials, specialties, languages, and direct branch contact details for any team member.
+5. `find_agent_by_language`: Search for multilingual licensed agents and customer service representatives by language and preferred branch.
+6. `get_insurance_products`: Detailed personal and commercial coverage descriptions and discounts.
+7. `calculate_quote_estimate`: Benchmark premium estimation formula for home, auto, renters, and commercial lines.
+8. `submit_quote_request`: Staged lead submission endpoint.
+9. `get_carrier_billing_directory`: 11 carrier direct contact points and payment links.
+10. `search_knowledge_base`: Semantic FAQ, Connecticut liability minimums, and claims guidelines.
+11. `check_office_open_status`: Real-time branch open/closed verification based on Eastern Time.

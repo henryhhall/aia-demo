@@ -4,7 +4,9 @@ import { aiaWebMcpTools } from '../lib/webmcp/tools.ts';
 
 const SAMPLE_INPUTS: Record<string, any> = {
   get_agency_profile: {},
-  get_office_locations: { city: 'Danbury' },
+  get_office_locations: { officeId: 'all', includeStaffRoster: true },
+  get_team_members: { office: 'all', language: 'Spanish', specialty: 'Commercial' },
+  get_employee_profile: { memberIdOrName: 'ronald-boucher', locale: 'en' },
   find_agent_by_language: { language: 'es', preferredCity: 'Bridgeport' },
   get_insurance_products: { category: 'personal' },
   calculate_quote_estimate: {

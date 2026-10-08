@@ -95,15 +95,17 @@ Connecticut General Statutes § 14-112 require minimum automobile liability limi
 AIA publishes its entire agency capability via WebMCP (`navigator.modelContext` and `/api/mcp`).
 
 ### Available WebMCP Tools
-1. `get_agency_profile`: Returns agency profile and licensing info.
-2. `get_office_locations`: Structured directory with addresses, phone numbers, and coordinates.
-3. `find_agent_by_language`: Filters branch agents by target language (`en`, `es`, `pt`, `tr`).
-4. `get_insurance_products`: Personal and commercial line specifications.
-5. `calculate_quote_estimate`: Benchmark premium estimation formula.
-6. `submit_quote_request`: Lead submission tool.
-7. `get_carrier_billing_directory`: 11 carrier direct contact points.
-8. `search_knowledge_base`: Semantic FAQ and policy guidelines query.
-9. `check_office_open_status`: Live office hours check.
+1. `get_agency_profile`: Returns agency profile, founding history, branch network, and licensing info.
+2. `get_office_locations`: Structured directory with addresses, phone numbers, GPS coordinates, Google Maps directions, and staff rosters.
+3. `get_team_members`: Query and filter 9 licensed agents and CSRs across Danbury, Watertown, and Bridgeport branches by office, language, specialty, or producer licensing status.
+4. `get_employee_profile`: Retrieve full biography, National Producer Number (NPN), credentials, specialties, languages, and direct branch contact details for any team member.
+5. `find_agent_by_language`: Search for multilingual licensed agents and customer service representatives by language (`en`, `es`, `pt`, `tr`) and preferred branch.
+6. `get_insurance_products`: Personal and commercial line specifications.
+7. `calculate_quote_estimate`: Benchmark premium estimation formula.
+8. `submit_quote_request`: Lead submission tool.
+9. `get_carrier_billing_directory`: 11 carrier direct contact points.
+10. `search_knowledge_base`: Semantic FAQ and policy guidelines query.
+11. `check_office_open_status`: Live office hours check.
 
 ---
 
