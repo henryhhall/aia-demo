@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { getRecaptchaToken } from '../lib/recaptcha';
+import RecaptchaLegalNotice from './RecaptchaLegalNotice';
 
 type Step = 1 | 2 | 3 | 4;
 type InsuranceType = 'home' | 'auto' | 'renters' | 'business' | 'workers-comp' | '';
@@ -205,6 +207,9 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
     setErrorMessage('');
 
     try {
+      // Execute Google reCAPTCHA v3
+      const recaptchaToken = await getRecaptchaToken('quote_form');
+
       const payload = {
         name: formData.name,
         email: formData.email,
@@ -215,6 +220,7 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
         currentCarrier: formData.currentCarrier,
         notes: `Effective Date: ${formData.effectiveDate || 'ASAP'}. Notes: ${formData.notes || 'None'}`,
         source: 'Web_Form',
+        recaptchaToken,
       };
 
       const response = await fetch('/api/quote', {
@@ -226,11 +232,13 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
       const resData = await response.json();
       if (resData.success && resData.confirmationCode) {
         setConfirmationCode(resData.confirmationCode);
+        setStep(4);
+      } else if (!resData.success) {
+        setErrorMessage(resData.error || 'Unable to submit quote. Please try again.');
       } else {
         setConfirmationCode('AIA-' + Math.floor(100000 + Math.random() * 900000));
+        setStep(4);
       }
-
-      setStep(4);
     } catch {
       // Fallback in case of offline dev environment
       setConfirmationCode('AIA-' + Math.floor(100000 + Math.random() * 900000));
@@ -479,6 +487,9 @@ export default function QuoteForm({ lang = 'en' }: { lang?: 'en' | 'es' | 'pt' |
               )}
             </button>
           </div>
+
+          {/* Google reCAPTCHA v3 Compliance Notice */}
+          <RecaptchaLegalNotice lang={lang} className="pt-2" />
         </form>
       )}
 

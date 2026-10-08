@@ -7,6 +7,7 @@
 [![UI: React 19](https://img.shields.io/badge/UI-React%20v19.2.7-blue.svg)](https://react.dev)
 [![Styling: Tailwind CSS v4](https://img.shields.io/badge/Styling-Tailwind%20CSS%20v4.3.2-38bdf8.svg)](https://tailwindcss.com)
 [![WebMCP Enabled](https://img.shields.io/badge/WebMCP-JSON--RPC%202.0-8b5cf6.svg)](#-webmcp--agentic-ai-integration)
+[![Bot Defense: reCAPTCHA v3](https://img.shields.io/badge/Bot%20Defense-reCAPTCHA%20v3-emerald.svg)](#-bot-defense--security-recaptcha-v3)
 [![Multilingual](https://img.shields.io/badge/Locales-EN%20%7C%20ES%20%7C%20PT%20%7C%20TR-emerald.svg)](#-multilingual-architecture-i18n)
 [![Deployment: Vercel](https://img.shields.io/badge/Deploy-Vercel-black.svg)](https://vercel.com)
 
@@ -205,6 +206,22 @@ cd aia
 npm install
 ```
 
+### Environment Variables
+
+Copy the template environment file to create your local `.env`:
+
+```bash
+cp .env.example .env
+```
+
+| Variable | Scope | Description |
+| :--- | :--- | :--- |
+| `PUBLIC_RECAPTCHA_SITE_KEY` | Client & Server | Google reCAPTCHA v3 site key injected into client scripts. |
+| `RECAPTCHA_SECRET_KEY` | Server-only | Google reCAPTCHA v3 private secret key for out-of-band verification. |
+
+> [!NOTE]
+> Out of the box, `.env.example` includes Google's official v3 test keys which always pass with a human score of `1.0`. For production, configure your live keys in **Vercel Project Settings** (`Settings` → `Environment Variables`).
+
 ### Development Server
 
 Start the local development server:
@@ -300,17 +317,35 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 
 ### 2. Quote Intake (`/api/quote`)
 
-- **POST `/api/quote`**: Submits a lead payload (`name`, `email`, `phone`, `insuranceType`, `preferredOffice`, `preferredLanguage`, `notes`). Returns a confirmation code (`AIA-XXXXXX`).
+- **POST `/api/quote`**: Submits a lead payload (`name`, `email`, `phone`, `insuranceType`, `preferredOffice`, `preferredLanguage`, `notes`, `ratingPayload`, `recaptchaToken`).
+  - **Bot Mitigation**: Validates Google reCAPTCHA v3 token (`quote_form` action, score $\ge 0.5$) and hidden honeypot fields.
+  - Returns a confirmation code (`AIA-XXXXXX`) and stores `recaptchaScore` in inquiry metadata.
 - **GET `/api/quote`**: Returns recent submissions count and metadata for internal testing.
 
-### 3. Contact Inquiries & Bot Defense (`/api/contact`)
+### 3. Contact Inquiries (`/api/contact`)
 
-- **POST `/api/contact`**: Ingests direct customer inquiries (`name`, `email`, `phone`, `preferredOffice`, `subject`, `message`, `preferredLanguage`).
-  - **Honeypot Validation**: Inspects hidden form trap fields (`hp_website`, `hp_company`) and evaluates submission elapsed time (`form_rendered_at`) to proactively block automated bot submissions.
+- **POST `/api/contact`**: Ingests direct customer inquiries (`name`, `email`, `phone`, `preferredOffice`, `subject`, `message`, `preferredLanguage`, `recaptchaToken`).
+  - **Google reCAPTCHA v3**: Out-of-band verification against `https://www.google.com/recaptcha/api/siteverify` requiring score $\ge 0.5$ and action `contact_form`.
+  - **Honeypot Validation**: Inspects hidden decoy trap fields (`hp_website`, `hp_company`) and evaluates submission elapsed time (`form_rendered_at < 1200ms`) to proactively drop automated scraper traffic.
   - Returns an inquiry confirmation reference ID (`inq_XXXXXX`).
 - **GET `/api/contact`**: Returns recent submission counts for internal monitoring.
 
 ---
+
+## 🛡️ Bot Defense & Security (reCAPTCHA v3)
+
+All lead generation and inquiry forms across the site employ a layered, frictionless security model:
+
+1. **Google reCAPTCHA v3 (Invisible)**:
+   - Client utility (`src/lib/recaptcha.ts`) dynamically loads Google's verification script on demand only on interactive form views, maintaining Core Web Vitals.
+   - Generates semantic action tokens (`contact_form`, `quote_form`).
+   - Server-side verification (`src/lib/recaptchaVerify.ts`) inspects the returned token, validates action matching, and enforces a minimum human score of `0.5`.
+2. **Invisible Decoy Honeypots**:
+   - Hidden off-screen form inputs (`hp_website`, `hp_company`) invisible to real users but populated by automated script bots.
+   - Time-delta tracking (`form_rendered_at`) detects inhuman instant submissions (< 1.2s).
+3. **Multilingual Legal Compliance**:
+   - Explicit on-form branding component (`RecaptchaLegalNotice.tsx`) linking to Google's Privacy Policy & Terms of Service across **English**, **Spanish**, **Portuguese**, and **Turkish**.
+   - Global CSS styling (`src/styles/global.css`) suppresses the default floating `.grecaptcha-badge`, keeping the WebMCP inspector and mobile navigation clean while maintaining full Google Terms compliance.
 
 ## 🏢 Physical Office Locations
 

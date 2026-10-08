@@ -26,4 +26,9 @@
     color: var(--color-text-primary);
     -webkit-font-smoothing: antialiased;
   }
+
+  /* Hide default floating reCAPTCHA badge in favor of explicit on-form legal notice */
+  .grecaptcha-badge {
+    visibility: hidden !important;
+  }
 }

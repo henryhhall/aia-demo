@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { verifyRecaptcha } from '../../lib/recaptchaVerify';
 
 export const prerender = false;
 
@@ -18,7 +19,42 @@ export const POST: APIRoute = async ({ request }) => {
       currentCarrier = '',
       notes = '',
       source = 'Web_Form',
+      recaptchaToken,
+      // Optional Honeypots
+      hp_website = '',
+      hp_company = '',
     } = data;
+
+    // Honeypot trap check
+    if (hp_website || hp_company) {
+      console.warn('[Security / Honeypot] Quote submission blocked via honeypot trap.');
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'Automated submission detected.',
+        }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
+    // Google reCAPTCHA v3 verification
+    const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'quote_form', 0.5);
+    if (!recaptchaResult.success) {
+      console.warn('[Security / reCAPTCHA] Quote submission blocked:', recaptchaResult.error);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: recaptchaResult.error || 'Security verification failed. Please try again.',
+        }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
 
     if (!name || !email || !phone) {
       return new Response(
@@ -49,6 +85,7 @@ export const POST: APIRoute = async ({ request }) => {
       notes,
       source,
       ratingPayload: data.ratingPayload || null,
+      recaptchaScore: recaptchaResult.score ?? 1.0,
       submittedAt: new Date().toISOString(),
     };
 

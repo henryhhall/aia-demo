@@ -26,7 +26,18 @@ const teamStructuredData = {
       "name": member.name,
       "jobTitle": member.role,
       "description": member.shortBio,
-      "knowsLanguage": member.languages
+      "knowsLanguage": member.languages,
+      "workLocation": {
+        "@type": "Place",
+        "name": `Associated Insurance Agency - ${member.officeName}`
+      },
+      ...(member.isProducer && member.npn ? {
+        "identifier": {
+          "@type": "PropertyValue",
+          "name": "National Producer Number (NPN)",
+          "value": member.npn
+        }
+      } : {})
     }))
   }
 };

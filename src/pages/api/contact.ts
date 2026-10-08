@@ -1,4 +1,5 @@
 import type { APIRoute } from 'astro';
+import { verifyRecaptcha } from '../../lib/recaptchaVerify';
 
 export const prerender = false;
 
@@ -16,6 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
       subject = 'General Inquiry',
       message,
       preferredLanguage = 'en',
+      recaptchaToken,
       // Honeypot fields
       hp_website = '',
       hp_company = '',
@@ -61,6 +63,22 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
+    // Google reCAPTCHA v3 verification
+    const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'contact_form', 0.5);
+    if (!recaptchaResult.success) {
+      console.warn('[Security / reCAPTCHA] Contact form blocked:', recaptchaResult.error);
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: recaptchaResult.error || 'Security check failed. Please refresh and try again.',
+        }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
     // Standard required field validation
     if (!name || !email || !message) {
       return new Response(
@@ -100,6 +118,7 @@ export const POST: APIRoute = async ({ request }) => {
       subject,
       message,
       preferredLanguage,
+      recaptchaScore: recaptchaResult.score ?? 1.0,
       submittedAt: new Date().toISOString(),
     };
 

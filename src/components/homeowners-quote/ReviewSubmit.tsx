@@ -13,6 +13,8 @@ import {
 } from '../../lib/homeownersQuoteSchema';
 import type { HomeownersLang } from '../../lib/homeownersQuoteI18n';
 import { homeownersTranslations } from '../../lib/homeownersQuoteI18n';
+import { getRecaptchaToken } from '../../lib/recaptcha';
+import RecaptchaLegalNotice from '../RecaptchaLegalNotice';
 
 interface ReviewSubmitProps {
   formData: HomeownersQuoteFormData;
@@ -98,6 +100,9 @@ export default function ReviewSubmit({
     const structuredPayload = formatRatingApiPayload(formData);
 
     try {
+      // Execute Google reCAPTCHA v3
+      const recaptchaToken = await getRecaptchaToken('quote_form');
+
       // Send to internal API endpoint if available, with graceful fallback
       const response = await fetch('/api/quote', {
         method: 'POST',
@@ -109,6 +114,7 @@ export default function ReviewSubmit({
           insuranceType: 'home',
           preferredOffice: 'Danbury',
           ratingPayload: structuredPayload,
+          recaptchaToken,
         }),
       }).catch(() => null);
 
@@ -605,6 +611,9 @@ export default function ReviewSubmit({
           )}
         </button>
       </div>
+
+      {/* Google reCAPTCHA v3 Compliance Notice */}
+      <RecaptchaLegalNotice lang={lang} className="pt-2 text-center" />
     </form>
   );
 }

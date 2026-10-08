@@ -1,4 +1,6 @@
 import { useState, useEffect } from 'react';
+import { getRecaptchaToken } from '../lib/recaptcha';
+import RecaptchaLegalNotice from './RecaptchaLegalNotice';
 
 interface ContactFormProps {
   lang?: 'en' | 'es' | 'pt' | 'tr';
@@ -194,6 +196,9 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
     }
 
     try {
+      // Execute Google reCAPTCHA v3
+      const recaptchaToken = await getRecaptchaToken('contact_form');
+
       const payload = {
         name: formData.name.trim(),
         email: formData.email.trim(),
@@ -202,6 +207,7 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
         subject: formData.subject,
         message: formData.message.trim(),
         preferredLanguage: lang,
+        recaptchaToken,
         hp_website: honeypotWebsite,
         hp_company: honeypotCompany,
         form_rendered_at: renderedAt,
@@ -442,6 +448,9 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
                 t.submitBtn
               )}
             </button>
+
+            {/* Google reCAPTCHA v3 Compliance Notice */}
+            <RecaptchaLegalNotice lang={lang} className="pt-1" />
           </form>
         )}
       </div>

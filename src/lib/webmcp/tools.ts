@@ -22,6 +22,13 @@ export const AIA_LOCATIONS = [
     latitude: 41.4087,
     longitude: -73.4285,
     isHeadquarters: true,
+    staff: [
+      { name: 'Ronald T. Boucher', role: 'Principal & Founder', isProducer: true, npn: '8963915' },
+      { name: 'Isayeli Perez De La Mora', role: 'Customer Service Representative', isProducer: true, npn: '20265776' },
+      { name: 'Ema Rego', role: 'Customer Service Representative', isProducer: true, npn: '21656039' },
+      { name: 'Yesica D. Ramirez-Mendez', role: 'Customer Service Representative', isProducer: false },
+      { name: 'Clara De Barros', role: 'Customer Service Representative', isProducer: false },
+    ],
   },
   {
     id: 'watertown',
@@ -37,6 +44,10 @@ export const AIA_LOCATIONS = [
     latitude: 41.6018,
     longitude: -73.1139,
     isHeadquarters: false,
+    staff: [
+      { name: 'Ashley L. Mercan', role: 'Customer Service Representative', isProducer: false },
+      { name: 'Janaija S. Hammer', role: 'Front Desk CSR', isProducer: false },
+    ],
   },
   {
     id: 'bridgeport',
@@ -52,6 +63,10 @@ export const AIA_LOCATIONS = [
     latitude: 41.1963,
     longitude: -73.1972,
     isHeadquarters: false,
+    staff: [
+      { name: 'Camila Macedo de Jesus', role: 'Customer Service Representative', isProducer: true, npn: '19946151' },
+      { name: 'Betania Almeida', role: 'Customer Service Representative', isProducer: false },
+    ],
   },
 ];
 

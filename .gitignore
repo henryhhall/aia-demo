@@ -98,3 +98,9 @@ scratch/
 .antigravity/
 .tempmediaStorage/
 *.patch
+
+# Python Bytecode & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
