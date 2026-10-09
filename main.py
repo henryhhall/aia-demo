@@ -14,6 +14,16 @@ from homeowners_quote_service import (
     SafetyAndRisks,
 )
 from office_employee_directory_service import OfficeEmployeeDirectoryService
+from unified_quote_service import (
+    CommercialAutoAnchor,
+    CommercialGLAnchor,
+    HomeownersAnchor,
+    LineOfBusiness,
+    PersonalAutoAnchor,
+    SharedFoundation,
+    UmbrellaAnchor,
+    UnifiedQuoteRequest,
+)
 
 
 def example_homeowners_quote() -> None:
@@ -183,12 +193,107 @@ def example_office_employee_directory() -> None:
     print("Successfully verified office and employee directory service.\n")
 
 
+def example_unified_quote() -> None:
+    """Showcase the unified quote process flow with shared foundation and dynamic anchors.
+
+    Demonstrates how a single shared foundation (Name, Phone, Email,
+    Reach Preference, SMS Consent) pairs with a single line-specific anchor
+    across all five insurance lines to allow the producer to perform
+    targeted prep work before the first phone call.
+    """
+    print("=" * 60)
+    print("AIA UNIFIED QUOTE PROCESS - SHARED FOUNDATION & LINE ANCHORS")
+    print("=" * 60)
+
+    # 1. Establish the Shared Contact Foundation
+    foundation = SharedFoundation(
+        full_name="Sarah Jenkins",
+        phone="(203) 555-0199",
+        email="sarah.jenkins@example.com",
+        reach_method="Text",
+        reach_time_preference="Morning",
+        sms_consent=True,
+        preferred_office="Danbury",
+    )
+
+    # 2. Showcase each of the 5 products with its single specific anchor:
+    cases = [
+        (
+            LineOfBusiness.HOMEOWNERS,
+            HomeownersAnchor(
+                property_address="50 Newtown Road, Danbury, CT 06810"
+            ),
+        ),
+        (
+            LineOfBusiness.PERSONAL_AUTO,
+            PersonalAutoAnchor(
+                vehicles_summary="2022 Subaru Outback & 2019 Toyota RAV4"
+            ),
+        ),
+        (
+            LineOfBusiness.COMMERCIAL_AUTO,
+            CommercialAutoAnchor(
+                business_name="Danbury Heating & Air LLC",
+                number_of_vehicles=4,
+            ),
+        ),
+        (
+            LineOfBusiness.UMBRELLA,
+            UmbrellaAnchor(
+                underlying_coverage_status=(
+                    "Home & 2 Autos with Travelers ($250k/$500k auto limits, "
+                    "$500k home liability)"
+                )
+            ),
+        ),
+        (
+            LineOfBusiness.COMMERCIAL_GL,
+            CommercialGLAnchor(
+                business_name="Northeast Electrical Contractors LLC",
+                nature_of_business=(
+                    "Commercial and residential electrical wiring & service"
+                ),
+            ),
+        ),
+    ]
+
+    for line, anchor in cases:
+        request = UnifiedQuoteRequest(
+            shared=foundation,
+            line_of_business=line,
+            anchor=anchor,
+        )
+
+        is_valid, errors = request.validate()
+        brief = request.generate_producer_prep_brief()
+
+        print(f"\n[ Product Line: {line.value} ]")
+        print(f"Quote Ref ID: {brief['quoteReferenceId']}")
+        print(f"Validation: {'PASS' if is_valid else 'FAIL'}")
+        if not is_valid:
+            print(f"Errors: {errors}")
+            continue
+
+        print(f"Why Producer Needs This Anchor:")
+        print(f"  -> {brief['producerActionSummary']['whyProducerNeedsThis']}")
+        print("Producer Prep Steps Before First Contact:")
+        for step in brief["producerActionSummary"]["actionBeforeFirstCall"]:
+            print(f"  * {step}")
+        print("Anchor Payload Recorded:")
+        print(f"  {brief['lineSpecificAnchorData']}")
+
+    print("\n" + "=" * 60)
+    print("Successfully verified unified quote foundation architecture.\n")
+
+
 def main() -> None:
     """Entry point for the application. Delegates directly to showcase methods."""
+    example_unified_quote()
     example_homeowners_quote()
     example_office_employee_directory()
 
 
 if __name__ == "__main__":
     main()
+
 

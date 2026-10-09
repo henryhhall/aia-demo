@@ -13,10 +13,15 @@ export const POST: APIRoute = async ({ request }) => {
       name,
       email,
       phone,
-      insuranceType,
+      insuranceType = 'Home',
       preferredOffice = 'Danbury',
       preferredLanguage = 'en',
       currentCarrier = '',
+      reachMethod = 'Call',
+      reachTime = 'Anytime',
+      smsConsent = false,
+      anchorData = {},
+      producerPrepRationale = '',
       notes = '',
       source = 'Web_Form',
       recaptchaToken,
@@ -69,8 +74,44 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    // Generate formatted prefix per insurance line
+    const typePrefix = (insuranceType || 'GEN').substring(0, 3).toUpperCase();
     const confirmationCode =
-      data.confirmationCode || 'AIA-' + Math.floor(100000 + Math.random() * 900000);
+      data.confirmationCode ||
+      `AIA-${typePrefix}-${Math.floor(100000 + Math.random() * 900000)}`;
+
+    // Build synthesized prep brief for the producer if manual notes aren't provided
+    let synthesizedNotes = notes;
+    if (!synthesizedNotes && anchorData && Object.keys(anchorData).length > 0) {
+      const anchorSummaries: string[] = [];
+      if (anchorData.propertyAddress) {
+        anchorSummaries.push(`Property Address: ${anchorData.propertyAddress}`);
+      }
+      if (anchorData.vehicles) {
+        anchorSummaries.push(`Vehicles / VIN: ${anchorData.vehicles}`);
+      }
+      if (anchorData.businessName) {
+        anchorSummaries.push(`Business Name: ${anchorData.businessName}`);
+      }
+      if (anchorData.vehicleCount) {
+        anchorSummaries.push(`Commercial Vehicles: ${anchorData.vehicleCount}`);
+      }
+      if (anchorData.underlyingCoverageStatus) {
+        anchorSummaries.push(`Underlying Coverage: ${anchorData.underlyingCoverageStatus}`);
+      }
+      if (anchorData.natureOfBusiness) {
+        anchorSummaries.push(`Industry / Trade: ${anchorData.natureOfBusiness}`);
+      }
+      if (producerPrepRationale) {
+        anchorSummaries.push(`Producer Prep Focus: ${producerPrepRationale}`);
+      }
+      anchorSummaries.push(
+        `Contact Preference: Reach via ${reachMethod} (${reachTime}) | SMS Consent: ${
+          smsConsent ? 'Granted' : 'Not Granted'
+        }`
+      );
+      synthesizedNotes = anchorSummaries.join(' | ');
+    }
 
     const submission = {
       id: 'sub_' + Math.random().toString(36).substring(2, 9),
@@ -82,7 +123,12 @@ export const POST: APIRoute = async ({ request }) => {
       preferredOffice,
       preferredLanguage,
       currentCarrier,
-      notes,
+      reachMethod,
+      reachTime,
+      smsConsent: Boolean(smsConsent),
+      anchorData,
+      producerPrepRationale,
+      notes: synthesizedNotes || 'No additional notes provided.',
       source,
       ratingPayload: data.ratingPayload || null,
       recaptchaScore: recaptchaResult.score ?? 1.0,
