@@ -1,29 +1,4 @@
-# Associated Insurance Agency (Demo / Development Site)
-# LLM & AI Agents explicitly permitted for indexing and retrieval (GEO Standards)
-User-agent: GPTBot
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# Discourage general search engine crawlers from indexing development demo
+# Block all search engines and web crawlers from this prototype / demo site
 User-agent: *
 Disallow: /
 
-# XML Sitemaps
-Sitemap: https://aia-danbury.com/sitemap-index.xml
-Sitemap: https://aia-danbury.com/sitemap.xml
-
-# Agent & LLM Context Discovery (Permitted for AI Assistants & WebMCP Tools)
-# WebMCP: https://aia-danbury.com/api/mcp
-# LLMs Context: https://aia-danbury.com/llms.txt
-# LLMs Full Context: https://aia-danbury.com/llms-full.txt
