@@ -1,0 +1,248 @@
+---
+// CommercialAuditBanner.astro
+// High-converting B2B Lead Magnet for Commercial Insurance pages across Connecticut
+// Promotes a Free 15-Minute Commercial Coverage & Rate Audit to identify critical policy exclusions
+import { getRelativeLocaleUrl } from 'astro:i18n';
+
+interface Props {
+  lang?: 'en' | 'es' | 'pt' | 'tr';
+  compact?: boolean;
+}
+
+const { lang = 'en', compact = false } = Astro.props;
+const currentLang = (['en', 'es', 'pt', 'tr'].includes(lang) ? lang : 'en') as 'en' | 'es' | 'pt' | 'tr';
+
+const content = {
+  en: {
+    badge: 'Free Connecticut Business Risk Audit',
+    headline: 'Free 15-Minute Commercial Coverage & Rate Audit',
+    subtitle:
+      'Over 68% of commercial insurance policies we review in Connecticut contain hidden exclusions, missing subcontractor endorsements, or rating errors that void coverage during a claim. Let our licensed commercial specialists inspect your declarations page with zero cost or obligation.',
+    checklistTitle: 'What We Uncover in Your 15-Minute Policy Review:',
+    checks: [
+      {
+        title: 'Subcontractor Warranty Clauses',
+        desc: 'Hidden contract wording that voids your General Liability coverage if your subcontractors do not maintain equal limits and certificates.',
+      },
+      {
+        title: 'Per-Location Aggregate Limits',
+        desc: 'Ensures a claim at one job site or tenant location doesn’t exhaust your total annual liability limit for all your other contracts.',
+      },
+      {
+        title: 'Hired & Non-Owned Auto Exclusions',
+        desc: 'Protects your company when employees run business errands in personal vehicles — personal auto policies always reject commercial claims.',
+      },
+      {
+        title: 'NCCI Workers’ Comp Code Errors',
+        desc: 'Fix misclassified job codes and payroll allocations before annual state audits generate thousands in surprise penalty invoices.',
+      },
+    ],
+    statNumber: '15-25%',
+    statLabel: 'Typical Premium Savings Found',
+    ctaQuote: 'Request Your Free 15-Min Audit',
+    ctaCall: 'Call Commercial Desk: (203) 748-9272',
+    phoneRaw: '2037489272',
+    guarantee: '100% confidential. No high-pressure sales — just objective Connecticut underwriting analysis.',
+  },
+  es: {
+    badge: 'Auditoría de Riesgo Comercial Gratuita en CT',
+    headline: 'Auditoría Gratuita de Cobertura y Tarifas Comerciales (15 Min)',
+    subtitle:
+      'Más del 68% de las pólizas comerciales que revisamos en Connecticut tienen exclusiones ocultas, endosos de subcontratistas faltantes o errores de tarifas que anulan la indemnización tras un accidente. Nuestros especialistas comerciales revisan su póliza actual sin costo ni compromiso.',
+    checklistTitle: 'Lo que descubrimos en su revisión de póliza de 15 minutos:',
+    checks: [
+      {
+        title: 'Garantías de Subcontratistas Ocultas',
+        desc: 'Cláusulas que anulan su Responsabilidad General si sus subcontratistas no cuentan con pólizas y certificados con límites idénticos.',
+      },
+      {
+        title: 'Límites Agregados por Ubicación',
+        desc: 'Evite que un reclamo en una sola obra o local comercial agote toda su cobertura anual para el resto de sus proyectos activos.',
+      },
+      {
+        title: 'Exclusión de Autos Personales para Negocios',
+        desc: 'Proteja a su empresa cuando empleados usan vehículos propios para recados de trabajo; el seguro personal rechaza reclamos comerciales.',
+      },
+      {
+        title: 'Códigos NCCI de Compensación de Trabajadores',
+        desc: 'Corrija clasificaciones de nómina erróneas antes de que las auditorías anuales del estado le generen facturas de penalización sorpresa.',
+      },
+    ],
+    statNumber: '15-25%',
+    statLabel: 'Ahorro Habitual Identificado',
+    ctaQuote: 'Solicitar Auditoría Gratuita de 15 Min',
+    ctaCall: 'Llamar a Sede Danbury: (203) 748-9272',
+    phoneRaw: '2037489272',
+    guarantee: '100% confidencial. Sin presión comercial: análisis técnico objetivo por agentes licenciados.',
+  },
+  pt: {
+    badge: 'Auditoria Gratuita de Risco Empresarial em CT',
+    headline: 'Auditoria Gratuita de Coberturas e Tarifas Comerciais (15 Min)',
+    subtitle:
+      'Mais de 68% das apólices comerciais analisadas em Connecticut contêm exclusões ocultas, ausência de endossos para subcontratados ou erros de cálculo que anulam a proteção na hora do sinistro. Nossos especialistas comerciais analisam sua apólice sem nenhum custo ou compromisso.',
+    checklistTitle: 'O que identificamos na sua análise de 15 minutos:',
+    checks: [
+      {
+        title: 'Cláusulas de Garantia de Subcontratados',
+        desc: 'Termos que anulam sua Responsabilidade Civil Geral caso seus prestadores terceirizados não tenham apólices equivalentes comprovadas.',
+      },
+      {
+        title: 'Limites Agregados por Localização',
+        desc: 'Garante que um sinistro em um único projeto ou imóvel não esgote toda a cobertura anual de responsabilidade da sua empresa.',
+      },
+      {
+        title: 'Exclusão de Veículos Particulares a Trabalho',
+        desc: 'Protege seu negócio quando funcionários usam carros próprios para tarefas da empresa — apólices pessoais recusam sinistros de trabalho.',
+      },
+      {
+        title: 'Erros de Classificação NCCI no Workers\' Comp',
+        desc: 'Corrija códigos de função incorretos na folha de pagamento antes que a auditoria anual do estado gere cobranças extras surpresa.',
+      },
+    ],
+    statNumber: '15-25%',
+    statLabel: 'Economia Típica Identificada',
+    ctaQuote: 'Solicitar Auditoria Gratuita de 15 Min',
+    ctaCall: 'Ligar para a Sede: (203) 748-9272',
+    phoneRaw: '2037489272',
+    guarantee: '100% confidencial. Sem pressão de vendas: avaliação técnica por corretores licenciados.',
+  },
+  tr: {
+    badge: 'Ücretsiz Connecticut Ticari Risk Denetimi',
+    headline: 'Ücretsiz 15 Dakikalık Ticari Poliçe ve Fiyat Denetimi',
+    subtitle:
+      'Connecticut\'ta incelediğimiz küçük işletme ticari poliçelerinin %68\'inden fazlasında gizli istisnalar, eksik alt yüklenici onayları veya hasar anında tazminatı engelleyen derecelendirme hataları bulunmaktadır. Lisanslı ticari uzmanlarımız mevcut poliçenizi sıfır maliyet ve taahhütle denetlesin.',
+    checklistTitle: '15 Dakikalık Poliçe İncelemenizde Neleri Ortaya Çıkarıyoruz:',
+    checks: [
+      {
+        title: 'Alt Yüklenici Garanti Şartları',
+        desc: 'Alt taşeronlarınızın eşdeğer poliçe ve sertifikası yoksa Genel Sorumluluk teminatınızı tamamen geçersiz kılan gizli sözleşme maddeleri.',
+      },
+      {
+        title: 'Lokasyon Başına Toplam Limitler',
+        desc: 'Tek bir şantiyedeki veya kiralık yerdeki hasarın, diğer tüm işleriniz için geçerli yıllık sorumluluk limitinizi tüketmesini önleyin.',
+      },
+      {
+        title: 'Kiralık ve Şahsi Araç İş İstisnaları',
+        desc: 'Çalışanlarınız iş için kendi araçlarını kullandığında şirketinizi korur; şahsi kasko poliçeleri ticari kazaları kesinlikle ödemez.',
+      },
+      {
+        title: 'İşçi Tazminatı (Workers\' Comp) NCCI Hataları',
+        desc: 'Yıllık eyalet denetimlerinde binlerce dolarlık sürpriz ceza faturaları çıkmadan önce yanlış iş kodlarını ve bordro dağılımlarını düzeltin.',
+      },
+    ],
+    statNumber: '%15-%25',
+    statLabel: 'Ortalama Prim Tasarrufu',
+    ctaQuote: 'Ücretsiz 15 Dk Denetim Talep Edin',
+    ctaCall: 'Danbury Merkezini Arayın: (203) 748-9272',
+    phoneRaw: '2037489272',
+    guarantee: '%100 gizli. Satış baskısı olmadan nesnel Connecticut sigorta analizi.',
+  },
+};
+
+const d = content[currentLang];
+const quoteUrl = `${getRelativeLocaleUrl(currentLang, 'quote')}?type=business`;
+---
+
+<section class="my-16 sm:my-20">
+  <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-[#0a1835] via-[#122b5f] to-[#08152e] text-white p-6 sm:p-10 lg:p-12 border border-[#1e3a73] shadow-2xl">
+    <!-- Ambient Lighting -->
+    <div class="absolute -top-32 -left-32 w-80 h-80 bg-accent-gold/15 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+    <div class="absolute -bottom-32 -right-32 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+    <div class="relative z-10 space-y-8">
+      <!-- Top Header & Stat Pill -->
+      <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-6">
+        <div class="space-y-4 max-w-2xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30 text-accent-gold text-xs font-bold uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-accent-gold animate-pulse"></span>
+            <span>{d.badge}</span>
+          </div>
+
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white leading-tight">
+            {d.headline}
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-200 leading-relaxed">
+            {d.subtitle}
+          </p>
+        </div>
+
+        <!-- Savings Highlight Card -->
+        <div class="shrink-0 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-md text-center sm:text-left flex items-center sm:items-start gap-4">
+          <div class="w-12 h-12 rounded-xl bg-accent-gold/20 border border-accent-gold/40 flex items-center justify-center text-accent-gold shrink-0">
+            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-accent-gold tracking-tight">
+              {d.statNumber}
+            </div>
+            <div class="text-xs text-slate-300 font-medium">
+              {d.statLabel}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Checklist Section -->
+      <div class="space-y-4 pt-4 border-t border-white/10">
+        <h3 class="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-300">
+          {d.checklistTitle}
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {d.checks.map((item) => (
+            <div class="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm space-y-1 hover:bg-white/10 transition-colors">
+              <div class="flex items-center gap-2">
+                <div class="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </div>
+                <h4 class="text-xs sm:text-sm font-bold text-white tracking-tight">
+                  {item.title}
+                </h4>
+              </div>
+              <p class="text-xs text-slate-300 leading-relaxed pl-7">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Bottom CTAs & Trust Note -->
+      <div class="pt-6 border-t border-white/10 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5">
+        <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto">
+          <a
+            href={quoteUrl}
+            class="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-accent-gold hover:bg-accent-gold-hover text-[#0a1835] font-bold text-xs sm:text-sm tracking-wide uppercase shadow-lg hover:shadow-xl transition-all duration-200 active:scale-[0.98] text-center"
+          >
+            <span>{d.ctaQuote}</span>
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+
+          <a
+            href={`tel:${d.phoneRaw}`}
+            class="inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs sm:text-sm border border-white/20 transition-all duration-200 active:scale-[0.98] text-center"
+          >
+            <svg class="w-4 h-4 text-accent-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            </svg>
+            <span>{d.ctaCall}</span>
+          </a>
+        </div>
+
+        <div class="flex items-center gap-2 text-xs text-slate-300">
+          <svg class="w-4 h-4 text-emerald-400 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+          </svg>
+          <span>{d.guarantee}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

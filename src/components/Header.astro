@@ -8,6 +8,14 @@ import aiaLogo from '../assets/aia-logo.webp';
 const { lang = 'en' } = Astro.props;
 const t = useTranslations(lang as any);
 
+const phoneByLang: Record<string, { label: string; number: string; raw: string }> = {
+  en: { label: 'Danbury HQ:', number: '(203) 748-9272', raw: '2037489272' },
+  es: { label: 'Hablamos Español:', number: '(203) 333-8880', raw: '2033338880' },
+  pt: { label: 'Falamos Português:', number: '(203) 748-9272', raw: '2037489272' },
+  tr: { label: 'Türkçe Destek:', number: '(203) 748-9272', raw: '2037489272' },
+};
+const headerPhone = phoneByLang[lang] || phoneByLang.en;
+
 const navLinks = [
   {
     href: getRelativeLocaleUrl(lang, 'about'),
@@ -119,12 +127,13 @@ const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
         </span>
       </div>
       <div>
-        <a href="tel:2037489272" class="flex items-center gap-2 hover:text-accent-gold transition-colors font-semibold">
+        <a href={`tel:${headerPhone.raw}`} class="flex items-center gap-1.5 hover:text-accent-gold transition-colors font-semibold">
           <!-- Phone Icon -->
           <svg class="w-3.5 h-3.5 text-accent-gold animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
           </svg>
-          203 748 9272
+          <span class="text-accent-gold text-[11px] font-normal hidden sm:inline">{headerPhone.label}</span>
+          <span>{headerPhone.number}</span>
         </a>
       </div>
     </div>

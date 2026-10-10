@@ -1,5 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import CommercialAuditBanner from '../../components/CommercialAuditBanner.astro';
+
+const lang = 'tr';
 
 const commercialStructuredData = {
   "@context": "https://schema.org",
@@ -176,6 +179,9 @@ const commercialStructuredData = {
         </div>
 
       </div>
+
+      <!-- Commercial Policy Gap Audit Lead Magnet -->
+      <CommercialAuditBanner lang={lang} />
     </div>
   </section>
 </BaseLayout>

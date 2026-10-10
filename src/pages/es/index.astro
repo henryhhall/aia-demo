@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import CarrierLogos from '../../components/CarrierLogos.astro';
 import HeroQuoteStarter from '../../components/HeroQuoteStarter';
+import MultilingualRoutingNotice from '../../components/MultilingualRoutingNotice.astro';
 
 // Fetch content
 const posts = await getCollection('blog', ({ id }) => id.startsWith('es/'));
@@ -233,6 +234,9 @@ const mainStructuredData = {
       </div>
     </div>
   </section>
+
+  <!-- Multilingual Direct Producer Routing Desk -->
+  <MultilingualRoutingNotice lang="es" />
 
   <!-- Testimonials Section -->
   <section class="py-24 bg-bg-primary">
