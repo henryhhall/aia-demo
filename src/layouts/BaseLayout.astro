@@ -3,6 +3,7 @@ import SEOHead from '../components/SEOHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WebMcpInspector from '../components/WebMcpInspector';
+import StickyMobileCallBar from '../components/StickyMobileCallBar.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -210,12 +211,14 @@ const mergedStructuredData = {
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&display=swap" rel="stylesheet">
     <script src="../lib/webmcp/init.ts"></script>
   </head>
-  <body class="min-h-[100dvh] flex flex-col bg-bg-primary text-text-primary">
+  <body class="min-h-[100dvh] flex flex-col bg-bg-primary text-text-primary pb-16 lg:pb-0">
     <Header lang={lang} />
     <main class="flex-1">
       <slot />
     </main>
     <Footer lang={lang} />
+    <!-- Sticky Mobile Call & Quote Bar (Mobile CRO) -->
+    <StickyMobileCallBar lang={lang as any} />
     <!-- WebMCP Client Inspector & Agent Sandbox -->
     <WebMcpInspector client:load />
   </body>

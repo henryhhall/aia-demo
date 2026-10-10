@@ -1,0 +1,73 @@
+---
+interface Props {
+  lang?: 'en' | 'es' | 'pt' | 'tr';
+  danburyPhone?: string;
+  watertownPhone?: string;
+  bridgeportPhone?: string;
+}
+
+const {
+  lang = 'en',
+  danburyPhone = '2037489272',
+  watertownPhone = '8602748888',
+  bridgeportPhone = '2033338880',
+} = Astro.props;
+
+const dict = {
+  en: {
+    call: 'Call Agent',
+    quote: 'Get a Quote',
+    quoteHref: '/quote',
+  },
+  es: {
+    call: 'Llamar Agente',
+    quote: 'Cotizar Ahora',
+    quoteHref: '/es/quote',
+  },
+  pt: {
+    call: 'Ligar p/ Agente',
+    quote: 'Pedir Cotação',
+    quoteHref: '/pt/quote',
+  },
+  tr: {
+    call: 'Temsilciyi Ara',
+    quote: 'Teklif Al',
+    quoteHref: '/tr/quote',
+  },
+};
+
+const t = dict[lang] || dict.en;
+---
+
+<!-- Sticky Mobile Lead-Gen Conversion Bar -->
+<aside
+  aria-label="Quick contact and quote options"
+  class="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-white/95 backdrop-blur-md border-t border-border-subtle shadow-[0_-4px_25px_rgba(0,0,0,0.12)] px-3 py-2.5 transition-transform duration-300"
+  id="sticky-mobile-bar"
+>
+  <div class="max-w-md mx-auto grid grid-cols-2 gap-2.5 items-center">
+    <!-- Click-to-Call Primary Conversion -->
+    <a
+      href={`tel:${danburyPhone}`}
+      class="flex items-center justify-center gap-2 py-3 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all text-center"
+      aria-label="Call Danbury office directly"
+    >
+      <svg class="w-4 h-4 text-white shrink-0 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+      </svg>
+      <span>{t.call}</span>
+    </a>
+
+    <!-- Direct Quote CTA -->
+    <a
+      href={t.quoteHref}
+      class="flex items-center justify-center gap-1.5 py-3 px-3 rounded-lg bg-accent hover:bg-accent/90 active:scale-[0.98] text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all text-center"
+      aria-label="Get a free insurance quote"
+    >
+      <span>{t.quote}</span>
+      <svg class="w-3.5 h-3.5 text-accent-gold shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+      </svg>
+    </a>
+  </div>
+</aside>

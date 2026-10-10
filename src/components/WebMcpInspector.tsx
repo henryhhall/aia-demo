@@ -156,8 +156,8 @@ export default function WebMcpInspector() {
 
   return (
     <>
-      {/* Floating Toggle Button */}
-      <div className="fixed bottom-5 right-5 z-50">
+      {/* Floating Toggle Button (Desktop & Tablet only to preserve mobile lead gen touch targets) */}
+      <div className="hidden md:block fixed bottom-5 right-5 z-50">
         <button
           onClick={() => setIsOpen(true)}
           className="group flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-accent text-white shadow-xl hover:shadow-2xl hover:bg-accent/95 active:scale-95 transition-all border border-accent-gold/40 cursor-pointer"

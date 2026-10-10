@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getRecaptchaToken } from '../lib/recaptcha';
 import RecaptchaLegalNotice from './RecaptchaLegalNotice';
 
@@ -22,6 +22,32 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   const [reachTime, setReachTime] = useState<ReachTime>('anytime');
   const [smsConsent, setSmsConsent] = useState(false);
   const [preferredOffice, setPreferredOffice] = useState('Danbury');
+
+  // Parse query parameters from hero rate starter or product landing links
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const params = new URLSearchParams(window.location.search);
+    const typeParam = params.get('type') as LineOfBusiness | null;
+    const zipParam = params.get('zip');
+
+    if (typeParam && ['home', 'auto', 'commercial-auto', 'umbrella', 'business'].includes(typeParam)) {
+      setLineOfBusiness(typeParam);
+    }
+
+    if (zipParam) {
+      if (!propertyAddress) {
+        setPropertyAddress(`${zipParam}, CT`);
+      }
+      // Auto-assign nearest branch office based on CT ZIP code
+      if (zipParam.startsWith('067')) {
+        setPreferredOffice('Watertown');
+      } else if (zipParam.startsWith('066')) {
+        setPreferredOffice('Bridgeport');
+      } else if (zipParam.startsWith('068')) {
+        setPreferredOffice('Danbury');
+      }
+    }
+  }, []);
 
   // Coverage Details Fields
   const [propertyAddress, setPropertyAddress] = useState('');
@@ -121,6 +147,8 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         `Thank you, ${name}. Your ${line} review has been assigned to our ${office} branch. A licensed CT producer is reviewing assessor and carrier data and will reach out via ${method}.`,
       refLabel: 'Confirmation Reference',
       anotherBtn: 'Request Another Quote',
+      antiSpamTitle: 'AIA Confidentiality & Anti-Spam Guarantee:',
+      antiSpamDesc: 'Your information is encrypted and never sold to third-party telemarketers. Quotes are prepared exclusively by our licensed Connecticut brokers.',
     },
     es: {
       headline: 'Solicitar una Cotización de Seguro',
@@ -194,6 +222,8 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         `Gracias, ${name}. Su solicitud para ${line} fue asignada a nuestra sucursal de ${office}. Un agente revisará los registros y se comunicará vía ${method}.`,
       refLabel: 'Código de Referencia',
       anotherBtn: 'Solicitar Otra Cotización',
+      antiSpamTitle: 'Garantía de Confidencialidad y Anti-Spam de AIA:',
+      antiSpamDesc: 'Su información está protegida y nunca se vende a empresas de telemercadeo. Las cotizaciones son preparadas exclusivamente por nuestros agentes licenciados de Connecticut.',
     },
     pt: {
       headline: 'Solicitar uma Cotação de Seguro',
@@ -267,6 +297,8 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         `Obrigado, ${name}. Sua solicitação de ${line} foi encaminhada para a filial de ${office}. Um corretor licenciado entrará em contato via ${method}.`,
       refLabel: 'Código de Confirmação',
       anotherBtn: 'Solicitar Outra Cotação',
+      antiSpamTitle: 'Garantia de Confidencialidade e Anti-Spam da AIA:',
+      antiSpamDesc: 'Seus dados são protegidos e nunca vendidos a empresas de telemarketing. As cotações são elaboradas exclusivamente por nossos corretores licenciados em Connecticut.',
     },
     tr: {
       headline: 'Sigorta Teklifi İsteyin',
@@ -340,6 +372,8 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         `Teşekkürler, ${name}. ${line} talebiniz ${office} şubemize atandı. Lisanslı temsilcimiz detayları inceleyip sizinle ${method} ile iletişime geçecektir.`,
       refLabel: 'Onay Kodu',
       anotherBtn: 'Başka Bir Teklif Başlat',
+      antiSpamTitle: 'AIA Gizlilik ve İstenmeyen Mesaj Garantisi:',
+      antiSpamDesc: 'Bilgileriniz korunur ve asla üçüncü şahıslara veya pazarlamacılara satılmaz. Teklifler yalnızca lisanslı Connecticut acentelerimiz tarafından hazırlanır.',
     },
   }[lang];
 
@@ -1001,6 +1035,19 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
               <span>{errorMessage}</span>
             </div>
           )}
+
+          {/* Post-Hack Reassurance & Anti-Spam Guarantee */}
+          <div className="p-3.5 bg-emerald-50/90 border border-emerald-200 rounded-xl flex items-start sm:items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center shrink-0 text-emerald-700">
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+              </svg>
+            </div>
+            <div className="text-xs text-emerald-950 leading-snug">
+              <strong className="font-bold block text-emerald-900">{dict.antiSpamTitle}</strong>
+              <span>{dict.antiSpamDesc}</span>
+            </div>
+          </div>
 
           {/* Action Button */}
           <div className="pt-2">
