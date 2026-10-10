@@ -45,20 +45,24 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Google reCAPTCHA v3 verification
-    const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'quote_form', 0.5);
-    if (!recaptchaResult.success) {
-      console.warn('[Security / reCAPTCHA] Quote submission blocked:', recaptchaResult.error);
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: recaptchaResult.error || 'Security verification failed. Please try again.',
-        }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+    // Google reCAPTCHA v3 verification (full submissions require validation)
+    let recaptchaScore = 1.0;
+    if (source !== 'Partial_Lead_Step_2') {
+      const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'quote_form', 0.5);
+      if (!recaptchaResult.success) {
+        console.warn('[Security / reCAPTCHA] Quote submission blocked:', recaptchaResult.error);
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: recaptchaResult.error || 'Security verification failed. Please try again.',
+          }),
+          {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+      }
+      recaptchaScore = recaptchaResult.score ?? 1.0;
     }
 
     if (!name || !email || !phone) {
@@ -131,7 +135,7 @@ export const POST: APIRoute = async ({ request }) => {
       notes: synthesizedNotes || 'No additional notes provided.',
       source,
       ratingPayload: data.ratingPayload || null,
-      recaptchaScore: recaptchaResult.score ?? 1.0,
+      recaptchaScore,
       submittedAt: new Date().toISOString(),
     };
 
