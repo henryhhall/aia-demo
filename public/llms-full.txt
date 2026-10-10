@@ -107,11 +107,11 @@ AIA publishes its entire agency capability via WebMCP (`navigator.modelContext` 
 4. `get_employee_profile`: Retrieve full biography, National Producer Number (NPN), credentials, specialties, languages, and direct branch contact details for any team member.
 5. `find_agent_by_language`: Search for multilingual licensed agents and customer service representatives by language (`en`, `es`, `pt`, `tr`) and preferred branch.
 6. `get_insurance_products`: Personal and commercial line specifications.
-7. `calculate_quote_estimate`: Benchmark premium estimation formula.
-8. `submit_quote_request`: Lead submission tool.
-9. `get_carrier_billing_directory`: 11 carrier direct contact points.
-10. `search_knowledge_base`: Semantic FAQ and policy guidelines query.
-11. `check_office_open_status`: Live office hours check.
+7. `submit_quote_request`: Lead submission tool.
+8. `get_carrier_billing_directory`: 11 carrier direct contact points.
+9. `search_knowledge_base`: Semantic FAQ and policy guidelines query.
+10. `check_office_open_status`: Live office hours check.
+11. `request_certificate_of_insurance`: Request official ACORD 25 Certificate of Insurance (COI) staged submission.
 
 ---
 

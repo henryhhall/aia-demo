@@ -41,6 +41,11 @@ export default function ReviewSubmit({
   const [copiedPayload, setCopiedPayload] = useState(false);
   const [showJsonInspector, setShowJsonInspector] = useState(false);
 
+  // Honeypot trap states for automated bot mitigation
+  const [hpWebsite, setHpWebsite] = useState('');
+  const [hpCompany, setHpCompany] = useState('');
+  const [renderedAt, setRenderedAt] = useState<number>(() => Date.now());
+
   const t = homeownersTranslations[lang].step5;
   const tNav = homeownersTranslations[lang];
 
@@ -86,9 +91,24 @@ export default function ReviewSubmit({
   const multiplier = replacementCostObj?.multiplier || 1.0;
   const estimatedCoverageLimit = Math.round(formData.estimatedHomeValue * multiplier);
 
-  // Mock submission handler
+  // Submission handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Client-side Honeypot Check: if bot filled either hidden decoy field, silently abort
+    if (hpWebsite || hpCompany) {
+      console.warn('[Security / Honeypot] Bot submission blocked in ReviewSubmit.');
+      const structuredPayload = formatRatingApiPayload(formData);
+      setSubmissionResult({
+        success: true,
+        referenceId: structuredPayload.meta.quoteReferenceId,
+        payload: structuredPayload,
+        submittedAt: new Date().toLocaleString(),
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     if (!consentChecked) {
       setConsentError(t.consentRequiredError);
       return;
@@ -113,8 +133,12 @@ export default function ReviewSubmit({
           phone: formData.phone,
           insuranceType: 'home',
           preferredOffice: 'Danbury',
+          preferredLanguage: lang,
           ratingPayload: structuredPayload,
           recaptchaToken,
+          hp_website: hpWebsite,
+          hp_company: hpCompany,
+          form_rendered_at: renderedAt,
         }),
       }).catch(() => null);
 
@@ -326,6 +350,48 @@ export default function ReviewSubmit({
   // REVIEW & SUBMIT SUMMARY VIEW
   return (
     <form onSubmit={handleSubmit} className="space-y-8 animate-fadeIn">
+      {/* ============================================================ */}
+      {/* BOT HONEYPOT FIELDS (Invisible to human users, traps bots)   */}
+      {/* ============================================================ */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+          top: '-9999px',
+          opacity: 0,
+          zIndex: -1,
+          width: 0,
+          height: 0,
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <label htmlFor={`homeowners_hp_website_${lang}`}>Leave this field empty if human</label>
+        <input
+          id={`homeowners_hp_website_${lang}`}
+          type="text"
+          name="hp_website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={hpWebsite}
+          onChange={(e) => setHpWebsite(e.target.value)}
+        />
+        <label htmlFor={`homeowners_hp_company_${lang}`}>Company Website</label>
+        <input
+          id={`homeowners_hp_company_${lang}`}
+          type="text"
+          name="hp_company"
+          tabIndex={-1}
+          autoComplete="off"
+          value={hpCompany}
+          onChange={(e) => setHpCompany(e.target.value)}
+        />
+      </div>
+      {/* ============================================================ */}
+
       {/* Section Header */}
       <div className="border-b border-border-subtle pb-4">
         <h3 className="text-xl font-bold text-accent tracking-tight">

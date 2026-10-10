@@ -310,6 +310,41 @@ export default function HomeownersQuoteWizard({ lang = 'en' }: HomeownersQuoteWi
 
   return (
     <div ref={formTopRef} className="max-w-4xl mx-auto space-y-6">
+      {/* BOT HONEYPOT FIELDS (Invisible to human users, traps bots) */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          left: '-9999px',
+          top: '-9999px',
+          opacity: 0,
+          zIndex: -1,
+          width: 0,
+          height: 0,
+          overflow: 'hidden',
+          pointerEvents: 'none',
+          margin: 0,
+          padding: 0,
+        }}
+      >
+        <label htmlFor={`ho_wizard_hp_website_${lang}`}>Leave this field empty if human</label>
+        <input
+          id={`ho_wizard_hp_website_${lang}`}
+          type="text"
+          name="hp_website"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+        <label htmlFor={`ho_wizard_hp_company_${lang}`}>Company Website</label>
+        <input
+          id={`ho_wizard_hp_company_${lang}`}
+          type="text"
+          name="hp_company"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* Top Banner & Quick Controls */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-text-muted">
         <div className="flex items-center gap-2">

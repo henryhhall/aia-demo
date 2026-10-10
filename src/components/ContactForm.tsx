@@ -297,6 +297,8 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
               aria-hidden="true"
               style={{
                 position: 'absolute',
+                left: '-9999px',
+                top: '-9999px',
                 opacity: 0,
                 zIndex: -1,
                 width: 0,

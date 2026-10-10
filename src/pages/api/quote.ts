@@ -28,6 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
       // Optional Honeypots
       hp_website = '',
       hp_company = '',
+      form_rendered_at,
     } = data;
 
     // Honeypot trap check
@@ -45,9 +46,47 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // Google reCAPTCHA v3 verification (full submissions require validation)
+    // Time-based honeypot: humans take at least 1.2s to fill a quote form
+    if (form_rendered_at) {
+      const elapsed = Date.now() - Number(form_rendered_at);
+      if (elapsed < 1200) {
+        console.warn('[Security / Honeypot] Quote submission blocked via rapid form submission:', {
+          elapsedMs: elapsed,
+        });
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: 'Submission was too fast. Please verify you are human.',
+          }),
+          {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+      }
+    }
+
+    // Google reCAPTCHA v3 verification
     let recaptchaScore = 1.0;
-    if (source !== 'Partial_Lead_Step_2') {
+    if (source === 'Partial_Lead_Step_2') {
+      if (recaptchaToken) {
+        const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'quote_partial_lead', 0.5);
+        if (!recaptchaResult.success) {
+          console.warn('[Security / reCAPTCHA] Partial lead blocked:', recaptchaResult.error);
+          return new Response(
+            JSON.stringify({
+              success: false,
+              error: recaptchaResult.error || 'Security verification failed.',
+            }),
+            {
+              status: 400,
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+        }
+        recaptchaScore = recaptchaResult.score ?? 1.0;
+      }
+    } else {
       const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'quote_form', 0.5);
       if (!recaptchaResult.success) {
         console.warn('[Security / reCAPTCHA] Quote submission blocked:', recaptchaResult.error);

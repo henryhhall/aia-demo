@@ -2,7 +2,7 @@
  * Automated Verification Script for WebMCP Tools and Endpoints
  */
 
-import { aiaWebMcpTools, AIA_LOCATIONS, AIA_CARRIERS, AIA_FAQS } from './tools.ts';
+import { aiaWebMcpTools } from './tools.ts';
 import { getWebMCPRuntime } from './runtime.ts';
 
 async function runTests() {
@@ -71,17 +71,14 @@ async function runTests() {
   }
   console.log(`✓ find_agent_by_language passed: matched ${esJson.matchingAgentsCount} Spanish-speaking agents.\n`);
 
-  // 7. Test calculate_quote_estimate
-  console.log('[7/10] Testing tool: calculate_quote_estimate({ insuranceType: "auto", location: "Danbury", estimatedValueOrVehicles: 2, bundleWithOtherPolicy: true })...');
-  const quoteEstimateRes = await runtime.callTool('calculate_quote_estimate', {
-    insuranceType: 'auto',
-    location: 'Danbury',
-    estimatedValueOrVehicles: 2,
-    bundleWithOtherPolicy: true,
+  // 7. Test get_insurance_products
+  console.log('[7/10] Testing tool: get_insurance_products({ category: "personal" })...');
+  const productsRes = await runtime.callTool('get_insurance_products', {
+    category: 'personal',
   });
-  console.log('Output:', JSON.stringify(quoteEstimateRes.content[0], null, 2));
-  if (quoteEstimateRes.isError) throw new Error('calculate_quote_estimate failed');
-  console.log('✓ calculate_quote_estimate passed.\n');
+  console.log('Output:', JSON.stringify(productsRes.content[0], null, 2));
+  if (productsRes.isError) throw new Error('get_insurance_products failed');
+  console.log('✓ get_insurance_products passed.\n');
 
   // 8. Test search_knowledge_base
   console.log('[8/10] Testing tool: search_knowledge_base({ query: "flood" })...');

@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { getRecaptchaToken } from '../lib/recaptcha';
+import RecaptchaLegalNotice from './RecaptchaLegalNotice';
 
 type LineKey = 'auto' | 'home' | 'business' | 'bundle';
 
@@ -106,6 +108,10 @@ export default function HeroQuoteStarter({ lang = 'en' }: HeroQuoteStarterProps)
   const [zipCode, setZipCode] = useState('');
   const [inputError, setInputError] = useState('');
 
+  // Honeypot trap states for automated bot mitigation
+  const [hpWebsite, setHpWebsite] = useState('');
+  const [hpCompany, setHpCompany] = useState('');
+
   const t = DICT[lang] || DICT.en;
 
   const lineOptions = [
@@ -136,14 +142,24 @@ export default function HeroQuoteStarter({ lang = 'en' }: HeroQuoteStarterProps)
 
   const badge = getZipBadge();
 
-  const handleStartQuote = (e: React.FormEvent) => {
+  const handleStartQuote = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Client-side Honeypot Check: if bot filled either hidden decoy field, silently abort
+    if (hpWebsite || hpCompany) {
+      console.warn('[Security / Honeypot] Bot submission blocked in HeroQuoteStarter.');
+      return;
+    }
+
     const cleanZip = zipCode.trim();
 
     if (cleanZip && !/^\d{5}$/.test(cleanZip)) {
       setInputError(t.errorZip);
       return;
     }
+
+    // Google reCAPTCHA v3 verification token retrieval
+    await getRecaptchaToken('hero_quote_starter').catch(() => null);
 
     const currentOption = lineOptions.find((o) => o.key === selectedLine);
     const targetType = currentOption ? currentOption.query : 'auto';
@@ -204,6 +220,48 @@ export default function HeroQuoteStarter({ lang = 'en' }: HeroQuoteStarterProps)
 
       {/* ZIP Code Input & Action Form */}
       <form onSubmit={handleStartQuote} className="space-y-3 pt-1">
+        {/* ============================================================ */}
+        {/* BOT HONEYPOT FIELDS (Invisible to human users, traps bots)   */}
+        {/* ============================================================ */}
+        <div
+          aria-hidden="true"
+          style={{
+            position: 'absolute',
+            left: '-9999px',
+            top: '-9999px',
+            opacity: 0,
+            zIndex: -1,
+            width: 0,
+            height: 0,
+            overflow: 'hidden',
+            pointerEvents: 'none',
+            margin: 0,
+            padding: 0,
+          }}
+        >
+          <label htmlFor={`hero_hp_website_${lang}`}>Leave this field empty if human</label>
+          <input
+            id={`hero_hp_website_${lang}`}
+            type="text"
+            name="hp_website"
+            tabIndex={-1}
+            autoComplete="off"
+            value={hpWebsite}
+            onChange={(e) => setHpWebsite(e.target.value)}
+          />
+          <label htmlFor={`hero_hp_company_${lang}`}>Company Website</label>
+          <input
+            id={`hero_hp_company_${lang}`}
+            type="text"
+            name="hp_company"
+            tabIndex={-1}
+            autoComplete="off"
+            value={hpCompany}
+            onChange={(e) => setHpCompany(e.target.value)}
+          />
+        </div>
+        {/* ============================================================ */}
+
         <div className="space-y-1.5">
           <label htmlFor={`hero-zip-${lang}`} className="block text-xs font-bold uppercase tracking-wider text-text-secondary">
             {t.zipLabel}
@@ -251,6 +309,9 @@ export default function HeroQuoteStarter({ lang = 'en' }: HeroQuoteStarterProps)
             <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
           </svg>
         </button>
+
+        {/* Google reCAPTCHA v3 Compliance Notice */}
+        <RecaptchaLegalNotice lang={lang} className="pt-2 text-center" />
       </form>
 
       {/* Post-Hack Reassurance & Anti-Spam Guarantee */}

@@ -17,7 +17,7 @@
 
 Associated Insurance Agency (AIA) operates three physical branch offices across Connecticut (**Danbury Headquarters**, **Watertown Branch**, and **Bridgeport Community Branch**). As an independent insurance agency, AIA represents over 11 leading regional and national insurance carriers (Safeco, Travelers, The Hartford, Progressive, Foremost, Guard, Infinity, Main Street America, National General, Victoria, and K&K Insurance).
 
-This project pairs a modern, blazing-fast web experience for prospective and existing policyholders with a cutting-edge **Model Context Protocol (MCP)** and **WebMCP** architecture. This enables external AI agents (Claude, Cursor, Antigravity, and browser-native agents) to programmatically query agency data, calculate quote estimates, locate multilingual agents, and submit quote requests.
+This project pairs a modern, blazing-fast web experience for prospective and existing policyholders with a cutting-edge **Model Context Protocol (MCP)** and **WebMCP** architecture. This enables external AI agents (Claude, Cursor, Antigravity, and browser-native agents) to programmatically query agency data, explore insurance products, locate multilingual agents, and submit quote requests.
 
 ---
 
@@ -82,7 +82,7 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 
 ## 🧰 WebMCP Tool Catalog
 
-The platform exposes **12 standardized tools** callable through both the browser runtime and `/api/mcp`:
+The platform exposes **11 standardized tools** callable through both the browser runtime and `/api/mcp`:
 
 | Tool Name | Type | Description |
 | :--- | :---: | :--- |
@@ -92,7 +92,6 @@ The platform exposes **12 standardized tools** callable through both the browser
 | `get_employee_profile` | Read-only | Detailed biography, NPN credentials, languages, and direct servicing office for staff members. |
 | `find_agent_by_language` | Read-only | Finds AIA branches and licensed personnel fluent in English, Spanish, Portuguese, or Turkish. |
 | `get_insurance_products` | Read-only | Detailed breakdown of personal and commercial policies, limit recommendations, and bundle discounts. |
-| `calculate_quote_estimate` | Read-only | Instant premium estimations factoring location, replacement value, deductible, and multi-policy bundling. |
 | `submit_quote_request` | Action | Ingests structured quote requests, generates confirmation codes, and stages inquiries for agency review. |
 | `get_carrier_billing_directory` | Read-only | Customer service phone numbers, claims lines, and online payment URLs for all 11 carriers. |
 | `search_knowledge_base` | Read-only | Query Connecticut statutory liability minimums (25/50/25), flood exclusions, claims procedures, and FAQs. |
@@ -316,12 +315,9 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
       "id": 1,
       "method": "tools/call",
       "params": {
-        "name": "calculate_quote_estimate",
+        "name": "get_insurance_products",
         "arguments": {
-          "insuranceType": "home",
-          "location": "Danbury",
-          "estimatedValueOrVehicles": 500000,
-          "bundleWithOtherPolicy": true
+          "category": "personal"
         }
       }
     }

@@ -2,7 +2,7 @@
   "$schema": "https://modelcontextprotocol.io/schema/server-manifest.json",
   "name": "associated-insurance-agency-mcp",
   "displayName": "Associated Insurance Agency (AIA) MCP Server",
-  "description": "Model Context Protocol interface providing insurance quote estimates, agency office directory, multilingual agent matching, carrier portals, and policy assistance across Connecticut.",
+  "description": "Model Context Protocol interface providing agency office directory, multilingual agent matching, carrier portals, policy products, and insurance assistance across Connecticut.",
   "version": "1.0.0",
   "homepage": "https://aia-danbury.com",
   "transport": {
@@ -24,6 +24,14 @@
       "description": "Get structured branch office information (Danbury HQ, Watertown, Bridgeport)."
     },
     {
+      "name": "get_team_members",
+      "description": "Search and filter employee directory across Danbury, Watertown, and Bridgeport."
+    },
+    {
+      "name": "get_employee_profile",
+      "description": "Retrieve full biography, National Producer Number (NPN), credentials, and direct branch contact details."
+    },
+    {
       "name": "find_agent_by_language",
       "description": "Search for AIA branches and consultation contacts that speak a specific language."
     },
@@ -32,16 +40,12 @@
       "description": "List all insurance coverage options available at Associated Insurance Agency."
     },
     {
-      "name": "calculate_quote_estimate",
-      "description": "Calculates an instant benchmark premium estimate for CT insurance policies."
-    },
-    {
       "name": "submit_quote_request",
       "description": "Submit an insurance quote request to Associated Insurance Agency."
     },
     {
       "name": "get_carrier_billing_directory",
-      "description": "Lookup online payment links and claims hotlines for all 11 partner insurance carriers."
+      "description": "Lookup online payment links and claims hotlines for partner insurance carriers."
     },
     {
       "name": "search_knowledge_base",
@@ -50,6 +54,10 @@
     {
       "name": "check_office_open_status",
       "description": "Determine if Associated Insurance Agency offices are currently open based on Eastern Time."
+    },
+    {
+      "name": "request_certificate_of_insurance",
+      "description": "Submit an official ACORD 25 Certificate of Insurance (COI) request."
     }
   ]
 }

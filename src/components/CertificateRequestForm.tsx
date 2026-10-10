@@ -700,6 +700,13 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
 
   const validateStep = (currentStep: number): boolean => {
     setErrorMessage('');
+
+    // Honeypot check: if bot populated hidden decoy inputs, halt immediately
+    if (formData.hp_website || formData.hp_company) {
+      console.warn('[Security / Honeypot] Bot step progression blocked via honeypot trap.');
+      return false;
+    }
+
     if (currentStep === 1) {
       if (!formData.requestorName || !formData.requestorEmail || !formData.requestorPhone || !formData.insuredName) {
         setErrorMessage(dict.valReq1);
@@ -897,6 +904,8 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
         aria-hidden="true"
         style={{
           position: 'absolute',
+          left: '-9999px',
+          top: '-9999px',
           opacity: 0,
           zIndex: -1,
           width: 0,
@@ -1748,6 +1757,8 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
               aria-hidden="true"
               style={{
                 position: 'absolute',
+                left: '-9999px',
+                top: '-9999px',
                 opacity: 0,
                 zIndex: -1,
                 width: 0,

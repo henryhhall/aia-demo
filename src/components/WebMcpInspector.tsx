@@ -9,13 +9,6 @@ const SAMPLE_INPUTS: Record<string, any> = {
   get_employee_profile: { memberIdOrName: 'ronald-boucher', locale: 'en' },
   find_agent_by_language: { language: 'es', preferredCity: 'Bridgeport' },
   get_insurance_products: { category: 'personal' },
-  calculate_quote_estimate: {
-    insuranceType: 'auto',
-    location: 'Danbury',
-    estimatedValueOrVehicles: 2,
-    bundleWithOtherPolicy: true,
-    deductible: 1000,
-  },
   submit_quote_request: {
     name: 'Maria Santos',
     email: 'maria.santos@example.com',
@@ -47,7 +40,7 @@ export default function WebMcpInspector() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'tools' | 'playground' | 'logs' | 'agent-docs'>('tools');
   const [tools, setTools] = useState<WebMCPToolDefinition[]>([]);
-  const [selectedTool, setSelectedTool] = useState<string>('calculate_quote_estimate');
+  const [selectedTool, setSelectedTool] = useState<string>('get_agency_profile');
   const [paramsInput, setParamsInput] = useState<string>('');
   const [executionResult, setExecutionResult] = useState<any>(null);
   const [isExecuting, setIsExecuting] = useState(false);

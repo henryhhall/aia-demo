@@ -46,8 +46,8 @@ async function testMcpEndpoint() {
   const listJson = await listRes.json();
   console.log(`✓ tools/list returned ${listJson.result.tools.length} tool schemas.\n`);
 
-  // Test 4: POST JSON-RPC tools/call (calculate_quote_estimate)
-  console.log('[4/6] Testing POST /api/mcp (tools/call: calculate_quote_estimate)...');
+  // Test 4: POST JSON-RPC tools/call (get_insurance_products)
+  console.log('[4/6] Testing POST /api/mcp (tools/call: get_insurance_products)...');
   const callReq = new Request('http://localhost:4321/api/mcp', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -56,11 +56,9 @@ async function testMcpEndpoint() {
       id: 3,
       method: 'tools/call',
       params: {
-        name: 'calculate_quote_estimate',
+        name: 'get_insurance_products',
         arguments: {
-          insuranceType: 'home',
-          location: 'Danbury',
-          estimatedValueOrVehicles: 500000,
+          category: 'personal',
         },
       },
     }),
@@ -68,7 +66,7 @@ async function testMcpEndpoint() {
   const callRes = await POST({ request: callReq } as any);
   const callJson = await callRes.json();
   console.log('Result output:', callJson.result.content[0].text);
-  console.log('✓ tools/call (calculate_quote_estimate) execution passed.\n');
+  console.log('✓ tools/call (get_insurance_products) execution passed.\n');
 
   // Test 5: POST JSON-RPC tools/call (get_team_members)
   console.log('[5/6] Testing POST /api/mcp (tools/call: get_team_members)...');

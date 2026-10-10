@@ -43,6 +43,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   // Honeypot trap fields for bot defense
   const [hpWebsite, setHpWebsite] = useState('');
   const [hpCompany, setHpCompany] = useState('');
+  const [renderedAt, setRenderedAt] = useState<number>(0);
 
   // Submission & Validation States
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -57,6 +58,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
 
   // Parse query parameters from hero rate starter or direct URL
   useEffect(() => {
+    setRenderedAt(Date.now());
     if (typeof window === 'undefined') return;
     const params = new URLSearchParams(window.location.search);
     const typeParam = params.get('type') as LineOfBusiness | null;
@@ -525,6 +527,13 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   // Step 1 Validation & Proceed
   const handleProceedToStep2 = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Client-side Honeypot Check: if bot filled either hidden trap field, silently abort
+    if (hpWebsite || hpCompany) {
+      console.warn('[Security / Honeypot] Bot submission blocked at QuoteForm Step 1.');
+      return;
+    }
+
     if (zipCode && !/^\d{5}$/.test(zipCode)) {
       setErrorMessage(dict.step1Error);
       return;
@@ -537,6 +546,13 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   // Step 2 Validation, Partial Lead Capture & Proceed
   const handleProceedToStep3 = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Client-side Honeypot Check: if bot filled either hidden trap field, silently abort
+    if (hpWebsite || hpCompany) {
+      console.warn('[Security / Honeypot] Bot submission blocked at QuoteForm Step 2.');
+      return;
+    }
+
     if (!fullName.trim() || !email.trim() || !phone.trim()) {
       setErrorMessage(dict.step2Error);
       return;
@@ -555,26 +571,34 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
 
     setErrorMessage('');
 
-    // Fire Partial Lead Capture in background (non-blocking)
+    // Fire Partial Lead Capture in background (non-blocking) with reCAPTCHA & honeypots
     if (!partialSaved) {
-      fetch('/api/quote', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name: fullName.trim(),
-          email: email.trim(),
-          phone: phone.trim(),
-          insuranceType: dict.lines[lineOfBusiness],
-          preferredOffice,
-          preferredLanguage: lang,
-          reachMethod,
-          reachTime,
-          smsConsent,
-          notes: `Partial lead capture at Step 2. Connecticut ZIP: ${zipCode || 'Not provided'}`,
-          source: 'Partial_Lead_Step_2',
-        }),
-      })
-        .then(() => setPartialSaved(true))
+      getRecaptchaToken('quote_partial_lead')
+        .then((recaptchaToken) => {
+          fetch('/api/quote', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: fullName.trim(),
+              email: email.trim(),
+              phone: phone.trim(),
+              insuranceType: dict.lines[lineOfBusiness],
+              preferredOffice,
+              preferredLanguage: lang,
+              reachMethod,
+              reachTime,
+              smsConsent,
+              notes: `Partial lead capture at Step 2. Connecticut ZIP: ${zipCode || 'Not provided'}`,
+              source: 'Partial_Lead_Step_2',
+              recaptchaToken,
+              hp_website: hpWebsite,
+              hp_company: hpCompany,
+              form_rendered_at: renderedAt,
+            }),
+          })
+            .then(() => setPartialSaved(true))
+            .catch(() => {});
+        })
         .catch(() => {});
     }
 
@@ -650,6 +674,20 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
+    // Client-side Honeypot Check: if bot filled either hidden trap field, silently abort
+    if (hpWebsite || hpCompany) {
+      console.warn('[Security / Honeypot] Bot submission blocked at QuoteForm Step 3.');
+      const fallbackPrefix = lineOfBusiness.substring(0, 3).toUpperCase();
+      setConfirmationCode(`AIA-${fallbackPrefix}-${Math.floor(100000 + Math.random() * 900000)}`);
+      setSubmittedData({
+        name: fullName.trim(),
+        lineName: dict.lines[lineOfBusiness],
+        office: preferredOffice,
+        reachMethod: reachMethod === 'text' ? 'SMS Text' : reachMethod === 'email' ? 'Email' : 'Phone Call',
+      });
+      return;
+    }
+
     if (!validateStep3()) {
       return;
     }
@@ -680,6 +718,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         // Honeypot fields
         hp_website: hpWebsite,
         hp_company: hpCompany,
+        form_rendered_at: renderedAt,
       };
 
       const response = await fetch('/api/quote', {
@@ -795,8 +834,25 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         /* 3-Step Progressive Funnel Form */
         <div className="bg-white border border-border-subtle shadow-xl rounded-2xl p-6 sm:p-10 transition-all space-y-8">
           {/* Honeypot traps for bot protection */}
-          <div className="hidden" aria-hidden="true">
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              left: '-9999px',
+              top: '-9999px',
+              opacity: 0,
+              zIndex: -1,
+              width: 0,
+              height: 0,
+              overflow: 'hidden',
+              pointerEvents: 'none',
+              margin: 0,
+              padding: 0,
+            }}
+          >
+            <label htmlFor={`quote_global_hp_website_${lang}`}>Leave empty</label>
             <input
+              id={`quote_global_hp_website_${lang}`}
               type="text"
               name="hp_website"
               tabIndex={-1}
@@ -804,7 +860,9 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
               value={hpWebsite}
               onChange={(e) => setHpWebsite(e.target.value)}
             />
+            <label htmlFor={`quote_global_hp_company_${lang}`}>Company Website</label>
             <input
+              id={`quote_global_hp_company_${lang}`}
               type="text"
               name="hp_company"
               tabIndex={-1}
@@ -900,6 +958,48 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
           {/* STEP 1: Policy Selection & Connecticut Location */}
           {currentStep === 1 && (
             <form onSubmit={handleProceedToStep2} className="space-y-6 animate-fadeIn">
+              {/* ============================================================ */}
+              {/* BOT HONEYPOT FIELDS (Invisible to human users, traps bots)   */}
+              {/* ============================================================ */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  left: '-9999px',
+                  top: '-9999px',
+                  opacity: 0,
+                  zIndex: -1,
+                  width: 0,
+                  height: 0,
+                  overflow: 'hidden',
+                  pointerEvents: 'none',
+                  margin: 0,
+                  padding: 0,
+                }}
+              >
+                <label htmlFor={`quote_s1_hp_website_${lang}`}>Leave this field empty if human</label>
+                <input
+                  id={`quote_s1_hp_website_${lang}`}
+                  type="text"
+                  name="hp_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hpWebsite}
+                  onChange={(e) => setHpWebsite(e.target.value)}
+                />
+                <label htmlFor={`quote_s1_hp_company_${lang}`}>Company Website</label>
+                <input
+                  id={`quote_s1_hp_company_${lang}`}
+                  type="text"
+                  name="hp_company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hpCompany}
+                  onChange={(e) => setHpCompany(e.target.value)}
+                />
+              </div>
+              {/* ============================================================ */}
+
               <div className="space-y-1">
                 <h3 className="text-base sm:text-lg font-bold text-accent">
                   {dict.step1Title}
@@ -1040,12 +1140,57 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
               <p className="text-center text-xs text-text-muted">
                 {dict.microTrust}
               </p>
+
+              {/* Google reCAPTCHA v3 Compliance Notice */}
+              <RecaptchaLegalNotice lang={lang} className="pt-2 text-center" />
             </form>
           )}
 
           {/* STEP 2: Contact Information & Lead Capture */}
           {currentStep === 2 && (
             <form onSubmit={handleProceedToStep3} className="space-y-6 animate-fadeIn">
+              {/* ============================================================ */}
+              {/* BOT HONEYPOT FIELDS (Invisible to human users, traps bots)   */}
+              {/* ============================================================ */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  left: '-9999px',
+                  top: '-9999px',
+                  opacity: 0,
+                  zIndex: -1,
+                  width: 0,
+                  height: 0,
+                  overflow: 'hidden',
+                  pointerEvents: 'none',
+                  margin: 0,
+                  padding: 0,
+                }}
+              >
+                <label htmlFor={`quote_s2_hp_website_${lang}`}>Leave this field empty if human</label>
+                <input
+                  id={`quote_s2_hp_website_${lang}`}
+                  type="text"
+                  name="hp_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hpWebsite}
+                  onChange={(e) => setHpWebsite(e.target.value)}
+                />
+                <label htmlFor={`quote_s2_hp_company_${lang}`}>Company Website</label>
+                <input
+                  id={`quote_s2_hp_company_${lang}`}
+                  type="text"
+                  name="hp_company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hpCompany}
+                  onChange={(e) => setHpCompany(e.target.value)}
+                />
+              </div>
+              {/* ============================================================ */}
+
               <div className="space-y-1">
                 <h3 className="text-base sm:text-lg font-bold text-accent">
                   {dict.step2Title}
@@ -1178,6 +1323,9 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                   </svg>
                 </button>
               </div>
+
+              {/* Google reCAPTCHA v3 Compliance Notice */}
+              <RecaptchaLegalNotice lang={lang} className="pt-2 text-center" />
             </form>
           )}
 
@@ -1189,6 +1337,48 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
               data-mcp-tool="submit_quote_request"
               data-mcp-description="Submit an insurance quote request to Associated Insurance Agency"
             >
+              {/* ============================================================ */}
+              {/* BOT HONEYPOT FIELDS (Invisible to human users, traps bots)   */}
+              {/* ============================================================ */}
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  left: '-9999px',
+                  top: '-9999px',
+                  opacity: 0,
+                  zIndex: -1,
+                  width: 0,
+                  height: 0,
+                  overflow: 'hidden',
+                  pointerEvents: 'none',
+                  margin: 0,
+                  padding: 0,
+                }}
+              >
+                <label htmlFor={`quote_s3_hp_website_${lang}`}>Leave this field empty if human</label>
+                <input
+                  id={`quote_s3_hp_website_${lang}`}
+                  type="text"
+                  name="hp_website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hpWebsite}
+                  onChange={(e) => setHpWebsite(e.target.value)}
+                />
+                <label htmlFor={`quote_s3_hp_company_${lang}`}>Company Website</label>
+                <input
+                  id={`quote_s3_hp_company_${lang}`}
+                  type="text"
+                  name="hp_company"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={hpCompany}
+                  onChange={(e) => setHpCompany(e.target.value)}
+                />
+              </div>
+              {/* ============================================================ */}
+
               <div className="bg-gradient-to-br from-accent/5 via-white to-accent-gold/5 border border-accent/20 rounded-xl p-5 sm:p-6 space-y-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-accent/15 pb-3">
                   <div>
