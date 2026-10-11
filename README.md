@@ -6,7 +6,9 @@
 [![Framework: Astro 7](https://img.shields.io/badge/Framework-Astro%20v7.0.5-orange.svg)](https://astro.build)
 [![UI: React 19](https://img.shields.io/badge/UI-React%20v19.2.7-blue.svg)](https://react.dev)
 [![Styling: Tailwind CSS v4](https://img.shields.io/badge/Styling-Tailwind%20CSS%20v4.3.2-38bdf8.svg)](https://tailwindcss.com)
-[![WebMCP Enabled](https://img.shields.io/badge/WebMCP-12%20Tools%20Active-8b5cf6.svg)](#-webmcp--agentic-ai-integration)
+[![WebMCP Enabled](https://img.shields.io/badge/WebMCP-11%20Tools%20Active-8b5cf6.svg)](#-webmcp--agentic-ai-integration)
+[![Email: Resend](https://img.shields.io/badge/Email-Resend%20v6-black.svg)](https://resend.com)
+[![Python: 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776ab.svg)](https://www.python.org)
 [![Bot Defense: reCAPTCHA v3](https://img.shields.io/badge/Bot%20Defense-reCAPTCHA%20v3-emerald.svg)](#-bot-defense--security-recaptcha-v3)
 [![Multilingual](https://img.shields.io/badge/Locales-EN%20%7C%20ES%20%7C%20PT%20%7C%20TR-emerald.svg)](#-multilingual-architecture-i18n)
 [![Deployment: Vercel](https://img.shields.io/badge/Deploy-Vercel-black.svg)](https://vercel.com)
@@ -17,7 +19,7 @@
 
 Associated Insurance Agency (AIA) operates three physical branch offices across Connecticut (**Danbury Headquarters**, **Watertown Branch**, and **Bridgeport Community Branch**). As an independent insurance agency, AIA represents over 11 leading regional and national insurance carriers (Safeco, Travelers, The Hartford, Progressive, Foremost, Guard, Infinity, Main Street America, National General, Victoria, and K&K Insurance).
 
-This project pairs a modern, blazing-fast web experience for prospective and existing policyholders with a cutting-edge **Model Context Protocol (MCP)** and **WebMCP** architecture. This enables external AI agents (Claude, Cursor, Antigravity, and browser-native agents) to programmatically query agency data, explore insurance products, locate multilingual agents, and submit quote requests.
+This project pairs an ultra-fast web experience for policyholders with a cutting-edge **Model Context Protocol (MCP)** and **WebMCP** architecture. The platform includes an interactive multi-line quote engine, an ACORD 25 Certificate of Insurance hub, a transactional email dispatch service via **Resend**, and a companion **Python underwriting modeling suite** for carrier rating schema validation and producer brief synthesis. External AI agents (Claude, Cursor, Antigravity, and browser-native agents) can programmatically query agency data, explore insurance products, locate multilingual agents, and submit quote requests.
 
 ---
 
@@ -25,6 +27,15 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 
 ### 🏛️ Digital Agency Portal
 - **Independent Carrier Comparison**: Informs customers of coverage lines across personal (Auto, Homeowners, Renters, Condo, Umbrella) and commercial (BOP, General Liability, Commercial Property, Workers' Comp, Commercial Auto) products.
+- **Interactive Homeowners Quote Engine** (`/quote/homeowners`, `/es/quote/homeowners`, `/pt/quote/homeowners`, `/tr/quote/homeowners`):
+  - **4-Step Underwriting Wizard** (`HomeownersQuoteWizard.tsx`): Guides homeowners through Property Location, Construction Details (sq ft, stories, roof material & age, foundation type), Safety & Risk Mitigations (hydrant distance, burglar/fire alarms, swimming pools, trampolines, dog breeds, loss history), and Coverage Preferences.
+  - **Real-Time Coverage A & Sublimit Calculation**: Computes Dwelling Limit A based on estimated home value and replacement cost tiers (100%, 125%, 150%), with automatic calculation of Personal Property (Coverage C), Loss of Use (Coverage D), and Personal Liability (Coverage E).
+  - **Carrier-Ready API Payload Generation**: Validates inputs with Zod schemas (`homeownersQuoteSchema.ts`) and outputs formatted underwriting payloads for carrier rating engines.
+- **Transactional Lead & Quote Email Pipeline (Resend Integration)**:
+  - **Dual Notification Dispatch** (`src/lib/email.ts`): Automatically dispatches two transactional emails upon every quote submission via web forms or WebMCP tool invocations:
+    1. **Agency Producer Dispatch**: Rich HTML and plain-text briefing sent to the assigned branch office (`danbury@aia-danbury.com`, `watertown@aia-danbury.com`, `bridgeport@aia-danbury.com`) detailing customer contact info, reach preference, SMS consent, and risk anchors.
+    2. **Customer Confirmation**: Branded email acknowledging receipt with the confirmation reference code (`AIA-XXXXXX`) and a 24-business-hour follow-up commitment.
+  - **Zero-Failure Local Development Mode**: Automatically runs in simulation mode when `RESEND_API_KEY` is unset, outputting clean audit logs to stdout.
 - **Certificate of Insurance (COI / ACORD 25) Hub**: Dedicated multilingual request portals (`/certificate-request`, `/es/certificate-request`, `/pt/certificate-request`, `/tr/certificate-request`, with `/coi` and `/certificates` aliases):
   - **4-Step Interactive ACORD 25 Wizard** (`CertificateRequestForm.tsx`): Guides requestors through named insured verification, certificate holder & delivery dispatch (direct email & fax), contract endorsement terms (Additional Insured CG 20 10 / CG 20 37, Waiver of Subrogation, Primary & Non-Contributory wording), and project specifications upload.
   - **Emergency Rush Processing**: Same-day issuance dispatch callout for active job sites, municipal permits, and contractor bid deadlines with direct hotline access to Danbury HQ.
@@ -57,10 +68,18 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 - **Dual-Layer Tool Calling**:
   - **Browser Runtime (`WebMCP`)**: Registers tools onto `window.modelContext` / `document.modelContext` for in-browser AI agents and automated assistants.
   - **HTTP JSON-RPC 2.0 Endpoint (`/api/mcp`)**: Server-side standard Model Context Protocol endpoint for external agents (Claude Desktop, Cursor, Antigravity CLI, custom LLM workflows).
-- **Interactive WebMCP Inspector**: A built-in floating developer UI component (`WebMcpInspector.tsx`) allowing real-time testing, inspection of JSON schemas, and live execution of all 12 agency tools.
+- **Interactive WebMCP Inspector**: A built-in floating developer UI component (`WebMcpInspector.tsx`) allowing real-time testing, inspection of JSON schemas, and live execution of all 11 agency tools.
+- **Integrated Lead Security & Automated Dispatch**: The `submit_quote_request` tool automatically acquires in-browser reCAPTCHA v3 tokens, verifies them server-side, stages the lead, and triggers transactional Resend email dispatches.
 - **Generative Engine Optimization (GEO)**:
   - Standardized LLM indexing via [`/llms.txt`](public/llms.txt) and [`/llms-full.txt`](public/llms-full.txt).
   - Open discovery manifests via [`/.well-known/mcp.json`](public/.well-known/mcp.json) and [`/.well-known/ai-plugin.json`](public/.well-known/ai-plugin.json).
+
+### 🐍 Python Underwriting & Directory Suite
+- **Companion Business Logic Services**: Fully typed Python modules written to PEP 8 standards supporting underwriting risk models, rating API payloads, and producer preparation workflows:
+  - **`unified_quote_service.py`**: Encapsulates the unified intake model. Combines a shared contact foundation (`SharedFoundation`) with 5 line-specific risk anchors (`HomeownersAnchor`, `PersonalAutoAnchor`, `CommercialAutoAnchor`, `UmbrellaAnchor`, `CommercialGLAnchor`) to synthesize comprehensive producer prep briefs before customer calls.
+  - **`homeowners_quote_service.py`**: 4-step underwriting evaluation engine calculating Dwelling Limit A replacement costs and exporting carrier rating API JSON payloads (`HO-3 Special Form`).
+  - **`office_employee_directory_service.py`**: In-memory repository modeling AIA's branch offices and staff directory, providing multilingual search and licensing credentials.
+  - **`main.py`**: Executable showcase demonstrating validation, rating engine output, and directory lookups. Run via `python main.py`.
 
 ---
 
@@ -71,6 +90,8 @@ This project pairs a modern, blazing-fast web experience for prospective and exi
 | **Framework** | [Astro v7.0.5](https://astro.build) | Island architecture, hybrid static & serverless rendering |
 | **Adapter** | [@astrojs/vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/) | Serverless edge & API route hosting |
 | **UI Components** | [React v19.2.7](https://react.dev) | Interactive islands with [Framer Motion v12.42](https://www.framer.com/motion/) |
+| **Email Service** | [Resend v6.32](https://resend.com) | Transactional email dispatch for agency producer alerts & customer confirmations |
+| **Python Core** | [Python 3.10+](https://www.python.org) | PEP 8 companion underwriting engines, carrier payload generation & directory services |
 | **Asset Engine** | [Astro Assets](https://docs.astro.build/en/guides/images/) | Build-time image optimization, WebP generation & responsive sizing |
 | **Styling** | [Tailwind CSS v4.3.2](https://tailwindcss.com) | Integrated via `@tailwindcss/vite` with custom theme tokens |
 | **Typography** | [Geist Sans & Mono](https://fontsource.org) | Loaded via `@fontsource/geist-sans` and `@fontsource/geist-mono` |
@@ -92,7 +113,7 @@ The platform exposes **11 standardized tools** callable through both the browser
 | `get_employee_profile` | Read-only | Detailed biography, NPN credentials, languages, and direct servicing office for staff members. |
 | `find_agent_by_language` | Read-only | Finds AIA branches and licensed personnel fluent in English, Spanish, Portuguese, or Turkish. |
 | `get_insurance_products` | Read-only | Detailed breakdown of personal and commercial policies, limit recommendations, and bundle discounts. |
-| `submit_quote_request` | Action | Ingests structured quote requests, generates confirmation codes, and stages inquiries for agency review. |
+| `submit_quote_request` | Action | Ingests quote requests with reCAPTCHA verification, stages leads, and dispatches Resend transactional emails. |
 | `get_carrier_billing_directory` | Read-only | Customer service phone numbers, claims lines, and online payment URLs for all 11 carriers. |
 | `search_knowledge_base` | Read-only | Query Connecticut statutory liability minimums (25/50/25), flood exclusions, claims procedures, and FAQs. |
 | `check_office_open_status` | Read-only | Real-time Eastern Time evaluation of office operating status (Mon–Fri 8:30 AM – 5:00 PM EST). |
@@ -130,19 +151,34 @@ aia/
 │   │   ├── aia_janaija.png     # Janaija S. Hammer portrait
 │   │   └── Photo-of-the-Associated-Insurance-Agency-Team-1536x926.jpg # Full agency team photo
 │   ├── components/             # Astro & React UI components
+│   │   ├── homeowners-quote/   # 4-step Homeowners Quote Wizard modular components
+│   │   │   ├── HomeownersQuoteWizard.tsx # Wizard container & state orchestrator
+│   │   │   ├── StepLocation.tsx     # Step 1: Address & property classification
+│   │   │   ├── StepConstruction.tsx # Step 2: Construction, sq ft & roof specifications
+│   │   │   ├── StepSafety.tsx       # Step 3: Mitigations, pools, dogs & loss history
+│   │   │   ├── StepContact.tsx      # Step 4: Contact details & Coverage A preferences
+│   │   │   ├── ReviewSubmit.tsx     # Review summary, rating preview & reCAPTCHA submit
+│   │   │   ├── StepNavigation.tsx   # Progress bar & prev/next buttons
+│   │   │   └── FieldWrapper.tsx     # Accessible field container with validation errors
+│   │   ├── CarrierLogos.astro  # Interactive grid of 11 partnered insurance carriers
 │   │   ├── CertificateRequestForm.tsx # 4-step interactive ACORD 25 COI wizard with honeypots & reCAPTCHA v3
-│   │   ├── ContactForm.tsx     # Interactive contact form with bot honeypots & multi-lingual validation
+│   │   ├── CoiSwitchBanner.astro # Contextual prompt directing contractors to COI request
+│   │   ├── CommercialAuditBanner.astro # High-trust banner highlighting insurance reviews
+│   │   ├── ContactForm.tsx     # Interactive contact form with bot honeypots & multilingual validation
 │   │   ├── ContactHero.astro   # Multilingual Contact Page Hero showcasing full team photo & trust stats
 │   │   ├── FAQAccordion.tsx    # Animated interactive FAQ accordion
 │   │   ├── Footer.astro        # Agency footer with brand badge, branch info & carriers
 │   │   ├── Header.astro        # Agency header with brand badge, navigation & office hours
+│   │   ├── HeroQuoteStarter.tsx # Instant quote starter island on the homepage
+│   │   ├── MultilingualRoutingNotice.astro # Friendly locale switcher banner
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
 │   │   ├── OfficeLocationsMap.astro # Interactive multi-office Google Maps embed showcase & switcher
-│   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder
+│   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder with branch routing
 │   │   ├── RecaptchaLegalNotice.tsx # Localized on-form Google reCAPTCHA compliance notice (en, es, pt, tr)
 │   │   ├── SEOHead.astro       # OpenGraph, Twitter, canonical, and JSON-LD schema
+│   │   ├── StickyMobileCallBar.astro # Floating one-tap click-to-call mobile footer bar
 │   │   ├── TeamSection.astro   # Multilingual 9-member team grid & interactive bio pop-up modal
-│   │   └── WebMcpInspector.tsx # Floating in-browser WebMCP debugging & execution modal (12 tools)
+│   │   └── WebMcpInspector.tsx # Floating in-browser WebMCP debugging & execution modal (11 tools)
 │   ├── content/                # Content collections
 │   │   ├── blog/               # Localized Markdown articles (en, es, pt, tr)
 │   │   └── testimonials/       # Customer review JSON data (en, es, pt, tr)
@@ -154,17 +190,22 @@ aia/
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Master HTML shell, SEOHead, Header, Footer, WebMCP init
 │   ├── lib/
+│   │   ├── email.ts            # Resend transactional email service (producer briefs & confirmations)
+│   │   ├── homeownersQuoteI18n.ts # Full multilingual copy & tooltips for homeowners quote wizard
+│   │   ├── homeownersQuoteSchema.ts # Zod validation schema & rating calculation formulas
+│   │   ├── recaptcha.ts        # Client-side dynamic Google reCAPTCHA v3 script injector
+│   │   ├── recaptchaVerify.ts  # Server-side reCAPTCHA token verification with Google API
 │   │   └── webmcp/             # WebMCP implementation
 │   │       ├── init.ts         # Browser window.modelContext bootstrap
 │   │       ├── runtime.ts      # WebMCP execution engine & event emitter
-│   │       ├── tools.ts        # 12 AIA tool definitions, schemas, and implementations
+│   │       ├── tools.ts        # 11 AIA tool definitions, schemas, and implementations
 │   │       └── types.ts        # TypeScript interfaces for MCP JSON-RPC & tools
 │   ├── pages/                  # File-based routing
 │   │   ├── api/
 │   │   │   ├── certificate-request.ts # REST endpoint for ACORD 25 COI issuance with bot defense
 │   │   │   ├── contact.ts      # REST endpoint for contact inquiries with honeypot bot validation
-│   │   │   ├── mcp.ts          # JSON-RPC 2.0 MCP endpoint (GET/POST)
-│   │   │   └── quote.ts        # REST endpoint for lead submission & retrieval
+│   │   │   ├── mcp.ts          # JSON-RPC 2.0 MCP endpoint (GET/POST) with auto email dispatch
+│   │   │   └── quote.ts        # REST endpoint for lead submission & Resend email trigger
 │   │   ├── blog/               # Blog index and dynamic [slug].astro routes
 │   │   ├── commercial/         # Dedicated commercial cluster pages
 │   │   │   ├── auto.astro      # Commercial Auto & Fleet guide
@@ -175,9 +216,11 @@ aia/
 │   │   │   ├── homeowners.astro # Homeowners & Dwelling guide (replacement cost, storms)
 │   │   │   ├── renters.astro   # Renters & Tenant insurance guide (HO-4, liability)
 │   │   │   └── umbrella.astro  # Personal Umbrella excess liability guide ($1M-$5M+)
-│   │   ├── es/                 # Spanish localized pages (index, about, team, personal, commercial, certificate-request, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
-│   │   ├── pt/                 # Portuguese localized pages (index, about, team, personal, commercial, certificate-request, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
-│   │   ├── tr/                 # Turkish localized pages (index, about, team, personal, commercial, certificate-request, quote, contact, terms, privacy, sitemap, personal/*, commercial/*)
+│   │   ├── quote/              # Specialized quote routes
+│   │   │   └── homeowners.astro # Full 4-step interactive Homeowners Quote experience
+│   │   ├── es/                 # Spanish localized pages (including quote/homeowners.astro)
+│   │   ├── pt/                 # Portuguese localized pages (including quote/homeowners.astro)
+│   │   ├── tr/                 # Turkish localized pages (including quote/homeowners.astro)
 │   │   ├── about.astro         # Agency history, credentials, and office profiles
 │   │   ├── certificate-request.astro # ACORD 25 Certificate of Insurance landing & request page
 │   │   ├── commercial.astro    # Commercial lines overview pillar (BOP, GL, Property, Workers' Comp)
@@ -186,13 +229,17 @@ aia/
 │   │   ├── pay-bill.astro      # 11-carrier online payment & claims directory
 │   │   ├── personal.astro      # Personal lines (Home, Auto, Renters, Umbrella)
 │   │   ├── privacy.astro       # Privacy Policy & GLBA consumer financial notice
-│   │   ├── quote.astro         # Quote intake page embedding QuoteForm.tsx
+│   │   ├── quote.astro         # Universal quote intake page embedding QuoteForm.tsx
 │   │   ├── service.astro       # Customer support, claims steps, and FAQs
 │   │   ├── sitemap.astro       # HTML sitemap directory & XML crawler index
 │   │   ├── team.astro          # Dedicated agency team directory & staff profiles
 │   │   └── terms.astro         # Terms of Service & regulatory disclosures
 │   └── styles/
 │       └── global.css          # Tailwind CSS v4 @theme design tokens
+├── homeowners_quote_service.py # Python 4-step rating engine model & API payload builder
+├── office_employee_directory_service.py # Python branch office & multilingual staff directory
+├── unified_quote_service.py    # Python unified quote foundation & 5 product anchors
+├── main.py                     # Python entry point demonstrating all service models
 ├── astro.config.mjs            # Astro configuration (Vercel adapter, i18n, Sitemap, React)
 ├── package.json                # Project dependencies and script commands
 └── tsconfig.json               # TypeScript compiler configuration
@@ -229,9 +276,12 @@ cp .env.example .env
 | :--- | :--- | :--- |
 | `PUBLIC_RECAPTCHA_SITE_KEY` | Client & Server | Google reCAPTCHA v3 site key injected into client scripts. |
 | `RECAPTCHA_SECRET_KEY` | Server-only | Google reCAPTCHA v3 private secret key for out-of-band verification. |
+| `RESEND_API_KEY` | Server-only | Resend API key (`re_...`). If omitted or left as placeholder, email dispatch operates in local simulated mode without errors. |
+| `RESEND_FROM_EMAIL` | Server-only | Transactional sender email address (e.g., `Associated Insurance Agency <onboarding@resend.dev>`). |
+| `QUOTE_NOTIFICATION_EMAIL` | Server-only | Internal agency inbox receiving incoming producer lead alerts (e.g., `danbury@aia-danbury.com`). |
 
 > [!NOTE]
-> Out of the box, `.env.example` includes Google's official v3 test keys which always pass with a human score of `1.0`. For production, configure your live keys in **Vercel Project Settings** (`Settings` → `Environment Variables`).
+> Out of the box, `.env.example` includes Google's official v3 test keys which always pass with a human score of `1.0`. Resend email dispatch gracefully detects when an API key is unconfigured and logs simulated email summaries to stdout, allowing complete local development without external credentials. For production, configure live keys in **Vercel Project Settings** (`Settings` → `Environment Variables`).
 
 ### Development Server
 
@@ -255,6 +305,19 @@ Manage the background process using:
 - `astro dev status` — Check server status
 - `astro dev logs` — Stream server logs
 - `astro dev stop` — Stop the background server
+
+### 🐍 Running the Python Companion Suite
+
+To verify the companion underwriting models, rating engine payload generators, and employee directory services:
+
+```powershell
+python main.py
+```
+
+This executes the PEP 8 demonstration workflows showcasing:
+1. **Unified Quote Intake & Producer Briefs**: Validates the shared contact foundation (`SharedFoundation`) paired with line-specific risk anchors across Homeowners, Personal Auto, Commercial Auto, Umbrella, and Commercial GL.
+2. **Connecticut Homeowners Rating Engine**: Simulates the 4-step wizard and outputs formatted JSON payloads (`HO-3 Special Form`) matching carrier rating API specifications.
+3. **Multilingual Directory & Agent Matcher**: Demonstrates branch office lookups and matches prospective clients with language-proficient producers.
 
 ---
 
@@ -322,12 +385,14 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
       }
     }
     ```
+  - **Automated Email Dispatch**: Calling `submit_quote_request` via JSON-RPC automatically triggers Resend transactional email notifications to the assigned servicing office.
 
 ### 2. Quote Intake (`/api/quote`)
 
-- **POST `/api/quote`**: Submits a lead payload (`name`, `email`, `phone`, `insuranceType`, `preferredOffice`, `preferredLanguage`, `notes`, `ratingPayload`, `recaptchaToken`).
+- **POST `/api/quote`**: Submits a lead payload (`name`, `email`, `phone`, `insuranceType`, `preferredOffice`, `preferredLanguage`, `notes`, `ratingPayload`, `recaptchaToken`, `source`).
   - **Bot Mitigation**: Validates Google reCAPTCHA v3 token (`quote_form` action, score $\ge 0.5$) and hidden honeypot fields.
-  - Returns a confirmation code (`AIA-XXXXXX`) and stores `recaptchaScore` in inquiry metadata.
+  - **Resend Email Trigger**: Automatically sends an HTML producer alert to the assigned branch office and an acknowledgement email to the applicant.
+  - **Response Payload**: Returns a confirmation code (`AIA-XXXXXX`), `emailDispatched` (boolean), `emailDetails` (`simulated`, `id`, `recipient`), and stored inquiry metadata.
 - **GET `/api/quote`**: Returns recent submissions count and metadata for internal testing.
 
 ### 3. Contact Inquiries (`/api/contact`)

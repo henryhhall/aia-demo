@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { verifyRecaptcha } from '../../lib/recaptchaVerify';
+import { sendQuoteEmail, type SendEmailResult } from '../../lib/email';
 
 export const prerender = false;
 
@@ -84,6 +85,12 @@ export const POST: APIRoute = async ({ request }) => {
             }
           );
         }
+        recaptchaScore = recaptchaResult.score ?? 1.0;
+      }
+    } else if (source === 'WebMCP_Tool') {
+      // Programmatic tool calls: verify if client supplied a token, otherwise accept tool attribution
+      if (recaptchaToken) {
+        const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'quote_form', 0.5);
         recaptchaScore = recaptchaResult.score ?? 1.0;
       }
     } else {
@@ -181,11 +188,25 @@ export const POST: APIRoute = async ({ request }) => {
     quoteSubmissions.unshift(submission);
     if (quoteSubmissions.length > 100) quoteSubmissions.pop();
 
+    // Dispatch email notification via Resend
+    let emailResult: SendEmailResult = { success: false };
+    try {
+      emailResult = await sendQuoteEmail(submission);
+    } catch (emailErr: any) {
+      console.error('[API /quote] Error during sendQuoteEmail:', emailErr);
+    }
+
     return new Response(
       JSON.stringify({
         success: true,
         confirmationCode,
         message: `Quote request successfully registered for ${name}.`,
+        emailDispatched: emailResult.success,
+        emailDetails: {
+          simulated: emailResult.simulated ?? false,
+          id: emailResult.id,
+          recipient: emailResult.recipient,
+        },
         details: submission,
       }),
       {

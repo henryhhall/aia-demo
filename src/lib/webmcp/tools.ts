@@ -909,6 +909,11 @@ export const aiaWebMcpTools: WebMCPTool[] = [
           type: 'string',
           description: 'Any additional notes, property details, or requested discounts',
         },
+        recaptchaToken: {
+          type: 'string',
+          description:
+            'Google reCAPTCHA v3 verification token. If running in browser and omitted, the tool automatically acquires one via PUBLIC_RECAPTCHA_SITE_KEY.',
+        },
       },
       required: ['name', 'email', 'phone', 'insuranceType'],
     },
@@ -925,12 +930,38 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       preferredLanguage?: string;
       currentCarrier?: string;
       notes?: string;
+      recaptchaToken?: string;
     }) => {
       const confirmationCode = 'AIA-' + Math.floor(100000 + Math.random() * 900000);
       const office = params.preferredOffice || 'Danbury';
       const officeObj = AIA_LOCATIONS.find((l) => l.city.toLowerCase() === office.toLowerCase()) || AIA_LOCATIONS[0];
 
-      // POST to backend API if in browser runtime
+      // 1. In browser environment: Acquire token dynamically using PUBLIC_RECAPTCHA_SITE_KEY
+      let recaptchaToken = params.recaptchaToken;
+      if (!recaptchaToken && typeof window !== 'undefined') {
+        try {
+          const { getRecaptchaToken } = await import('../recaptcha.ts');
+          recaptchaToken = (await getRecaptchaToken('quote_form')) || undefined;
+        } catch {
+          // Gracefully continue
+        }
+      }
+
+      // 2. In server environment: Verify token using RECAPTCHA_SECRET_KEY if available
+      let verificationResult: { success: boolean; score?: number; error?: string } | null = null;
+      if (typeof window === 'undefined') {
+        try {
+          const { verifyRecaptcha } = await import('../recaptchaVerify.ts');
+          verificationResult = await verifyRecaptcha(recaptchaToken, 'quote_form', 0.5);
+          if (!verificationResult.success) {
+            console.warn('[submit_quote_request] reCAPTCHA verification rejected:', verificationResult.error);
+          }
+        } catch (vErr) {
+          console.warn('[submit_quote_request] reCAPTCHA verification check error:', vErr);
+        }
+      }
+
+      // 3. POST to backend API if in browser runtime
       if (typeof window !== 'undefined' && typeof fetch !== 'undefined') {
         try {
           await fetch('/api/quote', {
@@ -939,6 +970,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
             body: JSON.stringify({
               ...params,
               confirmationCode,
+              recaptchaToken,
               source: 'WebMCP_Tool',
               timestamp: new Date().toISOString(),
             }),
@@ -956,6 +988,11 @@ export const aiaWebMcpTools: WebMCPTool[] = [
         officePhone: officeObj.phone,
         officeEmail: officeObj.email,
         expectedResponseTime: 'Within 24 business hours',
+        securityVerification: {
+          recaptchaVerified: verificationResult ? verificationResult.success : Boolean(recaptchaToken),
+          recaptchaScore: verificationResult?.score ?? null,
+          tokenAcquired: Boolean(recaptchaToken),
+        },
         summary: {
           customer: params.name,
           email: params.email,

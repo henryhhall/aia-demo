@@ -119,6 +119,30 @@ export const POST: APIRoute = async ({ request }) => {
 
         try {
           const result = await tool.execute(toolArgs);
+
+          // If submitting quote request via MCP, dispatch email notification
+          if (toolName === 'submit_quote_request' && result && typeof result === 'object') {
+            try {
+              const { sendQuoteEmail } = await import('../../lib/email.ts');
+              await sendQuoteEmail({
+                confirmationCode: result.confirmationCode,
+                name: toolArgs.name,
+                email: toolArgs.email,
+                phone: toolArgs.phone,
+                insuranceType: toolArgs.insuranceType,
+                preferredOffice: toolArgs.preferredOffice,
+                preferredLanguage: toolArgs.preferredLanguage,
+                currentCarrier: toolArgs.currentCarrier,
+                notes: toolArgs.notes,
+                source: 'WebMCP_JSONRPC_Tool',
+                recaptchaScore: result.securityVerification?.recaptchaScore ?? 1.0,
+                submittedAt: new Date().toISOString(),
+              });
+            } catch (emailErr) {
+              console.warn('[MCP Server] Background email dispatch error:', emailErr);
+            }
+          }
+
           return createJsonResponse({
             jsonrpc: '2.0',
             id,

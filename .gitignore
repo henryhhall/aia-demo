@@ -77,6 +77,7 @@ coverage/
 .parcel-cache/
 .npm/
 .yarn/
+.pnpm-store/
 .turbo/
 test-results/
 playwright-report/
@@ -102,7 +103,7 @@ artifacts/
 *.jsonl
 *.patch
 
-# Python Environments, Bytecode & Cache
+# Python Environments, Bytecode, Caches & Type Checkers
 __pycache__/
 *.py[cod]
 *$py.class
@@ -112,6 +113,10 @@ venv/
 env/
 ENV/
 .pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
 *.egg-info/
 .coverage
 htmlcov/
