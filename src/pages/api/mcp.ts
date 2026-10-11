@@ -143,6 +143,34 @@ export const POST: APIRoute = async ({ request }) => {
             }
           }
 
+          // If requesting certificate of insurance via MCP, dispatch email notification
+          if (toolName === 'request_certificate_of_insurance' && result && typeof result === 'object') {
+            try {
+              const { sendCertificateEmail } = await import('../../lib/email.ts');
+              await sendCertificateEmail({
+                confirmationCode: result.confirmationCode,
+                insuredName: toolArgs.insuredName,
+                requestorName: toolArgs.requestorName,
+                requestorEmail: toolArgs.requestorEmail,
+                requestorPhone: toolArgs.requestorPhone,
+                holderName: toolArgs.holderName,
+                holderAddress1: toolArgs.holderAddress || '',
+                holderCity: '',
+                holderState: 'CT',
+                holderZip: '',
+                deliveryMethod: toolArgs.deliveryMethod || 'Email',
+                coverages: toolArgs.coverages || ['General Liability'],
+                isAdditionalInsured: Boolean(toolArgs.isAdditionalInsured),
+                waiverSubrogationLines: toolArgs.waiverOfSubrogation ? ['General Liability'] : [],
+                jobNumber: toolArgs.jobNumberOrContract,
+                source: 'WebMCP_JSONRPC_Tool',
+                submittedAt: new Date().toISOString(),
+              });
+            } catch (emailErr) {
+              console.warn('[MCP Server] Background certificate email dispatch error:', emailErr);
+            }
+          }
+
           return createJsonResponse({
             jsonrpc: '2.0',
             id,

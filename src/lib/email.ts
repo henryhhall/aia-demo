@@ -1,9 +1,59 @@
 /**
  * Resend Email Dispatch Service
- * Handles transactional email notifications for insurance quote requests.
+ * Handles transactional email notifications for insurance quote requests and ACORD 25 certificates.
  */
 
 import { Resend } from 'resend';
+
+export interface CertificateEmailData {
+  confirmationCode: string;
+  requestorName: string;
+  companyName?: string;
+  requestorEmail: string;
+  requestorPhone: string;
+  requestorFax?: string;
+  relationship?: string;
+  insuredName: string;
+  policyNumber?: string;
+  preferredOffice?: string;
+
+  holderName: string;
+  attentionOf?: string;
+  holderAddress1: string;
+  holderAddress2?: string;
+  holderCity: string;
+  holderState: string;
+  holderZip: string;
+  holderEmail?: string;
+  holderPhone?: string;
+  holderFax?: string;
+  deliveryMethod?: string;
+  coverages?: string[];
+  coverageOtherText?: string;
+
+  isAdditionalInsured?: boolean;
+  hasWrittenContract?: boolean;
+  additionalInsuredName?: string;
+  additionalInsuredAddress?: string;
+  additionalInsuredLines?: string[];
+  waiverSubrogationLines?: string[];
+  primaryNonContributory?: boolean;
+  jobNumber?: string;
+  workState?: string;
+  jobPayroll?: string;
+  jobStartDate?: string;
+  neededByDate?: string;
+
+  specialInstructions?: string;
+  attachedFileName?: string;
+  attachedFileSize?: number;
+  agreementAccepted?: boolean;
+  preferredLanguage?: string;
+  source?: string;
+  recaptchaScore?: number;
+  submittedAt?: string;
+  logoUrl?: string;
+}
 
 export interface QuoteEmailData {
   confirmationCode: string;
@@ -449,3 +499,144 @@ export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailRes
     };
   }
 }
+
+/**
+ * Sends ACORD 25 Certificate of Insurance email notifications using React Email templates:
+ * 1. An operational dispatch email to the assigned branch office producers.
+ * 2. An acknowledgement confirmation email to the requesting party.
+ */
+export async function sendCertificateEmail(data: CertificateEmailData): Promise<SendEmailResult> {
+  const officeKey = (data.preferredOffice || 'danbury').toLowerCase();
+  const officeInfo = OFFICE_DIRECTORY[officeKey] || OFFICE_DIRECTORY.danbury;
+
+  const { client, fromEmail, defaultRecipient } = getResendClient();
+  const recipient = officeInfo.email || defaultRecipient;
+
+  // Dynamically import React, renderer, and email templates on demand
+  const React = await import('react');
+  const { render } = await import('@react-email/render');
+  const { CertificateRequestEmail } = await import('../emails/CertificateRequestEmail');
+  const { CertificateConfirmationEmail } = await import('../emails/CertificateConfirmationEmail');
+
+  // Prepare template props
+  const logoUrl = data.logoUrl || 'https://aia-danbury.com/images/logo.png';
+  const emailProps = {
+    ...data,
+    preferredOffice: officeInfo.name,
+    logoUrl,
+  };
+
+  // Render Agency Producer Dispatch with React Email
+  const agencyElement = React.createElement(CertificateRequestEmail, emailProps);
+  const agencyHtml = await render(agencyElement);
+  const agencyText = await render(agencyElement, { plainText: true });
+
+  // Render Customer Confirmation Receipt with React Email
+  const customerProps = {
+    confirmationCode: data.confirmationCode,
+    requestorName: data.requestorName,
+    insuredName: data.insuredName,
+    holderName: data.holderName,
+    deliveryMethod: data.deliveryMethod,
+    coverages: data.coverages,
+    neededByDate: data.neededByDate,
+    preferredOffice: officeInfo.name,
+    officePhone: officeInfo.phone,
+    officeEmail: officeInfo.email,
+    officeAddress: officeInfo.address,
+    submittedAt: data.submittedAt,
+    logoUrl,
+  };
+  const customerElement = React.createElement(CertificateConfirmationEmail, customerProps);
+  const customerHtml = await render(customerElement);
+  const customerText = await render(customerElement, { plainText: true });
+
+  // 1. Simulation / Local Dev Fallback (when RESEND_API_KEY is not yet populated)
+  if (!client) {
+    const simId = 'sim_cert_' + Math.random().toString(36).substring(2, 10);
+    console.info('\n====================================================');
+    console.info('📧 [Resend React Email Simulated Dispatch - ACORD 25 Certificate]');
+    console.info(`To:                 ${recipient} (${officeInfo.name})`);
+    console.info(`From:               ${fromEmail}`);
+    console.info(`Subject:            [ACORD 25 Certificate Request] ${data.insuredName} -> ${data.holderName} (${data.confirmationCode})`);
+    console.info(`Insured:            ${data.insuredName}`);
+    console.info(`Certificate Holder: ${data.holderName}`);
+    console.info(`Requestor:          ${data.requestorName} (${data.requestorEmail}, ${data.requestorPhone})`);
+    console.info(`Coverages:          ${(data.coverages || []).join(', ')}`);
+    console.info(`Addl Insured:       ${data.isAdditionalInsured ? 'Yes' : 'No'}`);
+    console.info(`Waiver Subrogation: ${(data.waiverSubrogationLines || []).join(', ') || 'None'}`);
+    console.info(`Turnaround SLA:     2-4 business hours`);
+    console.info(`Simulation ID:      ${simId}`);
+    console.info(`HTML Length:        ${agencyHtml.length} characters (React Email rendered)`);
+    console.info('💡 Set RESEND_API_KEY in your .env to dispatch live emails via Resend.');
+    console.info('====================================================\n');
+
+    return {
+      success: true,
+      simulated: true,
+      id: simId,
+      recipient,
+    };
+  }
+
+  // 2. Real Resend Dispatch
+  try {
+    const subject = `[ACORD 25 Certificate Request] ${data.insuredName} -> ${data.holderName} (${data.confirmationCode})`;
+
+    const emailResponse = await client.emails.send({
+      from: fromEmail,
+      to: [recipient],
+      replyTo: `${data.requestorName} <${data.requestorEmail}>`,
+      subject,
+      html: agencyHtml,
+      text: agencyText,
+      tags: [
+        { name: 'category', value: 'certificate_request' },
+        { name: 'office', value: officeKey },
+        { name: 'insured', value: data.insuredName.substring(0, 50) },
+      ],
+    });
+
+    if (emailResponse.error) {
+      console.error('[Resend Error] Certificate agency dispatch failed:', emailResponse.error);
+      return {
+        success: false,
+        error: emailResponse.error.message,
+        recipient,
+      };
+    }
+
+    console.info(`[Resend Success] ACORD 25 Certificate notification dispatched! ID: ${emailResponse.data?.id}`);
+
+    // Dispatch customer acknowledgement email
+    if (data.requestorEmail && data.requestorEmail.includes('@')) {
+      try {
+        await client.emails.send({
+          from: fromEmail,
+          to: [data.requestorEmail],
+          subject: `Certificate Request Confirmed - Associated Insurance Agency (${data.confirmationCode})`,
+          html: customerHtml,
+          text: customerText,
+          tags: [{ name: 'category', value: 'certificate_customer_confirmation' }],
+        });
+      } catch (custErr) {
+        console.warn('[Resend] Certificate customer confirmation delivery warning:', custErr);
+      }
+    }
+
+    return {
+      success: true,
+      id: emailResponse.data?.id,
+      simulated: false,
+      recipient,
+    };
+  } catch (err: any) {
+    console.error('[Resend Exception] Unexpected error during certificate email dispatch:', err);
+    return {
+      success: false,
+      error: err?.message || 'Failed to dispatch certificate email via Resend.',
+      recipient,
+    };
+  }
+}
+

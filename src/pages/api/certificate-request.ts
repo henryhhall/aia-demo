@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { verifyRecaptcha } from '../../lib/recaptchaVerify';
+import { sendCertificateEmail, type SendEmailResult } from '../../lib/email';
 
 export const prerender = false;
 
@@ -262,11 +263,25 @@ export const POST: APIRoute = async ({ request }) => {
     certificateSubmissions.unshift(submission);
     if (certificateSubmissions.length > 100) certificateSubmissions.pop();
 
+    // Dispatch email notifications via Resend & React Email
+    let emailResult: SendEmailResult = { success: false };
+    try {
+      emailResult = await sendCertificateEmail(submission);
+    } catch (emailErr: any) {
+      console.error('[API /certificate-request] Error during sendCertificateEmail:', emailErr);
+    }
+
     return new Response(
       JSON.stringify({
         success: true,
         confirmationCode,
         message: `Certificate request registered successfully for ${insuredName}. Reference: ${confirmationCode}`,
+        emailDispatched: emailResult.success,
+        emailDetails: {
+          simulated: emailResult.simulated ?? false,
+          id: emailResult.id,
+          recipient: emailResult.recipient,
+        },
         details: {
           confirmationCode,
           insuredName,

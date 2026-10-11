@@ -30,7 +30,11 @@ export default defineConfig({
     '/certificates': '/certificate-request',
     '/es/coi': '/es/certificate-request',
     '/pt/coi': '/pt/certificate-request',
-    '/tr/coi': '/tr/certificate-request'
+    '/tr/coi': '/tr/certificate-request',
+    '/quote/homeowners': '/quote?type=home',
+    '/es/quote/homeowners': '/es/quote?type=home',
+    '/pt/quote/homeowners': '/pt/quote?type=home',
+    '/tr/quote/homeowners': '/tr/quote?type=home'
   },
   integrations: [
     react(),
@@ -39,6 +43,12 @@ export default defineConfig({
     })
   ],
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    resolve: {
+      dedupe: ['react', 'react-dom']
+    },
+    optimizeDeps: {
+      exclude: ['@react-email/components', '@react-email/render']
+    }
   }
 });

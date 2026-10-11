@@ -27,10 +27,10 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
 
 ### 🏛️ Digital Agency Portal
 - **Independent Carrier Comparison**: Informs customers of coverage lines across personal (Auto, Homeowners, Renters, Condo, Umbrella) and commercial (BOP, General Liability, Commercial Property, Workers' Comp, Commercial Auto) products.
-- **Interactive Homeowners Quote Engine** (`/quote/homeowners`, `/es/quote/homeowners`, `/pt/quote/homeowners`, `/tr/quote/homeowners`):
-  - **4-Step Underwriting Wizard** (`HomeownersQuoteWizard.tsx`): Guides homeowners through Property Location, Construction Details (sq ft, stories, roof material & age, foundation type), Safety & Risk Mitigations (hydrant distance, burglar/fire alarms, swimming pools, trampolines, dog breeds, loss history), and Coverage Preferences.
-  - **Real-Time Coverage A & Sublimit Calculation**: Computes Dwelling Limit A based on estimated home value and replacement cost tiers (100%, 125%, 150%), with automatic calculation of Personal Property (Coverage C), Loss of Use (Coverage D), and Personal Liability (Coverage E).
-  - **Carrier-Ready API Payload Generation**: Validates inputs with Zod schemas (`homeownersQuoteSchema.ts`) and outputs formatted underwriting payloads for carrier rating engines.
+- **Universal Multilingual Quote Intake Engine** (`/quote`, `/es/quote`, `/pt/quote`, `/tr/quote`):
+  - **Unified Multi-Step Intake Funnel** (`QuoteForm.tsx`): Combines a shared customer contact foundation (name, phone with SMS consent, email, contact preference) with dynamic line-specific risk anchors for Homeowners (property address & assessor/GIS lookup), Auto (vehicles & VIN), Commercial Auto (fleet sizing), Umbrella (underlying limits), and Commercial GL (business trade & NAICS).
+  - **Automated Route Redirection**: 301 redirects preserve external links and bookmarks by routing previous `/quote/homeowners` URLs across all locales (`/quote/homeowners`, `/es/...`, `/pt/...`, `/tr/...`) directly to `/quote?type=home`.
+  - **Carrier-Ready Intake Payloads**: Validates submissions with honeypot bot mitigation and dispatches real-time producer briefings and customer confirmations.
 - **Transactional Lead & Quote Email Pipeline (Resend Integration)**:
   - **Dual Notification Dispatch** (`src/lib/email.ts`): Automatically dispatches two transactional emails upon every quote submission via web forms or WebMCP tool invocations:
     1. **Agency Producer Dispatch**: Rich HTML and plain-text briefing sent to the assigned branch office (`danbury@aia-danbury.com`, `watertown@aia-danbury.com`, `bridgeport@aia-danbury.com`) detailing customer contact info, reach preference, SMS consent, and risk anchors.
@@ -38,6 +38,9 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
   - **Zero-Failure Local Development Mode**: Automatically runs in simulation mode when `RESEND_API_KEY` is unset, outputting clean audit logs to stdout.
 - **Certificate of Insurance (COI / ACORD 25) Hub**: Dedicated multilingual request portals (`/certificate-request`, `/es/certificate-request`, `/pt/certificate-request`, `/tr/certificate-request`, with `/coi` and `/certificates` aliases):
   - **4-Step Interactive ACORD 25 Wizard** (`CertificateRequestForm.tsx`): Guides requestors through named insured verification, certificate holder & delivery dispatch (direct email & fax), contract endorsement terms (Additional Insured CG 20 10 / CG 20 37, Waiver of Subrogation, Primary & Non-Contributory wording), and project specifications upload.
+  - **Branded React Email Templates** (`src/emails/`): Leverages `@react-email/components` for pixel-perfect transactional emails:
+    1. `CertificateConfirmationEmail.tsx`: Customer receipt confirmation with reference code and turnaround SLA.
+    2. `CertificateRequestEmail.tsx`: High-priority agency producer briefing detailing contract endorsements, job-site specs, and attached insurance certificates.
   - **Emergency Rush Processing**: Same-day issuance dispatch callout for active job sites, municipal permits, and contractor bid deadlines with direct hotline access to Danbury HQ.
   - **Full ACORD 25 Educational Guide**: Explains Connecticut commercial insurance requirements, statutory limitations, and the legal distinction between informational certificates and policy endorsements.
   - **Dedicated Serverless API Endpoint** (`/api/certificate-request`): Generates unique audit references (`COI-CT-2026-XXXXXX`) with dual honeypot traps (client-side spoofing & server-side rejection), time-based submission velocity tracking (`form_rendered_at`), and Google reCAPTCHA v3 verification.
@@ -182,6 +185,9 @@ aia/
 │   ├── content/                # Content collections
 │   │   ├── blog/               # Localized Markdown articles (en, es, pt, tr)
 │   │   └── testimonials/       # Customer review JSON data (en, es, pt, tr)
+│   ├── emails/                 # Branded React Email transactional templates
+│   │   ├── CertificateConfirmationEmail.tsx # Requester confirmation with receipt reference
+│   │   └── CertificateRequestEmail.tsx      # Agency producer brief with risk & endorsement specs
 │   ├── content.config.ts       # Astro Content Collections schemas (Zod)
 │   ├── i18n/                   # Internationalization utilities & UI string mappings
 │   │   ├── team.ts             # Localized team bios, language proficiencies & modal UI strings (en, es, pt, tr)
@@ -216,11 +222,9 @@ aia/
 │   │   │   ├── homeowners.astro # Homeowners & Dwelling guide (replacement cost, storms)
 │   │   │   ├── renters.astro   # Renters & Tenant insurance guide (HO-4, liability)
 │   │   │   └── umbrella.astro  # Personal Umbrella excess liability guide ($1M-$5M+)
-│   │   ├── quote/              # Specialized quote routes
-│   │   │   └── homeowners.astro # Full 4-step interactive Homeowners Quote experience
-│   │   ├── es/                 # Spanish localized pages (including quote/homeowners.astro)
-│   │   ├── pt/                 # Portuguese localized pages (including quote/homeowners.astro)
-│   │   ├── tr/                 # Turkish localized pages (including quote/homeowners.astro)
+│   │   ├── es/                 # Spanish localized pages
+│   │   ├── pt/                 # Portuguese localized pages
+│   │   ├── tr/                 # Turkish localized pages
 │   │   ├── about.astro         # Agency history, credentials, and office profiles
 │   │   ├── certificate-request.astro # ACORD 25 Certificate of Insurance landing & request page
 │   │   ├── commercial.astro    # Commercial lines overview pillar (BOP, GL, Property, Workers' Comp)
@@ -328,6 +332,9 @@ To generate an optimized production bundle:
 ```bash
 npm run build
 ```
+
+> [!NOTE]
+> The `npm run build` command includes an automated `postbuild` hook that purges `node_modules/.vite`. This ensures production pre-bundled dependencies never contaminate local development React hydration.
 
 To preview the production build locally:
 

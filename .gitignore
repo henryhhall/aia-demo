@@ -88,6 +88,8 @@ playwright-report/
 .prettiercache
 
 # Vite, build & preview temporary artifacts
+.vite/
+.vite-*/
 vite.config.*.timestamp-*
 out/
 build/

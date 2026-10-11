@@ -146,8 +146,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       homeAnchorTitle: 'Property Address',
       homeAnchorDesc: 'Allows instant lookup of tax assessor / GIS records (square footage, year built, roof type, distance to hydrant).',
       homeAnchorPlaceholder: 'E.g. 50 Newtown Road, Danbury, CT 06810',
-      homeLongFormNotice: 'Looking for our full 4-step rating wizard with building specs and instant replacement calculations?',
-      homeLongFormLink: 'Launch Full Homeowners Wizard →',
       autoAnchorTitle: 'Current Vehicles (Year / Make / Model or VIN)',
       autoAnchorDesc: 'Lets the producer understand risk tier, vehicle mix, and ADAS safety equipment immediately.',
       autoAnchorPlaceholder: 'E.g. 2022 Subaru Outback & 2019 Toyota RAV4 (or VIN if handy)',
@@ -244,8 +242,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       homeAnchorTitle: 'Dirección de la Propiedad',
       homeAnchorDesc: 'Permite consulta inmediata en registros catastrales / GIS (superficie, año, techo, hidrantes).',
       homeAnchorPlaceholder: 'Ej. 50 Newtown Road, Danbury, CT 06810',
-      homeLongFormNotice: '¿Desea usar nuestro cotizador completo de 4 pasos con cálculo de reposición?',
-      homeLongFormLink: 'Abrir Cotizador Completo de Hogar →',
       autoAnchorTitle: 'Vehículos Actuales (Año / Marca / Modelo o VIN)',
       autoAnchorDesc: 'Permite al agente evaluar perfil de riesgo, tipos de vehículos y asistencias de seguridad de inmediato.',
       autoAnchorPlaceholder: 'Ej. 2022 Subaru Outback y 2019 Toyota RAV4 (o VIN)',
@@ -342,8 +338,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       homeAnchorTitle: 'Endereço do Imóvel',
       homeAnchorDesc: 'Permite consulta imediata em registros de IPTU/GIS (área construída, ano, tipo de telhado, hidrantes).',
       homeAnchorPlaceholder: 'Ex: 50 Newtown Road, Danbury, CT 06810',
-      homeLongFormNotice: 'Deseja usar nosso assistente completo de 4 etapas com cálculo de custos de substituição?',
-      homeLongFormLink: 'Abrir Assistente Residencial Completo →',
       autoAnchorTitle: 'Veículos Atuais (Ano / Marca / Modelo ou VIN)',
       autoAnchorDesc: 'Permite ao corretor avaliar perfil de risco, tecnologias de segurança e tipos de veículos de imediato.',
       autoAnchorPlaceholder: 'Ex: 2022 Subaru Outback e 2019 Toyota RAV4 (ou VIN)',
@@ -440,8 +434,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       homeAnchorTitle: 'Mülk / Konut Adresi',
       homeAnchorDesc: 'Belediye tapu/GIS kayıtlarından bina metrekaresi, yapım yılı, çatı tipi ve hidrant mesafesinin anında incelenmesini sağlar.',
       homeAnchorPlaceholder: 'Örn. 50 Newtown Road, Danbury, CT 06810',
-      homeLongFormNotice: 'Yapı malzemeleri ve yeniden inşa hesaplamaları içeren ayrıntılı 4 adımlı konut sihirbazımızı mı tercih edersiniz?',
-      homeLongFormLink: 'Tam Kapsamlı Konut Formunu Aç →',
       autoAnchorTitle: 'Mevcut Araçlar (Yıl / Marka / Model veya Şasi No)',
       autoAnchorDesc: 'Temsilcinin risk grubunu, güvenlik donanım indirimlerini ve araç bileşimini hemen anlamasını sağlar.',
       autoAnchorPlaceholder: 'Örn. 2022 Subaru Outback & 2019 Toyota RAV4 (veya VIN)',
@@ -479,13 +471,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
     },
   }[lang];
 
-  // Helper to get localized homeowners wizard URL
-  const getHomeownersWizardUrl = () => {
-    if (lang === 'es') return '/es/quote/homeowners';
-    if (lang === 'pt') return '/pt/quote/homeowners';
-    if (lang === 'tr') return '/tr/quote/homeowners';
-    return '/quote/homeowners';
-  };
 
   // Helper to return dynamic CT branch badge
   const getZipBadge = () => {
@@ -1419,17 +1404,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                       </p>
                     </div>
 
-                    <div className="mt-3 p-3 rounded-lg bg-white/80 border border-border-subtle flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                      <p className="text-xs text-text-secondary">
-                        {dict.homeLongFormNotice}
-                      </p>
-                      <a
-                        href={getHomeownersWizardUrl()}
-                        className="text-xs font-bold text-accent hover:text-accent-gold transition-colors shrink-0 underline decoration-accent-gold underline-offset-2"
-                      >
-                        {dict.homeLongFormLink}
-                      </a>
-                    </div>
                   </div>
                 )}
 
