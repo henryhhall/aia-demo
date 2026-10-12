@@ -184,6 +184,8 @@ aia/
 │   │   ├── Footer.astro        # Agency footer with brand badge, branch info & carriers
 │   │   ├── Header.astro        # Agency header with brand badge, navigation & office hours
 │   │   ├── HeroQuoteStarter.tsx # Instant quote starter island on the homepage
+│   │   ├── LocationPageContent.astro # Reusable branch office template with 12-col Hero & sticky NAP card
+│   │   ├── LocationsHubContent.astro # Central agency office directory hub template
 │   │   ├── MultilingualRoutingNotice.astro # Friendly locale switcher banner
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
 │   │   ├── OfficeLocationsMap.astro # Interactive multi-office Google Maps embed showcase & switcher
@@ -196,11 +198,14 @@ aia/
 │   ├── content/                # Content collections
 │   │   ├── blog/               # Localized Markdown articles (en, es, pt, tr)
 │   │   └── testimonials/       # Customer review JSON data (en, es, pt, tr)
+│   ├── data/                   # Structured data models & agency constants
+│   │   └── locations.ts        # Canonical branch office specifications (Danbury, Watertown, Bridgeport)
 │   ├── emails/                 # Branded React Email transactional templates
 │   │   ├── CertificateConfirmationEmail.tsx # Requester confirmation with receipt reference
 │   │   └── CertificateRequestEmail.tsx      # Agency producer brief with risk & endorsement specs
 │   ├── content.config.ts       # Astro Content Collections schemas (Zod)
 │   ├── i18n/                   # Internationalization utilities & UI string mappings
+│   │   ├── locations.ts        # Localized branch office content, FAQs, and SEO metadata (en, es, pt, tr)
 │   │   ├── team.ts             # Localized team bios, language proficiencies & modal UI strings (en, es, pt, tr)
 │   │   ├── ui.ts               # Localized navigation and UI strings
 │   │   └── utils.ts            # Locale resolution & route translation helpers
@@ -215,6 +220,7 @@ aia/
 │   │   └── webmcp/             # WebMCP implementation
 │   │       ├── init.ts         # Browser window.modelContext bootstrap
 │   │       ├── runtime.ts      # WebMCP execution engine & event emitter
+│   │       ├── sanitize.ts     # Input JSON sanitization & exploit defense (prototype pollution, XSS, CRLF)
 │   │       ├── tools.ts        # 11 AIA tool definitions, schemas, and implementations
 │   │       └── types.ts        # TypeScript interfaces for MCP JSON-RPC & tools
 │   ├── pages/                  # File-based routing
@@ -228,14 +234,17 @@ aia/
 │   │   │   ├── auto.astro      # Commercial Auto & Fleet guide
 │   │   │   ├── general-liability.astro # Commercial General Liability guide & COI details
 │   │   │   └── workers-compensation.astro # CT Workers' Comp & CGS § 31-284 compliance guide
+│   │   ├── locations/          # Branch office directory & local SEO landing pages
+│   │   │   ├── [location].astro # Dynamic static route generating /locations/danbury, /watertown, /bridgeport
+│   │   │   └── index.astro     # Central Agency Office Hub & geographic directory
 │   │   ├── personal/           # Dedicated personal cluster pages
 │   │   │   ├── auto.astro      # Personal Auto & RV guide (CGS § 14-112 limits)
 │   │   │   ├── homeowners.astro # Homeowners & Dwelling guide (replacement cost, storms)
 │   │   │   ├── renters.astro   # Renters & Tenant insurance guide (HO-4, liability)
 │   │   │   └── umbrella.astro  # Personal Umbrella excess liability guide ($1M-$5M+)
-│   │   ├── es/                 # Spanish localized pages
-│   │   ├── pt/                 # Portuguese localized pages
-│   │   ├── tr/                 # Turkish localized pages
+│   │   ├── es/                 # Spanish localized pages (including /es/locations/ hub & branch routes)
+│   │   ├── pt/                 # Portuguese localized pages (including /pt/locations/ hub & branch routes)
+│   │   ├── tr/                 # Turkish localized pages (including /tr/locations/ hub & branch routes)
 │   │   ├── about.astro         # Agency history, credentials, and office profiles
 │   │   ├── certificate-request.astro # ACORD 25 Certificate of Insurance landing & request page
 │   │   ├── commercial.astro    # Commercial lines overview pillar (BOP, GL, Property, Workers' Comp)
