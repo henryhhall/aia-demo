@@ -34,7 +34,15 @@ export default defineConfig({
     '/quote/homeowners': '/quote?type=home',
     '/es/quote/homeowners': '/es/quote?type=home',
     '/pt/quote/homeowners': '/pt/quote?type=home',
-    '/tr/quote/homeowners': '/tr/quote?type=home'
+    '/tr/quote/homeowners': '/tr/quote?type=home',
+    '/offices': '/locations',
+    '/es/offices': '/es/locations',
+    '/pt/offices': '/pt/locations',
+    '/tr/offices': '/tr/locations',
+    '/locations/danbury-hq': '/locations/danbury',
+    '/es/locations/danbury-hq': '/es/locations/danbury',
+    '/pt/locations/danbury-hq': '/pt/locations/danbury',
+    '/tr/locations/danbury-hq': '/tr/locations/danbury',
   },
   integrations: [
     react(),
@@ -48,6 +56,7 @@ export default defineConfig({
       dedupe: ['react', 'react-dom']
     },
     optimizeDeps: {
+      include: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime'],
       exclude: ['@react-email/components', '@react-email/render']
     }
   }

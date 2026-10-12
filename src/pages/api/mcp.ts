@@ -1,5 +1,6 @@
 import type { APIRoute } from 'astro';
 import { aiaWebMcpTools } from '../../lib/webmcp/tools.ts';
+import { sanitizeDeepJson, sanitizeToolParams, sanitizeString } from '../../lib/webmcp/sanitize.ts';
 
 export const prerender = false;
 
@@ -51,8 +52,9 @@ export const GET: APIRoute = async ({ request }) => {
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const body = await request.json();
-    const { id = 1, method, params } = body;
+    const rawBody = await request.json();
+    const body = sanitizeDeepJson(rawBody);
+    const { id = 1, method, params } = body || {};
 
     // Handle MCP protocol methods
     switch (method) {
@@ -99,8 +101,8 @@ export const POST: APIRoute = async ({ request }) => {
       }
 
       case 'tools/call': {
-        const toolName = params?.name;
-        const toolArgs = params?.arguments || {};
+        const toolName = sanitizeString(params?.name, { maxLength: 64, allowMultiline: false });
+        const rawArgs = params?.arguments || {};
 
         const tool = aiaWebMcpTools.find((t) => t.name === toolName);
         if (!tool) {
@@ -118,6 +120,7 @@ export const POST: APIRoute = async ({ request }) => {
         }
 
         try {
+          const toolArgs = sanitizeToolParams(toolName, rawArgs);
           const result = await tool.execute(toolArgs);
 
           // If submitting quote request via MCP, dispatch email notification

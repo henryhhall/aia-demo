@@ -63,9 +63,21 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
     const params = new URLSearchParams(window.location.search);
     const typeParam = params.get('type') as LineOfBusiness | null;
     const zipParam = params.get('zip');
+    const branchParam = params.get('branch');
 
     if (typeParam && ['home', 'auto', 'commercial-auto', 'umbrella', 'business'].includes(typeParam)) {
       setLineOfBusiness(typeParam);
+    }
+
+    if (branchParam) {
+      const lower = branchParam.toLowerCase();
+      if (lower.includes('watertown')) {
+        setPreferredOffice('Watertown');
+      } else if (lower.includes('bridgeport')) {
+        setPreferredOffice('Bridgeport');
+      } else if (lower.includes('danbury')) {
+        setPreferredOffice('Danbury');
+      }
     }
 
     if (zipParam) {
@@ -73,12 +85,14 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       if (clean) {
         setZipCode(clean);
         setPropertyAddress(`${clean}, CT`);
-        if (clean.startsWith('067')) {
-          setPreferredOffice('Watertown');
-        } else if (clean.startsWith('066')) {
-          setPreferredOffice('Bridgeport');
-        } else if (clean.startsWith('068')) {
-          setPreferredOffice('Danbury');
+        if (!branchParam) {
+          if (clean.startsWith('067')) {
+            setPreferredOffice('Watertown');
+          } else if (clean.startsWith('066')) {
+            setPreferredOffice('Bridgeport');
+          } else if (clean.startsWith('068')) {
+            setPreferredOffice('Danbury');
+          }
         }
       }
     }

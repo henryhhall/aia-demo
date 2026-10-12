@@ -126,3 +126,7 @@ htmlcov/
 # Local testing & browser recordings
 test-screenshots/
 .playwright/
+browser-recordings/
+.recordings/
+*.webm
+*.webp.recording

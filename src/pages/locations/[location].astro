@@ -1,0 +1,21 @@
+---
+import LocationPageContent from '../../components/LocationPageContent.astro';
+import { getAllLocationIds, type LocationId } from '../../data/locations';
+
+export function getStaticPaths() {
+  const ids = getAllLocationIds();
+  return ids.map((id) => ({
+    params: { location: id },
+    props: { locationId: id },
+  }));
+}
+
+interface Props {
+  locationId: LocationId;
+}
+
+const { locationId } = Astro.props;
+const lang = 'en';
+---
+
+<LocationPageContent locationId={locationId} lang={lang} />

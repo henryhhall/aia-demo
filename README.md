@@ -53,7 +53,14 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
   - **Commercial General Liability** (`/commercial/general-liability`, `/es/...`, `/pt/...`, `/tr/...`): Slip-and-fall protections, completed operations, $1M/$2M standard limits, and same-day ACORD 25 Certificate of Insurance (COI) issuance for contractors.
   - **Commercial Auto & Fleet** (`/commercial/auto`, `/es/...`, `/pt/...`, `/tr/...`): Work vans, trucks, high-limit Combined Single Limit (CSL) liability, CGS § 14-112 compliance, tool floaters, and Hired/Non-Owned Auto (HNOA).
   - **Workers' Compensation & Compliance** (`/commercial/workers-compensation`, `/es/...`, `/pt/...`, `/tr/...`): Statutory benefits under CGS § 31-284, stop-work order defense, sole-proprietor Ghost Policies, and NCCI payroll classification audit assistance.
-- **Rich Multi-Tier Navigation Dropdowns**: Interactive desktop hover cards with glassmorphism and mobile accordion drill-downs for both **Personal** and **Commercial** coverage clusters across all four languages, featuring direct links to Certificate Requests in main and sub navigation.
+- **Dedicated Branch Office Pages & Local SEO Architecture** (`/locations`, `/locations/danbury`, `/locations/watertown`, `/locations/bridgeport`, and localized equivalents across `/es/...`, `/pt/...`, `/tr/...`):
+  - **16-Route Multi-Office Network**: High-converting localized landing pages for Danbury Headquarters (50 Newtown Rd Ste 1), Watertown Branch (51 Depot St Ste 112), and Bridgeport Community Branch (2465 Main St), plus central Hub directory (`/locations`).
+  - **Comprehensive Local Structured Data**: Implements full Schema.org `@graph` metadata with `InsuranceAgency`, `PostalAddress`, `GeoCoordinates`, `openingHoursSpecification`, `areaServed`, `hasMap`, `employee` rosters, `BreadcrumbList`, and localized `FAQPage`.
+  - **Hero Rate Comparison Integration**: Split-screen Hero embedding the interactive `HeroQuoteStarter.tsx` island pre-populated with local office ZIP codes (`06810` for Danbury, `06795` for Watertown, `06606` for Bridgeport), localized coverage area indicators, click-to-call, and one-tap directions.
+  - **Assigned Producer & Staff Rosters**: Branch-specific team directories highlighting local producers, National Producer Numbers (NPN), languages spoken (English, Spanish, Portuguese, Turkish), and direct consultative access.
+  - **Hyper-Local Risk Profiling**: Tailored coverage narratives addressing regional risks (Candlewood Lake watercraft and flood zones, Litchfield County winter storms and tree-fall, Bridgeport coastal marine and commercial liability).
+  - **Sticky NAP & Interactive Mapping**: Sticky Name, Address, Phone (NAP) cards, operating hours, and full responsive Google Maps embeds.
+- **Rich Multi-Tier Navigation Dropdowns**: Interactive desktop hover cards with glassmorphism and mobile accordion drill-downs for both **Personal** and **Commercial** coverage clusters across all four languages, featuring direct links to Certificate Requests and Location pages in main and sub navigation.
 - **Multilingual Support (i18n)**: Fully localized experiences with native content in **English (EN)**, **Spanish (ES)**, **Portuguese (PT)**, and **Turkish (TR)**.
 - **Dedicated Team Directory & Bio Modals**: Accessible, interactive employee profile cards on dedicated Team pages (`/team`, `/es/team`, `/pt/team`, `/tr/team`) and the About page featuring all 9 team members across agency leadership and customer service representatives (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus, Isayeli Perez De La Mora, Ema Rego, Clara De Barros, Ashley L. Mercan, Janaija S. Hammer) with spoken language badges, specialty tags, direct customer support access, and complete biographical pop-up modals translated into English, Spanish, Portuguese, and Turkish.
 - **Optimized Asset Pipeline**: Leverages Astro's native `astro:assets` image engine for zero-CLS responsive image serving, automatic WebP format conversion, and lazy loading.
@@ -71,6 +78,10 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
 - **Dual-Layer Tool Calling**:
   - **Browser Runtime (`WebMCP`)**: Registers tools onto `window.modelContext` / `document.modelContext` for in-browser AI agents and automated assistants.
   - **HTTP JSON-RPC 2.0 Endpoint (`/api/mcp`)**: Server-side standard Model Context Protocol endpoint for external agents (Claude Desktop, Cursor, Antigravity CLI, custom LLM workflows).
+- **Hardened Input JSON Sanitization & Exploit Prevention**:
+  - Comprehensive input sanitization pipeline (`src/lib/webmcp/sanitize.ts`) defending against prototype pollution (`__proto__`, `constructor`, `prototype`), Stored XSS (`<script>`, `<img onerror>`, HTML tags), and CRLF / header injection on all single-line parameters.
+  - ReDoS and payload bomb mitigation enforcing recursion depth limits (max 6 levels), array item bounds (max 100 items), and maximum string lengths.
+  - Active across all 11 WebMCP tools, the `/api/mcp` JSON-RPC route, the client runtime, and the interactive WebMCP Inspector.
 - **Interactive WebMCP Inspector**: A built-in floating developer UI component (`WebMcpInspector.tsx`) allowing real-time testing, inspection of JSON schemas, and live execution of all 11 agency tools.
 - **Integrated Lead Security & Automated Dispatch**: The `submit_quote_request` tool automatically acquires in-browser reCAPTCHA v3 tokens, verifies them server-side, stages the lead, and triggers transactional Resend email dispatches.
 - **Generative Engine Optimization (GEO)**:
@@ -334,7 +345,7 @@ npm run build
 ```
 
 > [!NOTE]
-> The `npm run build` command includes an automated `postbuild` hook that purges `node_modules/.vite`. This ensures production pre-bundled dependencies never contaminate local development React hydration.
+> React development and production JSX runtimes (`react/jsx-runtime`, `react/jsx-dev-runtime`) are explicitly configured in `astro.config.mjs` under `vite.optimizeDeps.include`. This ensures local development React hydration remains stable without runtime JSX mismatches.
 
 To preview the production build locally:
 

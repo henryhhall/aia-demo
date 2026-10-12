@@ -2,6 +2,7 @@
 // Office Locations Map Component
 // Interactive Google Maps viewer with selectable office location cards (Danbury HQ, Watertown, Bridgeport)
 import { getMembersByOffice } from '../i18n/team';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 interface Props {
   lang?: 'en' | 'es' | 'pt' | 'tr';
@@ -214,6 +215,7 @@ const uiTexts = {
     teamAtOffice: 'Office Team & Licensed Producers',
     meetFullTeam: 'View All Bios & Specialties',
     staffLabel: 'Staff',
+    viewOfficePage: 'Branch Details',
   },
   es: {
     getDirections: 'Obtener Direcciones',
@@ -225,6 +227,7 @@ const uiTexts = {
     teamAtOffice: 'Equipo y Productores Licenciados',
     meetFullTeam: 'Ver Perfiles del Equipo',
     staffLabel: 'Personal',
+    viewOfficePage: 'Ver Sucursal',
   },
   pt: {
     getDirections: 'Como Chegar',
@@ -236,6 +239,7 @@ const uiTexts = {
     teamAtOffice: 'Equipe e Corretores Licenciados',
     meetFullTeam: 'Ver Perfis da Equipe',
     staffLabel: 'Equipe',
+    viewOfficePage: 'Ver Agência',
   },
   tr: {
     getDirections: 'Yol Tarifi Al',
@@ -247,6 +251,7 @@ const uiTexts = {
     teamAtOffice: 'Ofis Ekibi ve Lisanslı Sigortacılar',
     meetFullTeam: 'Ekip Profillerini İncele',
     staffLabel: 'Kadro',
+    viewOfficePage: 'Şube Sayfası',
   },
 };
 
@@ -466,6 +471,15 @@ const t = uiTexts[currentLang];
             </div>
 
             <div class="shrink-0 flex items-center justify-between sm:justify-end gap-2 pt-2 sm:pt-0 border-t sm:border-t-0 border-border-subtle/60">
+              <a
+                href={getRelativeLocaleUrl(currentLang, `locations/${office.id}`)}
+                onclick="event.stopPropagation();"
+                class="text-xs px-2.5 py-1.5 rounded-lg border border-accent/20 bg-white hover:bg-accent hover:text-white text-accent font-semibold inline-flex items-center gap-1 transition-colors shadow-2xs"
+                title={`Visit ${office.title} Page`}
+              >
+                <span>{t.viewOfficePage}</span>
+                <span>→</span>
+              </a>
               <span
                 data-office-status={office.id}
                 class={`office-card-badge text-xs px-3 py-1.5 rounded-lg transition-all duration-200 font-semibold inline-flex items-center gap-1.5 ${

@@ -111,17 +111,80 @@ async function runTests() {
   console.log('✓ executeTool() succeeded for Camila Macedo profile:', directExecRes.profile.role, directExecRes.profile.officeName);
 
   // 10. Test check_office_open_status
-  console.log('[10/10] Testing tool: check_office_open_status()...');
+  console.log('[10/11] Testing tool: check_office_open_status()...');
   const statusRes = await runtime.callTool('check_office_open_status', {});
   console.log('Output:', JSON.stringify(statusRes.content[0], null, 2));
   console.log('✓ check_office_open_status passed.\n');
 
-  // 11. Verify History Log
+  // 11. Test Security & Input JSON Sanitization (XSS, CRLF, Prototype Pollution, Control Chars)
+  console.log('[11/11] Testing WebMCP Input JSON Sanitization & Exploit Prevention...');
+  
+  // Test A: XSS tag stripping in search_knowledge_base
+  const xssSearchRes = await runtime.callTool('search_knowledge_base', {
+    query: '<script>alert("xss")</script> flood',
+  });
+  const xssSearchJson = (xssSearchRes.content[0] as any).json;
+  if (xssSearchJson.query.includes('<script>') || xssSearchJson.query.includes('</script>')) {
+    throw new Error('XSS injection was not stripped from search query: ' + xssSearchJson.query);
+  }
+  console.log('✓ XSS <script> tags successfully stripped from search query:', xssSearchJson.query);
+
+  // Test B: Prototype Pollution & CRLF header injection in submit_quote_request
+  const maliciousQuotePayload = {
+    name: 'Jane Doe\r\nBcc: spammer@evil.com<script>evil()</script>',
+    email: 'JANE.DOE@EXAMPLE.COM\r\n',
+    phone: '203-748-9272<img src=x onerror=alert(1)>',
+    insuranceType: 'auto\n',
+    notes: 'Please quote quickly.<script>document.cookie</script>',
+    __proto__: { polluted: true },
+  };
+
+  const sanitizeQuoteRes = await runtime.callTool('submit_quote_request', maliciousQuotePayload);
+  const quoteJson = (sanitizeQuoteRes.content[0] as any).json;
+  if (!quoteJson || quoteJson.status !== 'SUCCESS') {
+    throw new Error('submit_quote_request failed with sanitized payload');
+  }
+
+  // Verify prototype was not polluted
+  if ((Object.prototype as any).polluted !== undefined) {
+    throw new Error('SECURITY VULNERABILITY: Prototype pollution succeeded!');
+  }
+  console.log('✓ Prototype pollution payload safely blocked (Object.prototype intact).');
+
+  // Verify CRLF and script tags were stripped
+  if (quoteJson.summary.customer.includes('\r') || quoteJson.summary.customer.includes('\n') || quoteJson.summary.customer.includes('<script>')) {
+    throw new Error('CRLF or script tags remained in customer name: ' + quoteJson.summary.customer);
+  }
+  if (quoteJson.summary.email.includes('\r') || quoteJson.summary.email.includes('\n')) {
+    throw new Error('CRLF remained in customer email: ' + quoteJson.summary.email);
+  }
+  console.log('✓ CRLF injection and HTML tags successfully stripped from quote request.');
+
+  // Test C: Certificate Request HTML and array sanitization
+  const coiRes = await runtime.callTool('request_certificate_of_insurance', {
+    insuredName: 'Acme Construction <b>LLC</b>',
+    requestorName: 'Bob Builder\r\n',
+    requestorEmail: 'bob@acme.com',
+    requestorPhone: '203-555-0100',
+    holderName: '<script>alert("holder")</script>City of Danbury',
+    holderAddress: '155 Deer Hill Ave, Danbury, CT 06810',
+    coverages: ['General Liability<script>', 'Workers Comp'],
+  });
+  const coiJson = (coiRes.content[0] as any).json;
+  if (coiJson.details.insuredName.includes('<b>') || coiJson.details.holderName.includes('<script>')) {
+    throw new Error('HTML tags remained in certificate request: ' + JSON.stringify(coiJson.details));
+  }
+  if (coiJson.details.coverages[0].includes('<script>')) {
+    throw new Error('Script tag remained in coverages array: ' + JSON.stringify(coiJson.details.coverages));
+  }
+  console.log('✓ Certificate request fields sanitized (HTML tags and arrays safely neutralized).\n');
+
+  // 12. Verify History Log
   const history = runtime.getHistory();
   console.log(`✓ Execution History recorded ${history.length} operations correctly.`);
 
   console.log('\n====================================================');
-  console.log('🎉 ALL WebMCP VERIFICATION TESTS PASSED SUCCESSFULLY!');
+  console.log('🎉 ALL WebMCP VERIFICATION & SECURITY TESTS PASSED!');
   console.log('====================================================\n');
 }
 

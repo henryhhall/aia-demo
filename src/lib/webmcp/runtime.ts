@@ -10,6 +10,7 @@ import type {
   WebMCPCallLog,
   ModelContextAPI,
 } from './types.ts';
+import { sanitizeDeepJson } from './sanitize.ts';
 
 class WebMCPRuntime implements ModelContextAPI {
   public version = '1.0.0';
@@ -189,6 +190,9 @@ class WebMCPRuntime implements ModelContextAPI {
         // Keep as string if not JSON
       }
     }
+
+    // Sanitize input JSON parameters against prototype pollution, script injection, and payload bombs
+    parsedParams = sanitizeDeepJson(parsedParams);
 
     const tool = this.tools.get(toolName);
     const startTime = performance.now();

@@ -12,6 +12,10 @@ Associated Insurance Agency (AIA) is a Connecticut-licensed independent insuranc
 - [Direct Carrier Bill Pay Directory](https://aia-danbury.com/pay-bill): Complete directory of online bill pay links and 24/7 payment phone numbers for all 11 partner insurance carriers.
 - [About AIA](https://aia-danbury.com/about): Agency history, independent brokerage advantage, and physical branch locations.
 - [Contact Associated Insurance Agency](https://aia-danbury.com/contact): Multi-office directory with phone numbers, Google Maps embeds, office hours, and secure inquiry form with bot honeypots.
+- [Branch Locations Directory](https://aia-danbury.com/locations): Overview and directory of all three Connecticut community offices.
+- [Danbury Corporate Office (HQ)](https://aia-danbury.com/locations/danbury): Flagship headquarters serving Greater Danbury and Fairfield County with commercial, auto, and homeowners insurance.
+- [Watertown Branch Office](https://aia-danbury.com/locations/watertown): Litchfield County and Naugatuck Valley branch on Depot Street specializing in personal lines, classic cars, and bundles.
+- [Bridgeport Community Branch](https://aia-danbury.com/locations/bridgeport): Main Street bilingual office serving coastal Fairfield County with commercial, auto, flood, and multifamily protection.
 - [HTML Sitemap Directory](https://aia-danbury.com/sitemap): Comprehensive navigable directory of all website pages, insurance lines, branch locations, and language editions.
 - [Personal Insurance](https://aia-danbury.com/personal): Coverage details for homeowners, auto, renters, condominium, and personal umbrella liability policies.
 - [Commercial Insurance](https://aia-danbury.com/commercial): Business owners policies (BOP), commercial general liability, commercial property, and workers compensation.
@@ -38,9 +42,9 @@ Associated Insurance Agency (AIA) is a Connecticut-licensed independent insuranc
 
 ## Physical Branch Directory
 
-- **Danbury Headquarters (HQ):** 50 Newtown Road, Suite 1, Danbury, CT 06810 | Phone: 203-748-9272 | Languages: English, Spanish, Portuguese, Turkish | Hours: Mon–Fri 8:30 AM – 5:00 PM EST | **Staff:** Ronald T. Boucher (Principal & Founder, Producer NPN #8963915), Isayeli Perez (Producer NPN #20265776), Ema Rego (Producer NPN #21656039), Yesica Ramirez (CSR), Clara De Barros (CSR)
-- **Watertown Branch Office:** 51 Depot St Ste 112, Watertown, CT 06795 | Phone: 860-274-8888 | Languages: English, Spanish, Portuguese, Turkish | Hours: Mon–Fri 8:30 AM – 5:00 PM EST | **Staff:** Ashley Mercan (CSR), Janaija "Nai" Hammer (Front Desk CSR)
-- **Bridgeport Community Branch:** 2465 Main Street, Bridgeport, CT 06606 | Phone: 203-333-8880 | Languages: English, Spanish, Portuguese | Hours: Mon–Fri 8:30 AM – 5:00 PM EST | **Staff:** Camila Macedo (Producer NPN #19946151), Betania Almeida (CSR)
+- **[Danbury Headquarters (HQ)](https://aia-danbury.com/locations/danbury):** 50 Newtown Road, Suite 1, Danbury, CT 06810 | Phone: 203-748-9272 | Languages: English, Spanish, Portuguese, Turkish | Hours: Mon–Fri 8:30 AM – 5:00 PM EST | **Staff:** Ronald T. Boucher (Principal & Founder, Producer NPN #8963915), Isayeli Perez (Producer NPN #20265776), Ema Rego (Producer NPN #21656039), Yesica Ramirez (CSR), Clara De Barros (CSR)
+- **[Watertown Branch Office](https://aia-danbury.com/locations/watertown):** 51 Depot St Ste 112, Watertown, CT 06795 | Phone: 860-274-8888 | Languages: English, Turkish | Hours: Mon–Fri 8:30 AM – 5:00 PM EST | **Staff:** Ashley Mercan (CSR), Janaija "Nai" Hammer (Front Desk CSR)
+- **[Bridgeport Community Branch](https://aia-danbury.com/locations/bridgeport):** 2465 Main Street, Bridgeport, CT 06606 | Phone: 203-333-8880 | Languages: English, Spanish, Portuguese | Hours: Mon–Fri 8:30 AM – 5:00 PM EST | **Staff:** Camila Macedo (Producer NPN #19946151), Betania Almeida (CSR)
 
 ## WebMCP Callable Tools
 

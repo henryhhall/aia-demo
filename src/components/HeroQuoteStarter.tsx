@@ -6,6 +6,8 @@ type LineKey = 'auto' | 'home' | 'business' | 'bundle';
 
 interface HeroQuoteStarterProps {
   lang?: 'en' | 'es' | 'pt' | 'tr';
+  defaultZip?: string;
+  preferredBranch?: string;
 }
 
 const DICT = {
@@ -103,9 +105,13 @@ const DICT = {
   },
 };
 
-export default function HeroQuoteStarter({ lang = 'en' }: HeroQuoteStarterProps) {
+export default function HeroQuoteStarter({
+  lang = 'en',
+  defaultZip = '',
+  preferredBranch,
+}: HeroQuoteStarterProps) {
   const [selectedLine, setSelectedLine] = useState<LineKey>('auto');
-  const [zipCode, setZipCode] = useState('');
+  const [zipCode, setZipCode] = useState(defaultZip);
   const [inputError, setInputError] = useState('');
 
   // Honeypot trap states for automated bot mitigation
@@ -165,8 +171,9 @@ export default function HeroQuoteStarter({ lang = 'en' }: HeroQuoteStarterProps)
     const targetType = currentOption ? currentOption.query : 'auto';
     const zipParam = cleanZip ? `&zip=${encodeURIComponent(cleanZip)}` : '';
     const bundleParam = selectedLine === 'bundle' ? '&bundle=1' : '';
+    const branchParam = preferredBranch ? `&branch=${encodeURIComponent(preferredBranch)}` : '';
 
-    window.location.href = `${t.quoteBasePath}?type=${targetType}${zipParam}${bundleParam}`;
+    window.location.href = `${t.quoteBasePath}?type=${targetType}${zipParam}${bundleParam}${branchParam}`;
   };
 
   return (

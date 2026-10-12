@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import type { WebMCPToolDefinition, WebMCPCallLog } from '../lib/webmcp/types.ts';
 import { aiaWebMcpTools } from '../lib/webmcp/tools.ts';
+import { sanitizeDeepJson } from '../lib/webmcp/sanitize.ts';
 
 const SAMPLE_INPUTS: Record<string, any> = {
   get_agency_profile: {},
@@ -114,6 +115,7 @@ export default function WebMcpInspector() {
       if (paramsInput.trim()) {
         parsedParams = JSON.parse(paramsInput);
       }
+      parsedParams = sanitizeDeepJson(parsedParams);
 
       if (typeof window !== 'undefined' && window.modelContext) {
         const res = await window.modelContext.callTool(selectedTool, parsedParams);

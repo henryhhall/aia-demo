@@ -5,6 +5,7 @@
 
 import type { WebMCPTool } from './types.ts';
 import { teamData } from '../../i18n/team.ts';
+import { sanitizeToolParams } from './sanitize.ts';
 
 export interface AIAStaffMember {
   id: string;
@@ -39,6 +40,7 @@ export interface AIAOfficeLocation {
   latitude: number;
   longitude: number;
   isHeadquarters: boolean;
+  landingPageUrl: string;
   staff: AIAStaffMember[];
 }
 
@@ -68,6 +70,7 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
     latitude: 41.4087,
     longitude: -73.4285,
     isHeadquarters: true,
+    landingPageUrl: 'https://aia-danbury.com/locations/danbury',
     staff: [
       {
         id: 'ronald-boucher',
@@ -137,6 +140,7 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
     latitude: 41.6018,
     longitude: -73.1139,
     isHeadquarters: false,
+    landingPageUrl: 'https://aia-danbury.com/locations/watertown',
     staff: [
       {
         id: 'ashley-mercan',
@@ -179,6 +183,7 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
     latitude: 41.1963,
     longitude: -73.1972,
     isHeadquarters: false,
+    landingPageUrl: 'https://aia-danbury.com/locations/bridgeport',
     staff: [
       {
         id: 'camila-macedo',
@@ -390,12 +395,13 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params?: {
+    execute: async (rawParams?: {
       officeId?: string;
       city?: string;
       language?: string;
       includeStaffRoster?: boolean;
     }) => {
+      const params = sanitizeToolParams('get_office_locations', rawParams);
       let filtered = [...AIA_LOCATIONS];
 
       if (params?.officeId && params.officeId !== 'all') {
@@ -470,13 +476,14 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params?: {
+    execute: async (rawParams?: {
       office?: string;
       language?: string;
       specialty?: string;
       producersOnly?: boolean;
       locale?: 'en' | 'es' | 'pt' | 'tr';
     }) => {
+      const params = sanitizeToolParams('get_team_members', rawParams);
       const activeLocale = params?.locale && teamData[params.locale] ? params.locale : 'en';
       const allMembers = teamData[activeLocale].members;
 
@@ -598,7 +605,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params: { memberIdOrName: string; locale?: 'en' | 'es' | 'pt' | 'tr' }) => {
+    execute: async (rawParams: { memberIdOrName: string; locale?: 'en' | 'es' | 'pt' | 'tr' }) => {
+      const params = sanitizeToolParams('get_employee_profile', rawParams);
       const activeLocale = params?.locale && teamData[params.locale] ? params.locale : 'en';
       const allMembers = teamData[activeLocale].members;
       const query = (params?.memberIdOrName || '').trim().toLowerCase();
@@ -707,7 +715,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params: { language: string; preferredCity?: string; producersOnly?: boolean }) => {
+    execute: async (rawParams: { language: string; preferredCity?: string; producersOnly?: boolean }) => {
+      const params = sanitizeToolParams('find_agent_by_language', rawParams);
       const langMap: Record<string, string> = {
         en: 'English',
         es: 'Spanish',
@@ -815,7 +824,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params: { category?: string }) => {
+    execute: async (rawParams?: { category?: string }) => {
+      const params = sanitizeToolParams('get_insurance_products', rawParams);
       const personal = [
         {
           line: 'Homeowners Insurance (HO-3 / HO-5)',
@@ -921,7 +931,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: false,
       idempotentHint: false,
     },
-    execute: async (params: {
+    execute: async (rawParams: {
       name: string;
       email: string;
       phone: string;
@@ -932,6 +942,10 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       notes?: string;
       recaptchaToken?: string;
     }) => {
+      const params = sanitizeToolParams('submit_quote_request', rawParams);
+      if (!params.name || !params.email || !params.phone) {
+        throw new Error('Missing required fields: name, email, and phone are mandatory.');
+      }
       const confirmationCode = 'AIA-' + Math.floor(100000 + Math.random() * 900000);
       const office = params.preferredOffice || 'Danbury';
       const officeObj = AIA_LOCATIONS.find((l) => l.city.toLowerCase() === office.toLowerCase()) || AIA_LOCATIONS[0];
@@ -1021,7 +1035,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params: { carrierName?: string }) => {
+    execute: async (rawParams?: { carrierName?: string }) => {
+      const params = sanitizeToolParams('get_carrier_billing_directory', rawParams);
       if (params?.carrierName) {
         const filtered = AIA_CARRIERS.filter((c) =>
           c.name.toLowerCase().includes(params.carrierName!.toLowerCase())
@@ -1056,8 +1071,9 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params: { query: string }) => {
-      const q = params.query.toLowerCase();
+    execute: async (rawParams: { query: string }) => {
+      const params = sanitizeToolParams('search_knowledge_base', rawParams);
+      const q = (params.query || '').toLowerCase();
       const results = AIA_FAQS.filter(
         (faq) =>
           faq.question.toLowerCase().includes(q) ||
@@ -1092,7 +1108,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       readOnlyHint: true,
       idempotentHint: true,
     },
-    execute: async (params: { branchId?: string }) => {
+    execute: async (rawParams?: { branchId?: string }) => {
+      const params = sanitizeToolParams('check_office_open_status', rawParams);
       // Calculate America/New_York local time
       const now = new Date();
       const estString = now.toLocaleString('en-US', { timeZone: 'America/New_York' });
@@ -1191,7 +1208,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
     annotations: {
       readOnlyHint: false,
     },
-    execute: async (params: {
+    execute: async (rawParams: {
       insuredName: string;
       requestorName: string;
       requestorEmail: string;
@@ -1204,6 +1221,19 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       waiverOfSubrogation?: boolean;
       jobNumberOrContract?: string;
     }) => {
+      const params = sanitizeToolParams('request_certificate_of_insurance', rawParams);
+      if (
+        !params.insuredName ||
+        !params.requestorName ||
+        !params.requestorEmail ||
+        !params.requestorPhone ||
+        !params.holderName ||
+        !params.holderAddress
+      ) {
+        throw new Error(
+          'Missing required fields: insuredName, requestorName, requestorEmail, requestorPhone, holderName, holderAddress are mandatory.'
+        );
+      }
       const code = `COI-CT-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
       return {
         success: true,
