@@ -151,8 +151,8 @@ export default function HeroQuoteStarter({
   const handleStartQuote = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Client-side Honeypot Check: if bot filled either hidden decoy field, silently abort
-    if (hpWebsite || hpCompany) {
+    // Client-side Honeypot Check: if bot filled either hidden decoy field without trusted human click
+    if ((hpWebsite || hpCompany) && !e.isTrusted) {
       console.warn('[Security / Honeypot] Bot submission blocked in HeroQuoteStarter.');
       return;
     }
@@ -246,23 +246,25 @@ export default function HeroQuoteStarter({
             padding: 0,
           }}
         >
-          <label htmlFor={`hero_hp_website_${lang}`}>Leave this field empty if human</label>
+          <label htmlFor={`hero_hp_website_${lang}`} className="sr-only">Leave blank</label>
           <input
             id={`hero_hp_website_${lang}`}
             type="text"
             name="hp_website"
             tabIndex={-1}
-            autoComplete="off"
+            autoComplete="new-password"
+            aria-hidden="true"
             value={hpWebsite}
             onChange={(e) => setHpWebsite(e.target.value)}
           />
-          <label htmlFor={`hero_hp_company_${lang}`}>Company Website</label>
+          <label htmlFor={`hero_hp_company_${lang}`} className="sr-only">Leave blank</label>
           <input
             id={`hero_hp_company_${lang}`}
             type="text"
             name="hp_company"
             tabIndex={-1}
-            autoComplete="off"
+            autoComplete="new-password"
+            aria-hidden="true"
             value={hpCompany}
             onChange={(e) => setHpCompany(e.target.value)}
           />

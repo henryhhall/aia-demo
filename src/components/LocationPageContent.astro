@@ -228,28 +228,28 @@ const schemaGraph = {
               <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
               </svg>
-              Independent Agency
+              {currentLang === 'es' ? 'Agencia Independiente' : currentLang === 'pt' ? 'Agência Independente' : currentLang === 'tr' ? 'Bağımsız Acente' : 'Independent Agency'}
             </span>
             <span>•</span>
             <span class="flex items-center gap-1.5">
               <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
               </svg>
-              20+ Partner Carriers
+              {currentLang === 'es' ? 'Más de 20 Aseguradoras' : currentLang === 'pt' ? 'Mais de 20 Seguradoras' : currentLang === 'tr' ? '20+ Sigorta Şirketi' : '20+ Partner Carriers'}
             </span>
             <span>•</span>
             <span class="flex items-center gap-1.5">
               <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
               </svg>
-              Walk-Ins Welcome
+              {currentLang === 'es' ? 'Atención sin Cita' : currentLang === 'pt' ? 'Atendimento sem Hora Marcada' : currentLang === 'tr' ? 'Randevusuz Görüşme' : 'Walk-Ins Welcome'}
             </span>
             <span>•</span>
             <span class="flex items-center gap-1.5">
               <svg class="w-4 h-4 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
               </svg>
-              Licensed in CT &amp; NY
+              {currentLang === 'es' ? 'Licencia en CT y NY' : currentLang === 'pt' ? 'Licenciada em CT e NY' : currentLang === 'tr' ? 'CT ve NY Lisanslı' : 'Licensed in CT & NY'}
             </span>
           </div>
         </div>
@@ -473,13 +473,13 @@ const schemaGraph = {
           <div class="p-6 rounded-2xl bg-zinc-950 text-white space-y-4 shadow-lg border border-zinc-800">
             <div class="space-y-1">
               <span class="text-xs font-semibold uppercase tracking-wider text-accent-gold">
-                Instant Protection
+                {currentLang === 'es' ? 'Cotizaciones Rápidas' : currentLang === 'pt' ? 'Cotações Rápidas' : currentLang === 'tr' ? 'Hızlı Teklif' : 'Fast Local Quotes'}
               </span>
               <h3 class="text-lg font-bold">
                 {currentLang === 'es' ? 'Cotice con un Agente Local' : currentLang === 'pt' ? 'Cote com um Corretor Local' : currentLang === 'tr' ? 'Yerel Temsilcimizden Teklif Alın' : 'Request a Local Quote'}
               </h3>
               <p class="text-xs text-zinc-400">
-                {currentLang === 'es' ? 'Comparamos más de 20 aseguradoras en Connecticut para darle el mejor precio.' : currentLang === 'pt' ? 'Comparamos mais de 20 seguradoras para garantir a melhor cobertura.' : currentLang === 'tr' ? '20’den fazla şirketten karşılaştırmalı teklif alın.' : 'Compare coverage across 20+ premier Connecticut carriers in minutes.'}
+                {currentLang === 'es' ? 'Comparamos más de 20 aseguradoras en Connecticut para darle el mejor precio.' : currentLang === 'pt' ? 'Comparamos mais de 20 seguradoras para garantir a melhor cobertura.' : currentLang === 'tr' ? '20’den fazla şirketten karşılaştırmalı teklif alın.' : 'Compare coverage across 20+ Connecticut carriers in minutes.'}
               </p>
             </div>
 
@@ -587,7 +587,7 @@ const schemaGraph = {
                   href={`tel:${location.phoneRaw}`}
                   class="font-semibold text-accent hover:text-accent-gold transition-colors"
                 >
-                  Contact →
+                  {currentLang === 'es' ? 'Contactar →' : currentLang === 'pt' ? 'Contato →' : currentLang === 'tr' ? 'İletişim →' : 'Contact →'}
                 </a>
               </div>
             </div>
@@ -603,21 +603,21 @@ const schemaGraph = {
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
       <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight max-w-2xl mx-auto">
         {currentLang === 'es'
-          ? `Proteja lo que más importa con nuestro equipo en ${location.city}`
+          ? `Hable con un Agente Licenciado en ${location.city}`
           : currentLang === 'pt'
-          ? `Proteja suas conquistas com a nossa equipe em ${location.city}`
+          ? `Fale com um Corretor Licenciado em ${location.city}`
           : currentLang === 'tr'
-          ? `${location.city} şubemizle geleceğinizi güvence altına alın`
-          : `Ready to Protect What Matters in ${location.city}?`}
+          ? `${location.city} Ofisimizden Teklif Alın veya Poliçenizi İnceletin`
+          : `Talk with a Licensed Agent in ${location.city}`}
       </h2>
       <p class="text-sm sm:text-base text-zinc-300 max-w-xl mx-auto">
         {currentLang === 'es'
-          ? 'Visítenos en persona o llámenos hoy mismo para una revisión sin costo de sus pólizas.'
+          ? `Visite nuestra oficina en ${location.streetAddress} o llámenos hoy para comparar tarifas entre más de 20 aseguradoras.`
           : currentLang === 'pt'
-          ? 'Visite nossa agência ou ligue hoje mesmo para uma análise gratuita das suas apólices.'
+          ? `Visite nosso escritório na ${location.streetAddress} ou ligue hoje mesmo para comparar preços entre mais de 20 seguradoras.`
           : currentLang === 'tr'
-          ? 'Mevcut poliçenizi ücretsiz incelememiz için bugün bizi arayın veya ofisimize uğrayın.'
-          : 'Visit our office on Newtown Road or call today for a complimentary coverage review across 11+ carriers.'}
+          ? `${location.streetAddress} adresindeki ofisimize uğrayın veya 20’den fazla şirketin teklifini karşılaştırmak için bizi arayın.`
+          : `Visit our office at ${location.streetAddress} or call today to compare rates across 20+ carriers.`}
       </p>
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
         <a

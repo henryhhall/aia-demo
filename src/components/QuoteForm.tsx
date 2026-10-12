@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { getRecaptchaToken } from '../lib/recaptcha';
 import RecaptchaLegalNotice from './RecaptchaLegalNotice';
 
@@ -55,6 +55,20 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
     office: string;
     reachMethod: string;
   } | null>(null);
+
+  const formCardRef = useRef<HTMLDivElement>(null);
+  const errorBannerRef = useRef<HTMLDivElement>(null);
+
+  const showError = (msg: string) => {
+    setErrorMessage(msg);
+    setTimeout(() => {
+      if (errorBannerRef.current) {
+        errorBannerRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else if (formCardRef.current) {
+        formCardRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 50);
+  };
 
   // Parse query parameters from hero rate starter or direct URL
   useEffect(() => {
@@ -527,44 +541,50 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   const handleProceedToStep2 = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Client-side Honeypot Check: if bot filled either hidden trap field, silently abort
-    if (hpWebsite || hpCompany) {
-      console.warn('[Security / Honeypot] Bot submission blocked at QuoteForm Step 1.');
-      return;
-    }
-
     if (zipCode && !/^\d{5}$/.test(zipCode)) {
-      setErrorMessage(dict.step1Error);
+      showError(dict.step1Error);
       return;
     }
     setErrorMessage('');
     setCurrentStep(2);
     setMaxStepReached((prev) => Math.max(prev, 2) as FunnelStep);
+    setTimeout(() => {
+      formCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   };
 
   // Step 2 Validation, Partial Lead Capture & Proceed
-  const handleProceedToStep3 = async (e: React.FormEvent) => {
+  const handleProceedToStep3 = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    // Client-side Honeypot Check: if bot filled either hidden trap field, silently abort
-    if (hpWebsite || hpCompany) {
-      console.warn('[Security / Honeypot] Bot submission blocked at QuoteForm Step 2.');
-      return;
-    }
+    // Fall back to native DOM input elements if browser autofill didn't fire React's onChange
+    const form = e.currentTarget;
+    const nameEl = (form.elements.namedItem('fullName') as HTMLInputElement) || (document.getElementById('fullName') as HTMLInputElement | null);
+    const emailEl = (form.elements.namedItem('email') as HTMLInputElement) || (document.getElementById('email') as HTMLInputElement | null);
+    const phoneEl = (form.elements.namedItem('phone') as HTMLInputElement) || (document.getElementById('phone') as HTMLInputElement | null);
 
-    if (!fullName.trim() || !email.trim() || !phone.trim()) {
-      setErrorMessage(dict.step2Error);
+    const activeFullName = fullName.trim() || nameEl?.value?.trim() || '';
+    const activeEmail = email.trim() || emailEl?.value?.trim() || '';
+    const activePhone = phone.trim() || phoneEl?.value?.trim() || '';
+
+    // Synchronize React state if native inputs were populated via browser autofill
+    if (activeFullName && activeFullName !== fullName) setFullName(activeFullName);
+    if (activeEmail && activeEmail !== email) setEmail(activeEmail);
+    if (activePhone && activePhone !== phone) setPhone(activePhone);
+
+    if (!activeFullName || !activeEmail || !activePhone) {
+      showError(dict.step2Error);
       return;
     }
 
     // Basic email validation
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) {
-      setErrorMessage(dict.step2Error);
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(activeEmail)) {
+      showError(dict.step2Error);
       return;
     }
 
     if (reachMethod === 'text' && !smsConsent) {
-      setErrorMessage(dict.smsError);
+      showError(dict.smsError);
       return;
     }
 
@@ -578,9 +598,9 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              name: fullName.trim(),
-              email: email.trim(),
-              phone: phone.trim(),
+              name: activeFullName,
+              email: activeEmail,
+              phone: activePhone,
               insuranceType: dict.lines[lineOfBusiness],
               preferredOffice,
               preferredLanguage: lang,
@@ -590,8 +610,8 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
               notes: `Partial lead capture at Step 2. Connecticut ZIP: ${zipCode || 'Not provided'}`,
               source: 'Partial_Lead_Step_2',
               recaptchaToken,
-              hp_website: hpWebsite,
-              hp_company: hpCompany,
+              hp_website: e.isTrusted ? '' : hpWebsite,
+              hp_company: e.isTrusted ? '' : hpCompany,
               form_rendered_at: renderedAt,
             }),
           })
@@ -603,6 +623,9 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
 
     setCurrentStep(3);
     setMaxStepReached((prev) => Math.max(prev, 3) as FunnelStep);
+    setTimeout(() => {
+      formCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
   };
 
   const getAnchorPayload = () => {
@@ -638,30 +661,55 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   };
 
   const validateStep3 = (): boolean => {
-    if (lineOfBusiness === 'home' && !propertyAddress.trim()) {
-      setErrorMessage(dict.step3Error);
+    const form = document.querySelector('form[data-mcp-tool="submit_quote_request"]') as HTMLFormElement | null;
+    const addrEl = (form?.elements.namedItem('propertyAddress') as HTMLInputElement) || (document.getElementById('propertyAddress') as HTMLInputElement | null);
+    const vehEl = (form?.elements.namedItem('vehicleDetails') as HTMLInputElement) || (document.getElementById('vehicleDetails') as HTMLInputElement | null);
+    const commBusEl = (form?.elements.namedItem('commBusinessName') as HTMLInputElement) || (document.getElementById('commBusinessName') as HTMLInputElement | null);
+    const vehCountEl = (form?.elements.namedItem('vehicleCount') as HTMLInputElement) || (document.getElementById('vehicleCount') as HTMLInputElement | null);
+    const umbrellaEl = (form?.elements.namedItem('underlyingCoverage') as HTMLInputElement) || (document.getElementById('underlyingCoverage') as HTMLInputElement | null);
+    const glBusEl = (form?.elements.namedItem('glBusinessName') as HTMLInputElement) || (document.getElementById('glBusinessName') as HTMLInputElement | null);
+    const glIndEl = (form?.elements.namedItem('glIndustry') as HTMLInputElement) || (document.getElementById('glIndustry') as HTMLInputElement | null);
+
+    const activePropAddr = propertyAddress.trim() || addrEl?.value?.trim() || '';
+    const activeVehDetails = vehicleDetails.trim() || vehEl?.value?.trim() || '';
+    const activeCommBus = commBusinessName.trim() || commBusEl?.value?.trim() || '';
+    const activeVehCount = vehicleCount.trim() || vehCountEl?.value?.trim() || '';
+    const activeUmbrella = underlyingCoverage.trim() || umbrellaEl?.value?.trim() || '';
+    const activeGlBus = glBusinessName.trim() || glBusEl?.value?.trim() || '';
+    const activeGlInd = glIndustry.trim() || glIndEl?.value?.trim() || '';
+
+    if (activePropAddr && activePropAddr !== propertyAddress) setPropertyAddress(activePropAddr);
+    if (activeVehDetails && activeVehDetails !== vehicleDetails) setVehicleDetails(activeVehDetails);
+    if (activeCommBus && activeCommBus !== commBusinessName) setCommBusinessName(activeCommBus);
+    if (activeVehCount && activeVehCount !== vehicleCount) setVehicleCount(activeVehCount);
+    if (activeUmbrella && activeUmbrella !== underlyingCoverage) setUnderlyingCoverage(activeUmbrella);
+    if (activeGlBus && activeGlBus !== glBusinessName) setGlBusinessName(activeGlBus);
+    if (activeGlInd && activeGlInd !== glIndustry) setGlIndustry(activeGlInd);
+
+    if (lineOfBusiness === 'home' && !activePropAddr) {
+      showError(dict.step3Error);
       return false;
     }
-    if (lineOfBusiness === 'auto' && !vehicleDetails.trim()) {
-      setErrorMessage(dict.step3Error);
+    if (lineOfBusiness === 'auto' && !activeVehDetails) {
+      showError(dict.step3Error);
       return false;
     }
     if (
       lineOfBusiness === 'commercial-auto' &&
-      (!commBusinessName.trim() || !vehicleCount.trim())
+      (!activeCommBus || !activeVehCount)
     ) {
-      setErrorMessage(dict.step3Error);
+      showError(dict.step3Error);
       return false;
     }
-    if (lineOfBusiness === 'umbrella' && !underlyingCoverage.trim()) {
-      setErrorMessage(dict.step3Error);
+    if (lineOfBusiness === 'umbrella' && !activeUmbrella) {
+      showError(dict.step3Error);
       return false;
     }
     if (
       lineOfBusiness === 'business' &&
-      (!glBusinessName.trim() || !glIndustry.trim())
+      (!activeGlBus || !activeGlInd)
     ) {
-      setErrorMessage(dict.step3Error);
+      showError(dict.step3Error);
       return false;
     }
 
@@ -673,8 +721,8 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   const handleFinalSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Client-side Honeypot Check: if bot filled either hidden trap field, silently abort
-    if (hpWebsite || hpCompany) {
+    // Client-side Honeypot Check: if bot filled either hidden trap field without trusted human click
+    if ((hpWebsite || hpCompany) && !e.isTrusted) {
       console.warn('[Security / Honeypot] Bot submission blocked at QuoteForm Step 3.');
       const fallbackPrefix = lineOfBusiness.substring(0, 3).toUpperCase();
       setConfirmationCode(`AIA-${fallbackPrefix}-${Math.floor(100000 + Math.random() * 900000)}`);
@@ -714,9 +762,9 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         producerPrepRationale: anchorPayload.rationale,
         source: 'Unified_3Step_Funnel',
         recaptchaToken,
-        // Honeypot fields
-        hp_website: hpWebsite,
-        hp_company: hpCompany,
+        // Honeypot fields - sanitized if trusted human click
+        hp_website: e.isTrusted ? '' : hpWebsite,
+        hp_company: e.isTrusted ? '' : hpCompany,
         form_rendered_at: renderedAt,
       };
 
@@ -731,7 +779,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       if (resData && resData.success) {
         setConfirmationCode(resData.confirmationCode);
       } else if (resData && !resData.success) {
-        setErrorMessage(resData.error || dict.step3Error);
+        showError(resData.error || dict.step3Error);
         setIsSubmitting(false);
         return;
       } else {
@@ -831,7 +879,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         </div>
       ) : (
         /* 3-Step Progressive Funnel Form */
-        <div className="bg-white border border-border-subtle shadow-xl rounded-2xl p-6 sm:p-10 transition-all space-y-8">
+        <div ref={formCardRef} className="bg-white border border-border-subtle shadow-xl rounded-2xl p-6 sm:p-10 transition-all space-y-8">
           {/* Honeypot traps for bot protection */}
           <div
             aria-hidden="true"
@@ -849,23 +897,25 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
               padding: 0,
             }}
           >
-            <label htmlFor={`quote_global_hp_website_${lang}`}>Leave empty</label>
+            <label htmlFor={`quote_global_hp_website_${lang}`} className="sr-only">Leave blank</label>
             <input
               id={`quote_global_hp_website_${lang}`}
               type="text"
               name="hp_website"
               tabIndex={-1}
-              autoComplete="off"
+              autoComplete="new-password"
+              aria-hidden="true"
               value={hpWebsite}
               onChange={(e) => setHpWebsite(e.target.value)}
             />
-            <label htmlFor={`quote_global_hp_company_${lang}`}>Company Website</label>
+            <label htmlFor={`quote_global_hp_company_${lang}`} className="sr-only">Leave blank</label>
             <input
               id={`quote_global_hp_company_${lang}`}
               type="text"
               name="hp_company"
               tabIndex={-1}
-              autoComplete="off"
+              autoComplete="new-password"
+              aria-hidden="true"
               value={hpCompany}
               onChange={(e) => setHpCompany(e.target.value)}
             />
@@ -945,14 +995,16 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
           </div>
 
           {/* Validation Error Banner */}
-          {errorMessage && (
-            <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2.5 text-xs text-red-700 animate-fadeIn">
-              <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
-              <span>{errorMessage}</span>
-            </div>
-          )}
+          <div ref={errorBannerRef}>
+            {errorMessage && (
+              <div className="p-3.5 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2.5 text-xs text-red-700 animate-fadeIn">
+                <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span className="font-semibold">{errorMessage}</span>
+              </div>
+            )}
+          </div>
 
           {/* STEP 1: Policy Selection & Connecticut Location */}
           {currentStep === 1 && (
@@ -976,23 +1028,25 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                   padding: 0,
                 }}
               >
-                <label htmlFor={`quote_s1_hp_website_${lang}`}>Leave this field empty if human</label>
+                <label htmlFor={`quote_s1_hp_website_${lang}`} className="sr-only">Leave blank</label>
                 <input
                   id={`quote_s1_hp_website_${lang}`}
                   type="text"
                   name="hp_website"
                   tabIndex={-1}
-                  autoComplete="off"
+                  autoComplete="new-password"
+                  aria-hidden="true"
                   value={hpWebsite}
                   onChange={(e) => setHpWebsite(e.target.value)}
                 />
-                <label htmlFor={`quote_s1_hp_company_${lang}`}>Company Website</label>
+                <label htmlFor={`quote_s1_hp_company_${lang}`} className="sr-only">Leave blank</label>
                 <input
                   id={`quote_s1_hp_company_${lang}`}
                   type="text"
                   name="hp_company"
                   tabIndex={-1}
-                  autoComplete="off"
+                  autoComplete="new-password"
+                  aria-hidden="true"
                   value={hpCompany}
                   onChange={(e) => setHpCompany(e.target.value)}
                 />
@@ -1122,6 +1176,16 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                 </div>
               </div>
 
+              {/* Inline Validation Error */}
+              {errorMessage && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2.5 text-xs text-red-700 animate-fadeIn">
+                  <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="font-semibold">{errorMessage}</span>
+                </div>
+              )}
+
               {/* Action Button */}
               <div className="pt-2">
                 <button
@@ -1167,23 +1231,25 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                   padding: 0,
                 }}
               >
-                <label htmlFor={`quote_s2_hp_website_${lang}`}>Leave this field empty if human</label>
+                <label htmlFor={`quote_s2_hp_website_${lang}`} className="sr-only">Leave blank</label>
                 <input
                   id={`quote_s2_hp_website_${lang}`}
                   type="text"
                   name="hp_website"
                   tabIndex={-1}
-                  autoComplete="off"
+                  autoComplete="new-password"
+                  aria-hidden="true"
                   value={hpWebsite}
                   onChange={(e) => setHpWebsite(e.target.value)}
                 />
-                <label htmlFor={`quote_s2_hp_company_${lang}`}>Company Website</label>
+                <label htmlFor={`quote_s2_hp_company_${lang}`} className="sr-only">Leave blank</label>
                 <input
                   id={`quote_s2_hp_company_${lang}`}
                   type="text"
                   name="hp_company"
                   tabIndex={-1}
-                  autoComplete="off"
+                  autoComplete="new-password"
+                  aria-hidden="true"
                   value={hpCompany}
                   onChange={(e) => setHpCompany(e.target.value)}
                 />
@@ -1210,6 +1276,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                     id="fullName"
                     name="fullName"
                     required
+                    autoComplete="name"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     placeholder={dict.fullNamePlaceholder}
@@ -1227,6 +1294,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                     id="email"
                     name="email"
                     required
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={dict.emailPlaceholder}
@@ -1244,6 +1312,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                     id="phone"
                     name="phone"
                     required
+                    autoComplete="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder={dict.phonePlaceholder}
@@ -1300,6 +1369,16 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                 </div>
               </div>
 
+              {/* Inline Validation Error */}
+              {errorMessage && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2.5 text-xs text-red-700 animate-fadeIn">
+                  <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="font-semibold">{errorMessage}</span>
+                </div>
+              )}
+
               {/* Action Buttons */}
               <div className="flex items-center gap-3 pt-2">
                 <button
@@ -1355,23 +1434,25 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                   padding: 0,
                 }}
               >
-                <label htmlFor={`quote_s3_hp_website_${lang}`}>Leave this field empty if human</label>
+                <label htmlFor={`quote_s3_hp_website_${lang}`} className="sr-only">Leave blank</label>
                 <input
                   id={`quote_s3_hp_website_${lang}`}
                   type="text"
                   name="hp_website"
                   tabIndex={-1}
-                  autoComplete="off"
+                  autoComplete="new-password"
+                  aria-hidden="true"
                   value={hpWebsite}
                   onChange={(e) => setHpWebsite(e.target.value)}
                 />
-                <label htmlFor={`quote_s3_hp_company_${lang}`}>Company Website</label>
+                <label htmlFor={`quote_s3_hp_company_${lang}`} className="sr-only">Leave blank</label>
                 <input
                   id={`quote_s3_hp_company_${lang}`}
                   type="text"
                   name="hp_company"
                   tabIndex={-1}
-                  autoComplete="off"
+                  autoComplete="new-password"
+                  aria-hidden="true"
                   value={hpCompany}
                   onChange={(e) => setHpCompany(e.target.value)}
                 />
@@ -1568,6 +1649,16 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                   <span>{dict.antiSpamDesc}</span>
                 </div>
               </div>
+
+              {/* Inline Validation Error */}
+              {errorMessage && (
+                <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2.5 text-xs text-red-700 animate-fadeIn">
+                  <svg className="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span className="font-semibold">{errorMessage}</span>
+                </div>
+              )}
 
               {/* Action Buttons */}
               <div className="flex items-center gap-3 pt-2">

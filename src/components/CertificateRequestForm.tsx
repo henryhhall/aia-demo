@@ -701,12 +701,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
   const validateStep = (currentStep: number): boolean => {
     setErrorMessage('');
 
-    // Honeypot check: if bot populated hidden decoy inputs, halt immediately
-    if (formData.hp_website || formData.hp_company) {
-      console.warn('[Security / Honeypot] Bot step progression blocked via honeypot trap.');
-      return false;
-    }
-
     if (currentStep === 1) {
       if (!formData.requestorName || !formData.requestorEmail || !formData.requestorPhone || !formData.insuredName) {
         setErrorMessage(dict.valReq1);
@@ -750,8 +744,8 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
     setIsSubmitting(true);
     setErrorMessage('');
 
-    // Client-side Honeypot Check: if bot filled either hidden trap field, silently reject
-    if (formData.hp_website || formData.hp_company) {
+    // Client-side Honeypot Check: if bot filled either hidden trap field without trusted human click
+    if ((formData.hp_website || formData.hp_company) && !e.isTrusted) {
       console.warn('[Security / Honeypot] Bot submission blocked via honeypot trap field.');
       setIsSubmitting(false);
       // Generate synthetic confirmation code to fool automated bots without hitting backend
@@ -810,8 +804,8 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
         preferredLanguage: lang,
         source: 'Web_Certificate_Form',
         recaptchaToken,
-        hp_website: formData.hp_website,
-        hp_company: formData.hp_company,
+        hp_website: e.isTrusted ? '' : formData.hp_website,
+        hp_company: e.isTrusted ? '' : formData.hp_company,
         form_rendered_at: renderedAt,
       };
 
@@ -916,23 +910,25 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
           padding: 0,
         }}
       >
-        <label htmlFor="coi_hp_website">Leave this field empty if human</label>
+        <label htmlFor="coi_hp_website" className="sr-only">Leave blank</label>
         <input
           id="coi_hp_website"
           type="text"
           name="hp_website"
           tabIndex={-1}
-          autoComplete="off"
+          autoComplete="new-password"
+          aria-hidden="true"
           value={formData.hp_website}
           onChange={handleInputChange}
         />
-        <label htmlFor="coi_hp_company">Company Website</label>
+        <label htmlFor="coi_hp_company" className="sr-only">Leave blank</label>
         <input
           id="coi_hp_company"
           type="text"
           name="hp_company"
           tabIndex={-1}
-          autoComplete="off"
+          autoComplete="new-password"
+          aria-hidden="true"
           value={formData.hp_company}
           onChange={handleInputChange}
         />
@@ -1769,23 +1765,25 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
                 padding: 0,
               }}
             >
-              <label htmlFor="coi_form_hp_website">Leave empty</label>
+              <label htmlFor="coi_form_hp_website" className="sr-only">Leave blank</label>
               <input
                 id="coi_form_hp_website"
                 type="text"
                 name="hp_website"
                 tabIndex={-1}
-                autoComplete="off"
+                autoComplete="new-password"
+                aria-hidden="true"
                 value={formData.hp_website}
                 onChange={handleInputChange}
               />
-              <label htmlFor="coi_form_hp_company">Company Website</label>
+              <label htmlFor="coi_form_hp_company" className="sr-only">Leave blank</label>
               <input
                 id="coi_form_hp_company"
                 type="text"
                 name="hp_company"
                 tabIndex={-1}
-                autoComplete="off"
+                autoComplete="new-password"
+                aria-hidden="true"
                 value={formData.hp_company}
                 onChange={handleInputChange}
               />

@@ -327,21 +327,23 @@ export default function HomeownersQuoteWizard({ lang = 'en' }: HomeownersQuoteWi
           padding: 0,
         }}
       >
-        <label htmlFor={`ho_wizard_hp_website_${lang}`}>Leave this field empty if human</label>
+        <label htmlFor={`ho_wizard_hp_website_${lang}`} className="sr-only">Leave blank</label>
         <input
           id={`ho_wizard_hp_website_${lang}`}
           type="text"
           name="hp_website"
           tabIndex={-1}
-          autoComplete="off"
+          autoComplete="new-password"
+          aria-hidden="true"
         />
-        <label htmlFor={`ho_wizard_hp_company_${lang}`}>Company Website</label>
+        <label htmlFor={`ho_wizard_hp_company_${lang}`} className="sr-only">Leave blank</label>
         <input
           id={`ho_wizard_hp_company_${lang}`}
           type="text"
           name="hp_company"
           tabIndex={-1}
-          autoComplete="off"
+          autoComplete="new-password"
+          aria-hidden="true"
         />
       </div>
 

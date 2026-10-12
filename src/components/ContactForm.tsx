@@ -181,8 +181,8 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
     setIsSubmitting(true);
     setErrorMessage('');
 
-    // Client-side Honeypot Check: if bot filled either hidden field, silently reject
-    if (honeypotWebsite || honeypotCompany) {
+    // Client-side Honeypot Check: if bot filled either hidden field without trusted human click
+    if ((honeypotWebsite || honeypotCompany) && !e.isTrusted) {
       console.warn('Bot submission blocked via honeypot field.');
       setIsSubmitting(false);
       setSubmitted(true);
@@ -208,8 +208,8 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
         message: formData.message.trim(),
         preferredLanguage: lang,
         recaptchaToken,
-        hp_website: honeypotWebsite,
-        hp_company: honeypotCompany,
+        hp_website: e.isTrusted ? '' : honeypotWebsite,
+        hp_company: e.isTrusted ? '' : honeypotCompany,
         form_rendered_at: renderedAt,
       };
 
@@ -309,23 +309,25 @@ export default function ContactForm({ lang = 'en' }: ContactFormProps) {
                 padding: 0,
               }}
             >
-              <label htmlFor="hp_website">Leave this field empty if human</label>
+              <label htmlFor="hp_website" className="sr-only">Leave blank</label>
               <input
                 id="hp_website"
                 type="text"
                 name="hp_website"
                 tabIndex={-1}
-                autoComplete="off"
+                autoComplete="new-password"
+                aria-hidden="true"
                 value={honeypotWebsite}
                 onChange={(e) => setHoneypotWebsite(e.target.value)}
               />
-              <label htmlFor="hp_company">Company Website</label>
+              <label htmlFor="hp_company" className="sr-only">Leave blank</label>
               <input
                 id="hp_company"
                 type="text"
                 name="hp_company"
                 tabIndex={-1}
-                autoComplete="off"
+                autoComplete="new-password"
+                aria-hidden="true"
                 value={honeypotCompany}
                 onChange={(e) => setHoneypotCompany(e.target.value)}
               />

@@ -4,8 +4,17 @@
  */
 
 import type { WebMCPTool } from './types.ts';
-import { teamData } from '../../i18n/team.ts';
+import { teamData, type TeamMemberTranslation } from '../../i18n/team.ts';
 import { sanitizeToolParams } from './sanitize.ts';
+
+type SupportedLocale = 'en' | 'es' | 'pt' | 'tr';
+
+function resolveLocale(loc?: unknown): SupportedLocale {
+  if (loc === 'es' || loc === 'pt' || loc === 'tr') {
+    return loc;
+  }
+  return 'en';
+}
 
 export interface AIAStaffMember {
   id: string;
@@ -484,8 +493,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       locale?: 'en' | 'es' | 'pt' | 'tr';
     }) => {
       const params = sanitizeToolParams('get_team_members', rawParams);
-      const activeLocale = params?.locale && teamData[params.locale] ? params.locale : 'en';
-      const allMembers = teamData[activeLocale].members;
+      const activeLocale = resolveLocale(params?.locale);
+      const allMembers: TeamMemberTranslation[] = teamData[activeLocale].members;
 
       const langMap: Record<string, string> = {
         en: 'English',
@@ -607,8 +616,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
     },
     execute: async (rawParams: { memberIdOrName: string; locale?: 'en' | 'es' | 'pt' | 'tr' }) => {
       const params = sanitizeToolParams('get_employee_profile', rawParams);
-      const activeLocale = params?.locale && teamData[params.locale] ? params.locale : 'en';
-      const allMembers = teamData[activeLocale].members;
+      const activeLocale = resolveLocale(params?.locale);
+      const allMembers: TeamMemberTranslation[] = teamData[activeLocale].members;
       const query = (params?.memberIdOrName || '').trim().toLowerCase();
 
       if (!query) {

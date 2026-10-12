@@ -133,3 +133,10 @@ browser-recordings/
 *.webp.recording
 *.png.recording
 
+# Diagnostics, performance traces & heapsnapshots
+*.heapsnapshot
+*.cpuprofile
+*.trace
+.output/
+
+

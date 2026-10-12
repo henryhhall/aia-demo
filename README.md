@@ -448,11 +448,16 @@ All lead generation, certificate intake, and customer inquiry forms across the s
    - Client utility (`src/lib/recaptcha.ts`) dynamically loads Google's verification script on demand only on interactive form views, maintaining Core Web Vitals.
    - Generates semantic action tokens (`contact_form`, `quote_form`, `certificate_request`).
    - Server-side verification (`src/lib/recaptchaVerify.ts`) inspects the returned token, validates action matching, and enforces a minimum human score of `0.5`.
-2. **Invisible Decoy Honeypots & Submission Velocity Traps**:
-   - Hidden off-screen form inputs (`hp_website`, `hp_company`) rendered with zero-size clipping (`width: 0; height: 0; opacity: 0; pointer-events: none`) and `aria-hidden="true"` at the container level and inside form bodies, invisible to human users but populated by automated script bots.
-   - Client-side interception silently spoofs confirmation receipt codes to mislead spam bots without incurring backend compute overhead.
-   - Time-delta tracking (`form_rendered_at`) detects inhuman instant submissions (< 1.2s) across contact and certificate intake endpoints.
-3. **Multilingual Legal Compliance & reCAPTCHA Disclaimers**:
+2. **Invisible Decoy Honeypots & Autofill Safety**:
+   - Hidden off-screen form inputs (`hp_website`, `hp_company`) rendered with zero-size clipping (`width: 0; height: 0; opacity: 0; pointer-events: none`), `aria-hidden="true"`, screen-reader only labels (`className="sr-only"`), and explicit `autoComplete="new-password"` attributes.
+   - Designed to prevent browser profile managers and password autofill heuristics (Chrome, Edge, Safari, 1Password) from inadvertently populating decoy traps when real users autofill contact or commercial details.
+   - Trusted user event differentiation (`e.isTrusted`) ensures synthetic script injections are intercepted while legitimate human submissions pass seamlessly.
+   - Decoupled client-side stepper navigation (`Step 1 -> Step 2 -> Step 3`) so internal UI progression remains fluid and resilient to autofill, with server-side validation and spoofing enforced on final submissions.
+   - Time-delta tracking (`form_rendered_at`) detects inhuman instant submissions (< 1.2s) across contact, quote, and certificate intake endpoints.
+3. **Multilingual Validation & Form Resilience**:
+   - Native DOM value fallback synchronization: automatically recovers and syncs input values if browser autofill populates fields without firing synthetic React change events.
+   - Prominent localized inline error alerts directly adjacent to action buttons with smooth auto-scrolling (`showError`) across all 4 languages (English, Spanish, Portuguese, Turkish).
+4. **Multilingual Legal Compliance & reCAPTCHA Disclaimers**:
    - Explicit on-form branding component (`RecaptchaLegalNotice.tsx`) dynamically passed the active language prop (`lang={lang}`) linking to Google's Privacy Policy & Terms of Service in **English**, **Spanish**, **Portuguese**, and **Turkish** on all form views, review steps, and directly beneath form cards.
    - Global CSS styling (`src/styles/global.css`) suppresses the default floating `.grecaptcha-badge`, keeping the WebMCP inspector and mobile navigation clean while maintaining full Google Terms compliance.
    - Standardized statutory insurance disclaimers displayed directly below form containers across all four languages confirming coverage non-binding status until written agent confirmation.
