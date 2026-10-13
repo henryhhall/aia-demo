@@ -1,0 +1,53 @@
+# ====================================================================
+# Associated Insurance Agency (AIA) - Divulgação de Segurança RFC 9116
+# Versão em Português: https://aia-danbury.com/.well-known/security-pt.txt
+# Documento Canônico RFC 9116: https://aia-danbury.com/.well-known/security.txt
+# ====================================================================
+#
+# POLÍTICA DE DIVULGAÇÃO RESPONSÁVEL DE VULNERABILIDADES
+#
+# A Associated Insurance Agency está comprometida em proteger as
+# informações pessoais não públicas (NPI) de nossos segurados e garantir
+# a segurança e confiabilidade de todos os nossos sistemas digitais.
+#
+# Caso acredite ter encontrado uma vulnerabilidade de segurança em nosso
+# site, APIs ou plataformas online, solicitamos que colabore conosco de
+# maneira ética e responsável.
+#
+# DIRETRIZES DE COMUNICAÇÃO:
+# 1. Entre em contato prontamente pelo e-mail security@aia-danbury.com
+#    ou por telefone no número +1 (203) 748-9272.
+# 2. Forneça detalhes técnicos claros para reproduzir o problema,
+#    incluindo URLs, parâmetros e provas de conceito (PoC).
+# 3. Conceda-nos tempo razoável para investigar e aplicar as correções
+#    antes de divulgar qualquer informação publicamente.
+# 4. Nunca acesse, baixe, modifique ou exclua dados de nossos clientes.
+# 5. Não realize ataques de negação de serviço (DoS/DDoS) nem engenharia
+#    social contra nossa equipe.
+#
+# PORTO SEGURO (SAFE HARBOR):
+# Se sua pesquisa for conduzida de boa-fé e em conformidade com estas
+# diretrizes, a Associated Insurance Agency não iniciará medidas legais
+# contra você.
+# ====================================================================
+
+# Contatos Oficiais de Segurança
+Contact: mailto:security@aia-danbury.com
+Contact: tel:+1-203-748-9272
+
+# Data de Expiração desta Declaração (RFC 3339)
+Expires: 2027-12-31T23:59:59.000Z
+
+# Idiomas Preferenciais de Atendimento (RFC 5646)
+Preferred-Languages: pt, en, es, tr
+
+# Localização Canônica
+Canonical: https://aia-danbury.com/.well-known/security-pt.txt
+
+# Políticas de Privacidade e Segurança em Português
+Policy: https://aia-danbury.com/pt/privacy#seguranca-dados
+Policy: https://aia-danbury.com/privacy#data-security
+
+# Equipe e Contato
+Hiring: https://aia-danbury.com/pt/team
+Acknowledgments: https://aia-danbury.com/pt/about

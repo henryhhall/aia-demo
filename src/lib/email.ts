@@ -95,13 +95,13 @@ const OFFICE_DIRECTORY: Record<string, { name: string; email: string; phone: str
   watertown: {
     name: 'Watertown Branch Office',
     email: 'watertown@aia-danbury.com',
-    phone: '(860) 274-8888',
+    phone: '(203) 748-9272',
     address: '51 Depot St Ste 112, Watertown, CT 06795',
   },
   bridgeport: {
     name: 'Bridgeport Community Branch',
     email: 'bridgeport@aia-danbury.com',
-    phone: '(203) 333-8880',
+    phone: '(203) 748-9272',
     address: '2465 Main Street, Bridgeport, CT 06606',
   },
 };
@@ -285,7 +285,7 @@ function buildAgencyNotificationHtml(data: QuoteEmailData, officeInfo: (typeof O
 
     <!-- Footer -->
     <div style="background-color: #f1f5f9; padding: 20px 32px; font-size: 12px; color: #64748b; text-align: center; border-top: 1px solid #e2e8f0;">
-      Associated Insurance Agency • Danbury HQ: 203-748-9272 • Watertown: 860-274-8888 • Bridgeport: 203-333-8880<br>
+      Associated Insurance Agency • Danbury HQ: 203-748-9272 • Watertown: 203-748-9272 • Bridgeport: 203-748-9272<br>
       Licensed in CT, NY, NJ, MA • Independent Agency representing 11+ premier carriers
     </div>
 

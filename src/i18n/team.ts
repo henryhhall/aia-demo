@@ -5,7 +5,6 @@ export interface TeamMemberTranslation {
   officeId: 'danbury' | 'watertown' | 'bridgeport';
   officeName: string;
   isProducer: boolean;
-  npn?: string;
   languages: string[];
   experienceBadge: string;
   shortBio: string;
@@ -33,7 +32,6 @@ export interface TeamSectionUI {
   filterWatertown: string;
   filterBridgeport: string;
   producerBadge: string;
-  npnLabel: string;
   officeLabel: string;
 }
 
@@ -63,7 +61,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
       filterWatertown: 'Watertown (2)',
       filterBridgeport: 'Bridgeport (2)',
       producerBadge: 'Licensed Producer',
-      npnLabel: 'National Producer # (NPN)',
       officeLabel: 'Branch Office',
     },
     members: [
@@ -74,7 +71,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Danbury HQ',
         isProducer: true,
-        npn: '8963915',
         languages: ['English'],
         experienceBadge: 'Agency Founder (2008)',
         shortBio: 'Founder of Associated Insurance Agency (2008), specializing in commercial lines and construction risks.',
@@ -117,11 +113,10 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'bridgeport',
         officeName: 'Bridgeport Branch',
         isProducer: true,
-        npn: '19946151',
         languages: ['English', 'Portuguese', 'Spanish'],
         experienceBadge: 'Licensed Producer • AIA Since 2020',
         shortBio: 'Licensed producer at AIA since 2020, writing commercial liability, multi-family property, and personal policies in Portuguese, English, and Spanish.',
-        fullBio: 'Camila joined Associated Insurance Agency in 2020 as a licensed insurance producer (NPN 19946151). Based in our Bridgeport branch, she writes commercial liability, multi-family rental property coverage, contractor policies, and personal auto and home insurance. Fluent in Portuguese, English, and Spanish, she helps local business owners and families compare policy options and secure necessary coverage. Outside the office, she enjoys beach days and time with family.',
+        fullBio: 'Camila joined Associated Insurance Agency in 2020 as a licensed insurance producer. Based in our Bridgeport branch, she writes commercial liability, multi-family rental property coverage, contractor policies, and personal auto and home insurance. Fluent in Portuguese, English, and Spanish, she helps local business owners and families compare policy options and secure necessary coverage. Outside the office, she enjoys beach days and time with family.',
         specialties: ['Commercial Liability', 'Multi-Family Properties', 'Personal Auto & Home', 'Trilingual Service'],
         personalHighlight: 'Enjoys sunny beach days and spending time with family.',
       },
@@ -132,7 +127,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Danbury HQ',
         isProducer: true,
-        npn: '20265776',
         languages: ['English', 'Portuguese', 'Spanish'],
         experienceBadge: 'Licensed Producer • Since 2020',
         shortBio: 'Licensed producer writing general liability and property policies for multi-family dwellings and commercial lines.',
@@ -147,7 +141,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Danbury HQ',
         isProducer: true,
-        npn: '21656039',
         languages: ['English', 'Portuguese', 'Spanish'],
         experienceBadge: 'Licensed Producer • Insurance Since 2020',
         shortBio: 'Licensed producer with 20+ years of customer service experience, writing personal and commercial insurance.',
@@ -219,7 +212,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
       filterWatertown: 'Sucursal Watertown (2)',
       filterBridgeport: 'Sucursal Bridgeport (2)',
       producerBadge: 'Productor Licenciado',
-      npnLabel: 'N.° de Productor Nacional (NPN)',
       officeLabel: 'Sucursal',
     },
     members: [
@@ -230,7 +222,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Sede Danbury',
         isProducer: true,
-        npn: '8963915',
         languages: ['Inglés'],
         experienceBadge: 'Fundador de la Agencia (2008)',
         shortBio: 'Fundador de Associated Insurance Agency en 2008, especializado en líneas comerciales y riesgos de construcción.',
@@ -273,11 +264,10 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'bridgeport',
         officeName: 'Sucursal Bridgeport',
         isProducer: true,
-        npn: '19946151',
         languages: ['Inglés', 'Portugués', 'Español'],
         experienceBadge: 'Productora Licenciada • Desde 2020',
         shortBio: 'Productora licenciada en AIA desde 2020; emite responsabilidad comercial, propiedades multifamiliares y seguros personales en español, inglés y portugués.',
-        fullBio: 'Camila forma parte de Associated Insurance Agency desde 2020 como productora licenciada (NPN 19946151). Desde la oficina de Bridgeport, emite pólizas de responsabilidad civil comercial, propiedades multifamiliares de alquiler, seguros para contratistas y pólizas personales de auto y hogar. Fluida en español, inglés y portugués, ayuda a comerciantes y familias a comparar aseguradoras y seleccionar sus coberturas. En su tiempo libre, disfruta de días de playa y tiempo en familia.',
+        fullBio: 'Camila forma parte de Associated Insurance Agency desde 2020 como productora licenciada. Desde la oficina de Bridgeport, emite pólizas de responsabilidad civil comercial, propiedades multifamiliares de alquiler, seguros para contratistas y pólizas personales de auto y hogar. Fluida en español, inglés y portugués, ayuda a comerciantes y familias a comparar aseguradoras y seleccionar sus coberturas. En su tiempo libre, disfruta de días de playa y tiempo en familia.',
         specialties: ['Responsabilidad Comercial', 'Propiedades Multifamiliares', 'Seguro de Auto y Hogar', 'Servicio Trilingüe'],
         personalHighlight: 'Disfruta de días de playa y tiempo con su familia.',
       },
@@ -288,7 +278,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Sede Danbury',
         isProducer: true,
-        npn: '20265776',
         languages: ['Inglés', 'Portugués', 'Español'],
         experienceBadge: 'Productora Licenciada • Desde 2020',
         shortBio: 'Productora licenciada que emite pólizas de responsabilidad general y propiedad para viviendas multifamiliares y empresas.',
@@ -303,7 +292,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Sede Danbury',
         isProducer: true,
-        npn: '21656039',
         languages: ['Inglés', 'Portugués', 'Español'],
         experienceBadge: 'Productora Licenciada • En Seguros Desde 2020',
         shortBio: 'Productora licenciada con más de 20 años de experiencia en servicio al cliente, asesorando en seguros personales y comerciales.',
@@ -375,7 +363,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
       filterWatertown: 'Agência Watertown (2)',
       filterBridgeport: 'Agência Bridgeport (2)',
       producerBadge: 'Corretor Licenciado',
-      npnLabel: 'N.° de Produtor Nacional (NPN)',
       officeLabel: 'Agência',
     },
     members: [
@@ -386,7 +373,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Sede Danbury',
         isProducer: true,
-        npn: '8963915',
         languages: ['Inglês'],
         experienceBadge: 'Fundador da Agência (2008)',
         shortBio: 'Fundador da Associated Insurance Agency em 2008, especializado em seguros comerciais e riscos da construção civil.',
@@ -429,11 +415,10 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'bridgeport',
         officeName: 'Agência Bridgeport',
         isProducer: true,
-        npn: '19946151',
         languages: ['Inglês', 'Português', 'Espanhol'],
         experienceBadge: 'Corretora Licenciada • Desde 2020',
         shortBio: 'Corretora licenciada na AIA desde 2020; emite apólices comerciais, imóveis multifamiliares e seguros pessoais em português, inglês e espanhol.',
-        fullBio: 'Camila integra a equipe da Associated Insurance Agency desde 2020 como corretora licenciada (NPN 19946151). Baseada na agência de Bridgeport, ela emite apólices de responsabilidade civil comercial, seguros para sobrados e casas multifamiliares, coberturas para prestadores de serviço e apólices de auto e residência. Fluente em português, inglês e espanhol, auxilia empresários e famílias a comparar propostas de seguradoras. Fora do trabalho, gosta de dias ensolarados na praia e de estar com a família.',
+        fullBio: 'Camila integra a equipe da Associated Insurance Agency desde 2020 como corretora licenciada. Baseada na agência de Bridgeport, ela emite apólices de responsabilidade civil comercial, seguros para sobrados e casas multifamiliares, coberturas para prestadores de serviço e apólices de auto e residência. Fluente em português, inglês e espanhol, auxilia empresários e famílias a comparar propostas de seguradoras. Fora do trabalho, gosta de dias ensolarados na praia e de estar com a família.',
         specialties: ['Responsabilidade Comercial', 'Imóveis Multifamiliares', 'Seguro Auto e Residencial', 'Atendimento Trilíngue'],
         personalHighlight: 'Adora dias ensolarados na praia e momentos com a família.',
       },
@@ -444,7 +429,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Sede Danbury',
         isProducer: true,
-        npn: '20265776',
         languages: ['Inglês', 'Português', 'Espanhol'],
         experienceBadge: 'Corretora Licenciada • Desde 2020',
         shortBio: 'Corretora licenciada que emite apólices de responsabilidade civil geral e propriedade para imóveis multifamiliares e empresas.',
@@ -459,7 +443,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Sede Danbury',
         isProducer: true,
-        npn: '21656039',
         languages: ['Inglês', 'Português', 'Espanhol'],
         experienceBadge: 'Corretora Licenciada • Seguros Desde 2020',
         shortBio: 'Corretora licenciada com mais de 20 anos de experiência em atendimento, emitindo seguros pessoais e comerciais.',
@@ -531,7 +514,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
       filterWatertown: 'Watertown Şubesi (2)',
       filterBridgeport: 'Bridgeport Şubesi (2)',
       producerBadge: 'Lisanslı Sigorta Uzmanı',
-      npnLabel: 'Ulusal Üretici No (NPN)',
       officeLabel: 'Şube Ofisi',
     },
     members: [
@@ -542,7 +524,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Danbury Merkez',
         isProducer: true,
-        npn: '8963915',
         languages: ['İngilizce'],
         experienceBadge: 'Acente Kurucusu (2008)',
         shortBio: 'Associated Insurance Agency’nin 2008 yılındaki kurucusu; ticari sigortalar ve inşaat risklerinde uzman.',
@@ -585,11 +566,10 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'bridgeport',
         officeName: 'Bridgeport Şubesi',
         isProducer: true,
-        npn: '19946151',
         languages: ['İngilizce', 'Portekizce', 'İspanyolca'],
         experienceBadge: "Lisanslı Sigortacı • 2020'den Beri",
         shortBio: '2020’den beri AIA lisanslı sigortacısı; ticari sorumluluk, çok aileli binalar ve bireysel poliçelerde İngilizce, İspanyolca ve Portekizce uzmanı.',
-        fullBio: 'Camila, 2020 yılından bu yana Associated Insurance Agency bünyesinde lisanslı sigorta üreticisi (NPN 19946151) olarak görev yapmaktadır. Bridgeport şubemizde ticari sorumluluk, çok aileli kiralık mülkler, müteahhit teminatları ile şahsi araç ve konut poliçeleri düzenler. İngilizce, İspanyolca ve Portekizce dillerinde müşterilere teklif karşılaştırmasında yardımcı olur. İş dışında sahilde vakit geçirmeyi ve ailesiyle olmayı sever.',
+        fullBio: 'Camila, 2020 yılından bu yana Associated Insurance Agency bünyesinde lisanslı sigorta üreticisi olarak görev yapmaktadır. Bridgeport şubemizde ticari sorumluluk, çok aileli kiralık mülkler, müteahhit teminatları ile şahsi araç ve konut poliçeleri düzenler. İngilizce, İspanyolca ve Portekizce dillerinde müşterilere teklif karşılaştırmasında yardımcı olur. İş dışında sahilde vakit geçirmeyi ve ailesiyle olmayı sever.',
         specialties: ['Ticari Sorumluluk', 'Çok Aileli Mülkler', 'Bireysel Araç ve Konut', 'Üç Dilli Hizmet'],
         personalHighlight: 'Güneşli sahil günlerini ve ailesiyle vakit geçirmeyi sever.',
       },
@@ -600,7 +580,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Danbury Merkez',
         isProducer: true,
-        npn: '20265776',
         languages: ['İngilizce', 'Portekizce', 'İspanyolca'],
         experienceBadge: "Lisanslı Sigortacı • 2020'den Beri",
         shortBio: 'Çok aileli konutlar ve işletmeler için genel sorumluluk ve mülk poliçeleri düzenleyen lisanslı sigortacı.',
@@ -615,7 +594,6 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         officeId: 'danbury',
         officeName: 'Danbury Merkez',
         isProducer: true,
-        npn: '21656039',
         languages: ['İngilizce', 'Portekizce', 'İspanyolca'],
         experienceBadge: "Lisanslı Sigortacı • 2020'den Beri",
         shortBio: '20 yılı aşkın müşteri hizmetleri tecrübesiyle bireysel ve ticari poliçeler hazırlayan lisanslı sigortacı.',

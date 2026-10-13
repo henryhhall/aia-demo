@@ -22,7 +22,7 @@ Connecticut's Fairfield, Litchfield, and New Haven counties host vibrant multicu
 - **English**: Available at all offices (Danbury, Watertown, Bridgeport).
 - **Spanish (Español)**: Native-speaking licensed agents at all locations.
 - **Portuguese (Português)**: Native-speaking licensed agents at all locations.
-- **Turkish (Türkçe)**: Dedicated Turkish-speaking agents based at Danbury HQ and Watertown Branch.
+- **Turkish (Türkçe)**: Dedicated Turkish-speaking agents available across all branch offices.
 
 ---
 
@@ -39,7 +39,7 @@ Connecticut's Fairfield, Litchfield, and New Haven counties host vibrant multicu
 
 ### Watertown Branch Office
 - **Address:** 51 Depot St Ste 112, Watertown, CT 06795
-- **Phone:** (860) 274-8888
+- **Phone:** (203) 748-9272
 - **Email:** watertown@aia-danbury.com
 - **Coordinates:** 41.6018° N, -73.1139° W
 - **Languages Spoken:** English, Spanish, Portuguese, Turkish
@@ -47,10 +47,10 @@ Connecticut's Fairfield, Litchfield, and New Haven counties host vibrant multicu
 
 ### Bridgeport Community Branch
 - **Address:** 2465 Main Street, Bridgeport, CT 06606
-- **Phone:** (203) 333-8880
+- **Phone:** (203) 748-9272
 - **Email:** bridgeport@aia-danbury.com
 - **Coordinates:** 41.1963° N, -73.1972° W
-- **Languages Spoken:** English, Spanish, Portuguese
+- **Languages Spoken:** English, Spanish, Portuguese, Turkish
 - **Hours:** Monday – Friday, 8:30 AM – 5:00 PM EST
 
 ---

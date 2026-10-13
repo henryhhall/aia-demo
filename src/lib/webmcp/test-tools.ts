@@ -44,7 +44,7 @@ async function runTests() {
   console.log('Output:', JSON.stringify(teamRes.content[0], null, 2));
   if (teamRes.isError) throw new Error('get_team_members failed');
   const teamJson = (teamRes.content[0] as any).json;
-  if (!teamJson || teamJson.total < 1 || !teamJson.members[0].npn) {
+  if (!teamJson || teamJson.total < 1 || !teamJson.members[0].isProducer) {
     throw new Error('get_team_members returned unexpected result: ' + JSON.stringify(teamJson));
   }
   console.log(`✓ get_team_members passed: found ${teamJson.total} licensed Portuguese-speaking producers.\n`);

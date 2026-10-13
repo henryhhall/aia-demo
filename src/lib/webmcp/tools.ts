@@ -21,7 +21,6 @@ export interface AIAStaffMember {
   name: string;
   role: string;
   isProducer: boolean;
-  npn?: string;
   languages: string[];
   specialties: string[];
 }
@@ -86,7 +85,6 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
         name: 'Ronald T. Boucher',
         role: 'Principal & Founder',
         isProducer: true,
-        npn: '8963915',
         languages: ['English'],
         specialties: ['Commercial Lines', 'Construction Risks', 'Business Liability', 'Agency Leadership'],
       },
@@ -103,7 +101,6 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
         name: 'Isayeli Perez De La Mora',
         role: 'Customer Service Representative',
         isProducer: true,
-        npn: '20265776',
         languages: ['English', 'Portuguese', 'Spanish'],
         specialties: ['Multifamily Dwellings', 'General Liability', 'Property Policies', 'Personal & Commercial Lines'],
       },
@@ -112,7 +109,6 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
         name: 'Ema Rego',
         role: 'Customer Service Representative',
         isProducer: true,
-        npn: '21656039',
         languages: ['English', 'Portuguese', 'Spanish'],
         specialties: ['Personal Lines', 'Commercial Coverage', 'Client Consultation', 'Multilingual Support'],
       },
@@ -137,9 +133,9 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
     state: 'CT',
     postalCode: '06795',
     fullAddress: '51 Depot St Ste 112, Watertown, CT 06795',
-    phone: '860-274-8888',
-    phoneFormatted: '(860) 274-8888',
-    phoneRaw: '8602748888',
+    phone: '203-748-9272',
+    phoneFormatted: '(203) 748-9272',
+    phoneRaw: '2037489272',
     email: 'watertown@aia-danbury.com',
     hours: 'Monday - Friday: 8:30 AM - 5:00 PM EST',
     directionsUrl: 'https://maps.google.com/?q=51+Depot+St+Ste+112,+Watertown,+CT+06795',
@@ -180,15 +176,15 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
     state: 'CT',
     postalCode: '06606',
     fullAddress: '2465 Main Street, Bridgeport, CT 06606',
-    phone: '203-333-8880',
-    phoneFormatted: '(203) 333-8880',
-    phoneRaw: '2033338880',
+    phone: '203-748-9272',
+    phoneFormatted: '(203) 748-9272',
+    phoneRaw: '2037489272',
     email: 'bridgeport@aia-danbury.com',
     hours: 'Monday - Friday: 8:30 AM - 5:00 PM EST',
     directionsUrl: 'https://maps.google.com/?q=2465+Main+Street,+Bridgeport,+CT+06606',
     embedUrl:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021.0695509775729!2d-73.2120973643344!3d41.214073760533175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80e8ad160179d%3A0x2174691e2b983696!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394610287!5m2!1sen!2sus',
-    languages: ['English', 'Spanish', 'Portuguese'],
+    languages: ['English', 'Spanish', 'Portuguese', 'Turkish'],
     latitude: 41.1963,
     longitude: -73.1972,
     isHeadquarters: false,
@@ -199,7 +195,6 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
         name: 'Camila Macedo de Jesus',
         role: 'Customer Service Representative',
         isProducer: true,
-        npn: '19946151',
         languages: ['English', 'Portuguese', 'Spanish'],
         specialties: ['Commercial Coverage', 'Personal Insurance', 'Coverage Consultations', 'Policy Servicing'],
       },
@@ -472,7 +467,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
         },
         producersOnly: {
           type: 'boolean',
-          description: 'If true, returns only licensed insurance producers with an active National Producer Number (NPN).',
+          description: 'If true, returns only licensed insurance producers.',
         },
         locale: {
           type: 'string',
@@ -560,7 +555,6 @@ export const aiaWebMcpTools: WebMCPTool[] = [
           officeId: m.officeId,
           officeName: m.officeName,
           isProducer: m.isProducer,
-          npn: m.npn || null,
           languages: m.languages,
           experienceBadge: m.experienceBadge,
           shortBio: m.shortBio,
@@ -593,7 +587,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
   {
     name: 'get_employee_profile',
     description:
-      'Retrieve full biography, National Producer Number (NPN), credentials, areas of specialty, languages spoken, and assigned office contact details for a specific AIA team member by employee ID or name.',
+      'Retrieve full biography, credentials, areas of specialty, languages spoken, and assigned office contact details for a specific AIA team member by employee ID or name.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -666,7 +660,6 @@ export const aiaWebMcpTools: WebMCPTool[] = [
           officeId: member.officeId,
           officeName: member.officeName,
           isProducer: member.isProducer,
-          npn: member.npn || null,
           languages: member.languages,
           experienceBadge: member.experienceBadge,
           shortBio: member.shortBio,
@@ -782,7 +775,6 @@ export const aiaWebMcpTools: WebMCPTool[] = [
           officeId: m.officeId,
           officeName: m.officeName,
           isProducer: m.isProducer,
-          npn: m.npn || null,
           specialties: m.specialties,
           languages: m.languages,
           officePhone: office.phoneFormatted,
@@ -1252,8 +1244,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
         estimatedTurnaround: '2-4 business hours (Mon-Fri 8:30 AM - 5:00 PM EST)',
         servicingOffices: [
           'Danbury HQ: (203) 748-9272',
-          'Watertown: (860) 274-8888',
-          'Bridgeport: (203) 333-8880',
+          'Watertown: (203) 748-9272',
+          'Bridgeport: (203) 748-9272',
         ],
         details: {
           insuredName: params.insuredName,

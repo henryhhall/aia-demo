@@ -199,7 +199,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
           {
             question: 'What languages are supported at the Watertown branch?',
-            answer: 'Our Watertown branch provides service in English and Turkish directly on-site, with seamless real-time access to our Spanish and Portuguese licensed producers via our internal multi-branch network.',
+            answer: 'Our Watertown branch provides service in English, Spanish, Portuguese, and Turkish. You can discuss quotes, review policy details, and file claims in your preferred language.',
           },
           {
             question: 'Can I pay my carrier insurance bill at the Watertown office?',
@@ -207,7 +207,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
         ],
         directionsCta: 'Get Directions to Watertown Office',
-        callOfficeCta: 'Call (860) 274-8888',
+        callOfficeCta: 'Call (203) 748-9272',
         quoteOfficeCta: 'Request a Quote from Watertown Office',
         openHoursLabel: 'Office Hours',
         languagesLabel: 'Languages Spoken',
@@ -219,11 +219,11 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         seoTitle: 'Insurance Agency Bridgeport CT | Auto, Home, Business | 2465 Main St',
         metaDescription: 'Visit Associated Insurance Agency at 2465 Main Street in Bridgeport, CT. Compare auto, home, multi-family, and commercial quotes across 20+ carriers.',
         heroHeadline: 'Insurance Agency in Bridgeport, CT',
-        heroSubheadline: 'Get auto, home, multi-family, and business insurance quotes from our Main Street office. We compare 20+ carriers and speak English, Spanish, and Portuguese.',
+        heroSubheadline: 'Get auto, home, multi-family, and business insurance quotes from our Main Street office. We compare 20+ carriers and speak English, Spanish, Portuguese, and Turkish.',
         officeOverview: [
           'Our Bridgeport branch is located at 2465 Main Street in the North End, two blocks from St. Vincent’s Medical Center with direct access from Route 8 and Route 25 (Exits 4 and 5). Free parking is available in front of the office and along Main Street.',
           'We write personal and commercial policies throughout coastal Fairfield County. Our licensed agents handle multi-family rental property insurance (including 2-to-4 family homes and triple-deckers), coastal flood coverage along Long Island Sound, commercial auto, workers’ compensation, and same-day Certificates of Insurance (COI) for trade contractors.',
-          'As an independent agency, we compare rates across Travelers, Safeco, The Hartford, Progressive, and Guard. Our licensed agents speak English, Spanish, and Portuguese, helping you review coverages and file claims without language barriers.',
+          'As an independent agency, we compare rates across Travelers, Safeco, The Hartford, Progressive, and Guard. Our licensed agents speak English, Spanish, Portuguese, and Turkish, helping you review coverages and file claims without language barriers.',
         ],
         localRisksAndFocusHeading: 'Insurance Lines We Write in Bridgeport',
         localRisksAndFocusDesc: 'Bridgeport has a dense mix of multi-family rental properties, coastal flood zones, commercial contractors, and busy commuter corridors like I-95, Route 8, and Route 25. Our office focuses on:',
@@ -256,7 +256,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
           {
             question: 'Do you have Spanish- and Portuguese-speaking agents in Bridgeport?',
-            answer: 'Yes. Our Bridgeport staff speaks English, Spanish, and Portuguese fluently. You can discuss quotes, review policy endorsements, and handle claims in your preferred language.',
+            answer: 'Yes. Our Bridgeport staff speaks English, Spanish, Portuguese, and Turkish fluently. You can discuss quotes, review policy endorsements, and handle claims in your preferred language.',
           },
           {
             question: 'Can I get flood insurance for a property in Bridgeport?',
@@ -268,7 +268,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
         ],
         directionsCta: 'Get Directions to Bridgeport',
-        callOfficeCta: 'Call (203) 333-8880',
+        callOfficeCta: 'Call (203) 748-9272',
         quoteOfficeCta: 'Get a Bridgeport Quote',
         openHoursLabel: 'Office Hours',
         languagesLabel: 'Languages Spoken',
@@ -409,7 +409,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
           {
             question: '¿En qué idiomas atienden en Watertown?',
-            answer: 'En Watertown contamos con atención en inglés y turco directamente, y conectamos en tiempo real con nuestros productores hispanohablantes de Danbury y Bridgeport.',
+            answer: 'En nuestra sucursal de Watertown atendemos en español, inglés, portugués y turco. Puede consultar cotizaciones, revisar pólizas y gestionar trámites en su idioma preferido.',
           },
           {
             question: '¿Puedo pagar mi factura de seguro en la oficina de Watertown?',
@@ -417,7 +417,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
         ],
         directionsCta: 'Cómo Llegar a la Oficina de Watertown',
-        callOfficeCta: 'Llamar al (860) 274-8888',
+        callOfficeCta: 'Llamar al (203) 748-9272',
         quoteOfficeCta: 'Pedir Cotización en Watertown',
         openHoursLabel: 'Horario de Atención',
         languagesLabel: 'Idiomas Hablados',
@@ -429,11 +429,11 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         seoTitle: 'Agencia de Seguros en Bridgeport CT | Auto, Casa y Negocio | 2465 Main St',
         metaDescription: 'Associated Insurance Agency en Bridgeport, CT (2465 Main Street). Compare tarifas de autos, casas, edificios multifamiliares y comercios con más de 20 aseguradoras. Atención en español.',
         heroHeadline: 'Agencia de Seguros en Bridgeport, CT',
-        heroSubheadline: 'Cotice seguros de autos, casas, propiedades multifamiliares y comercios en nuestra oficina de Main Street. Comparamos más de 20 aseguradoras y le atendemos en español, inglés y portugués.',
+        heroSubheadline: 'Cotice seguros de autos, casas, propiedades multifamiliares y comercios en nuestra oficina de Main Street. Comparamos más de 20 aseguradoras y le atendemos en español, inglés, portugués y turco.',
         officeOverview: [
           'Nuestra sucursal de Bridgeport está ubicada en 2465 Main Street, en el sector North End, a dos cuadras de St. Vincent’s Medical Center y con acceso rápido desde las rutas 8 y 25 (salidas 4 y 5). Disponemos de estacionamiento gratuito frente a la oficina y sobre Main Street.',
           'Emitimos pólizas comerciales y personales en todo el condado de Fairfield. Aseguramos casas multifamiliares de 2 a 4 familias, pólizas contra inundaciones costeras cerca de Long Island Sound, vehículos comerciales, compensación laboral para empleados (CGS § 31-284) y certificados de seguro (COI) el mismo día para contratistas.',
-          'Como agencia independiente, comparamos tarifas entre compañías como Travelers, Safeco, The Hartford, Progressive y Guard. Nuestras agentes hablan español, inglés y portugués para explicarle coberturas, deducibles y trámites sin barreras de idioma.',
+          'Como agencia independiente, comparamos tarifas entre compañías como Travelers, Safeco, The Hartford, Progressive y Guard. Nuestras agentes hablan español, inglés, portugués y turco para explicarle coberturas, deducibles y trámites sin barreras de idioma.',
         ],
         localRisksAndFocusHeading: 'Ramos de Seguro en Bridgeport',
         localRisksAndFocusDesc: 'Bridgeport concentra una gran cantidad de propiedades multifamiliares en alquiler, zonas costeras expuestas a inundaciones y contratistas independientes. En Main Street nos enfocamos en:',
@@ -466,7 +466,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
           {
             question: '¿Atienden en español en la oficina de Bridgeport?',
-            answer: 'Sí. Nuestro equipo en Bridgeport habla español, inglés y portugués. Le explicamos coberturas, exclusiones y facturas directamente en su idioma.',
+            answer: 'Sí. Nuestro equipo en Bridgeport habla español, inglés, portugués y turco. Le explicamos coberturas, exclusiones y facturas directamente en su idioma.',
           },
           {
             question: '¿Puedo contratar seguro de inundación en Bridgeport?',
@@ -478,7 +478,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
         ],
         directionsCta: 'Cómo Llegar a Bridgeport',
-        callOfficeCta: 'Llamar al (203) 333-8880',
+        callOfficeCta: 'Llamar al (203) 748-9272',
         quoteOfficeCta: 'Pedir Cotización en Bridgeport',
         openHoursLabel: 'Horario de Atención',
         languagesLabel: 'Idiomas Hablados',
@@ -619,7 +619,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
           {
             question: 'Quais idiomas são falados em Watertown?',
-            answer: 'No local falamos inglês e turco, e conectamos você em tempo real aos nossos corretores fluentes em português de Danbury e Bridgeport.',
+            answer: 'Na agência de Watertown atendemos em português, inglês, espanhol e turco. Você pode analisar cotações, revisar apólices e acionar sinistros no seu idioma de preferência.',
           },
           {
             question: 'Posso pagar minha fatura na agência de Watertown?',
@@ -627,7 +627,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
         ],
         directionsCta: 'Como Chegar a Watertown',
-        callOfficeCta: 'Ligar para (860) 274-8888',
+        callOfficeCta: 'Ligar para (203) 748-9272',
         quoteOfficeCta: 'Pedir Cotação em Watertown',
         openHoursLabel: 'Horário de Atendimento',
         languagesLabel: 'Idiomas Falados',
@@ -639,11 +639,11 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         seoTitle: 'Agência de Seguros em Bridgeport CT | Carro, Casa e Empresas | 2465 Main St',
         metaDescription: 'Associated Insurance Agency em Bridgeport, CT (2465 Main Street). Compare cotações de seguro auto, residencial, comercial e enchente com mais de 20 seguradoras. Atendimento em português.',
         heroHeadline: 'Agência de Seguros em Bridgeport, CT',
-        heroSubheadline: 'Faça cotações de seguro para veículos, casas multifamiliares e empresas no nosso escritório na Main Street. Comparamos mais de 20 seguradoras e atendemos em português, espanhol e inglês.',
+        heroSubheadline: 'Faça cotações de seguro para veículos, casas multifamiliares e empresas no nosso escritório na Main Street. Comparamos mais de 20 seguradoras e atendemos em português, espanhol, inglês e turco.',
         officeOverview: [
           'Nosso escritório de Bridgeport fica na 2465 Main Street, no North End, a duas quadras do St. Vincent’s Medical Center e com acesso direto pelas rotas 8 e 25 (saídas 4 e 5). Há vagas de estacionamento gratuitas na frente e ao longo da Main Street.',
           'Emitimos apólices comerciais e residenciais em todo o litoral de Fairfield County. Cuidamos de seguros para casas multifamiliares de 2 a 4 famílias, seguro contra enchentes (flood) próximo ao Long Island Sound, veículos comerciais, seguro de acidentes de trabalho (Workers’ Comp) e certificados de seguro (COI) no mesmo dia para prestadores de serviço e construtores.',
-          'Como agência independente, comparamos preços entre Travelers, Safeco, The Hartford, Progressive e Guard. Nossas corretoras falam português nativo, esclarecendo dúvidas sobre coberturas, franquias e sinistros sem complicações.',
+          'Como agência independente, comparamos preços entre Travelers, Safeco, The Hartford, Progressive e Guard. Nossas corretoras falam português, espanhol, inglês e turco fluentemente, esclarecendo dúvidas sobre coberturas, franquias e sinistros sem complicações.',
         ],
         localRisksAndFocusHeading: 'Ramos de Seguro em Bridgeport',
         localRisksAndFocusDesc: 'Bridgeport concentra grande volume de casas multifamiliares para locação, imóveis expostos a enchentes litorâneas e profissionais autônomos. Nossa equipe foca em:',
@@ -676,7 +676,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
           {
             question: 'Vocês têm atendimento em português em Bridgeport?',
-            answer: 'Sim. Nossa equipe em Bridgeport fala português, espanhol e inglês fluentemente. Você revisa sua apólice e tira dúvidas diretamente no seu idioma nativo.',
+            answer: 'Sim. Nossa equipe em Bridgeport fala português, espanhol, inglês e turco fluentemente. Você revisa sua apólice e tira dúvidas diretamente no seu idioma nativo.',
           },
           {
             question: 'Posso contratar seguro contra enchentes (flood) em Bridgeport?',
@@ -688,7 +688,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
         ],
         directionsCta: 'Como Chegar a Bridgeport',
-        callOfficeCta: 'Ligar para (203) 333-8880',
+        callOfficeCta: 'Ligar para (203) 748-9272',
         quoteOfficeCta: 'Pedir Cotação em Bridgeport',
         openHoursLabel: 'Horário de Atendimento',
         languagesLabel: 'Idiomas Falados',
@@ -829,7 +829,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
           {
             question: 'Watertown şubesinde hangi diller konuşuluyor?',
-            answer: 'Watertown şubemizde İngilizce ve Türkçe hizmet verilmekte olup, İspanyolca ve Portekizce danışmanlarımıza anında erişim sağlanmaktadır.',
+            answer: 'Watertown şubemizde İngilizce, İspanyolca, Portekizce ve Türkçe hizmet verilmektedir. Poliçe tekliflerini ve ayrıntılarını ana dilinizde görüşebilirsiniz.',
           },
           {
             question: 'Poliçe ödememi Watertown ofisinden yapabilir miyim?',
@@ -837,7 +837,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
         ],
         directionsCta: 'Watertown Ofisine Yol Tarifi',
-        callOfficeCta: 'Ara: (860) 274-8888',
+        callOfficeCta: 'Ara: (203) 748-9272',
         quoteOfficeCta: 'Watertown Ofisinden Teklif Al',
         openHoursLabel: 'Çalışma Saatleri',
         languagesLabel: 'Konuşulan Diller',
@@ -849,11 +849,11 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         seoTitle: 'Bridgeport CT Sigorta Acentesi | Araç, Ev ve Ticari Sigorta | 2465 Main St',
         metaDescription: 'Associated Insurance Agency Bridgeport ofisi (2465 Main Street). 20’den fazla şirketten araç, çok aileli konut, ticari ve sel sigortası tekliflerini karşılaştırın.',
         heroHeadline: 'Bridgeport, CT Sigorta Acentesi',
-        heroSubheadline: 'Main Street ofisimizde araç, çok aileli konut, ticari ve sel sigortası poliçelerinizi hazırlıyoruz. 20’den fazla şirketin tekliflerini karşılaştırıyoruz.',
+        heroSubheadline: 'Main Street ofisimizde araç, çok aileli konut, ticari ve sel sigortası poliçelerinizi hazırlıyoruz. 20’den fazla şirketin tekliflerini karşılaştırıp İngilizce, İspanyolca, Portekizce ve Türkçe dillerinde hizmet veriyoruz.',
         officeOverview: [
           'Bridgeport ofisimiz 2465 Main Street adresinde, St. Vincent’s Medical Center’a iki sokak mesafede ve Route 8 ile Route 25 otoyollarının 4 ve 5 numaralı çıkışlarının hemen yanındadır. Bina önünde ve cadde üzerinde ücretsiz otopark mevcuttur.',
           'Fairfield County kıyı bölgesinde bireysel ve ticari poliçeler düzenliyoruz. Bridgeport genelindeki 2 ila 4 daireli kiralık binalar, Long Island Sound kıyısındaki sel sigortaları (NFIP), ticari araçlar ve inşaat ustaları için aynı gün ACORD 25 sigorta belgesi (COI) düzenliyoruz.',
-          'Bağımsız acente olarak Travelers, Safeco, The Hartford, Progressive ve Guard dahil olmak üzere 20’den fazla sigorta şirketiyle çalışıyoruz. Lisanslı temsilcilerimiz İngilizce, İspanyolca ve Portekizce dillerinde hizmet verir.',
+          'Bağımsız acente olarak Travelers, Safeco, The Hartford, Progressive ve Guard dahil olmak üzere 20’den fazla sigorta şirketiyle çalışıyoruz. Lisanslı temsilcilerimiz İngilizce, İspanyolca, Portekizce ve Türkçe dillerinde hizmet verir.',
         ],
         localRisksAndFocusHeading: 'Bridgeport Sigorta Alanlarımız',
         localRisksAndFocusDesc: 'Bridgeport’ta çok aileli kiralık binalar, Long Island Sound kıyısındaki sel riskleri, ticari işletmeler ve I-95 ile Route 8/25 otoyol trafiği öne çıkar. Ekibimiz şu branşlara odaklanır:',
@@ -886,7 +886,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
           {
             question: 'Bridgeport ofisinde hangi diller konuşuluyor?',
-            answer: 'Bridgeport ofisimizde İngilizce, İspanyolca ve Portekizce dillerinde hizmet verilir. Poliçe kapsamı ve evrak işlemlerinizi bu dillerde yürütebilirsiniz.',
+            answer: 'Bridgeport ofisimizde İngilizce, İspanyolca, Portekizce ve Türkçe dillerinde hizmet verilir. Poliçe kapsamı ve evrak işlemlerinizi bu dillerde yürütebilirsiniz.',
           },
           {
             question: 'Bridgeport’ta sel sigortası yaptırabilir miyim?',
@@ -898,7 +898,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
           },
         ],
         directionsCta: 'Bridgeport Ofisine Yol Tarifi',
-        callOfficeCta: 'Ara: (203) 333-8880',
+        callOfficeCta: 'Ara: (203) 748-9272',
         quoteOfficeCta: 'Bridgeport Ofisinden Teklif Al',
         openHoursLabel: 'Çalışma Saatleri',
         languagesLabel: 'Konuşulan Diller',

@@ -12,9 +12,9 @@ import HeroQuoteStarter from './HeroQuoteStarter';
 // Import staff profile photos
 import ronaldImg from '../assets/aia_ronald.png';
 import yesicaImg from '../assets/aia_yesica.png';
-import betaniaImg from '../assets/aia_batania.png';
-import camilaImg from '../assets/aia_camila.png';
-import isayeliImg from '../assets/aia_isayeli.png';
+import betaniaImg from '../assets/betania-aia.png';
+import camilaImg from '../assets/camila-aia.png';
+import isayeliImg from '../assets/isayeli-aia.png';
 import emaImg from '../assets/aia_ema.png';
 import claraImg from '../assets/aia_clara.png';
 import ashleyImg from '../assets/Ashley_AIA-Meet-the-team.png';
@@ -111,7 +111,6 @@ const schemaGraph = {
         name: member.name,
         jobTitle: member.role,
         knowsLanguage: member.languages,
-        identifier: member.npn ? `NPN: ${member.npn}` : undefined,
       })),
     },
     {
@@ -557,8 +556,7 @@ const schemaGraph = {
                     </p>
                     {member.isProducer && (
                       <span class="inline-flex items-center gap-1 text-[11px] font-bold text-accent-gold">
-                        ★ Licensed Producer
-                        {member.npn && <span class="font-mono text-[10px] text-text-muted">• #{member.npn}</span>}
+                        ★ {currentLang === 'es' ? 'Productor Licenciado' : currentLang === 'pt' ? 'Corretor Licenciado' : currentLang === 'tr' ? 'Lisanslı Sigorta Uzmanı' : 'Licensed Producer'}
                       </span>
                     )}
                   </div>

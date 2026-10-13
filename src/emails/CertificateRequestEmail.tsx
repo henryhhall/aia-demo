@@ -469,8 +469,8 @@ export const CertificateRequestEmail: React.FC<CertificateRequestEmailProps> = (
             <Text style={footerHeading}>Associated Insurance Agency (AIA)</Text>
             <Text style={footerAddress}>
               <strong>Danbury HQ:</strong> 50 Newtown Road, Suite 1, Danbury, CT 06810 • (203) 748-9272<br />
-              <strong>Watertown Branch:</strong> 51 Depot St Ste 112, Watertown, CT 06795 • (860) 274-8888<br />
-              <strong>Bridgeport Branch:</strong> 2465 Main Street, Bridgeport, CT 06606 • (203) 333-8880
+              <strong>Watertown Branch:</strong> 51 Depot St Ste 112, Watertown, CT 06795 • (203) 748-9272<br />
+              <strong>Bridgeport Branch:</strong> 2465 Main Street, Bridgeport, CT 06606 • (203) 748-9272
             </Text>
             <Text style={footerDisclaimer}>
               Licensed in CT, NY, NJ, MA • Independent Agency representing 11+ premier insurance carriers.<br />

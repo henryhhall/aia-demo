@@ -1,0 +1,129 @@
+---
+import type { BillingCarrier } from '../data/billingCarriers';
+
+interface Props {
+  id?: string;
+  carriers: BillingCarrier[];
+  sectionTitle: string;
+  sectionSubtitle?: string;
+  badgeText?: string;
+  carrierColHeader: string;
+  phoneColHeader: string;
+  payColHeader: string;
+  payButtonText: string;
+  loginButtonText: string;
+}
+
+const {
+  id,
+  carriers,
+  sectionTitle,
+  sectionSubtitle,
+  badgeText,
+  carrierColHeader,
+  phoneColHeader,
+  payColHeader,
+  payButtonText,
+  loginButtonText,
+} = Astro.props;
+---
+
+<section id={id} class="space-y-4">
+  <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 border-b border-border-subtle pb-4">
+    <div>
+      {badgeText && (
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wider bg-accent/5 text-accent border border-accent/10 mb-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
+          {badgeText}
+        </span>
+      )}
+      <h2 class="text-xl sm:text-2xl font-bold tracking-tight text-accent">
+        {sectionTitle}
+      </h2>
+      {sectionSubtitle && (
+        <p class="text-xs sm:text-sm text-text-secondary mt-1">
+          {sectionSubtitle}
+        </p>
+      )}
+    </div>
+    <span class="text-xs text-text-muted font-mono self-start sm:self-end">
+      {carriers.length} Carriers
+    </span>
+  </div>
+
+  <div class="rounded-xl border border-border-subtle bg-white overflow-hidden shadow-sm">
+    <div class="overflow-x-auto">
+      <table class="w-full text-left text-sm">
+        <thead>
+          <tr class="bg-bg-secondary/70 border-b border-border-subtle font-semibold text-accent text-xs uppercase tracking-wider">
+            <th class="px-6 py-4">{carrierColHeader}</th>
+            <th class="px-6 py-4">{phoneColHeader}</th>
+            <th class="px-6 py-4 text-right">{payColHeader}</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-border-subtle text-text-secondary text-xs sm:text-sm">
+          {carriers.map((carrier) => {
+            const buttonText = carrier.isLogin ? loginButtonText : payButtonText;
+            return (
+              <tr class="hover:bg-bg-secondary/40 transition-colors">
+                <td class="px-6 py-4">
+                  <div class="font-bold text-accent text-sm sm:text-base">
+                    {carrier.name}
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <a
+                    href={`tel:${carrier.phoneRaw}`}
+                    class="inline-flex items-center gap-2 font-mono text-xs sm:text-sm text-text-secondary hover:text-accent font-medium group transition-colors"
+                  >
+                    <svg
+                      class="w-3.5 h-3.5 text-accent-gold group-hover:scale-110 transition-transform shrink-0"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                      />
+                    </svg>
+                    <span>{carrier.phone}</span>
+                  </a>
+                </td>
+                <td class="px-6 py-4 text-right whitespace-nowrap">
+                  <a
+                    href={carrier.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-semibold tracking-wide transition-all shadow-xs ${
+                      carrier.isLogin
+                        ? 'bg-zinc-100 text-zinc-800 hover:bg-zinc-200 border border-zinc-300'
+                        : 'bg-accent/5 text-accent hover:bg-accent hover:text-white border border-accent/20'
+                    }`}
+                  >
+                    <span>{buttonText}</span>
+                    <svg
+                      class="w-3.5 h-3.5 opacity-80"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                      />
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

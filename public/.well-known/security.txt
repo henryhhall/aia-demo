@@ -1,0 +1,55 @@
+# ====================================================================
+# Associated Insurance Agency (AIA) - RFC 9116 Security Disclosure
+# https://aia-danbury.com/.well-known/security.txt
+# ====================================================================
+#
+# [EN] RESPONSIBLE DISCLOSURE POLICY
+# If you have identified a security vulnerability or technical risk
+# concerning Associated Insurance Agency systems, web applications, or
+# customer data handling, please disclose it responsibly to our team.
+# We commit to acknowledging receipt within 48 business hours and will
+# not pursue legal action against researchers acting in good faith.
+#
+# [ES] POLÍTICA DE DIVULGACIÓN RESPONSABLE
+# Si ha identificado una vulnerabilidad de seguridad o riesgo técnico
+# en los sistemas o aplicaciones de Associated Insurance Agency,
+# infórmelo de manera responsable a nuestro equipo de seguridad. Nos
+# comprometemos a acusar recibo dentro de las 48 horas hábiles y no
+# iniciaremos acciones legales contra investigadores de buena fe.
+#
+# [PT] POLÍTICA DE DIVULGAÇÃO RESPONSÁVEL
+# Caso tenha identificado uma vulnerabilidade de segurança ou risco
+# técnico nos sistemas da Associated Insurance Agency, relate com
+# responsabilidade à nossa equipe. Comprometemo-nos a responder em até
+# 48 horas úteis e não moveremos ações legais contra pesquisadores de boa-fé.
+#
+# [TR] SORUMLU GÜVENLİK BİLDİRİMİ POLİTİKASI
+# Associated Insurance Agency sistemlerinde, web uygulamalarında veya
+# müşteri verilerinde bir güvenlik açığı ya da teknik risk tespit
+# ettiyseniz, lütfen bunu ekibimize sorumlu bir şekilde bildirin.
+# 48 iş saati içinde yanıt vermeyi taahhüt ediyor ve iyi niyetle hareket
+# eden araştırmacılara karşı yasal işlem başlatmayacağımızı belirtiyoruz.
+# ====================================================================
+
+# Primary Security Contacts
+Contact: mailto:security@aia-danbury.com
+Contact: tel:+1-203-748-9272
+
+# Expiration Date (RFC 3339 format)
+Expires: 2027-12-31T23:59:59.000Z
+
+# Supported Languages for Security Communication (RFC 5646)
+Preferred-Languages: en, es, pt, tr
+
+# Canonical Location of this Document
+Canonical: https://aia-danbury.com/.well-known/security.txt
+
+# Multilingual Security and Privacy Policies
+Policy: https://aia-danbury.com/privacy#data-security
+Policy: https://aia-danbury.com/es/privacy#seguridad-datos
+Policy: https://aia-danbury.com/pt/privacy#seguranca-dados
+Policy: https://aia-danbury.com/tr/privacy#veri-guvenligi
+
+# Team & Verification
+Hiring: https://aia-danbury.com/team
+Acknowledgments: https://aia-danbury.com/about

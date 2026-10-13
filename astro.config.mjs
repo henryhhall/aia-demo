@@ -43,6 +43,10 @@ export default defineConfig({
     '/es/locations/danbury-hq': '/es/locations/danbury',
     '/pt/locations/danbury-hq': '/pt/locations/danbury',
     '/tr/locations/danbury-hq': '/tr/locations/danbury',
+    '/security.txt': '/.well-known/security.txt',
+    '/es/security.txt': '/.well-known/security-es.txt',
+    '/pt/security.txt': '/.well-known/security-pt.txt',
+    '/tr/security.txt': '/.well-known/security-tr.txt',
   },
   integrations: [
     react(),

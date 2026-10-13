@@ -113,7 +113,7 @@ const bridgeportUrl = getRelativeLocaleUrl(lang, 'locations/bridgeport');
               Watertown Branch
             </a>
             <span class="text-zinc-400">51 Depot St, Ste 112</span><br />
-            <a href="tel:8602748888" class="text-accent-gold hover:text-white transition-colors font-mono">(860) 274-8888</a>
+            <a href="tel:2037489272" class="text-accent-gold hover:text-white transition-colors font-mono">(203) 748-9272</a>
           </li>
           <!-- Bridgeport -->
           <li>
@@ -121,7 +121,7 @@ const bridgeportUrl = getRelativeLocaleUrl(lang, 'locations/bridgeport');
               Bridgeport Branch
             </a>
             <span class="text-zinc-400">2465 Main Street</span><br />
-            <a href="tel:2033338880" class="text-accent-gold hover:text-white transition-colors font-mono">(203) 333-8880</a>
+            <a href="tel:2037489272" class="text-accent-gold hover:text-white transition-colors font-mono">(203) 748-9272</a>
           </li>
         </ul>
       </div>
@@ -168,12 +168,23 @@ const bridgeportUrl = getRelativeLocaleUrl(lang, 'locations/bridgeport');
           /api/mcp (WebMCP)
         </a>
         <span class="text-zinc-700">•</span>
+        <a href="/.well-known/security.txt" class="text-accent-gold/80 hover:text-accent-gold transition-colors font-mono">
+          security.txt
+        </a>
+        <span class="text-zinc-700">•</span>
         <span class="text-zinc-400">
           <a href={danburyUrl} class="hover:text-white transition-colors">Danbury HQ</a> • 
           <a href={watertownUrl} class="hover:text-white transition-colors">Watertown</a> • 
           <a href={bridgeportUrl} class="hover:text-white transition-colors">Bridgeport</a>
         </span>
       </div>
+    </div>
+
+    <!-- Powered By Attribution -->
+    <div class="mt-3 flex justify-center sm:justify-end">
+      <p class="text-[11px] text-zinc-500 hover:text-zinc-400 transition-colors">
+        {t('footer.poweredBy')}
+      </p>
     </div>
   </div>
 </footer>

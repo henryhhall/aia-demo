@@ -1,0 +1,53 @@
+# ====================================================================
+# Associated Insurance Agency (AIA) - RFC 9116 Güvenlik Bildirimi
+# Türkçe Sürüm: https://aia-danbury.com/.well-known/security-tr.txt
+# Standart RFC 9116 Belgesi: https://aia-danbury.com/.well-known/security.txt
+# ====================================================================
+#
+# SORUMLU GÜVENLİK AÇIĞI BİLDİRİMİ POLİTİKASI
+#
+# Associated Insurance Agency, poliçe sahiplerimizin kişisel ve finansal
+# bilgilerinin (NPI) güvenliğini korumayı ve dijital altyapımızın en üst
+# düzeyde güvenilirliğini sağlamayı ilke edinmiştir.
+#
+# Web sitemizde, API servislerimizde veya dijital sistemlerimizde bir
+# güvenlik açığı tespit ettiyseniz, lütfen durumu bizimle sorumlu ve etik
+# bir şekilde paylaşın.
+#
+# BİLDİRİM İLKELERİ:
+# 1. Lütfen gecikmeksizin security@aia-danbury.com e-posta adresi veya
+#    +1 (203) 748-9272 telefon numarası üzerinden bizimle iletişime geçin.
+# 2. İlgili sorunu tekrarlamak için gerekli URL, parametre ve test
+#    senaryolarını (PoC) ayrıntılı biçimde paylaşın.
+# 3. Güvenlik açığını kamuoyuyla veya üçüncü taraflarla paylaşmadan önce,
+#    sorunun giderilmesi için ekibimize makul bir süre tanıyın.
+# 4. Müşteri verilerine izinsiz erişmeyin, indirmeyin, değiştirmeyin veya silmeyin.
+# 5. Hizmet engelleme (DoS/DDoS) saldırıları yapmayın ve personelimize
+#    yönelik sosyal mühendislik girişimlerinde bulunmayın.
+#
+# GÜVENLİ LİMAN (SAFE HARBOR):
+# Araştırmanızı iyi niyet kuralları ve bu ilkeler çerçevesinde yürüttüğünüz
+# sürece, Associated Insurance Agency hakkınızda hukuki veya cezai herhangi
+# bir işlem başlatmayacaktır.
+# ====================================================================
+
+# Resmi Güvenlik İletişim Kanalları
+Contact: mailto:security@aia-danbury.com
+Contact: tel:+1-203-748-9272
+
+# Bu Belgenin Geçerlilik Tarihi (RFC 3339)
+Expires: 2027-12-31T23:59:59.000Z
+
+# Tercih Edilen İletişim Dilleri (RFC 5646)
+Preferred-Languages: tr, en, es, pt
+
+# Kanonik Konum
+Canonical: https://aia-danbury.com/.well-known/security-tr.txt
+
+# Türkçe ve Genel Gizlilik / Güvenlik Politikaları
+Policy: https://aia-danbury.com/tr/privacy#veri-guvenligi
+Policy: https://aia-danbury.com/privacy#data-security
+
+# Ekip ve İletişim
+Hiring: https://aia-danbury.com/tr/team
+Acknowledgments: https://aia-danbury.com/tr/about

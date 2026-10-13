@@ -514,9 +514,10 @@ class OfficeEmployeeDirectoryService:
                 city="Watertown",
                 state="CT",
                 postal_code="06795",
-                phone="860-274-8888",
-                phone_formatted="(860) 274-8888",
-                phone_raw="8602748888",
+                # Unified agency phone number across all branches
+                phone="203-748-9272",
+                phone_formatted="(203) 748-9272",
+                phone_raw="2037489272",
                 fax=None,
                 email="watertown@aia-danbury.com",
                 hours="Monday - Friday: 8:30 AM - 5:00 PM EST",
@@ -524,7 +525,7 @@ class OfficeEmployeeDirectoryService:
                 latitude=41.6018,
                 longitude=-73.1139,
                 is_headquarters=False,
-                languages=["English", "Turkish"],
+                languages=["English", "Spanish", "Portuguese", "Turkish"],
             ),
             OfficeBranch(
                 id="bridgeport",
@@ -536,9 +537,10 @@ class OfficeEmployeeDirectoryService:
                 city="Bridgeport",
                 state="CT",
                 postal_code="06606",
-                phone="203-333-8880",
-                phone_formatted="(203) 333-8880",
-                phone_raw="2033338880",
+                # Unified agency phone number across all branches
+                phone="203-748-9272",
+                phone_formatted="(203) 748-9272",
+                phone_raw="2037489272",
                 fax=None,
                 email="bridgeport@aia-danbury.com",
                 hours="Monday - Friday: 8:30 AM - 5:00 PM EST",
@@ -546,7 +548,7 @@ class OfficeEmployeeDirectoryService:
                 latitude=41.1963,
                 longitude=-73.1972,
                 is_headquarters=False,
-                languages=["English", "Spanish", "Portuguese"],
+                languages=["English", "Spanish", "Portuguese", "Turkish"],
             ),
         ]
 

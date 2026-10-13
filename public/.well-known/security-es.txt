@@ -1,0 +1,53 @@
+# ====================================================================
+# Associated Insurance Agency (AIA) - Divulgación de Seguridad RFC 9116
+# Versión en Español: https://aia-danbury.com/.well-known/security-es.txt
+# Documento Canónico RFC 9116: https://aia-danbury.com/.well-known/security.txt
+# ====================================================================
+#
+# POLÍTICA DE DIVULGACIÓN RESPONSABLE DE VULNERABILIDADES
+#
+# Associated Insurance Agency se compromete a salvaguardar la
+# información personal no pública (NPI) de nuestros asegurados, así
+# como la integridad y disponibilidad de nuestros servicios digitales.
+#
+# Si cree haber descubierto una vulnerabilidad de seguridad en nuestro
+# sitio web, APIs o sistemas informáticos, le solicitamos que colabore
+# con nosotros para resolverla de forma responsable.
+#
+# PAUTAS DE COLABORACIÓN:
+# 1. Notifíquenos a la brevedad escribiendo a security@aia-danbury.com
+#    o llamando a nuestra sede central al (203) 748-9272.
+# 2. Describa detalladamente los pasos para reproducir la vulnerabilidad,
+#    incluyendo URLs, parámetros afectados y conceptos de prueba (PoC).
+# 3. Permítanos un plazo razonable para investigar y remediar la situación
+#    antes de publicar cualquier detalle ante terceros.
+# 4. No acceda, descargue, modifique ni destruya datos de nuestros clientes.
+# 5. Evite ataques de denegación de servicio (DoS/DDoS) e ingeniería social
+#    contra nuestro personal.
+#
+# PUERTO SEGURO (SAFE HARBOR):
+# Si realiza su investigación de buena fe y cumple con estas pautas,
+# Associated Insurance Agency no emprenderá acciones legales civiles
+# ni solicitará acciones penales en su contra.
+# ====================================================================
+
+# Contactos Oficiales de Seguridad
+Contact: mailto:security@aia-danbury.com
+Contact: tel:+1-203-748-9272
+
+# Fecha de Vencimiento de esta Declaración (RFC 3339)
+Expires: 2027-12-31T23:59:59.000Z
+
+# Idiomas Preferidos de Comunicación (RFC 5646)
+Preferred-Languages: es, en, pt, tr
+
+# Ubicación Canónica
+Canonical: https://aia-danbury.com/.well-known/security-es.txt
+
+# Política de Privacidad y Seguridad en Español
+Policy: https://aia-danbury.com/es/privacy#seguridad-datos
+Policy: https://aia-danbury.com/privacy#data-security
+
+# Equipo y Contacto
+Hiring: https://aia-danbury.com/es/team
+Acknowledgments: https://aia-danbury.com/es/about

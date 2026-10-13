@@ -1,0 +1,27 @@
+# ====================================================================
+# Associated Insurance Agency (AIA) - RFC 9116 Security Disclosure
+# Canonical location: https://aia-danbury.com/.well-known/security.txt
+# ====================================================================
+
+# Primary Security Contacts
+Contact: mailto:security@aia-danbury.com
+Contact: tel:+1-203-748-9272
+
+# Expiration Date (RFC 3339 format)
+Expires: 2027-12-31T23:59:59.000Z
+
+# Supported Languages for Security Communication (RFC 5646)
+Preferred-Languages: en, es, pt, tr
+
+# Canonical Location of this Document
+Canonical: https://aia-danbury.com/.well-known/security.txt
+
+# Multilingual Security and Privacy Policies
+Policy: https://aia-danbury.com/privacy#data-security
+Policy: https://aia-danbury.com/es/privacy#seguridad-datos
+Policy: https://aia-danbury.com/pt/privacy#seguranca-dados
+Policy: https://aia-danbury.com/tr/privacy#veri-guvenligi
+
+# Team & Verification
+Hiring: https://aia-danbury.com/team
+Acknowledgments: https://aia-danbury.com/about

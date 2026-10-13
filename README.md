@@ -60,20 +60,22 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
   - **Assigned Producer & Staff Rosters**: Branch-specific team directories highlighting local producers, National Producer Numbers (NPN), languages spoken (English, Spanish, Portuguese, Turkish), and direct consultative access.
   - **Hyper-Local Risk Profiling**: Tailored coverage narratives addressing regional risks (Candlewood Lake watercraft and flood zones, Litchfield County winter storms and tree-fall, Bridgeport coastal marine and commercial liability).
   - **Sticky NAP & Interactive Mapping**: Sticky Name, Address, Phone (NAP) cards, operating hours, and full responsive Google Maps embeds.
-  - **Dynamic Header & Mobile Click-to-Call Phone Routing**: Global top bar header (`Header.astro`) and mobile conversion bar (`StickyMobileCallBar.astro`) dynamically detect the active branch route (via `locationId` prop or URL path resolution) to present the dedicated office phone number, localized label, active top-bar link underline, and direct one-tap dialing (`Danbury HQ: (203) 748-9272`, `Watertown Branch: (860) 274-8888`, `Bridgeport Branch: (203) 333-8880`).
+  - **Dynamic Header & Mobile Click-to-Call Phone Routing**: Global top bar header (`Header.astro`) and mobile conversion bar (`StickyMobileCallBar.astro`) dynamically detect the active branch route (via `locationId` prop or URL path resolution) to present the office label, active top-bar link underline, and direct one-tap dialing to AIA's primary phone line `(203) 748-9272`.
 - **Rich Multi-Tier Navigation Dropdowns**: Interactive desktop hover cards with glassmorphism and mobile accordion drill-downs for both **Personal** and **Commercial** coverage clusters across all four languages, featuring direct links to Certificate Requests and Location pages in main and sub navigation.
 - **Multilingual Support (i18n)**: Fully localized experiences with native content in **English (EN)**, **Spanish (ES)**, **Portuguese (PT)**, and **Turkish (TR)**.
 - **Dedicated Team Directory & Bio Modals**: Accessible, interactive employee profile cards on dedicated Team pages (`/team`, `/es/team`, `/pt/team`, `/tr/team`) and the About page featuring all 9 team members across agency leadership and customer service representatives (Ronald T. Boucher, Yesica D. Ramirez-Mendez, Betania Almeida, Camila Macedo de Jesus, Isayeli Perez De La Mora, Ema Rego, Clara De Barros, Ashley L. Mercan, Janaija S. Hammer) with spoken language badges, specialty tags, direct customer support access, and complete biographical pop-up modals translated into English, Spanish, Portuguese, and Turkish.
 - **Optimized Asset Pipeline**: Leverages Astro's native `astro:assets` image engine for zero-CLS responsive image serving, automatic WebP format conversion, and lazy loading.
-- **Direct Carrier Bill Pay & Claims Directory**: Fast access to 24/7 direct phone lines and self-service online payment links for all 11 partnered insurance carriers.
+- **Direct Carrier Bill Pay & Claims Directory (`CarrierBillingTable.astro` & `billingCarriers.ts`)**: Fast access to 24/7 direct phone lines and self-service online payment links for all partnered insurance carriers across English, Spanish, Portuguese, and Turkish (`/pay-bill`, `/es/pay-bill`, `/pt/pay-bill`, `/tr/pay-bill`). Cleanly segmented into **Personal Insurance Carriers** (Home, Auto, Umbrella) and **Commercial Insurance Carriers** (General Liability, Commercial Fleet, Workers' Comp) with instant click-to-pay portals and dedicated customer service lines.
+- **Multilingual Direct Producer Routing Desk (`MultilingualRoutingNotice.astro`)**: High-converting consultation desk integrated across the homepage and contact pages in all four languages, highlighting AIA's competitive moat: licensed Connecticut agents fluent in English, Spanish, Portuguese, and Turkish with direct one-tap dialing to `(203) 748-9272` and branch office assignment.
 - **Customer Service Hub**: Interactive claims filing guidance, policy change request steps, certificate request routing, and Connecticut state insurance regulations.
 - **Multilingual Contact Hub, Team Photo Hero & Interactive Map Switcher**: Fully localized contact pages (`/contact`, `/es/contact`, `/pt/contact`, `/tr/contact`) featuring an executive Team Photo Hero section (`ContactHero.astro`) showcasing the full Associated Insurance Agency team (`Photo-of-the-Associated-Insurance-Agency-Team-1536x926.jpg`) with unobstructed portraits, quick direct calling, operating hours, and trust badges, paired with an interactive multi-office Google Maps showcase (`OfficeLocationsMap.astro`) enabling seamless tab switching between Danbury Headquarters, Watertown Branch (51 Depot St Ste 112), and Bridgeport Branch (2465 Main Street), complete with one-click driving directions, direct phone dialing, and honeypot-protected inquiry forms.
 - **Regulatory Compliance & Disclaimers**: Prominent coverage binding notices across the global footer, quote builder, certificate request forms, and contact pages in all four supported languages confirming that coverage cannot be bound, altered, or cancelled via website form, email, or voicemail until directly confirmed in writing by a licensed agent.
 - **TCPA & 10DLC Communications Consent**: Standardized telephone and SMS consent disclosure embedded across all intake forms (`QuoteForm.tsx`, `ContactForm.tsx`, `CertificateRequestForm.tsx`): *"Providing a number permits calls/texts from us regarding the message."*
 - **Terms of Service (Multilingual)**: Comprehensive boilerplate terms pages (`/terms`, `/es/terms`, `/pt/terms`, `/tr/terms`) detailing independent brokerage representation, non-binding quote estimates, carrier portal links, user conduct, and Connecticut governing law.
 - **Privacy Policy & GLBA Consumer Financial Notice (Multilingual)**: Complete privacy disclosure pages (`/privacy`, `/es/privacy`, `/pt/privacy`, `/tr/privacy`) detailing Title V Gramm-Leach-Bliley Act (GLBA) compliance, Connecticut Data Privacy Act (CTDPA) standards, carrier underwriting data sharing, and strict 10DLC mobile confidentiality rules prohibiting any third-party sharing of mobile numbers or SMS opt-in data for marketing purposes.
+- **RFC 9116 Security Policy & Vulnerability Disclosure (`security.txt`)**: Standardized security disclosure declarations available at `/.well-known/security.txt` and localized across Spanish (`security-es.txt`), Portuguese (`security-pt.txt`), and Turkish (`security-tr.txt`), detailing reporting protocols, encryption keys, policy terms, and multi-channel response SLAs.
 - **Comprehensive XML & HTML Sitemaps**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all localized pages including Certificate Request pages, paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`) linking to all core insurance lines, certificate requests, branch offices, and legal pages.
-- **Content Collections**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance.
+- **Content Collections & Editorial Integrity**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance. In alignment with transparent brokerage standards, generic or unverified consumer testimonials have been completely excised across all language homepages in favor of authentic carrier credentialing, licensed producer bios, and verifiable agency licensing data.
 
 ### 🤖 WebMCP & Agentic AI Integration
 - **Dual-Layer Tool Calling**:
@@ -143,7 +145,11 @@ aia/
 ├── public/
 │   ├── .well-known/
 │   │   ├── ai-plugin.json      # OpenAI / generic AI plugin manifest
-│   │   └── mcp.json            # Model Context Protocol service discovery
+│   │   ├── mcp.json            # Model Context Protocol service discovery
+│   │   ├── security.txt        # RFC 9116 security policy & vulnerability disclosure
+│   │   ├── security-es.txt     # Spanish localized security policy
+│   │   ├── security-pt.txt     # Portuguese localized security policy
+│   │   └── security-tr.txt     # Turkish localized security policy
 │   ├── images/
 │   │   ├── logo.webp           # Static brand logo fallback
 │   │   └── logo.png            # Static brand logo fallback for Schema.org
@@ -151,19 +157,25 @@ aia/
 │   ├── favicon.svg
 │   ├── llms.txt                # Curated AI knowledge base and endpoint index
 │   ├── llms-full.txt           # Comprehensive LLM documentation & carrier directory
-│   └── robots.txt              # Search engine & AI crawler directives
+│   ├── robots.txt              # Search engine & AI crawler directives
+│   └── security.txt            # RFC 9116 root mirror
 ├── src/
 │   ├── assets/                 # Optimized static assets (processed via astro:assets)
 │   │   ├── aia-logo.webp       # Official AIA oval brand emblem
 │   │   ├── aia_ronald.png      # Ronald T. Boucher portrait
 │   │   ├── aia_yesica.png      # Yesica D. Ramirez-Mendez portrait
-│   │   ├── aia_batania.png     # Betania Almeida portrait
-│   │   ├── aia_camila.png      # Camila Macedo de Jesus portrait
-│   │   ├── aia_isayeli.png     # Isayeli Perez De La Mora portrait
+│   │   ├── betania-aia.png     # Betania Almeida portrait
+│   │   ├── camila-aia.png      # Camila Macedo de Jesus portrait
+│   │   ├── isayeli-aia.png     # Isayeli Perez De La Mora portrait
 │   │   ├── aia_ema.png         # Ema Rego portrait
 │   │   ├── aia_clara.png       # Clara De Barros portrait
 │   │   ├── Ashley_AIA-Meet-the-team.png # Ashley L. Mercan portrait
 │   │   ├── aia_janaija.png     # Janaija S. Hammer portrait
+│   │   ├── logo-Foremost.jpg   # Foremost Insurance brand logo
+│   │   ├── logo-TheHartford.png # The Hartford brand logo
+│   │   ├── logo-libertyMutual.png # Liberty Mutual brand logo
+│   │   ├── logo-progressive.svg # Progressive brand logo
+│   │   ├── logo-safeco.jpg     # Safeco Insurance brand logo
 │   │   └── Photo-of-the-Associated-Insurance-Agency-Team-1536x926.jpg # Full agency team photo
 │   ├── components/             # Astro & React UI components
 │   │   ├── homeowners-quote/   # 4-step Homeowners Quote Wizard modular components
@@ -175,6 +187,7 @@ aia/
 │   │   │   ├── ReviewSubmit.tsx     # Review summary, rating preview & reCAPTCHA submit
 │   │   │   ├── StepNavigation.tsx   # Progress bar & prev/next buttons
 │   │   │   └── FieldWrapper.tsx     # Accessible field container with validation errors
+│   │   ├── CarrierBillingTable.astro # Modular carrier bill-pay & phone support table
 │   │   ├── CarrierLogos.astro  # Interactive grid of 11 partnered insurance carriers
 │   │   ├── CertificateRequestForm.tsx # 4-step interactive ACORD 25 COI wizard with honeypots & reCAPTCHA v3
 │   │   ├── CoiSwitchBanner.astro # Contextual prompt directing contractors to COI request
@@ -187,7 +200,7 @@ aia/
 │   │   ├── HeroQuoteStarter.tsx # Instant quote starter island on the homepage
 │   │   ├── LocationPageContent.astro # Reusable branch office template with 12-col Hero & sticky NAP card
 │   │   ├── LocationsHubContent.astro # Central agency office directory hub template
-│   │   ├── MultilingualRoutingNotice.astro # Friendly locale switcher banner
+│   │   ├── MultilingualRoutingNotice.astro # Multilingual direct producer routing desk
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
 │   │   ├── OfficeLocationsMap.astro # Interactive multi-office Google Maps embed showcase & switcher
 │   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder with branch routing
@@ -198,8 +211,9 @@ aia/
 │   │   └── WebMcpInspector.tsx # Floating in-browser WebMCP debugging & execution modal (11 tools)
 │   ├── content/                # Content collections
 │   │   ├── blog/               # Localized Markdown articles (en, es, pt, tr)
-│   │   └── testimonials/       # Customer review JSON data (en, es, pt, tr)
+│   │   └── testimonials/       # Customer review JSON schema (en, es, pt, tr; excised from public UI)
 │   ├── data/                   # Structured data models & agency constants
+│   │   ├── billingCarriers.ts  # Carrier billing portals, toll-free lines & policy categories
 │   │   └── locations.ts        # Canonical branch office specifications (Danbury, Watertown, Bridgeport)
 │   ├── emails/                 # Branded React Email transactional templates
 │   │   ├── CertificateConfirmationEmail.tsx # Requester confirmation with receipt reference
@@ -250,8 +264,8 @@ aia/
 │   │   ├── certificate-request.astro # ACORD 25 Certificate of Insurance landing & request page
 │   │   ├── commercial.astro    # Commercial lines overview pillar (BOP, GL, Property, Workers' Comp)
 │   │   ├── contact.astro       # Contact page embedding ContactForm.tsx & OfficeLocationsMap.astro
-│   │   ├── index.astro         # Main homepage with hero, carrier grid, and testimonials
-│   │   ├── pay-bill.astro      # 11-carrier online payment & claims directory
+│   │   ├── index.astro         # Main homepage with hero, carrier logos, office cards, routing desk, and blog
+│   │   ├── pay-bill.astro      # Carrier billing directory with personal & commercial lines tables
 │   │   ├── personal.astro      # Personal lines (Home, Auto, Renters, Umbrella)
 │   │   ├── privacy.astro       # Privacy Policy & GLBA consumer financial notice
 │   │   ├── quote.astro         # Universal quote intake page embedding QuoteForm.tsx
@@ -381,7 +395,7 @@ The site supports four primary languages with route prefixing for non-default lo
 | **English** (Default) | `/` | All Connecticut branches |
 | **Español** (Spanish) | `/es` | Danbury, Watertown, Bridgeport |
 | **Português** (Portuguese) | `/pt` | Danbury, Watertown, Bridgeport |
-| **Türkçe** (Turkish) | `/tr` | Danbury Headquarters |
+| **Türkçe** (Turkish) | `/tr` | Danbury, Watertown, Bridgeport |
 
 All legal agreements and consumer disclosures—including the **Terms of Service** (`/terms`), **Privacy Policy & GLBA Notices** (`/privacy`), **HTML Sitemaps** (`/sitemap`), and form TCPA consent language—are 100% translated and localized into Spanish, Portuguese, and Turkish.
 
@@ -462,15 +476,18 @@ All lead generation, certificate intake, and customer inquiry forms across the s
    - Global CSS styling (`src/styles/global.css`) suppresses the default floating `.grecaptcha-badge`, keeping the WebMCP inspector and mobile navigation clean while maintaining full Google Terms compliance.
    - Standardized statutory insurance disclaimers displayed directly below form containers across all four languages confirming coverage non-binding status until written agent confirmation.
 
-## 🏢 Physical Office Locations
+## 🏢 Physical Office Locations & Unified Contact Routing
 
-| Office | Address | Phone | Languages Spoken |
+AIA operates a **single primary telephone line** across all branches with intelligent language routing:
+
+| Office | Address | Primary Phone | Languages Spoken |
 | :--- | :--- | :--- | :--- |
 | **Danbury Corporate HQ** | 50 Newtown Road, Suite 1, Danbury, CT 06810 | (203) 748-9272 | English, Spanish, Portuguese, Turkish |
-| **Watertown Branch** | 51 Depot St Ste 112, Watertown, CT 06795 | (860) 274-8888 | English, Spanish, Portuguese, Turkish |
-| **Bridgeport Branch** | 2465 Main Street, Bridgeport, CT 06606 | (203) 333-8880 | English, Spanish, Portuguese |
+| **Watertown Branch** | 51 Depot St Ste 112, Watertown, CT 06795 | (203) 748-9272 | English, Spanish, Portuguese, Turkish |
+| **Bridgeport Branch** | 2465 Main Street, Bridgeport, CT 06606 | (203) 748-9272 | English, Spanish, Portuguese, Turkish |
 
-**Hours of Operation**: Monday – Friday: 8:30 AM – 5:00 PM EST
+**Hours of Operation**: Monday – Friday: 8:30 AM – 5:00 PM EST  
+**Unified Dispatch**: Calling `(203) 748-9272` connects policyholders and prospective clients directly with licensed Connecticut producers fluent in their preferred language, eliminating call transfers and departmental delays.
 
 ---
 

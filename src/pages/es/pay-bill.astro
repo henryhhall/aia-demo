@@ -1,94 +1,137 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const billingCarriers = [
-  { name: "Safeco", phone: "1-800-332-3226", payLinks: [{ url: "https://customer.safeco.com/accountservices/login.aspx", text: "Pago en Línea" }] },
-  { name: "Met Life", phone: "1-800-638-5433", payLinks: [{ url: "https://www.metlife.com/individual/index.html?WT.ac=GN_individual", text: "Individuos" }, { url: "https://www.metlife.com/business/index.html?WT.ac=GN_business", text: "Negocios" }] },
-  { name: "The Hartford", phone: "1-877-896-9320", payLinks: [{ url: "https://service.thehartford.com/consumer/public/service/login", text: "Pago en Línea" }] },
-  { name: "Progressive", phone: "General: 1-800-776-4737\nComercial: 1-888-240-9839", payLinks: [{ url: "https://onlineservice7.progressive.com/SelfService.Web/SelfService.aspx?Page=Login.AuthenticateUser&QueryStringSetKey=SessionGateway&OfferingID=SelfService&SessionStart=TRUE", text: "Pago en Línea" }] },
-  { name: "Foremost", phone: "Auto: 1-888-888-0080\nOtros: 1-800-532-4221", payLinks: [{ url: "http://www.foremost.com/payonline/index.asp", text: "Pago en Línea" }] },
-  { name: "Travelers", phone: "1-800-842-5075", payLinks: [{ url: "https://www.travelers.com/login/#/", text: "Pago en Línea" }] },
-  { name: "Victoria Insurance", phone: "1-800-888-8424", payLinks: [{ url: "https://www.victoriainsurance.com/pay/SearchPayment.do?dispatch=search", text: "Pago en Línea" }] },
-  { name: "Guard Insurance", phone: "No Disponible", payLinks: [{ url: "https://policyholder.guard.com/scripts/psc/psc.exe/showpage?page=/wwwroot/static/policyholders.htm", text: "Pago en Línea" }] },
-  { name: "Infinity", phone: "1-800-782-1020", payLinks: [{ url: "https://www.infinityauto.com/make-your-payments-go", text: "Pago en Línea" }] },
-  { name: "K & K Insurance", phone: "1-800-637-4757", payLinks: [{ url: "http://www.kandkinsurance.com/Pages/Home.aspx", text: "Pago en Línea" }] },
-  { name: "Utica First Insurance", phone: "1-315-736-8211", payLinks: [{ url: "https://www.uticafirst.com/dirbill.html", text: "Pago en Línea" }] }
-];
+import CarrierBillingTable from '../../components/CarrierBillingTable.astro';
+import {
+  PERSONAL_BILLING_CARRIERS,
+  COMMERCIAL_BILLING_CARRIERS,
+} from '../../data/billingCarriers';
 
 const payBillStructuredData = {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Pagar su Factura",
-  "description": "Realice pagos de primas seguros de forma segura en línea directamente con su aseguradora. Teléfonos y portales de pago para las aseguradoras asociadas de AIA en CT."
+  "name": "Pagar su Factura de Seguro en Línea",
+  "description": "Realice pagos de primas de forma rápida y segura directamente con su aseguradora. Teléfonos y portales de pago en línea de todas las compañías asociadas con Associated Insurance Agency en CT.",
+  "publisher": {
+    "@type": "InsuranceAgency",
+    "name": "Associated Insurance Agency",
+    "telephone": "+1-203-748-9272",
+    "url": "https://aia-danbury.com"
+  }
 };
 ---
 
 <BaseLayout
   title="Pagar su Factura en Línea | Associated Insurance Agency CT"
-  description="Pague su prima de seguro directamente y de forma segura con su compañía de seguros. Teléfonos de facturación directa y portales de pago en línea de AIA CT."
+  description="Pague su prima de seguro directamente y de forma segura con su compañía aseguradora. Teléfonos de facturación directa y portales de pago para aseguradoras personales y comerciales de AIA CT."
   structuredData={payBillStructuredData}
+  lang="es"
 >
-  <!-- Page Header -->
-  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-20 border-b border-border-subtle">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left">
+  <!-- Encabezado de Página -->
+  <section class="bg-gradient-to-b from-bg-secondary to-bg-primary py-16 sm:py-20 border-b border-border-subtle">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-left space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 border border-accent/10 text-accent text-xs font-semibold uppercase tracking-wider">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
+        Directorio de Pago Directo con Aseguradoras
+      </div>
       <h1 class="text-4xl sm:text-5xl font-bold tracking-tighter text-accent leading-none">
-        Pagar su Factura
+        Pagar su Factura en Línea
       </h1>
-      <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
-        Realice sus pagos de seguro de forma rápida y segura directamente con su aseguradora.
+      <p class="text-sm sm:text-base text-text-secondary max-w-[65ch] leading-relaxed">
+        Realice sus pagos de primas de seguro de forma rápida y segura directamente con su compañía de seguros. Seleccione su aseguradora a continuación para pagar en línea o llamar a su línea directa de facturación.
       </p>
+
+      <!-- Botones de Salto Rápido -->
+      <div class="flex flex-wrap items-center gap-3 pt-2">
+        <a
+          href="#personal-carriers"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-white border border-border-subtle hover:border-accent-gold hover:text-accent shadow-xs transition-all"
+        >
+          <span>Líneas Personales ({PERSONAL_BILLING_CARRIERS.length})</span>
+          <span class="text-accent-gold">↓</span>
+        </a>
+        <a
+          href="#commercial-carriers"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-semibold bg-white border border-border-subtle hover:border-accent-gold hover:text-accent shadow-xs transition-all"
+        >
+          <span>Líneas Comerciales ({COMMERCIAL_BILLING_CARRIERS.length})</span>
+          <span class="text-accent-gold">↓</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Directory Section -->
-  <section class="py-24 bg-bg-primary">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-      <!-- Advisory Alert Banner -->
-      <div class="p-6 bg-bg-secondary border border-border-subtle rounded-lg text-left space-y-2">
-        <h3 class="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-1.5">
-          <!-- Information Icon -->
+  <!-- Sección Principal del Directorio -->
+  <section class="py-16 sm:py-20 bg-bg-primary">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <!-- Aviso de Seguridad y Facturación Directa -->
+      <div class="p-6 bg-bg-secondary border border-border-subtle rounded-xl text-left space-y-2 shadow-xs">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-accent flex items-center gap-2">
           <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 111.063.852l-.708 2.836a.75.75 0 001.063.852l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" />
           </svg>
-          Aviso Importante
+          Aviso de Facturación Directa de Aseguradoras
         </h3>
         <p class="text-xs text-text-secondary leading-relaxed">
-          Los números de teléfono y enlaces listados en esta página pertenecen a sus respectivas compañías de seguros, no a Associated Insurance Agency. Los enlaces le dirigirán a portales de pago externos y seguros sobre los cuales no tenemos control. Si tiene alguna pregunta o necesita asistencia, no dude en comunicarse con nuestra oficina directamente.
+          Los números de teléfono y enlaces de pago que figuran a continuación pertenecen directamente a sus respectivas compañías de seguros, no a Associated Insurance Agency. Estos enlaces le llevarán a portales de pago externos y seguros operados por cada compañía. Associated Insurance Agency nunca le solicitará pagos mediante transferencias bancarias no verificadas, tarjetas de regalo ni aplicaciones móviles de pago. Si necesita asistencia con su póliza o pagos, comuníquese directamente con nuestros agentes licenciados.
         </p>
       </div>
 
-      <!-- Billing Table -->
-      <div class="rounded-lg border border-border-subtle bg-white overflow-hidden shadow-sm">
-        <div class="overflow-x-auto">
-          <table class="w-full text-left text-sm">
-            <thead>
-              <tr class="bg-bg-secondary border-b border-border-subtle font-semibold text-accent">
-                <th class="px-6 py-4">Compañía de Seguros</th>
-                <th class="px-6 py-4">Soporte Telefónico</th>
-                <th class="px-6 py-4 text-right">Pago de Facturas en Línea</th>
-              </tr>
-            </thead>
-            <tbody class="divide-y divide-border-subtle text-text-secondary text-xs sm:text-sm">
-              {billingCarriers.map((carrier) => (
-                <tr class="hover:bg-bg-secondary/30 transition-colors">
-                  <td class="px-6 py-4 font-semibold text-accent">{carrier.name}</td>
-                  <td class="px-6 py-4 font-mono text-xs whitespace-pre-line">{carrier.phone}</td>
-                  <td class="px-6 py-4 text-right space-y-1 sm:space-y-0 sm:space-x-3">
-                    {carrier.payLinks.map((link, index) => (
-                      <>
-                        {index > 0 && <span class="hidden sm:inline text-border-subtle">|</span>}
-                        <a href={link.url} target="_blank" rel="noopener noreferrer" class="inline-block text-xs font-semibold text-accent-gold hover:underline">
-                          {link.text}
-                        </a>
-                      </>
-                    ))}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      <!-- 1. Aseguradoras de Líneas Personales -->
+      <CarrierBillingTable
+        id="personal-carriers"
+        carriers={PERSONAL_BILLING_CARRIERS}
+        sectionTitle="Aseguradoras de Líneas Personales"
+        sectionSubtitle="Portales de pago directo y soporte telefónico para pólizas de Propietarios, Auto Personal, Responsabilidad Paraguas e Inquilinos."
+        badgeText="Líneas Personales • Hogar y Auto"
+        carrierColHeader="Compañía de Seguros"
+        phoneColHeader="Soporte Telefónico"
+        payColHeader="Pago en Línea"
+        payButtonText="Pagar en Línea"
+        loginButtonText="Iniciar Sesión para Pagar"
+      />
+
+      <!-- 2. Aseguradoras de Líneas Comerciales -->
+      <CarrierBillingTable
+        id="commercial-carriers"
+        carriers={COMMERCIAL_BILLING_CARRIERS}
+        sectionTitle="Aseguradoras de Líneas Comerciales"
+        sectionSubtitle="Portales de pago dedicados y líneas telefónicas de facturación para Responsabilidad Civil General, Auto Comercial, Compensación de Trabajadores y Paquetes Empresariales."
+        badgeText="Líneas Comerciales • Empresas y Flotas"
+        carrierColHeader="Compañía de Seguros"
+        phoneColHeader="Soporte Telefónico"
+        payColHeader="Pago en Línea"
+        payButtonText="Pagar en Línea"
+        loginButtonText="Iniciar Sesión para Pagar"
+      />
+
+      <!-- Asistencia Telefónica en Oficina -->
+      <div class="rounded-2xl bg-gradient-to-br from-bg-secondary via-white to-bg-secondary p-8 border border-border-subtle shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+        <div class="space-y-2 max-w-2xl">
+          <h3 class="text-lg font-bold text-accent">¿Necesita Ayuda con su Factura o Póliza?</h3>
+          <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
+            Si su aseguradora no aparece en la lista anterior, o si su póliza tiene un aviso pendiente de cancelación, comuníquese con nuestras oficinas locales de inmediato. Nuestro equipo multilingüe con licencia le atenderá en español.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a
+            href="tel:2037489272"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider text-white bg-accent hover:bg-accent/90 shadow-sm transition-all"
+          >
+            <svg class="w-3.5 h-3.5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+            </svg>
+            <span>Danbury: (203) 748-9272</span>
+          </a>
+          <a
+            href="/es/contact"
+            class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg text-xs font-semibold text-accent bg-white border border-border-subtle hover:border-accent-gold transition-colors"
+          >
+            <span>Todas las Sucursales &rarr;</span>
+          </a>
         </div>
       </div>
+
     </div>
   </section>
 </BaseLayout>

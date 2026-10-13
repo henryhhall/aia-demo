@@ -30,14 +30,7 @@ const teamStructuredData = {
       "workLocation": {
         "@type": "Place",
         "name": `Associated Insurance Agency - ${member.officeName}`
-      },
-      ...(member.isProducer && member.npn ? {
-        "identifier": {
-          "@type": "PropertyValue",
-          "name": "National Producer Number (NPN)",
-          "value": member.npn
-        }
-      } : {})
+      }
     }))
   }
 };

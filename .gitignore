@@ -43,6 +43,10 @@ $RECYCLE.BIN/
 *.bak
 *.tmp
 *.temp
+*.orig
+*.rej
+*.dmp
+*.pid
 
 # IDE & Editor files
 .idea/
@@ -138,5 +142,3 @@ browser-recordings/
 *.cpuprofile
 *.trace
 .output/
-
-
