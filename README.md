@@ -162,7 +162,7 @@ aia/
 ├── src/
 │   ├── assets/                 # Optimized static assets (processed via astro:assets)
 │   │   ├── aia-logo.webp       # Official AIA oval brand emblem
-│   │   ├── aia_ronald.png      # Ronald T. Boucher portrait
+│   │   ├── Agency Founder and owner Ron Boucher.jpg # Ronald T. Boucher portrait
 │   │   ├── aia_yesica.png      # Yesica D. Ramirez-Mendez portrait
 │   │   ├── betania-aia.png     # Betania Almeida portrait
 │   │   ├── camila-aia.png      # Camila Macedo de Jesus portrait
