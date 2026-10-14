@@ -10,17 +10,24 @@ export type FunnelStep = 1 | 2 | 3;
 interface QuoteFormProps {
   lang?: 'en' | 'es' | 'pt' | 'tr';
   initialLine?: LineOfBusiness;
+  defaultZip?: string;
+  hideHeading?: boolean;
 }
 
-export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFormProps) {
+export default function QuoteForm({
+  lang = 'en',
+  initialLine = 'home',
+  defaultZip = '',
+  hideHeading = false,
+}: QuoteFormProps) {
   // Funnel Step State (3-Step Progressive Funnel)
   const [currentStep, setCurrentStep] = useState<FunnelStep>(1);
   const [maxStepReached, setMaxStepReached] = useState<FunnelStep>(1);
 
   // Step 1: Policy Line & Connecticut Location
   const [lineOfBusiness, setLineOfBusiness] = useState<LineOfBusiness>(initialLine);
-  const [zipCode, setZipCode] = useState('');
-  const [preferredOffice, setPreferredOffice] = useState('Danbury');
+  const [zipCode, setZipCode] = useState(defaultZip || '');
+  const preferredOffice = 'Associated Insurance Agency';
 
   // Step 2: Contact Information & Lead Capture
   const [fullName, setFullName] = useState('');
@@ -32,7 +39,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   const [partialSaved, setPartialSaved] = useState(false);
 
   // Step 3: Coverage Details Fields
-  const [propertyAddress, setPropertyAddress] = useState('');
+  const [propertyAddress, setPropertyAddress] = useState(defaultZip ? `${defaultZip}, CT` : '');
   const [vehicleDetails, setVehicleDetails] = useState('');
   const [commBusinessName, setCommBusinessName] = useState('');
   const [vehicleCount, setVehicleCount] = useState('');
@@ -52,7 +59,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
   const [submittedData, setSubmittedData] = useState<{
     name: string;
     lineName: string;
-    office: string;
     reachMethod: string;
   } | null>(null);
 
@@ -77,38 +83,33 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
     const params = new URLSearchParams(window.location.search);
     const typeParam = params.get('type') as LineOfBusiness | null;
     const zipParam = params.get('zip');
-    const branchParam = params.get('branch');
 
     if (typeParam && ['home', 'auto', 'commercial-auto', 'umbrella', 'business'].includes(typeParam)) {
       setLineOfBusiness(typeParam);
     }
 
-    if (branchParam) {
-      const lower = branchParam.toLowerCase();
-      if (lower.includes('watertown')) {
-        setPreferredOffice('Watertown');
-      } else if (lower.includes('bridgeport')) {
-        setPreferredOffice('Bridgeport');
-      } else if (lower.includes('danbury')) {
-        setPreferredOffice('Danbury');
-      }
-    }
-
+    let resolvedZip = defaultZip || '';
     if (zipParam) {
       const clean = zipParam.trim().replace(/\D/g, '').substring(0, 5);
       if (clean) {
         setZipCode(clean);
         setPropertyAddress(`${clean}, CT`);
-        if (!branchParam) {
-          if (clean.startsWith('067')) {
-            setPreferredOffice('Watertown');
-          } else if (clean.startsWith('066')) {
-            setPreferredOffice('Bridgeport');
-          } else if (clean.startsWith('068')) {
-            setPreferredOffice('Danbury');
-          }
-        }
+        resolvedZip = clean;
       }
+    } else if (defaultZip) {
+      const clean = defaultZip.trim().replace(/\D/g, '').substring(0, 5);
+      if (clean) {
+        setZipCode(clean);
+        setPropertyAddress(`${clean}, CT`);
+        resolvedZip = clean;
+      }
+    }
+
+    // Auto-advance: if both a valid line and 5-digit ZIP are already provided via URL params,
+    // start user immediately on Step 2 (Contact Information) to avoid redundant Step 1 interaction
+    if (typeParam && resolvedZip.length === 5) {
+      setCurrentStep(2);
+      setMaxStepReached(2);
     }
   }, []);
 
@@ -125,7 +126,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       stepOf: 'Step',
       stepOfTotal: 'of 3',
       step1Title: 'Select Coverage & Connecticut Location',
-      step1Subtitle: 'Pick your insurance line and enter your CT ZIP code to automatically connect with your nearest local branch.',
+      step1Subtitle: 'Pick your insurance line and enter your CT ZIP code to compare rates across 20+ carriers.',
       step2Title: 'Your Contact Information',
       step2Subtitle: 'We respect your privacy. You will speak directly with our local licensed CT staff with zero telemarketer spam.',
       step3Title: 'Coverage Details',
@@ -147,14 +148,10 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       },
       zipLabel: 'Connecticut ZIP Code',
       zipPlaceholder: 'E.g. 06810, 06795, or 06606',
-      zipDanbury: 'Danbury HQ Service Area (50 Newtown Rd)',
-      zipWatertown: 'Watertown Branch Service Area (51 Depot St)',
-      zipBridgeport: 'Bridgeport Branch Service Area (2465 Main St)',
       zipCt: 'Connecticut Licensed Brokerage Area',
-      preferredOffice: 'Assigned Local Branch',
-      officeDanbury: 'Danbury Corporate HQ (50 Newtown Rd)',
-      officeWatertown: 'Watertown Branch (51 Depot St)',
-      officeBridgeport: 'Bridgeport Branch (2465 Main St)',
+      trustPill: 'Licensed Independent Agency',
+      trustStatewide: 'Serving Danbury, Watertown, Bridgeport & all CT',
+      trustSub: 'Direct rate comparisons across Travelers, Safeco, Progressive & 20+ carriers.',
       fullName: 'Full Name',
       fullNamePlaceholder: 'E.g. Sarah Jenkins',
       email: 'Email Address',
@@ -198,16 +195,15 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       step3Error: 'Please complete the requested coverage details to finalize your quote request.',
       smsError: 'Please check the SMS consent checkbox to allow text message updates.',
       successTitle: 'Quote Review Request Registered!',
-      successDesc: (name: string, line: string, office: string, method: string) =>
-        `Thank you, ${name}. Your quote review request for ${line} has been dispatched to our ${office} branch. A licensed producer will review market options and follow up via ${method}.`,
+      successDesc: (name: string, line: string, method: string) =>
+        `Thank you, ${name}. Your quote review request for ${line} has been dispatched to our licensed Connecticut insurance team. A representative will review market options and follow up via ${method}.`,
       refLabel: 'Confirmation Code',
       anotherBtn: 'Start Another Quote',
       antiSpamTitle: 'AIA Anti-Spam & Confidentiality Guarantee:',
       antiSpamDesc: 'Your information is strictly protected and never sold to third-party telemarketers. Quotes are prepared exclusively by our licensed Connecticut staff in Danbury, Watertown, and Bridgeport.',
       microTrust: '100% Free • Independent Comparison • No Telemarketer Spam',
-      officeAutoRouteNote: 'Auto-routed by CT territory. You can switch offices at any time.',
       nextStepsTitle: 'Next Steps:',
-      nextStepsDesc: 'Our licensed CT producers in Danbury, Watertown, and Bridgeport are pulling GIS records and comparing quotes across Travelers, Safeco, Progressive, and The Hartford.',
+      nextStepsDesc: 'Our licensed Connecticut team is pulling property records and comparing quotes across Travelers, Safeco, Progressive, and The Hartford.',
     },
     es: {
       headline: 'Solicitar una Cotización de Seguro',
@@ -221,7 +217,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       stepOf: 'Paso',
       stepOfTotal: 'de 3',
       step1Title: 'Seleccione Cobertura y Ubicación en CT',
-      step1Subtitle: 'Elija su tipo de seguro e ingrese su código postal de CT para conectarse automáticamente con su sucursal más cercana.',
+      step1Subtitle: 'Elija su tipo de seguro e ingrese su código postal de CT para comparar tarifas con más de 20 aseguradoras.',
       step2Title: 'Su Información de Contacto',
       step2Subtitle: 'Respetamos su privacidad. Hablará directamente con nuestro equipo licenciado en CT sin intermediarios ni spam.',
       step3Title: 'Detalles de la Cobertura',
@@ -243,14 +239,10 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       },
       zipLabel: 'Código Postal de Connecticut (ZIP)',
       zipPlaceholder: 'Ej. 06810, 06795, o 06606',
-      zipDanbury: 'Área Sede Danbury (50 Newtown Rd)',
-      zipWatertown: 'Área Sucursal Watertown (51 Depot St)',
-      zipBridgeport: 'Área Sucursal Bridgeport (2465 Main St)',
       zipCt: 'Área de Correduría Licenciada en CT',
-      preferredOffice: 'Sucursal Local Asignada',
-      officeDanbury: 'Sede Danbury (50 Newtown Rd)',
-      officeWatertown: 'Sucursal Watertown (51 Depot St)',
-      officeBridgeport: 'Sucursal Bridgeport (2465 Main St)',
+      trustPill: 'Agencia Independiente Licenciada',
+      trustStatewide: 'Atendiendo Danbury, Watertown, Bridgeport y todo CT',
+      trustSub: 'Comparación directa de cotizaciones entre Travelers, Safeco, Progressive y más de 20 aseguradoras.',
       fullName: 'Nombre Completo',
       fullNamePlaceholder: 'Ej. María Rodríguez',
       email: 'Correo Electrónico',
@@ -294,16 +286,15 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       step3Error: 'Por favor complete los detalles de cobertura solicitados para enviar su cotización.',
       smsError: 'Por favor marque la casilla de consentimiento de SMS para permitir mensajes de texto.',
       successTitle: '¡Solicitud de Cotización Recibida!',
-      successDesc: (name: string, line: string, office: string, method: string) =>
-        `Gracias, ${name}. Su solicitud de revisión para ${line} fue enviada a nuestra sucursal de ${office}. Un agente con licencia revisará las opciones y le contactará vía ${method}.`,
+      successDesc: (name: string, line: string, method: string) =>
+        `Gracias, ${name}. Su solicitud de revisión para ${line} fue enviada a nuestro equipo de seguros licenciado en Connecticut. Un agente revisará las opciones y le contactará vía ${method}.`,
       refLabel: 'Código de Confirmación',
       anotherBtn: 'Iniciar Otra Cotización',
       antiSpamTitle: 'Garantía de Privacidad y Anti-Spam de AIA:',
       antiSpamDesc: 'Su información nunca se vende a empresas de telemarketing ni corredores de datos. Las cotizaciones son gestionadas exclusivamente por nuestros agentes licenciados en Connecticut.',
       microTrust: '100% Gratis • Comparación Independiente • Sin Telemarketing',
-      officeAutoRouteNote: 'Asignado automáticamente por territorio en CT. Puede cambiar de sucursal en cualquier momento.',
       nextStepsTitle: 'Próximos Pasos:',
-      nextStepsDesc: 'Nuestros agentes con licencia en Danbury, Watertown y Bridgeport están consultando registros catastrales y comparando cotizaciones entre Travelers, Safeco, Progressive y The Hartford.',
+      nextStepsDesc: 'Nuestro equipo con licencia en Connecticut está consultando registros catastrales y comparando cotizaciones entre Travelers, Safeco, Progressive y The Hartford.',
     },
     pt: {
       headline: 'Solicitar uma Cotação de Seguro',
@@ -317,7 +308,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       stepOf: 'Etapa',
       stepOfTotal: 'de 3',
       step1Title: 'Selecione a Cobertura e Localização em CT',
-      step1Subtitle: 'Escolha a modalidade de seguro e digite seu CEP de CT para conectar-se automaticamente à filial mais próxima.',
+      step1Subtitle: 'Escolha a modalidade de seguro e insira seu CEP de CT para comparar tarifas em mais de 20 seguradoras.',
       step2Title: 'Suas Informações de Contato',
       step2Subtitle: 'Respeitamos sua privacidade. Fale diretamente com nossos corretores licenciados em CT, sem telemarketing nem spam.',
       step3Title: 'Detalhes da Cobertura',
@@ -339,14 +330,10 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       },
       zipLabel: 'Código Postal (ZIP) em Connecticut',
       zipPlaceholder: 'Ex: 06810, 06795, ou 06606',
-      zipDanbury: 'Área Danbury HQ (50 Newtown Rd)',
-      zipWatertown: 'Área Filial Watertown (51 Depot St)',
-      zipBridgeport: 'Área Filial Bridgeport (2465 Main St)',
       zipCt: 'Área com Licença Oficial em CT',
-      preferredOffice: 'Escritório Local Designado',
-      officeDanbury: 'Sede Danbury (50 Newtown Rd)',
-      officeWatertown: 'Filial Watertown (51 Depot St)',
-      officeBridgeport: 'Filial Bridgeport (2465 Main St)',
+      trustPill: 'Corretora Independente Licenciada',
+      trustStatewide: 'Atendendo Danbury, Watertown, Bridgeport e todo o CT',
+      trustSub: 'Comparação direta entre Travelers, Safeco, Progressive e 20+ seguradoras.',
       fullName: 'Nome Completo',
       fullNamePlaceholder: 'Ex: Carlos Silva',
       email: 'Endereço de E-mail',
@@ -390,16 +377,15 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       step3Error: 'Por favor, preencha os detalhes de cobertura solicitados para enviar sua cotação.',
       smsError: 'Por favor, marque a caixa de consentimento de SMS para permitir mensagens de texto.',
       successTitle: 'Solicitação de Cotação Recebida!',
-      successDesc: (name: string, line: string, office: string, method: string) =>
-        `Obrigado, ${name}. Sua solicitação de ${line} foi encaminhada para a filial de ${office}. Um corretor licenciado entrará em contato via ${method}.`,
+      successDesc: (name: string, line: string, method: string) =>
+        `Obrigado, ${name}. Sua solicitação de ${line} foi encaminhada para nossa equipe de corretores licenciados em Connecticut. Um corretor entrará em contato via ${method}.`,
       refLabel: 'Código de Confirmação',
       anotherBtn: 'Solicitar Outra Cotação',
       antiSpamTitle: 'Garantia de Confidencialidade e Anti-Spam da AIA:',
       antiSpamDesc: 'Seus dados são protegidos e nunca vendidos a empresas de telemarketing. As cotações são elaboradas exclusivamente por nossos corretores licenciados em Connecticut.',
       microTrust: '100% Grátis • Comparação Independente • Sem Telemarketing',
-      officeAutoRouteNote: 'Encaminhado automaticamente por território em CT. Você pode alterar a filial quando desejar.',
       nextStepsTitle: 'Próximas Etapas:',
-      nextStepsDesc: 'Nossos corretores licenciados em Danbury, Watertown e Bridgeport estão consultando registros prediais e comparando cotações na Travelers, Safeco, Progressive e The Hartford.',
+      nextStepsDesc: 'Nossa equipe licenciada em Connecticut está consultando registros prediais e comparando cotações na Travelers, Safeco, Progressive e The Hartford.',
     },
     tr: {
       headline: 'Sigorta Teklifi İsteyin',
@@ -413,7 +399,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       stepOf: 'Adım',
       stepOfTotal: '/ 3',
       step1Title: 'Teminat ve Connecticut Konumunu Seçin',
-      step1Subtitle: 'Sigorta branşınızı seçin ve en yakın şubemize bağlanmak için CT posta kodunuzu girin.',
+      step1Subtitle: "20'den fazla şirketten fiyat karşılaştırmak için sigorta türünüzü ve CT posta kodunuzu girin.",
       step2Title: 'İletişim Bilgileriniz',
       step2Subtitle: 'Gizliliğinize saygı duyuyoruz. İstenmeyen telemarketing aramaları olmadan doğrudan lisanslı Connecticut ekibimizle görüşün.',
       step3Title: 'Teminat Detayları',
@@ -435,14 +421,10 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       },
       zipLabel: 'Connecticut Posta Kodu (ZIP)',
       zipPlaceholder: 'Örn. 06810, 06795, veya 06606',
-      zipDanbury: 'Danbury Genel Merkez Hizmet Alanı (50 Newtown Rd)',
-      zipWatertown: 'Watertown Şubesi Hizmet Alanı (51 Depot St)',
-      zipBridgeport: 'Bridgeport Şubesi Hizmet Alanı (2465 Main St)',
       zipCt: 'Connecticut Lisanslı Acente Hizmet Alanı',
-      preferredOffice: 'Atanan Yerel Şube',
-      officeDanbury: 'Danbury Genel Merkez (50 Newtown Rd)',
-      officeWatertown: 'Watertown Şubesi (51 Depot St)',
-      officeBridgeport: 'Bridgeport Şubesi (2465 Main St)',
+      trustPill: 'Lisanslı Bağımsız Acente',
+      trustStatewide: "Danbury, Watertown, Bridgeport ve tüm CT'de Hizmetinizdeyiz",
+      trustSub: "Travelers, Safeco, Progressive ve 20'den fazla şirket arasında doğrudan fiyat karşılaştırması.",
       fullName: 'Ad Soyad',
       fullNamePlaceholder: 'Örn. Ahmet Yılmaz',
       email: 'E-posta Adresi',
@@ -486,35 +468,25 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       step3Error: 'Teklifinizi hazırlayabilmemiz için lütfen istenen teminat ayrıntılarını doldurun.',
       smsError: 'Kısa mesajla bilgilendirme için lütfen SMS onay kutusunu işaretleyin.',
       successTitle: 'Teklif Talebiniz Alındı!',
-      successDesc: (name: string, line: string, office: string, method: string) =>
-        `Teşekkürler, ${name}. ${line} talebiniz ${office} şubemize atandı. Lisanslı temsilcimiz detayları inceleyip sizinle ${method} ile iletişime geçecektir.`,
+      successDesc: (name: string, line: string, method: string) =>
+        `Teşekkürler, ${name}. ${line} talebiniz lisanslı Connecticut sigorta ekibimize iletilmiştir. Temsilcimiz detayları inceleyip sizinle ${method} ile iletişime geçecektir.`,
       refLabel: 'Onay Kodu',
       anotherBtn: 'Başka Bir Teklif Başlat',
       antiSpamTitle: 'AIA Gizlilik ve İstenmeyen Mesaj Garantisi:',
       antiSpamDesc: 'Bilgileriniz korunur ve asla üçüncü şahıslara veya pazarlamacılara satılmaz. Teklifler yalnızca lisanslı Connecticut acentelerimiz tarafından hazırlanır.',
       microTrust: '100% Ücretsiz • Bağımsız Karşılaştırma • Reklam Spamı Yok',
-      officeAutoRouteNote: 'CT bölgesine göre otomatik yönlendirilir. İstediğiniz zaman şube değiştirebilirsiniz.',
       nextStepsTitle: 'Sonraki Adımlar:',
-      nextStepsDesc: "Danbury, Watertown ve Bridgeport'taki lisanslı temsilcilerimiz kayıtları inceleyerek Travelers, Safeco, Progressive ve The Hartford arasında teklifleri karşılaştırıyor.",
+      nextStepsDesc: 'Connecticut lisanslı ekibimiz kayıtları inceleyerek Travelers, Safeco, Progressive ve The Hartford arasında teklifleri karşılaştırıyor.',
     },
   }[lang];
 
 
-  // Helper to return dynamic CT branch badge
+  // Helper to return dynamic CT coverage badge
   const getZipBadge = () => {
     const clean = zipCode.trim();
     if (!clean) return null;
-    if (clean.startsWith('068')) {
-      return { text: dict.zipDanbury, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
-    }
-    if (clean.startsWith('067')) {
-      return { text: dict.zipWatertown, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
-    }
-    if (clean.startsWith('066')) {
-      return { text: dict.zipBridgeport, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
-    }
     if (clean.length === 5 && (clean.startsWith('06') || clean.startsWith('10') || clean.startsWith('01'))) {
-      return { text: dict.zipCt, color: 'text-blue-700 bg-blue-50 border-blue-200' };
+      return { text: dict.zipCt, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
     }
     return null;
   };
@@ -526,14 +498,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
 
     if (clean.length > 0 && (!propertyAddress || propertyAddress.endsWith(', CT'))) {
       setPropertyAddress(`${clean}, CT`);
-    }
-
-    if (clean.startsWith('067')) {
-      setPreferredOffice('Watertown');
-    } else if (clean.startsWith('066')) {
-      setPreferredOffice('Bridgeport');
-    } else if (clean.startsWith('068')) {
-      setPreferredOffice('Danbury');
     }
   };
 
@@ -729,7 +693,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       setSubmittedData({
         name: fullName.trim(),
         lineName: dict.lines[lineOfBusiness],
-        office: preferredOffice,
         reachMethod: reachMethod === 'text' ? 'SMS Text' : reachMethod === 'email' ? 'Email' : 'Phone Call',
       });
       return;
@@ -790,7 +753,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       setSubmittedData({
         name: fullName.trim(),
         lineName: dict.lines[lineOfBusiness],
-        office: preferredOffice,
         reachMethod: reachMethod === 'text' ? 'SMS Text' : reachMethod === 'email' ? 'Email' : 'Phone Call',
       });
     } catch {
@@ -800,7 +762,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
       setSubmittedData({
         name: fullName.trim(),
         lineName: dict.lines[lineOfBusiness],
-        office: preferredOffice,
         reachMethod: reachMethod === 'text' ? 'SMS Text' : reachMethod === 'email' ? 'Email' : 'Phone Call',
       });
     } finally {
@@ -854,7 +815,6 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
             {dict.successDesc(
               submittedData.name,
               submittedData.lineName,
-              submittedData.office,
               submittedData.reachMethod
             )}
           </p>
@@ -879,7 +839,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
         </div>
       ) : (
         /* 3-Step Progressive Funnel Form */
-        <div ref={formCardRef} className="bg-white border border-border-subtle shadow-xl rounded-2xl p-6 sm:p-10 transition-all space-y-8">
+        <div ref={formCardRef} className={`bg-white border border-border-subtle shadow-xl rounded-2xl transition-all space-y-8 ${hideHeading ? 'p-5 sm:p-7' : 'p-6 sm:p-10'}`}>
           {/* Honeypot traps for bot protection */}
           <div
             aria-hidden="true"
@@ -936,12 +896,16 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                 {dict.stepOf} {currentStep} {dict.stepOfTotal}
               </span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-accent tracking-tight">
-              {dict.headline}
-            </h2>
-            <p className="text-xs sm:text-sm text-text-secondary mt-1 leading-relaxed">
-              {dict.subheadline}
-            </p>
+            {!hideHeading && (
+              <>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-accent tracking-tight">
+                  {dict.headline}
+                </h2>
+                <p className="text-xs sm:text-sm text-text-secondary mt-1 leading-relaxed">
+                  {dict.subheadline}
+                </p>
+              </>
+            )}
 
             {/* Stepper Navigation Progress Bar */}
             <div className="mt-6 pt-2">
@@ -1067,7 +1031,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                 <label className="block text-xs font-bold text-accent uppercase tracking-wider mb-2.5">
                   {dict.selectLine}
                 </label>
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-5 gap-2.5">
                   {(
                     [
                       { id: 'home', icon: '🏠', label: dict.lines.home, sub: 'Homeowners' },
@@ -1118,7 +1082,7 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
 
               {/* Connecticut ZIP & Local Branch Routing */}
               <div className="bg-bg-secondary/40 border border-border-subtle rounded-xl p-5 space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-start">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
                   {/* ZIP Code Input */}
                   <div className="space-y-1.5">
                     <label htmlFor="zipCode" className="block text-xs font-semibold text-text-secondary uppercase">
@@ -1153,24 +1117,17 @@ export default function QuoteForm({ lang = 'en', initialLine = 'home' }: QuoteFo
                     )}
                   </div>
 
-                  {/* Assigned Local Branch */}
-                  <div className="space-y-1.5">
-                    <label htmlFor="preferredOffice" className="block text-xs font-semibold text-text-secondary uppercase">
-                      {dict.preferredOffice}
-                    </label>
-                    <select
-                      id="preferredOffice"
-                      name="preferredOffice"
-                      value={preferredOffice}
-                      onChange={(e) => setPreferredOffice(e.target.value)}
-                      className="w-full px-3 py-2.5 text-xs bg-white border border-border-subtle rounded-lg focus:outline-none focus:border-accent transition-all font-medium"
-                    >
-                      <option value="Danbury">{dict.officeDanbury}</option>
-                      <option value="Watertown">{dict.officeWatertown}</option>
-                      <option value="Bridgeport">{dict.officeBridgeport}</option>
-                    </select>
-                    <p className="text-[11px] text-text-muted">
-                      {dict.officeAutoRouteNote}
+                  {/* Statewide Independent Brokerage Trust Callout */}
+                  <div className="sm:border-l sm:border-border-subtle/80 sm:pl-4 space-y-1.5 py-1">
+                    <span className="inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-wider text-accent-gold">
+                      <span className="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
+                      {dict.trustPill}
+                    </span>
+                    <p className="text-xs font-semibold text-text-primary leading-snug">
+                      {dict.trustStatewide}
+                    </p>
+                    <p className="text-[11px] text-text-muted leading-tight">
+                      {dict.trustSub}
                     </p>
                   </div>
                 </div>

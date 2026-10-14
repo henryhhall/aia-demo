@@ -5,6 +5,8 @@ import tailwindcss from '@tailwindcss/vite';
 import sitemap from '@astrojs/sitemap';
 import vercel from '@astrojs/vercel';
 
+const isBuild = process.argv.includes('build') || process.env.npm_lifecycle_event === 'build';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://aia-danbury.com',
@@ -56,6 +58,7 @@ export default defineConfig({
   ],
   vite: {
     plugins: [tailwindcss()],
+    cacheDir: isBuild ? 'node_modules/.vite/build' : 'node_modules/.vite/dev',
     resolve: {
       dedupe: ['react', 'react-dom']
     },

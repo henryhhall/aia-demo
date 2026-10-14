@@ -117,9 +117,11 @@ function getResendClient(): { client: Resend | null; fromEmail: string; defaultR
     'Associated Insurance Agency <onboarding@resend.dev>';
 
   const defaultRecipient =
-    (typeof import.meta !== 'undefined' && import.meta.env?.QUOTE_NOTIFICATION_EMAIL) ||
+    (typeof import.meta !== 'undefined' &&
+      (import.meta.env?.AGENCY_NOTIFICATION_EMAIL || import.meta.env?.QUOTE_NOTIFICATION_EMAIL)) ||
+    process.env.AGENCY_NOTIFICATION_EMAIL ||
     process.env.QUOTE_NOTIFICATION_EMAIL ||
-    'danbury@aia-danbury.com';
+    'ron@aia-danbury.com';
 
   if (!apiKey || apiKey.trim() === '' || apiKey.startsWith('re_placeholder') || apiKey === 'your_resend_api_key_here') {
     return { client: null, fromEmail, defaultRecipient };
@@ -176,10 +178,10 @@ function buildAgencyNotificationHtml(data: QuoteEmailData, officeInfo: (typeof O
       <!-- Alert Banner -->
       <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 14px 18px; margin-bottom: 24px;">
         <div style="font-size: 14px; color: #166534; font-weight: 600;">
-          Assigned Servicing Branch: ${officeInfo.name}
+          Central Agency Quote Intake
         </div>
         <div style="font-size: 13px; color: #15803d; margin-top: 2px;">
-          Direct Branch Phone: ${officeInfo.phone} | Ingested: ${submittedDate}
+          Incoming Lead Notification • Ingested: ${submittedDate}
         </div>
       </div>
 
@@ -304,7 +306,7 @@ function buildAgencyNotificationText(data: QuoteEmailData, officeInfo: (typeof O
 ASSOCIATED INSURANCE AGENCY — NEW QUOTE REQUEST
 ====================================================
 Confirmation Code: ${data.confirmationCode}
-Assigned Office:   ${officeInfo.name} (${officeInfo.phone})
+Intake:            Centralized Agency Quote Funnel
 Submitted At:      ${data.submittedAt || new Date().toISOString()}
 
 CUSTOMER CONTACT:
@@ -374,9 +376,9 @@ function buildCustomerConfirmationHtml(data: QuoteEmailData, officeInfo: (typeof
           ${data.confirmationCode}
         </div>
         <div style="margin-top: 12px; font-size: 13px; color: #334155;">
-          <strong>Assigned Office:</strong> ${officeInfo.name}<br>
-          <strong>Address:</strong> ${officeInfo.address}<br>
-          <strong>Direct Line:</strong> <a href="tel:${officeInfo.phone}" style="color: #2563eb; text-decoration: none;">${officeInfo.phone}</a>
+          <strong>Servicing Agency:</strong> Associated Insurance Agency<br>
+          <strong>Offices:</strong> Danbury HQ • Watertown • Bridgeport<br>
+          <strong>Direct Line:</strong> <a href="tel:(203) 748-9272" style="color: #2563eb; text-decoration: none;">(203) 748-9272</a>
         </div>
       </div>
 
@@ -409,18 +411,18 @@ function buildCustomerConfirmationHtml(data: QuoteEmailData, officeInfo: (typeof
  * and an acknowledgement email to the customer.
  */
 export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailResult> {
-  const officeKey = (data.preferredOffice || 'danbury').toLowerCase();
-  const officeInfo = OFFICE_DIRECTORY[officeKey] || OFFICE_DIRECTORY.danbury;
+  const officeInfo = OFFICE_DIRECTORY.danbury;
 
   const { client, fromEmail, defaultRecipient } = getResendClient();
-  const recipient = officeInfo.email || defaultRecipient;
+  // All quote requests route to the single unified agency inbox
+  const recipient = defaultRecipient;
 
   // 1. Simulation / Local Dev Fallback (when RESEND_API_KEY is not yet populated)
   if (!client) {
     const simId = 'sim_' + Math.random().toString(36).substring(2, 10);
     console.info('\n====================================================');
     console.info('📧 [Resend Email Simulated Dispatch]');
-    console.info(`To:              ${recipient} (${officeInfo.name})`);
+    console.info(`To:              ${recipient} (Centralized Quote Inbox)`);
     console.info(`From:            ${fromEmail}`);
     console.info(`Subject:         [New Quote Request] ${data.insuranceType || 'General'} - ${data.name} (${data.confirmationCode})`);
     console.info(`Applicant Phone: ${data.phone}`);
@@ -452,7 +454,6 @@ export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailRes
       text: buildAgencyNotificationText(data, officeInfo),
       tags: [
         { name: 'category', value: 'quote_request' },
-        { name: 'office', value: officeKey },
         { name: 'line', value: (data.insuranceType || 'general').toLowerCase() },
       ],
     });
@@ -510,7 +511,8 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
   const officeInfo = OFFICE_DIRECTORY[officeKey] || OFFICE_DIRECTORY.danbury;
 
   const { client, fromEmail, defaultRecipient } = getResendClient();
-  const recipient = officeInfo.email || defaultRecipient;
+  // When Associated Insurance Agency is sent an email from this site, use ron@aia-danbury.com
+  const recipient = defaultRecipient;
 
   // Dynamically import React, renderer, and email templates on demand
   const React = await import('react');
@@ -639,4 +641,123 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
     };
   }
 }
+
+export interface ContactEmailData {
+  id: string;
+  name: string;
+  email: string;
+  phone?: string;
+  preferredOffice?: string;
+  subject?: string;
+  message: string;
+  preferredLanguage?: string;
+  recaptchaScore?: number;
+  submittedAt?: string;
+}
+
+/**
+ * Sends a contact form notification to the agency recipient (ron@aia-danbury.com)
+ */
+export async function sendContactEmail(data: ContactEmailData): Promise<SendEmailResult> {
+  const { client, fromEmail, defaultRecipient } = getResendClient();
+  const recipient = defaultRecipient;
+
+  const submittedDate = data.submittedAt
+    ? new Date(data.submittedAt).toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST'
+    : new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST';
+
+  if (!client) {
+    const simId = 'sim_' + Math.random().toString(36).substring(2, 10);
+    console.info('\n====================================================');
+    console.info('📧 [Resend Contact Form Simulated Dispatch]');
+    console.info(`To:              ${recipient} (Agency Notification Inbox)`);
+    console.info(`From:            ${fromEmail}`);
+    console.info(`Subject:         [Website Contact Inquiry] ${data.subject || 'General'} - ${data.name} (${data.id})`);
+    console.info(`Sender Name:     ${data.name}`);
+    console.info(`Sender Email:    ${data.email}`);
+    console.info(`Sender Phone:    ${data.phone || 'N/A'}`);
+    console.info(`Office Interest: ${data.preferredOffice || 'Danbury'}`);
+    console.info(`Language:        ${data.preferredLanguage || 'en'}`);
+    console.info(`Message:         ${data.message}`);
+    console.info(`Simulation ID:   ${simId}`);
+    console.info('====================================================\n');
+
+    return {
+      success: true,
+      simulated: true,
+      id: simId,
+      recipient,
+    };
+  }
+
+  try {
+    const subject = `[Website Contact Inquiry] ${data.subject || 'General'} - ${data.name} (${data.id})`;
+    const html = `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #1e293b;">
+  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 24px 28px; color: #ffffff; border-bottom: 3px solid #c5a880;">
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #c5a880; font-weight: 700; margin-bottom: 4px;">Associated Insurance Agency — Direct Inquiry</div>
+      <h2 style="margin: 0; font-size: 20px; font-weight: 700; color: #ffffff;">New Contact Inquiry: ${data.subject || 'General'}</h2>
+      <div style="margin-top: 6px; font-size: 13px; color: #94a3b8;">Reference: <strong style="color: #ffffff; font-family: monospace;">${data.id}</strong></div>
+    </div>
+    <div style="padding: 24px;">
+      <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; background: #f8fafc; border-radius: 8px;">
+        <tr><td style="padding: 10px 14px; width: 35%; color: #64748b; font-size: 13px; font-weight: 600;">Sender:</td><td style="padding: 10px 14px; font-size: 14px; font-weight: 600; color: #0f172a;">${data.name}</td></tr>
+        <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Email:</td><td style="padding: 10px 14px; font-size: 14px;"><a href="mailto:${data.email}" style="color: #2563eb; text-decoration: none;">${data.email}</a></td></tr>
+        <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Phone:</td><td style="padding: 10px 14px; font-size: 14px;"><a href="tel:${data.phone || ''}" style="color: #2563eb; text-decoration: none;">${data.phone || 'N/A'}</a></td></tr>
+        <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Preferred Office:</td><td style="padding: 10px 14px; font-size: 14px; color: #0f172a;">${data.preferredOffice || 'Danbury'}</td></tr>
+        <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Language:</td><td style="padding: 10px 14px; font-size: 14px; color: #0f172a; text-transform: uppercase;">${data.preferredLanguage || 'en'}</td></tr>
+        <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Submitted:</td><td style="padding: 10px 14px; font-size: 14px; color: #0f172a;">${submittedDate}</td></tr>
+      </table>
+      <div style="background: #f1f5f9; border-left: 4px solid #c5a880; border-radius: 4px; padding: 14px 16px; margin-bottom: 20px;">
+        <div style="font-size: 12px; text-transform: uppercase; font-weight: 700; color: #64748b; margin-bottom: 6px;">Message</div>
+        <div style="font-size: 14px; color: #0f172a; white-space: pre-wrap; line-height: 1.6;">${data.message}</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
+    `.trim();
+
+    const text = `
+New Contact Inquiry - Associated Insurance Agency
+Reference: ${data.id}
+Date: ${submittedDate}
+
+Sender: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone || 'N/A'}
+Preferred Office: ${data.preferredOffice || 'Danbury'}
+Language: ${data.preferredLanguage || 'en'}
+Subject: ${data.subject || 'General'}
+
+Message:
+${data.message}
+    `.trim();
+
+    const emailResponse = await client.emails.send({
+      from: fromEmail,
+      to: [recipient],
+      replyTo: `${data.name} <${data.email}>`,
+      subject,
+      html,
+      text,
+    });
+
+    if (emailResponse.error) {
+      console.error('[Resend Error] Contact inquiry dispatch failed:', emailResponse.error);
+      return { success: false, error: emailResponse.error.message, recipient };
+    }
+
+    console.info(`[Resend Success] Contact inquiry notification dispatched! ID: ${emailResponse.data?.id}`);
+    return { success: true, id: emailResponse.data?.id, recipient };
+  } catch (err: any) {
+    console.error('[Resend Exception] Error during contact email dispatch:', err);
+    return { success: false, error: err?.message || 'Failed to dispatch contact email.', recipient };
+  }
+}
+
 

@@ -15,7 +15,7 @@ export const POST: APIRoute = async ({ request }) => {
       email,
       phone,
       insuranceType = 'Home',
-      preferredOffice = 'Danbury',
+      preferredOffice = 'Associated Insurance Agency',
       preferredLanguage = 'en',
       currentCarrier = '',
       reachMethod = 'Call',

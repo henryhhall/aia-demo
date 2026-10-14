@@ -28,12 +28,14 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
 ### 🏛️ Digital Agency Portal
 - **Independent Carrier Comparison**: Informs customers of coverage lines across personal (Auto, Homeowners, Renters, Condo, Umbrella) and commercial (BOP, General Liability, Commercial Property, Workers' Comp, Commercial Auto) products.
 - **Universal Multilingual Quote Intake Engine** (`/quote`, `/es/quote`, `/pt/quote`, `/tr/quote`):
-  - **Unified Multi-Step Intake Funnel** (`QuoteForm.tsx`): Combines a shared customer contact foundation (name, phone with SMS consent, email, contact preference) with dynamic line-specific risk anchors for Homeowners (property address & assessor/GIS lookup), Auto (vehicles & VIN), Commercial Auto (fleet sizing), Umbrella (underlying limits), and Commercial GL (business trade & NAICS).
+  - **Universal Embeddable Multi-Step Component** (`QuoteForm.tsx`): Built as a self-contained, embeddable component integrated directly into page heroes (homepage across EN/ES/PT/TR, branch location pages) as well as dedicated `/quote` landing routes. Allows customers to complete their quote request in-place without page redirections.
+  - **Zero Duplicate Friction / Parameter Fast-Forward**: If a visitor arrives via a direct link with query parameters (e.g. `/quote?type=auto&zip=06810`), `QuoteForm.tsx` automatically detects the pre-filled parameters and fast-forwards straight to Step 2 (Contact Info) with Step 1 marked complete.
+  - **Unified Multi-Step Intake Funnel**: Combines a shared customer contact foundation (name, phone with SMS consent, email, contact preference) with dynamic line-specific risk anchors for Homeowners (property address & assessor/GIS lookup), Auto (vehicles & VIN), Commercial Auto (fleet sizing), Umbrella (underlying limits), and Commercial GL (business trade & NAICS).
   - **Automated Route Redirection**: 301 redirects preserve external links and bookmarks by routing previous `/quote/homeowners` URLs across all locales (`/quote/homeowners`, `/es/...`, `/pt/...`, `/tr/...`) directly to `/quote?type=home`.
   - **Carrier-Ready Intake Payloads**: Validates submissions with honeypot bot mitigation and dispatches real-time producer briefings and customer confirmations.
 - **Transactional Lead & Quote Email Pipeline (Resend Integration)**:
   - **Dual Notification Dispatch** (`src/lib/email.ts`): Automatically dispatches two transactional emails upon every quote submission via web forms or WebMCP tool invocations:
-    1. **Agency Producer Dispatch**: Rich HTML and plain-text briefing sent to the assigned branch office (`danbury@aia-danbury.com`, `watertown@aia-danbury.com`, `bridgeport@aia-danbury.com`) detailing customer contact info, reach preference, SMS consent, and risk anchors.
+    1. **Unified Agency Producer Dispatch**: Rich HTML and plain-text briefing sent to the central agency inbox configured via `QUOTE_NOTIFICATION_EMAIL` (defaulting to `ron@aia-danbury.com`) detailing customer contact info, reach preference, SMS consent, and risk anchors—unifying leads regardless of applicant ZIP code.
     2. **Customer Confirmation**: Branded email acknowledging receipt with the confirmation reference code (`AIA-XXXXXX`) and a 24-business-hour follow-up commitment.
   - **Zero-Failure Local Development Mode**: Automatically runs in simulation mode when `RESEND_API_KEY` is unset, outputting clean audit logs to stdout.
 - **Certificate of Insurance (COI / ACORD 25) Hub**: Dedicated multilingual request portals (`/certificate-request`, `/es/certificate-request`, `/pt/certificate-request`, `/tr/certificate-request`, with `/coi` and `/certificates` aliases):
@@ -56,7 +58,7 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
 - **Dedicated Branch Office Pages & Local SEO Architecture** (`/locations`, `/locations/danbury`, `/locations/watertown`, `/locations/bridgeport`, and localized equivalents across `/es/...`, `/pt/...`, `/tr/...`):
   - **16-Route Multi-Office Network**: High-converting localized landing pages for Danbury Headquarters (50 Newtown Rd Ste 1), Watertown Branch (51 Depot St Ste 112), and Bridgeport Community Branch (2465 Main St), plus central Hub directory (`/locations`).
   - **Comprehensive Local Structured Data**: Implements full Schema.org `@graph` metadata with `InsuranceAgency`, `PostalAddress`, `GeoCoordinates`, `openingHoursSpecification`, `areaServed`, `hasMap`, `employee` rosters, `BreadcrumbList`, and localized `FAQPage`.
-  - **Hero Rate Comparison Integration**: Split-screen Hero embedding the interactive `HeroQuoteStarter.tsx` island pre-populated with local office ZIP codes (`06810` for Danbury, `06795` for Watertown, `06606` for Bridgeport), localized coverage area indicators, click-to-call, and one-tap directions.
+  - **Hero Rate Comparison Integration**: Split-screen Hero embedding the interactive `QuoteForm.tsx` island pre-populated with local office ZIP codes (`06810` for Danbury, `06795` for Watertown, `06606` for Bridgeport), localized coverage area indicators, click-to-call, and one-tap directions for seamless in-place quote submissions.
   - **Assigned Producer & Staff Rosters**: Branch-specific team directories highlighting local producers, National Producer Numbers (NPN), languages spoken (English, Spanish, Portuguese, Turkish), and direct consultative access.
   - **Hyper-Local Risk Profiling**: Tailored coverage narratives addressing regional risks (Candlewood Lake watercraft and flood zones, Litchfield County winter storms and tree-fall, Bridgeport coastal marine and commercial liability).
   - **Sticky NAP & Interactive Mapping**: Sticky Name, Address, Phone (NAP) cards, operating hours, and full responsive Google Maps embeds.
@@ -203,7 +205,7 @@ aia/
 │   │   ├── MultilingualRoutingNotice.astro # Multilingual direct producer routing desk
 │   │   ├── Navigation.tsx      # Responsive header navbar & multilingual selector
 │   │   ├── OfficeLocationsMap.astro # Interactive multi-office Google Maps embed showcase & switcher
-│   │   ├── QuoteForm.tsx       # Multi-step interactive quote builder with branch routing
+│   │   ├── QuoteForm.tsx       # Universal embeddable multi-step interactive quote form (hero & dedicated quote routes)
 │   │   ├── RecaptchaLegalNotice.tsx # Localized on-form Google reCAPTCHA compliance notice (en, es, pt, tr)
 │   │   ├── SEOHead.astro       # OpenGraph, Twitter, canonical, and JSON-LD schema
 │   │   ├── StickyMobileCallBar.astro # Floating one-tap click-to-call mobile footer bar
@@ -317,7 +319,7 @@ cp .env.example .env
 | `RECAPTCHA_SECRET_KEY` | Server-only | Google reCAPTCHA v3 private secret key for out-of-band verification. |
 | `RESEND_API_KEY` | Server-only | Resend API key (`re_...`). If omitted or left as placeholder, email dispatch operates in local simulated mode without errors. |
 | `RESEND_FROM_EMAIL` | Server-only | Transactional sender email address (e.g., `Associated Insurance Agency <onboarding@resend.dev>`). |
-| `QUOTE_NOTIFICATION_EMAIL` | Server-only | Internal agency inbox receiving incoming producer lead alerts (e.g., `danbury@aia-danbury.com`). |
+| `QUOTE_NOTIFICATION_EMAIL` | Server-only | Unified agency inbox receiving incoming producer lead alerts and customer inquiries across the site (defaulting to `ron@aia-danbury.com`). |
 
 > [!NOTE]
 > Out of the box, `.env.example` includes Google's official v3 test keys which always pass with a human score of `1.0`. Resend email dispatch gracefully detects when an API key is unconfigured and logs simulated email summaries to stdout, allowing complete local development without external credentials. For production, configure live keys in **Vercel Project Settings** (`Settings` → `Environment Variables`).
@@ -427,13 +429,13 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
       }
     }
     ```
-  - **Automated Email Dispatch**: Calling `submit_quote_request` via JSON-RPC automatically triggers Resend transactional email notifications to the assigned servicing office.
+  - **Automated Email Dispatch**: Calling `submit_quote_request` via JSON-RPC automatically triggers Resend transactional email notifications to the central agency quote inbox (`QUOTE_NOTIFICATION_EMAIL`).
 
 ### 2. Quote Intake (`/api/quote`)
 
 - **POST `/api/quote`**: Submits a lead payload (`name`, `email`, `phone`, `insuranceType`, `preferredOffice`, `preferredLanguage`, `notes`, `ratingPayload`, `recaptchaToken`, `source`).
   - **Bot Mitigation**: Validates Google reCAPTCHA v3 token (`quote_form` action, score $\ge 0.5$) and hidden honeypot fields.
-  - **Resend Email Trigger**: Automatically sends an HTML producer alert to the assigned branch office and an acknowledgement email to the applicant.
+  - **Resend Email Trigger**: Automatically sends an HTML producer alert to the unified agency quote inbox (`QUOTE_NOTIFICATION_EMAIL`, defaulting to `ron@aia-danbury.com`) and an acknowledgement email to the applicant.
   - **Response Payload**: Returns a confirmation code (`AIA-XXXXXX`), `emailDispatched` (boolean), `emailDetails` (`simulated`, `id`, `recipient`), and stored inquiry metadata.
 - **GET `/api/quote`**: Returns recent submissions count and metadata for internal testing.
 

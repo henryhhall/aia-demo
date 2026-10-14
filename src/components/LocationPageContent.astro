@@ -7,7 +7,7 @@ import { getLocationTranslation } from '../i18n/locations';
 import { getMembersByOffice } from '../i18n/team';
 import FAQAccordion from './FAQAccordion';
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import HeroQuoteStarter from './HeroQuoteStarter';
+import QuoteForm from './QuoteForm';
 
 // Import staff profile photos
 import ronaldImg from '../assets/Agency Founder and owner Ron Boucher.jpg';
@@ -256,11 +256,11 @@ const schemaGraph = {
         <!-- Right Side: Interactive Hero Quote Starter Island -->
         <div class="lg:col-span-5 relative">
           <div class="absolute -inset-4 bg-accent-gold/10 rounded-3xl blur-xl pointer-events-none"></div>
-          <HeroQuoteStarter
+          <QuoteForm
             client:load
             lang={currentLang}
             defaultZip={location.postalCode}
-            preferredBranch={location.slug}
+            hideHeading
           />
         </div>
       </div>

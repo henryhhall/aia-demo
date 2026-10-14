@@ -22,9 +22,6 @@ const DICT = {
     guaranteeTitle: 'AIA Anti-Spam Guarantee',
     guaranteeText: 'Your information is never sold to third-party telemarketers. Speak only with our licensed Connecticut staff.',
     errorZip: 'Please enter a valid 5-digit ZIP code.',
-    danburyArea: 'Danbury HQ Coverage Area',
-    watertownArea: 'Watertown Branch Coverage Area',
-    bridgeportArea: 'Bridgeport Branch Coverage Area',
     ctLicensedArea: 'Connecticut Licensed Service Area',
     quoteBasePath: '/quote',
     lines: {
@@ -45,9 +42,6 @@ const DICT = {
     guaranteeTitle: 'Garantía Anti-Spam de AIA',
     guaranteeText: 'Su información nunca se vende a telemercaderistas ni intermediarios. Hable solo con nuestro equipo licenciado en CT.',
     errorZip: 'Por favor ingrese un código postal de 5 dígitos válido.',
-    danburyArea: 'Área de Cobertura Sede Danbury',
-    watertownArea: 'Área de Cobertura Sucursal Watertown',
-    bridgeportArea: 'Área de Cobertura Sucursal Bridgeport',
     ctLicensedArea: 'Área de Servicio Licenciada en CT',
     quoteBasePath: '/es/quote',
     lines: {
@@ -68,9 +62,6 @@ const DICT = {
     guaranteeTitle: 'Garantia Anti-Spam da AIA',
     guaranteeText: 'Seus dados nunca são vendidos a empresas de telemarketing. Fale exclusivamente com nossos corretores licenciados em CT.',
     errorZip: 'Por favor, insira um código postal válido de 5 dígitos.',
-    danburyArea: 'Área de Atendimento Danbury HQ',
-    watertownArea: 'Área de Atendimento Filial Watertown',
-    bridgeportArea: 'Área de Atendimento Filial Bridgeport',
     ctLicensedArea: 'Área com Licença Oficial em CT',
     quoteBasePath: '/pt/quote',
     lines: {
@@ -91,9 +82,6 @@ const DICT = {
     guaranteeTitle: 'AIA İstenmeyen Mesaj Garantisi',
     guaranteeText: 'Bilgileriniz asla üçüncü şahıslara veya pazarlamacılara satılmaz. Yalnızca lisanslı Connecticut ekibimizle görüşürsünüz.',
     errorZip: 'Lütfen geçerli 5 haneli bir posta kodu girin.',
-    danburyArea: 'Danbury Genel Merkez Hizmet Alanı',
-    watertownArea: 'Watertown Şubesi Hizmet Alanı',
-    bridgeportArea: 'Bridgeport Şubesi Hizmet Alanı',
     ctLicensedArea: 'Connecticut Lisanslı Hizmet Alanı',
     quoteBasePath: '/tr/quote',
     lines: {
@@ -127,21 +115,12 @@ export default function HeroQuoteStarter({
     { key: 'bundle' as LineKey, icon: '📦', ...t.lines.bundle },
   ];
 
-  // Helper to suggest nearest office or validation
+  // Helper to suggest valid CT coverage area
   const getZipBadge = () => {
     const clean = zipCode.trim();
     if (!clean) return null;
-    if (clean.startsWith('068')) {
-      return { text: t.danburyArea, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
-    }
-    if (clean.startsWith('067')) {
-      return { text: t.watertownArea, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
-    }
-    if (clean.startsWith('066')) {
-      return { text: t.bridgeportArea, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
-    }
     if (clean.length === 5 && (clean.startsWith('06') || clean.startsWith('10') || clean.startsWith('01'))) {
-      return { text: t.ctLicensedArea, color: 'text-blue-700 bg-blue-50 border-blue-200' };
+      return { text: t.ctLicensedArea, color: 'text-emerald-700 bg-emerald-50 border-emerald-200' };
     }
     return null;
   };
@@ -171,9 +150,8 @@ export default function HeroQuoteStarter({
     const targetType = currentOption ? currentOption.query : 'auto';
     const zipParam = cleanZip ? `&zip=${encodeURIComponent(cleanZip)}` : '';
     const bundleParam = selectedLine === 'bundle' ? '&bundle=1' : '';
-    const branchParam = preferredBranch ? `&branch=${encodeURIComponent(preferredBranch)}` : '';
 
-    window.location.href = `${t.quoteBasePath}?type=${targetType}${zipParam}${bundleParam}${branchParam}`;
+    window.location.href = `${t.quoteBasePath}?type=${targetType}${zipParam}${bundleParam}`;
   };
 
   return (

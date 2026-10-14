@@ -125,11 +125,21 @@ export const POST: APIRoute = async ({ request }) => {
     contactSubmissions.unshift(submission);
     if (contactSubmissions.length > 100) contactSubmissions.pop();
 
+    // Dispatch email notification to agency recipient (ron@aia-danbury.com)
+    let emailResult = { success: false, recipient: 'ron@aia-danbury.com' };
+    try {
+      const { sendContactEmail } = await import('../../lib/email.ts');
+      emailResult = await sendContactEmail(submission);
+    } catch (emailErr: any) {
+      console.error('[API /contact] Error during sendContactEmail:', emailErr);
+    }
+
     return new Response(
       JSON.stringify({
         success: true,
         id: inquiryId,
         message: 'Your message has been received. A licensed AIA agent will contact you shortly.',
+        emailDispatched: emailResult.success,
       }),
       {
         status: 200,

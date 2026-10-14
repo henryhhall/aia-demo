@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import CarrierLogos from '../../components/CarrierLogos.astro';
-import HeroQuoteStarter from '../../components/HeroQuoteStarter';
+import QuoteForm from '../../components/QuoteForm';
 import MultilingualRoutingNotice from '../../components/MultilingualRoutingNotice.astro';
 
 // Fetch content
@@ -78,10 +78,10 @@ const mainStructuredData = {
           </div>
         </div>
 
-        <!-- Right Side: Interactive Hero Quote Starter Island -->
+        <!-- Right Side: Interactive Multi-Step Quote Funnel -->
         <div class="lg:col-span-5 relative">
-          <div class="absolute -inset-4 bg-accent-gold/10 rounded-3xl blur-xl"></div>
-          <HeroQuoteStarter client:load lang="pt" />
+          <div class="absolute -inset-4 bg-accent-gold/10 rounded-3xl blur-xl pointer-events-none"></div>
+          <QuoteForm client:load lang="pt" hideHeading />
         </div>
       </div>
     </div>
