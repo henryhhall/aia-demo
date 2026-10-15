@@ -175,6 +175,11 @@ function getLocationLabel(id: LocationId): string {
                   })}
                 </time>
 
+                <!-- Post Author -->
+                <div class="text-xs font-semibold text-text-primary">
+                  {post.data.author}
+                </div>
+
                 <!-- Location Badges if tagged -->
                 {postLocations.length > 0 && (
                   <div class="flex flex-wrap gap-1">

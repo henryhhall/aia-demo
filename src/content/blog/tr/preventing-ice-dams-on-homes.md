@@ -5,7 +5,7 @@ pubDate: 2019-01-23
 image: "/images/blog/ice-dams.jpg"
 imageAlt: "Buz barajı riskini gösteren karlı müstakil ev çatısı"
 tags: ["ev sigortası", "kış bakımı", "CT ev sahipleri"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

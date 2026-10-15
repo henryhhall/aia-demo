@@ -5,7 +5,7 @@ pubDate: 2018-05-17
 image: "/images/blog/travel.jpg"
 imageAlt: "Ahşap bir masa üzerinde seyahat bagajı, kamera ve haritalar"
 tags: ["seyahat sigortası", "macera güvenliği", "kişisel güvenlik"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

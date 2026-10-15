@@ -5,7 +5,7 @@ pubDate: 2019-01-23
 image: "/images/blog/ice-dams.jpg"
 imageAlt: "Neve no telhado de uma casa residencial mostrando o risco de barreira de gelo"
 tags: ["seguro residencial", "manutenção de inverno", "proprietários de CT"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

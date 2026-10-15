@@ -5,7 +5,7 @@ pubDate: 2019-01-23
 image: "/images/blog/ice-dams.jpg"
 imageAlt: "Snow on residential house roof showing ice dam risk"
 tags: ["home insurance", "winter maintenance", "CT homeowners"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

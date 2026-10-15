@@ -13,7 +13,7 @@ const blogCollection = defineCollection({
     imageAlt: z.string().optional(),
     tags: z.array(z.string()).default([]),
     location: z.string().optional(),
-    author: z.string().default('Associated Insurance Agency'),
+    author: z.string().default('Ron T. Boucher'),
     draft: z.boolean().default(false),
     about: z.array(
       z.object({

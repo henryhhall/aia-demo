@@ -5,7 +5,7 @@ pubDate: 2018-05-17
 image: "/images/blog/travel.jpg"
 imageAlt: "Travel baggage, camera, and maps on a wooden table"
 tags: ["travel insurance", "adventure safety", "personal safety"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

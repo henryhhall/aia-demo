@@ -5,7 +5,7 @@ pubDate: 2018-05-17
 image: "/images/blog/travel.jpg"
 imageAlt: "Bagagem de viagem, câmera e mapas em uma mesa de madeira"
 tags: ["seguro de viagem", "segurança na aventura", "segurança pessoal"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

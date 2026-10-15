@@ -5,7 +5,7 @@ pubDate: 2018-06-16
 image: "/images/blog/wedding.jpg"
 imageAlt: "Wedding rings on top of flowers"
 tags: ["special event insurance", "personal liability", "wedding planning"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

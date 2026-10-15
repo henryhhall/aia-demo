@@ -5,7 +5,7 @@ pubDate: 2018-06-16
 image: "/images/blog/wedding.jpg"
 imageAlt: "Alianças de casamento em cima de flores"
 tags: ["seguro de eventos especiais", "responsabilidade pessoal", "planejamento de casamento"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

@@ -5,7 +5,7 @@ pubDate: 2018-06-16
 image: "/images/blog/wedding.jpg"
 imageAlt: "Çiçeklerin üzerinde düğün yüzükleri"
 tags: ["özel etkinlik sigortası", "kişisel sorumluluk", "düğün planlama"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

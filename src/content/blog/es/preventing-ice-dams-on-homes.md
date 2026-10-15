@@ -5,7 +5,7 @@ pubDate: 2019-01-23
 image: "/images/blog/ice-dams.jpg"
 imageAlt: "Nieve en el techo de una casa residencial que muestra el riesgo de presa de hielo"
 tags: ["seguro de hogar", "mantenimiento de invierno", "propietarios de CT"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 

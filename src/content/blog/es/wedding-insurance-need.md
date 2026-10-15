@@ -5,7 +5,7 @@ pubDate: 2018-06-16
 image: "/images/blog/wedding.jpg"
 imageAlt: "Anillos de boda encima de flores"
 tags: ["seguro de eventos especiales", "responsabilidad personal", "planificación de bodas"]
-author: "Associated Insurance Agency"
+author: "Ron T. Boucher"
 draft: false
 ---
 
