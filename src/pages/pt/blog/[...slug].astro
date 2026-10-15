@@ -13,15 +13,69 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 
+const siteUrl = 'https://aia-danbury.com';
+const canonicalUrl = `${siteUrl}${Astro.url.pathname}`;
+const orgId = `${siteUrl}/#organization`;
+const articleId = `${canonicalUrl}#article`;
+const authorId = `${canonicalUrl}#author`;
+
+const graph: any[] = [
+  {
+    '@type': 'BlogPosting',
+    '@id': articleId,
+    'isPartOf': { '@id': orgId },
+    'publisher': { '@id': orgId },
+    'headline': entry.data.title,
+    'description': entry.data.description,
+    'image': entry.data.image,
+    'datePublished': entry.data.pubDate.toISOString(),
+    'dateModified': (entry.data.updatedDate || entry.data.pubDate).toISOString(),
+    'inLanguage': 'pt',
+    'mainEntityOfPage': canonicalUrl,
+    'author': {
+      '@type': 'Person',
+      '@id': authorId,
+      'name': entry.data.author,
+      'worksFor': { '@id': orgId }
+    },
+    'about': entry.data.about && entry.data.about.length > 0 ? entry.data.about : [
+      {
+        '@type': 'Place',
+        'name': 'Bridgeport, Connecticut',
+        'sameAs': 'https://www.wikidata.org/wiki/Q49174'
+      },
+      {
+        '@type': 'Thing',
+        'name': 'Commercial Auto Insurance',
+        'sameAs': 'https://www.wikidata.org/wiki/Q11089901'
+      },
+      {
+        '@type': 'Thing',
+        'name': 'Inland Marine Insurance',
+        'sameAs': 'https://en.wikipedia.org/wiki/Inland_marine_insurance'
+      }
+    ]
+  }
+];
+
+if (entry.data.faq && entry.data.faq.length > 0) {
+  graph.push({
+    '@type': 'FAQPage',
+    '@id': `${canonicalUrl}#faq`,
+    'mainEntity': entry.data.faq.map((item) => ({
+      '@type': 'Question',
+      'name': item.question,
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': item.answer
+      }
+    }))
+  });
+}
+
 const structuredData = {
   '@context': 'https://schema.org',
-  '@type': 'BlogPosting',
-  "headline": entry.data.title,
-  "description": entry.data.description,
-  "image": entry.data.image,
-  "datePublished": entry.data.pubDate.toISOString(),
-  "dateModified": (entry.data.updatedDate || entry.data.pubDate).toISOString(),
-  "author": { '@type': 'Person', name: entry.data.author },
+  '@graph': graph
 };
 ---
 

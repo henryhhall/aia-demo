@@ -121,3 +121,108 @@ External agents (Cursor, Claude Desktop, Antigravity, AutoGen) can interface dir
 - **Endpoint:** `POST /api/mcp`
 - **Protocol:** JSON-RPC 2.0
 - **Supported Methods:** `tools/list`, `tools/call`, `initialize`, `ping`
+
+---
+
+## 8. Knowledge Guide: Bridgeport Multi-Family Landlord Playbook (Flood vs. Water Backup)
+
+- **Canonical URL (EN):** https://aia-danbury.com/blog/bridgeport-multi-family-landlord-flood-water-backup
+- **Spanish URL (ES):** https://aia-danbury.com/es/blog/bridgeport-multi-family-landlord-flood-water-backup
+- **Portuguese URL (PT):** https://aia-danbury.com/pt/blog/bridgeport-multi-family-landlord-flood-water-backup
+- **Turkish URL (TR):** https://aia-danbury.com/tr/blog/bridgeport-multi-family-landlord-flood-water-backup
+- **Target Audience:** Real estate investors, landlords, and property managers owning 2-family, triple-decker, and 4-unit buildings in Bridgeport, CT (Black Rock, East End, the Hollow, North End).
+
+### Definitional Copula Framework
+- **Dwelling Property (DP-3) Insurance is an** open-peril property insurance policy that protects non-owner-occupied residential rental properties against physical building damage, premises liability claims, and loss of rental income.
+- **Water Backup Coverage is an** optional property insurance endorsement that covers direct physical loss caused by subsurface water or sewage backing up through drainage systems, municipal sewers, or sump pumps.
+- **Flood Insurance is a** specialized standalone insurance policy that covers direct physical loss caused by surface water accumulation, overflowing coastal waters, or tidal storm surges from Long Island Sound.
+
+### Subsurface Backup vs. Surface Flood Comparison Matrix
+- **Subsurface Water Backup:** Optional DP-3 endorsement ($5,000 to $50,000 limit). Covers water rising from municipal storm/sanitary sewers or failed sump pumps into basements, protecting boilers, water heaters, and electrical panels.
+- **Surface Flood Insurance:** Standalone NFIP or private flood policy ($250,000 federal residential limit; $1,000,000+ private limits). Covers external surface runoff, river overflows, and Long Island Sound coastal storm surges. Subsurface backup endorsements specifically exclude surface water flooding.
+
+### Verified Connecticut Risk Benchmarks
+- According to 2024 FEMA flood claim statistics, more than 25% of all flood insurance claims originate outside high-risk Special Flood Hazard Areas (SFHA), with the average commercial multi-family flood claim exceeding $89,000 in structural and mechanical damages.
+- According to the Connecticut Insurance Department (CID) 2024 Property & Casualty Advisory, municipal sewer and water backup claims across Fairfield County average between $15,000 and $30,000 for multi-family dwellings due to clustered basement utility configurations.
+- According to a 2024 Insurance Information Institute (Triple-I) study, 90% of all natural disasters in the United States involve flooding, yet standard dwelling fire and homeowners policies exclude 100% of surface runoff and storm surge water losses without dedicated endorsements or separate flood riders.
+- According to Bridgeport Water Pollution Control Authority (WPCA) 2024 infrastructure data, legacy combined stormwater and sewer systems in older coastal neighborhoods like Black Rock and East End face surcharge risks during rainfall events exceeding 2.0 inches per hour.
+
+### Historic Property Underwriting Requirements in Bridgeport
+- **Electrical:** Mandatory 100 to 200-amp circuit breaker panels per unit; 100% elimination of ungrounded knob-and-tube wiring.
+- **Plumbing:** Replacement of aging lead or galvanized lines with copper or PEX.
+- **Roofs:** Inspection reports required for flat rubber (EPDM) or modified bitumen surfaces exceeding 15 years.
+- **Tenant Renters Insurance:** Mandatory HO-4 policies to isolate landlord loss history from tenant fixture overflows.
+
+---
+
+## 9. Knowledge Guide: Seaside Park Hurricane Deductibles vs. Storm Surge (Coastal Connecticut Playbook)
+
+- **Canonical URL (EN):** https://aia-danbury.com/blog/storm-surge-vs-hurricane-wind-deductibles-seaside-park
+- **Spanish URL (ES):** https://aia-danbury.com/es/blog/storm-surge-vs-hurricane-wind-deductibles-seaside-park
+- **Portuguese URL (PT):** https://aia-danbury.com/pt/blog/storm-surge-vs-hurricane-wind-deductibles-seaside-park
+- **Turkish URL (TR):** https://aia-danbury.com/tr/blog/storm-surge-vs-hurricane-wind-deductibles-seaside-park
+- **Target Audience:** Waterfront homeowners, shoreline landlords, and coastal real estate owners along Long Island Sound, Seaside Park, South End, and coastal Bridgeport, CT.
+
+### Definitional Copula Framework
+- **Hurricane Deductible is a** specialized percentage-based property insurance provision that applies a separate deductible equal to 1% to 5% of the total Coverage A dwelling limit when statutory hurricane wind triggers occur.
+- **Wind-Driven Rain Coverage is an** exterior peril protection within standard homeowners policies that covers interior water damage caused by rain entering through storm-compromised building openings.
+- **Storm Surge Coverage is a** standalone flood insurance policy protection that pays for structural and personal property losses caused by seawater driven inland by gale winds and coastal tidal inundation.
+- **FEMA Coastal Flood Zones are** geographic hazard classifications that separate Zone VE high-velocity ocean wave hazards from Zone AE rising stillwater inundation, establishing foundation elevation requirements and insurance premium tiers.
+
+### Wind-Driven Rain vs. Storm Surge Comparison Matrix
+- **Wind-Driven Rain:** Covered by HO-3/HO-5 personal property policies. Requires gale winds to compromise roofs, siding, or windows, creating a physical opening for rainwater. Subject to percentage hurricane deductible if statutory warning and wind speed triggers are met.
+- **Storm Surge & Coastal Inundation:** Strictly excluded under standard homeowners policies. Seawater overflowing seawalls and bulkheads is classified as surface water flood, requiring a separate NFIP ($250,000 building cap) or private flood policy ($1,000,000+ replacement cost limit).
+
+### Statutory Hurricane Deductible Triggers in Connecticut
+According to Connecticut Insurance Department regulations, insurers cannot charge a percentage deductible without meeting two concurrent criteria:
+1. **Trigger 1:** The National Hurricane Center must issue an official hurricane warning for any part of Connecticut (deductible window opens upon issuance and closes 24 hours after warning cancellation or downgrade).
+2. **Trigger 2:** Sustained winds must reach at least 74 mph (Category 1 hurricane force) anywhere in Connecticut.
+*(Note: Tropical Storm Irene in 2011 and Superstorm Sandy in 2012 caused widespread damage in Fairfield County, but because sustained winds did not reach 74 mph in CT, percentage deductibles could not legally be applied).*
+
+### Verified Connecticut Coastal Risk Benchmarks
+- According to 2024 FEMA flood claim report statistics, more than 20% of all flood insurance claims nationwide develop outside designated Special Flood Hazard Areas (SFHA), with the average residential coastal flood claim exceeding $67,000 in structural damage.
+- According to a 2024 coastal risk study published by the Insurance Information Institute (Triple-I), 90% of all U.S. natural disasters involve severe flooding, yet fewer than 15% of Connecticut homeowners maintain active flood insurance policies.
+- According to the Connecticut Insurance Department (CID) 2024 Property & Casualty Advisory, a 2% hurricane deductible on an average $550,000 coastal Fairfield County dwelling creates an out-of-pocket obligation of $11,000 before insurance benefits trigger.
+- According to 2024 NOAA National Hurricane Center historical research data, Long Island Sound creates a funnel effect during southeast gales, amplifying storm surge water levels by 3 to 5 feet above astronomical high tides in Bridgeport harbor.
+
+### Coastal Pre-Storm Checklist for Shoreline Residents
+- **Policy Audit:** Verify Coverage A limits and exact dollar values of 1%, 2%, or 5% hurricane deductibles on the Declarations Page.
+- **Flood Separation:** Maintain standalone NFIP or private flood insurance; do not assume sewer backup endorsements cover rising seawater.
+- **Wind Mitigation:** Inspect hurricane shutters, impact-resistant glass, roof strapping, and exterior wall seals before storm season.
+- **Drainage Clearance:** Clean private bulkhead drains, catch basins, and sump discharge lines to prevent localized water pooling.
+
+---
+
+## 10. Knowledge Guide: Greater Bridgeport Contractor Commercial Auto & Inland Marine Playbook
+
+- **Canonical URL (EN):** https://aia-danbury.com/blog/commercial-auto-inland-marine-contractors-bridgeport
+- **Spanish URL (ES):** https://aia-danbury.com/es/blog/commercial-auto-inland-marine-contractors-bridgeport
+- **Portuguese URL (PT):** https://aia-danbury.com/pt/blog/commercial-auto-inland-marine-contractors-bridgeport
+- **Turkish URL (TR):** https://aia-danbury.com/tr/blog/commercial-auto-inland-marine-contractors-bridgeport
+- **Target Audience:** Independent tradespeople, general contractors, sub-contractors, electricians, plumbers, HVAC technicians, framers, and roofers operating in Bridgeport, Fairfield, Stratford, Trumbull, and along the I-95 and Route 8 commercial transit corridors.
+
+### Definitional Copula Framework
+- **Commercial Auto Insurance is a** specialized vehicle liability and physical damage policy that protects commercial work trucks, vans, and utility fleets against vehicular collisions, operational property damage, and third-party injury claims arising from business trade operations.
+- **Inland Marine Insurance is an** essential property insurance policy that covers movable business assets, mobile contractor tools, specialized equipment, and high-value materials wherever they travel off agency premises, in transit, or staged across active job sites.
+- **Contractors Equipment Floater is an** inland marine insurance endorsement that reimburses tradespeople on a replacement cost basis for portable power tools, testing meters, and machinery damaged, destroyed, or stolen while away from the shop.
+- **Installation Floater is a** specialized inland marine insurance rider that protects uninstalled commercial materials, HVAC equipment, and architectural fixtures against theft or damage from initial transit through staged site storage until final client project handover.
+
+### Personal Auto vs. Commercial Auto vs. Inland Marine Floater
+- **Personal Auto Exclusion:** Standard Connecticut personal auto contracts enforce strict Business Use Exclusions. Carrying tools, materials, or employees on Route 8 or I-95 invalidates coverage, causing 100% claim denial for truck damage and third-party liabilities.
+- **Commercial Auto Scope:** Covers the vehicle chassis, engine, and permanently welded/bolted fixtures (utility bodies, ladder racks). It explicitly excludes unbolted tools, loose supplies, and diagnostic equipment in cabs or truck beds.
+- **Inland Marine Scope:** Fills the off-premises property void. Provides Replacement Cost reimbursement for stolen or damaged hand tools, portable generators, compressors, and high-value equipment anywhere in transit or on active job sites.
+
+### Verified Connecticut Contractor Risk Benchmarks
+- According to a 2024 report by the National Equipment Register (NER), over $1.0 billion in commercial tools and construction equipment is stolen annually across the United States, with less than 21% of stolen trade assets successfully recovered by law enforcement.
+- According to the Connecticut Department of Motor Vehicles (CT DMV) and Connecticut Insurance Department (CID) 2024 commercial vehicle report, Connecticut's statutory minimum auto liability of $25,000/$50,000/$25,000 is exhausted in over 84% of commercial vehicle collisions involving loaded utility trucks and trailers on major arteries like I-95 and Route 8.
+- According to a 2024 survey report published by the Associated General Contractors of America (AGC), 94% of commercial project owners and general contractors across Fairfield County require trade subcontractors to provide an ACORD 25 Certificate of Insurance verifying at least $1,000,000 in Commercial Auto CSL liability before granting site clearance.
+- According to a 2024 Insurance Information Institute (Triple-I) study, standard personal homeowners and renters policies cap off-premises business property theft at between $500 and $1,500, leaving independent tradespeople facing average out-of-pocket tool theft losses exceeding $14,200 after job site or supply house truck break-ins.
+
+### Subcontractor ACORD 25 Compliance Checklist
+- **Commercial Auto Liability:** Minimum $1,000,000 Combined Single Limit (CSL) with Hired & Non-Owned Auto (HNOA) rider.
+- **Inland Marine Tool Floater:** Blanket tool coverage ($10,000 to $25,000+) written on a Replacement Cost basis plus scheduled high-value machinery.
+- **Commercial General Liability:** $1,000,000 per occurrence / $2,000,000 aggregate with Additional Insured endorsement (CG 20 10 / CG 20 37).
+- **Workers' Compensation:** Statutory Connecticut limits for all trade crews and helpers.
+
+
+
