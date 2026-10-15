@@ -78,6 +78,12 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
 - **RFC 9116 Security Policy & Vulnerability Disclosure (`security.txt`)**: Standardized security disclosure declarations available at `/.well-known/security.txt` and localized across Spanish (`security-es.txt`), Portuguese (`security-pt.txt`), and Turkish (`security-tr.txt`), detailing reporting protocols, encryption keys, policy terms, and multi-channel response SLAs.
 - **Comprehensive XML & HTML Sitemaps**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all localized pages including Certificate Request pages, paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`) linking to all core insurance lines, certificate requests, branch offices, and legal pages.
 - **Content Collections & Editorial Integrity**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance. In alignment with transparent brokerage standards, generic or unverified consumer testimonials have been completely excised across all language homepages in favor of authentic carrier credentialing, licensed producer bios, and verifiable agency licensing data.
+- **Location-Aware Article Filtering & Hyper-Local Content Hub**:
+  - **Branch Office Page Integration** (`LocationPageContent.astro`): Physical location landing pages (`/locations/bridgeport`, `/es/locations/bridgeport`, `/pt/...`, `/tr/...`) automatically detect and showcase articles published for that specific territory (e.g. Bridgeport multi-family landlord flood vs. water backup, coastal storm surge, DP-3 dwelling policies). If a branch currently has no tagged articles, the section cleanly stays hidden.
+  - **Interactive Blog Archive Filtering** (`BlogArchiveList.astro`): Central blog archives across all four languages (`/blog`, `/es/blog`, `/pt/blog`, `/tr/blog`) feature accessible, zero-reload location filter tabs ("All Locations", "Bridgeport", "Danbury", "Watertown") with dynamic post count badges and localized empty state fallbacks.
+  - **URL Deep-Linking & History State Sync**: Filter states persist via URL query parameters (`/blog?location=bridgeport`), allowing seamless external link sharing, bookmarking, and native browser forward/backward navigation (`history.replaceState`).
+  - **Location Matching Taxonomy & Utilities** (`src/lib/blog.ts` & `src/content.config.ts`): Type-safe Astro content collection schema supporting optional `location` frontmatter alongside intelligent multilingual tag keyword inference (`Bridgeport insurance`, `seguro en Bridgeport`, `seguro em Bridgeport`, `Bridgeport sigortası`).
+  - **Localized Multi-Family Landlord & Coastal Risk Playbooks**: Inaugural localized deep dive for Bridgeport landlords (`/blog/bridgeport-multi-family-landlord-flood-water-backup`) addressing combined sewer overflows, Black Rock and East End flood risks, DP-3 dwelling fire policies, and NFIP vs private flood limits in English, Spanish, Portuguese, and Turkish.
 
 ### 🤖 WebMCP & Agentic AI Integration
 - **Dual-Layer Tool Calling**:
@@ -189,6 +195,7 @@ aia/
 │   │   │   ├── ReviewSubmit.tsx     # Review summary, rating preview & reCAPTCHA submit
 │   │   │   ├── StepNavigation.tsx   # Progress bar & prev/next buttons
 │   │   │   └── FieldWrapper.tsx     # Accessible field container with validation errors
+│   │   ├── BlogArchiveList.astro # Multilingual blog archive list with location filter tabs, counts & URL deep-linking
 │   │   ├── CarrierBillingTable.astro # Modular carrier bill-pay & phone support table
 │   │   ├── CarrierLogos.astro  # Interactive grid of 11 partnered insurance carriers
 │   │   ├── CertificateRequestForm.tsx # 4-step interactive ACORD 25 COI wizard with honeypots & reCAPTCHA v3
@@ -229,6 +236,7 @@ aia/
 │   ├── layouts/
 │   │   └── BaseLayout.astro    # Master HTML shell, SEOHead, Header, Footer, WebMCP init
 │   ├── lib/
+│   │   ├── blog.ts             # Blog location taxonomy detection, tag parsing & relative route builders
 │   │   ├── email.ts            # Resend transactional email service (producer briefs & confirmations)
 │   │   ├── homeownersQuoteI18n.ts # Full multilingual copy & tooltips for homeowners quote wizard
 │   │   ├── homeownersQuoteSchema.ts # Zod validation schema & rating calculation formulas

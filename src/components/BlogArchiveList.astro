@@ -1,0 +1,324 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getPostLocations, getPostUrl } from '../lib/blog';
+import { getAllLocationIds, getLocationById, type LocationId } from '../data/locations';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  lang?: 'en' | 'es' | 'pt' | 'tr';
+}
+
+const { posts, lang = 'en' } = Astro.props;
+const currentLang = lang as 'en' | 'es' | 'pt' | 'tr';
+
+const locationIds = getAllLocationIds();
+
+// Compute counts for each location
+const counts: Record<string, number> = {
+  all: posts.length,
+  bridgeport: 0,
+  danbury: 0,
+  watertown: 0,
+};
+
+posts.forEach((post) => {
+  const locs = getPostLocations(post);
+  locs.forEach((loc) => {
+    if (counts[loc] !== undefined) {
+      counts[loc] = (counts[loc] || 0) + 1;
+    }
+  });
+});
+
+// Localization strings
+const i18nLabels = {
+  en: {
+    filterLabel: 'Filter by Location:',
+    all: 'All Locations',
+    noArticles: 'No articles published yet. Check back soon!',
+    noLocationArticles: 'No articles found for this location yet.',
+    clearFilter: 'View All Articles',
+    readArticle: 'Read Article',
+    dateLocale: 'en-US',
+  },
+  es: {
+    filterLabel: 'Filtrar por Ubicación:',
+    all: 'Todas las Ubicaciones',
+    noArticles: 'No hay artículos publicados todavía. ¡Vuelva pronto!',
+    noLocationArticles: 'No se encontraron artículos para esta ubicación todavía.',
+    clearFilter: 'Ver Todos los Artículos',
+    readArticle: 'Leer Artículo',
+    dateLocale: 'es-ES',
+  },
+  pt: {
+    filterLabel: 'Filtrar por Agência:',
+    all: 'Todas as Agências',
+    noArticles: 'Não há artigos publicados ainda. Volte em breve!',
+    noLocationArticles: 'Nenhum artigo encontrado para esta agência ainda.',
+    clearFilter: 'Ver Todos os Artigos',
+    readArticle: 'Ler Artigo',
+    dateLocale: 'pt-BR',
+  },
+  tr: {
+    filterLabel: 'Konuma Göre Filtrele:',
+    all: 'Tüm Konumlar',
+    noArticles: 'Henüz yayınlanmış makale yok. Yakında tekrar kontrol edin!',
+    noLocationArticles: 'Bu konum için henüz bir makale bulunamadı.',
+    clearFilter: 'Tüm Makaleleri Gör',
+    readArticle: 'Makaleyi Oku',
+    dateLocale: 'tr-TR',
+  },
+};
+
+const labels = i18nLabels[currentLang] || i18nLabels.en;
+
+function getLocationLabel(id: LocationId): string {
+  const loc = getLocationById(id);
+  return loc?.city || id;
+}
+---
+
+<div class="space-y-10">
+  <!-- Location Filter Tabs -->
+  {posts.length > 0 && (
+    <div class="bg-bg-secondary p-3 sm:p-4 rounded-2xl border border-border-subtle shadow-2xs">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <span class="text-xs font-bold text-text-muted uppercase tracking-wider flex items-center gap-1.5">
+          <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+          </svg>
+          {labels.filterLabel}
+        </span>
+
+        <div class="flex flex-wrap gap-2" role="tablist" aria-label="Filter articles by location">
+          <!-- All Filter -->
+          <button
+            type="button"
+            role="tab"
+            data-filter-btn="all"
+            data-location-label={labels.all}
+            aria-selected="true"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-semibold transition-all border border-border-subtle bg-accent text-white shadow-sm cursor-pointer"
+          >
+            {labels.all} <span class="ml-1 opacity-80 font-mono text-[11px]">({counts.all})</span>
+          </button>
+
+          <!-- Per-location filters -->
+          {locationIds.map((id) => (
+            <button
+              type="button"
+              role="tab"
+              data-filter-btn={id}
+              data-location-label={getLocationLabel(id)}
+              aria-selected="false"
+              class="px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all border border-border-subtle bg-white text-text-secondary hover:text-accent hover:border-accent cursor-pointer"
+            >
+              {getLocationLabel(id)} <span class="ml-1 opacity-80 font-mono text-[11px]">({counts[id] || 0})</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  )}
+
+  <!-- Posts Container -->
+  {posts.length === 0 ? (
+    <div class="text-center py-12 border border-border-subtle bg-bg-secondary rounded-lg">
+      <p class="text-sm text-text-secondary">{labels.noArticles}</p>
+    </div>
+  ) : (
+    <div class="relative">
+      <!-- Empty state when location filter has no matches -->
+      <div
+        id="blog-empty-state"
+        class="hidden text-center py-16 px-6 border border-border-subtle bg-bg-secondary rounded-2xl space-y-4"
+      >
+        <div class="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center mx-auto">
+          <svg class="w-6 h-6 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
+          </svg>
+        </div>
+        <p class="text-sm sm:text-base font-medium text-accent">
+          {labels.noLocationArticles}
+        </p>
+        <button
+          type="button"
+          id="blog-reset-filter"
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-accent text-white text-xs font-semibold hover:bg-accent/90 transition-all cursor-pointer shadow-xs"
+        >
+          {labels.clearFilter} &rarr;
+        </button>
+      </div>
+
+      <!-- Articles list -->
+      <div id="blog-posts-container" class="divide-y divide-border-subtle">
+        {posts.map((post) => {
+          const postLocations = getPostLocations(post);
+          const postUrl = getPostUrl(post, currentLang);
+          return (
+            <article
+              data-article-item
+              data-locations={postLocations.join(',')}
+              class="py-12 first:pt-0 last:pb-0 flex flex-col md:flex-row gap-8 items-start text-left transition-opacity duration-200"
+            >
+              <!-- Post Meta & Date -->
+              <div class="w-full md:w-1/4 shrink-0 text-left space-y-2">
+                <time
+                  datetime={post.data.pubDate.toISOString()}
+                  class="font-mono text-xs font-semibold text-text-muted uppercase block"
+                >
+                  {new Date(post.data.pubDate).toLocaleDateString(labels.dateLocale, {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </time>
+
+                <!-- Location Badges if tagged -->
+                {postLocations.length > 0 && (
+                  <div class="flex flex-wrap gap-1">
+                    {postLocations.map((locId) => (
+                      <span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-accent/5 text-accent border border-accent/20 font-semibold">
+                        <span class="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
+                        {getLocationLabel(locId)}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-1.5 pt-1">
+                  {post.data.tags.map((tag) => (
+                    <span class="text-[9px] px-2 py-0.5 bg-bg-secondary border border-border-subtle text-text-secondary rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <!-- Post Details -->
+              <div class="space-y-3 flex-1">
+                <h2 class="text-xl sm:text-2xl font-bold text-accent hover:text-accent-gold transition-colors leading-tight">
+                  <a href={postUrl}>{post.data.title}</a>
+                </h2>
+                <p class="text-sm text-text-secondary leading-relaxed font-light">
+                  {post.data.description}
+                </p>
+                <div>
+                  <a
+                    href={postUrl}
+                    class="inline-flex items-center gap-1 text-xs font-semibold text-accent-gold hover:text-accent-gold-hover transition-colors group"
+                  >
+                    <span>{labels.readArticle}</span>
+                    <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+    </div>
+  )}
+</div>
+
+<script is:inline>
+  (function () {
+    function initBlogFilter() {
+      const filterButtons = document.querySelectorAll('[data-filter-btn]');
+      const articles = document.querySelectorAll('[data-article-item]');
+      const emptyState = document.getElementById('blog-empty-state');
+      const resetBtn = document.getElementById('blog-reset-filter');
+
+      if (!filterButtons.length) return;
+
+      function applyFilter(selectedLoc, updateUrl) {
+        if (typeof updateUrl === 'undefined') updateUrl = true;
+        let visibleCount = 0;
+
+        articles.forEach(function (art) {
+          const locAttr = art.getAttribute('data-locations') || '';
+          const locs = locAttr.split(',').filter(Boolean);
+          const matches = selectedLoc === 'all' || locs.indexOf(selectedLoc) !== -1;
+          if (matches) {
+            art.classList.remove('hidden');
+            visibleCount++;
+          } else {
+            art.classList.add('hidden');
+          }
+        });
+
+        filterButtons.forEach(function (btn) {
+          const btnLoc = btn.getAttribute('data-filter-btn');
+          const isActive = btnLoc === selectedLoc;
+          btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+          if (isActive) {
+            btn.classList.add('bg-accent', 'text-white', 'shadow-sm', 'font-semibold');
+            btn.classList.remove('bg-white', 'text-text-secondary');
+          } else {
+            btn.classList.remove('bg-accent', 'text-white', 'shadow-sm', 'font-semibold');
+            btn.classList.add('bg-white', 'text-text-secondary');
+          }
+        });
+
+        if (emptyState) {
+          if (visibleCount === 0) {
+            emptyState.classList.remove('hidden');
+          } else {
+            emptyState.classList.add('hidden');
+          }
+        }
+
+        if (updateUrl) {
+          const url = new URL(window.location.href);
+          if (selectedLoc === 'all') {
+            url.searchParams.delete('location');
+          } else {
+            url.searchParams.set('location', selectedLoc);
+          }
+          window.history.replaceState({}, '', url.toString());
+        }
+      }
+
+      // Check initial URL parameters
+      const params = new URLSearchParams(window.location.search);
+      const initialLoc = (params.get('location') || 'all').toLowerCase();
+      const validLocations = ['all', 'bridgeport', 'danbury', 'watertown'];
+
+      if (validLocations.indexOf(initialLoc) !== -1) {
+        applyFilter(initialLoc, false);
+      } else {
+        applyFilter('all', false);
+      }
+
+      filterButtons.forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          const loc = btn.getAttribute('data-filter-btn') || 'all';
+          applyFilter(loc, true);
+        });
+      });
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', function () {
+          applyFilter('all', true);
+        });
+      }
+
+      window.addEventListener('popstate', function () {
+        const p = new URLSearchParams(window.location.search);
+        const loc = (p.get('location') || 'all').toLowerCase();
+        applyFilter(validLocations.indexOf(loc) !== -1 ? loc : 'all', false);
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initBlogFilter);
+    } else {
+      initBlogFilter();
+    }
+    document.addEventListener('astro:page-load', initBlogFilter);
+  })();
+</script>

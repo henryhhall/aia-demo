@@ -105,9 +105,16 @@ scratch/
 .antigravity/
 .tempmediaStorage/
 .system_generated/
+.claude/
+.cursor/
+.copilot/
 artifacts/
 *.jsonl
 *.patch
+
+# Package manager auth tokens & local configs
+.npmrc
+!.npmrc.example
 
 # Python Environments, Bytecode, Caches & Type Checkers
 __pycache__/
