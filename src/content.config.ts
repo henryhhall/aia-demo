@@ -6,7 +6,9 @@ const blogCollection = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/blog' }),
   schema: z.object({
     title: z.string(),
+    seoTitle: z.string().optional(),
     description: z.string().max(160),
+    schemaDescription: z.string().optional(),
     pubDate: z.date(),
     updatedDate: z.date().optional(),
     image: z.string().optional(),
@@ -20,6 +22,18 @@ const blogCollection = defineCollection({
         '@type': z.string().default('Thing'),
         name: z.string(),
         sameAs: z.string().optional(),
+        geo: z.object({
+          '@type': z.string().default('GeoCoordinates'),
+          latitude: z.number(),
+          longitude: z.number(),
+        }).optional(),
+      })
+    ).optional(),
+    areaServed: z.array(
+      z.object({
+        '@type': z.string().default('City'),
+        name: z.string(),
+        containedInPlace: z.string().optional(),
       })
     ).optional(),
     faq: z.array(

@@ -21,16 +21,16 @@ const authorId = `${canonicalUrl}#author`;
 
 const graph: any[] = [
   {
-    '@type': 'BlogPosting',
+    '@type': ['BlogPosting', 'Article'],
     '@id': articleId,
     'isPartOf': { '@id': orgId },
     'publisher': { '@id': orgId },
     'headline': entry.data.title,
-    'description': entry.data.description,
+    'description': entry.data.schemaDescription || entry.data.description,
     'image': entry.data.image,
     'datePublished': entry.data.pubDate.toISOString(),
     'dateModified': (entry.data.updatedDate || entry.data.pubDate).toISOString(),
-    'inLanguage': 'pt',
+    'inLanguage': 'pt-BR',
     'mainEntityOfPage': canonicalUrl,
     'author': {
       '@type': 'Person',
@@ -54,7 +54,8 @@ const graph: any[] = [
         'name': 'Inland Marine Insurance',
         'sameAs': 'https://en.wikipedia.org/wiki/Inland_marine_insurance'
       }
-    ]
+    ],
+    ...(entry.data.areaServed && entry.data.areaServed.length > 0 ? { 'areaServed': entry.data.areaServed } : {})
   }
 ];
 
@@ -80,7 +81,7 @@ const structuredData = {
 ---
 
 <BaseLayout
-  title={`${entry.data.title} | Blog da AIA`}
+  title={entry.data.seoTitle || `${entry.data.title} | Blog da AIA`}
   description={entry.data.description}
   ogImage={entry.data.image}
   ogType="article"

@@ -1,7 +1,7 @@
 # 📊 Generative Engine Optimization (GEO) Audit Report
 
 - **Target Codebase:** `C:\Users\henry\Python-Shit\Gemini-testing\aia`
-- **Composite Score:** **89.4 / 100.0**
+- **Composite Score:** **89.0 / 100.0**
 - **Readiness Grade:** **A (High Citation Readiness)**
 
 ---
@@ -13,8 +13,8 @@
 | **1. Scraper Access (robots.txt)** | 20.0 / 20.0 | ✅ Pass |
 | **2. Discoverability (llms.txt)** | 20.0 / 20.0 | ✅ Pass |
 | **3. Structured Knowledge Graph (JSON-LD)** | 20.0 / 20.0 | ✅ Pass |
-| **4. Content Direct Answer Scaffolding** | 19.5 / 20.0 | ✅ Pass |
-| **5. Factual & Source Year Anchoring** | 10.0 / 20.0 | ❌ Fail |
+| **4. Content Direct Answer Scaffolding** | 18.9 / 20.0 | ✅ Pass |
+| **5. Factual & Source Year Anchoring** | 10.1 / 20.0 | ⚠️ Warning |
 
 ---
 ## 🔍 Detailed Layer Analysis
@@ -30,9 +30,9 @@
 
 **Findings:**
 - [PASS] Found concise index: public\llms.txt
-- [PASS] Validated llms.txt syntax with 36 documented routes.
+- [PASS] Validated llms.txt syntax with 124 documented routes.
 - [PASS] Found corpus: public\llms-full.txt
-- [PASS] llms-full.txt contains rich text corpus (21240 bytes).
+- [PASS] llms-full.txt contains rich text corpus (1343786 bytes).
 
 
 ### 3. Structured Knowledge Graph (JSON-LD) (20.0 / 20.0)
@@ -46,18 +46,18 @@
 - [PASS] Recency freshness signals found ('dateModified').
 
 
-### 4. Content Direct Answer Scaffolding (19.5 / 20.0)
+### 4. Content Direct Answer Scaffolding (18.9 / 20.0)
 
 **Findings:**
-- [INFO] Analyzed 140 question headings across content files.
-- [PASS] 135/140 question headings (96%) have immediate 40-60 word direct answer summaries.
+- [INFO] Analyzed 196 question headings across content files.
+- [PASS] 182/196 question headings (93%) have immediate 40-60 word direct answer summaries.
 
 
-### 5. Factual & Source Year Anchoring (10.0 / 20.0)
+### 5. Factual & Source Year Anchoring (10.1 / 20.0)
 
 **Findings:**
-- [INFO] Detected 603 statistical statements in content.
-- [PASS] 199/603 (33%) statistical claims include both publication year and authoritative institution attribution.
+- [INFO] Detected 658 statistical statements in content.
+- [PASS] 222/658 (34%) statistical claims include both publication year and authoritative institution attribution.
 
 **Actionable Remediations:**
 - [ ] Pair all statistical claims with exact years and named institutions (e.g. 'According to a 2024 Gartner report...').
