@@ -200,8 +200,44 @@ export default function Navigation({
         </div>
       </nav>
 
-      {/* Mobile Menu Button */}
-      <div className="lg:hidden flex items-center">
+      {/* Mobile Controls (Language Select Box + Hamburger Button) */}
+      <div className="lg:hidden flex items-center gap-1.5 sm:gap-2">
+        <label htmlFor="mobile-language-select" className="sr-only">
+          Select language
+        </label>
+        <div className="relative inline-flex items-center">
+          <select
+            id="mobile-language-select"
+            value={currentLang}
+            onChange={(e) => {
+              const targetLang = e.target.value;
+              if (targetLang !== currentLang) {
+                window.location.href = getLocalizedPath(currentPath, targetLang);
+              }
+            }}
+            aria-label="Select language"
+            className="appearance-none bg-white border border-zinc-300 text-accent font-bold text-xs uppercase rounded-md pl-2.5 pr-6 py-1.5 shadow-xs hover:border-accent hover:bg-zinc-50 focus:outline-none focus:ring-2 focus:ring-accent-gold focus:border-accent cursor-pointer transition-colors"
+          >
+            {languages.map((l) => (
+              <option key={l.code} value={l.code} className="text-text-primary font-medium bg-white">
+                {l.label}
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-1.5 text-zinc-500">
+            <svg
+              className="w-3.5 h-3.5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </div>
+
         <button
           onClick={() => setIsOpen(!isOpen)}
           className="p-2 text-text-primary hover:text-accent focus:outline-none"
@@ -317,24 +353,6 @@ export default function Navigation({
             >
               {quoteLabel}
             </a>
-
-            {/* Mobile Language Switcher */}
-            <div className="flex items-center justify-center gap-4 pt-4 mt-2 border-t border-zinc-100">
-              {languages.map((l) => (
-                <a
-                  key={l.code}
-                  href={getLocalizedPath(currentPath, l.code)}
-                  onClick={() => setIsOpen(false)}
-                  className={`text-sm font-bold px-3 py-1.5 rounded transition-colors ${
-                    currentLang === l.code
-                      ? 'bg-accent/5 text-accent-gold pointer-events-none'
-                      : 'text-text-secondary hover:text-accent'
-                  }`}
-                >
-                  {l.label}
-                </a>
-              ))}
-            </div>
           </nav>
         </div>
       )}
