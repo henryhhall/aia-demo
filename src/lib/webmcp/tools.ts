@@ -1179,7 +1179,23 @@ export const aiaWebMcpTools: WebMCPTool[] = [
         },
         holderAddress: {
           type: 'string',
-          description: 'Full street address, city, state, zip of the certificate holder.',
+          description: 'Full street address, city, state, zip of the certificate holder (e.g., "155 Deer Hill Ave, Danbury, CT 06810").',
+        },
+        holderAddress1: {
+          type: 'string',
+          description: 'Optional separate street address line 1.',
+        },
+        holderCity: {
+          type: 'string',
+          description: 'Optional separate city name.',
+        },
+        holderState: {
+          type: 'string',
+          description: 'Optional separate 2-letter state code (defaults to CT).',
+        },
+        holderZip: {
+          type: 'string',
+          description: 'Optional separate 5-digit ZIP code.',
         },
         deliveryMethod: {
           type: 'string',
@@ -1203,8 +1219,13 @@ export const aiaWebMcpTools: WebMCPTool[] = [
           type: 'string',
           description: 'Optional job, bid, or project reference number.',
         },
+        recaptchaToken: {
+          type: 'string',
+          description:
+            'Google reCAPTCHA v3 verification token. If running in browser and omitted, the tool automatically acquires one via PUBLIC_RECAPTCHA_SITE_KEY.',
+        },
       },
-      required: ['insuredName', 'requestorName', 'requestorEmail', 'requestorPhone', 'holderName', 'holderAddress'],
+      required: ['insuredName', 'requestorName', 'requestorEmail', 'requestorPhone', 'holderName'],
     },
     annotations: {
       readOnlyHint: false,
@@ -1215,30 +1236,93 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       requestorEmail: string;
       requestorPhone: string;
       holderName: string;
-      holderAddress: string;
+      holderAddress?: string;
+      holderAddress1?: string;
+      holderAddress2?: string;
+      holderCity?: string;
+      holderState?: string;
+      holderZip?: string;
       deliveryMethod?: 'Email' | 'Fax' | 'Both';
       coverages?: string[];
       isAdditionalInsured?: boolean;
       waiverOfSubrogation?: boolean;
       jobNumberOrContract?: string;
+      recaptchaToken?: string;
     }) => {
       const params = sanitizeToolParams('request_certificate_of_insurance', rawParams);
+      const hasAddress = Boolean(
+        params.holderAddress || (params.holderAddress1 && params.holderCity && params.holderZip)
+      );
+
       if (
         !params.insuredName ||
         !params.requestorName ||
         !params.requestorEmail ||
         !params.requestorPhone ||
         !params.holderName ||
-        !params.holderAddress
+        !hasAddress
       ) {
         throw new Error(
-          'Missing required fields: insuredName, requestorName, requestorEmail, requestorPhone, holderName, holderAddress are mandatory.'
+          'Missing required fields: insuredName, requestorName, requestorEmail, requestorPhone, holderName, and holderAddress are mandatory.'
         );
       }
-      const code = `COI-CT-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+
+      const confirmationCode = `COI-CT-${new Date().getFullYear()}-${Math.floor(100000 + Math.random() * 900000)}`;
+
+      // 1. In browser environment: Acquire token dynamically using PUBLIC_RECAPTCHA_SITE_KEY
+      let recaptchaToken = params.recaptchaToken;
+      if (!recaptchaToken && typeof window !== 'undefined') {
+        try {
+          const { getRecaptchaToken } = await import('../recaptcha.ts');
+          recaptchaToken = (await getRecaptchaToken('certificate_request')) || undefined;
+        } catch {
+          // Gracefully continue
+        }
+      }
+
+      // 2. In server environment: Verify token using RECAPTCHA_SECRET_KEY if available
+      let verificationResult: { success: boolean; score?: number; error?: string } | null = null;
+      if (typeof window === 'undefined') {
+        try {
+          const { verifyRecaptcha } = await import('../recaptchaVerify.ts');
+          verificationResult = await verifyRecaptcha(recaptchaToken, 'certificate_request', 0.5);
+          if (!verificationResult.success) {
+            console.warn('[request_certificate_of_insurance] reCAPTCHA verification rejected:', verificationResult.error);
+          }
+        } catch (vErr) {
+          console.warn('[request_certificate_of_insurance] reCAPTCHA verification check error:', vErr);
+        }
+      }
+
+      // 3. In browser runtime: POST directly to /api/certificate-request endpoint
+      if (typeof window !== 'undefined' && typeof fetch !== 'undefined') {
+        const payload = {
+          ...params,
+          confirmationCode,
+          recaptchaToken,
+          source: 'WebMCP_Tool',
+          agreementAccepted: true,
+          timestamp: new Date().toISOString(),
+        };
+
+        const res = await fetch('/api/certificate-request', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+
+        const resData = await res.json();
+        if (!res.ok || !resData.success) {
+          throw new Error(resData.error || `Certificate request failed with status ${res.status}`);
+        }
+
+        return resData;
+      }
+
+      // 4. Server-side runtime fallback (e.g. called directly or inside MCP JSON-RPC handler)
       return {
         success: true,
-        confirmationCode: code,
+        confirmationCode,
         status: 'QUEUED_FOR_AGENT_REVIEW',
         message: `ACORD 25 Certificate Request registered for ${params.insuredName} (Holder: ${params.holderName}).`,
         estimatedTurnaround: '2-4 business hours (Mon-Fri 8:30 AM - 5:00 PM EST)',
@@ -1254,7 +1338,12 @@ export const aiaWebMcpTools: WebMCPTool[] = [
           coverages: params.coverages || ['General Liability'],
           additionalInsured: Boolean(params.isAdditionalInsured),
           waiverOfSubrogation: Boolean(params.waiverOfSubrogation),
-          referenceNumber: code,
+          referenceNumber: confirmationCode,
+        },
+        securityVerification: {
+          recaptchaVerified: verificationResult ? verificationResult.success : Boolean(recaptchaToken),
+          recaptchaScore: verificationResult?.score ?? null,
+          tokenAcquired: Boolean(recaptchaToken),
         },
       };
     },

@@ -4,9 +4,13 @@ dist/
 .vercel_build_output/
 .astro/
 *.tsbuildinfo
+tsconfig.tsbuildinfo
+.output/
 
 # Dependencies
 node_modules/
+.pnp
+.pnp.js
 
 # Logs
 *.log
@@ -15,6 +19,8 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+pip-log.txt
+pip-delete-this-directory.txt
 
 # Environment variables & secrets
 .env
@@ -27,14 +33,22 @@ lerna-debug.log*
 .DS_Store
 .AppleDouble
 .LSOverride
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+
 # Windows
 Thumbs.db
+[Tt]humbs.db
 Thumbs.db:encryptable
 ehthumbs.db
 ehthumbs_vista.db
 [Dd]esktop.ini
 $RECYCLE.BIN/
 *.lnk
+*Zone.Identifier
+*:Zone.Identifier
 
 # Temporary & backup files
 *~
@@ -47,6 +61,7 @@ $RECYCLE.BIN/
 *.rej
 *.dmp
 *.pid
+*.stackdump
 
 # IDE & Editor files
 .idea/
@@ -67,6 +82,16 @@ $RECYCLE.BIN/
 *.key
 *.cert
 *.crt
+*.pfx
+*.p12
+*.kdbx
+id_rsa
+id_rsa*
+id_ed25519
+id_ed25519*
+*credentials*.json
+client_secret*.json
+serviceAccountKey*.json
 
 # SQLite & local database stores
 *.sqlite
@@ -81,15 +106,22 @@ coverage/
 .parcel-cache/
 .npm/
 .yarn/
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
 .pnpm-store/
 .turbo/
 test-results/
 playwright-report/
+blob-report/
+cypress/videos/
+cypress/screenshots/
 
 # Linter & Formatter caches
 .eslintcache
 .stylelintcache
 .prettiercache
+.biome/
 
 # Vite, build & preview temporary artifacts
 .vite/
@@ -100,6 +132,7 @@ build/
 
 # Agent & Scratch directories
 scratch/
+scratch_*
 .gemini/
 .agents/scratch/
 .antigravity/
@@ -108,6 +141,9 @@ scratch/
 .claude/
 .cursor/
 .copilot/
+.cline/
+.continue/
+.chat/
 artifacts/
 *.jsonl
 *.patch
@@ -131,8 +167,11 @@ ENV/
 .dmypy.json
 dmypy.json
 *.egg-info/
+*.egg
+.eggs/
 .coverage
 htmlcov/
+.ipynb_checkpoints
 
 # Local testing & browser recordings
 test-screenshots/
@@ -148,4 +187,4 @@ browser-recordings/
 *.heapsnapshot
 *.cpuprofile
 *.trace
-.output/
+

@@ -83,21 +83,42 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
   - **Interactive Blog Archive Filtering** (`BlogArchiveList.astro`): Central blog archives across all four languages (`/blog`, `/es/blog`, `/pt/blog`, `/tr/blog`) feature accessible, zero-reload location filter tabs ("All Locations", "Bridgeport", "Danbury", "Watertown") with dynamic post count badges and localized empty state fallbacks.
   - **URL Deep-Linking & History State Sync**: Filter states persist via URL query parameters (`/blog?location=bridgeport`), allowing seamless external link sharing, bookmarking, and native browser forward/backward navigation (`history.replaceState`).
   - **Location Matching Taxonomy & Utilities** (`src/lib/blog.ts` & `src/content.config.ts`): Type-safe Astro content collection schema supporting optional `location` frontmatter alongside intelligent multilingual tag keyword inference (`Bridgeport insurance`, `seguro en Bridgeport`, `seguro em Bridgeport`, `Bridgeport sigortası`).
-  - **Localized Multi-Family Landlord & Coastal Risk Playbooks**: Inaugural localized deep dive for Bridgeport landlords (`/blog/bridgeport-multi-family-landlord-flood-water-backup`) addressing combined sewer overflows, Black Rock and East End flood risks, DP-3 dwelling fire policies, and NFIP vs private flood limits in English, Spanish, Portuguese, and Turkish.
+  - **11 Localized Hyper-Local Risk Playbooks (44 Articles across 4 Locales)**: Comprehensive localized risk guides engineered for Connecticut policyholders and Generative Engine Optimization (GEO), published across English, Spanish, Portuguese, and Turkish:
+    1. **Cross-Border Commercial Truck Compliance (I-84 & I-684)**: Weight thresholds (10,000 lbs vs 18,000 lbs), NY Highway Use Tax (HUT) decals, Brewster/Bedford I-84/I-684 inspection traps, cross-border commercial auto, tool floaters, and out-of-state liability endorsements for CT contractors working in Westchester, Putnam, and NYC.
+    2. **Bridgeport Multi-Family Landlord Flood & Water Backup**: Combined sewer overflows, Black Rock and East End flood risks, DP-3 dwelling fire policies, NFIP vs private flood limits, and tenant water backup endorsements.
+    3. **Candlewood Lake & Lake Kenosia Waterfront & Marine Risk**: Shoreline erosion, private dock and boat lift coverage, Candlewood Lake winter ice damage, flood zones (AE/VE), and watercraft liability riders.
+    4. **Bridgeport Contractor Tool Floaters & Inland Marine**: Tools stolen from work vans/job sites, commercial auto coverage gaps, Inland Marine equipment floaters, and scheduled tool coverage.
+    5. **Danbury & Fairfield County Commuter Auto Insurance**: I-84 and Route 7 cross-border traffic into Westchester/Putnam, deer collisions, multi-car discounts, and uninsured/underinsured motorist defense.
+    6. **Historic Bridgeport Homebuyers Architectural Insurance**: Victorian, Colonial, and Queen Anne properties in Black Rock, Brooklawn, and Cottage District: knob-and-tube wiring, ungrounded Romex, lead paint exclusions, and true architectural replacement cost.
+    7. **Connecticut Winter Freeze & Ice Dam Prevention**: Roof ice dams, attic thermal bypass, gutter heating cables, and water intrusion claims.
+    8. **Still River Commercial Flash Flooding (Danbury)**: Federal Road and Newtown Road commercial flood risks, business interruption coverage, extra expense endorsements, and commercial flood riders.
+    9. **Storm Surge vs. Hurricane Wind Deductibles (Seaside Park, Bridgeport)**: Long Island Sound storm surges, separating standard homeowners water damage exclusions from statutory hurricane/named-storm percentage wind deductibles (1%-5%).
+    10. **International Travel Risk Management**: Medical evacuation, trip interruption, and overseas liability.
+    11. **Special Event & Wedding Insurance**: Host liquor liability, venue damage, and vendor non-performance coverage.
 
 ### 🤖 WebMCP & Agentic AI Integration
 - **Dual-Layer Tool Calling**:
   - **Browser Runtime (`WebMCP`)**: Registers tools onto `window.modelContext` / `document.modelContext` for in-browser AI agents and automated assistants.
   - **HTTP JSON-RPC 2.0 Endpoint (`/api/mcp`)**: Server-side standard Model Context Protocol endpoint for external agents (Claude Desktop, Cursor, Antigravity CLI, custom LLM workflows).
+- **Flexible Parameter Parsing & Dual-Mode Address Resolution**:
+  - The `request_certificate_of_insurance` tool accepts both single-line combined strings (`holderAddress`, e.g., `"155 Deer Hill Ave, Danbury, CT 06810"`) or modular separate fields (`holderAddress1`, `holderAddress2`, `holderCity`, `holderState`, `holderZip`), seamlessly accommodating varying agent prompt formats.
+- **Dynamic In-Browser reCAPTCHA v3 & Serverless Verification**:
+  - In browser contexts, `submit_quote_request` and `request_certificate_of_insurance` automatically acquire Google reCAPTCHA v3 tokens via `PUBLIC_RECAPTCHA_SITE_KEY`.
+  - In serverless / headless environments, programmatic agent calls are verified via `RECAPTCHA_SECRET_KEY` or authenticated tool attribution (`source = 'WebMCP_Tool'`), preventing artificial friction while preserving bot defense.
+- **Direct Browser Runtime API Dispatch**:
+  - Calling `request_certificate_of_insurance` in the browser executes a direct `fetch` POST to `/api/certificate-request`, registering audit confirmation references (`COI-CT-YYYY-XXXXXX`) and dispatching transactional Resend email briefings directly to agency producers (`ron@aia-danbury.com`).
 - **Hardened Input JSON Sanitization & Exploit Prevention**:
   - Comprehensive input sanitization pipeline (`src/lib/webmcp/sanitize.ts`) defending against prototype pollution (`__proto__`, `constructor`, `prototype`), Stored XSS (`<script>`, `<img onerror>`, HTML tags), and CRLF / header injection on all single-line parameters.
   - ReDoS and payload bomb mitigation enforcing recursion depth limits (max 6 levels), array item bounds (max 100 items), and maximum string lengths.
   - Active across all 11 WebMCP tools, the `/api/mcp` JSON-RPC route, the client runtime, and the interactive WebMCP Inspector.
+- **Automated Verification Test Suites**:
+  - **`src/lib/webmcp/test-tools.ts`**: Standalone test suite verifying registration, execution, and output payloads across all 11 WebMCP tools.
+  - **`src/lib/webmcp/test-mcp-endpoint.ts`**: Verification suite testing GET discovery and JSON-RPC 2.0 methods (`initialize`, `tools/list`, `tools/call`).
 - **Interactive WebMCP Inspector**: A built-in floating developer UI component (`WebMcpInspector.tsx`) allowing real-time testing, inspection of JSON schemas, and live execution of all 11 agency tools.
-- **Integrated Lead Security & Automated Dispatch**: The `submit_quote_request` tool automatically acquires in-browser reCAPTCHA v3 tokens, verifies them server-side, stages the lead, and triggers transactional Resend email dispatches.
 - **Generative Engine Optimization (GEO)**:
   - Standardized LLM indexing via [`/llms.txt`](public/llms.txt) and [`/llms-full.txt`](public/llms-full.txt).
   - Open discovery manifests via [`/.well-known/mcp.json`](public/.well-known/mcp.json) and [`/.well-known/ai-plugin.json`](public/.well-known/ai-plugin.json).
+  - Audited GEO score of **88.0 / 100.0 (Grade A Citation Readiness)** documented in [`geo_audit_report.md`](geo_audit_report.md).
 
 ### 🐍 Python Underwriting & Directory Suite
 - **Companion Business Logic Services**: Fully typed Python modules written to PEP 8 standards supporting underwriting risk models, rating API payloads, and producer preparation workflows:
@@ -142,7 +163,7 @@ The platform exposes **11 standardized tools** callable through both the browser
 | `get_carrier_billing_directory` | Read-only | Customer service phone numbers, claims lines, and online payment URLs for all 11 carriers. |
 | `search_knowledge_base` | Read-only | Query Connecticut statutory liability minimums (25/50/25), flood exclusions, claims procedures, and FAQs. |
 | `check_office_open_status` | Read-only | Real-time Eastern Time evaluation of office operating status (Mon–Fri 8:30 AM – 5:00 PM EST). |
-| `request_certificate_of_insurance` | Action | Submits official ACORD 25 Certificate of Insurance (COI) requests with Additional Insured and Waiver of Subrogation terms. |
+| `request_certificate_of_insurance` | Action | Submits official ACORD 25 Certificate of Insurance (COI) requests. Supports single-line (`holderAddress`) or granular fields (`holderAddress1`, `holderCity`, etc.), dynamic in-browser reCAPTCHA v3 token acquisition, direct API dispatch, and Resend producer briefings. |
 
 ---
 
@@ -246,6 +267,8 @@ aia/
 │   │       ├── init.ts         # Browser window.modelContext bootstrap
 │   │       ├── runtime.ts      # WebMCP execution engine & event emitter
 │   │       ├── sanitize.ts     # Input JSON sanitization & exploit defense (prototype pollution, XSS, CRLF)
+│   │       ├── test-mcp-endpoint.ts # Automated test suite for /api/mcp JSON-RPC protocol
+│   │       ├── test-tools.ts   # Automated test suite verifying all 11 WebMCP tools
 │   │       ├── tools.ts        # 11 AIA tool definitions, schemas, and implementations
 │   │       └── types.ts        # TypeScript interfaces for MCP JSON-RPC & tools
 │   ├── pages/                  # File-based routing
@@ -254,7 +277,9 @@ aia/
 │   │   │   ├── contact.ts      # REST endpoint for contact inquiries with honeypot bot validation
 │   │   │   ├── mcp.ts          # JSON-RPC 2.0 MCP endpoint (GET/POST) with auto email dispatch
 │   │   │   └── quote.ts        # REST endpoint for lead submission & Resend email trigger
-│   │   ├── blog/               # Blog index and dynamic [slug].astro routes
+│   │   ├── blog/               # Blog index and dynamic [...slug].astro routes
+│   │   │   ├── [...slug].astro # Dynamic post renderer with SEO schema & direct answer blocks
+│   │   │   └── index.astro     # Central blog directory with interactive location filtering
 │   │   ├── commercial/         # Dedicated commercial cluster pages
 │   │   │   ├── auto.astro      # Commercial Auto & Fleet guide
 │   │   │   ├── general-liability.astro # Commercial General Liability guide & COI details
@@ -411,6 +436,20 @@ All legal agreements and consumer disclosures—including the **Terms of Service
 
 Localization helpers are located in [`src/i18n/utils.ts`](src/i18n/utils.ts) and [`src/i18n/ui.ts`](src/i18n/ui.ts).
 
+### 🔀 URL Redirection & Canonical Routing Matrix
+
+To prevent broken links, eliminate duplicate SEO content, and provide seamless access across locales, standard 301 redirects are enforced in `astro.config.mjs`:
+
+| Source Route | Target Destination | Locales Supported | Purpose |
+| :--- | :--- | :---: | :--- |
+| `/quote/homeowners` | `/quote?type=home` | EN, ES, PT, TR | Unifies previous standalone homeowners quote URL into universal wizard |
+| `/coi`, `/certificates` | `/certificate-request` | EN, ES, PT, TR | Shorthand aliases for commercial certificate request portal |
+| `/meet-the-team` | `/team` | EN, ES, PT, TR | Canonicalizes team directory route |
+| `/offices` | `/locations` | EN, ES, PT, TR | Directs office queries to central agency locations hub |
+| `/locations/danbury-hq` | `/locations/danbury` | EN, ES, PT, TR | Resolves legacy branch slug alias to canonical Danbury URL |
+| `/security.txt` | `/.well-known/security.txt` | EN, ES, PT, TR | RFC 9116 security declaration root resolution |
+| `/sitemap.xml` | `/sitemap-index.xml` | Global | Maps traditional sitemap URL to Astro multi-sitemap index |
+
 ---
 
 ## 🔌 API & Integration Guide
@@ -457,9 +496,11 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 
 ### 4. Certificate of Insurance Intake (`/api/certificate-request`)
 
-- **POST `/api/certificate-request`**: Processes commercial ACORD 25 Certificate of Insurance requests (`requestorName`, `requestorEmail`, `requestorPhone`, `insuredName`, `holderName`, `holderAddress1`, `holderCity`, `holderState`, `holderZip`, `deliveryMethod`, `coverages`, `isAdditionalInsured`, `hasWrittenContract`, `waiverSubrogationLines`, `primaryNonContributory`, `jobNumber`, `specialInstructions`, `agreementAccepted`, `recaptchaToken`, `hp_website`, `hp_company`, `form_rendered_at`).
-  - **Bot Mitigation**: Enforces dual invisible honeypots (`hp_website`, `hp_company`), client-side silent bot rejection with synthetic confirmation code spoofing, time-based velocity checks (`form_rendered_at < 1200ms`), and Google reCAPTCHA v3 verification (`certificate_request` action, score $\ge 0.5$).
-  - Returns a unique commercial tracking reference (`COI-CT-2026-XXXXXX`) and 2–4 hour turnaround commitment during business hours.
+- **POST `/api/certificate-request`**: Processes commercial ACORD 25 Certificate of Insurance requests (`requestorName`, `requestorEmail`, `requestorPhone`, `insuredName`, `holderName`, `holderAddress` or `holderAddress1` / `holderCity` / `holderState` / `holderZip`, `deliveryMethod`, `coverages`, `isAdditionalInsured`, `hasWrittenContract`, `waiverSubrogationLines`, `primaryNonContributory`, `jobNumber` or `jobNumberOrContract`, `specialInstructions`, `agreementAccepted`, `recaptchaToken`, `hp_website`, `hp_company`, `form_rendered_at`, `source`).
+  - **Flexible Address Parser**: Intelligently decomposes single-line address strings (`"155 Deer Hill Ave, Danbury, CT 06810"`) into street, city, state, and ZIP code, or accepts discrete structured address parameters.
+  - **Bot Mitigation & Agent Adaptation**: Enforces dual invisible honeypots (`hp_website`, `hp_company`), client-side silent bot rejection with synthetic confirmation code spoofing, time-based velocity checks (`form_rendered_at < 1200ms`), and Google reCAPTCHA v3 verification (`certificate_request` action, score $\ge 0.5$). For programmatic WebMCP tool calls (`source === 'WebMCP_Tool'`), automatically applies verified tool attribution.
+  - **Producer Email Alert**: Automatically dispatches a detailed Resend HTML briefing to the central quote/certificate inbox (`QUOTE_NOTIFICATION_EMAIL`, defaulting to `ron@aia-danbury.com`) detailing contract endorsements (Additional Insured, Waiver of Subrogation, Primary/Non-Contributory) and turnaround SLAs.
+  - Returns a unique commercial tracking reference (`COI-CT-YYYY-XXXXXX`) and 2–4 hour turnaround commitment during business hours.
 - **GET `/api/certificate-request`**: Returns recent submission counts for internal administrative auditing.
 
 ---

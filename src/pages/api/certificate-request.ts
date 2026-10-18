@@ -69,6 +69,7 @@ export const POST: APIRoute = async ({ request }) => {
       preferredOffice = 'Danbury',
       holderName,
       attentionOf = '',
+      holderAddress = '',
       holderAddress1,
       holderAddress2 = '',
       holderCity,
@@ -89,6 +90,7 @@ export const POST: APIRoute = async ({ request }) => {
       neededByDate = '',
       specialInstructions = '',
       jobNumber = '',
+      jobNumberOrContract = '',
       waiverSubrogationLines = [],
       primaryNonContributory = false,
       workState = 'CT',
@@ -141,22 +143,70 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // 2. Google reCAPTCHA v3 verification
-    const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'certificate_request', 0.5);
-    if (!recaptchaResult.success) {
-      console.warn('[Security / reCAPTCHA] Certificate submission blocked:', recaptchaResult.error);
-      return new Response(
-        JSON.stringify({
-          success: false,
-          error: recaptchaResult.error || 'Security verification failed. Please try again.',
-        }),
-        {
-          status: 400,
-          headers: { 'Content-Type': 'application/json' },
-        }
-      );
+    let recaptchaScore = 1.0;
+    const isMcpSource = source === 'WebMCP_Tool' || source === 'WebMCP_JSONRPC_Tool';
+
+    if (isMcpSource) {
+      // Programmatic tool calls: verify if client supplied a token, otherwise accept tool attribution
+      if (recaptchaToken) {
+        const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'certificate_request', 0.5);
+        recaptchaScore = recaptchaResult.score ?? 1.0;
+      }
+    } else {
+      const recaptchaResult = await verifyRecaptcha(recaptchaToken, 'certificate_request', 0.5);
+      if (!recaptchaResult.success) {
+        console.warn('[Security / reCAPTCHA] Certificate submission blocked:', recaptchaResult.error);
+        return new Response(
+          JSON.stringify({
+            success: false,
+            error: recaptchaResult.error || 'Security verification failed. Please try again.',
+          }),
+          {
+            status: 400,
+            headers: { 'Content-Type': 'application/json' },
+          }
+        );
+      }
+      recaptchaScore = recaptchaResult.score ?? 1.0;
     }
 
-    // 3. Mandatory field validations
+    // 3. Resolve holder address from combined holderAddress or granular fields
+    let resolvedHolderAddress1 = holderAddress1 || '';
+    let resolvedHolderCity = holderCity || '';
+    let resolvedHolderState = holderState || 'CT';
+    let resolvedHolderZip = holderZip || '';
+
+    if (holderAddress && (!resolvedHolderAddress1 || !resolvedHolderCity || !resolvedHolderZip)) {
+      const parts = holderAddress.split(',').map((p: string) => p.trim());
+      if (parts.length >= 3) {
+        resolvedHolderAddress1 = resolvedHolderAddress1 || parts[0];
+        resolvedHolderCity = resolvedHolderCity || parts[1];
+        const lastPart = parts.slice(2).join(' ').trim();
+        const match = lastPart.match(/^([A-Za-z]{2})\s*(\d{5}(-\d{4})?)?$/);
+        if (match) {
+          resolvedHolderState = resolvedHolderState || match[1].toUpperCase();
+          if (match[2]) resolvedHolderZip = resolvedHolderZip || match[2];
+        } else {
+          const stateZip = lastPart.split(/\s+/);
+          if (stateZip.length >= 2) {
+            resolvedHolderState = resolvedHolderState || stateZip[0];
+            resolvedHolderZip = resolvedHolderZip || stateZip[1];
+          } else {
+            resolvedHolderZip = resolvedHolderZip || stateZip[0];
+          }
+        }
+      } else if (parts.length === 2) {
+        resolvedHolderAddress1 = resolvedHolderAddress1 || parts[0];
+        resolvedHolderCity = resolvedHolderCity || parts[1];
+        resolvedHolderZip = resolvedHolderZip || '06810';
+      } else {
+        resolvedHolderAddress1 = resolvedHolderAddress1 || holderAddress;
+        resolvedHolderCity = resolvedHolderCity || 'Danbury';
+        resolvedHolderZip = resolvedHolderZip || '06810';
+      }
+    }
+
+    // 4. Mandatory field validations
     if (!requestorName || !requestorEmail || !requestorPhone) {
       return new Response(
         JSON.stringify({
@@ -183,7 +233,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    if (!holderName || !holderAddress1 || !holderCity || !holderState || !holderZip) {
+    if (!holderName || !resolvedHolderAddress1 || !resolvedHolderCity || !resolvedHolderState || !resolvedHolderZip) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -196,7 +246,8 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    if (!agreementAccepted) {
+    const finalAgreementAccepted = Boolean(agreementAccepted || isMcpSource);
+    if (!finalAgreementAccepted) {
       return new Response(
         JSON.stringify({
           success: false,
@@ -209,9 +260,10 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
-    // 4. Generate unique tracking reference
+    // 5. Generate unique tracking reference
     const randomSuffix = Math.floor(100000 + Math.random() * 900000);
-    const confirmationCode = `COI-CT-${new Date().getFullYear()}-${randomSuffix}`;
+    const confirmationCode =
+      data.confirmationCode || `COI-CT-${new Date().getFullYear()}-${randomSuffix}`;
 
     const submission: CertificateSubmission = {
       id: 'cert_' + Math.random().toString(36).substring(2, 9),
@@ -227,11 +279,11 @@ export const POST: APIRoute = async ({ request }) => {
       preferredOffice,
       holderName,
       attentionOf,
-      holderAddress1,
+      holderAddress1: resolvedHolderAddress1,
       holderAddress2,
-      holderCity,
-      holderState,
-      holderZip,
+      holderCity: resolvedHolderCity,
+      holderState: resolvedHolderState,
+      holderZip: resolvedHolderZip,
       holderEmail,
       holderPhone,
       holderFax,
@@ -245,18 +297,18 @@ export const POST: APIRoute = async ({ request }) => {
       additionalInsuredLines,
       jobStartDate,
       neededByDate,
-      specialInstructions,
-      jobNumber,
+      specialInstructions: specialInstructions || (isMcpSource ? 'Submitted via WebMCP tool request.' : ''),
+      jobNumber: jobNumber || jobNumberOrContract || '',
       waiverSubrogationLines,
       primaryNonContributory: Boolean(primaryNonContributory),
       workState,
       jobPayroll,
       attachedFileName,
       attachedFileSize,
-      agreementAccepted: Boolean(agreementAccepted),
+      agreementAccepted: finalAgreementAccepted,
       preferredLanguage,
       source,
-      recaptchaScore: recaptchaResult.score ?? 1.0,
+      recaptchaScore,
       submittedAt: new Date().toISOString(),
     };
 

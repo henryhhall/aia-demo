@@ -282,12 +282,18 @@ export interface SanitizedCertificateRequestParams {
   requestorEmail: string;
   requestorPhone: string;
   holderName: string;
-  holderAddress: string;
+  holderAddress?: string;
+  holderAddress1?: string;
+  holderAddress2?: string;
+  holderCity?: string;
+  holderState?: string;
+  holderZip?: string;
   deliveryMethod?: 'Email' | 'Fax' | 'Both';
   coverages?: string[];
   isAdditionalInsured?: boolean;
   waiverOfSubrogation?: boolean;
   jobNumberOrContract?: string;
+  recaptchaToken?: string;
 }
 
 /**
@@ -495,11 +501,48 @@ export function sanitizeToolParams(toolName: string, rawParams: any): any {
         allowMultiline: false,
         stripHtml: true,
       });
-      const holderAddress = sanitizeString(safeObj.holderAddress, {
-        maxLength: 250,
-        allowMultiline: true,
-        stripHtml: true,
-      });
+      const holderAddress = safeObj.holderAddress
+        ? sanitizeString(safeObj.holderAddress, {
+            maxLength: 250,
+            allowMultiline: true,
+            stripHtml: true,
+          })
+        : undefined;
+      const holderAddress1 = safeObj.holderAddress1
+        ? sanitizeString(safeObj.holderAddress1, {
+            maxLength: 150,
+            allowMultiline: false,
+            stripHtml: true,
+          })
+        : undefined;
+      const holderAddress2 = safeObj.holderAddress2
+        ? sanitizeString(safeObj.holderAddress2, {
+            maxLength: 100,
+            allowMultiline: false,
+            stripHtml: true,
+          })
+        : undefined;
+      const holderCity = safeObj.holderCity
+        ? sanitizeString(safeObj.holderCity, {
+            maxLength: 80,
+            allowMultiline: false,
+            stripHtml: true,
+          })
+        : undefined;
+      const holderState = safeObj.holderState
+        ? sanitizeString(safeObj.holderState, {
+            maxLength: 30,
+            allowMultiline: false,
+            stripHtml: true,
+          })
+        : undefined;
+      const holderZip = safeObj.holderZip
+        ? sanitizeString(safeObj.holderZip, {
+            maxLength: 20,
+            allowMultiline: false,
+            stripHtml: true,
+          })
+        : undefined;
 
       let deliveryMethod: 'Email' | 'Fax' | 'Both' = 'Email';
       if (safeObj.deliveryMethod) {
@@ -519,6 +562,10 @@ export function sanitizeToolParams(toolName: string, rawParams: any): any {
         ? sanitizeString(safeObj.jobNumberOrContract, { maxLength: 80, allowMultiline: false })
         : undefined;
 
+      const recaptchaToken = safeObj.recaptchaToken
+        ? sanitizeString(safeObj.recaptchaToken, { maxLength: 2048, allowMultiline: false })
+        : undefined;
+
       return {
         insuredName,
         requestorName,
@@ -526,11 +573,17 @@ export function sanitizeToolParams(toolName: string, rawParams: any): any {
         requestorPhone,
         holderName,
         holderAddress,
+        holderAddress1,
+        holderAddress2,
+        holderCity,
+        holderState,
+        holderZip,
         deliveryMethod,
         coverages: coverages.length > 0 ? coverages : ['General Liability'],
         isAdditionalInsured,
         waiverOfSubrogation,
         jobNumberOrContract,
+        recaptchaToken,
       } as SanitizedCertificateRequestParams;
     }
 
