@@ -3,12 +3,12 @@ import type { LocationId } from '../data/locations';
 import { getAllLocationIds } from '../data/locations';
 
 /**
- * Known location mappings and aliases for tag/text matching.
+ * Known location mappings and keywords for tag/location matching.
  */
 const LOCATION_KEYWORDS: Record<LocationId, string[]> = {
-  bridgeport: ['bridgeport', 'seaside park', 'black rock'],
-  danbury: ['danbury', 'candlewood', 'kenosia', 'still river', 'i-84', 'route 7'],
-  watertown: ['watertown', 'oakville', 'steele brook'],
+  bridgeport: ['bridgeport'],
+  danbury: ['danbury'],
+  watertown: ['watertown'],
 };
 
 interface PostLocationInput {
@@ -23,9 +23,7 @@ interface PostLocationInput {
 /**
  * Returns all LocationIds associated with a blog post, checked via:
  * 1. Explicit `location` field in frontmatter
- * 2. Tags containing location keywords
- * 3. `areaServed` cities matching a branch office city
- * 4. Post slug/id containing a branch location identifier
+ * 2. Tags containing location keywords (e.g. Danbury, Watertown, Bridgeport)
  */
 export function getPostLocations(post: PostLocationInput): LocationId[] {
   const matched = new Set<LocationId>();
@@ -41,34 +39,12 @@ export function getPostLocations(post: PostLocationInput): LocationId[] {
     }
   }
 
-  // 2. Check tags
+  // 2. Check tags containing location name
   const tags = post.data.tags || [];
   for (const tag of tags) {
     const tagLower = tag.toLowerCase();
     for (const id of allIds) {
       if (LOCATION_KEYWORDS[id].some((kw) => tagLower.includes(kw))) {
-        matched.add(id);
-      }
-    }
-  }
-
-  // 3. Check areaServed frontmatter if present
-  const areaServed = post.data.areaServed || [];
-  for (const place of areaServed) {
-    if (!place?.name) continue;
-    const placeLower = place.name.trim().toLowerCase();
-    for (const id of allIds) {
-      if (placeLower === id || LOCATION_KEYWORDS[id].some((kw) => placeLower.includes(kw))) {
-        matched.add(id);
-      }
-    }
-  }
-
-  // 4. Check post slug/id if present
-  if (post.id) {
-    const slugLower = post.id.toLowerCase();
-    for (const id of allIds) {
-      if (slugLower.includes(id)) {
         matched.add(id);
       }
     }
