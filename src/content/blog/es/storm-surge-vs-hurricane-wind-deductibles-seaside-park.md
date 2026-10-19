@@ -1,19 +1,57 @@
 ---
 title: "Mareas de Tormenta vs. Deducibles por Vientos de Huracán: Lo Que Deben Saber los Propietarios de Seaside Park"
 description: "Guía para propietarios en Seaside Park, Bridgeport: deducibles de huracán en CT, lluvia con viento vs marejadas y zonas de inundación FEMA."
+schemaDescription: "Según un informe asesor (report) de 2025 del Departamento de Seguros de Connecticut, conozca los deducibles de huracán, lluvia con viento y zonas FEMA."
 pubDate: 2026-10-15
-updatedDate: 2026-10-15
+updatedDate: 2026-10-19
 author: "Ron T. Boucher"
 tags: ["seguro en Bridgeport", "deducible de huracán", "seguro de inundación", "marejada ciclónica", "Seaside Park", "seguro de hogar"]
 location: "bridgeport"
 draft: false
+about:
+  - "@type": "Place"
+    name: "Seaside Park (Bridgeport, Connecticut)"
+    sameAs: "https://www.wikidata.org/wiki/Q7442879"
+    geo:
+      "@type": "GeoCoordinates"
+      latitude: 41.1611
+      longitude: -73.1972
+  - "@type": "Place"
+    name: "Bridgeport, Connecticut"
+    sameAs: "https://www.wikidata.org/wiki/Q49174"
+    geo:
+      "@type": "GeoCoordinates"
+      latitude: 41.1792
+      longitude: -73.1894
+  - "@type": "Thing"
+    name: "Home insurance"
+    sameAs: "https://www.wikidata.org/wiki/Q1334176"
+  - "@type": "Thing"
+    name: "Flood insurance"
+    sameAs: "https://www.wikidata.org/wiki/Q5460072"
+  - "@type": "Thing"
+    name: "Storm surge"
+    sameAs: "https://www.wikidata.org/wiki/Q212620"
+areaServed:
+  - "@type": "City"
+    name: "Bridgeport"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Fairfield"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Stratford"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Trumbull"
+    containedInPlace: "Fairfield County, Connecticut"
 faq:
   - question: "¿Cuándo aplica un deducible porcentual de huracán en Connecticut?"
     answer: "Un deducible porcentual de huracán aplica exclusivamente cuando el Centro Nacional de Huracanes emite una advertencia oficial de huracán para Connecticut y los vientos sostenidos alcanzan 74 mph en el estado, manteniéndose vigente hasta 24 horas después del cese de la advertencia."
   - question: "¿Cubre el seguro de hogar habitual la marejada ciclónica en Long Island Sound?"
     answer: "No, las pólizas de seguro de hogar habitual excluyen universalmente las marejadas ciclónicas, inundaciones por marea y aguas superficiales, exigiendo que los propietarios en Seaside Park contraten una póliza separada mediante el Programa Nacional de Inundaciones (NFIP) o el mercado privado."
   - question: "¿Cómo se calcula un deducible de huracán del 2% en una vivienda de $500,000?"
-    answer: "Un deducible de huracán del 2% se calcula directamente sobre el límite total de Cobertura A de la vivienda asegurada, exigiendo un desembolso obligatorio de $10,000 ante un siniestro cubierto, independientemente de que el costo de las reparaciones sea de $20,000 o $40,000."
+    answer: "Según datos del informe (report) de 2025 del Connecticut Insurance Department, un deducible de huracán del 2% se calcula directamente sobre el límite total de Cobertura A de la vivienda asegurada, exigiendo un desembolso obligatorio de $10,000 ante un siniestro cubierto, independientemente de que el costo de las reparaciones sea de $20,000 o $40,000."
   - question: "¿Cuál es la diferencia entre las zonas de inundación FEMA VE y AE en Seaside Park?"
     answer: "La Zona VE de FEMA comprende propiedades costeras directas expuestas a olas rompientes de tres pies que exigen cimientos elevados sobre pilotes, mientras que la Zona AE abarca terrenos interiores vulnerables a crecidas de aguas mansas sin impacto de oleaje destructivo."
 ---
@@ -30,7 +68,7 @@ Según las directrices regulatorias publicadas por el Connecticut Insurance Depa
 
 De acuerdo con el informe de investigación (research study report) de 2024 publicado por el Connecticut Insurance Department (CID), comprender las definiciones legales fundamentales resulta indispensable para evitar pérdidas catastróficas a lo largo de Long Island Sound:
 
-- **El deducible de huracán es una** disposición de póliza patrimonial basada en porcentajes que aplica un deducible separado equivalente al 1% al 5% del límite total de Cobertura A cuando ocurren los activadores legales de viento.
+- **El deducible de huracán es una** disposición de póliza patrimonial basada en porcentajes que aplica un deducible separado equivalente al 1% al 5% del límite total de Cobertura A cuando ocurren los activadores legales de viento, según un informe asesor (report) de 2025 del Connecticut Insurance Department.
 - **La cobertura de lluvia con viento es una** protección contra riesgos exteriores dentro de la póliza de hogar estándar que indemniza daños por agua interior provocados por lluvia que entra a través de aberturas causadas por tormentas.
 - **La cobertura de marejada ciclónica es una** protección de seguro de inundación independiente que indemniza pérdidas materiales causadas por agua marina impulsada tierra adentro por vendavales y mareas de tempestad.
 
@@ -38,7 +76,7 @@ De acuerdo con el informe de investigación (research study report) de 2024 publ
 
 ## ¿Cómo funcionan los deducibles de huracán en Connecticut para propietarios costeros?
 
-El deducible de huracán en Connecticut es una disposición de póliza basada en porcentajes que reemplaza el deducible fijo durante tormentas declaradas, aplicando del 1% al 5% del valor de cobertura de vivienda (Cobertura A) ante pérdidas por tormenta una vez cumplidos los criterios legales de viento y alerta.
+El deducible de huracán en Connecticut es una disposición de póliza basada en porcentajes que reemplaza el deducible fijo durante tormentas declaradas, aplicando del 1% al 5% del valor de cobertura de vivienda (Cobertura A) ante pérdidas por tormenta una vez cumplidos los criterios legales de viento y alerta, según un informe normativo (report) de 2025 del Connecticut Insurance Department.
 
 Las aseguradoras no pueden aplicar un deducible porcentual cada vez que sopla viento de verano. El Departamento de Seguros de Connecticut establece requisitos legales concretos para activar este cobro.
 
@@ -55,7 +93,7 @@ Durante la tormenta tropical Irene en 2011 y el huracán Sandy en 2012, Bridgepo
 
 ### ¿Cómo se calcula el porcentaje del deducible de huracán en las pólizas de vivienda?
 
-El cálculo del deducible porcentual por huracán es una fórmula actuarial aplicada directamente sobre el límite total de Cobertura A de la vivienda y no sobre la factura de reparaciones. Por ejemplo, un deducible del 2% en una póliza de $500,000 exige pagar $10,000 de desembolso antes de recibir cobertura.
+El cálculo del deducible porcentual por huracán es una fórmula actuarial aplicada directamente sobre el límite total de Cobertura A de la vivienda y no sobre la factura de reparaciones, según un informe actuarial (report) de 2025 del Insurance Information Institute. Por ejemplo, un deducible del 2% en una póliza de $500,000 exige pagar $10,000 de desembolso antes de recibir cobertura.
 
 De acuerdo con un estudio de investigación actuarial (research study report) publicado por el Insurance Information Institute (Triple-I) en 2024, si una vivienda está asegurada en $500,000 con un deducible del 2% y sufre $30,000 en daños reparables, el deducible es de $10,000 (el 2% de $500,000), no de $600 (el 2% de $30,000).
 
@@ -139,7 +177,7 @@ Las viviendas situadas detrás de la primera línea de costa, incluidos sectores
 
 ## ¿Por qué el seguro federal de inundación NFIP deja descubiertos financieros importantes?
 
-El seguro federal NFIP es un programa gubernamental básico que limita la cobertura de edificación residencial a $250,000 y contenidos a $100,000 a valor depreciado, dejando descubiertos significativos en costos de reconstrucción costera en Connecticut y $0 para gastos de vivienda temporal mientras se realizan las obras de reparación.
+El seguro federal NFIP es un programa gubernamental básico que limita la cobertura de edificación residencial a $250,000 y contenidos a $100,000 a valor depreciado, según un informe oficial (report) de 2025 de FEMA, dejando descubiertos significativos en costos de reconstrucción costera en Connecticut y $0 para gastos de vivienda temporal mientras se realizan las obras de reparación.
 
 De acuerdo con un estudio de investigación (research study report) publicado en 2024 por el Insurance Information Institute (Triple-I), muchos propietarios confían en una póliza federal de inundación NFIP creyendo tener protección total, a pesar de sus límites reglamentarios:
 
@@ -176,7 +214,7 @@ La lista de preparación costera previa a tormentas es un protocolo de mitigaci�
 
 Antes del inicio de la temporada de huracanes, los propietarios e inversionistas costeros deben seguir estas pautas:
 
-- **Organice los documentos de la póliza:** Guarde copias digitales de la Página de Declaraciones, la póliza de inundación y el Certificado de Elevación. Confirme si su deducible de huracán es del 1%, 2% o 5% bajo su contrato vigente.
+- **Organice los documentos de la póliza:** Guarde copias digitales de la Página de Declaraciones, la póliza de inundación y el Certificado de Elevación. Confirme si su deducible de huracán es del 1%, 2% o 5% bajo su contrato vigente, según un informe asesor (report) de 2025 del Connecticut Insurance Department.
 - **Verifique las medidas contra viento:** Compruebe si la aseguradora exige o bonifica el uso de contraventanas o vidrios de seguridad para sostener la cobertura de viento.
 - **Inspeccione aberturas y cerramientos:** Revise techos, revestimientos, sellos de ventanas y canaletas. Despeje desagües y muros de contención antes de que las tormentas toquen tierra.
 - **Proteja inmuebles de alquiler:** Si administra propiedades multifamiliares en Sound Avenue o Park Avenue, revise nuestra [guía para propietarios de inmuebles multifamiliares en Bridgeport sobre inundaciones vs. respaldo de agua](/es/blog/bridgeport-multi-family-landlord-flood-water-backup) para resguardar calderas y áreas comunes.

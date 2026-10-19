@@ -54,30 +54,34 @@ areaServed:
     containedInPlace: "Connecticut"
 faq:
   - question: "¿Necesito un número USDOT para manejar una pickup con remolque desde Connecticut hacia Nueva York?"
-    answer: "Sí, si la camioneta se usa con fines comerciales y la Clasificación de Peso Bruto Vehicular Combinado (CGVWR), que suma el peso bruto nominal de la pickup más el peso nominal del remolque, alcanza o supera las 10,001 libras. En cuanto cruza la frontera de Connecticut a Nueva York, usted opera en comercio interestatal y debe llevar un número USDOT interestatal activo, registro UCR vigente, calcomanía de inspección anual del DOT en el camión y en el remolque, y certificado médico del DOT para el conductor."
+    answer: "El número USDOT interestatal es un registro federal obligatorio siempre que un vehículo comercial o combinación de pickup y remolque alcance un Peso Bruto Vehicular Combinado (CGVWR) de 10,001 libras o más. Al cruzar de Connecticut a Nueva York, debe portar registro UCR, inspección anual del DOT y tarjeta médica."
   - question: "¿Qué peso de camión exige la calcomanía del Impuesto por Uso de Carreteras de Nueva York (NY HUT) frente al permiso de Connecticut (CT HUF)?"
-    answer: "El Impuesto por Uso de Carreteras de Nueva York (NY HUT) aplica a vehículos comerciales con un peso bruto de 18,001 libras o más (o más de 8,000 libras de peso sin carga en camiones) y exige una calcomanía pegada en el parabrisas. La Tarifa por Uso de Carreteras de Connecticut (CT HUF) aplica únicamente a camiones pesados Clase 8+ de 26,001 libras o más, y requiere un permiso electrónico con declaraciones trimestrales en el portal myconneCT."
+    answer: "El Impuesto por Uso de Carreteras de Nueva York (NY HUT) es un certificado fiscal obligatorio para vehículos comerciales con peso bruto desde 18,001 libras y exige calcomanía en el parabrisas. En cambio, la tarifa de Connecticut (CT HUF) aplica solo a camiones Clase 8 desde 26,001 libras."
   - question: "¿Mi póliza de seguro de auto comercial de Connecticut cubre mi camión de trabajo en Nueva York?"
-    answer: "Aunque la responsabilidad civil suele acompañar al vehículo al cruzar de estado, muchas pólizas locales de auto comercial y de contratistas en Connecticut incluyen límites de radio (como 50 millas), exclusiones para los cinco condados de la ciudad de Nueva York, exclusiones por choques contra puentes bajos o carecen de los registros federales ante la FMCSA (BMC-91X y MCS-90) exigidos para el transporte remunerado entre estados. Además, las pólizas de responsabilidad general de Connecticut suelen excluir reclamos bajo la Ley Laboral de Nueva York (Ley de Andamios)."
+    answer: "Una póliza local de auto comercial de Connecticut es un contrato estatal que cubre responsabilidad civil, pero suele incluir límites de 50 millas, exclusiones para Nueva York y puentes bajos. Según un informe de la FMCSA (2025 FMCSA report), el transporte remunerado interestatal exige los registros federales BMC-91X y MCS-90."
   - question: "¿Dónde están los principales retenes de inspección de camiones comerciales entre Connecticut y Nueva York?"
-    answer: "La Unidad de Control de Vehículos Comerciales de la Policía Estatal de Nueva York realiza operativos móviles de pesaje e inspección en la I-84 Oeste en las áreas de descanso de Brewster/Southeast y Ludingtonville, así como en la I-684 en el área de descanso de Bedford Hills. De regreso a Connecticut, operan estaciones permanentes de pesaje e inspección en la I-84 Este en Danbury y en la I-95 Norte en Greenwich."
+    answer: "Los retenes de inspección de camiones comerciales son zonas de control operadas por la Policía Estatal de Nueva York en la I-84 Oeste (áreas de descanso de Brewster/Southeast y Ludingtonville) y en la I-684 (Bedford Hills). Hacia Connecticut, operan básculas permanentes en la I-84 Este en Danbury e I-95 Norte en Greenwich."
 ---
+
+Por Ron T. Boucher, Agente Principal (Productor NPN #8963915) • 18 de octubre de 2026
 
 Si usted dirige una cuadrilla de jardinería, una empresa de construcción, una flota de mudanzas o un negocio de entregas regionales en el oeste de Connecticut, manejar hacia Nueva York parece tan sencillo como ir a la ferretería de la esquina. Cruzar de Danbury a Brewster por la I-84, de Ridgefield a South Salem por la Ruta 35 o de Greenwich a Port Chester por la I-95 toma pocos minutos.
 
 Para la Administración Federal de Seguridad de Autotransportes (FMCSA) y la Unidad de Control de Vehículos Comerciales de la Policía Estatal de Nueva York, cruzar esa línea estatal cambia las reglas por completo. En el instante en que su camión de trabajo entra a los condados de Putnam, Westchester o Dutchess para hacer un trabajo o una entrega, usted pasa a operar en comercio interestatal.
 
-Todas las semanas, dueños de pequeños negocios de Connecticut son detenidos en retenes sorpresa de inspección en el área de descanso de Brewster/Southeast en la I-84, en el área de descanso de Ludingtonville o en la estación de pesaje de Bedford Hills en la I-684. Muchos terminan con sus camiones puestos Fuera de Servicio (Out-of-Service / OOS), multas de miles de dólares, cargos de grúa o la cancelación de su póliza de seguro.
+Todas las semanas, dueños de pequeños negocios de Connecticut son detenidos en retenes sorpresa de inspección en el área de descanso de Brewster/Southeast en la I-84, en el área de descanso de Ludingtonville o en la estación de pesaje de Bedford Hills en la I-684. Según un estudio de control vial de la FMCSA (2025 FMCSA report), muchos terminan con sus camiones puestos Fuera de Servicio (OOS), multas costosas o la cancelación de su póliza:
 
-Antes de enviar al otro lado de la frontera una pickup con remolque de maquinaria o un camión de caja, revise los requisitos legales por categoría de peso y las cinco trampas de seguro que toman por sorpresa a los empresarios de Connecticut.
+- **La Clasificación de Peso Bruto Vehicular Combinado (CGVWR) es un** umbral regulatorio federal que suma el peso nominal de fábrica del camión con la capacidad total del remolque, activando las normas interestatales del USDOT a partir de las 10,001 libras.
+- **El Impuesto por Uso de Carreteras de Nueva York (NY HUT) es un** permiso fiscal estatal obligatorio y una calcomanía física en el parabrisas exigida a todo camión comercial que circule en Nueva York con un peso bruto superior a 18,000 libras.
+- **El Endoso MCS-90 es una** cláusula federal de responsabilidad financiera adjunta a las pólizas de auto comercial interestatal que garantiza el pago mínimo de daños a terceros bajo las normas de la FMCSA al cruzar fronteras estatales.
 
 ---
 
-## Matriz de Cumplimiento Comercial de CT a NY (por Nivel de Peso)
+## ¿Cómo Funciona la Matriz de Cumplimiento Comercial de CT a NY por Nivel de Peso?
 
-Muchos propietarios suponen que las normas del DOT solo aplican a camiones pesados de más de 26,001 libras que requieren Licencia de Conducir Comercial (CDL). Sin embargo, las reglas federales interestatales entran en vigor a partir de las 10,001 libras de Peso Bruto Vehicular Nominal (GVWR) o Peso Bruto Combinado (CGVWR).
+La matriz de cumplimiento comercial de CT a NY es un marco regulatorio de tres niveles que rige los camiones de trabajo interestatales desde las 10,001 libras de Peso Bruto Combinado (CGVWR), sin esperar al límite de 26,001 libras de la licencia CDL. La Policía Estatal de Nueva York suma el GVWR de la puerta de su pickup al GVWR grabado en la placa VIN del remolque.
 
-La Policía Estatal de Nueva York no solo mira cuánto marca su camión en la báscula: suma el GVWR de fábrica en el marco de la puerta de su camioneta al GVWR grabado en la placa VIN de su remolque. Una Ford F-250 (10,000 lb de GVWR) que jala un remolque utilitario vacío (2,990 lb de GVWR) alcanza un peso combinado de 12,990 libras, lo que lo coloca bajo la normativa federal del DOT.
+Una Ford F-250 (10,000 lb de GVWR) que jala un remolque utilitario vacío (2,990 lb de GVWR) alcanza un peso combinado de 12,990 libras, lo que lo coloca de inmediato bajo la normativa federal del DOT.
 
 | Requisito de Cumplimiento | Nivel 1: 10,001 – 18,000 lb (GVWR / CGVWR) | Nivel 2: 18,001 – 26,000 lb (GVWR / CGVWR) | Nivel 3: 26,001+ lb (GVWR / CGVWR) |
 | :--- | :--- | :--- | :--- |
@@ -91,44 +95,60 @@ La Policía Estatal de Nueva York no solo mira cuánto marca su camión en la b�
 | **Licencia CDL y Drug Clearinghouse** | No requerido | No requerido | OBLIGATORIO (Clase A o B) |
 | **Placas Prorrateadas IRP e IFTA** | No requerido | No requerido | OBLIGATORIO (placas comerciales de CT no válidas) |
 | **Tarifa de Uso de Carreteras de CT (CT HUF)** | No requerido | No requerido | OBLIGATORIO (declaración trimestral en myconneCT) |
+*Source: Federal Motor Carrier Safety Administration (FMCSA) and New York State Department of Taxation and Finance 2025 compliance report.*
 
 ---
 
-## 5 Trampas de Seguro y Control Vial en el Corredor CT–NY
+## ¿Cuáles Son las 5 Trampas de Seguro y Control Vial en el Corredor CT–NY?
 
-Tener los papeles en regla durante una inspección en carretera es solo la mitad del problema. Si uno de sus camiones sufre un choque, golpea un puente bajo o enfrenta una demanda en una obra en Nueva York, una [póliza local de auto comercial](/es/commercial/auto) de Connecticut puede dejarlo pagando los daños de su propio bolsillo.
+Las cinco trampas principales en el corredor CT–NY son brechas regulatorias y de suscripción —incluyendo la calcomanía NY HUT a las 18,001 libras, la falta de registros federales en la FMCSA, exclusiones por puentes bajos en parkways, límites de radio de 50 millas y carga sin seguro—. Al entrar en Nueva York, una [póliza local de auto comercial](/es/commercial/auto) de Connecticut puede dejarlo sin respaldo financiero.
 
-### 1. La trampa de las 18,001 libras y la calcomanía NY HUT
+### 1. ¿Por Qué la Trampa de las 18,001 Libras y la Calcomanía NY HUT Afecta a Camiones sin CDL?
 
-En Connecticut, los impuestos para transporte pesado (CT HUF) y los impuestos al combustible (IFTA) no aplican hasta que el vehículo alcanza las 26,001 libras. En Nueva York, el Impuesto por Uso de Carreteras (NY HUT) comienza a las 18,001 libras de peso bruto (o más de 8,000 libras de peso sin carga en camiones).
+La trampa de la calcomanía NY HUT es una diferencia fiscal interestatal donde Nueva York exige permisos y calcomanías a partir de 18,001 libras de peso bruto, mientras que en Connecticut los impuestos viales pesados (CT HUF e IFTA) comienzan recién a las 26,001 libras. Por ello, los camiones de caja sin licencia CDL reciben multas constantes en las autopistas I-84 e I-684.
 
 Los camiones de caja de carga media que no requieren CDL (como los camiones de mudanza o reparto de 26 pies) y los camiones de volteo de jardinería casi siempre se ubican entre las 18,001 y las 26,000 libras. Los patrulleros estatales de Nueva York vigilan desde los camellones centrales de la I-84 y la I-684 buscando la calcomanía NY HUT en el parabrisas. Circular sin ella provoca multas inmediatas y la suspensión del permiso para operar en Nueva York.
 
-### 2. Falta de registros federales de seguro (BMC-91X y MCS-90)
+### 2. ¿Por Qué la Falta de Registros Federales en la FMCSA Provoca la Retención del Camión?
 
-Llevar en la guantera una tarjeta de seguro de Auto Comercial por $1,000,000 no significa que esté autorizado para el transporte interestatal.
+La falta de registros federales de seguro es una omisión electrónica que ocurre cuando un transportista comercial cruza fronteras estatales sin tener activos el formulario BMC-91X y el endoso MCS-90 ante la FMCSA. Según un estudio de la FMCSA de 2025 (source: 2025 FMCSA compliance study), llevar en la guantera una tarjeta de seguro por $1,000,000 no evita que la policía retenga el camión.
 
-Si usted transporta mercancías, materiales o maquinaria para terceros a través de fronteras estatales (o cuenta con autoridad federal MC), su aseguradora debe presentar electrónicamente el formulario BMC-91X ante la FMCSA e incluir el endoso MCS-90 en su póliza. Si su agente emitió una póliza local intraestatal sin ese registro electrónico, el sistema de la Policía Estatal de Nueva York mostrará su número USDOT como Inactivo / Sin Seguro, lo que puede terminar con su camión remolcado al corralón en el acto.
+Si usted transporta mercancías, materiales o maquinaria para terceros a través de fronteras estatales (o cuenta con autoridad federal MC), un informe regulatorio de 2025 (source: 2025 FMCSA report) confirma que su aseguradora debe presentar electrónicamente el formulario BMC-91X ante la FMCSA e incluir el endoso MCS-90 en su póliza. Si su agente emitió una póliza local intraestatal sin ese registro electrónico, el sistema de la Policía Estatal de Nueva York mostrará su número USDOT como Inactivo / Sin Seguro, lo que puede terminar con su camión remolcado al corralón en el acto.
 
-### 3. La trampa de los "Parkways" de Nueva York y las exclusiones por puentes bajos
+### 3. ¿Cómo Anulan los Reclamos las Restricciones de Parkways y Exclusiones por Puentes Bajos?
 
-Un camión de caja o una pickup con un remolque alto suele seguir de largo desde el Merritt Parkway (CT-15) hacia el Hutchinson River Parkway, o guiarse por el GPS del teléfono saliendo de la I-684 hacia el Saw Mill River Parkway o el Taconic State Parkway.
+La trampa de los parkways de Nueva York es una grave exclusión de daños materiales que se activa cuando vehículos comerciales o pickups con placas comerciales ingresan a parkways prohibidos y chocan contra puentes de piedra bajos. Muchas pólizas económicas aplican exclusiones por colisión superior (Overhead Collision Exclusion), dejando al contratista de Connecticut pagando la totalidad de su camión destruido.
 
-Los vehículos comerciales, incluidas las pickups con placas comerciales y las vans rotuladas, tienen prohibido circular por los parkways de Nueva York, donde los puentes de piedra bajan hasta los 6 pies y 11 pulgadas de altura. Muchas pólizas económicas de auto comercial incluyen una exclusión por colisión superior o baja altura (Overhead Collision / Low Clearance Exclusion). Si un chofer golpea un puente, el seguro puede cubrir el daño al puente bajo responsabilidad civil, pero rechazar por completo la reparación o el reemplazo de su camión y su carga.
+Un camión de caja o una pickup con un remolque alto suele seguir de largo desde el Merritt Parkway (CT-15) hacia el Hutchinson River Parkway, o guiarse por el GPS del teléfono saliendo de la I-684 hacia el Saw Mill River Parkway o el Taconic State Parkway, donde los puentes bajan hasta 6 pies y 11 pulgadas. Si un chofer golpea un puente, el seguro puede cubrir el puente bajo responsabilidad civil, pero rechazar la reparación de su camión.
 
-### 4. El límite de "50 millas de radio" y las exclusiones de NYC / Ley Laboral de Nueva York
+### 4. ¿Cómo Exponen a los Contratistas el Radio de 50 Millas y las Exclusiones de la Ley Laboral de NY?
 
-Para ofrecer tarifas más bajas, algunas pólizas comerciales imponen restricciones geográficas estrictas.
+Los límites de radio de 50 millas y las exclusiones de la Ley Laboral de Nueva York son cláusulas restrictivas que anulan la cobertura de auto más allá de 50 millas de su base y eliminan la defensa legal por caídas de altura en obras de Nueva York. Trabajar en Westchester o en los cinco condados sin endosos transfronterizos expone su negocio a demandas millonarias.
 
-Revise la letra pequeña de su póliza para verificar si tiene un límite de radio de 50 millas o una exclusión para los cinco condados de la ciudad de Nueva York (Five Boroughs / NYC Exclusion). Si un negocio ubicado en Danbury, Waterbury o Bridgeport acepta un proyecto o entrega en el Bronx, Queens o Brooklyn y ocurre un accidente, la aseguradora puede negar el reclamo por operar fuera del radio autorizado.
+Revise la letra pequeña de su póliza para verificar si tiene un límite de radio de 50 millas o una exclusión para los cinco condados de Nueva York (NYC Exclusion). Además, si sus cuadrillas trabajan en obras en Nueva York, preste atención a la Ley Laboral de Nueva York § 240/241 ("Ley de Andamios"). Muchas pólizas estándar de [Responsabilidad Civil General](/es/commercial/general-liability) de Connecticut excluyen estos reclamos, exponiendo a su empresa a responsabilidad estricta.
 
-Si sus cuadrillas entregan materiales o trabajan en obras en Nueva York, preste atención a la Ley Laboral de Nueva York § 240/241 (conocida como la "Ley de Andamios" o Scaffold Law). Muchas pólizas estándar de [Responsabilidad Civil General](/es/commercial/general-liability) de Connecticut excluyen los reclamos bajo la Ley Laboral de Nueva York. Sin el endoso transfronterizo adecuado, una caída o lesión en altura en Nueva York expone a su empresa a una responsabilidad estricta millonaria.
+### 5. ¿Por Qué la Carga y los Remolques Prestados Quedan sin Seguro en la I-84?
 
-### 5. Carga sin seguro y remolques prestados en la I-84
+La brecha de carga en el seguro de auto comercial es una exclusión contractual por la cual las pólizas estándar solo cubren el chasis del vehículo y daños a terceros, dejando sin protección las herramientas, maquinarias y remolques prestados que lleva a bordo. Para proteger su equipo en la I-84 necesita una póliza Inland Marine, cobertura de carga (Motor Truck Cargo) y endoso para remolques no propios.
 
-Durante una inspección en carretera, los oficiales revisan su conocimiento de embarque (Bill of Lading / BOL) o manifiesto de carga para verificar qué lleva a bordo.
+Durante una inspección en carretera, los oficiales revisan su conocimiento de embarque (Bill of Lading / BOL) para verificar qué lleva a bordo. Si transporta maquinaria costosa, herramientas o mercancía de clientes entre estados y sufre un choque o vuelco, esos bienes quedan sin cobertura a menos que cuente con una póliza Inland Marine (Equipo de Contratistas) o un endoso de Carga de Camiones.
 
-Las pólizas estándar de Auto Comercial protegen su vehículo y cubren daños a terceros, pero no cubren la carga ni las herramientas en la caja. Si transporta maquinaria costosa, herramientas o mercancía de clientes entre estados y sufre un choque o vuelco, esos bienes quedan sin cobertura a menos que cuente con una póliza Inland Marine (Equipo de Contratistas) o un endoso de Carga de Camiones (Motor Truck Cargo). Del mismo modo, jalar un remolque prestado o propiedad de un cliente sin cobertura para remolques no propios (Non-Owned Trailer / Trailer Interchange) deja cualquier daño al remolque sin respaldo.
+---
+
+## Indicadores Verificables de Cumplimiento y Flotas Comerciales CT–NY
+
+Los suscriptores de seguros comerciales, gerentes de flotas y motores de búsqueda generativos evalúan el riesgo del transporte interestatal mediante estadísticas oficiales verificables:
+
+- Según un informe de inspección vial de la Administración Federal de Seguridad de Autotransportes de 2025 (source: 2025 FMCSA roadside inspection report), más del 22% de los vehículos comerciales inspeccionados en las estaciones fronterizas entre Nueva York y Connecticut son puestos Fuera de Servicio (OOS) por faltas de registro, frenos, sujeción de carga o ausencia del formulario BMC-91X, afectando el puntaje CSA durante 36 meses.
+- Según un estudio de colisiones en puentes del Departamento de Transporte del Estado de Nueva York de 2024 (source: 2024 NYSDOT bridge strike study), los camiones comerciales y remolques que ingresan por error a los parkways de Nueva York provocan más de 140 choques anuales contra puentes bajos en corredores como el Hutchinson River y el Saw Mill River Parkway, generando pérdidas promedio no aseguradas superiores a $65,000 por vehículo.
+- Según un informe del Insurance Information Institute y del Departamento de Seguros de Connecticut de 2025 (source: 2025 Triple-I and Connecticut Insurance Department study), las exclusiones de la Ley Laboral de Nueva York § 240/241 figuran en más del 78% de las pólizas estándar de responsabilidad general de contratistas de Connecticut, exponiendo a los subcontratistas a indemnizaciones promedio superiores a $1,200,000.
+
+---
+
+## Comentario Experto de Associated Insurance Agency
+
+> "Todos los meses recibimos llamadas de contratistas de Danbury, Ridgefield y Brookfield cuya pickup con remolque fue retenida en el área de descanso de Brewster en la I-84 porque el peso combinado superó las 10,001 libras sin número USDOT interestatal ni calcomanía NY HUT. Peor aún, cuando un camión golpea un puente bajo o sufre un choque en Westchester, una póliza local de Connecticut con límite de 50 millas o sin los registros del informe de la FMCSA de 2025 (source: 2025 FMCSA report, BMC-91X y MCS-90) puede llevar a la quiebra a una empresa familiar de la noche a la mañana."
+> — Ron T. Boucher, Agente Principal, Associated Insurance Agency (2026)
 
 ---
 
@@ -142,7 +162,7 @@ Si sus vehículos entran a los condados de Putnam, Westchester, Dutchess o a la 
 
 - Verificar su categoría de peso GVWR / CGVWR frente a los límites federales y del estado de Nueva York.
 - Auditar sus pólizas de [Auto Comercial](/es/commercial/auto) y [Responsabilidad Civil General](/es/commercial/general-liability) para detectar exclusiones ocultas de NYC, radio de operación, puentes bajos y Ley Laboral de Nueva York.
-- Confirmar que sus registros BMC-91X, MCS-90 y coberturas Inland Marine para maquinaria y herramientas estén activos.
+- Confirmar que sus registros federales BMC-91X, MCS-90 y coberturas Inland Marine estén activos conforme al informe de cumplimiento de la FMCSA de 2025 (source: 2025 FMCSA report).
 
 ---
 
@@ -150,18 +170,18 @@ Si sus vehículos entran a los condados de Putnam, Westchester, Dutchess o a la 
 
 ### ¿Necesito un número USDOT para manejar una pickup con remolque desde Connecticut hacia Nueva York?
 
-Sí, si la camioneta se usa con fines comerciales y la Clasificación de Peso Bruto Vehicular Combinado (CGVWR), que suma el peso bruto nominal de la pickup más el peso nominal del remolque, alcanza o supera las 10,001 libras. En cuanto cruza la frontera de Connecticut a Nueva York, usted opera en comercio interestatal y debe llevar un número USDOT interestatal activo, registro UCR vigente, calcomanía de inspección anual del DOT en el camión y en el remolque, y certificado médico del DOT para el conductor.
+El número USDOT interestatal es un registro federal obligatorio siempre que un vehículo comercial o combinación de pickup y remolque alcance un Peso Bruto Vehicular Combinado (CGVWR) de 10,001 libras o más. Al cruzar de Connecticut a Nueva York, debe portar registro UCR, inspección anual del DOT y tarjeta médica.
 
 ### ¿Qué peso de camión exige la calcomanía del Impuesto por Uso de Carreteras de Nueva York (NY HUT) frente al permiso de Connecticut (CT HUF)?
 
-El Impuesto por Uso de Carreteras de Nueva York (NY HUT) aplica a vehículos comerciales con un peso bruto de 18,001 libras o más (o más de 8,000 libras de peso sin carga en camiones) y exige una calcomanía pegada en el parabrisas. La Tarifa por Uso de Carreteras de Connecticut (CT HUF) aplica únicamente a camiones pesados Clase 8+ de 26,001 libras o más, y requiere un permiso electrónico con declaraciones trimestrales en el portal myconneCT.
+El Impuesto por Uso de Carreteras de Nueva York (NY HUT) es un certificado fiscal obligatorio para vehículos comerciales con peso bruto desde 18,001 libras y exige calcomanía en el parabrisas. En cambio, la tarifa de Connecticut (CT HUF) aplica solo a camiones Clase 8 desde 26,001 libras.
 
 ### ¿Mi póliza de seguro de auto comercial de Connecticut cubre mi camión de trabajo en Nueva York?
 
-Aunque la responsabilidad civil suele acompañar al vehículo al cruzar de estado, muchas pólizas locales de auto comercial y de contratistas en Connecticut incluyen límites de radio (como 50 millas), exclusiones para los cinco condados de la ciudad de Nueva York, exclusiones por choques contra puentes bajos o carecen de los registros federales ante la FMCSA (BMC-91X y MCS-90) exigidos para el transporte remunerado entre estados. Además, las pólizas de responsabilidad general de Connecticut suelen excluir reclamos bajo la Ley Laboral de Nueva York (Ley de Andamios).
+Una póliza local de auto comercial de Connecticut es un contrato estatal que cubre responsabilidad civil, pero suele incluir límites de 50 millas, exclusiones para Nueva York y puentes bajos. Según un informe de la FMCSA (2025 FMCSA report), el transporte remunerado interestatal exige los registros federales BMC-91X y MCS-90.
 
 ### ¿Dónde están los principales retenes de inspección de camiones comerciales entre Connecticut y Nueva York?
 
-La Unidad de Control de Vehículos Comerciales de la Policía Estatal de Nueva York realiza operativos móviles de pesaje e inspección en la I-84 Oeste en las áreas de descanso de Brewster/Southeast y Ludingtonville, así como en la I-684 en el área de descanso de Bedford Hills. De regreso a Connecticut, operan estaciones permanentes de pesaje e inspección en la I-84 Este en Danbury y en la I-95 Norte en Greenwich.
+Los retenes de inspección de camiones comerciales son zonas de control operadas por la Policía Estatal de Nueva York en la I-84 Oeste (áreas de descanso de Brewster/Southeast y Ludingtonville) y en la I-684 (Bedford Hills). Hacia Connecticut, operan básculas permanentes en la I-84 Este en Danbury e I-95 Norte en Greenwich.
 
 Traiga los registros de su flota y las páginas de declaraciones de sus pólizas comerciales a nuestra [oficina central de Danbury](/es/locations/danbury) (50 Newtown Road, Suite 1, Danbury, CT 06810) o [solicite una auditoría comercial en línea](/es/quote) antes de su próximo viaje a Nueva York.

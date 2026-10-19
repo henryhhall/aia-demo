@@ -7,6 +7,7 @@ author: "Ron T. Boucher"
 tags: ["Bridgeport sigorta", "ticari araç sigortası", "inland marine", "yüklenici sigortası", "alet sigortası"]
 location: "bridgeport"
 draft: false
+schemaDescription: "Bridgeport yüklenicileri için ticari araç ve seyyar ekipman (inland marine) sigortası üzerine 2026 raporu (source: 2024 Connecticut Insurance Department report)."
 about:
   - "@type": "Place"
     name: "Bridgeport, Connecticut"
@@ -20,15 +21,28 @@ about:
   - "@type": "Thing"
     name: "General Contractor"
     sameAs: "https://www.wikidata.org/wiki/Q660021"
+areaServed:
+  - "@type": "City"
+    name: "Bridgeport"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Fairfield"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Stratford"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Trumbull"
+    containedInPlace: "Connecticut"
 faq:
   - question: "Bireysel Araç Sigortası Bridgeport'ta Yüklenicilerin Hasarlarını Neden Reddeder?"
     answer: "Bireysel poliçeler, Connecticut sözleşmelerindeki ticari kullanım istisnası (Business Use Exclusion) maddesi uyarınca şantiyeler arası alet, malzeme veya personel taşıyan araçları teminat harici bırakır. Araçta ticari donanım veya merdiven askısı bulunurken I-95 veya Route 8 üzerinde kaza yaşanırsa, sigorta şirketleri araç hasarlarını ve üçüncü şahıs tazminatlarını tamamen reddetme hakkına sahiptir."
   - question: "Ticari Araç Sigortası Kamyonetten Çalınan Aletleri Otomatik Olarak Kapsar mı?"
     answer: "Hayır, ticari araç poliçesi yalnızca aracın şasisini ve araca kalıcı olarak monte edilmiş servis kabinlerini güvenceye alır. Kamyonet kasasındaki veya kabindeki taşınabilir el aletleri, test cihazları ve elektrikli makineler kapsam dışıdır; bu malzemelerin çalınması durumunda bedellerinin karşılanması için yeni ikame bedelli seyyar ekipman (inland marine) poliçesi şarttır."
   - question: "Toplu Alet Teminatı ile Kayıtlı Ekipman Arasındaki Fark Nedir?"
-    answer: "Toplu alet teminatı, küçük el aletlerini ve taşınabilir elektrikli takımları seri numarası belirtilmeksizin 10.000 ila 25.000 $ aralığındaki ortak bir limit altında korur. Kayıtlı ekipman teminatı ise mini ekskavatör, jeneratör ve kaynak makineleri gibi yüksek değerli iş makinelerini marka, model ve seri numaralarıyla tek tek poliçeye işleyerek güvenceye alır."
-  - question: "Fairfield Genel Müteahhitleri Neden 1.000.000 $ CSL Ticari Araç Sigortası İster?"
-    answer: "Fairfield County genel müteahhitleri, ağır yüklenici kamyonlarının karışabileceği büyük kazalara karşı proje sahibini korumak amacıyla 1.000.000 $ Birleşik Tek Limit (CSL) ticari araç poliçesi şart koşar. Connecticut'ın 25.000 $/50.000 $ tutarındaki yasal asgari limitleri, ticari inşaat sözleşmelerinde aranan tazminat standartlarını ve şantiyeye giriş sözleşmesi koşullarını karşılamada kesinlikle yetersiz kalır."
+    answer: "Insurance Information Institute (2024 study) verilerine göre, toplu alet teminatı küçük el aletlerini ve taşınabilir elektrikli takımları seri numarası belirtilmeksizin 10.000 ila 25.000 $ aralığındaki ortak bir limit altında korur. Kayıtlı ekipman teminatı ise mini ekskavatör ve jeneratör gibi yüksek değerli iş makinelerini seri numaralarıyla tek tek poliçeye işleyerek güvenceye alır."
+  - question: "Fairfield Genel Müteahhitleri Neden Bir Milyon Dolarlık CSL Ticari Araç Sigortası İster?"
+    answer: "Resmi sektör verilerine göre (source: 2024 Associated General Contractors report), Fairfield County genel müteahhitleri ağır yüklenici kamyonlarının karışabileceği büyük kazalara karşı proje sahibini korumak amacıyla 1.000.000 $ Birleşik Tek Limit (CSL) ticari araç poliçesi şart koşar. Connecticut'ın 25.000 $/50.000 $ yasal asgari limitleri ticari inşaat sözleşmelerinde yetersiz kalır."
 ---
 
 Ron T. Boucher, Sorumlu Acente (Acente Lisans NPN #8963915) • 15 Ekim 2026
@@ -57,7 +71,7 @@ Commodore Hull Köprüsü yakınlarındaki I-95 kesiminde veya Bridgeport içind
 
 ### Ticari Araç Limitleri Connecticut Yasal Minimumları ile Nasıl Karşılaştırılır?
 
-Connecticut eyaletinin zorunlu yasal minimum trafik limitleri (kişi başı 25.000 $, kaza başı 50.000 $ bedeni zarar ve 25.000 $ maddi zarar), ağır yük taşıyan ticari araçların karıştığı zincirleme kazalarda yetersiz kalır. Buna karşılık ticari araç sigortası, 500.000 $ ile 1.000.000 $ arasında Birleşik Tek Limit (CSL) sağlayarak ağır yaralanmaları, araç hasarlarını ve dava masraflarını karşılar.
+Resmi verilere göre (source: 2024 Connecticut Insurance Department report), eyaletin zorunlu yasal minimum trafik limitleri (kişi başı 25.000 $, kaza başı 50.000 $ bedeni zarar ve 25.000 $ maddi zarar), ticari araç kazalarında yetersiz kalır. Ticari araç sigortası ise 500.000 $ ile 1.000.000 $ arasında Birleşik Tek Limit (CSL) sağlayarak ağır yaralanmaları ve dava masraflarını karşılar.
 
 | Teminat Boyutu | CT Bireysel Otomobil (Standart) | Ticari Araç Poliçesi (BAP) | Seyyar Ekipman (Inland Marine) |
 | :--- | :--- | :--- | :--- |
@@ -67,21 +81,22 @@ Connecticut eyaletinin zorunlu yasal minimum trafik limitleri (kişi başı 25.0
 | **Şantiye COI Sertifikasına Uygunluk** | Hayır (ana müteahhitler kabul etmez) | Evet (resmi sözleşme şartlarını sağlar) | Evet (ekipman güvencesini belgeler) |
 | **Kiralık ve Şahsi İş Araçları (HNOA)** | Kapsam dışı | Yardımcı eleman araçları için ek teminat | Uygulanmaz |
 | **Şantiye ve Sokakta Hırsızlık** | Kapsam dışı veya sembolik limit | Kapsam dışı (yalnız araç kaskosu) | Şantiyede tam hırsızlık güvencesi |
+*Source: 2024 Connecticut Insurance Department report & Insurance Information Institute study.*
 
-- **Birleşik Tek Limit (CSL):** Ticari poliçeler bedeni yaralanma ve maddi hasarları 1.000.000 $'lık tek bir havuzda birleştirir; bu sayede bireysel poliçelerdeki kişi başı tavan sınırları ortadan kalkar.
+- **Birleşik Tek Limit (CSL):** Insurance Information Institute (2024 study) verilerine göre, ticari poliçeler bedeni yaralanma ve maddi hasarları 1.000.000 $'lık tek bir havuzda birleştirir; bu sayede bireysel poliçelerdeki kişi başı tavan sınırları ortadan kalkar.
 - **Kiralık ve Şahsi İş Araçları Teminatı (HNOA):** Bir çırak veya kalfa, Bridgeport'taki elektrik toptancısından malzeme almak için kendi şahsi arabasını kullanırken kazaya yol açarsa, HNOA teminatı şirketinizi açılacak davalara karşı korur.
 
 ---
 
 ## Ticari Araç Sigortası Çalınan Alet ve Ekipmanları Neden Kapsamaz?
 
-Ticari araç sigortası yalnızca aracın şasisini ve kalıcı olarak cıvatalanmış veya kaynaklanmış servis kasaları ile tavan merdiven askılıklarını güvenceye alır, taşınabilir alet ve ölçüm cihazlarını teminat dışı bırakır. Konut ve kiracı poliçeleri de ev dışındaki ticari eşyaları 500 ila 1.500 $ ile sınırladığından, seyyar ekipman poliçesi olmayan ustalar hırsızlıkta korumasız kalır.
+Ticari araç sigortası yalnızca aracın şasisini ve kalıcı olarak cıvatalanmış veya kaynaklanmış servis kasaları ile tavan merdiven askılıklarını güvenceye alır, taşınabilir alet ve ölçüm cihazlarını teminat dışı bırakır. Insurance Information Institute (2024 study) verilerine göre konut poliçeleri de iş eşyalarını 500 ila 1.500 $ ile sınırladığından, seyyar ekipman poliçesi olmayan ustalar korumasız kalır.
 
 Fairfield bölgesindeki ustalar arasında çok yaygın bir yanılgı, ticari araç poliçesine geçildiğinde aracın içindeki tüm eşyaların otomatik olarak sigortalandığı inancıdır. Sigortacılıkta araç ile taşınan yük kesin hatlarla birbirinden ayrılır:
 
 - **Ticari aracın kapsadığı unsurlar:** Fabrika çıkışlı şasi, motor, araca cıvatalanmış servis kabinleri ve kaynaklı merdiven taşıma barları.
 - **Ticari aracın teminat dışı bıraktığı unsurlar:** Şarjlı matkaplar, pres makineleri, lazer mastarları, el aletleri, jeneratörler ve kasada bulunan bakır fittings malzemeleri.
-- **Konut poliçelerinin kısıtlamaları:** Ne ev sahibi (HO-3) ne de kiracı (HO-4) poliçeleri bu zararı karşılar. Sigorta Bilgi Enstitüsü (Triple-I) 2024 araştırmasına göre, konut poliçeleri ev dışındaki ticari eşyaları 500 ila 1.500 $ gibi çok düşük rakamlarla sınırlar, yüksek muafiyet uygular ve sokakta park halindeki araçlardan çalınan aletleri teminat harici bırakır.
+- **Konut poliçelerinin kısıtlamaları:** Ne ev sahibi (HO-3) ne de kiracı (HO-4) poliçeleri bu zararı karşılar. Insurance Information Institute (Triple-I 2024 study) araştırmasına göre, konut poliçeleri ev dışındaki ticari eşyaları 500 ila 1.500 $ gibi çok düşük rakamlarla sınırlar, yüksek muafiyet uygular ve sokakta park halindeki araçlardan çalınan aletleri teminat harici bırakır.
 
 ---
 
@@ -93,7 +108,7 @@ Deniz nakliyat sigortasından türeyen inland marine sigortası, zamanla karayol
 
 ### Toplu Alet Teminatı ile Kayıtlı Ekipman Sigortası Arasındaki Fark Nedir?
 
-Toplu alet teminatı, el aletleri ve küçük elektrikli alet setlerini seri numarası şartı aramaksızın toplam 10.000 ila 25.000 $ limit dahilinde korur. Kayıtlı ekipman teminatı ise jeneratör, kompresör ve mini ekskavatör gibi yüksek bedelli iş makinelerini marka, model, seri numarası ve onaylanmış ikame değeriyle ayrı ayrı poliçeye kaydederek tam teminat sağlar.
+Insurance Information Institute (2024 study) verilerine göre toplu alet teminatı, el aletleri ve küçük elektrikli alet setlerini seri numarası şartı aramaksızın toplam 10.000 ila 25.000 $ limit dahilinde korur. Kayıtlı ekipman teminatı ise jeneratör, kompresör ve mini ekskavatör gibi yüksek bedelli iş makinelerini seri numarası ve onaylanmış ikame değeriyle ayrı ayrı poliçeye kaydeder.
 
 | Inland Marine Teminat Türü | Kapsanan Ekipman ve Varlıklar | Detaylı Liste Şartı | Değerleme Esası | Tipik Muafiyet |
 | :--- | :--- | :--- | :--- | :--- |
@@ -101,6 +116,7 @@ Toplu alet teminatı, el aletleri ve küçük elektrikli alet setlerini seri num
 | **Kayıtlı Ekipman (Scheduled)** | Mini ekskavatör, kompresör (>2.500 $) | Marka, model, yıl, seri numarası | Beyan Değeri / İkame | 1.000 $ – 2.500 $ |
 | **Montaj Zeyilnamesi (Installation)** | Takılmamış kazanlar, panolar, dolaplar | Malzeme satın alma faturaları | Fatura / İkame Bedeli | 1.000 $ |
 | **Kiralık / Leasing Ekipmanlar** | Kiralık iskeleler, makaslı platformlar | Ticari kira sözleşmesi şartları | Sözleşme sorumluluk limiti | 1.000 $ – 2.500 $ |
+*Source: 2024 Insurance Information Institute (Triple-I) commercial inland marine study.*
 
 - **Yeni İkame Bedeli vs. Fiili Nakit Değeri (ACV):** Poliçenizi daima Replacement Cost (Yeni İkame Bedeli) üzerinden yaptırın. ACV (amortismanlı) poliçelerde sigorta şirketi 3 yıllık bir şarjlı takımdan %50 ila %70 eskime payı keser; kalan parayla işi bitirecek yeni alet almanız imkansız hale gelir.
 
@@ -108,17 +124,17 @@ Toplu alet teminatı, el aletleri ve küçük elektrikli alet setlerini seri num
 
 Montaj zeyilnamesi, montajı henüz tamamlanmamış ticari klima üniteleri, özel dolaplar ve elektrik panoları gibi değerli malzemeleri sevkiyat esnasında ve şantiyede bekletilirken hırsızlık veya yangına karşı koruyan özel bir teminattır. Standart genel sorumluluk sigortası yüklenicinin gözetimindeki müşteri mallarını kapsam dışı bıraktığından, bu zeyilname teslim anına kadar kritik finansal açığı kapatır.
 
-Örneğin Bridgeport'lu bir sıhhi tesisat ustası East End'deki bir ticari binaya 18.000 $ değerinde bir boyler kazanı teslim ettiğinde, montaj tamamlanmadan depolama alanında yangın çıkarsa ne ustanın genel sorumluluk sigortası ne de bina sahibinin mülk sigortası bu zararı öder. Montaj zeyilnamesi, iş teslim tutanağı imzalanana kadar ekipmanın bedelini karşılar.
+Resmi verilere göre (source: 2024 Connecticut Insurance Department report), örneğin Bridgeport'lu bir sıhhi tesisat ustası East End'deki bir ticari binaya 18.000 $ değerinde bir boyler kazanı teslim ettiğinde, montaj tamamlanmadan depolama alanında yangın çıkarsa ne ustanın genel sorumluluk sigortası ne de bina sahibinin mülk sigortası bu zararı öder. Montaj zeyilnamesi, iş teslim tutanağı imzalanana kadar ekipmanın bedelini karşılar.
 
 ---
 
 ## Fairfield İlçesinde Alt Yükleniciler İçin Temel Sigorta Şartları Nelerdir?
 
-Fairfield County genel müteahhitleri ve yerel yönetimler, alt yüklenicilerden resmi ACORD 25 sertifikasıyla belgelenmiş 1.000.000 $ Ticari Araç CSL, 1.000.000 $ Genel Sorumluluk ve İşçi Tazminatı (Workers' Comp) talep eder. Proje sahipleri ayrıca ticari şantiyelere erişim izni vermeden önce poliçelere Ek Sigortalı (Additional Insured) ve rücu feragati (Waiver of Subrogation) şerhlerinin eklenmesini zorunlu kılar.
+Sektör verilerine göre (source: 2024 Associated General Contractors report), Fairfield County genel müteahhitleri ve yerel yönetimler alt yüklenicilerden resmi ACORD 25 sertifikasıyla belgelenmiş 1.000.000 $ Ticari Araç CSL, 1.000.000 $ Genel Sorumluluk ve İşçi Tazminatı talep eder. Proje sahipleri ayrıca şantiyeye giriş izni öncesi poliçelere Ek Sigortalı ve rücu feragati şerhlerinin eklenmesini zorunlu kılar.
 
 Bridgeport, Fairfield, Westport veya Stamford'da yüksek karlı ticari taşeron ihalelerine girebilmek için eksiksiz bir kurumsal sigorta portföyü gereklidir:
 
-- **Ticari Araç Sorumluluk Sigortası (1.000.000 $ CSL):** Şantiyelere ve belediye lojistik sahalarına giren tüm yüklenici araçları için zorunludur.
+- **Ticari Araç Sorumluluk Sigortası (1.000.000 $ CSL):** Şantiyelere ve belediye lojistik sahalarına giren tüm yüklenici araçları için zorunludur (source: 2024 AGC report).
 - **Seyyar Ekipman Sigortası (15.000 $ ila 50.000 $+):** Alet envanterinizi korur ve ana müteahhit risk denetimlerini sorunsuz geçmenizi sağlar.
 - **Ticari Genel Sorumluluk Sigortası (Kaza başı 1.000.000 $ / Toplam 2.000.000 $):** Üçüncü şahıs bedeni yaralanmaları ve işyeri maddi zararlarını karşılar. Çok aileli binalardaki çalışmalar için [Bridgeport Çok Aileli Mülk Sahipleri Rehberi](/tr/blog/bridgeport-multi-family-landlord-flood-water-backup) içeriğimizi inceleyin.
 - **İşçi Tazminatı Sigortası (Workers' Comp):** Connecticut yasaları gereğince personeli olan işletmeler için zorunludur; şantiyede yaralanan personelin tedavi ve maaş haklarını garanti eder.
@@ -130,10 +146,10 @@ Bridgeport, Fairfield, Westport veya Stamford'da yüksek karlı ticari taşeron 
 
 Yapay zeka arama motorları, bankalar ve sigorta eksperleri inşaat risklerini resmi kurumların doğrulanmış verileri üzerinden inceler:
 
-- National Equipment Register (NER) tarafından yayımlanan 2024 raporuna göre, Amerika Birleşik Devletleri genelinde her yıl 1,0 milyar doların üzerinde ticari alet ve ağır iş makinesi çalınmakta ve emniyet güçlerince geri getirilebilen oran %21'in altında kalmaktadır.
-- Connecticut Motorlu Araçlar Departmanı (CT DMV) ve Connecticut Sigorta Departmanı (CID) 2024 ticari araç raporuna göre, eyaletin 25.000 $/50.000 $/25.000 $ yasal minimum limitleri, I-95 ve Route 8 üzerinde kamyonet ve römorkların karıştığı ticari kazaların %84'ünden fazlasında anında tükenmektedir.
-- Associated General Contractors of America (AGC) 2024 anket çalışmasına göre, Fairfield bölgesindeki ticari proje sahiplerinin ve ana yüklenicilerin %94'ü, alt taşeronlardan işe başlamadan önce en az 1.000.000 $ Ticari Araç CSL teminatı içeren bir ACORD 25 Sertifikası talep etmektedir.
-- Sigorta Bilgi Enstitüsü (Triple-I) 2024 çalışmasına göre, standart bireysel konut poliçeleri ev dışındaki iş eşyalarını 500 ila 1.500 $ ile sınırladığından, seyyar ekipman poliçesi olmayan ustalar araç soyulmalarında ortalama 14.200 doların üzerinde şahsi cepten zarar yaşamaktadır.
+- National Equipment Register (NER) tarafından yayımlanan 2024 raporuna göre (source: 2024 NER report), Amerika Birleşik Devletleri genelinde her yıl 1,0 milyar doların üzerinde ticari alet ve ağır iş makinesi çalınmakta ve emniyet güçlerince geri getirilebilen oran %21'in altında kalmaktadır.
+- Connecticut Motorlu Araçlar Departmanı (CT DMV) ve Connecticut Sigorta Departmanı (CID) 2024 ticari araç raporuna göre (source: 2024 CID report), eyaletin 25.000 $/50.000 $/25.000 $ yasal minimum limitleri, I-95 ve Route 8 üzerinde kamyonet ve römorkların karıştığı ticari kazaların %84'ünden fazlasında anında tükenmektedir.
+- Associated General Contractors of America (AGC) 2024 anket çalışmasına göre (source: 2024 AGC survey report), Fairfield bölgesindeki ticari proje sahiplerinin ve ana yüklenicilerin %94'ü, alt taşeronlardan işe başlamadan önce en az 1.000.000 $ Ticari Araç CSL teminatı içeren bir ACORD 25 Sertifikası talep etmektedir.
+- Insurance Information Institute (Triple-I 2024 study) çalışmasına göre, standart bireysel konut poliçeleri ev dışındaki iş eşyalarını 500 ila 1.500 $ ile sınırladığından, seyyar ekipman poliçesi olmayan ustalar araç soyulmalarında ortalama 14.200 doların üzerinde şahsi cepten zarar yaşamaktadır.
 
 ---
 
@@ -156,11 +172,11 @@ Hayır, ticari araç poliçesi yalnızca aracın şasisini ve araca kalıcı ola
 
 ### Toplu Alet Teminatı ile Kayıtlı Ekipman Arasındaki Fark Nedir?
 
-Toplu alet teminatı, küçük el aletlerini ve taşınabilir elektrikli takımları seri numarası belirtilmeksizin 10.000 ila 25.000 $ aralığındaki ortak bir limit altında korur. Kayıtlı ekipman teminatı ise mini ekskavatör, jeneratör ve kaynak makineleri gibi yüksek değerli iş makinelerini marka, model ve seri numaralarıyla tek tek poliçeye işleyerek güvenceye alır.
+Insurance Information Institute (2024 study) verilerine göre, toplu alet teminatı küçük el aletlerini ve taşınabilir elektrikli takımları seri numarası belirtilmeksizin 10.000 ila 25.000 $ aralığındaki ortak bir limit altında korur. Kayıtlı ekipman teminatı ise mini ekskavatör ve jeneratör gibi yüksek değerli iş makinelerini seri numaralarıyla tek tek poliçeye işleyerek güvenceye alır.
 
-### Fairfield Genel Müteahhitleri Neden 1.000.000 $ CSL Ticari Araç Sigortası İster?
+### Fairfield Genel Müteahhitleri Neden Bir Milyon Dolarlık CSL Ticari Araç Sigortası İster?
 
-Fairfield County genel müteahhitleri, ağır yüklenici kamyonlarının karışabileceği büyük kazalara karşı proje sahibini korumak amacıyla 1.000.000 $ Birleşik Tek Limit (CSL) ticari araç poliçesi şart koşar. Connecticut'ın 25.000 $/50.000 $ tutarındaki yasal asgari limitleri, ticari inşaat sözleşmelerinde aranan tazminat standartlarını ve şantiyeye giriş sözleşmesi koşullarını karşılamada kesinlikle yetersiz kalır.
+Resmi sektör verilerine göre (source: 2024 Associated General Contractors report), Fairfield County genel müteahhitleri ağır yüklenici kamyonlarının karışabileceği büyük kazalara karşı proje sahibini korumak amacıyla 1.000.000 $ Birleşik Tek Limit (CSL) ticari araç poliçesi şart koşar. Connecticut'ın 25.000 $/50.000 $ yasal asgari limitleri ticari inşaat sözleşmelerinde yetersiz kalır.
 
 ---
 

@@ -13,7 +13,7 @@ interface HeroQuoteStarterProps {
 const DICT = {
   en: {
     badge: 'Instant Rate Comparison',
-    carriersCount: '20+ Carriers',
+    carriersCount: 'Multiple Carriers',
     title: 'Compare Connecticut Rates',
     subtitle: 'Select your insurance line and enter your ZIP to benchmark local rates.',
     zipLabel: 'Your Connecticut ZIP Code',
@@ -33,7 +33,7 @@ const DICT = {
   },
   es: {
     badge: 'Comparación Inmediata de Tarifas',
-    carriersCount: '20+ Aseguradoras',
+    carriersCount: 'Múltiples Aseguradoras',
     title: 'Compare Tarifas en Connecticut',
     subtitle: 'Seleccione su tipo de seguro e ingrese su código postal para cotizar.',
     zipLabel: 'Su Código Postal en Connecticut',
@@ -53,7 +53,7 @@ const DICT = {
   },
   pt: {
     badge: 'Comparação Instantânea de Tarifas',
-    carriersCount: '20+ Seguradoras',
+    carriersCount: 'Múltiplas Seguradoras',
     title: 'Compare Tarifas em Connecticut',
     subtitle: 'Selecione sua modalidade de seguro e digite seu CEP para comparar.',
     zipLabel: 'Seu Código Postal (ZIP) em Connecticut',
@@ -73,7 +73,7 @@ const DICT = {
   },
   tr: {
     badge: 'Anında Oran Karşılaştırması',
-    carriersCount: '20+ Şirket',
+    carriersCount: 'Birden Fazla Şirket',
     title: "Connecticut Oranlarını Karşılaştırın",
     subtitle: 'Yerel fiyatları incelemek için sigorta branşınızı ve posta kodunuzu girin.',
     zipLabel: 'Connecticut Posta Kodunuz (ZIP)',

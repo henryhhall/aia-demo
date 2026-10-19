@@ -95,7 +95,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         shortName: 'Danbury HQ',
         tag: 'Headquarters',
         seoTitle: 'Insurance Agency Danbury CT | Auto, Home, Business | Danbury HQ',
-        metaDescription: 'Visit Associated Insurance Agency in Danbury, CT at 50 Newtown Road. Compare auto, home, and commercial insurance quotes across 20+ carriers in Fairfield County.',
+        metaDescription: 'Visit Associated Insurance Agency in Danbury, CT at 50 Newtown Road. Compare auto, home, and commercial insurance quotes across multiple carriers in Fairfield County.',
         heroHeadline: 'Trusted Local Insurance in Danbury, CT',
         heroSubheadline: 'Personal & Commercial Coverage from Associated Insurance Agency',
         officeOverview: [
@@ -217,7 +217,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         shortName: 'Bridgeport',
         tag: 'Branch Office',
         seoTitle: 'Insurance Agency Bridgeport CT | Auto, Home, Business | 2465 Main St',
-        metaDescription: 'Visit Associated Insurance Agency at 2465 Main Street in Bridgeport, CT. Compare auto, home, multi-family, and commercial quotes across 20+ carriers.',
+        metaDescription: 'Visit Associated Insurance Agency at 2465 Main Street in Bridgeport, CT. Compare auto, home, multi-family, and commercial quotes across multiple carriers.',
         heroHeadline: 'Trusted Local Insurance in Bridgeport, CT',
         heroSubheadline: 'Personal & Commercial Coverage from Associated Insurance Agency',
         officeOverview: [
@@ -305,7 +305,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         shortName: 'Danbury (HQ)',
         tag: 'Sede Central',
         seoTitle: 'Agencia de Seguros en Danbury CT | Autos, Hogar y Negocios | Danbury HQ',
-        metaDescription: 'Associated Insurance Agency en Danbury, CT (50 Newtown Road). Compare cotizaciones de seguros de auto, casa y comerciales con más de 20 aseguradoras. Hablamos español.',
+        metaDescription: 'Associated Insurance Agency en Danbury, CT (50 Newtown Road). Compare cotizaciones de seguros de auto, casa y comerciales con múltiples aseguradoras. Hablamos español.',
         heroHeadline: 'Seguros Locales de Confianza en Danbury, CT',
         heroSubheadline: 'Cobertura Personal y Comercial de Associated Insurance Agency',
         officeOverview: [
@@ -427,7 +427,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         shortName: 'Bridgeport',
         tag: 'Sucursal',
         seoTitle: 'Agencia de Seguros en Bridgeport CT | Auto, Casa y Negocio | 2465 Main St',
-        metaDescription: 'Associated Insurance Agency en Bridgeport, CT (2465 Main Street). Compare tarifas de autos, casas, edificios multifamiliares y comercios con más de 20 aseguradoras. Atención en español.',
+        metaDescription: 'Associated Insurance Agency en Bridgeport, CT (2465 Main Street). Compare tarifas de autos, casas, edificios multifamiliares y comercios con múltiples aseguradoras. Atención en español.',
         heroHeadline: 'Seguros Locales de Confianza en Bridgeport, CT',
         heroSubheadline: 'Cobertura Personal y Comercial de Associated Insurance Agency',
         officeOverview: [
@@ -515,7 +515,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         shortName: 'Danbury (HQ)',
         tag: 'Sede Principal',
         seoTitle: 'Agência de Seguros em Danbury CT | Auto, Casa e Comercial | Danbury HQ',
-        metaDescription: 'Associated Insurance Agency em Danbury, CT (50 Newtown Road). Cote seguros de automóvel, casa e comercial com mais de 20 seguradoras. Falamos português.',
+        metaDescription: 'Associated Insurance Agency em Danbury, CT (50 Newtown Road). Cote seguros de automóvel, casa e comercial com múltiplas seguradoras. Falamos português.',
         heroHeadline: 'Seguros Locais de Confiança em Danbury, CT',
         heroSubheadline: 'Cobertura Pessoal e Comercial da Associated Insurance Agency',
         officeOverview: [
@@ -637,7 +637,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         shortName: 'Bridgeport',
         tag: 'Agência',
         seoTitle: 'Agência de Seguros em Bridgeport CT | Carro, Casa e Empresas | 2465 Main St',
-        metaDescription: 'Associated Insurance Agency em Bridgeport, CT (2465 Main Street). Compare cotações de seguro auto, residencial, comercial e enchente com mais de 20 seguradoras. Atendimento em português.',
+        metaDescription: 'Associated Insurance Agency em Bridgeport, CT (2465 Main Street). Compare cotações de seguro auto, residencial, comercial e enchente com múltiplas seguradoras. Atendimento em português.',
         heroHeadline: 'Seguros Locais de Confiança em Bridgeport, CT',
         heroSubheadline: 'Cobertura Pessoal e Comercial da Associated Insurance Agency',
         officeOverview: [
@@ -725,7 +725,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         shortName: 'Danbury (HQ)',
         tag: 'Genel Merkez',
         seoTitle: 'Danbury CT Sigorta Acentesi | Araç, Konut ve Ticari Sigorta | Danbury HQ',
-        metaDescription: 'Associated Insurance Agency Danbury ofisi (50 Newtown Road). 20’den fazla şirketten araç, ev ve ticari sigorta tekliflerini karşılaştırın. Türkçe destek.',
+        metaDescription: 'Associated Insurance Agency Danbury ofisi (50 Newtown Road). Birden fazla şirketten araç, ev ve ticari sigorta tekliflerini karşılaştırın. Türkçe destek.',
         heroHeadline: 'Danbury, CT’de Güvenilir Yerel Sigorta',
         heroSubheadline: 'Associated Insurance Agency’den Bireysel ve Ticari Teminatlar',
         officeOverview: [
@@ -847,13 +847,13 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         shortName: 'Bridgeport',
         tag: 'Şube',
         seoTitle: 'Bridgeport CT Sigorta Acentesi | Araç, Ev ve Ticari Sigorta | 2465 Main St',
-        metaDescription: 'Associated Insurance Agency Bridgeport ofisi (2465 Main Street). 20’den fazla şirketten araç, çok aileli konut, ticari ve sel sigortası tekliflerini karşılaştırın.',
+        metaDescription: 'Associated Insurance Agency Bridgeport ofisi (2465 Main Street). Birden fazla şirketten araç, çok aileli konut, ticari ve sel sigortası tekliflerini karşılaştırın.',
         heroHeadline: 'Bridgeport, CT’de Güvenilir Yerel Sigorta',
         heroSubheadline: 'Associated Insurance Agency’den Bireysel ve Ticari Teminatlar',
         officeOverview: [
           'Bridgeport ofisimiz 2465 Main Street adresinde, St. Vincent’s Medical Center’a iki sokak mesafede ve Route 8 ile Route 25 otoyollarının 4 ve 5 numaralı çıkışlarının hemen yanındadır. Bina önünde ve cadde üzerinde ücretsiz otopark mevcuttur.',
           'Fairfield County kıyı bölgesinde bireysel ve ticari poliçeler düzenliyoruz. Bridgeport genelindeki 2 ila 4 daireli kiralık binalar, Long Island Sound kıyısındaki sel sigortaları (NFIP), ticari araçlar ve inşaat ustaları için aynı gün ACORD 25 sigorta belgesi (COI) düzenliyoruz.',
-          'Bağımsız acente olarak Travelers, Safeco, The Hartford, Progressive ve Guard dahil olmak üzere 20’den fazla sigorta şirketiyle çalışıyoruz. Lisanslı temsilcilerimiz İngilizce, İspanyolca, Portekizce ve Türkçe dillerinde hizmet verir.',
+          'Bağımsız acente olarak Travelers, Safeco, The Hartford, Progressive ve Guard dahil olmak üzere birden fazla sigorta şirketiyle çalışıyoruz. Lisanslı temsilcilerimiz İngilizce, İspanyolca, Portekizce ve Türkçe dillerinde hizmet verir.',
         ],
         localRisksAndFocusHeading: 'Bridgeport Sigorta Alanlarımız',
         localRisksAndFocusDesc: 'Bridgeport’ta çok aileli kiralık binalar, Long Island Sound kıyısındaki sel riskleri, ticari işletmeler ve I-95 ile Route 8/25 otoyol trafiği öne çıkar. Ekibimiz şu branşlara odaklanır:',

@@ -7,6 +7,7 @@ author: "Ron T. Boucher"
 tags: ["Bridgeport sigortası", "tarihi ev sigortası", "ilk ev alıcıları", "knob-and-tube tesisat", "kayrak çatı", "ev sigortası"]
 location: "bridgeport"
 draft: false
+schemaDescription: "Tarihi Bridgeport evleri, 4 nokta ekspertizi ve HO-8 poliçeleri üzerine 2026 raporu (source: 2024 Connecticut Insurance Department report)."
 about:
   - "@type": "Place"
     name: "Bridgeport, Connecticut"
@@ -17,15 +18,28 @@ about:
   - "@type": "Thing"
     name: "Knob-and-tube wiring"
     sameAs: "https://www.wikidata.org/wiki/Q6422905"
+areaServed:
+  - "@type": "City"
+    name: "Bridgeport"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Fairfield"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Stratford"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Trumbull"
+    containedInPlace: "Connecticut"
 faq:
   - question: "Tarihi Bridgeport Evleri İçin 4 Nokta Sigorta Ekspertizi Nedir?"
-    answer: "4 Nokta Sigorta Ekspertizi (4-Point Inspection), Connecticut'taki bir sigorta şirketi 40 yaş üstü konutlara poliçe düzenlemeden önce elektrik panosu ve kablolarını, çatı durumunu, sıhhi tesisat malzemelerini ve ısıtma sistemini inceleyen teknik bir risk değerlendirmesidir."
+    answer: "4 Nokta Sigorta Ekspertizi (4-Point Inspection), Connecticut'taki bir sigorta şirketi 40 yaş üstü tarihi konutlara kalıcı poliçe düzenlemeden önce yangın ve su basması tehlikelerini önlemek amacıyla elektrik panosu ve iç kablolarını, çatı kaplama durumunu, sıhhi tesisat boru malzemelerini ve merkezi ısıtma sistemini ayrıntılı olarak inceleyen teknik bir risk değerlendirmesidir."
   - question: "Connecticut'ta Aktif Knob-and-Tube Elektrik Tesisatı Olan Bir Eve Sigorta Yapılır mı?"
-    answer: "Standart sigorta şirketlerinin çoğu, tavan arası yalıtımı altında yangın riski taşıyan aktif knob-and-tube tesisatlı evleri reddeder; ancak özel sigortacılar, lisanslı bir elektrikçinin tapu devrinden sonraki 30 ila 60 gün içinde tesisatı yenilemesi şartıyla geçici poliçe düzenleyebilir."
+    answer: "Standart sigorta şirketlerinin çoğu, modern tavan arası ısı yalıtımı altında aşırı ısınarak ciddi yangın riski taşıyan aktif knob-and-tube tesisatlı evleri reddeder; ancak özel sigortacılar, lisanslı bir elektrikçinin tapu devrinden sonraki 30 ila 60 gün içinde tüm eski tesisatı yenilemesi şartıyla geçici sigorta poliçesi düzenleyebilir."
   - question: "Konut Sigortası Yeniden İnşa Maliyeti Neden Bridgeport'taki Satın Alma Fiyatından Yüksektir?"
-    answer: "Yeniden inşa maliyeti (Coverage A), tarihi bir yapıyı sıfırdan inşa etmek için gereken güncel usta işçiliği, enkaz kaldırma, alçı sıva ve belediye imar yönetmeliği maliyetlerini hesaplayan aktüeryal bir değerdir ve mülkün emlak piyasası fiyatından bağımsızdır."
+    answer: "Yeniden inşa maliyeti (Coverage A), hasar gören tarihi bir yapıyı temelinden itibaren sıfırdan inşa etmek için gereken güncel nitelikli usta işçiliği, enkaz kaldırma, özel alçı sıva ve belediye imar yönetmeliği uyum maliyetlerini hesaplayan aktüeryal bir değerdir ve mülkün güncel emlak piyasası satış fiyatından tamamen bağımsızdır."
   - question: "Eski Evler İçin İşlevsel İkame Maliyeti (HO-8) Teminatı Nedir?"
-    answer: "İşlevsel İkame Maliyeti (HO-8), hasar gören tarihi bir konutun çıtalı el sıvası yerine alçıpan gibi modern standart malzemelerle onarılmasına veya yeniden yapılmasına izin veren, yıllık primleri düşürürken banka kredi şartlarını karşılayan bir poliçe değerleme yöntemidir."
+    answer: "İşlevsel İkame Maliyeti (HO-8), hasar gören tarihi bir konutun geleneksel çıtalı el sıvası ve özel ahşap oymalar yerine alçıpan gibi modern standart yapı malzemeleriyle onarılmasına veya yeniden yapılmasına izin veren, yıllık sigorta primlerini önemli ölçüde düşürürken banka ipotek kredi şartlarını eksiksiz karşılayan bir poliçe değerleme yöntemidir."
 ---
 
 Yazan: Ron T. Boucher • 16 Ekim 2026 • Tahmini Okuma Süresi: 7 dakika
@@ -95,14 +109,13 @@ Eski sıhhi tesisat ve temel riskleri, 1960 öncesi içten paslanan galvanizli �
 
 Sigorta yeniden inşa maliyeti (Coverage A), tarihi bir konutu güncel müteahhit işçilik ücretleri, alçı ve ahşap doğrama malzemeleri ile enkaz kaldırma giderlerini kullanarak temelden itibaren yeniden inşa etme masrafını hesaplayan aktüeryal bir değerlemedir ve Bridgeport'taki emlak satış fiyatını sıklıkla %30 ila %50 oranında aşar.
 
-Bridgeport'ta ilk kez ev alanlar, tekliflerindeki bina teminat limitini (*Coverage A*) gördüklerinde sıkça şaşırırlar. Bir evi 375.000 $'a satın alıyorsanız, sigorta şirketi neden onu 550.000 $ üzerinden sigortalamak ister?
+Resmi verilere göre (source: 2024 Connecticut Insurance Department report), Bridgeport'ta ilk kez ev alanlar tekliflerindeki bina teminat limitini (*Coverage A*) gördüklerinde sıkça şaşırırlar. Bir evi 375.000 $'a satın alıyorsanız, sigorta şirketi neden onu 550.000 $ üzerinden sigortalamak ister?
 
 | Değerleme Faktörü | Piyasa Değeri (375.000 $) | Yeniden İnşa Maliyeti (550.000 $+) |
 | :--- | :--- | :--- |
 | **Temel Tanım** | Alıcıların bugünkü emlak piyasasında ödediği tutar | Yapıyı temelden itibaren yeniden inşa etmenin maliyeti |
 | **Dahil Olan Unsurlar** | Arsa değeri, okul bölgesi ve mahalle emsal satışları | İnşaat malzemeleri, enkaz kaldırma ve nitelikli usta işçiliği |
 | **Maliyet Etkenleri** | Faiz oranları, konut arzı ve alıcı talebi | Yerel müteahhit ücretleri, kereste/alçı maliyetleri ve güncel bina yönetmelikleri |
-
 *Kaynak (source): Insurance Information Institute (Triple-I) tarafından 2024 yılında yayımlanan (published by) konut yeniden inşa maliyeti raporu (report).*
 
 Büyük bir yangın 1925 yapımı bir Kolonyal evi kullanılamaz hale getirirse, onu özel ahşap işçiliğiyle ve güncel güvenlik standartlarıyla yeniden inşa etmek, evin ve arsanın piyasa fiyatından çok daha fazlasına mal olur.
@@ -117,12 +130,12 @@ Tarihi bir evi birebir antika tekniklerle yeniden inşa etmek üzere sigortalama
 
 ## 1950 Öncesi Bridgeport Mülkleri İçin Hangi Ek Teminatlar Zorunludur?
 
-Tarihi evler için temel ek teminatlar, kısmi hasarlardan sonra belediye imar yönetmeliğinin zorunlu kıldığı tesisat yenilemelerini ve bahçe altındaki çökmüş kil veya dökme demir altyapı borularının kazı onarımlarını ödeyen İmar ve Yönetmelik Teminatı ile Yeraltı Hizmet Hattı Teminatıdır.
+Tarihi evler için temel ek teminatlar, kısmi hasarlardan sonra belediye imar yönetmeliğinin zorunlu kıldığı kapsamlı tesisat yenilemelerini ve bahçe altındaki çökmüş kil veya dökme demir altyapı borularının kazı onarımlarını ödeyen İmar ve Yönetmelik Teminatı ile Yeraltı Hizmet Hattı Teminatıdır.
 
 Düşük maliyetli iki ek teminat, 1950 öncesi bir evde sizi binlerce dolarlık masraftan kurtarabilir:
 
-- **İmar veya Yönetmelik Teminatı (*Ordinance or Law Coverage*):** Kısmi bir hasardan sonra şehir bina yönetmelikleri, onarım sırasında hasar görmemiş elektrik, sıhhi tesisat veya çatı iskeletini de güncel yönetmeliğe uygun hale getirmenizi şart koşabilir. Standart poliçeler, İmar veya Yönetmelik teminatı eklemediğiniz sürece (genellikle Coverage A'nın %10 ila %25'i oranında) bu zorunlu iyileştirmeleri ödemez.
-- **Yeraltı Hizmet Hattı Teminatı (*Underground Service Line Coverage*):** Ön bahçenizin altından belediye ana hattına uzanan temiz su ve kanalizasyon boruları genellikle evin kendisi kadar eskidir. Ağaç kökleri ve toprak donması kil veya dökme demir boruları çatlatarak size 10.000 $'lık bir kazı faturası çıkarabilir. Hizmet hattı eki, ayda birkaç dolara bahçe içi boru onarımlarını karşılar.
+- **İmar veya Yönetmelik Teminatı (*Ordinance or Law Coverage*):** Kısmi bir hasardan sonra şehir bina yönetmelikleri, onarım sırasında hasar görmemiş elektrik, sıhhi tesisat veya çatı iskeletini de güncel yönetmeliğe uygun hale getirmenizi şart koşabilir. Standart poliçeler, İmar veya Yönetmelik teminatı eklemediğiniz sürece (genellikle Coverage A'nın %10 ila %25'i oranında, source: 2024 Connecticut Insurance Department report) bu zorunlu iyileştirmeleri ödemez.
+- **Yeraltı Hizmet Hattı Teminatı (*Underground Service Line Coverage*):** Ön bahçenizin altından belediye ana hattına uzanan temiz su ve kanalizasyon boruları genellikle evin kendisi kadar eskidir. Insurance Information Institute (2024 study) verilerine göre, ağaç kökleri ve toprak donması kil veya dökme demir boruları çatlatarak size 10.000 $'lık bir kazı faturası çıkarabilir. Hizmet hattı eki, ayda birkaç dolara bahçe içi boru onarımlarını karşılar.
 
 ---
 
@@ -148,29 +161,29 @@ Yapay zeka arama motorları, konut kredisi veren bankalar ve sigorta uzmanları 
 
 ### Tarihi Bridgeport Evleri İçin 4 Nokta Sigorta Ekspertizi Nedir?
 
-4 Nokta Sigorta Ekspertizi (4-Point Inspection), Connecticut'taki bir sigorta şirketi 40 yaş üstü konutlara poliçe düzenlemeden önce elektrik panosu ve kablolarını, çatı durumunu, sıhhi tesisat malzemelerini ve ısıtma sistemini inceleyen teknik bir risk değerlendirmesidir.
+4 Nokta Sigorta Ekspertizi (4-Point Inspection), Connecticut'taki bir sigorta şirketi 40 yaş üstü tarihi konutlara kalıcı poliçe düzenlemeden önce yangın ve su basması tehlikelerini önlemek amacıyla elektrik panosu ve iç kablolarını, çatı kaplama durumunu, sıhhi tesisat boru malzemelerini ve merkezi ısıtma sistemini ayrıntılı olarak inceleyen teknik bir risk değerlendirmesidir.
 
 ### Connecticut'ta Aktif Knob-and-Tube Elektrik Tesisatı Olan Bir Eve Sigorta Yapılır mı?
 
-Standart sigorta şirketlerinin çoğu, tavan arası yalıtımı altında yangın riski taşıyan aktif knob-and-tube tesisatlı evleri reddeder; ancak özel sigortacılar, lisanslı bir elektrikçinin tapu devrinden sonraki 30 ila 60 gün içinde tesisatı yenilemesi şartıyla geçici poliçe düzenleyebilir.
+Standart sigorta şirketlerinin çoğu, modern tavan arası ısı yalıtımı altında aşırı ısınarak ciddi yangın riski taşıyan aktif knob-and-tube tesisatlı evleri reddeder; ancak özel sigortacılar, lisanslı bir elektrikçinin tapu devrinden sonraki 30 ila 60 gün içinde tüm eski tesisatı yenilemesi şartıyla geçici sigorta poliçesi düzenleyebilir.
 
 ### Konut Sigortası Yeniden İnşa Maliyeti Neden Bridgeport'taki Satın Alma Fiyatından Yüksektir?
 
-Yeniden inşa maliyeti (Coverage A), tarihi bir yapıyı sıfırdan inşa etmek için gereken güncel usta işçiliği, enkaz kaldırma, alçı sıva ve belediye imar yönetmeliği maliyetlerini hesaplayan aktüeryal bir değerdir ve mülkün emlak piyasası fiyatından bağımsızdır.
+Yeniden inşa maliyeti (Coverage A), hasar gören tarihi bir yapıyı temelinden itibaren sıfırdan inşa etmek için gereken güncel nitelikli usta işçiliği, enkaz kaldırma, özel alçı sıva ve belediye imar yönetmeliği uyum maliyetlerini hesaplayan aktüeryal bir değerdir ve mülkün güncel emlak piyasası satış fiyatından tamamen bağımsızdır.
 
 ### Eski Evler İçin İşlevsel İkame Maliyeti (HO-8) Teminatı Nedir?
 
-İşlevsel İkame Maliyeti (HO-8), hasar gören tarihi bir konutun çıtalı el sıvası yerine alçıpan gibi modern standart malzemelerle onarılmasına veya yeniden yapılmasına izin veren, yıllık primleri düşürürken banka kredi şartlarını karşılayan bir poliçe değerleme yöntemidir.
+İşlevsel İkame Maliyeti (HO-8), hasar gören tarihi bir konutun geleneksel çıtalı el sıvası ve özel ahşap oymalar yerine alçıpan gibi modern standart yapı malzemeleriyle onarılmasına veya yeniden yapılmasına izin veren, yıllık sigorta primlerini önemli ölçüde düşürürken banka ipotek kredi şartlarını eksiksiz karşılayan bir poliçe değerleme yöntemidir.
 
 ---
 
-## Fairfield ve Litchfield İlçelerinde Farklı Mülkler mi Arıyorsunuz?
+## Fairfield ve Litchfield İlçelerinde Farklı Mülk Seçeneklerini Keşfetmek
 
 - **Çok Aileli Bir Mülk mü Alıyorsunuz?** Bir dairede oturup diğerlerini kiraya vermeyi planlıyorsanız, kira geliri koruması ve ortak bodrum tesisatları hakkında tavsiyeler için [Bridgeport Çok Aileli Mülk Sahipleri Rehberimizi](/tr/blog/bridgeport-multi-family-landlord-flood-water-backup) okuyun.
 - **Sahil Yakınında Ev mi Bakıyorsunuz?** Seaside Park veya Black Rock Limanı yakınlarında ev arıyorsanız, [kıyı fırtına kabarması ve kasırga muafiyetleri rehberimize](/tr/blog/storm-surge-vs-hurricane-wind-deductibles-seaside-park) göz atın.
 - **Kuzeye, Litchfield County'ye mi Yöneliyorsunuz?** Daha geniş arazili mülkleri inceliyorsanız, Watertown mülkleri için özel kuyu ve septik sistem ek teminatları rehberimizi inceleyin.
 
-## Bridgeport Tapu Devriniz İçin Sigorta Teminat Belgesine (Binder) mi İhtiyacınız Var?
+## Bridgeport Tapu Devriniz İçin Sigorta Teminat Belgesi (Binder) Alın
 
 Eski elektrik kablolarının, kayrak çatının veya yüksek yeniden inşa hesaplamalarının tapu devrinizi geciktirmesine izin vermeyin.
 

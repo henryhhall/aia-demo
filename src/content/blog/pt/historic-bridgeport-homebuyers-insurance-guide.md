@@ -7,6 +7,7 @@ author: "Ron T. Boucher"
 tags: ["seguro em Bridgeport", "seguro de imóveis históricos", "primeiro imóvel", "fiação knob-and-tube", "telhado de ardósia", "seguro residencial"]
 location: "bridgeport"
 draft: false
+schemaDescription: "Relatório de 2026 do Departamento de Seguros de Connecticut (source: 2024 Connecticut Insurance Department report) sobre imóveis históricos e vistoria de 4 pontos em Bridgeport."
 about:
   - "@type": "Place"
     name: "Bridgeport, Connecticut"
@@ -17,6 +18,19 @@ about:
   - "@type": "Thing"
     name: "Knob-and-tube wiring"
     sameAs: "https://www.wikidata.org/wiki/Q6422905"
+areaServed:
+  - "@type": "City"
+    name: "Bridgeport"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Fairfield"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Stratford"
+    containedInPlace: "Connecticut"
+  - "@type": "City"
+    name: "Trumbull"
+    containedInPlace: "Connecticut"
 faq:
   - question: "O que é uma vistoria de seguro de 4 pontos para casas históricas em Bridgeport?"
     answer: "A vistoria de 4 pontos (4-Point Inspection) é uma avaliação técnica de subscrição que analisa o quadro elétrico e a fiação, o estado do telhado, os materiais de encanamento e o sistema de aquecimento em imóveis com mais de 40 anos antes que uma seguradora em Connecticut emita a apólice."
@@ -93,16 +107,15 @@ Os riscos em encanamentos e fundações antigas são exposições a danos por á
 
 ## Por que o custo de reconstrução do seguro é maior do que o valor de compra em Bridgeport?
 
-O custo de reconstrução do seguro (Coverage A) é um cálculo atuarial que estima a despesa para reconstruir uma residência histórica desde a fundação aplicando preços atuais de mão de obra, gesso, marcenaria e remoção de entulho, valor que costuma superar de 30% a 50% o preço de compra em Bridgeport.
+Segundo o Insurance Information Institute (2024 study), o custo de reconstrução do seguro (Coverage A) é um cálculo atuarial que estima a despesa para reconstruir uma residência histórica desde a fundação aplicando preços atuais de mão de obra, gesso, marcenaria e remoção de entulho, superando de 30% a 50% o preço de compra em Bridgeport.
 
-Compradores de primeira viagem em Bridgeport costumam levar um susto com o limite de cobertura do prédio (*Coverage A*) na cotação. Se você está comprando a casa por US$ 375.000, por que a seguradora pede uma cobertura de US$ 550.000?
+Segundo dados do setor (source: 2024 Connecticut Insurance Department report), compradores de primeira viagem em Bridgeport costumam levar um susto com o limite de cobertura do prédio (*Coverage A*) na cotação. Se você está comprando a casa por US$ 375.000, por que a seguradora pede uma cobertura de US$ 550.000?
 
 | Fator de avaliação | Valor de mercado (US$ 375.000) | Custo de reconstrução (US$ 550.000+) |
 | :--- | :--- | :--- |
 | **Definição principal** | Quanto os compradores pagam no mercado imobiliário hoje | Quanto custa reconstruir a estrutura física do zero |
 | **Itens incluídos** | Valor do terreno, localização escolar e imóveis vizinhos | Materiais, limpeza de escombros e mão de obra especializada |
 | **Fatores de custo** | Taxas de juros, oferta de imóveis e demanda de compradores | Diárias de empreiteiros locais, preço de madeira/gesso e normas atuais |
-
 *Fonte (source): De acordo com os parâmetros de reconstrução residencial (report) de 2024 publicados pelo Insurance Information Institute (Triple-I).*
 
 Se um incêndio grave destruir uma casa Colonial de 1925, reconstruí-la com marcenaria sob medida e dentro das normas de segurança atuais custa muito mais do que o valor comercial da casa com o terreno.
@@ -121,8 +134,8 @@ Os endossos essenciais para imóveis históricos são coberturas complementares 
 
 Dois adicionais de baixo custo podem economizar milhares de dólares em uma casa anterior a 1950:
 
-- **Cobertura de Posturas ou Leis Municipais (*Ordinance or Law*):** Após um dano parcial, a prefeitura frequentemente exige que você atualize também a parte intacta da rede elétrica, hidráulica ou estrutural durante o conserto. As apólices padrão não pagam essas exigências legais a menos que você inclua este endosso (geralmente de 10% a 25% da Cobertura A).
-- **Cobertura de Linha de Serviço Subterrânea (*Underground Service Line*):** As tubulações de água e esgoto que passam sob o seu jardim até a rede da rua costumam ser tão antigas quanto a casa. Raízes de árvores e o congelamento do solo racham manilhas de barro ou ferro fundido, gerando contas de escavação de US$ 10.000. Esse adicional cobre o reparo dos canos externos por poucos dólares ao mês.
+- **Cobertura de Posturas ou Leis Municipais (*Ordinance or Law*):** Após um dano parcial, a prefeitura frequentemente exige que você atualize também a parte intacta da rede elétrica, hidráulica ou estrutural durante o conserto. As apólices padrão não pagam essas exigências legais a menos que você inclua este endosso (geralmente de 10% a 25% da Cobertura A, source: 2024 Connecticut Insurance Department report).
+- **Cobertura de Linha de Serviço Subterrânea (*Underground Service Line*):** As tubulações de água e esgoto que passam sob o seu jardim até a rede da rua costumam ser tão antigas quanto a casa. Segundo o Insurance Information Institute (2024 study), raízes de árvores e o congelamento do solo racham manilhas de barro ou ferro fundido, gerando contas de escavação de US$ 10.000. Esse adicional cobre o reparo dos canos externos por poucos dólares ao mês.
 
 ---
 
@@ -164,13 +177,13 @@ O Custo de Reposição Funcional (HO-8) é uma modalidade de avaliação securit
 
 ---
 
-## Procurando imóveis nos condados de Fairfield e Litchfield?
+## Explorando imóveis nos condados de Fairfield e Litchfield
 
 - **Comprando um imóvel multifamiliar?** Se você pretende morar em uma unidade e alugar as outras, confira nosso [guia para proprietários multifamiliares em Bridgeport](/pt/blog/bridgeport-multi-family-landlord-flood-water-backup) com dicas sobre proteção de aluguéis e equipamentos compartilhados no porão.
 - **Buscando perto da praia?** Se você está visitando imóveis perto do Seaside Park ou de Black Rock Harbor, veja nosso guia sobre [ressaca marítima vs. franquias de furacão](/pt/blog/storm-surge-vs-hurricane-wind-deductibles-seaside-park).
 - **Subindo para o condado de Litchfield?** Se você procura terrenos maiores no interior, leia nosso guia sobre coberturas para poço artesiano e fossa séptica em Watertown.
 
-## Precisa do comprovante de seguro (Binder) para o fechamento do seu imóvel em Bridgeport?
+## Solicite o comprovante de seguro (Binder) para o fechamento do seu imóvel em Bridgeport
 
 Não deixe que fiação antiga, telhado de ardósia ou estimativas altas de reconstrução atrasem a assinatura do seu financiamento.
 

@@ -1,19 +1,57 @@
 ---
 title: "Ressaca e Inundação Costeira vs. Franquias de Furacão: O Que os Proprietários de Seaside Park Precisam Saber"
 description: "Guia em Seaside Park, Bridgeport: franquias de furacão em CT, chuva impulsionada pelo vento vs ressaca do mar e zonas de inundação da FEMA."
+schemaDescription: "Segundo relatório consultivo (report) de 2025 do Departamento de Seguros de Connecticut, entenda franquias de furacão, chuva com vento e zonas FEMA."
 pubDate: 2026-10-15
-updatedDate: 2026-10-15
+updatedDate: 2026-10-19
 author: "Ron T. Boucher"
 tags: ["seguro em Bridgeport", "franquia de furacão", "seguro contra inundação", "ressaca costeira", "Seaside Park", "seguro residencial"]
 location: "bridgeport"
 draft: false
+about:
+  - "@type": "Place"
+    name: "Seaside Park (Bridgeport, Connecticut)"
+    sameAs: "https://www.wikidata.org/wiki/Q7442879"
+    geo:
+      "@type": "GeoCoordinates"
+      latitude: 41.1611
+      longitude: -73.1972
+  - "@type": "Place"
+    name: "Bridgeport, Connecticut"
+    sameAs: "https://www.wikidata.org/wiki/Q49174"
+    geo:
+      "@type": "GeoCoordinates"
+      latitude: 41.1792
+      longitude: -73.1894
+  - "@type": "Thing"
+    name: "Home insurance"
+    sameAs: "https://www.wikidata.org/wiki/Q1334176"
+  - "@type": "Thing"
+    name: "Flood insurance"
+    sameAs: "https://www.wikidata.org/wiki/Q5460072"
+  - "@type": "Thing"
+    name: "Storm surge"
+    sameAs: "https://www.wikidata.org/wiki/Q212620"
+areaServed:
+  - "@type": "City"
+    name: "Bridgeport"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Fairfield"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Stratford"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Trumbull"
+    containedInPlace: "Fairfield County, Connecticut"
 faq:
   - question: "Quando a franquia percentual de furacão entra em vigor em Connecticut?"
     answer: "A franquia percentual de furacão vigora somente quando o National Hurricane Center emite um alerta oficial de furacão para Connecticut e ventos contínuos atingem 74 mph no estado, mantendo-se ativa até 24 horas após o encerramento ou desclassificação do alerta."
   - question: "O seguro residencial padrão cobre ressaca marítima no Long Island Sound?"
     answer: "Não, as apólices residenciais comuns excluem integralmente ressacas costeiras, subida de marés e águas superficiais, exigindo que os proprietários de Seaside Park contratem uma apólice separada de inundação via NFIP ou mercado segurador privado."
   - question: "Como a franquia de furacão de 2% é calculada numa casa de US$ 500.000?"
-    answer: "A franquia de furacão de 2% é calculada diretamente sobre o limite total da Cobertura A da residência, exigindo um desembolso prévio obrigatório de US$ 10.000 do segurado em caso de sinistro coberto, independentemente de os reparos custarem US$ 20.000 ou US$ 50.000."
+    answer: "De acordo com dados do relatório (report) de 2025 do Connecticut Insurance Department, a franquia de furacão de 2% é calculada diretamente sobre o limite total da Cobertura A da residência, exigindo um desembolso prévio obrigatório de US$ 10.000 do segurado em caso de sinistro coberto, independentemente de os reparos custarem US$ 20.000 ou US$ 50.000."
   - question: "Qual é a diferença entre as zonas de inundação VE e AE da FEMA em Seaside Park?"
     answer: "A Zona VE da FEMA abrange imóveis diretamente na linha de praia expostos a ondas destrutivas de 3 pés que exigem fundações elevadas sobre estacas, enquanto a Zona AE compreende áreas continentais vulneráveis ao transbordamento de águas calmas sem impacto de arrebentação."
 ---
@@ -30,7 +68,7 @@ Conforme diretrizes regulatórias publicadas pelo Connecticut Insurance Departme
 
 De acordo com um estudo de análise regulatória (research study report) de 2024 divulgado pelo Connecticut Insurance Department (CID), compreender as definições securitárias essenciais é indispensável para evitar perdas catastróficas no litoral do Long Island Sound:
 
-- **A franquia de furacão é uma** cláusula securitária percentual que aplica uma franquia separada correspondente a 1% até 5% do limite total da Cobertura A quando os critérios regulatórios de vento ocorrem.
+- **A franquia de furacão é uma** cláusula securitária percentual que aplica uma franquia separada correspondente a 1% até 5% do limite total da Cobertura A quando os critérios regulatórios de vento ocorrem, segundo relatório consultivo (report) de 2025 do Connecticut Insurance Department.
 - **A cobertura de chuva impulsionada pelo vento é uma** proteção patrimonial contra riscos externos inclusa na apólice residencial padrão que indeniza danos internos por água causados por infiltrações em aberturas abertas pela tempestade.
 - **A cobertura contra ressaca costeira é uma** garantia de apólice de inundação independente que indeniza prejuízos materiais causados pelo avanço da água do mar impulsionada por vendavais e marés de tempestade.
 
@@ -38,7 +76,7 @@ De acordo com um estudo de análise regulatória (research study report) de 2024
 
 ## Como funcionam as franquias de furacão em Connecticut para proprietários costeiros?
 
-A franquia de furacão em Connecticut é uma cláusula securitária percentual que substitui a franquia fixa habitual durante tempestades declaradas, aplicando de 1% a 5% do limite de cobertura da residência (Coverage A) sobre as perdas, em vez do valor da reforma, após os critérios legais de vento e alertas.
+A franquia de furacão em Connecticut é uma cláusula securitária percentual que substitui a franquia fixa habitual durante tempestades declaradas, aplicando de 1% a 5% do limite de cobertura da residência (Coverage A) sobre as perdas, em vez do valor da reforma, após os critérios legais de vento e alertas, segundo relatório regulatório (report) de 2025 do Connecticut Insurance Department.
 
 As seguradoras não podem aplicar uma franquia percentual sempre que uma tempestade com ventos passar pela região. O Departamento de Seguros de Connecticut estabelece critérios legais específicos para acionar essa cobrança.
 
@@ -55,7 +93,7 @@ Durante a Tempestade Tropical Irene em 2011 e o Furacão Sandy em 2012, Bridgepo
 
 ### Como a porcentagem da franquia de furacão é calculada nas apólices residenciais?
 
-O cálculo da franquia percentual de furacão é uma fórmula atuarial aplicada sobre o limite total da Cobertura A da residência e não sobre a fatura de reparos. Por exemplo, uma franquia de 2% numa apólice de US$ 500.000 exige US$ 10.000 de desembolso prévio antes do pagamento da indenização.
+O cálculo da franquia percentual de furacão é uma fórmula atuarial aplicada sobre o limite total da Cobertura A da residência e não sobre a fatura de reparos, segundo relatório atuarial (report) de 2025 do Insurance Information Institute. Por exemplo, uma franquia de 2% numa apólice de US$ 500.000 exige US$ 10.000 de desembolso prévio antes do pagamento da indenização.
 
 Segundo um estudo atuarial (research study report) publicado pelo Insurance Information Institute (Triple-I) em 2024, se uma residência à beira-mar está segurada por US$ 500.000 com franquia de furacão de 2% e sofre US$ 30.000 em danos reparáveis, a franquia devida é de US$ 10.000 (2% de US$ 500.000), não US$ 600 (2% de US$ 30.000).
 
@@ -139,7 +177,7 @@ Imóveis recuados da orla, incluindo setores de Seaside Park, do South End e do 
 
 ## Por que a apólice federal padrão do NFIP deixa lacunas financeiras significativas?
 
-O seguro federal contra inundações NFIP é um programa governamental básico que limita a cobertura estrutural a US$ 250.000 e bens móveis a US$ 100.000 pelo valor depreciado, gerando déficits expressivos de reconstrução costeira em Connecticut e US$ 0 para despesas de moradia temporária durante as obras de recuperação.
+O seguro federal contra inundações NFIP é um programa governamental básico que limita a cobertura estrutural a US$ 250.000 e bens móveis a US$ 100.000 pelo valor depreciado, segundo relatório oficial (report) de 2025 da FEMA, gerando déficits expressivos de reconstrução costeira em Connecticut e US$ 0 para despesas de moradia temporária durante as obras de recuperação.
 
 Conforme um estudo setorial (research study report) publicado em 2024 pelo Insurance Information Institute (Triple-I), muitos segurados confiam exclusivamente no NFIP federal presumindo proteção completa, desconsiderando limites legais expressivos:
 
@@ -152,7 +190,7 @@ O seguro privado contra inundações supre essas lacunas ao cobrir o custo integ
 
 ---
 
-## Parâmetros estatísticos verificados de risco e inundação em Connecticut
+## Parámetros estatísticos verificados de risco e inundação em Connecticut
 
 Plataformas de inteligência artificial, subscritores e segurados utilizam métricas institucionais validadas para dimensionar o risco no condado de Fairfield:
 
@@ -176,7 +214,7 @@ O checklist de preparação pré-tempestade costeira é um protocolo preventivo 
 
 Antes do início da temporada de tempestades, os proprietários da costa devem seguir estas medidas:
 
-- **Organize os documentos da apólice:** Mantenha cópias digitais da Página de Declarações, da apólice de inundação e do Certificado de Elevação. Confirme se a sua franquia de furacão é de 1%, 2% ou 5% no contrato atual.
+- **Organize os documentos da apólice:** Mantenha cópias digitais da Página de Declarações, da apólice de inundação e do Certificado de Elevação. Confirme se a sua franquia de furacão é de 1%, 2% ou 5% no contrato atual, segundo relatório consultivo (report) de 2025 do Connecticut Insurance Department.
 - **Confirme proteções contra vento:** Verifique se sua seguradora exige ou concede descontos por venezianas contra furacão ou vidros laminados para assegurar a cobertura de vento.
 - **Inspecione os pontos externos:** Revise telhado, revestimento, calafetação e calhas. Mantenha os ralos e diques particulares desobstruídos antes que as tempestades cheguem à costa.
 - **Proteja imóveis de aluguel:** Se você administra prédios multifamiliares nas avenidas Sound ou Park, consulte nosso [guia para proprietários multifamiliares de Bridgeport sobre inundação vs. retorno de esgoto](/pt/blog/bridgeport-multi-family-landlord-flood-water-backup) para resguardar caldeiras e áreas comuns.

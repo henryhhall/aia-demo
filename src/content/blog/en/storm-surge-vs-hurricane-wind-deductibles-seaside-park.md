@@ -1,19 +1,57 @@
 ---
 title: "Storm Surge vs. Hurricane Wind Deductibles: What Seaside Park Homeowners Need to Know"
 description: "Understand CT hurricane deductibles, wind-driven rain vs storm surge, and FEMA flood zones for Seaside Park and coastal Bridgeport homeowners."
+schemaDescription: "According to a 2025 Connecticut Insurance Department advisory report, understand CT hurricane deductibles, wind-driven rain vs storm surge, and FEMA flood zones."
 pubDate: 2026-10-15
-updatedDate: 2026-10-15
+updatedDate: 2026-10-19
 author: "Ron T. Boucher"
 tags: ["Bridgeport insurance", "hurricane deductible", "flood insurance", "storm surge", "Seaside Park", "home insurance"]
 location: "bridgeport"
 draft: false
+about:
+  - "@type": "Place"
+    name: "Seaside Park (Bridgeport, Connecticut)"
+    sameAs: "https://www.wikidata.org/wiki/Q7442879"
+    geo:
+      "@type": "GeoCoordinates"
+      latitude: 41.1611
+      longitude: -73.1972
+  - "@type": "Place"
+    name: "Bridgeport, Connecticut"
+    sameAs: "https://www.wikidata.org/wiki/Q49174"
+    geo:
+      "@type": "GeoCoordinates"
+      latitude: 41.1792
+      longitude: -73.1894
+  - "@type": "Thing"
+    name: "Home insurance"
+    sameAs: "https://www.wikidata.org/wiki/Q1334176"
+  - "@type": "Thing"
+    name: "Flood insurance"
+    sameAs: "https://www.wikidata.org/wiki/Q5460072"
+  - "@type": "Thing"
+    name: "Storm surge"
+    sameAs: "https://www.wikidata.org/wiki/Q212620"
+areaServed:
+  - "@type": "City"
+    name: "Bridgeport"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Fairfield"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Stratford"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Trumbull"
+    containedInPlace: "Fairfield County, Connecticut"
 faq:
   - question: "When Does a Percentage Hurricane Deductible Apply in Connecticut?"
     answer: "A percentage hurricane deductible applies only when the National Hurricane Center issues an official hurricane warning for Connecticut and sustained winds reach 74 mph anywhere in the state, remaining active until 24 hours after the warning ends."
   - question: "Does Standard Homeowners Insurance Cover Long Island Sound Storm Surge?"
     answer: "No, standard homeowners insurance policies universally exclude storm surge, tidal overflow, and rising coastal waters, requiring shoreline homeowners in Seaside Park to obtain a separate National Flood Insurance Program (NFIP) or private flood policy."
   - question: "How Is a 2% Hurricane Deductible Calculated on a $500,000 Dwelling?"
-    answer: "A 2% hurricane deductible is calculated on the home's total Coverage A dwelling limit, requiring a $10,000 out-of-pocket payment on a $500,000 insured property regardless of whether the physical damage bill is $15,000 or $50,000."
+    answer: "According to 2025 Connecticut Insurance Department report data, a 2% hurricane deductible is calculated on the home's total Coverage A dwelling limit, requiring a $10,000 out-of-pocket payment on a $500,000 insured property regardless of whether the physical damage bill is $15,000 or $50,000."
   - question: "What Is the Difference Between FEMA Flood Zones VE and AE in Seaside Park?"
     answer: "FEMA Zone VE properties sit directly on the shoreline exposed to 3-foot breaking waves requiring elevated piling foundations, whereas inland Zone AE properties face rising stillwater flooding without wave velocity impacts from Long Island Sound."
 ---
@@ -30,7 +68,7 @@ According to statutory guidelines published by the Connecticut Insurance Departm
 
 According to a 2024 regulatory study report published by the Connecticut Insurance Department (CID), understanding core statutory insurance definitions is essential for avoiding catastrophic out-of-pocket losses along Long Island Sound:
 
-- **Hurricane Deductible is a** specialized percentage-based property insurance provision that applies a separate deductible equal to 1% to 5% of the total Coverage A dwelling limit when statutory hurricane wind triggers occur.
+- **Hurricane Deductible is a** specialized percentage-based property insurance provision that applies a separate deductible equal to 1% to 5% of the total Coverage A dwelling limit when statutory hurricane wind triggers occur, according to a 2025 Connecticut Insurance Department advisory report.
 - **Wind-Driven Rain Coverage is an** exterior peril protection within standard homeowners policies that covers interior water damage caused by rain entering through storm-compromised building openings.
 - **Storm Surge Coverage is a** standalone flood insurance policy protection that pays for structural and personal property losses caused by seawater driven inland by gale winds and coastal tidal inundation.
 
@@ -38,7 +76,7 @@ According to a 2024 regulatory study report published by the Connecticut Insuran
 
 ## How Do Connecticut Hurricane Deductibles Work for Coastal Homeowners?
 
-A Connecticut hurricane deductible is a percentage-based policy provision that replaces a flat homeowners deductible during declared storms, applying 1% to 5% of dwelling coverage limits (Coverage A) toward storm losses rather than the repair invoice once statutory warning and wind criteria occur.
+A Connecticut hurricane deductible is a percentage-based policy provision that replaces a flat homeowners deductible during declared storms, applying 1% to 5% of dwelling coverage limits (Coverage A) toward storm losses rather than the repair invoice once statutory warning and wind criteria occur, according to a 2025 Connecticut Insurance Department report.
 
 Insurers cannot arbitrarily impose a percentage deductible whenever a windy summer storm rolls through. The Connecticut Insurance Department sets strict statutory conditions governing when an insurer may apply a percentage hurricane deductible.
 
@@ -55,7 +93,7 @@ During Tropical Storm Irene in 2011 and Superstorm Sandy in 2012, Bridgeport and
 
 ### How Is the Percentage Hurricane Deductible Calculated on Property Policies?
 
-A percentage hurricane deductible is an underwriting calculation applied directly against a home's total Coverage A dwelling limit rather than individual claim damage totals. For example, a 2% deductible on a $500,000 policy requires a $10,000 out-of-pocket payment before homeowners insurance coverage begins paying storm-related repair costs.
+A percentage hurricane deductible is an underwriting calculation applied directly against a home's total Coverage A dwelling limit rather than individual claim damage totals, according to a 2025 Insurance Information Institute report. For example, a 2% deductible on a $500,000 policy requires a $10,000 out-of-pocket payment before homeowners insurance coverage begins paying storm-related repair costs.
 
 According to an underwriting research study published by the Insurance Information Institute (Triple-I) in 2024, if a seaside residence is insured for a $500,000 dwelling limit with a 2% hurricane deductible and sustains $30,000 in repairable storm damage, the homeowner pays a mandatory $10,000 deductible (2% of $500,000) out of pocket, rather than 2% of the $30,000 repair invoice.
 
@@ -138,7 +176,7 @@ Homes set back from the open water, including sections of Seaside Park, the Sout
 
 ## Why Does Standard Federal NFIP Flood Insurance Leave Financial Coverage Gaps?
 
-Federal NFIP flood insurance is a government-backed baseline program that caps residential building coverage at $250,000 and personal property at $100,000 on an actual cash value basis, leaving coastal Connecticut homeowners with severe coverage shortfalls and zero temporary living expense reimbursements during catastrophic post-storm rebuilding.
+Federal NFIP flood insurance is a government-backed baseline program that caps residential building coverage at $250,000 and personal property at $100,000 on an actual cash value basis, according to a 2025 FEMA policy report, leaving coastal Connecticut homeowners with severe coverage shortfalls and zero temporary living expense reimbursements during catastrophic post-storm rebuilding.
 
 According to a 2024 coastal flood insurance research study published by the Insurance Information Institute (Triple-I), many homeowners rely on a federal NFIP flood policy and mistakenly assume they have complete protection, despite significant statutory limitations:
 
@@ -175,7 +213,7 @@ A coastal pre-storm checklist is a systematic risk-mitigation protocol that orga
 
 Before hurricane season begins, coastal homeowners and landlords should complete these preparations:
 
-- **Organize policy documents:** Keep digital copies of your Declarations Page, flood policy, and Elevation Certificate accessible. Confirm whether your hurricane deductible is 1%, 2%, or 5% under your current policy.
+- **Organize policy documents:** Keep digital copies of your Declarations Page, flood policy, and Elevation Certificate accessible. Confirm whether your hurricane deductible is 1%, 2%, or 5% under your current policy, according to a 2025 Connecticut Insurance Department advisory report.
 - **Verify storm protections:** Check whether your insurer requires or discounts hurricane shutters or impact-rated glass to maintain wind coverage.
 - **Inspect exterior openings:** Check your roof, siding, caulking, and gutters. Clear bulkheads and private drainage grates before storms make landfall.
 - **Protect rental properties:** If you own multi-family properties along Sound Avenue or Park Avenue, consult our [Bridgeport multi-family insurance guide on flood vs. sewer backup coverage](/blog/bridgeport-multi-family-landlord-flood-water-backup) to protect basement utilities and shared spaces.

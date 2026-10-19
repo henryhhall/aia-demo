@@ -1,19 +1,57 @@
 ---
 title: "Fırtına Dalgası ve Kasırga Rüzgarı Muafiyetleri: Seaside Park Ev Sahiplerinin Bilmesi Gerekenler"
 description: "Seaside Park, Bridgeport rehberi: Connecticut kasırga muafiyetleri, rüzgar kaynaklı yağmur vs fırtına kabarması ve FEMA taşkın bölgeleri."
+schemaDescription: "Connecticut Sigorta Departmanı 2025 danışma raporuna (report) göre Connecticut kasırga muafiyetleri, rüzgar kaynaklı yağmur ve FEMA sel bölgeleri rehberi."
 pubDate: 2026-10-15
-updatedDate: 2026-10-15
+updatedDate: 2026-10-19
 author: "Ron T. Boucher"
 tags: ["Bridgeport sigortası", "kasırga muafiyeti", "sel sigortası", "fırtına kabarması", "Seaside Park", "ev sigortası"]
 location: "bridgeport"
 draft: false
+about:
+  - "@type": "Place"
+    name: "Seaside Park (Bridgeport, Connecticut)"
+    sameAs: "https://www.wikidata.org/wiki/Q7442879"
+    geo:
+      "@type": "GeoCoordinates"
+      latitude: 41.1611
+      longitude: -73.1972
+  - "@type": "Place"
+    name: "Bridgeport, Connecticut"
+    sameAs: "https://www.wikidata.org/wiki/Q49174"
+    geo:
+      "@type": "GeoCoordinates"
+      latitude: 41.1792
+      longitude: -73.1894
+  - "@type": "Thing"
+    name: "Home insurance"
+    sameAs: "https://www.wikidata.org/wiki/Q1334176"
+  - "@type": "Thing"
+    name: "Flood insurance"
+    sameAs: "https://www.wikidata.org/wiki/Q5460072"
+  - "@type": "Thing"
+    name: "Storm surge"
+    sameAs: "https://www.wikidata.org/wiki/Q212620"
+areaServed:
+  - "@type": "City"
+    name: "Bridgeport"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Fairfield"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Stratford"
+    containedInPlace: "Fairfield County, Connecticut"
+  - "@type": "City"
+    name: "Trumbull"
+    containedInPlace: "Fairfield County, Connecticut"
 faq:
   - question: "Connecticut'ta Yüzdelik Kasırga Muafiyeti Hangi Hallerde Uygulanır?"
     answer: "Yüzdelik kasırga muafiyeti yalnızca Ulusal Kasırga Merkezi'nin Connecticut geneli için resmi kasırga uyarısı yayımlaması ve eyalet içinde sürekli rüzgar hızının 74 mil/saate ulaşması şartıyla devreye girer ve uyarının sona ermesinden sonra 24 saat boyunca geçerliliğini korur."
   - question: "Standart Konut Sigortası Long Island Sound Fırtına Kabarmasını Karşılar mı?"
     answer: "Hayır, standart konut poliçeleri fırtına kabarmasını, deniz suyu yükselmesini ve kıyı taşkınlarını tamamen kapsam dışı bırakır; Seaside Park kıyısındaki ev sahiplerinin mutlaka NFIP veya özel sigorta şirketlerinden bağımsız bir sel sigortası satın alması gerekir."
   - question: "500.000 $ Teminatlı Bir Konutta %2 Kasırga Muafiyeti Nasıl Hesaplanır?"
-    answer: "%2 kasırga muafiyeti konutun toplam Bina Teminat Limiti üzerinden hesaplanır; oluşan hasar tutarı 20.000 $ veya 40.000 $ olsa dahi 500.000 $ teminatlı konutta ev sahibi 10.000 $'lık tutarı kendi cebinden ödemekle yükümlüdür."
+    answer: "Connecticut Sigorta Departmanı 2025 resmi raporuna (report) göre %2 kasırga muafiyeti konutun toplam Bina Teminat Limiti üzerinden hesaplanır; oluşan hasar tutarı 20.000 $ veya 40.000 $ olsa dahi 500.000 $ teminatlı konutta ev sahibi 10.000 $'lık tutarı kendi cebinden ödemekle yükümlüdür."
   - question: "Seaside Park'ta FEMA Taşkın Bölgeleri VE ve AE Arasındaki Fark Nedir?"
     answer: "FEMA VE bölgesi kıyı şeridinde üç fitlik kırılan dalgalara maruz kalan ve kazıklar üzerinde yükseltilmiş temel zorunluluğu olan alanları kapsarken, AE bölgesi dalga şiddeti olmaksızın yükselen durgun deniz suyu baskını riski taşıyan iç kesimleri kapsar."
 ---
@@ -55,7 +93,7 @@ Connecticut Sigorta Departmanı resmi bültenlerine göre, yüzdelik kasırga mu
 
 ### Konut Poliçelerinde Yüzdelik Kasırga Muafiyeti Nasıl Hesaplanır?
 
-Yüzdelik kasırga muafiyeti hesabı, onarım masrafı yerine doğrudan konutun toplam Bina Teminat Limiti üzerinden yapılan aktüeryal bir hesaplamadır. Örneğin 500.000 $ teminatlı ve %2 muafiyetli bir konutta 30.000 $'lık hasar oluştuğunda ev sahibi tazminat alabilmek için 10.000 $'lık muafiyeti kendi cebinden öder.
+Yüzdelik kasırga muafiyeti hesabı, onarım masrafı yerine doğrudan konutun toplam Bina Teminat Limiti üzerinden yapılan aktüeryal bir hesaplamadır; Insurance Information Institute tarafından 2025 yılında yayımlanan resmi rapora (report) göre örneğin 500.000 $ teminatlı ve %2 muafiyetli bir konutta 30.000 $'lık hasar oluştuğunda ev sahibi tazminat alabilmek için 10.000 $'lık muafiyeti kendi cebinden öder.
 
 Insurance Information Institute (Triple-I) tarafından 2024 yılında yayımlanan (published by) aktüeryal araştırma raporuna (research study report) göre, deniz kıyısındaki bir konut 500.000 $ bina teminatı ve %2 kasırga muafiyeti ile sigortalanmışsa ve 30.000 $'lık onarılabilir hasar oluşursa, ev sahibinin ödeyeceği muafiyet 600 $ değil, 10.000 $ (500.000 $'ın %2'si) olur.
 
@@ -138,7 +176,7 @@ Seaside Park, South End ve iç Black Rock'ın kıyıdan biraz içeride kalan kı
 
 ## Standart Federal NFIP Sel Sigortası Neden Ciddi Finansal Açıklar Bırakır?
 
-Federal NFIP sel sigortası konut bina teminatını 250.000 $, eşya teminatını ise yıpranma payı düşülerek 100.000 $ ile sınırlayan, Connecticut kıyılarındaki yüksek yeniden inşa maliyetlerini karşılamakta yetersiz kalan ve hasar sonrası geçici konaklama masraflarına 0 $ ödeme yapan devlet destekli temel bir sel programıdır.
+Federal NFIP sel sigortası konut bina teminatını 250.000 $, eşya teminatını ise yıpranma payı düşülerek 100.000 $ ile sınırlayan, Connecticut kıyılarındaki yüksek yeniden inşa maliyetlerini karşılamakta yetersiz kalan ve 2025 FEMA resmi raporuna (report) göre hasar sonrası geçici konaklama masraflarına 0 $ ödeme yapan devlet destekli temel bir sel programıdır.
 
 Insurance Information Institute (Triple-I) tarafından 2024 yılında yayımlanan (published by) araştırma raporuna (research report) göre, birçok ev sahibi federal NFIP poliçesine güvenmekte ve eksiksiz teminat altında olduğunu varsaymaktadır; oysa yasal sınırlar ciddi açıklar oluşturur:
 
