@@ -99,7 +99,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         heroHeadline: 'Trusted Local Insurance in Danbury, CT',
         heroSubheadline: 'Personal & Commercial Coverage from Associated Insurance Agency',
         officeOverview: [
-          'Associated Insurance Agency was founded in 2008 and incorporated in 2016. Our Danbury office is at 50 Newtown Road (Suite 1), right off Interstate 84 at Exit 8, with free parking on site. This is our main office, staffed by our licensed agents and customer service team.',
+          'Associated Insurance Agency was established in 2008. Our Danbury office is at 50 Newtown Road (Suite 1), right off Interstate 84 at Exit 8, with free parking on site. This is our main office, staffed by our licensed agents and customer service team.',
           'We write personal and commercial policies throughout Fairfield and Litchfield counties. Whether you need same-day COIs for a job site, liability coverage for a multi-family rental, or auto insurance that meets Connecticut state limits, our agents handle the paperwork and help you through claims.',
           'As an independent agency, we work with carriers like Travelers, Safeco, The Hartford, Progressive, and Guard. We shop multiple quotes to find you the right coverage at a lower rate.',
         ],
@@ -309,7 +309,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         heroHeadline: 'Seguros Locales de Confianza en Danbury, CT',
         heroSubheadline: 'Cobertura Personal y Comercial de Associated Insurance Agency',
         officeOverview: [
-          'Associated Insurance Agency abrió sus puertas en 2008 y se constituyó en 2016. Nuestra oficina principal en Danbury está en 50 Newtown Road (Suite 1), junto a la salida 8 de la autopista Interestatal 84, con estacionamiento gratuito. Aquí trabaja nuestro equipo de agentes licenciados y representantes de servicio.',
+          'Associated Insurance Agency se estableció en 2008. Nuestra oficina principal en Danbury está en 50 Newtown Road (Suite 1), junto a la salida 8 de la autopista Interestatal 84, con estacionamiento gratuito. Aquí trabaja nuestro equipo de agentes licenciados y representantes de servicio.',
           'Emitimos pólizas personales y comerciales para todo el condado de Fairfield. Si necesita certificados de seguro (COI) en el mismo día para una obra, cobertura de responsabilidad civil para una propiedad multifamiliar o un seguro de auto con los límites legales de Connecticut, le ayudamos con el trámite y con cualquier reclamo.',
           'Como agencia independiente, trabajamos con aseguradoras como Travelers, Safeco, The Hartford, Progressive y Guard. Comparamos cotizaciones para conseguirle una tarifa conveniente con la cobertura que realmente necesita.',
         ],
@@ -519,7 +519,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         heroHeadline: 'Seguros Locais de Confiança em Danbury, CT',
         heroSubheadline: 'Cobertura Pessoal e Comercial da Associated Insurance Agency',
         officeOverview: [
-          'A Associated Insurance Agency foi fundada em 2008 e registrada em 2016. Nosso escritório de Danbury fica na 50 Newtown Road (Suite 1), logo na saída 8 da Interestadual 84, com estacionamento gratuito no local. Aqui atuam nossos corretores licenciados e a equipe de atendimento.',
+          'A Associated Insurance Agency foi fundada em 2008. Nosso escritório de Danbury fica na 50 Newtown Road (Suite 1), logo na saída 8 da Interestadual 84, com estacionamento gratuito no local. Aqui atuam nossos corretores licenciados e a equipe de atendimento.',
           'Emitimos apólices pessoais e comerciais em todo o condado de Fairfield e região. Se você precisa de certificados de seguro (COI) no mesmo dia para obras, proteção de responsabilidade civil para imóveis multifamiliares ou seguro auto nos limites legais de Connecticut, cuidamos da documentação e acompanhamos você em casos de sinistro.',
           'Como agência independente, trabalhamos com seguradoras como Travelers, Safeco, The Hartford, Progressive e Guard. Comparamos cotações em várias empresas para encontrar o menor valor com a cobertura certa.',
         ],
@@ -729,7 +729,7 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         heroHeadline: 'Danbury, CT’de Güvenilir Yerel Sigorta',
         heroSubheadline: 'Associated Insurance Agency’den Bireysel ve Ticari Teminatlar',
         officeOverview: [
-          'Associated Insurance Agency 2008 yılında kuruldu ve 2016 yılında şirketleşti. Danbury ofisimiz Interstate 84 Otoyolu 8. çıkışında, 50 Newtown Road (Suite 1) adresindedir ve ücretsiz otoparkı vardır. Lisanslı acente temsilcilerimiz ve müşteri ekibimiz bu ofiste hizmet verir.',
+          'Associated Insurance Agency 2008 yılında kuruldu. Danbury ofisimiz Interstate 84 Otoyolu 8. çıkışında, 50 Newtown Road (Suite 1) adresindedir ve ücretsiz otoparkı vardır. Lisanslı acente temsilcilerimiz ve müşteri ekibimiz bu ofiste hizmet verir.',
           'Fairfield ve Litchfield bölgelerinde bireysel ve ticari poliçeler düzenliyoruz. Şantiye için aynı gün sigorta belgesi (COI), çok aileli kiralık binalar için sorumluluk poliçesi veya Connecticut eyalet sınırlarına uygun araç sigortası gerektiğinde tüm evrak işlemlerinizi yürütüyoruz.',
           'Bağımsız acente olarak Travelers, Safeco, The Hartford, Progressive ve Guard gibi şirketlerle çalışıyoruz. Farklı şirketlerin tekliflerini karşılaştırarak bütçenize en uygun primi buluyoruz.',
         ],

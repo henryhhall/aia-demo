@@ -329,10 +329,13 @@ export const POST: APIRoute = async ({ request }) => {
         confirmationCode,
         message: `Certificate request registered successfully for ${insuredName}. Reference: ${confirmationCode}`,
         emailDispatched: emailResult.success,
+        customerAcknowledgementDispatched: emailResult.customerAcknowledgementDispatched ?? false,
         emailDetails: {
           simulated: emailResult.simulated ?? false,
           id: emailResult.id,
           recipient: emailResult.recipient,
+          customerAcknowledgementDispatched: emailResult.customerAcknowledgementDispatched ?? false,
+          customerAcknowledgementId: emailResult.customerAcknowledgementId,
         },
         details: {
           confirmationCode,

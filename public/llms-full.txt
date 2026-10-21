@@ -8270,7 +8270,7 @@ Source: https://aia-danbury.com/about
 
 <BaseLayout
   title="About Associated Insurance Agency | Independent CT Insurance Agents"
-  description="Learn about Associated Insurance Agency, our history serving CT since 2016, and why working with an independent agent protects your property and saves you money."
+  description="Learn about Associated Insurance Agency, our history serving CT since 2008, and why working with an independent agent protects your property and saves you money."
   structuredData={aboutStructuredData}
 >
   <!-- Page Header -->
@@ -8280,7 +8280,7 @@ Source: https://aia-danbury.com/about
         About Our Agency
       </h1>
       <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
-        Serving Danbury, Watertown, Bridgeport, and the wider Connecticut community since 2016.
+        Serving Danbury, Watertown, Bridgeport, and the wider Connecticut community since 2008.
       </p>
     </div>
   </section>
@@ -8294,7 +8294,7 @@ Source: https://aia-danbury.com/about
           <h2 class="text-2xl font-bold text-accent">What is Associated Insurance Agency?</h2>
           <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
             <p class="font-medium text-text-primary">
-              Associated Insurance Agency (AIA) is a full-service independent insurance brokerage established in 2016, operating physical branch offices in Danbury, Watertown, and Bridgeport, Connecticut. AIA partners with leading national carriers to provide personalized personal, commercial, and umbrella liability coverage, supported by licensed multilingual agents fluent in English, Spanish, Portuguese, and Turkish.
+              Associated Insurance Agency (AIA) is a full-service independent insurance brokerage established in 2008, operating physical branch offices in Danbury, Watertown, and Bridgeport, Connecticut. AIA partners with leading national carriers to provide personalized personal, commercial, and umbrella liability coverage, supported by licensed multilingual agents fluent in English, Spanish, Portuguese, and Turkish.
             </p>
           </div>
           <div class="prose prose-zinc max-w-none text-sm sm:text-base text-text-secondary leading-relaxed space-y-6">
@@ -8346,7 +8346,7 @@ Source: https://aia-danbury.com/about
             <ul class="space-y-3.5 text-xs text-text-secondary">
               <li class="flex justify-between">
                 <span class="font-medium">Established:</span>
-                <span>2016</span>
+                <span>2008</span>
               </li>
               <li class="flex justify-between">
                 <span class="font-medium">Service Areas:</span>
@@ -9704,7 +9704,7 @@ Source: https://aia-danbury.com/es/about
 
 <BaseLayout
   title="Sobre Associated Insurance Agency | Agentes de Seguros Independientes de CT"
-  description="Conozca sobre Associated Insurance Agency, nuestra historia al servicio de CT desde 2016 y por qué trabajar con un agente independiente protege su propiedad y le ahorra dinero."
+  description="Conozca sobre Associated Insurance Agency, nuestra historia al servicio de CT desde 2008 y por qué trabajar con un agente independiente protege su propiedad y le ahorra dinero."
   structuredData={aboutStructuredData}
 >
   <!-- Page Header -->
@@ -9714,7 +9714,7 @@ Source: https://aia-danbury.com/es/about
         Sobre Nuestra Agencia
       </h1>
       <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
-        Sirviendo a Danbury, Watertown, Bridgeport y a la comunidad de Connecticut en general desde 2016.
+        Sirviendo a Danbury, Watertown, Bridgeport y a la comunidad de Connecticut en general desde 2008.
       </p>
     </div>
   </section>
@@ -9728,7 +9728,7 @@ Source: https://aia-danbury.com/es/about
           <h2 class="text-2xl font-bold text-accent">¿Qué es Associated Insurance Agency?</h2>
           <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
             <p class="font-medium text-text-primary">
-              Associated Insurance Agency (AIA) es una correduría de seguros independiente de servicio completo fundada en 2016, con sucursales físicas en Danbury, Watertown y Bridgeport, Connecticut. AIA se asocia con aseguradoras líderes para ofrecer coberturas personalizadas para el hogar, autos y negocios, con agentes multilingües licenciados en inglés, español, portugués y turco.
+              Associated Insurance Agency (AIA) es una correduría de seguros independiente de servicio completo fundada en 2008, con sucursales físicas en Danbury, Watertown y Bridgeport, Connecticut. AIA se asocia con aseguradoras líderes para ofrecer coberturas personalizadas para el hogar, autos y negocios, con agentes multilingües licenciados en inglés, español, portugués y turco.
             </p>
           </div>
           <div class="prose prose-zinc max-w-none text-sm sm:text-base text-text-secondary leading-relaxed space-y-6">
@@ -9780,7 +9780,7 @@ Source: https://aia-danbury.com/es/about
             <ul class="space-y-3.5 text-xs text-text-secondary">
               <li class="flex justify-between">
                 <span class="font-medium">Establecido:</span>
-                <span>2016</span>
+                <span>2008</span>
               </li>
               <li class="flex justify-between">
                 <span class="font-medium">Áreas de Servicio:</span>
@@ -15875,7 +15875,7 @@ Source: https://aia-danbury.com/pt/about
 
 <BaseLayout
   title="Sobre a Associated Insurance Agency | Agentes de Seguros Independentes de CT"
-  description="Conheça a Associated Insurance Agency, nossa história servindo CT desde 2016 e por que trabalhar com um agente independente protege sua propriedade e economiza seu dinheiro."
+  description="Conheça a Associated Insurance Agency, nossa história servindo CT desde 2008 e por que trabalhar com um agente independente protege sua propriedade e economiza seu dinheiro."
   structuredData={aboutStructuredData}
 >
   <!-- Page Header -->
@@ -15885,7 +15885,7 @@ Source: https://aia-danbury.com/pt/about
         Sobre Nossa Agência
       </h1>
       <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
-        Servindo Danbury, Watertown, Bridgeport e a comunidade de Connecticut em geral desde 2016.
+        Servindo Danbury, Watertown, Bridgeport e a comunidade de Connecticut em geral desde 2008.
       </p>
     </div>
   </section>
@@ -15899,7 +15899,7 @@ Source: https://aia-danbury.com/pt/about
           <h2 class="text-2xl font-bold text-accent">O que é a Associated Insurance Agency?</h2>
           <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
             <p class="font-medium text-text-primary">
-              A Associated Insurance Agency (AIA) é uma corretora de seguros independente fundada em 2016, com filiais físicas em Danbury, Watertown e Bridgeport, Connecticut. A AIA faz parceria com seguradoras líderes para oferecer coberturas personalizadas residenciais, comerciais e de responsabilidade, com corretores multilíngues fluentes em inglês, espanhol, português e turco.
+              A Associated Insurance Agency (AIA) é uma corretora de seguros independente fundada em 2008, com filiais físicas em Danbury, Watertown e Bridgeport, Connecticut. A AIA faz parceria com seguradoras líderes para oferecer coberturas personalizadas residenciais, comerciais e de responsabilidade, com corretores multilíngues fluentes em inglês, espanhol, português e turco.
             </p>
           </div>
           <div class="prose prose-zinc max-w-none text-sm sm:text-base text-text-secondary leading-relaxed space-y-6">
@@ -15951,7 +15951,7 @@ Source: https://aia-danbury.com/pt/about
             <ul class="space-y-3.5 text-xs text-text-secondary">
               <li class="flex justify-between">
                 <span class="font-medium">Fundada:</span>
-                <span>2016</span>
+                <span>2008</span>
               </li>
               <li class="flex justify-between">
                 <span class="font-medium">Áreas de Atendimento:</span>
@@ -20832,7 +20832,7 @@ Source: https://aia-danbury.com/tr/about
 
 <BaseLayout
   title="Associated Insurance Agency Hakkında | Bağımsız CT Sigorta Temsilcileri"
-  description="Associated Insurance Agency, 2016'dan bu yana CT'ye hizmet veren tarihimiz ve bağımsız bir temsilciyle çalışmanın mülkünüzü korurken nasıl tasarruf sağladığı hakkında bilgi edinin."
+  description="Associated Insurance Agency, 2008'den bu yana CT'ye hizmet veren tarihimiz ve bağımsız bir temsilciyle çalışmanın mülkünüzü korurken nasıl tasarruf sağladığı hakkında bilgi edinin."
   structuredData={aboutStructuredData}
 >
   <!-- Page Header -->
@@ -20842,7 +20842,7 @@ Source: https://aia-danbury.com/tr/about
         Acentemiz Hakkında
       </h1>
       <p class="mt-4 text-sm sm:text-base text-text-secondary max-w-[60ch]">
-        2016'dan beri Danbury, Watertown, Bridgeport ve tüm Connecticut topluluğuna hizmet vermektedir.
+        2008'den beri Danbury, Watertown, Bridgeport ve tüm Connecticut topluluğuna hizmet vermektedir.
       </p>
     </div>
   </section>
@@ -20856,7 +20856,7 @@ Source: https://aia-danbury.com/tr/about
           <h2 class="text-2xl font-bold text-accent">Associated Insurance Agency Nedir?</h2>
           <div class="p-4 bg-accent/5 border-l-4 border-accent-gold rounded-r text-sm text-text-secondary leading-relaxed">
             <p class="font-medium text-text-primary">
-              Associated Insurance Agency (AIA), 2016 yılında kurulan ve Connecticut'ta Danbury, Watertown ve Bridgeport'ta fiziksel şubeleri bulunan tam hizmet veren bağımsız bir sigorta acentesidir. AIA, İngilizce, İspanyolca, Portekizce ve Türkçe dillerini akıcı konuşan lisanslı acentelerle bireysel, ticari ve şemsiye sorumluluk teminatları sunmak için lider sigorta şirketleriyle ortaklık yapar.
+              Associated Insurance Agency (AIA), 2008 yılında kurulan ve Connecticut'ta Danbury, Watertown ve Bridgeport'ta fiziksel şubeleri bulunan tam hizmet veren bağımsız bir sigorta acentesidir. AIA, İngilizce, İspanyolca, Portekizce ve Türkçe dillerini akıcı konuşan lisanslı acentelerle bireysel, ticari ve şemsiye sorumluluk teminatları sunmak için lider sigorta şirketleriyle ortaklık yapar.
             </p>
           </div>
           <div class="prose prose-zinc max-w-none text-sm sm:text-base text-text-secondary leading-relaxed space-y-6">
@@ -20908,7 +20908,7 @@ Source: https://aia-danbury.com/tr/about
             <ul class="space-y-3.5 text-xs text-text-secondary">
               <li class="flex justify-between">
                 <span class="font-medium">Kuruluş:</span>
-                <span>2016</span>
+                <span>2008</span>
               </li>
               <li class="flex justify-between">
                 <span class="font-medium">Hizmet Bölgeleri:</span>

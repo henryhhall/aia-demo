@@ -1,7 +1,7 @@
 # Associated Insurance Agency (AIA) — Web Platform & Agentic WebMCP Integration
 
 > **"We Shop. You Save. Insurance Built For You."**  
-> An enterprise-grade, SEO-optimized web portal and autonomous AI agent platform for **Associated Insurance Agency (AIA)**, a premier independent Connecticut insurance brokerage founded in 2016.
+> An enterprise-grade, SEO-optimized web portal and autonomous AI agent platform for **Associated Insurance Agency (AIA)**, a premier independent Connecticut insurance brokerage founded in 2008.
 
 [![Framework: Astro 7](https://img.shields.io/badge/Framework-Astro%20v7.0.5-orange.svg)](https://astro.build)
 [![UI: React 19](https://img.shields.io/badge/UI-React%20v19.2.7-blue.svg)](https://react.dev)
@@ -33,14 +33,20 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
   - **Unified Multi-Step Intake Funnel**: Combines a shared customer contact foundation (name, phone with SMS consent, email, contact preference) with dynamic line-specific risk anchors for Homeowners (property address & assessor/GIS lookup), Auto (vehicles & VIN), Commercial Auto (fleet sizing), Umbrella (underlying limits), and Commercial GL (business trade & NAICS).
   - **Automated Route Redirection**: 301 redirects preserve external links and bookmarks by routing previous `/quote/homeowners` URLs across all locales (`/quote/homeowners`, `/es/...`, `/pt/...`, `/tr/...`) directly to `/quote?type=home`.
   - **Carrier-Ready Intake Payloads**: Validates submissions with honeypot bot mitigation and dispatches real-time producer briefings and customer confirmations.
-- **Transactional Lead & Quote Email Pipeline (Resend Integration)**:
-  - **Dual Notification Dispatch** (`src/lib/email.ts`): Automatically dispatches two transactional emails upon every quote submission via web forms or WebMCP tool invocations:
-    1. **Unified Agency Producer Dispatch**: Rich HTML and plain-text briefing sent to the central agency inbox configured via `QUOTE_NOTIFICATION_EMAIL` (defaulting to `ron@aia-danbury.com`) detailing customer contact info, reach preference, SMS consent, and risk anchors—unifying leads regardless of applicant ZIP code.
-    2. **Customer Confirmation**: Branded email acknowledging receipt with the confirmation reference code (`AIA-XXXXXX`) and a 24-business-hour follow-up commitment.
+- **Comprehensive Transactional Email Pipeline (Resend & React Email Integration)**:
+  - **Quote Intake Pipeline** (`src/lib/email.ts`): Automatically dispatches two transactional emails upon every quote submission via web forms or WebMCP tool invocations:
+    1. **Unified Agency Producer Dispatch**: Rich HTML and plain-text briefing sent to `QUOTE_NOTIFICATION_EMAIL` (defaulting to `ron@aia-danbury.com`) detailing customer contact info, reach preference, SMS consent, and risk anchors—unifying leads regardless of applicant ZIP code.
+    2. **Customer Confirmation**: Branded email acknowledging receipt with reference code (`AIA-XXXXXX`) and a 24-business-hour follow-up commitment.
+  - **Contact Form Inquiries Pipeline** (`sendContactEmail` in `src/lib/email.ts`): Dispatches dual notifications for general contact and customer service inquiries:
+    1. **Agency Contact Alert**: Immediate notification to agency producers with preferred office, language preference, contact details, and inquiry text.
+    2. **Multilingual Customer Acknowledgement**: Localized customer confirmation (`CONTACT_ACKNOWLEDGEMENT_I18N`) automatically sent in English, Spanish, Portuguese, or Turkish with inquiry reference ID, assigned branch office contact info, and 24-business-hour SLA.
+  - **Certificate of Insurance (COI) Pipeline** (`sendCertificateEmail` in `src/lib/email.ts`): Dual notification dispatch powered by React Email templates (`@react-email/components`):
+    1. **Agency Producer Brief** (`CertificateRequestEmail.tsx`): High-priority dispatch with contract endorsements (Additional Insured, Waiver of Subrogation, Primary/Non-Contributory), job specs, and attached insurance certificates.
+    2. **Customer Receipt Confirmation** (`CertificateConfirmationEmail.tsx`): Branded customer confirmation with tracking reference (`COI-CT-2026-XXXXXX`), assigned branch hotline, and 2–4 business hour turnaround commitment.
   - **Zero-Failure Local Development Mode**: Automatically runs in simulation mode when `RESEND_API_KEY` is unset, outputting clean audit logs to stdout.
 - **Certificate of Insurance (COI / ACORD 25) Hub**: Dedicated multilingual request portals (`/certificate-request`, `/es/certificate-request`, `/pt/certificate-request`, `/tr/certificate-request`, with `/coi` and `/certificates` aliases):
   - **4-Step Interactive ACORD 25 Wizard** (`CertificateRequestForm.tsx`): Guides requestors through named insured verification, certificate holder & delivery dispatch (direct email & fax), contract endorsement terms (Additional Insured CG 20 10 / CG 20 37, Waiver of Subrogation, Primary & Non-Contributory wording), and project specifications upload.
-  - **Branded React Email Templates** (`src/emails/`): Leverages `@react-email/components` for pixel-perfect transactional emails:
+  - **Branded React Email Templates** (`src/emails/`): Leverages `@react-email/components` and `@react-email/render` for pixel-perfect transactional emails:
     1. `CertificateConfirmationEmail.tsx`: Customer receipt confirmation with reference code and turnaround SLA.
     2. `CertificateRequestEmail.tsx`: High-priority agency producer briefing detailing contract endorsements, job-site specs, and attached insurance certificates.
   - **Emergency Rush Processing**: Same-day issuance dispatch callout for active job sites, municipal permits, and contractor bid deadlines with direct hotline access to Danbury HQ.
@@ -136,7 +142,7 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
 | **Framework** | [Astro v7.0.5](https://astro.build) | Island architecture, hybrid static & serverless rendering |
 | **Adapter** | [@astrojs/vercel](https://docs.astro.build/en/guides/integrations-guide/vercel/) | Serverless edge & API route hosting |
 | **UI Components** | [React v19.2.7](https://react.dev) | Interactive islands with [Framer Motion v12.42](https://www.framer.com/motion/) |
-| **Email Service** | [Resend v6.32](https://resend.com) | Transactional email dispatch for agency producer alerts & customer confirmations |
+| **Email Service** | [Resend v6.32](https://resend.com) & [@react-email/components](https://react.email) | Transactional email dispatch for agency producer alerts & customer confirmations via React Email templates |
 | **Python Core** | [Python 3.10+](https://www.python.org) | PEP 8 companion underwriting engines, carrier payload generation & directory services |
 | **Asset Engine** | [Astro Assets](https://docs.astro.build/en/guides/images/) | Build-time image optimization, WebP generation & responsive sizing |
 | **Styling** | [Tailwind CSS v4.3.2](https://tailwindcss.com) | Integrated via `@tailwindcss/vite` with custom theme tokens |
@@ -491,7 +497,8 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 - **POST `/api/contact`**: Ingests direct customer inquiries (`name`, `email`, `phone`, `preferredOffice`, `subject`, `message`, `preferredLanguage`, `recaptchaToken`).
   - **Google reCAPTCHA v3**: Out-of-band verification against `https://www.google.com/recaptcha/api/siteverify` requiring score $\ge 0.5$ and action `contact_form`.
   - **Honeypot Validation**: Inspects hidden decoy trap fields (`hp_website`, `hp_company`) and evaluates submission elapsed time (`form_rendered_at < 1200ms`) to proactively drop automated scraper traffic.
-  - Returns an inquiry confirmation reference ID (`inq_XXXXXX`).
+  - **Dual Transactional Email Dispatch**: Automatically routes an agency producer notification to `ron@aia-danbury.com` and dispatches a localized customer confirmation receipt (`CONTACT_ACKNOWLEDGEMENT_I18N`) across English, Spanish, Portuguese, and Turkish with the inquiry ID, assigned branch office contact details, and follow-up commitment.
+  - Returns an inquiry confirmation reference ID (`inq_XXXXXX`), `emailDispatched` (boolean), `customerAcknowledgementDispatched` (boolean), and `emailDetails`.
 - **GET `/api/contact`**: Returns recent submission counts for internal monitoring.
 
 ### 4. Certificate of Insurance Intake (`/api/certificate-request`)
@@ -544,5 +551,5 @@ AIA operates a **single primary telephone line** across all branches with intell
 
 ## 📄 License & Attribution
 
-Associated Insurance Agency © 2016–Present. All rights reserved.  
+Associated Insurance Agency © 2008–Present. All rights reserved.  
 Partner carrier trademarks (Safeco, Travelers, Progressive, The Hartford, etc.) belong to their respective corporate entities.

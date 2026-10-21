@@ -145,7 +145,7 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         experienceBadge: 'Licensed Producer • Insurance Since 2020',
         shortBio: 'Licensed producer with 20+ years of customer service experience, writing personal and commercial insurance.',
         fullBio: 'Ema is from Brazil and brings over 20 years of customer service experience and proudly serves the Connecticut community in Portuguese, English, and Spanish, helping clients find the right coverage with confidence and ease. She started in the insurance industry in 2020 and has experience in both personal and commercial lines, helping individuals and businesses protect what matters most. In her free time, she enjoys reading and spending time with her family.',
-        specialties: ['Personal Lines', 'Commercial Coverage', 'Client Consultation', 'Multilingual Support'],
+        specialties: ['Personal Lines', 'Commercial Coverage', 'Client Consultation'],
         personalHighlight: 'Avid reader who treasures quality time with her family.',
       },
       {
@@ -159,7 +159,7 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         experienceBadge: 'AIA Team Member Since 2023',
         shortBio: 'Assists clients with policy updates, billing questions, and insurance inquiries in English, Portuguese, and Spanish.',
         fullBio: 'Clara is originally from Brazil and joined the AIA team in 2023. She focuses on assisting clients with their insurance needs, ensuring they receive clear guidance and support throughout the process. She is committed to providing reliable service, addressing client inquiries, and helping deliver a smooth and efficient experience. Outside of work, she enjoys spending time with her family, staying active, and being with her Goldendoodle, Simba.',
-        specialties: ['Client Support', 'Policy Guidance', 'Inquiry Resolution', 'Customer Care'],
+        specialties: ['Client Support', 'Personal Lines', 'Commercial Coverage'],
         personalHighlight: 'Enjoys fitness, family gatherings, and playing with her Goldendoodle, Simba.',
       },
       {
@@ -296,7 +296,7 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         experienceBadge: 'Productora Licenciada • En Seguros Desde 2020',
         shortBio: 'Productora licenciada con más de 20 años de experiencia en servicio al cliente, asesorando en seguros personales y comerciales.',
         fullBio: 'Ema es originaria de Brasil y aporta más de 20 años de experiencia en servicio al cliente. Con orgullo atiende a la comunidad de Connecticut en portugués, inglés y español, ayudando a los clientes a encontrar la cobertura adecuada con confianza y sencillez. Inició en la industria de seguros en 2020 y cuenta con experiencia tanto en líneas personales como comerciales, ayudando a individuos y empresas a proteger lo más importante. En su tiempo libre, le gusta leer y compartir con su familia.',
-        specialties: ['Líneas Personales', 'Coberturas Comerciales', 'Consultoría de Clientes', 'Soporte Multilingüe'],
+        specialties: ['Líneas Personales', 'Coberturas Comerciales', 'Consultoría de Clientes'],
         personalHighlight: 'Apasionada de la lectura que atesora momentos de calidad con su familia.',
       },
       {
@@ -310,7 +310,7 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         experienceBadge: 'En el Equipo de AIA Desde 2023',
         shortBio: 'Atiende consultas sobre pólizas, trámites de facturación y pagos en español, inglés y portugués.',
         fullBio: 'Clara es originaria de Brasil y se unió al equipo de AIA en 2023. Se enfoca en asesorar a los clientes con sus necesidades de seguros, asegurando que reciban orientación clara y apoyo en todo el proceso. Está comprometida a ofrecer un servicio confiable, resolver dudas y brindar una experiencia ágil y eficiente. Fuera del trabajo, le gusta pasar tiempo con su familia, mantenerse activa y disfrutar con su perro Goldendoodle, Simba.',
-        specialties: ['Atención al Asegurado', 'Orientación de Pólizas', 'Resolución de Consultas', 'Servicio al Cliente'],
+        specialties: ['Atención al Cliente', 'Líneas Personales', 'Coberturas Comerciales'],
         personalHighlight: 'Disfruta del ejercicio físico, las reuniones familiares y jugar con su perro Simba.',
       },
       {
@@ -447,7 +447,7 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         experienceBadge: 'Corretora Licenciada • Seguros Desde 2020',
         shortBio: 'Corretora licenciada com mais de 20 anos de experiência em atendimento, emitindo seguros pessoais e comerciais.',
         fullBio: 'Ema é natural do Brasil e traz mais de 20 anos de experiência em atendimento ao cliente, atendendo com orgulho a comunidade de Connecticut em português, inglês e espanhol, ajudando cada cliente a encontrar a cobertura ideal com facilidade e confiança. Iniciou no setor de seguros em 2020 e possui ampla experiência em ramos pessoais e comerciais, apoiando pessoas e empresas na proteção do que mais importa. Em seus momentos livres, adora ler e curtir a família.',
-        specialties: ['Linhas Pessoais', 'Coberturas Comerciais', 'Consultoria de Clientes', 'Suporte Multilíngue'],
+        specialties: ['Linhas Pessoais', 'Coberturas Comerciais', 'Consultoria de Clientes'],
         personalHighlight: 'Apaixonada por leitura e por momentos especiais com sua família.',
       },
       {
@@ -461,7 +461,7 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         experienceBadge: 'Na Equipe AIA Desde 2023',
         shortBio: 'Atende segurados para emissão de segundas vias, dúvidas de cobrança e alterações de apólice em português, inglês e espanhol.',
         fullBio: 'Clara é brasileira e juntou-se à equipe da AIA em 2023. Seu foco é apoiar os clientes em todas as suas necessidades de seguro, garantindo orientação clara e suporte contínuo durante todo o processo. Tem o compromisso de oferecer um serviço confiável, responder prontamente a dúvidas e proporcionar uma experiência tranquila e eficiente. Fora do ambiente de trabalho, gosta de curtir a família, praticar atividades físicas e brincar com seu Goldendoodle, Simba.',
-        specialties: ['Atendimento ao Cliente', 'Orientação de Apólices', 'Resolução de Dúvidas', 'Suporte ao Segurado'],
+        specialties: ['Atendimento ao Cliente', 'Linhas Pessoais', 'Coberturas Comerciais'],
         personalHighlight: 'Gosta de manter-se ativa, reunir a família e brincar com seu cachorro Simba.',
       },
       {
@@ -598,7 +598,7 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         experienceBadge: "Lisanslı Sigortacı • 2020'den Beri",
         shortBio: '20 yılı aşkın müşteri hizmetleri tecrübesiyle bireysel ve ticari poliçeler hazırlayan lisanslı sigortacı.',
         fullBio: 'Brezilyalı olan Ema, 20 yılı aşkın müşteri hizmetleri tecrübesine sahiptir ve Connecticut topluluğuna Portekizce, İngilizce ve İspanyolca dillerinde gururla hizmet vermektedir. Müşterilerin doğru teminatı güven ve kolaylıkla bulmalarına yardımcı olur. Sigorta sektörüne 2020 yılında adım atmış olup hem bireysel hem de ticari branşlarda uzmanlığa sahiptir; kişi ve işletmelerin en değerli varlıklarını korumalarına destek olur. Boş zamanlarında kitap okumaktan ve ailesiyle vakit geçirmekten keyif alır.',
-        specialties: ['Bireysel Branşlar', 'Ticari Teminatlar', 'Müşteri Danışmanlığı', 'Çok Dilli Destek'],
+        specialties: ['Bireysel Branşlar', 'Ticari Teminatlar', 'Müşteri Danışmanlığı'],
         personalHighlight: 'Kitap okumayı ve ailesiyle kaliteli vakit geçirmeyi çok sever.',
       },
       {
@@ -612,7 +612,7 @@ export const teamData: Record<'en' | 'es' | 'pt' | 'tr', TeamDataLocale> = {
         experienceBadge: "2023'ten Beri AIA Ekip Üyesi",
         shortBio: 'Poliçe güncellemeleri, fatura soruları ve ödeme işlemlerinde İngilizce, Portekizce ve İspanyolca destek verir.',
         fullBio: 'Aslen Brezilyalı olan Clara, 2023 yılında AIA ekibine katıldı. Sigorta ihtiyaçlarında müşterilere destek olmaya, süreç boyunca net bir rehberlik ve güçlü bir destek almalarını sağlamaya odaklanmaktadır. Güvenilir hizmet sunmaya, müşteri sorularını titizlikle yanıtlamaya ve sorunsuz, verimli bir deneyim yaşatmaya kendini adamıştır. İş dışında ailesiyle vakit geçirmekten, aktif kalmaktan ve Goldendoodle cinsi köpeği Simba ile oynamaktan keyif alır.',
-        specialties: ['Müşteri Hizmetleri', 'Poliçe Rehberliği', 'Talep Yönetimi', 'Müşteri Desteği'],
+        specialties: ['Müşteri Hizmetleri', 'Bireysel Branşlar', 'Ticari Teminatlar'],
         personalHighlight: 'Spor yapmayı, aile toplantılarını ve köpeği Simba ile oynamayı çok sever.',
       },
       {

@@ -202,10 +202,13 @@ export const POST: APIRoute = async ({ request }) => {
         confirmationCode,
         message: `Quote request successfully registered for ${name}.`,
         emailDispatched: emailResult.success,
+        customerAcknowledgementDispatched: emailResult.customerAcknowledgementDispatched ?? false,
         emailDetails: {
           simulated: emailResult.simulated ?? false,
           id: emailResult.id,
           recipient: emailResult.recipient,
+          customerAcknowledgementDispatched: emailResult.customerAcknowledgementDispatched ?? false,
+          customerAcknowledgementId: emailResult.customerAcknowledgementId,
         },
         details: submission,
       }),

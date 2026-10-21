@@ -110,7 +110,7 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
         role: 'Customer Service Representative',
         isProducer: true,
         languages: ['English', 'Portuguese', 'Spanish'],
-        specialties: ['Personal Lines', 'Commercial Coverage', 'Client Consultation', 'Multilingual Support'],
+        specialties: ['Personal Lines', 'Commercial Coverage', 'Client Consultation'],
       },
       {
         id: 'clara-de-barros',
@@ -118,7 +118,7 @@ export const AIA_LOCATIONS: AIAOfficeLocation[] = [
         role: 'Customer Service Representative',
         isProducer: false,
         languages: ['English', 'Portuguese', 'Spanish'],
-        specialties: ['Client Support', 'Policy Guidance', 'Inquiry Resolution', 'Customer Care'],
+        specialties: ['Client Support', 'Personal Lines', 'Commercial Coverage'],
       },
     ],
   },

@@ -129,6 +129,7 @@ cypress/screenshots/
 vite.config.*.timestamp-*
 out/
 build/
+.react-email/
 
 # Agent & Scratch directories
 scratch/

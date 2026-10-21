@@ -11,7 +11,7 @@ export const ui = {
   en: {
     'nav.about': 'About',
     'nav.aboutOverview': 'About Our Agency',
-    'nav.aboutOverviewDesc': 'Independent brokerage serving CT since 2016',
+    'nav.aboutOverviewDesc': 'Independent brokerage serving CT since 2008',
     'nav.meetTeam': 'Meet Our Team',
     'nav.meetTeamDesc': 'Licensed multilingual agents in Danbury, Watertown & Bridgeport',
     'nav.personal': 'Personal',
@@ -105,7 +105,7 @@ export const ui = {
   es: {
     'nav.about': 'Nosotros',
     'nav.aboutOverview': 'Sobre Nuestra Agencia',
-    'nav.aboutOverviewDesc': 'Correduría independiente al servicio de CT desde 2016',
+    'nav.aboutOverviewDesc': 'Correduría independiente al servicio de CT desde 2008',
     'nav.meetTeam': 'Conozca a Nuestro Equipo',
     'nav.meetTeamDesc': 'Agentes licenciados multilingües en Danbury, Watertown y Bridgeport',
     'nav.personal': 'Personal',
@@ -199,7 +199,7 @@ export const ui = {
   pt: {
     'nav.about': 'Sobre Nós',
     'nav.aboutOverview': 'Sobre Nossa Agência',
-    'nav.aboutOverviewDesc': 'Corretora independente servindo CT desde 2016',
+    'nav.aboutOverviewDesc': 'Corretora independente servindo CT desde 2008',
     'nav.meetTeam': 'Conheça a Nossa Equipe',
     'nav.meetTeamDesc': 'Corretores licenciados multilíngues em Danbury, Watertown e Bridgeport',
     'nav.personal': 'Pessoal',
@@ -293,7 +293,7 @@ export const ui = {
   tr: {
     'nav.about': 'Hakkımızda',
     'nav.aboutOverview': 'Acentemiz Hakkında',
-    'nav.aboutOverviewDesc': "2016'dan bu yana CT'ye hizmet veren bağımsız acente",
+    'nav.aboutOverviewDesc': "2008'den bu yana CT'ye hizmet veren bağımsız acente",
     'nav.meetTeam': 'Ekibimizle Tanışın',
     'nav.meetTeamDesc': "Danbury, Watertown ve Bridgeport'taki lisanslı acentelerimiz",
     'nav.personal': 'Bireysel',

@@ -82,6 +82,8 @@ export interface SendEmailResult {
   simulated?: boolean;
   error?: string;
   recipient?: string;
+  customerAcknowledgementDispatched?: boolean;
+  customerAcknowledgementId?: string;
 }
 
 // Office contact directory mapping
@@ -335,74 +337,190 @@ AIA Producer Portal — https://aia-danbury.com
   `.trim();
 }
 
+const QUOTE_CONFIRMATION_I18N: Record<string, {
+  subject: (code: string) => string;
+  title: string;
+  greeting: (name: string) => string;
+  received: (type: string) => string;
+  codeLabel: string;
+  servicing: string;
+  offices: string;
+  directLine: string;
+  brokerageText: string;
+  followUp: (method: string) => string;
+  rushNotice: string;
+  disclaimer: string;
+}> = {
+  en: {
+    subject: (code: string) => `Quote Request Received - Associated Insurance Agency (${code})`,
+    title: 'Quote Request Confirmation',
+    greeting: (name: string) => `Hello ${name},`,
+    received: (type: string) => `Thank you for choosing Associated Insurance Agency. We have received your request for <strong>${type} insurance coverage</strong>.`,
+    codeLabel: 'Your Confirmation Code',
+    servicing: 'Servicing Agency:',
+    offices: 'Offices:',
+    directLine: 'Direct Line:',
+    brokerageText: 'As an independent brokerage, a licensed producer will compare rates across our network of 11+ premier carriers (including Safeco, Travelers, Progressive, and The Hartford) to find you the best coverage at the most competitive price.',
+    followUp: (method: string) => `A licensed representative will follow up with you via <strong>${method}</strong> within <strong>24 business hours</strong>.`,
+    rushNotice: 'Need immediate assistance or rush certificate processing? Call our Danbury headquarters directly at <strong>(203) 748-9272</strong>.',
+    disclaimer: 'Insurance coverage cannot be bound, altered, or cancelled via website form, email, or voicemail until directly confirmed in writing by a licensed insurance agent.',
+  },
+  es: {
+    subject: (code: string) => `Solicitud de Cotización Recibida - Associated Insurance Agency (${code})`,
+    title: 'Confirmación de Solicitud de Cotización',
+    greeting: (name: string) => `Hola ${name},`,
+    received: (type: string) => `Gracias por elegir Associated Insurance Agency. Hemos recibido su solicitud de cotización para seguro de <strong>${type}</strong>.`,
+    codeLabel: 'Su Código de Confirmación',
+    servicing: 'Agencia de Servicio:',
+    offices: 'Oficinas:',
+    directLine: 'Línea Directa:',
+    brokerageText: 'Como agencia independiente, un agente con licencia comparará tarifas en nuestra red de más de 11 aseguradoras líderes (incluidas Safeco, Travelers, Progressive y The Hartford) para encontrar la mejor cobertura al precio más competitivo.',
+    followUp: (method: string) => `Un representante con licencia se comunicará con usted por <strong>${method}</strong> dentro de las próximas <strong>24 horas hábiles</strong>.`,
+    rushNotice: '¿Necesita asistencia inmediata o emisión urgente? Llame a nuestra sede en Danbury al <strong>(203) 748-9272</strong>.',
+    disclaimer: 'La cobertura no puede ser vinculada, modificada o cancelada mediante formularios web, correo electrónico o mensaje de voz hasta ser confirmada por escrito por un agente con licencia.',
+  },
+  pt: {
+    subject: (code: string) => `Solicitação de Cotação Recebida - Associated Insurance Agency (${code})`,
+    title: 'Confirmação de Solicitação de Cotação',
+    greeting: (name: string) => `Olá ${name},`,
+    received: (type: string) => `Obrigado por escolher a Associated Insurance Agency. Recebemos sua solicitação de cotação para seguro de <strong>${type}</strong>.`,
+    codeLabel: 'Seu Código de Confirmação',
+    servicing: 'Agência de Atendimento:',
+    offices: 'Escritórios:',
+    directLine: 'Linha Direta:',
+    brokerageText: 'Como corretora independente, um corretor licenciado comparará cotações em nossa rede com mais de 11 seguradoras líderes (incluindo Safeco, Travelers, Progressive e The Hartford) para encontrar a melhor proteção pelo valor mais vantajoso.',
+    followUp: (method: string) => `Um corretor licenciado entrará em contato com você via <strong>${method}</strong> dentro de <strong>24 horas úteis</strong>.`,
+    rushNotice: 'Precisa de assistência urgente ou emissão rápida? Ligue para nossa sede em Danbury no número <strong>(203) 748-9272</strong>.',
+    disclaimer: 'A cobertura não pode ser vinculada, alterada ou cancelada através de formulário do site, e-mail ou correio de voz até confirmação por escrito de um corretor licenciado.',
+  },
+  tr: {
+    subject: (code: string) => `Fiyat Teklifi Talebiniz Alındı - Associated Insurance Agency (${code})`,
+    title: 'Fiyat Teklifi Talebi Onayı',
+    greeting: (name: string) => `Merhaba ${name},`,
+    received: (type: string) => `Associated Insurance Agency'yi tercih ettiğiniz için teşekkür ederiz. <strong>${type} sigortası</strong> teminatı teklif talebiniz tarafımıza ulaştı.`,
+    codeLabel: 'Takip Onay Kodunuz',
+    servicing: 'Hizmet Veren Acente:',
+    offices: 'Ofisler:',
+    directLine: 'Doğrudan Hat:',
+    brokerageText: 'Bağımsız bir acente olarak lisanslı temsilcimiz, 11\'den fazla lider sigorta şirketi (Safeco, Travelers, Progressive ve The Hartford dahil) genelinde fiyatları karşılaştırarak size en uygun teklifi sunacaktır.',
+    followUp: (method: string) => `Lisanslı bir temsilcimiz <strong>24 iş saati</strong> içinde sizinle <strong>${method}</strong> yoluyla iletişime geçecektir.`,
+    rushNotice: 'Acil yardıma veya hızlı sertifika işlemine mi ihtiyacınız var? Doğrudan Danbury merkezimizi arayın: <strong>(203) 748-9272</strong>.',
+    disclaimer: 'Sigorta teminatı web formu, e-posta veya sesli mesaj yoluyla başlatılamaz, değiştirilemez veya iptal edilemez. Teminat, yalnızca lisanslı bir acente tarafından doğrudan yazılı olarak onaylandıktan sonra yürürlüğe girer.',
+  },
+};
+
 /**
- * Builds HTML template for the Customer Confirmation Email
+ * Builds HTML template for the Customer Quote Acknowledgement Email
  */
 function buildCustomerConfirmationHtml(data: QuoteEmailData, officeInfo: (typeof OFFICE_DIRECTORY)['danbury']): string {
+  const lang = (data.preferredLanguage || 'en').toLowerCase();
+  const t = QUOTE_CONFIRMATION_I18N[lang] || QUOTE_CONFIRMATION_I18N.en;
+  const insuranceType = data.insuranceType || 'insurance';
+
   return `
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quote Request Received - Associated Insurance Agency</title>
+  <title>${t.title} - Associated Insurance Agency</title>
 </head>
 <body style="margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.5;">
-  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0;">
+  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
     
-    <div style="background: #0f172a; padding: 28px 32px; color: #ffffff; border-bottom: 3px solid #c5a880;">
-      <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff;">
+    <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 28px 32px; color: #ffffff; border-bottom: 3px solid #c5a880;">
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #c5a880; font-weight: 700; margin-bottom: 6px;">
         Associated Insurance Agency
+      </div>
+      <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff;">
+        ${t.title}
       </h1>
-      <div style="margin-top: 6px; font-size: 14px; color: #c5a880; font-weight: 600;">
-        Quote Request Confirmation
+      <div style="margin-top: 6px; font-size: 13px; color: #94a3b8;">
+        Reference: <strong style="color: #ffffff; font-family: monospace;">${data.confirmationCode}</strong>
       </div>
     </div>
 
     <div style="padding: 32px;">
-      <p style="font-size: 15px; margin-top: 0;">
-        Hello <strong>${data.name}</strong>,
+      <p style="font-size: 15px; margin-top: 0; color: #0f172a;">
+        ${t.greeting(data.name)}
       </p>
       <p style="font-size: 14px; color: #334155; line-height: 1.6;">
-        Thank you for choosing Associated Insurance Agency. We have received your request for 
-        <strong>${data.insuranceType || 'insurance'} coverage</strong>.
+        ${t.received(insuranceType)}
       </p>
 
       <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin: 24px 0;">
         <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 600;">
-          Your Confirmation Code
+          ${t.codeLabel}
         </div>
         <div style="font-size: 20px; font-weight: 700; color: #0f172a; font-family: monospace; margin-top: 4px;">
           ${data.confirmationCode}
         </div>
-        <div style="margin-top: 12px; font-size: 13px; color: #334155;">
-          <strong>Servicing Agency:</strong> Associated Insurance Agency<br>
-          <strong>Offices:</strong> Danbury HQ • Watertown • Bridgeport<br>
-          <strong>Direct Line:</strong> <a href="tel:(203) 748-9272" style="color: #2563eb; text-decoration: none;">(203) 748-9272</a>
+        <div style="margin-top: 12px; font-size: 13px; color: #334155; line-height: 1.6;">
+          <strong>${t.servicing}</strong> Associated Insurance Agency<br>
+          <strong>${t.offices}</strong> Danbury HQ • Watertown • Bridgeport<br>
+          <strong>${t.directLine}</strong> <a href="tel:(203) 748-9272" style="color: #2563eb; text-decoration: none; font-weight: 600;">(203) 748-9272</a>
         </div>
       </div>
 
       <p style="font-size: 14px; color: #334155; line-height: 1.6;">
-        As an independent brokerage, a licensed producer will compare rates across our network of 11+ premier carriers 
-        (including Safeco, Travelers, Progressive, and The Hartford) to find you the best coverage at the most competitive price.
+        ${t.brokerageText}
       </p>
 
       <p style="font-size: 14px; color: #334155; line-height: 1.6;">
-        A representative will follow up with you via <strong>${data.reachMethod || 'phone'}</strong> within <strong>24 business hours</strong>.
+        ${t.followUp(data.reachMethod || 'phone')}
       </p>
 
-      <div style="margin-top: 28px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 13px; color: #64748b;">
-        Need immediate assistance or rush certificate processing? Call our Danbury headquarters directly at <strong>(203) 748-9272</strong>.
+      <div style="margin-top: 24px; padding: 14px 16px; background-color: #f1f5f9; border-radius: 6px; font-size: 13px; color: #475569;">
+        ${t.rushNotice}
+      </div>
+
+      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; line-height: 1.5;">
+        ${t.disclaimer}
       </div>
     </div>
 
-    <div style="background-color: #f1f5f9; padding: 16px 32px; font-size: 12px; color: #64748b; text-align: center;">
-      © ${new Date().getFullYear()} Associated Insurance Agency. All rights reserved.
+    <div style="background-color: #f1f5f9; padding: 16px 32px; font-size: 12px; color: #64748b; text-align: center; border-top: 1px solid #e2e8f0;">
+      © ${new Date().getFullYear()} Associated Insurance Agency LLC • CT License #002377312 • Licensed in CT, NY, NJ, MA
     </div>
 
   </div>
 </body>
 </html>
+  `.trim();
+}
+
+/**
+ * Builds Plain Text version for the Customer Quote Acknowledgement Email
+ */
+function buildCustomerConfirmationText(data: QuoteEmailData, officeInfo: (typeof OFFICE_DIRECTORY)['danbury']): string {
+  const lang = (data.preferredLanguage || 'en').toLowerCase();
+  const t = QUOTE_CONFIRMATION_I18N[lang] || QUOTE_CONFIRMATION_I18N.en;
+  const insuranceType = data.insuranceType || 'insurance';
+
+  return `
+====================================================
+ASSOCIATED INSURANCE AGENCY — ${t.title.toUpperCase()}
+====================================================
+${t.codeLabel}: ${data.confirmationCode}
+
+${t.greeting(data.name)}
+
+${t.received(insuranceType).replace(/<[^>]+>/g, '')}
+
+${t.brokerageText}
+
+${t.followUp(data.reachMethod || 'phone').replace(/<[^>]+>/g, '')}
+
+${t.servicing} Associated Insurance Agency
+${t.offices} Danbury HQ • Watertown • Bridgeport
+${t.directLine} (203) 748-9272
+Website: https://aia-danbury.com
+
+${t.rushNotice.replace(/<[^>]+>/g, '')}
+
+----------------------------------------------------
+${t.disclaimer.replace(/<[^>]+>/g, '')}
+====================================================
   `.trim();
 }
 
@@ -414,22 +532,30 @@ export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailRes
   const officeInfo = OFFICE_DIRECTORY.danbury;
 
   const { client, fromEmail, defaultRecipient } = getResendClient();
-  // All quote requests route to the single unified agency inbox
   const recipient = defaultRecipient;
 
   // 1. Simulation / Local Dev Fallback (when RESEND_API_KEY is not yet populated)
   if (!client) {
-    const simId = 'sim_' + Math.random().toString(36).substring(2, 10);
+    const simId = 'sim_quote_' + Math.random().toString(36).substring(2, 10);
+    const simAckId = 'sim_quote_ack_' + Math.random().toString(36).substring(2, 10);
+
     console.info('\n====================================================');
-    console.info('📧 [Resend Email Simulated Dispatch]');
+    console.info('📧 [Resend Simulated Dispatch - Agency Quote Intake]');
     console.info(`To:              ${recipient} (Centralized Quote Inbox)`);
     console.info(`From:            ${fromEmail}`);
     console.info(`Subject:         [New Quote Request] ${data.insuranceType || 'General'} - ${data.name} (${data.confirmationCode})`);
     console.info(`Applicant Phone: ${data.phone}`);
     console.info(`Applicant Email: ${data.email}`);
     console.info(`Line:            ${data.insuranceType}`);
-    console.info(`Notes:           ${data.notes || 'None'}`);
+    console.info(`Language:        ${data.preferredLanguage || 'en'}`);
     console.info(`Simulation ID:   ${simId}`);
+    if (data.email && data.email.includes('@')) {
+      console.info('----------------------------------------------------');
+      console.info('📧 [Resend Simulated Dispatch - Customer Acknowledgement Receipt]');
+      console.info(`To:              ${data.email}`);
+      console.info(`Subject:         ${(QUOTE_CONFIRMATION_I18N[(data.preferredLanguage || 'en').toLowerCase()] || QUOTE_CONFIRMATION_I18N.en).subject(data.confirmationCode)}`);
+      console.info(`Simulation ID:   ${simAckId}`);
+    }
     console.info('💡 Set RESEND_API_KEY in your .env to send real transactional emails via Resend.');
     console.info('====================================================\n');
 
@@ -438,6 +564,8 @@ export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailRes
       simulated: true,
       id: simId,
       recipient,
+      customerAcknowledgementDispatched: Boolean(data.email && data.email.includes('@')),
+      customerAcknowledgementId: simAckId,
     };
   }
 
@@ -469,18 +597,30 @@ export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailRes
 
     console.info(`[Resend Success] Agency quote notification dispatched! ID: ${emailResponse.data?.id}`);
 
-    // Optionally dispatch customer acknowledgement email if customer provided a valid email
+    // Dispatch customer acknowledgement email
+    let custAckDispatched = false;
+    let custAckId: string | undefined;
     if (data.email && data.email.includes('@')) {
       try {
-        await client.emails.send({
+        const lang = (data.preferredLanguage || 'en').toLowerCase();
+        const t = QUOTE_CONFIRMATION_I18N[lang] || QUOTE_CONFIRMATION_I18N.en;
+        const custResp = await client.emails.send({
           from: fromEmail,
           to: [data.email],
-          subject: `Quote Request Received - Associated Insurance Agency (${data.confirmationCode})`,
+          subject: t.subject(data.confirmationCode),
           html: buildCustomerConfirmationHtml(data, officeInfo),
+          text: buildCustomerConfirmationText(data, officeInfo),
           tags: [{ name: 'category', value: 'customer_acknowledgement' }],
         });
+
+        if (!custResp.error) {
+          custAckDispatched = true;
+          custAckId = custResp.data?.id;
+          console.info(`[Resend Success] Customer quote acknowledgement dispatched! ID: ${custAckId}`);
+        } else {
+          console.warn('[Resend Warning] Customer quote acknowledgement error:', custResp.error);
+        }
       } catch (custErr) {
-        // Log customer notification failure without failing the overall submission
         console.warn('[Resend] Customer confirmation email could not be delivered:', custErr);
       }
     }
@@ -490,6 +630,8 @@ export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailRes
       id: emailResponse.data?.id,
       simulated: false,
       recipient,
+      customerAcknowledgementDispatched: custAckDispatched,
+      customerAcknowledgementId: custAckId,
     };
   } catch (err: any) {
     console.error('[Resend Exception] Unexpected error during quote email dispatch:', err);
@@ -517,8 +659,8 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
   // Dynamically import React, renderer, and email templates on demand
   const React = await import('react');
   const { render } = await import('@react-email/render');
-  const { CertificateRequestEmail } = await import('../emails/CertificateRequestEmail');
-  const { CertificateConfirmationEmail } = await import('../emails/CertificateConfirmationEmail');
+  const { CertificateRequestEmail } = await import('../emails/CertificateRequestEmail.tsx');
+  const { CertificateConfirmationEmail } = await import('../emails/CertificateConfirmationEmail.tsx');
 
   // Prepare template props
   const logoUrl = data.logoUrl || 'https://aia-danbury.com/images/logo.png';
@@ -556,6 +698,8 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
   // 1. Simulation / Local Dev Fallback (when RESEND_API_KEY is not yet populated)
   if (!client) {
     const simId = 'sim_cert_' + Math.random().toString(36).substring(2, 10);
+    const simAckId = 'sim_cert_ack_' + Math.random().toString(36).substring(2, 10);
+
     console.info('\n====================================================');
     console.info('📧 [Resend React Email Simulated Dispatch - ACORD 25 Certificate]');
     console.info(`To:                 ${recipient} (${officeInfo.name})`);
@@ -570,6 +714,14 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
     console.info(`Turnaround SLA:     2-4 business hours`);
     console.info(`Simulation ID:      ${simId}`);
     console.info(`HTML Length:        ${agencyHtml.length} characters (React Email rendered)`);
+
+    if (data.requestorEmail && data.requestorEmail.includes('@')) {
+      console.info('----------------------------------------------------');
+      console.info('📧 [Resend Simulated Dispatch - Certificate Customer Receipt]');
+      console.info(`To:                 ${data.requestorEmail}`);
+      console.info(`Subject:            Certificate Request Confirmed - Associated Insurance Agency (${data.confirmationCode})`);
+      console.info(`Simulation ID:      ${simAckId}`);
+    }
     console.info('💡 Set RESEND_API_KEY in your .env to dispatch live emails via Resend.');
     console.info('====================================================\n');
 
@@ -578,6 +730,8 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
       simulated: true,
       id: simId,
       recipient,
+      customerAcknowledgementDispatched: Boolean(data.requestorEmail && data.requestorEmail.includes('@')),
+      customerAcknowledgementId: simAckId,
     };
   }
 
@@ -610,10 +764,12 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
 
     console.info(`[Resend Success] ACORD 25 Certificate notification dispatched! ID: ${emailResponse.data?.id}`);
 
-    // Dispatch customer acknowledgement email
+    // Dispatch customer acknowledgement receipt email
+    let custAckDispatched = false;
+    let custAckId: string | undefined;
     if (data.requestorEmail && data.requestorEmail.includes('@')) {
       try {
-        await client.emails.send({
+        const custResp = await client.emails.send({
           from: fromEmail,
           to: [data.requestorEmail],
           subject: `Certificate Request Confirmed - Associated Insurance Agency (${data.confirmationCode})`,
@@ -621,6 +777,14 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
           text: customerText,
           tags: [{ name: 'category', value: 'certificate_customer_confirmation' }],
         });
+
+        if (!custResp.error) {
+          custAckDispatched = true;
+          custAckId = custResp.data?.id;
+          console.info(`[Resend Success] Certificate customer confirmation dispatched! ID: ${custAckId}`);
+        } else {
+          console.warn('[Resend Warning] Certificate customer confirmation error:', custResp.error);
+        }
       } catch (custErr) {
         console.warn('[Resend] Certificate customer confirmation delivery warning:', custErr);
       }
@@ -631,6 +795,8 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
       id: emailResponse.data?.id,
       simulated: false,
       recipient,
+      customerAcknowledgementDispatched: custAckDispatched,
+      customerAcknowledgementId: custAckId,
     };
   } catch (err: any) {
     console.error('[Resend Exception] Unexpected error during certificate email dispatch:', err);
@@ -655,10 +821,226 @@ export interface ContactEmailData {
   submittedAt?: string;
 }
 
+const CONTACT_ACKNOWLEDGEMENT_I18N: Record<string, {
+  subject: (id: string) => string;
+  title: string;
+  greeting: (name: string) => string;
+  intro: (subject: string) => string;
+  refLabel: string;
+  assignedOffice: string;
+  directPhone: string;
+  summaryTitle: string;
+  topicLabel: string;
+  messageLabel: string;
+  nextSteps: string;
+  rushNotice: string;
+  disclaimer: string;
+}> = {
+  en: {
+    subject: (id: string) => `We Received Your Message - Associated Insurance Agency (${id})`,
+    title: 'Customer Inquiry Confirmation',
+    greeting: (name: string) => `Hello ${name},`,
+    intro: (subject: string) => `Thank you for reaching out to Associated Insurance Agency. We have received your inquiry regarding <strong>${subject}</strong>.`,
+    refLabel: 'Tracking Reference Number',
+    assignedOffice: 'Assigned Branch Office:',
+    directPhone: 'Direct Phone:',
+    summaryTitle: 'Summary of Your Inquiry',
+    topicLabel: 'Topic:',
+    messageLabel: 'Your Message:',
+    nextSteps: 'A licensed agent fluent in your preferred language will review your message and respond within <strong>24 business hours</strong> (Monday – Friday, 8:30 AM – 5:00 PM EST).',
+    rushNotice: 'Need immediate assistance? Call our Danbury headquarters directly at <strong>(203) 748-9272</strong>.',
+    disclaimer: 'Insurance coverage cannot be bound, altered, or cancelled via website message, email, or voicemail until directly confirmed in writing by a licensed insurance agent.',
+  },
+  es: {
+    subject: (id: string) => `Hemos Recibido Su Mensaje - Associated Insurance Agency (${id})`,
+    title: 'Confirmación de Consulta',
+    greeting: (name: string) => `Hola ${name},`,
+    intro: (subject: string) => `Gracias por comunicarse con Associated Insurance Agency. Hemos recibido su consulta sobre <strong>${subject}</strong>.`,
+    refLabel: 'Número de Referencia de Seguimiento',
+    assignedOffice: 'Oficina Asignada:',
+    directPhone: 'Teléfono Directo:',
+    summaryTitle: 'Resumen de Su Mensaje',
+    topicLabel: 'Tema:',
+    messageLabel: 'Su Mensaje:',
+    nextSteps: 'Un agente con licencia que habla español revisará su mensaje y le responderá dentro de las próximas <strong>24 horas hábiles</strong> (lunes a viernes de 8:30 a. m. a 5:00 p. m. EST).',
+    rushNotice: '¿Necesita asistencia inmediata? Llame directamente a nuestra sede de Danbury al <strong>(203) 748-9272</strong>.',
+    disclaimer: 'La cobertura no puede ser vinculada, modificada o cancelada mediante formularios web, correo electrónico o mensaje de voz hasta ser confirmada por escrito por un agente con licencia.',
+  },
+  pt: {
+    subject: (id: string) => `Recebemos Sua Mensagem - Associated Insurance Agency (${id})`,
+    title: 'Confirmação de Atendimento',
+    greeting: (name: string) => `Olá ${name},`,
+    intro: (subject: string) => `Obrigado por entrar em contato com a Associated Insurance Agency. Recebemos sua mensagem sobre <strong>${subject}</strong>.`,
+    refLabel: 'Número de Referência de Rastreamento',
+    assignedOffice: 'Escritório de Atendimento:',
+    directPhone: 'Telefone Direto:',
+    summaryTitle: 'Resumo da Mensagem',
+    topicLabel: 'Assunto:',
+    messageLabel: 'Sua Mensagem:',
+    nextSteps: 'Um corretor licenciado fluente em português analisará sua mensagem e responderá dentro de <strong>24 horas úteis</strong> (segunda a sexta, das 8h30 às 17h00 EST).',
+    rushNotice: 'Precisa de atendimento urgente? Ligue diretamente para nossa sede em Danbury no número <strong>(203) 748-9272</strong>.',
+    disclaimer: 'A cobertura não pode ser vinculada, alterada ou cancelada através de formulário do site, e-mail ou correio de voz até confirmação por escrito de um corretor licenciado.',
+  },
+  tr: {
+    subject: (id: string) => `Mesajınız Alındı - Associated Insurance Agency (${id})`,
+    title: 'İletişim Talebi Onayı',
+    greeting: (name: string) => `Merhaba ${name},`,
+    intro: (subject: string) => `Associated Insurance Agency ile iletişime geçtiğiniz için teşekkür ederiz. <strong>${subject}</strong> konulu mesajınız tarafımıza ulaştı.`,
+    refLabel: 'Takip Referans Numarası',
+    assignedOffice: 'Atanan Şube Ofisi:',
+    directPhone: 'Doğrudan Hat:',
+    summaryTitle: 'İlettiğiniz Mesajın Özeti',
+    topicLabel: 'Konu:',
+    messageLabel: 'Mesajınız:',
+    nextSteps: 'Türkçe bilen lisanslı ekibimiz mesajınızı inceleyecek ve <strong>24 iş saati</strong> içinde sizinle iletişime geçecektir (Pazartesi - Cuma, 08:30 - 17:00 EST).',
+    rushNotice: 'Acil yardıma mı ihtiyacınız var? Doğrudan Danbury merkezimizi arayın: <strong>(203) 748-9272</strong>.',
+    disclaimer: 'Sigorta teminatı web formu, e-posta veya sesli mesaj yoluyla başlatılamaz, değiştirilemez veya iptal edilemez. Teminat, yalnızca lisanslı bir acente tarafından doğrudan yazılı olarak onaylandıktan sonra yürürlüğe girer.',
+  },
+};
+
 /**
- * Sends a contact form notification to the agency recipient (ron@aia-danbury.com)
+ * Builds HTML template for the Customer Contact Acknowledgement Email
+ */
+function buildContactAcknowledgementHtml(data: ContactEmailData, officeInfo: (typeof OFFICE_DIRECTORY)['danbury']): string {
+  const lang = (data.preferredLanguage || 'en').toLowerCase();
+  const t = CONTACT_ACKNOWLEDGEMENT_I18N[lang] || CONTACT_ACKNOWLEDGEMENT_I18N.en;
+  const topic = data.subject || 'General Inquiry';
+  const submittedDate = data.submittedAt
+    ? new Date(data.submittedAt).toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST'
+    : new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST';
+
+  return `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${t.title} - Associated Insurance Agency</title>
+</head>
+<body style="margin: 0; padding: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f8fafc; color: #1e293b; line-height: 1.5;">
+  <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+    
+    <div style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); padding: 28px 32px; color: #ffffff; border-bottom: 3px solid #c5a880;">
+      <div style="font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: #c5a880; font-weight: 700; margin-bottom: 6px;">
+        Associated Insurance Agency
+      </div>
+      <h1 style="margin: 0; font-size: 22px; font-weight: 700; color: #ffffff;">
+        ${t.title}
+      </h1>
+      <div style="margin-top: 6px; font-size: 13px; color: #94a3b8;">
+        Reference: <strong style="color: #ffffff; font-family: monospace;">${data.id}</strong>
+      </div>
+    </div>
+
+    <div style="padding: 32px;">
+      <p style="font-size: 15px; margin-top: 0; color: #0f172a;">
+        ${t.greeting(data.name)}
+      </p>
+      <p style="font-size: 14px; color: #334155; line-height: 1.6;">
+        ${t.intro(topic)}
+      </p>
+
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin: 24px 0;">
+        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 600;">
+          ${t.refLabel}
+        </div>
+        <div style="font-size: 20px; font-weight: 700; color: #0f172a; font-family: monospace; margin-top: 4px;">
+          ${data.id}
+        </div>
+        <div style="margin-top: 12px; font-size: 13px; color: #334155; line-height: 1.6;">
+          <strong>${t.assignedOffice}</strong> ${officeInfo.name}<br>
+          <strong>Address:</strong> ${officeInfo.address}<br>
+          <strong>${t.directPhone}</strong> <a href="tel:(203) 748-9272" style="color: #2563eb; text-decoration: none; font-weight: 600;">(203) 748-9272</a><br>
+          <strong>Submitted:</strong> ${submittedDate}
+        </div>
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 18px; margin: 24px 0;">
+        <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; color: #64748b; font-weight: 700; margin-bottom: 8px;">
+          ${t.summaryTitle}
+        </div>
+        <div style="font-size: 13px; color: #334155; margin-bottom: 8px;">
+          <strong>${t.topicLabel}</strong> ${topic}
+        </div>
+        <div style="background: #ffffff; border-left: 3px solid #c5a880; border-radius: 4px; padding: 12px 14px; font-size: 13px; color: #1e293b; white-space: pre-wrap; line-height: 1.6;">
+          ${data.message}
+        </div>
+      </div>
+
+      <p style="font-size: 14px; color: #334155; line-height: 1.6;">
+        ${t.nextSteps}
+      </p>
+
+      <div style="margin-top: 24px; padding: 14px 16px; background-color: #f1f5f9; border-radius: 6px; font-size: 13px; color: #475569;">
+        ${t.rushNotice}
+      </div>
+
+      <div style="margin-top: 24px; padding-top: 18px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; line-height: 1.5;">
+        ${t.disclaimer}
+      </div>
+    </div>
+
+    <div style="background-color: #f1f5f9; padding: 16px 32px; font-size: 12px; color: #64748b; text-align: center; border-top: 1px solid #e2e8f0;">
+      © ${new Date().getFullYear()} Associated Insurance Agency LLC • CT License #002377312 • Danbury HQ • Watertown • Bridgeport
+    </div>
+
+  </div>
+</body>
+</html>
+  `.trim();
+}
+
+/**
+ * Builds Plain Text version for the Customer Contact Acknowledgement Email
+ */
+function buildContactAcknowledgementText(data: ContactEmailData, officeInfo: (typeof OFFICE_DIRECTORY)['danbury']): string {
+  const lang = (data.preferredLanguage || 'en').toLowerCase();
+  const t = CONTACT_ACKNOWLEDGEMENT_I18N[lang] || CONTACT_ACKNOWLEDGEMENT_I18N.en;
+  const topic = data.subject || 'General Inquiry';
+  const submittedDate = data.submittedAt
+    ? new Date(data.submittedAt).toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST'
+    : new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST';
+
+  return `
+====================================================
+ASSOCIATED INSURANCE AGENCY — ${t.title.toUpperCase()}
+====================================================
+${t.refLabel}: ${data.id}
+Date: ${submittedDate}
+
+${t.greeting(data.name)}
+
+${t.intro(topic).replace(/<[^>]+>/g, '')}
+
+${t.summaryTitle.toUpperCase()}:
+----------------------------------------------------
+${t.topicLabel} ${topic}
+${t.messageLabel}
+${data.message}
+
+${t.nextSteps.replace(/<[^>]+>/g, '')}
+
+${t.assignedOffice} ${officeInfo.name}
+Address: ${officeInfo.address}
+${t.directPhone} (203) 748-9272
+Website: https://aia-danbury.com
+
+${t.rushNotice.replace(/<[^>]+>/g, '')}
+
+----------------------------------------------------
+${t.disclaimer.replace(/<[^>]+>/g, '')}
+====================================================
+  `.trim();
+}
+
+/**
+ * Sends a contact form notification to the agency recipient (ron@aia-danbury.com),
+ * and an acknowledgement confirmation email to the customer.
  */
 export async function sendContactEmail(data: ContactEmailData): Promise<SendEmailResult> {
+  const officeKey = (data.preferredOffice || 'danbury').toLowerCase();
+  const officeInfo = OFFICE_DIRECTORY[officeKey] || OFFICE_DIRECTORY.danbury;
+
   const { client, fromEmail, defaultRecipient } = getResendClient();
   const recipient = defaultRecipient;
 
@@ -666,20 +1048,34 @@ export async function sendContactEmail(data: ContactEmailData): Promise<SendEmai
     ? new Date(data.submittedAt).toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST'
     : new Date().toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST';
 
+  // 1. Simulation / Local Dev Fallback (when RESEND_API_KEY is not yet populated)
   if (!client) {
-    const simId = 'sim_' + Math.random().toString(36).substring(2, 10);
+    const simId = 'sim_contact_' + Math.random().toString(36).substring(2, 10);
+    const simAckId = 'sim_contact_ack_' + Math.random().toString(36).substring(2, 10);
+
     console.info('\n====================================================');
-    console.info('📧 [Resend Contact Form Simulated Dispatch]');
+    console.info('📧 [Resend Simulated Dispatch - Agency Contact Notification]');
     console.info(`To:              ${recipient} (Agency Notification Inbox)`);
     console.info(`From:            ${fromEmail}`);
     console.info(`Subject:         [Website Contact Inquiry] ${data.subject || 'General'} - ${data.name} (${data.id})`);
     console.info(`Sender Name:     ${data.name}`);
     console.info(`Sender Email:    ${data.email}`);
     console.info(`Sender Phone:    ${data.phone || 'N/A'}`);
-    console.info(`Office Interest: ${data.preferredOffice || 'Danbury'}`);
+    console.info(`Office Interest: ${officeInfo.name}`);
     console.info(`Language:        ${data.preferredLanguage || 'en'}`);
     console.info(`Message:         ${data.message}`);
     console.info(`Simulation ID:   ${simId}`);
+
+    if (data.email && data.email.includes('@')) {
+      const lang = (data.preferredLanguage || 'en').toLowerCase();
+      const t = CONTACT_ACKNOWLEDGEMENT_I18N[lang] || CONTACT_ACKNOWLEDGEMENT_I18N.en;
+      console.info('----------------------------------------------------');
+      console.info('📧 [Resend Simulated Dispatch - Customer Contact Acknowledgement]');
+      console.info(`To:              ${data.email}`);
+      console.info(`Subject:         ${t.subject(data.id)}`);
+      console.info(`Simulation ID:   ${simAckId}`);
+    }
+    console.info('💡 Set RESEND_API_KEY in your .env to send real transactional emails via Resend.');
     console.info('====================================================\n');
 
     return {
@@ -687,9 +1083,12 @@ export async function sendContactEmail(data: ContactEmailData): Promise<SendEmai
       simulated: true,
       id: simId,
       recipient,
+      customerAcknowledgementDispatched: Boolean(data.email && data.email.includes('@')),
+      customerAcknowledgementId: simAckId,
     };
   }
 
+  // 2. Real Resend Dispatch
   try {
     const subject = `[Website Contact Inquiry] ${data.subject || 'General'} - ${data.name} (${data.id})`;
     const html = `
@@ -708,7 +1107,7 @@ export async function sendContactEmail(data: ContactEmailData): Promise<SendEmai
         <tr><td style="padding: 10px 14px; width: 35%; color: #64748b; font-size: 13px; font-weight: 600;">Sender:</td><td style="padding: 10px 14px; font-size: 14px; font-weight: 600; color: #0f172a;">${data.name}</td></tr>
         <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Email:</td><td style="padding: 10px 14px; font-size: 14px;"><a href="mailto:${data.email}" style="color: #2563eb; text-decoration: none;">${data.email}</a></td></tr>
         <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Phone:</td><td style="padding: 10px 14px; font-size: 14px;"><a href="tel:${data.phone || ''}" style="color: #2563eb; text-decoration: none;">${data.phone || 'N/A'}</a></td></tr>
-        <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Preferred Office:</td><td style="padding: 10px 14px; font-size: 14px; color: #0f172a;">${data.preferredOffice || 'Danbury'}</td></tr>
+        <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Preferred Office:</td><td style="padding: 10px 14px; font-size: 14px; color: #0f172a;">${officeInfo.name}</td></tr>
         <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Language:</td><td style="padding: 10px 14px; font-size: 14px; color: #0f172a; text-transform: uppercase;">${data.preferredLanguage || 'en'}</td></tr>
         <tr style="border-top: 1px solid #f1f5f9;"><td style="padding: 10px 14px; color: #64748b; font-size: 13px; font-weight: 600;">Submitted:</td><td style="padding: 10px 14px; font-size: 14px; color: #0f172a;">${submittedDate}</td></tr>
       </table>
@@ -730,7 +1129,7 @@ Date: ${submittedDate}
 Sender: ${data.name}
 Email: ${data.email}
 Phone: ${data.phone || 'N/A'}
-Preferred Office: ${data.preferredOffice || 'Danbury'}
+Preferred Office: ${officeInfo.name}
 Language: ${data.preferredLanguage || 'en'}
 Subject: ${data.subject || 'General'}
 
@@ -745,6 +1144,10 @@ ${data.message}
       subject,
       html,
       text,
+      tags: [
+        { name: 'category', value: 'contact_inquiry' },
+        { name: 'office', value: officeKey },
+      ],
     });
 
     if (emailResponse.error) {
@@ -753,7 +1156,42 @@ ${data.message}
     }
 
     console.info(`[Resend Success] Contact inquiry notification dispatched! ID: ${emailResponse.data?.id}`);
-    return { success: true, id: emailResponse.data?.id, recipient };
+
+    // Dispatch customer acknowledgement email
+    let custAckDispatched = false;
+    let custAckId: string | undefined;
+    if (data.email && data.email.includes('@')) {
+      try {
+        const lang = (data.preferredLanguage || 'en').toLowerCase();
+        const t = CONTACT_ACKNOWLEDGEMENT_I18N[lang] || CONTACT_ACKNOWLEDGEMENT_I18N.en;
+        const custResp = await client.emails.send({
+          from: fromEmail,
+          to: [data.email],
+          subject: t.subject(data.id),
+          html: buildContactAcknowledgementHtml(data, officeInfo),
+          text: buildContactAcknowledgementText(data, officeInfo),
+          tags: [{ name: 'category', value: 'contact_customer_acknowledgement' }],
+        });
+
+        if (!custResp.error) {
+          custAckDispatched = true;
+          custAckId = custResp.data?.id;
+          console.info(`[Resend Success] Customer contact acknowledgement dispatched! ID: ${custAckId}`);
+        } else {
+          console.warn('[Resend Warning] Customer contact acknowledgement error:', custResp.error);
+        }
+      } catch (custErr) {
+        console.warn('[Resend] Customer contact acknowledgement delivery warning:', custErr);
+      }
+    }
+
+    return {
+      success: true,
+      id: emailResponse.data?.id,
+      recipient,
+      customerAcknowledgementDispatched: custAckDispatched,
+      customerAcknowledgementId: custAckId,
+    };
   } catch (err: any) {
     console.error('[Resend Exception] Error during contact email dispatch:', err);
     return { success: false, error: err?.message || 'Failed to dispatch contact email.', recipient };
