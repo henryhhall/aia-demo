@@ -226,8 +226,8 @@ const mergedStructuredData = {
     <Footer lang={lang} />
     <!-- Sticky Mobile Call & Quote Bar (Mobile CRO) -->
     <StickyMobileCallBar lang={lang as any} locationId={props.locationId} />
-    <!-- WebMCP Client Inspector & Agent Sandbox -->
-    <WebMcpInspector client:load />
+    <!-- WebMCP Client Inspector & Agent Sandbox (Hidden by default; query ?webmcp=true or Ctrl+Shift+M) -->
+    <WebMcpInspector client:idle />
   </body>
 </html>
 

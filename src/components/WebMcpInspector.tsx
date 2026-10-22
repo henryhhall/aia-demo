@@ -38,6 +38,7 @@ const SAMPLE_INPUTS: Record<string, any> = {
 };
 
 export default function WebMcpInspector() {
+  const [isVisible, setIsVisible] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'tools' | 'playground' | 'logs' | 'agent-docs'>('tools');
   const [tools, setTools] = useState<WebMCPToolDefinition[]>([]);
@@ -47,6 +48,18 @@ export default function WebMcpInspector() {
   const [isExecuting, setIsExecuting] = useState(false);
   const [logs, setLogs] = useState<WebMCPCallLog[]>([]);
   const [copiedUrl, setCopiedUrl] = useState<string | null>(null);
+
+  // Hidden by default: check for ?webmcp=true or ?inspector=true in URL, or localStorage flag
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search);
+      const shouldShow =
+        searchParams.get('webmcp') === 'true' ||
+        searchParams.get('inspector') === 'true' ||
+        localStorage.getItem('webmcp_inspector') === 'true';
+      setIsVisible(shouldShow);
+    }
+  }, []);
 
   useEffect(() => {
     const normalizeTool = (t: any): WebMCPToolDefinition => ({
@@ -86,9 +99,17 @@ export default function WebMcpInspector() {
     };
   }, []);
 
-  // Keyboard shortcut to close inspector with Escape
+  // Keyboard shortcut to close inspector with Escape, or toggle with Ctrl+Shift+M
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'M' || e.key === 'm')) {
+        e.preventDefault();
+        setIsVisible((prev) => {
+          const next = !prev;
+          if (next) setIsOpen(true);
+          return next;
+        });
+      }
       if (e.key === 'Escape' && isOpen) {
         setIsOpen(false);
       }
@@ -148,6 +169,10 @@ export default function WebMcpInspector() {
       setTimeout(() => setCopiedUrl(null), 2000);
     }
   };
+
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <>
@@ -209,15 +234,30 @@ export default function WebMcpInspector() {
                   </p>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="text-zinc-400 hover:text-white p-1 rounded-md hover:bg-zinc-800 transition-colors"
-                aria-label="Close WebMCP Inspector"
-              >
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => {
+                    setIsOpen(false);
+                    setIsVisible(false);
+                    if (typeof window !== 'undefined') {
+                      localStorage.removeItem('webmcp_inspector');
+                    }
+                  }}
+                  className="text-[11px] font-mono text-zinc-400 hover:text-rose-400 px-2 py-1 rounded hover:bg-zinc-800 transition-colors"
+                  title="Hide inspector from page"
+                >
+                  Hide
+                </button>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="text-zinc-400 hover:text-white p-1 rounded-md hover:bg-zinc-800 transition-colors"
+                  aria-label="Close WebMCP Inspector"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             {/* Quick Links Bar */}

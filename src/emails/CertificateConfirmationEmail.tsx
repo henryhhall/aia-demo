@@ -30,6 +30,7 @@ export interface CertificateConfirmationEmailProps {
   officeAddress?: string;
   submittedAt?: string;
   logoUrl?: string;
+  preferredLanguage?: string;
 }
 
 export const CertificateConfirmationEmail: React.FC<CertificateConfirmationEmailProps> = ({
@@ -45,7 +46,8 @@ export const CertificateConfirmationEmail: React.FC<CertificateConfirmationEmail
   officeEmail = 'danbury@aia-danbury.com',
   officeAddress = '50 Newtown Road, Suite 1, Danbury, CT 06810',
   submittedAt,
-  logoUrl = 'https://aia-danbury.com/images/logo.png',
+  logoUrl = 'cid:aia-logo',
+  preferredLanguage = 'en',
 }) => {
   const formattedDate = submittedAt
     ? new Date(submittedAt).toLocaleString('en-US', { timeZone: 'America/New_York' }) + ' EST'
@@ -61,27 +63,28 @@ export const CertificateConfirmationEmail: React.FC<CertificateConfirmationEmail
       </Preview>
       <Body style={mainStyle}>
         <Container style={containerStyle}>
-          {/* Header */}
-          <Section style={headerStyle}>
+          {/* Executive Brand Header Bar */}
+          <Section style={brandBarStyle}>
             <Row>
               <Column style={{ width: '60%', verticalAlign: 'middle' }}>
                 <Img
                   src={logoUrl}
-                  width="170"
+                  width="135"
                   height="auto"
                   alt="Associated Insurance Agency"
                   style={logoImageStyle}
                 />
               </Column>
               <Column style={{ width: '40%', textAlign: 'right', verticalAlign: 'middle' }}>
-                <Text style={badgeStyle}>REQUEST RECEIVED</Text>
-                <Text style={refCodeStyle}>{confirmationCode}</Text>
+                <Text style={brandBadgeStyle}>REQUEST CONFIRMED</Text>
+                <Text style={refCodeDarkStyle}>{confirmationCode}</Text>
               </Column>
             </Row>
           </Section>
 
           {/* Welcome & Intro */}
           <Section style={contentSectionStyle}>
+            <Text style={eyebrowStyle}>Official ACORD 25 Certificate Confirmation</Text>
             <Heading as="h1" style={greetingHeading}>
               Hello {requestorName},
             </Heading>
@@ -183,7 +186,7 @@ export const CertificateConfirmationEmail: React.FC<CertificateConfirmationEmail
               <strong>Statutory ACORD 25 Notice:</strong> This certificate is issued as a matter of information only and confers no rights upon the certificate holder. This certificate does not affirmatively or negatively amend, extend, or alter the coverage afforded by the policies listed.
             </Text>
             <Text style={copyrightStyle}>
-              © {new Date().getFullYear()} Associated Insurance Agency LLC. All rights reserved.
+              © {new Date().getFullYear()} Associated Insurance Agency LLC. All rights reserved. • CT License #002377312 • {LICENSED_IN_I18N[(preferredLanguage || 'en').toLowerCase()] || LICENSED_IN_I18N.en}
             </Text>
           </Section>
         </Container>
@@ -193,6 +196,13 @@ export const CertificateConfirmationEmail: React.FC<CertificateConfirmationEmail
 };
 
 export default CertificateConfirmationEmail;
+
+const LICENSED_IN_I18N: Record<string, string> = {
+  en: 'Licensed in CT',
+  es: 'Licencia en CT',
+  pt: 'Licenciada em CT',
+  tr: 'CT Lisanslı',
+};
 
 const mainStyle: React.CSSProperties = {
   backgroundColor: '#f4f4f5',
@@ -212,36 +222,48 @@ const containerStyle: React.CSSProperties = {
   boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.05)',
 };
 
-const headerStyle: React.CSSProperties = {
-  backgroundColor: '#122b5f',
+const brandBarStyle: React.CSSProperties = {
+  backgroundColor: '#ffffff',
   padding: '24px 32px',
-  borderBottom: '3px solid #bda07a',
+  borderBottom: '2px solid #c5a880',
 };
 
-const logoImageStyle: React.CSSProperties = {
-  display: 'block',
-  maxWidth: '170px',
-  height: 'auto',
-};
-
-const badgeStyle: React.CSSProperties = {
+const brandBadgeStyle: React.CSSProperties = {
   display: 'inline-block',
   margin: '0',
   padding: '4px 8px',
-  backgroundColor: '#1e3a7a',
-  color: '#bda07a',
+  backgroundColor: '#0f172a',
+  color: '#c5a880',
   borderRadius: '4px',
   fontSize: '10px',
   fontWeight: '700',
   letterSpacing: '1px',
+  textTransform: 'uppercase',
 };
 
-const refCodeStyle: React.CSSProperties = {
+const refCodeDarkStyle: React.CSSProperties = {
   margin: '4px 0 0 0',
-  color: '#ffffff',
+  color: '#0f172a',
   fontFamily: 'monospace',
   fontSize: '13px',
   fontWeight: '700',
+};
+
+const eyebrowStyle: React.CSSProperties = {
+  margin: '0 0 8px 0',
+  fontSize: '11px',
+  fontWeight: '700',
+  letterSpacing: '1.5px',
+  color: '#b45309',
+  textTransform: 'uppercase',
+};
+
+const logoImageStyle: React.CSSProperties = {
+  display: 'block',
+  width: '135px',
+  maxWidth: '135px',
+  height: 'auto',
+  border: '0',
 };
 
 const contentSectionStyle: React.CSSProperties = {

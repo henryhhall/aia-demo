@@ -348,7 +348,7 @@ export const aiaWebMcpTools: WebMCPTool[] = [
         phone: '(203) 748-9272',
         email: 'danbury@aia-danbury.com',
         website: 'https://aia-danbury.com',
-        licensedStates: ['CT', 'NY', 'NJ', 'MA'],
+        licensedStates: ['CT'],
         supportedLanguages: ['English', 'Spanish', 'Portuguese', 'Turkish'],
         branchCount: AIA_LOCATIONS.length,
         totalStaffCount: teamData.en.members.length,
