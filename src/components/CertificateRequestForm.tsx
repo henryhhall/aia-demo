@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { getRecaptchaToken } from '../lib/recaptcha';
 import RecaptchaLegalNotice from './RecaptchaLegalNotice';
 
@@ -21,7 +21,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
   const [errorMessage, setErrorMessage] = useState('');
   const [confirmationCode, setConfirmationCode] = useState('');
   const [copiedCode, setCopiedCode] = useState(false);
-  const fileInputRef = useRef<HTMLInputElement>(null);
   const [renderedAt, setRenderedAt] = useState<number>(0);
 
   useEffect(() => {
@@ -73,8 +72,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
 
     // Step 4: Special Instructions & Agreement
     specialInstructions: '',
-    attachedFileName: '',
-    attachedFileSize: 0,
     agreementAccepted: false,
 
     // Honeypots
@@ -92,7 +89,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       step3Title: 'Endorsements & Job',
       step3Sub: 'Additional insured, waivers, and contract terms',
       step4Title: 'Review & Binding',
-      step4Sub: 'Upload specs, special instructions & legal sign-off',
+      step4Sub: 'Special instructions & legal sign-off',
       stepOf: (s: number) => `Step ${s} of 4`,
 
       // Step 1 Fields
@@ -194,11 +191,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       // Step 4 Fields
       specialInstructionsLabel: 'Special Instructions, Endorsement Wording, or Contract Specs',
       specialInstructionsPlaceholder: 'Paste any mandatory contractual wording, 30-day notice of cancellation clause, or specific project requirements here...',
-      fileUploadTitle: 'Attach Contract Specifications or Sample Certificate (Optional)',
-      fileUploadDesc: 'Upload PDF, DOCX, or Image (Max 10MB). Having contract specs prevents revisions.',
-      fileUploadBtn: 'Choose File or Drag Here',
-      fileSelected: 'Selected file:',
-      fileRemove: 'Remove',
       disclaimerLabel: 'Binding Legal Agreement & Information Notice (Required)',
       disclaimerText: 'I understand that an ACORD Certificate of Insurance is issued as a matter of information only and confers no rights upon the certificate holder. A certificate does not amend, extend, or alter policy coverage. Coverage changes, endorsements, and binding are effective only once reviewed and confirmed in writing by a licensed agent.',
       agreeCheckbox: 'I understand and agree to these terms',
@@ -238,7 +230,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       step3Title: 'Endosos y Proyecto',
       step3Sub: 'Asegurado adicional, renuncias y cláusulas contractuales',
       step4Title: 'Revisión y Acuerdo',
-      step4Sub: 'Carga de pliego, instrucciones y firma legal',
+      step4Sub: 'Instrucciones especiales y firma legal',
       stepOf: (s: number) => `Paso ${s} de 4`,
 
       companyNameLabel: 'Empresa del Solicitante',
@@ -336,11 +328,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
 
       specialInstructionsLabel: 'Instrucciones Especiales o Requisitos del Pliego',
       specialInstructionsPlaceholder: 'Pegue aquí cláusulas obligatorias, aviso de cancelación a 30 días o condiciones del contrato...',
-      fileUploadTitle: 'Adjuntar Especificaciones de Contrato o Ejemplo (Opcional)',
-      fileUploadDesc: 'Suba PDF, DOCX o imagen (Máx 10MB). Adjuntar el pliego agiliza la aprobación sin errores.',
-      fileUploadBtn: 'Seleccionar Archivo o Arrastrar Aquí',
-      fileSelected: 'Archivo seleccionado:',
-      fileRemove: 'Eliminar',
       disclaimerLabel: 'Acuerdo Legal Obligatorio y Notificación (Requerido)',
       disclaimerText: 'Entiendo que un Certificado de Seguro ACORD se emite únicamente a título informativo y no otorga derechos al titular. El certificado no modifica, amplía ni altera la cobertura. Los cambios de póliza y endosos solo son válidos una vez confirmados por escrito por un agente con licencia.',
       agreeCheckbox: 'Entiendo y acepto estos términos',
@@ -378,7 +365,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       step3Title: 'Endossos e Obra',
       step3Sub: 'Segurado adicional, renúncia e exigências de contrato',
       step4Title: 'Revisão e Acordo',
-      step4Sub: 'Upload de especificações, instruções e aceite legal',
+      step4Sub: 'Instruções especiais e aceite legal',
       stepOf: (s: number) => `Passo ${s} de 4`,
 
       companyNameLabel: 'Empresa do Solicitante',
@@ -476,11 +463,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
 
       specialInstructionsLabel: 'Instruções Especiais ou Exigências do Contrato',
       specialInstructionsPlaceholder: 'Cole cláusulas contratuais obrigatórias, aviso prévio de 30 dias de cancelamento, etc...',
-      fileUploadTitle: 'Anexar Especificações do Contrato ou Exemplo (Opcional)',
-      fileUploadDesc: 'Envie PDF, DOCX ou imagem (Máx 10MB). Anexar as regras agiliza a emissão sem retrabalho.',
-      fileUploadBtn: 'Escolher Arquivo ou Arraste Aqui',
-      fileSelected: 'Arquivo selecionado:',
-      fileRemove: 'Remover',
       disclaimerLabel: 'Aceite Legal Obrigatório e Notificação Informativa (Obrigatório)',
       disclaimerText: 'Compreendo que um Certificado de Seguro ACORD é emitido apenas para fins informativos e não confere direitos ao titular. O certificado não altera, amplia nem estende a cobertura. Alterações na apólice e endossos só entram em vigor quando confirmados por escrito por um corretor licenciado.',
       agreeCheckbox: 'Compreendo e concordo com estes termos',
@@ -518,7 +500,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       step3Title: 'Ek Sigortalı ve Proje',
       step3Sub: 'Ek sigortalı (Additional Insured), rücu feragati ve sözleşme şartları',
       step4Title: 'İnceleme ve Yasal Onay',
-      step4Sub: 'Şartname yükleme, özel talimatlar ve bağlayıcılık metni',
+      step4Sub: 'Özel talimatlar ve bağlayıcılık metni',
       stepOf: (s: number) => `Adım ${s} / 4`,
 
       companyNameLabel: 'Talep Eden Şirket Adı',
@@ -616,11 +598,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
 
       specialInstructionsLabel: 'Özel Talimatlar veya Sözleşme Şartnamesi Metni',
       specialInstructionsPlaceholder: 'Sözleşmede zorunlu tutulan özel iptal ihbarı süreleri veya metinleri buraya yapıştırın...',
-      fileUploadTitle: 'Sözleşme Sigorta Şartnamesi veya Örnek Belge Yükleyin (İsteğe Bağlı)',
-      fileUploadDesc: 'PDF, DOCX veya görsel yükleyin (Maks. 10MB). Şartnameyi eklemeniz hataları önler.',
-      fileUploadBtn: 'Dosya Seçin veya Buraya Sürükleyin',
-      fileSelected: 'Seçilen dosya:',
-      fileRemove: 'Kaldır',
       disclaimerLabel: 'Yasal Bilgilendirme ve Bağlayıcılık Onayı (Zorunlu)',
       disclaimerText: 'ACORD Sigorta Sertifikasının yalnızca bilgilendirme amacıyla düzenlendiğini ve sertifika sahibine ek haklar tanımadığını anlıyorum. Sertifika poliçe teminatlarını genişletmez veya değiştirmez. Poliçe zeyilnameleri yalnızca lisanslı bir acente tarafından yazılı olarak teyit edildiğinde yürürlüğe girer.',
       agreeCheckbox: 'Bu şartları anladım ve kabul ediyorum',
@@ -673,30 +650,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
     });
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 10 * 1024 * 1024) {
-        setErrorMessage('File size exceeds 10MB limit.');
-        return;
-      }
-      setErrorMessage('');
-      setFormData((prev) => ({
-        ...prev,
-        attachedFileName: file.name,
-        attachedFileSize: file.size,
-      }));
-    }
-  };
-
-  const handleRemoveFile = () => {
-    if (fileInputRef.current) fileInputRef.current.value = '';
-    setFormData((prev) => ({
-      ...prev,
-      attachedFileName: '',
-      attachedFileSize: 0,
-    }));
-  };
 
   const validateStep = (currentStep: number): boolean => {
     setErrorMessage('');
@@ -798,8 +751,8 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
         neededByDate: formData.neededByDate,
 
         specialInstructions: formData.specialInstructions,
-        attachedFileName: formData.attachedFileName,
-        attachedFileSize: formData.attachedFileSize,
+        attachedFileName: '',
+        attachedFileSize: 0,
         agreementAccepted: formData.agreementAccepted,
         preferredLanguage: lang,
         source: 'Web_Certificate_Form',
@@ -877,8 +830,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       jobStartDate: '',
       neededByDate: '',
       specialInstructions: '',
-      attachedFileName: '',
-      attachedFileSize: 0,
       agreementAccepted: false,
       hp_website: '',
       hp_company: '',
@@ -1745,7 +1696,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
           </div>
         )}
 
-        {/* Step 4: Special Instructions, Upload & Binding Agreement */}
+        {/* Step 4: Special Instructions & Binding Agreement */}
         {step === 4 && (
           <form onSubmit={handleSubmit} className="p-6 sm:p-8 space-y-6">
             {/* Form-level Honeypot Trap for automated form submittors */}
@@ -1803,48 +1754,6 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
               ></textarea>
             </div>
 
-            {/* Modern File Upload Dropzone */}
-            <div className="p-5 rounded-2xl border-2 border-dashed border-border-subtle bg-bg-secondary/40 text-center space-y-3">
-              <div className="w-12 h-12 rounded-full bg-accent/5 text-accent flex items-center justify-center mx-auto">
-                <svg className="w-6 h-6 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
-                </svg>
-              </div>
-              <div className="space-y-1">
-                <h4 className="text-sm font-semibold text-text-primary">{dict.fileUploadTitle}</h4>
-                <p className="text-xs text-text-secondary">{dict.fileUploadDesc}</p>
-              </div>
-
-              {!formData.attachedFileName ? (
-                <div>
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    onChange={handleFileUpload}
-                    accept=".pdf,.doc,.docx,.png,.jpg,.jpeg"
-                    className="hidden"
-                    id="coi-file-upload"
-                  />
-                  <label
-                    htmlFor="coi-file-upload"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white border border-border-subtle shadow-xs text-xs font-semibold text-accent hover:bg-bg-secondary cursor-pointer transition-all"
-                  >
-                    <span>{dict.fileUploadBtn}</span>
-                  </label>
-                </div>
-              ) : (
-                <div className="inline-flex items-center gap-3 px-4 py-2 rounded-xl bg-emerald-50 border border-emerald-200 text-xs font-medium text-emerald-800">
-                  <span>📎 {formData.attachedFileName} ({(formData.attachedFileSize / 1024).toFixed(0)} KB)</span>
-                  <button
-                    type="button"
-                    onClick={handleRemoveFile}
-                    className="text-red-500 hover:text-red-700 font-bold ml-2 cursor-pointer"
-                  >
-                    ✕ {dict.fileRemove}
-                  </button>
-                </div>
-              )}
-            </div>
 
             {/* Legal Binding Disclaimer Card */}
             <div className="p-5 rounded-2xl bg-zinc-950 text-white space-y-3 border border-zinc-800 shadow-md">

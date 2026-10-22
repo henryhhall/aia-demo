@@ -111,8 +111,8 @@ export const CertificateRequestEmail: React.FC<CertificateRequestEmailProps> = (
   neededByDate = '2026-10-15',
 
   specialInstructions = 'Certificate holder must be named as Additional Insured on a Primary & Non-Contributory basis with Waiver of Subrogation applicable to all operations per written contract.',
-  attachedFileName = 'Job_Bid_Specifications_Exhibit_B.pdf',
-  attachedFileSize = 2451000,
+  attachedFileName = '',
+  attachedFileSize = 0,
   agreementAccepted = true,
   preferredLanguage = 'en',
   source = 'Web_Form',
@@ -393,10 +393,10 @@ export const CertificateRequestEmail: React.FC<CertificateRequestEmailProps> = (
             </table>
           </Section>
 
-          {/* Section 4: Special Instructions & File Uploads */}
+          {/* Section 4: Special Instructions */}
           <Section style={sectionCardStyle}>
             <Heading as="h2" style={sectionHeadingStyle}>
-              📝 4. Special Instructions & Attachments
+              📝 4. Special Instructions
             </Heading>
             <div style={instructionsBoxStyle}>
               <Text style={instructionsTextStyle}>
