@@ -56,7 +56,7 @@ export const CertificateConfirmationEmail: React.FC<CertificateConfirmationEmail
   return (
     <Html lang="en">
       <Head>
-        <title>Certificate of Insurance Request Received - {confirmationCode}</title>
+        <title>{`Certificate of Insurance Request Received - ${confirmationCode}`}</title>
       </Head>
       <Preview>
         Certificate of Insurance Request Confirmed [{confirmationCode}] — Insured: {insuredName}

@@ -43,6 +43,7 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
   - **Certificate of Insurance (COI) Pipeline** (`sendCertificateEmail` in `src/lib/email.ts`): Dual notification dispatch powered by React Email templates (`@react-email/components`):
     1. **Agency Producer Brief** (`CertificateRequestEmail.tsx`): High-priority dispatch with contract endorsements (Additional Insured, Waiver of Subrogation, Primary/Non-Contributory), job specs, and attached insurance certificates.
     2. **Customer Receipt Confirmation** (`CertificateConfirmationEmail.tsx`): Branded customer confirmation with tracking reference (`COI-CT-2026-XXXXXX`), assigned branch hotline, and 2–4 business hour turnaround commitment.
+  - **Robust Header & Reply-To Sanitization** (`formatReplyTo` in `src/lib/email.ts`): Protects against Resend RFC 5322 validation errors (`statusCode: 422`) by validating email structures, stripping illegal delimiters and control characters from names, handling empty/whitespace display names without leading spaces (`" <email>"`), and falling back gracefully so notification delivery is never broken by malformed inputs.
   - **Zero-Failure Local Development Mode**: Automatically runs in simulation mode when `RESEND_API_KEY` is unset, outputting clean audit logs to stdout.
 - **Certificate of Insurance (COI / ACORD 25) Hub**: Dedicated multilingual request portals (`/certificate-request`, `/es/certificate-request`, `/pt/certificate-request`, `/tr/certificate-request`, with `/coi` and `/certificates` aliases):
   - **4-Step Interactive ACORD 25 Wizard** (`CertificateRequestForm.tsx`): Guides requestors through named insured verification, certificate holder & delivery dispatch (direct email & fax), contract endorsement terms (Additional Insured CG 20 10 / CG 20 37, Waiver of Subrogation, Primary & Non-Contributory wording), and project specifications upload.
@@ -120,7 +121,10 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
 - **Automated Verification Test Suites**:
   - **`src/lib/webmcp/test-tools.ts`**: Standalone test suite verifying registration, execution, and output payloads across all 11 WebMCP tools.
   - **`src/lib/webmcp/test-mcp-endpoint.ts`**: Verification suite testing GET discovery and JSON-RPC 2.0 methods (`initialize`, `tools/list`, `tools/call`).
-- **Interactive WebMCP Inspector**: A built-in floating developer UI component (`WebMcpInspector.tsx`) allowing real-time testing, inspection of JSON schemas, and live execution of all 11 agency tools.
+- **Interactive WebMCP Inspector**: A built-in floating developer UI component (`WebMcpInspector.tsx`) allowing real-time testing, inspection of JSON schemas, and live execution of all 11 agency tools:
+  - **Activation Shortcuts**: Toggle via floating pill button (bottom-right on desktop/tablet), keyboard shortcut `Ctrl+Shift+M` (`Cmd+Shift+M` on macOS), URL query parameter (`?webmcp=true` or `?inspector=true`), or setting `localStorage.setItem('webmcp_inspector', 'true')`.
+  - **Typed Schema Guidance**: Tools include JSON Schema type definitions with explicit `format: 'email'` on email properties, ensuring inspector auto-fill and agent tooling pass valid RFC 5322 addresses.
+  - **Live Audit History**: Records execution status, duration timings, input parameters, and full return payloads.
 - **Generative Engine Optimization (GEO)**:
   - Standardized LLM indexing via [`/llms.txt`](public/llms.txt) and [`/llms-full.txt`](public/llms-full.txt).
   - Open discovery manifests via [`/.well-known/mcp.json`](public/.well-known/mcp.json) and [`/.well-known/ai-plugin.json`](public/.well-known/ai-plugin.json).
@@ -357,11 +361,14 @@ cp .env.example .env
 | `PUBLIC_RECAPTCHA_SITE_KEY` | Client & Server | Google reCAPTCHA v3 site key injected into client scripts. |
 | `RECAPTCHA_SECRET_KEY` | Server-only | Google reCAPTCHA v3 private secret key for out-of-band verification. |
 | `RESEND_API_KEY` | Server-only | Resend API key (`re_...`). If omitted or left as placeholder, email dispatch operates in local simulated mode without errors. |
-| `RESEND_FROM_EMAIL` | Server-only | Transactional sender email address (e.g., `Associated Insurance Agency <onboarding@resend.dev>`). |
+| `RESEND_FROM_EMAIL` | Server-only | Transactional sender email address (e.g., `Associated Insurance Agency <onboarding@resend.dev>` in sandbox or verified domain `quotes@aia-danbury.com` in production). |
 | `QUOTE_NOTIFICATION_EMAIL` | Server-only | Unified agency inbox receiving incoming producer lead alerts and customer inquiries across the site (defaulting to `ron@aia-danbury.com`). |
+| `AGENCY_NOTIFICATION_EMAIL` | Server-only | Primary agency alert inbox override for commercial certificate requests and contact inquiries (aliases to `QUOTE_NOTIFICATION_EMAIL` if omitted). |
+| `RESEND_TEST_RECIPIENT` | Server-only | Sandbox delivery destination (e.g., your verified Resend account email). In Resend sandbox mode (`onboarding@resend.dev`), emails must target verified addresses or `delivered@resend.dev`. |
+| `AIA_LOGO_URL` | Server-only | Optional absolute URL override for the AIA logo displayed in transactional email headers (defaults to inline CID attachment embedding). |
 
 > [!NOTE]
-> Out of the box, `.env.example` includes Google's official v3 test keys which always pass with a human score of `1.0`. Resend email dispatch gracefully detects when an API key is unconfigured and logs simulated email summaries to stdout, allowing complete local development without external credentials. For production, configure live keys in **Vercel Project Settings** (`Settings` → `Environment Variables`).
+> Out of the box, `.env.example` includes Google's official v3 test keys which always pass with a human score of `1.0`. Resend email dispatch gracefully detects when an API key is unconfigured and logs simulated email summaries to stdout, allowing complete local development without external credentials. When using Resend's free sandbox (`onboarding@resend.dev`), outgoing notifications are automatically routed to `RESEND_TEST_RECIPIENT` or `delivered@resend.dev` to comply with sandbox recipient restrictions. For production, configure live verified domain keys in **Vercel Project Settings** (`Settings` → `Environment Variables`).
 
 ### Development Server
 
@@ -504,10 +511,11 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 ### 4. Certificate of Insurance Intake (`/api/certificate-request`)
 
 - **POST `/api/certificate-request`**: Processes commercial ACORD 25 Certificate of Insurance requests (`requestorName`, `requestorEmail`, `requestorPhone`, `insuredName`, `holderName`, `holderAddress` or `holderAddress1` / `holderCity` / `holderState` / `holderZip`, `deliveryMethod`, `coverages`, `isAdditionalInsured`, `hasWrittenContract`, `waiverSubrogationLines`, `primaryNonContributory`, `jobNumber` or `jobNumberOrContract`, `specialInstructions`, `agreementAccepted`, `recaptchaToken`, `hp_website`, `hp_company`, `form_rendered_at`, `source`).
+  - **Upfront Email & Input Validation**: Validates `requestorEmail` format against RFC 5322 regex, immediately rejecting malformed or placeholder values (e.g. `"sample"`) with an informative 400 error.
   - **Flexible Address Parser**: Intelligently decomposes single-line address strings (`"155 Deer Hill Ave, Danbury, CT 06810"`) into street, city, state, and ZIP code, or accepts discrete structured address parameters.
   - **Bot Mitigation & Agent Adaptation**: Enforces dual invisible honeypots (`hp_website`, `hp_company`), client-side silent bot rejection with synthetic confirmation code spoofing, time-based velocity checks (`form_rendered_at < 1200ms`), and Google reCAPTCHA v3 verification (`certificate_request` action, score $\ge 0.5$). For programmatic WebMCP tool calls (`source === 'WebMCP_Tool'`), automatically applies verified tool attribution.
-  - **Producer Email Alert**: Automatically dispatches a detailed Resend HTML briefing to the central quote/certificate inbox (`QUOTE_NOTIFICATION_EMAIL`, defaulting to `ron@aia-danbury.com`) detailing contract endorsements (Additional Insured, Waiver of Subrogation, Primary/Non-Contributory) and turnaround SLAs.
-  - Returns a unique commercial tracking reference (`COI-CT-YYYY-XXXXXX`) and 2–4 hour turnaround commitment during business hours.
+  - **Dual Email Notification**: Dispatches both a high-priority Agency Producer Alert (`CertificateRequestEmail.tsx`) and an automated Customer Receipt Confirmation (`CertificateConfirmationEmail.tsx`) with turnaround SLA and branch contact details.
+  - Returns a unique commercial tracking reference (`COI-CT-YYYY-XXXXXX`), `emailDispatched` (boolean), `customerAcknowledgementDispatched` (boolean), `emailDetails`, and a 2–4 hour turnaround commitment during business hours.
 - **GET `/api/certificate-request`**: Returns recent submission counts for internal administrative auditing.
 
 ---

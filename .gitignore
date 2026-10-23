@@ -189,3 +189,12 @@ browser-recordings/
 *.cpuprofile
 *.trace
 
+# Local scratch & one-off test scripts
+test-*.js
+test-*.mjs
+test-*.ts
+!src/**/*.test.ts
+!src/**/*.test.tsx
+!src/**/*.spec.ts
+!src/**/*.spec.tsx
+

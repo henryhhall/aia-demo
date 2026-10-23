@@ -133,7 +133,7 @@ export const CertificateRequestEmail: React.FC<CertificateRequestEmailProps> = (
   return (
     <Html lang="en">
       <Head>
-        <title>ACORD 25 Certificate Request - {confirmationCode}</title>
+        <title>{`ACORD 25 Certificate Request - ${confirmationCode}`}</title>
       </Head>
       <Preview>
         ACORD 25 Certificate Request [{confirmationCode}] — Insured: {insuredName} | Holder: {holderName}
