@@ -25,7 +25,7 @@ const {
   modifiedDate,
   tags = [],
   structuredData,
-  noindex = true,
+  noindex = false,
 } = Astro.props;
 
 const siteUrl = Astro.site?.toString() || 'https://aia-danbury.com';
@@ -45,7 +45,11 @@ const urlTr = new URL(getLocalizedPath(currentPath, 'tr'), siteUrl).toString();
 <!-- Primary Meta -->
 <title>{title}</title>
 <meta name="description" content={description} />
-{noindex && <meta name="robots" content="noindex, nofollow" />}
+{noindex ? (
+  <meta name="robots" content="noindex, nofollow" />
+) : (
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+)}
 
 <!-- Canonical & Hreflang -->
 <link rel="canonical" href={canonicalUrl} />

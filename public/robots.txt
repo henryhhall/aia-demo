@@ -1,35 +1,34 @@
+# Robots.txt for Associated Insurance Agency (https://aia-danbury.com)
+
+# Default crawler policy
 User-agent: *
 Allow: /
+Allow: /api/mcp
+Disallow: /api/
 
-# Explicit AI Search and Answer Engine Scrapers
-User-agent: GPTBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
+# Major Search Engine Crawlers
 User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: DuckDuckBot
+User-agent: YandexBot
 Allow: /
+Allow: /api/mcp
+Disallow: /api/
 
+# AI Search, Assistants, and Answer Engine Crawlers
+User-agent: GPTBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: PerplexityBot
+User-agent: Applebot-Extended
+User-agent: Meta-ExternalAgent
+User-agent: Amazonbot
 User-agent: Google-Extended
+User-agent: Cohere-ai
 Allow: /
+Allow: /api/mcp
+Disallow: /api/
 
+# XML Sitemap
 Sitemap: https://aia-danbury.com/sitemap-index.xml
