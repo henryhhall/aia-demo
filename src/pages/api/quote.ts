@@ -189,18 +189,28 @@ export const POST: APIRoute = async ({ request }) => {
     if (quoteSubmissions.length > 100) quoteSubmissions.pop();
 
     // Dispatch email notification via Resend
+    // Partial lead captures (e.g. from Step 2) record applicant data in case of abandonment,
+    // but should NOT trigger transactional emails or customer confirmation receipts.
+    const isPartialLead =
+      source === 'Partial_Lead_Step_2' ||
+      (typeof source === 'string' && source.toLowerCase().includes('partial'));
+
     let emailResult: SendEmailResult = { success: false };
-    try {
-      emailResult = await sendQuoteEmail(submission);
-    } catch (emailErr: any) {
-      console.error('[API /quote] Error during sendQuoteEmail:', emailErr);
+    if (!isPartialLead) {
+      try {
+        emailResult = await sendQuoteEmail(submission);
+      } catch (emailErr: any) {
+        console.error('[API /quote] Error during sendQuoteEmail:', emailErr);
+      }
     }
 
     return new Response(
       JSON.stringify({
         success: true,
         confirmationCode,
-        message: `Quote request successfully registered for ${name}.`,
+        message: isPartialLead
+          ? `Partial lead captured for ${name}.`
+          : `Quote request successfully registered for ${name}.`,
         emailDispatched: emailResult.success,
         customerAcknowledgementDispatched: emailResult.customerAcknowledgementDispatched ?? false,
         emailDetails: {

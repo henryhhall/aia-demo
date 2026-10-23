@@ -778,10 +778,14 @@ export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailRes
 
     console.info(`[Resend Success] Agency quote notification dispatched! ID: ${emailResponse.data?.id}`);
 
-    // Dispatch customer acknowledgement email
+    // Dispatch customer acknowledgement email (skip if source is a partial lead capture)
+    const isPartialLead =
+      data.source === 'Partial_Lead_Step_2' ||
+      (typeof data.source === 'string' && data.source.toLowerCase().includes('partial'));
+
     let custAckDispatched = false;
     let custAckId: string | undefined;
-    if (data.email && data.email.includes('@')) {
+    if (!isPartialLead && data.email && data.email.includes('@')) {
       try {
         const lang = (data.preferredLanguage || 'en').toLowerCase();
         const t = QUOTE_CONFIRMATION_I18N[lang] || QUOTE_CONFIRMATION_I18N.en;

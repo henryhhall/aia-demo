@@ -34,9 +34,10 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
   - **Automated Route Redirection**: 301 redirects preserve external links and bookmarks by routing previous `/quote/homeowners` URLs across all locales (`/quote/homeowners`, `/es/...`, `/pt/...`, `/tr/...`) directly to `/quote?type=home`.
   - **Carrier-Ready Intake Payloads**: Validates submissions with honeypot bot mitigation and dispatches real-time producer briefings and customer confirmations.
 - **Comprehensive Transactional Email Pipeline (Resend & React Email Integration)**:
-  - **Quote Intake Pipeline** (`src/lib/email.ts`): Automatically dispatches two transactional emails upon every quote submission via web forms or WebMCP tool invocations:
+  - **Quote Intake Pipeline** (`src/lib/email.ts`): Automatically dispatches two transactional emails upon full quote submissions via web forms or WebMCP tool invocations:
     1. **Unified Agency Producer Dispatch**: Rich HTML and plain-text briefing sent to `QUOTE_NOTIFICATION_EMAIL` (defaulting to `ron@aia-danbury.com`) detailing customer contact info, reach preference, SMS consent, and risk anchors—unifying leads regardless of applicant ZIP code.
     2. **Customer Confirmation**: Branded email acknowledging receipt with reference code (`AIA-XXXXXX`) and a 24-business-hour follow-up commitment.
+    > *Note on Partial Leads*: When applicants advance past Step 2 in the quote funnel, contact details are captured in the background (`source: 'Partial_Lead_Step_2'`) to preserve drop-off leads, but transactional emails are intentionally suppressed until the final submission at Step 4 to prevent duplicate confirmation receipts.
   - **Contact Form Inquiries Pipeline** (`sendContactEmail` in `src/lib/email.ts`): Dispatches dual notifications for general contact and customer service inquiries:
     1. **Agency Contact Alert**: Immediate notification to agency producers with preferred office, language preference, contact details, and inquiry text.
     2. **Multilingual Customer Acknowledgement**: Localized customer confirmation (`CONTACT_ACKNOWLEDGEMENT_I18N`) automatically sent in English, Spanish, Portuguese, or Turkish with inquiry reference ID, assigned branch office contact info, and 24-business-hour SLA.
@@ -368,7 +369,7 @@ cp .env.example .env
 | `AIA_LOGO_URL` | Server-only | Optional absolute URL override for the AIA logo displayed in transactional email headers (defaults to inline CID attachment embedding). |
 
 > [!NOTE]
-> Out of the box, `.env.example` includes Google's official v3 test keys which always pass with a human score of `1.0`. Resend email dispatch gracefully detects when an API key is unconfigured and logs simulated email summaries to stdout, allowing complete local development without external credentials. When using Resend's free sandbox (`onboarding@resend.dev`), outgoing notifications are automatically routed to `RESEND_TEST_RECIPIENT` or `delivered@resend.dev` to comply with sandbox recipient restrictions. For production, configure live verified domain keys in **Vercel Project Settings** (`Settings` → `Environment Variables`).
+> Out of the box, `.env.example` includes Google's official v3 test keys which always pass with a human score of `1.0`. Resend email dispatch gracefully detects when an API key is unconfigured and logs simulated email summaries to stdout, allowing complete local development without external credentials. When using Resend's free sandbox (`onboarding@resend.dev`), outgoing notifications are automatically routed to `RESEND_TEST_RECIPIENT` or `delivered@resend.dev` to comply with sandbox recipient restrictions. For production, configure live verified domain keys in **Vercel Project Settings** (`Settings` → `Environment Variables`). Note that in Vercel, adding or changing environment variables applies only to newly created deployments; trigger a **Redeploy** on your production deployment to activate updated environment variables.
 
 ### Development Server
 
@@ -494,7 +495,8 @@ The MCP endpoint allows AI agents to discover tools and invoke functions via sta
 ### 2. Quote Intake (`/api/quote`)
 
 - **POST `/api/quote`**: Submits a lead payload (`name`, `email`, `phone`, `insuranceType`, `preferredOffice`, `preferredLanguage`, `notes`, `ratingPayload`, `recaptchaToken`, `source`).
-  - **Bot Mitigation**: Validates Google reCAPTCHA v3 token (`quote_form` action, score $\ge 0.5$) and hidden honeypot fields.
+  - **Bot Mitigation**: Validates Google reCAPTCHA v3 token (`quote_form` or `quote_partial_lead` action, score $\ge 0.5$) and hidden honeypot fields.
+  - **Partial Lead vs. Full Submission**: Background lead captures at Step 2 (`source: 'Partial_Lead_Step_2'`) are saved to `quoteSubmissions` in case of applicant drop-off, but suppress email notifications. Full submissions (`source: 'Unified_3Step_Funnel'` or WebMCP) trigger live Resend emails.
   - **Resend Email Trigger**: Automatically sends an HTML producer alert to the unified agency quote inbox (`QUOTE_NOTIFICATION_EMAIL`, defaulting to `ron@aia-danbury.com`) and an acknowledgement email to the applicant.
   - **Response Payload**: Returns a confirmation code (`AIA-XXXXXX`), `emailDispatched` (boolean), `emailDetails` (`simulated`, `id`, `recipient`), and stored inquiry metadata.
 - **GET `/api/quote`**: Returns recent submissions count and metadata for internal testing.
