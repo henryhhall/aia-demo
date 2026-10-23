@@ -188,6 +188,25 @@ function sanitizeResendTag(val?: string): string {
 }
 
 /**
+ * Safely formats the `reply_to` header for Resend.
+ * Validates that the email address is well-formed, strips illegal characters from the display name,
+ * avoids leading spaces (e.g. " <email@domain.com>"), and falls back gracefully to undefined
+ * so Resend never fails with validation error 422.
+ */
+export function formatReplyTo(name?: string, email?: string): string | undefined {
+  if (!email || typeof email !== 'string') return undefined;
+  const cleanEmail = email.trim();
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(cleanEmail)) {
+    return undefined;
+  }
+  const cleanName = (name || '')
+    .replace(/[<>\r\n"']/g, '')
+    .trim();
+  return cleanName ? `${cleanName} <${cleanEmail}>` : cleanEmail;
+}
+
+/**
  * Resolves the logo reference for transactional emails.
  * Defaults to 'cid:aia-logo' for inline attachment embedding (eliminates webmail proxy bugs and dark borders).
  * Can be overridden via AIA_LOGO_URL env var or customLogoUrl prop.
@@ -737,7 +756,7 @@ export async function sendQuoteEmail(data: QuoteEmailData): Promise<SendEmailRes
     const emailResponse = await client.emails.send({
       from: fromEmail,
       to: [recipient],
-      replyTo: `${data.name} <${data.email}>`,
+      replyTo: formatReplyTo(data.name, data.email),
       subject,
       html: buildAgencyNotificationHtml(data, officeInfo, logoUrl),
       text: buildAgencyNotificationText(data, officeInfo),
@@ -922,7 +941,7 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
     const emailResponse = await client.emails.send({
       from: fromEmail,
       to: [recipient],
-      replyTo: `${data.requestorName} <${data.requestorEmail}>`,
+      replyTo: formatReplyTo(data.requestorName, data.requestorEmail),
       subject,
       html: agencyHtml,
       text: agencyText,
@@ -948,7 +967,7 @@ export async function sendCertificateEmail(data: CertificateEmailData): Promise<
     // Dispatch customer acknowledgement receipt email
     let custAckDispatched = false;
     let custAckId: string | undefined;
-    if (data.requestorEmail && data.requestorEmail.includes('@')) {
+    if (data.requestorEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.requestorEmail.trim())) {
       try {
         const targetCustomerRecipient = isSandbox
           ? (testRecipient || (recipient !== 'ron@aia-danbury.com' ? recipient : 'delivered@resend.dev'))
@@ -1396,7 +1415,7 @@ ${data.message}
     const emailResponse = await client.emails.send({
       from: fromEmail,
       to: [recipient],
-      replyTo: `${data.name} <${data.email}>`,
+      replyTo: formatReplyTo(data.name, data.email),
       subject,
       html,
       text,

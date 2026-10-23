@@ -892,7 +892,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
         },
         email: {
           type: 'string',
-          description: 'Customer contact email',
+          format: 'email',
+          description: 'Customer contact email (e.g. john@example.com)',
         },
         phone: {
           type: 'string',
@@ -944,8 +945,9 @@ export const aiaWebMcpTools: WebMCPTool[] = [
       recaptchaToken?: string;
     }) => {
       const params = sanitizeToolParams('submit_quote_request', rawParams);
-      if (!params.name || !params.email || !params.phone) {
-        throw new Error('Missing required fields: name, email, and phone are mandatory.');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!params.name || !params.email || !emailRegex.test(params.email) || !params.phone) {
+        throw new Error('Missing or invalid required fields: name, valid email (e.g. name@example.com), and phone are mandatory.');
       }
       const confirmationCode = 'AIA-' + Math.floor(100000 + Math.random() * 900000);
       const office = params.preferredOffice || 'Danbury';
@@ -1167,7 +1169,8 @@ export const aiaWebMcpTools: WebMCPTool[] = [
         },
         requestorEmail: {
           type: 'string',
-          description: 'Email address of requestor for confirmation.',
+          format: 'email',
+          description: 'Email address of requestor for confirmation (e.g. john@example.com).',
         },
         requestorPhone: {
           type: 'string',
@@ -1254,16 +1257,18 @@ export const aiaWebMcpTools: WebMCPTool[] = [
         params.holderAddress || (params.holderAddress1 && params.holderCity && params.holderZip)
       );
 
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (
         !params.insuredName ||
         !params.requestorName ||
         !params.requestorEmail ||
+        !emailRegex.test(params.requestorEmail) ||
         !params.requestorPhone ||
         !params.holderName ||
         !hasAddress
       ) {
         throw new Error(
-          'Missing required fields: insuredName, requestorName, requestorEmail, requestorPhone, holderName, and holderAddress are mandatory.'
+          'Missing or invalid required fields: insuredName, requestorName, valid requestorEmail (e.g. name@example.com), requestorPhone, holderName, and holderAddress are mandatory.'
         );
       }
 

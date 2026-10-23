@@ -207,11 +207,29 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     // 4. Mandatory field validations
-    if (!requestorName || !requestorEmail || !requestorPhone) {
+    const effectiveRequestorName = (requestorName || data.name || data.fullName || '').trim();
+    const effectiveRequestorEmail = (requestorEmail || data.email || '').trim();
+    const effectiveRequestorPhone = (requestorPhone || data.phone || '').trim();
+
+    if (!effectiveRequestorName || !effectiveRequestorPhone) {
       return new Response(
         JSON.stringify({
           success: false,
-          error: 'Requestor name, email, and phone number are required.',
+          error: 'Requestor name and phone number are required.',
+        }),
+        {
+          status: 400,
+          headers: { 'Content-Type': 'application/json' },
+        }
+      );
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!effectiveRequestorEmail || !emailRegex.test(effectiveRequestorEmail)) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: 'A valid requestor email address is required (e.g. name@example.com).',
         }),
         {
           status: 400,
@@ -268,10 +286,10 @@ export const POST: APIRoute = async ({ request }) => {
     const submission: CertificateSubmission = {
       id: 'cert_' + Math.random().toString(36).substring(2, 9),
       confirmationCode,
-      requestorName,
+      requestorName: effectiveRequestorName,
       companyName,
-      requestorEmail,
-      requestorPhone,
+      requestorEmail: effectiveRequestorEmail,
+      requestorPhone: effectiveRequestorPhone,
       requestorFax,
       relationship,
       insuredName,
