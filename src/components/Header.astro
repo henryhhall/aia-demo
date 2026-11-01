@@ -242,7 +242,7 @@ const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
           <svg class="w-3.5 h-3.5 text-accent-gold animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.802-5.14-4.117-6.942-6.942l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
           </svg>
-          <span class="text-accent-gold text-[11px] font-normal hidden sm:inline">{headerPhone.label}</span>
+          <span class="text-accent-gold text-[11px] font-normal hidden sm:inline">{headerPhone.label}</span>{' '}
           <span class="tabular-nums tracking-tight">{headerPhone.number}</span>
         </a>
       </div>
@@ -261,7 +261,7 @@ const quoteUrl = getRelativeLocaleUrl(lang, 'quote');
           loading="eager"
         />
         <div class="flex flex-col lg:hidden xl:flex">
-          <span class="text-sm sm:text-base font-semibold tracking-tight text-accent leading-none">{t('header.title')}</span>
+          <span class="text-sm sm:text-base font-semibold tracking-tight text-accent leading-none">{t('header.title')}</span>{' '}
           <span class="text-xs sm:text-[13px] font-light tracking-widest text-text-secondary">{t('header.subtitle')}</span>
         </div>
       </a>

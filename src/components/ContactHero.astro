@@ -210,7 +210,7 @@ const d = content[currentLang];
                 </svg>
               </div>
               <div>
-                <span class="block text-[11px] text-slate-300 font-normal">{d.callUsLabel}</span>
+                <span class="block text-[11px] text-slate-300 font-normal">{d.callUsLabel}</span>{' '}
                 <span class="text-sm font-bold text-accent-gold tracking-wide">{d.callUsPhone}</span>
               </div>
             </a>
@@ -290,10 +290,10 @@ const d = content[currentLang];
         <div class="p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm text-left">
           <div class="text-xl sm:text-2xl font-extrabold text-accent-gold tracking-tight">
             {stat.value}
-          </div>
+          </div>{' '}
           <div class="text-xs font-bold uppercase tracking-wider text-white mt-0.5">
             {stat.label}
-          </div>
+          </div>{' '}
           <div class="text-xs text-slate-300 mt-0.5">
             {stat.detail}
           </div>

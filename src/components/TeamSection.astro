@@ -22,6 +22,14 @@ const currentLang = ((lang || Astro.currentLocale || 'en') as 'en' | 'es' | 'pt'
 const activeLocaleData = teamData[currentLang] || teamData.en;
 const { ui, members } = activeLocaleData;
 
+const languageDisplayMap: Record<'en' | 'es' | 'pt' | 'tr', Record<string, string>> = {
+  en: { English: 'English', Spanish: 'Spanish', Portuguese: 'Portuguese', Turkish: 'Turkish' },
+  es: { English: 'Inglés', Spanish: 'Español', Portuguese: 'Portugués', Turkish: 'Turco' },
+  pt: { English: 'Inglês', Spanish: 'Espanhol', Portuguese: 'Português', Turkish: 'Turco' },
+  tr: { English: 'İngilizce', Spanish: 'İspanyolca', Portuguese: 'Portekizce', Turkish: 'Türkçe' },
+};
+const localizeLanguage = (langName: string) => languageDisplayMap[currentLang]?.[langName] || langName;
+
 const imageMap: Record<string, ImageMetadata> = {
   'ronald-boucher': ronaldImg,
   'yesica-ramirez': yesicaImg,
@@ -151,7 +159,7 @@ const suppressedProducerBadgeIds = ['camila-macedo', 'isayeli-perez', 'ema-rego'
             <div class="absolute top-3 left-3 flex flex-col gap-1.5 items-start">
               <span class="px-2.5 py-1 rounded-md text-[11px] font-semibold bg-bg-primary/95 backdrop-blur-md text-accent shadow-sm border border-border-subtle/60">
                 {member.experienceBadge}
-              </span>
+              </span>{' '}
               <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-semibold bg-accent text-white shadow-xs">
                 <svg class="w-2.5 h-2.5 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -205,13 +213,15 @@ const suppressedProducerBadgeIds = ['camila-macedo', 'isayeli-perez', 'ema-rego'
 
               <!-- Languages badges -->
               {member.languages && member.languages.length > 0 && (
-                <div class="mt-2.5 flex flex-wrap gap-1">
+                <ul class="mt-2.5 flex flex-wrap gap-1 list-none p-0 m-0">
                   {member.languages.map((lang) => (
-                    <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-accent/5 text-accent border border-accent/10">
-                      {lang}
-                    </span>
+                    <>
+                      <li class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-medium bg-accent/5 text-accent border border-accent/10">
+                        {localizeLanguage(lang)}
+                      </li>{' '}
+                    </>
                   ))}
-                </div>
+                </ul>
               )}
               <p class="mt-2.5 text-xs text-text-muted line-clamp-2 leading-relaxed">
                 {member.shortBio}
@@ -234,6 +244,7 @@ const suppressedProducerBadgeIds = ['camila-macedo', 'isayeli-perez', 'ema-rego'
   <!-- Pop-up Modal Container -->
   <div
     id="team-modal"
+    data-nosnippet
     class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-zinc-950/75 backdrop-blur-md opacity-0 transition-opacity duration-300"
     role="dialog"
     aria-modal="true"

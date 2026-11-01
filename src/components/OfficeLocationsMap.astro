@@ -358,18 +358,20 @@ const t = uiTexts[currentLang];
             </div>
             <div class="flex flex-wrap gap-2">
               {getMembersByOffice(office.id, currentLang).map((m) => (
-                <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-bg-secondary text-xs text-accent font-medium border border-border-subtle shadow-2xs">
-                  <span class="font-bold text-accent">{m.name.split(' ')[0]}</span>
-                  {m.isProducer ? (
-                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-accent-gold text-accent font-bold uppercase tracking-wider shadow-2xs">
-                      {t.producerBadge}
-                    </span>
-                  ) : (
-                    <span class="text-[10px] px-1.5 py-0.5 rounded bg-accent/5 text-text-secondary border border-accent/10">
-                      CSR
-                    </span>
-                  )}
-                </span>
+                <>
+                  <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-bg-secondary text-xs text-accent font-medium border border-border-subtle shadow-2xs">
+                    <span class="font-bold text-accent">{m.name.split(' ')[0]}</span>{' '}
+                    {m.isProducer ? (
+                      <span class="text-[10px] px-1.5 py-0.5 rounded bg-accent-gold text-accent font-bold uppercase tracking-wider shadow-2xs">
+                        {t.producerBadge}
+                      </span>
+                    ) : (
+                      <span class="text-[10px] px-1.5 py-0.5 rounded bg-accent/5 text-text-secondary border border-accent/10">
+                        CSR
+                      </span>
+                    )}
+                  </span>{' '}
+                </>
               ))}
             </div>
           </div>
@@ -432,16 +434,16 @@ const t = uiTexts[currentLang];
               <div class="flex items-center gap-2 flex-wrap">
                 <span class="text-[10px] font-bold uppercase tracking-wider text-accent-gold">
                   {office.tag}
-                </span>
-                <span class="text-zinc-300 hidden sm:inline">•</span>
+                </span>{' '}
+                <span class="text-zinc-300 hidden sm:inline">•</span>{' '}
                 <h4 class="text-sm font-bold text-accent group-hover:text-accent-gold transition-colors">
                   {office.title}
                 </h4>
-              </div>
+              </div>{' '}
 
               <p class="text-xs text-text-secondary leading-relaxed">
                 {office.addressLine}, {office.cityStateZip}
-              </p>
+              </p>{' '}
 
               <div class="pt-0.5">
                 <a
@@ -459,17 +461,22 @@ const t = uiTexts[currentLang];
 
               <!-- Compact Staff List -->
               <div class="pt-1.5 flex flex-wrap items-center gap-1 text-[11px] text-text-secondary">
-                <span class="font-bold text-accent">{t.staffLabel}:</span>
+                <span class="font-bold text-accent">{t.staffLabel}:</span>{' '}
                 {getMembersByOffice(office.id, currentLang).map((m, idx, arr) => (
-                  <span class="inline-flex items-center">
-                    <span class="font-medium">{m.name.split(' ')[0]}</span>
-                    {m.isProducer && (
-                      <span class="text-[10px] font-bold text-accent-gold ml-1">
-                        ({t.producerBadge})
-                      </span>
-                    )}
-                    {idx < arr.length - 1 && <span class="text-zinc-300 ml-1">,</span>}
-                  </span>
+                  <>
+                    <span class="inline-flex items-center">
+                      <span class="font-medium">{m.name.split(' ')[0]}</span>
+                      {m.isProducer && (
+                        <>
+                          {' '}
+                          <span class="text-[10px] font-bold text-accent-gold ml-1">
+                            ({t.producerBadge})
+                          </span>
+                        </>
+                      )}
+                      {idx < arr.length - 1 && <span class="text-zinc-300 ml-1">,</span>}
+                    </span>{' '}
+                  </>
                 ))}
               </div>
             </div>

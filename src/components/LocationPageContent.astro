@@ -2,7 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { getLocationById, type LocationId } from '../data/locations';
+import { getLocationById, formatTownWithState, type LocationId } from '../data/locations';
 import { getLocationTranslation } from '../i18n/locations';
 import { getMembersByOffice } from '../i18n/team';
 import FAQAccordion from './FAQAccordion';
@@ -100,9 +100,45 @@ const browseAllGuidesLabel = currentLang === 'es'
   : 'Browse all Connecticut insurance guides';
 const dateLocale = currentLang === 'es' ? 'es-ES' : currentLang === 'pt' ? 'pt-BR' : currentLang === 'tr' ? 'tr-TR' : 'en-US';
 
+// Localized NAP card & staff UI labels so ES, PT, and TR pages don't leak English labels
+const openBadgeLabel = currentLang === 'es' ? 'Abierto Lun–Vie' : currentLang === 'pt' ? 'Aberto Seg–Sex' : currentLang === 'tr' ? 'Pzt–Cum Açık' : 'Open Mon–Fri';
+const addressLabel = currentLang === 'es' ? 'Dirección' : currentLang === 'pt' ? 'Endereço' : currentLang === 'tr' ? 'Adres' : 'Address';
+const phoneLabel = currentLang === 'es' ? 'Teléfono' : currentLang === 'pt' ? 'Telefone' : currentLang === 'tr' ? 'Telefon' : 'Phone';
+const faxLabel = currentLang === 'tr' ? 'Faks' : 'Fax';
+const emailLabel = currentLang === 'es' ? 'Correo Electrónico' : currentLang === 'pt' ? 'E-mail' : currentLang === 'tr' ? 'E-posta' : 'Email';
+const localizedHours = currentLang === 'es'
+  ? 'Lun - Vie 8:30 AM - 5:00 PM EST'
+  : currentLang === 'pt'
+  ? 'Seg - Sex 8:30 AM - 5:00 PM EST'
+  : currentLang === 'tr'
+  ? 'Pzt - Cum 08:30 - 17:00 EST'
+  : location.hours;
+const staffRosterBadge = currentLang === 'es'
+  ? `Equipo de ${location.city}`
+  : currentLang === 'pt'
+  ? `Equipe de ${location.city}`
+  : currentLang === 'tr'
+  ? `${location.city} Ekibimiz`
+  : `${location.city} Staff Roster`;
+
+const languageDisplayMap: Record<'en' | 'es' | 'pt' | 'tr', Record<string, string>> = {
+  en: { English: 'English', Spanish: 'Spanish', Portuguese: 'Portuguese', Turkish: 'Turkish' },
+  es: { English: 'Inglés', Spanish: 'Español', Portuguese: 'Portugués', Turkish: 'Turco' },
+  pt: { English: 'Inglês', Spanish: 'Espanhol', Portuguese: 'Português', Turkish: 'Turco' },
+  tr: { English: 'İngilizce', Spanish: 'İspanyolca', Portuguese: 'Portekizce', Turkish: 'Türkçe' },
+};
+
+function localizeLanguage(langName: string): string {
+  return languageDisplayMap[currentLang]?.[langName] || langName;
+}
+
 const siteUrl = 'https://aia-danbury.com';
 const currentPath = currentLang === 'en' ? `/locations/${location.slug}` : `/${currentLang}/locations/${location.slug}`;
 const fullPageUrl = `${siteUrl}${currentPath}`;
+const e164Phone = `+1-${location.phoneRaw.slice(0, 3)}-${location.phoneRaw.slice(3, 6)}-${location.phoneRaw.slice(6)}`;
+
+// Pre-format surrounding towns so 'Brewster, NY' never becomes 'Brewster (NY), CT'
+const formattedTowns = location.surroundingTowns.map((town) => formatTownWithState(town, location.state));
 
 // Structured Data: Schema.org @graph with InsuranceAgency + BreadcrumbList + FAQPage
 const schemaGraph = {
@@ -112,18 +148,31 @@ const schemaGraph = {
       '@type': 'InsuranceAgency',
       '@id': `${fullPageUrl}#location`,
       name: `Associated Insurance Agency - ${t.name}`,
+      legalName: 'Associated Insurance Agency LLC',
       alternateName: [`AIA ${location.city}`, `Associated Insurance Agency ${location.city} CT`],
       image: `${siteUrl}/images/logo.png`,
+      logo: `${siteUrl}/images/logo.png`,
       url: fullPageUrl,
-      telephone: `+1-${location.phoneRaw}`,
+      telephone: e164Phone,
+      ...(location.fax ? { faxNumber: `+1-${location.fax.replace(/\D/g, '').slice(0, 3)}-${location.fax.replace(/\D/g, '').slice(3, 6)}-${location.fax.replace(/\D/g, '').slice(6)}` } : {}),
       email: location.email,
       priceRange: '$$',
+      foundingDate: '2008',
       parentOrganization: {
         '@type': 'InsuranceAgency',
         '@id': `${siteUrl}/#organization`,
         name: 'Associated Insurance Agency',
+        legalName: 'Associated Insurance Agency LLC',
         url: siteUrl,
       },
+      ...(!location.isHQ
+        ? {
+            branchOf: {
+              '@id': `${siteUrl}/#organization`,
+            },
+          }
+        : {}),
+      ...(location.sameAs && location.sameAs.length > 0 ? { sameAs: location.sameAs } : {}),
       address: {
         '@type': 'PostalAddress',
         streetAddress: location.streetAddress,
@@ -145,10 +194,22 @@ const schemaGraph = {
           closes: '17:00',
         },
       ],
-      areaServed: location.surroundingTowns.map((town) => ({
+      areaServed: formattedTowns.map((townLabel) => ({
         '@type': 'City',
-        name: town,
+        name: townLabel,
       })),
+      hasOfferCatalog: {
+        '@type': 'OfferCatalog',
+        name: `${location.city} CT Personal & Commercial Insurance Lines`,
+        itemListElement: t.coverageLines.map((line) => ({
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: line.title,
+            description: line.desc,
+          },
+        })),
+      },
       hasMap: location.directionsUrl,
       knowsLanguage: location.languages.map((l) => {
         const codeMap: Record<string, string> = { English: 'en', Spanish: 'es', Portuguese: 'pt', Turkish: 'tr' };
@@ -246,7 +307,7 @@ const schemaGraph = {
           <!-- Quick Action Buttons -->
           <div class="pt-2 flex flex-wrap items-center gap-3">
             <a
-              href={`tel:${location.phoneRaw}`}
+              href={`tel:+1${location.phoneRaw}`}
               class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-accent text-white hover:bg-accent/90 text-sm font-semibold shadow-sm transition-all hover:shadow hover:-translate-y-0.5"
             >
               <svg class="w-4 h-4 text-accent-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -363,7 +424,7 @@ const schemaGraph = {
             </div>
           </div>
 
-          <!-- Communities Served Section -->
+          <!-- Communities Served Section (Fixed: semantic <ul><li> + whitespace delimiter + Brewster, NY normalization) -->
           <div class="p-8 rounded-2xl bg-gradient-to-br from-bg-secondary to-bg-primary border border-border-subtle space-y-5">
             <div>
               <div class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider text-accent-gold mb-1">
@@ -378,13 +439,15 @@ const schemaGraph = {
               </p>
             </div>
 
-            <div class="flex flex-wrap gap-2">
-              {location.surroundingTowns.map((town) => (
-                <span class="px-3 py-1.5 rounded-lg bg-white border border-border-subtle text-xs font-medium text-text-primary shadow-2xs">
-                  {town}, CT
-                </span>
+            <ul class="flex flex-wrap gap-2 list-none p-0 m-0">
+              {formattedTowns.map((townLabel) => (
+                <>
+                  <li class="px-3 py-1.5 rounded-lg bg-white border border-border-subtle text-xs font-medium text-text-primary shadow-2xs">
+                    {townLabel}
+                  </li>{' '}
+                </>
               ))}
-            </div>
+            </ul>
           </div>
 
           <!-- Local Articles & Guides for this Location -->
@@ -431,13 +494,15 @@ const schemaGraph = {
                       </p>
 
                       <div class="pt-2 flex flex-wrap items-center justify-between gap-3 border-t border-border-subtle/60">
-                        <div class="flex flex-wrap gap-1.5">
+                        <ul class="flex flex-wrap gap-1.5 list-none p-0 m-0">
                           {post.data.tags.map((tag) => (
-                            <span class="text-[10px] px-2 py-0.5 bg-white border border-border-subtle text-text-secondary rounded-full">
-                              {tag}
-                            </span>
+                            <>
+                              <li class="text-[10px] px-2 py-0.5 bg-white border border-border-subtle text-text-secondary rounded-full">
+                                {tag}
+                              </li>{' '}
+                            </>
                           ))}
-                        </div>
+                        </ul>
 
                         <a
                           href={getPostUrl(post, currentLang)}
@@ -464,7 +529,7 @@ const schemaGraph = {
                 </div>
               </>
             ) : (
-              <div class="p-6 rounded-xl bg-bg-secondary border border-border-subtle space-y-3">
+              <div class="p-6 rounded-xl bg-bg-secondary border border-border-subtle space-y-3" data-nosnippet>
                 <p class="text-xs sm:text-sm text-text-secondary leading-relaxed">
                   {noLocationPostsText}
                 </p>
@@ -515,13 +580,13 @@ const schemaGraph = {
               </div>
               <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-medium">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                Open Mon–Fri
+                {openBadgeLabel}
               </span>
             </div>
 
             <!-- Address -->
             <div class="space-y-2">
-              <span class="text-xs font-bold text-text-muted uppercase tracking-wider">Address</span>
+              <span class="text-xs font-bold text-text-muted uppercase tracking-wider">{addressLabel}</span>
               <div class="flex items-start gap-3 text-sm text-text-primary">
                 <svg class="w-5 h-5 text-accent-gold shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
@@ -548,9 +613,9 @@ const schemaGraph = {
             <!-- Contact Numbers -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-border-subtle/70">
               <div>
-                <span class="text-xs font-bold text-text-muted uppercase tracking-wider">Phone</span>
+                <span class="text-xs font-bold text-text-muted uppercase tracking-wider">{phoneLabel}</span>
                 <p class="text-sm font-semibold text-accent mt-0.5">
-                  <a href={`tel:${location.phoneRaw}`} class="hover:text-accent-gold transition-colors">
+                  <a href={`tel:+1${location.phoneRaw}`} class="hover:text-accent-gold transition-colors">
                     {location.phoneFormatted}
                   </a>
                 </p>
@@ -558,7 +623,7 @@ const schemaGraph = {
 
               {location.fax && (
                 <div>
-                  <span class="text-xs font-bold text-text-muted uppercase tracking-wider">Fax</span>
+                  <span class="text-xs font-bold text-text-muted uppercase tracking-wider">{faxLabel}</span>
                   <p class="text-sm text-text-secondary mt-0.5">{location.fax}</p>
                 </div>
               )}
@@ -568,11 +633,11 @@ const schemaGraph = {
             <div class="pt-4 border-t border-border-subtle/70 space-y-3">
               <div>
                 <span class="text-xs font-bold text-text-muted uppercase tracking-wider">{t.openHoursLabel}</span>
-                <p class="text-sm text-text-primary mt-0.5">{location.hours}</p>
+                <p class="text-sm text-text-primary mt-0.5">{localizedHours}</p>
               </div>
 
               <div>
-                <span class="text-xs font-bold text-text-muted uppercase tracking-wider">Email</span>
+                <span class="text-xs font-bold text-text-muted uppercase tracking-wider">{emailLabel}</span>
                 <p class="text-sm font-medium text-accent mt-0.5">
                   <a href={`mailto:${location.email}`} class="hover:underline">
                     {location.email}
@@ -581,23 +646,25 @@ const schemaGraph = {
               </div>
             </div>
 
-            <!-- Spoken Languages -->
+            <!-- Spoken Languages (Fixed: localized language names + semantic <ul><li> + trailing space) -->
             <div class="pt-4 border-t border-border-subtle/70">
               <span class="text-xs font-bold text-text-muted uppercase tracking-wider block mb-2">{t.languagesLabel}</span>
-              <div class="flex flex-wrap gap-1.5">
+              <ul class="flex flex-wrap gap-1.5 list-none p-0 m-0">
                 {location.languages.map((langItem) => (
-                  <span class="px-2.5 py-1 rounded bg-bg-secondary text-text-primary text-xs font-semibold border border-border-subtle">
-                    {langItem}
-                  </span>
+                  <>
+                    <li class="px-2.5 py-1 rounded bg-bg-secondary text-text-primary text-xs font-semibold border border-border-subtle">
+                      {localizeLanguage(langItem)}
+                    </li>{' '}
+                  </>
                 ))}
-              </div>
+              </ul>
             </div>
 
             <!-- Google Maps Embed -->
             <div class="pt-2">
               <div class="relative w-full h-56 rounded-xl overflow-hidden border border-border-subtle shadow-inner">
                 <iframe
-                  title={`${location.name} Google Map`}
+                  title={`${t.name} Google Map`}
                   src={location.embedUrl}
                   width="100%"
                   height="100%"
@@ -634,7 +701,7 @@ const schemaGraph = {
                 {t.quoteOfficeCta}
               </a>
               <a
-                href={`tel:${location.phoneRaw}`}
+                href={`tel:+1${location.phoneRaw}`}
                 class="w-full py-2.5 px-4 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-semibold text-center transition-colors"
               >
                 {t.callOfficeCta}
@@ -655,7 +722,7 @@ const schemaGraph = {
       <div class="text-left mb-12">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/5 border border-accent/10 text-accent text-xs font-semibold uppercase tracking-wider mb-3">
           <span class="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
-          {location.city} Staff Roster
+          {staffRosterBadge}
         </div>
         <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-accent">
           {t.staffHeading}
@@ -706,15 +773,17 @@ const schemaGraph = {
                   </div>
                 </div>
 
-                <!-- Languages & Bio -->
+                <!-- Languages & Bio (Fixed: localized language names + semantic <ul><li> + trailing space) -->
                 <div class="px-6 pb-4 space-y-3">
-                  <div class="flex flex-wrap gap-1">
+                  <ul class="flex flex-wrap gap-1 list-none p-0 m-0">
                     {member.languages.map((l) => (
-                      <span class="px-2 py-0.5 rounded text-[10px] font-medium bg-bg-secondary border border-border-subtle text-text-secondary">
-                        {l}
-                      </span>
+                      <>
+                        <li class="px-2 py-0.5 rounded text-[10px] font-medium bg-bg-secondary border border-border-subtle text-text-secondary">
+                          {localizeLanguage(l)}
+                        </li>{' '}
+                      </>
                     ))}
-                  </div>
+                  </ul>
 
                   <p class="text-xs text-text-secondary leading-relaxed line-clamp-4">
                     {member.shortBio || member.fullBio}
@@ -726,7 +795,7 @@ const schemaGraph = {
               <div class="px-6 py-3.5 bg-bg-secondary/40 border-t border-border-subtle/80 flex items-center justify-between text-[11px] text-text-muted">
                 <span>{member.experienceBadge}</span>
                 <a
-                  href={`tel:${location.phoneRaw}`}
+                  href={`tel:+1${location.phoneRaw}`}
                   class="font-semibold text-accent hover:text-accent-gold transition-colors"
                 >
                   {currentLang === 'es' ? 'Contactar →' : currentLang === 'pt' ? 'Contato →' : currentLang === 'tr' ? 'İletişim →' : 'Contact →'}
@@ -763,7 +832,7 @@ const schemaGraph = {
       </p>
       <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
         <a
-          href={`tel:${location.phoneRaw}`}
+          href={`tel:+1${location.phoneRaw}`}
           class="px-6 py-3.5 rounded-lg bg-accent-gold text-zinc-950 font-bold text-sm shadow hover:bg-accent-gold/90 transition-all hover:-translate-y-0.5"
         >
           {t.callOfficeCta}

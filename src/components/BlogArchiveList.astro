@@ -132,6 +132,9 @@ function getLocationLabel(id: LocationId): string {
       <!-- Empty state when location filter has no matches -->
       <div
         id="blog-empty-state"
+        data-nosnippet
+        hidden
+        aria-hidden="true"
         class="hidden text-center py-16 px-6 border border-border-subtle bg-bg-secondary rounded-2xl space-y-4"
       >
         <div class="w-12 h-12 rounded-full bg-accent/10 text-accent flex items-center justify-center mx-auto">
@@ -182,24 +185,28 @@ function getLocationLabel(id: LocationId): string {
 
                 <!-- Location Badges if tagged -->
                 {postLocations.length > 0 && (
-                  <div class="flex flex-wrap gap-1">
+                  <ul class="flex flex-wrap gap-1 list-none p-0 m-0">
                     {postLocations.map((locId) => (
-                      <span class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-accent/5 text-accent border border-accent/20 font-semibold">
-                        <span class="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
-                        {getLocationLabel(locId)}
-                      </span>
+                      <>
+                        <li class="inline-flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-accent/5 text-accent border border-accent/20 font-semibold">
+                          <span class="w-1.5 h-1.5 rounded-full bg-accent-gold"></span>
+                          {getLocationLabel(locId)}
+                        </li>{' '}
+                      </>
                     ))}
-                  </div>
+                  </ul>
                 )}
 
                 <!-- Tags -->
-                <div class="flex flex-wrap gap-1.5 pt-1">
+                <ul class="flex flex-wrap gap-1.5 pt-1 list-none p-0 m-0">
                   {post.data.tags.map((tag) => (
-                    <span class="text-[9px] px-2 py-0.5 bg-bg-secondary border border-border-subtle text-text-secondary rounded-full">
-                      {tag}
-                    </span>
+                    <>
+                      <li class="text-[10px] px-2 py-0.5 bg-white border border-border-subtle text-text-secondary rounded-full">
+                        {tag}
+                      </li>{' '}
+                    </>
                   ))}
-                </div>
+                </ul>
               </div>
 
               <!-- Post Details -->
@@ -272,8 +279,12 @@ function getLocationLabel(id: LocationId): string {
         if (emptyState) {
           if (visibleCount === 0) {
             emptyState.classList.remove('hidden');
+            emptyState.removeAttribute('hidden');
+            emptyState.setAttribute('aria-hidden', 'false');
           } else {
             emptyState.classList.add('hidden');
+            emptyState.setAttribute('hidden', '');
+            emptyState.setAttribute('aria-hidden', 'true');
           }
         }
 

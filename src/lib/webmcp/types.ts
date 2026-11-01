@@ -16,6 +16,7 @@ export interface WebMCPJSONSchema {
   properties?: Record<string, {
     type: string;
     description?: string;
+    format?: string;
     enum?: string[];
     items?: Record<string, any>;
     default?: any;

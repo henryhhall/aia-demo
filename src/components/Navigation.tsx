@@ -157,9 +157,12 @@ export default function Navigation({
                           </svg>
                         </div>
                         {child.description && (
-                          <p className="text-xs text-text-secondary mt-0.5 leading-snug">
-                            {child.description}
-                          </p>
+                          <>
+                            {' '}
+                            <p className="text-xs text-text-secondary mt-0.5 leading-snug">
+                              {child.description}
+                            </p>
+                          </>
                         )}
                       </a>
                     );
@@ -332,9 +335,12 @@ export default function Navigation({
                               {child.label}
                             </span>
                             {child.description && (
-                              <span className="block text-xs text-text-muted mt-0.5">
-                                {child.description}
-                              </span>
+                              <>
+                                {' '}
+                                <span className="block text-xs text-text-muted mt-0.5">
+                                  {child.description}
+                                </span>
+                              </>
                             )}
                           </a>
                         );
