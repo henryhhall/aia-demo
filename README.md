@@ -84,7 +84,13 @@ This project pairs an ultra-fast web experience for policyholders with a cutting
 - **Terms of Service (Multilingual)**: Comprehensive boilerplate terms pages (`/terms`, `/es/terms`, `/pt/terms`, `/tr/terms`) detailing independent brokerage representation, non-binding quote estimates, carrier portal links, user conduct, and Connecticut governing law.
 - **Privacy Policy & GLBA Consumer Financial Notice (Multilingual)**: Complete privacy disclosure pages (`/privacy`, `/es/privacy`, `/pt/privacy`, `/tr/privacy`) detailing Title V Gramm-Leach-Bliley Act (GLBA) compliance, Connecticut Data Privacy Act (CTDPA) standards, carrier underwriting data sharing, and strict 10DLC mobile confidentiality rules prohibiting any third-party sharing of mobile numbers or SMS opt-in data for marketing purposes.
 - **RFC 9116 Security Policy & Vulnerability Disclosure (`security.txt`)**: Standardized security disclosure declarations available at `/.well-known/security.txt` and localized across Spanish (`security-es.txt`), Portuguese (`security-pt.txt`), and Turkish (`security-tr.txt`), detailing reporting protocols, encryption keys, policy terms, and multi-channel response SLAs.
-- **Comprehensive XML & HTML Sitemaps**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all localized pages including Certificate Request pages, paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`) linking to all core insurance lines, certificate requests, branch offices, and legal pages.
+- **Enterprise HTTP Security Headers Middleware (`src/middleware.ts`)**: Global security middleware configured across all routes enforcing industry-standard defense headers: `X-Content-Type-Options: nosniff` (MIME sniffing prevention), `X-Frame-Options: SAMEORIGIN` (clickjacking mitigation), `Referrer-Policy: strict-origin-when-cross-origin` (privacy safeguarding), and `Permissions-Policy: camera=(), microphone=(), geolocation=()` (device capability lockdown).
+- **Post-Hack SEO Remediation & Casino Exploit Purge**: Multi-tier infrastructure defense deployed in `astro.config.mjs` and `vercel.json` neutralizing a legacy WordPress SEO injection (`shbet` Vietnamese casino payload indexed against `/personal-insurance/`):
+  - **HTTP 410 Gone Edge Rewrites**: Inbound queries bearing malicious `.shtml` scripts (`/:path*?ID=.*\.shtml.*`) and automated probes targeting vulnerable WordPress directories (`/wp-content/*`, `/wp-includes/*`, `/wp-admin/*`) are immediately rewritten to `/410` (HTTP 410 Gone) at the edge, signaling to Googlebot and Bingbot that these URLs have been permanently deleted.
+  - **Clean 301 Canonical Redirection**: Normal visitor traffic requesting `/personal-insurance` (and localized variants `/es/...`, `/pt/...`, `/tr/...`) without exploit parameters cleanly 301 redirects to `/personal`.
+- **Legacy WordPress (2014–2026) 301 Route Preservation**: Over 30 permanent 301 redirects implemented across `astro.config.mjs` and `vercel.json` mapping vintage 2014–2016 nested WordPress URLs (e.g. `/personal-insurance-lines/homeowners-insurance`, `/personal-insurance-lines/auto-insurance`) and May 2026 GoDaddy / Beaver Builder slugs (e.g. `/home-owners-insurance`, `/commercial-insurance`, `/service-center`, `/pay-your-bill`) to modern canonical routes, preserving domain authority, backlinks, and existing bookmarks.
+- **Strict Search & AI Crawler Directives (`robots.txt`)**: Tailored policy in `public/robots.txt` granting major web search engines (Googlebot, Bingbot, Applebot, DuckDuckBot, YandexBot) and generative AI engines (GPTBot, ChatGPT-User, ClaudeBot, PerplexityBot, Applebot-Extended, Meta-ExternalAgent, Amazonbot, Google-Extended, Cohere-ai) explicit crawl access to all public content routes and `/api/mcp` while protecting internal lead-generation and transactional `/api/` endpoints.
+- **Comprehensive XML & HTML Sitemaps with Bidirectional Hreflang**: Automated standard XML sitemaps generated via `@astrojs/sitemap` (`/sitemap-index.xml`, `/sitemap-0.xml`, with `/sitemap.xml` redirect) indexing all localized pages. Configured with explicit `i18n` mapping (`locales: { en: 'en-US', es: 'es-US', pt: 'pt-BR', tr: 'tr-TR' }`) emitting bidirectional `<xhtml:link rel="alternate" hreflang="..." />` entries across English, Spanish, Portuguese, and Turkish routes. Automatically filters out `/admin` and error utility routes (`/404`, `/410`) to keep search indexes pristine. Paired with human-navigable HTML sitemaps across English (`/sitemap`), Spanish (`/es/sitemap`), Portuguese (`/pt/sitemap`), and Turkish (`/tr/sitemap`) linking to all core insurance lines, certificate requests, branch offices, and legal pages.
 - **Content Collections & Editorial Integrity**: Type-safe Markdown blog articles covering risk management, seasonal Connecticut hazards, and insurance guidance. In alignment with transparent brokerage standards, generic or unverified consumer testimonials have been completely excised across all language homepages in favor of authentic carrier credentialing, licensed producer bios, and verifiable agency licensing data.
 - **Location-Aware Article Filtering & Hyper-Local Content Hub**:
   - **Branch Office Page Integration** (`LocationPageContent.astro`): Physical location landing pages (`/locations/bridgeport`, `/es/locations/bridgeport`, `/pt/...`, `/tr/...`) automatically detect and showcase articles published for that specific territory (e.g. Bridgeport multi-family landlord flood vs. water backup, coastal storm surge, DP-3 dwelling policies). If a branch currently has no tagged articles, the section cleanly stays hidden.
@@ -260,6 +266,7 @@ aia/
 │   │   ├── CertificateConfirmationEmail.tsx # Requester confirmation with receipt reference
 │   │   └── CertificateRequestEmail.tsx      # Agency producer brief with risk & endorsement specs
 │   ├── content.config.ts       # Astro Content Collections schemas (Zod)
+│   ├── middleware.ts           # Global HTTP security headers middleware (nosniff, frameguard, CSP policies)
 │   ├── i18n/                   # Internationalization utilities & UI string mappings
 │   │   ├── locations.ts        # Localized branch office content, FAQs, and SEO metadata (en, es, pt, tr)
 │   │   ├── team.ts             # Localized team bios, language proficiencies & modal UI strings (en, es, pt, tr)
@@ -326,6 +333,7 @@ aia/
 ├── unified_quote_service.py    # Python unified quote foundation & 5 product anchors
 ├── main.py                     # Python entry point demonstrating all service models
 ├── astro.config.mjs            # Astro configuration (Vercel adapter, i18n, Sitemap, React)
+├── vercel.json                 # Vercel deployment, edge redirects, rewrites & 410 quarantine
 ├── package.json                # Project dependencies and script commands
 └── tsconfig.json               # TypeScript compiler configuration
 ```
@@ -428,10 +436,17 @@ npm run preview
 
 ### Deployment Configuration
 
-The application is pre-configured with `@astrojs/vercel` for zero-configuration deployment to [Vercel](https://vercel.com):
-- Serverless API routes (`/api/mcp`, `/api/quote`, `/api/contact`, `/api/certificate-request`) are rendered dynamically (`prerender = false`).
-- Content and marketing pages are pre-rendered statically for high performance and low latency.
-- Dynamic localized paths adhere to Astro 7 i18n specifications.
+The application is pre-configured with `@astrojs/vercel` and an edge-level `vercel.json` for zero-configuration, production-grade deployment to [Vercel](https://vercel.com):
+
+- **Hybrid Static & Serverless Edge**:
+  - Content and marketing pages are pre-rendered statically for high performance and low-latency global CDN edge caching.
+  - Serverless API routes (`/api/mcp`, `/api/quote`, `/api/contact`, `/api/certificate-request`) execute on demand (`prerender = false`) with environment secret isolation.
+  - Dynamic localized paths adhere strictly to Astro 7 i18n specifications.
+- **Edge Routing & Vercel Configuration (`vercel.json`)**:
+  - **Apex Domain Canonicalization**: Enforces canonical HTTPS apex domain routing by redirecting all `www.aia-danbury.com` requests directly to `https://aia-danbury.com/:path*` via permanent 301 redirect.
+  - **Query-Aware Post-Hack Routing**: Clean `/personal-insurance` requests (missing `ID` query key) are safely 301 redirected to `/personal`, preserving genuine visitor intent.
+  - **Exploit & Legacy Directory Quarantine**: Inbound scanner probes and malicious payloads bearing `.shtml` queries (`/:path*?ID=.*\.shtml.*`) and targets against legacy WordPress directories (`/wp-content/*`, `/wp-includes/*`, `/wp-admin/*`) are immediately rewritten to `/410` (HTTP 410 Gone) at the edge before consuming backend compute.
+  - **Path Normalization**: Enforces `"trailingSlash": false` to prevent duplicate URL canonical issues in search engine caches.
 
 ---
 
@@ -452,17 +467,63 @@ Localization helpers are located in [`src/i18n/utils.ts`](src/i18n/utils.ts) and
 
 ### 🔀 URL Redirection & Canonical Routing Matrix
 
-To prevent broken links, eliminate duplicate SEO content, and provide seamless access across locales, standard 301 redirects are enforced in `astro.config.mjs`:
+To prevent broken links, eliminate duplicate SEO content, purge de-indexed exploit URLs, and provide seamless access across locales, standard 301 permanent redirects and 410 Gone rewrites are enforced in `astro.config.mjs` and `vercel.json`:
+
+#### 1. Core Route & Sibling Locales Canonicalization
+
+| Source Route | Target Destination | Locales Supported | Rule Layer | Purpose |
+| :--- | :--- | :---: | :---: | :--- |
+| `www.aia-danbury.com` | `https://aia-danbury.com/:path*` | Global | Vercel Edge (`vercel.json`) | Apex domain canonicalization |
+| `/quote/homeowners` | `/quote?type=home` | EN, ES, PT, TR | Astro (`astro.config.mjs`) | Unifies previous standalone homeowners quote URL into universal wizard |
+| `/coi`, `/certificates` | `/certificate-request` | EN, ES, PT, TR | Astro & Vercel Edge | Shorthand aliases for commercial certificate request portal |
+| `/meet-the-team` | `/team` | EN, ES, PT, TR | Astro & Vercel Edge | Canonicalizes team directory route |
+| `/offices` | `/locations` | EN, ES, PT, TR | Astro (`astro.config.mjs`) | Directs office queries to central agency locations hub |
+| `/locations/danbury-hq` | `/locations/danbury` | EN, ES, PT, TR | Astro (`astro.config.mjs`) | Resolves legacy branch slug alias to canonical Danbury URL |
+| `/security.txt` | `/.well-known/security.txt` | EN, ES, PT, TR | Astro (`astro.config.mjs`) | RFC 9116 security declaration root resolution |
+| `/sitemap.xml` | `/sitemap-index.xml` | Global | Astro (`astro.config.mjs`) | Maps traditional sitemap URL to Astro multi-sitemap index |
+
+#### 2. Post-Hack De-Indexing & 410 Exploit Neutralization
+
+| Source Route / Condition | Target Destination | HTTP Status | Rule Layer | Purpose |
+| :--- | :--- | :---: | :---: | :--- |
+| `/:path*?ID=.*\.shtml.*` | `/410` | `410 Gone` | Vercel Edge (`vercel.json`) | Neutralizes indexed Vietnamese casino spam query injections (`shbet`) |
+| `/wp-content/:path*` | `/410` | `410 Gone` | Vercel Edge (`vercel.json`) | Quarantines probes for legacy WordPress plugin/theme assets |
+| `/wp-includes/:path*` | `/410` | `410 Gone` | Vercel Edge (`vercel.json`) | Quarantines probes for legacy WordPress core scripts |
+| `/wp-admin/:path*` | `/410` | `410 Gone` | Vercel Edge (`vercel.json`) | Blocks and de-indexes legacy WordPress administration login probes |
+| `/personal-insurance` (clean query) | `/personal` | `301 Permanent` | Astro & Vercel Edge | Preserves legitimate visitor bookmarks for personal lines hub across EN, ES, PT, TR |
+
+#### 3. Legacy WordPress Personal Lines Migration (2014–2026)
 
 | Source Route | Target Destination | Locales Supported | Purpose |
 | :--- | :--- | :---: | :--- |
-| `/quote/homeowners` | `/quote?type=home` | EN, ES, PT, TR | Unifies previous standalone homeowners quote URL into universal wizard |
-| `/coi`, `/certificates` | `/certificate-request` | EN, ES, PT, TR | Shorthand aliases for commercial certificate request portal |
-| `/meet-the-team` | `/team` | EN, ES, PT, TR | Canonicalizes team directory route |
-| `/offices` | `/locations` | EN, ES, PT, TR | Directs office queries to central agency locations hub |
-| `/locations/danbury-hq` | `/locations/danbury` | EN, ES, PT, TR | Resolves legacy branch slug alias to canonical Danbury URL |
-| `/security.txt` | `/.well-known/security.txt` | EN, ES, PT, TR | RFC 9116 security declaration root resolution |
-| `/sitemap.xml` | `/sitemap-index.xml` | Global | Maps traditional sitemap URL to Astro multi-sitemap index |
+| `/personal-insurance-lines` | `/personal` | EN | 2014–2016 legacy nested personal lines root |
+| `/personal-insurance-lines/homeowners-insurance` | `/personal/homeowners` | EN | 2014–2016 legacy homeowners nested route |
+| `/personal-insurance-lines/auto-insurance` | `/personal/auto` | EN | 2014–2016 legacy personal auto nested route |
+| `/personal-insurance-lines/umbrella-insurance` | `/personal/umbrella` | EN | 2014–2016 legacy umbrella nested route |
+| `/personal-insurance-lines/renters-insurance` | `/personal/renters` | EN | 2014–2016 legacy renters nested route |
+| `/personal-insurance-lines/recreational-vehicle-insurance` | `/personal/auto` | EN | 2014–2016 legacy RV nested route |
+| `/personal-insurance-lines/pet-insurance`, `/pet-insurance` | `/personal` | EN | Legacy pet insurance inquiries redirected to personal lines |
+| `/home-owners-insurance`, `/homeowners-insurance` | `/personal/homeowners` | EN | May 2026 GoDaddy / Beaver Builder homeowners slugs |
+| `/auto-insurance`, `/recreational-vehicle-insurance` | `/personal/auto` | EN | May 2026 GoDaddy / Beaver Builder auto & RV slugs |
+| `/umbrella-insurance` | `/personal/umbrella` | EN | May 2026 GoDaddy / Beaver Builder umbrella slug |
+| `/renters-insurance` | `/personal/renters` | EN | May 2026 GoDaddy / Beaver Builder renters slug |
+
+#### 4. Legacy WordPress Commercial Lines Migration (2014–2026)
+
+| Source Route | Target Destination | Locales Supported | Purpose |
+| :--- | :--- | :---: | :--- |
+| `/commercial-insurance` | `/commercial` | EN | May 2026 GoDaddy / Beaver Builder commercial root |
+| `/commercial-auto-insurance`, `/truckers-insurance` | `/commercial/auto` | EN | Commercial auto & motor carrier trucking slugs |
+| `/general-liability-insurance`, `/excess-liability-insurance` | `/commercial/general-liability` | EN | Commercial general liability & excess liability slugs |
+| `/workers-compensation-insurance` | `/commercial/workers-compensation` | EN | CT statutory Workers' Comp slug |
+
+#### 5. Legacy WordPress Service & Contact Slugs
+
+| Source Route | Target Destination | Locales Supported | Purpose |
+| :--- | :--- | :---: | :--- |
+| `/service-center`, `/file-a-claim`, `/frequently-asked-questions` | `/service` | EN | Customer service, claims assistance & FAQ routes |
+| `/pay-your-bill` | `/pay-bill` | EN | Carrier bill pay & claims hotline directory |
+| `/contact-us` | `/contact` | EN, ES, PT, TR | Canonicalizes legacy contact slug across all four languages |
 
 ---
 
@@ -543,6 +604,14 @@ All lead generation, certificate intake, and customer inquiry forms across the s
    - Explicit on-form branding component (`RecaptchaLegalNotice.tsx`) dynamically passed the active language prop (`lang={lang}`) linking to Google's Privacy Policy & Terms of Service in **English**, **Spanish**, **Portuguese**, and **Turkish** on all form views, review steps, and directly beneath form cards.
    - Global CSS styling (`src/styles/global.css`) suppresses the default floating `.grecaptcha-badge`, keeping the WebMCP inspector and mobile navigation clean while maintaining full Google Terms compliance.
    - Standardized statutory insurance disclaimers displayed directly below form containers across all four languages confirming coverage non-binding status until written agent confirmation.
+5. **Global HTTP Security Headers Middleware (`src/middleware.ts`)**:
+   - `X-Content-Type-Options: nosniff`: Enforces strict MIME typing and blocks MIME confusion attacks.
+   - `X-Frame-Options: SAMEORIGIN`: Defends against iframe clickjacking and UI redress exploits.
+   - `Referrer-Policy: strict-origin-when-cross-origin`: Enforces origin-only referrer headers across origins over HTTPS and strips referrers on downgrade.
+   - `Permissions-Policy: camera=(), microphone=(), geolocation=()`: Explicitly restricts browser permissions from invoking camera, microphone, or geolocation APIs across all site pages.
+6. **Exploit Neutralization via HTTP 410 Gone (`vercel.json`)**:
+   - Targets malicious search-injected query patterns (`?ID=.*\.shtml.*`) and WordPress infrastructure probes (`/wp-admin/`, `/wp-includes/`, `/wp-content/`) with immediate `410 Gone` rewrites.
+   - While HTTP 404 indicates a missing resource that search crawlers may periodically retry, HTTP 410 tells Googlebot and Bingbot that the resource has been permanently purged, accelerating de-indexing of Vietnamese casino backlink spam and de-cluttering search results.
 
 ## 🏢 Physical Office Locations & Unified Contact Routing
 

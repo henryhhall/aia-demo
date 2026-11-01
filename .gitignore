@@ -70,6 +70,7 @@ $RECYCLE.BIN/
 !.vscode/extensions.json
 !.vscode/launch.json
 .vs/
+.history/
 *.suo
 *.ntvs*
 *.njsproj
@@ -128,6 +129,7 @@ cypress/screenshots/
 .vite/
 .vite-*/
 vite.config.*.timestamp-*
+astro.config.*.timestamp-*
 out/
 build/
 .react-email/
@@ -136,7 +138,8 @@ build/
 scratch/
 scratch_*
 .gemini/
-.agents/scratch/
+.agent/
+.agents/
 .antigravity/
 .tempmediaStorage/
 .system_generated/
@@ -171,6 +174,10 @@ dmypy.json
 *.egg-info/
 *.egg
 .eggs/
+*.dist-info/
+pip-wheel-metadata/
+.pytype/
+.pyre/
 .coverage
 htmlcov/
 .ipynb_checkpoints
@@ -194,6 +201,8 @@ browser-recordings/
 test-*.js
 test-*.mjs
 test-*.ts
+test-*.py
+test_scratch*.py
 !src/**/*.test.ts
 !src/**/*.test.tsx
 !src/**/*.spec.ts

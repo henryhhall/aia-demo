@@ -1,0 +1,164 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.aia-danbury.com"
+        }
+      ],
+      "destination": "https://aia-danbury.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/personal-insurance",
+      "missing": [
+        {
+          "type": "query",
+          "key": "ID"
+        }
+      ],
+      "destination": "/personal",
+      "permanent": true
+    },
+    {
+      "source": "/personal-insurance/",
+      "missing": [
+        {
+          "type": "query",
+          "key": "ID"
+        }
+      ],
+      "destination": "/personal",
+      "permanent": true
+    },
+    {
+      "source": "/personal-insurance-lines/homeowners-insurance/:path*",
+      "destination": "/personal/homeowners",
+      "permanent": true
+    },
+    {
+      "source": "/home-owners-insurance/:path*",
+      "destination": "/personal/homeowners",
+      "permanent": true
+    },
+    {
+      "source": "/auto-insurance/:path*",
+      "destination": "/personal/auto",
+      "permanent": true
+    },
+    {
+      "source": "/recreational-vehicle-insurance/:path*",
+      "destination": "/personal/auto",
+      "permanent": true
+    },
+    {
+      "source": "/umbrella-insurance/:path*",
+      "destination": "/personal/umbrella",
+      "permanent": true
+    },
+    {
+      "source": "/renters-insurance/:path*",
+      "destination": "/personal/renters",
+      "permanent": true
+    },
+    {
+      "source": "/pet-insurance/:path*",
+      "destination": "/personal",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-insurance/:path*",
+      "destination": "/commercial",
+      "permanent": true
+    },
+    {
+      "source": "/commercial-auto-insurance/:path*",
+      "destination": "/commercial/auto",
+      "permanent": true
+    },
+    {
+      "source": "/truckers-insurance/:path*",
+      "destination": "/commercial/auto",
+      "permanent": true
+    },
+    {
+      "source": "/general-liability-insurance/:path*",
+      "destination": "/commercial/general-liability",
+      "permanent": true
+    },
+    {
+      "source": "/excess-liability-insurance/:path*",
+      "destination": "/commercial/general-liability",
+      "permanent": true
+    },
+    {
+      "source": "/workers-compensation-insurance/:path*",
+      "destination": "/commercial/workers-compensation",
+      "permanent": true
+    },
+    {
+      "source": "/certificates/:path*",
+      "destination": "/certificate-request",
+      "permanent": true
+    },
+    {
+      "source": "/service-center/:path*",
+      "destination": "/service",
+      "permanent": true
+    },
+    {
+      "source": "/pay-your-bill/:path*",
+      "destination": "/pay-bill",
+      "permanent": true
+    },
+    {
+      "source": "/meet-the-team/:path*",
+      "destination": "/team",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us/:path*",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/file-a-claim/:path*",
+      "destination": "/service",
+      "permanent": true
+    },
+    {
+      "source": "/frequently-asked-questions/:path*",
+      "destination": "/service",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "ID",
+          "value": ".*\\.shtml.*"
+        }
+      ],
+      "destination": "/410"
+    },
+    {
+      "source": "/wp-content/:path*",
+      "destination": "/410"
+    },
+    {
+      "source": "/wp-includes/:path*",
+      "destination": "/410"
+    },
+    {
+      "source": "/wp-admin/:path*",
+      "destination": "/410"
+    }
+  ]
+}
