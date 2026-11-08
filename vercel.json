@@ -134,6 +134,46 @@
       "source": "/frequently-asked-questions/:path*",
       "destination": "/service",
       "permanent": true
+    },
+    {
+      "source": "/blog/en",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/en/:path*",
+      "destination": "/blog/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blog/es",
+      "destination": "/es/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/es/:path*",
+      "destination": "/es/blog/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pt",
+      "destination": "/pt/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/pt/:path*",
+      "destination": "/pt/blog/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tr",
+      "destination": "/tr/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tr/:path*",
+      "destination": "/tr/blog/:path*",
+      "permanent": true
     }
   ],
   "rewrites": [

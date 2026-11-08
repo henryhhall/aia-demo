@@ -36,6 +36,9 @@ const urlEn = new URL(getLocalizedPath(currentPath, 'en'), siteUrl).toString();
 const urlEs = new URL(getLocalizedPath(currentPath, 'es'), siteUrl).toString();
 const urlPt = new URL(getLocalizedPath(currentPath, 'pt'), siteUrl).toString();
 const urlTr = new URL(getLocalizedPath(currentPath, 'tr'), siteUrl).toString();
+
+// Ensure noindex is strictly boolean true before emitting noindex tag
+const isNoindex = noindex === true || (noindex as unknown) === 'true';
 ---
 
 <meta charset="utf-8" />
@@ -45,7 +48,7 @@ const urlTr = new URL(getLocalizedPath(currentPath, 'tr'), siteUrl).toString();
 <!-- Primary Meta -->
 <title>{title}</title>
 <meta name="description" content={description} />
-{noindex ? (
+{isNoindex ? (
   <meta name="robots" content="noindex, nofollow" />
 ) : (
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />

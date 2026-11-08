@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+Astro.response.status = 410;
+Astro.response.statusText = 'Gone';
+---
+
+<BaseLayout
+  title="410 Gone - Page Permanently Removed | Associated Insurance Agency"
+  description="The requested legacy resource has been permanently removed."
+  noindex={true}
+>
+  <div class="min-h-[60vh] flex items-center justify-center px-4 py-24 sm:py-32">
+    <div class="text-center max-w-xl">
+      <p class="text-base font-semibold text-accent-gold uppercase tracking-wider">410 Error</p>
+      <h1 class="mt-2 text-4xl font-bold tracking-tight text-accent sm:text-5xl">
+        Page Permanently Removed
+      </h1>
+      <p class="mt-4 text-base text-text-secondary leading-relaxed">
+        The requested URL has been permanently retired or purged from our system. If you were searching for insurance coverage, certificates, or agency contact information, please explore our main site below.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-white bg-accent hover:bg-accent/90 rounded-md shadow-sm transition-colors"
+        >
+          Return to Homepage
+        </a>
+        <a
+          href="/contact"
+          class="inline-flex items-center justify-center px-5 py-3 text-sm font-semibold text-accent bg-accent/5 hover:bg-accent/10 border border-accent/20 rounded-md transition-colors"
+        >
+          Contact Our Agents
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -30,6 +30,16 @@ export default defineConfig({
     '/pt/security.txt': '/.well-known/security-pt.txt',
     '/tr/security.txt': '/.well-known/security-tr.txt',
 
+    // Blog legacy and scraper route redirects (prevents 404/noindex exclusions)
+    '/blog/en': '/blog',
+    '/blog/es': '/es/blog',
+    '/blog/pt': '/pt/blog',
+    '/blog/tr': '/tr/blog',
+    '/blog/en/[...slug]': '/blog/[...slug]',
+    '/blog/es/[...slug]': '/es/blog/[...slug]',
+    '/blog/pt/[...slug]': '/pt/blog/[...slug]',
+    '/blog/tr/[...slug]': '/tr/blog/[...slug]',
+
     // Existing internal & localized route aliases
     '/meet-the-team': '/team',
     '/es/meet-the-team': '/es/team',
