@@ -125,7 +125,46 @@ export default defineConfig({
           tr: 'tr-TR',
         },
       },
-    })
+    }),
+    {
+      name: 'vercel-single-hop-redirects',
+      hooks: {
+        'astro:build:done': async () => {
+          const fs = await import('node:fs');
+          const configPath = new URL('./.vercel/output/config.json', import.meta.url);
+          if (fs.existsSync(configPath)) {
+            const config = JSON.parse(fs.readFileSync(configPath, 'utf-8'));
+            if (Array.isArray(config.routes)) {
+              // 1. Expand all 301 redirect routes so they match both with and without a trailing slash (/?$)
+              for (const route of config.routes) {
+                if (
+                  route.status === 301 &&
+                  typeof route.src === 'string' &&
+                  route.src.endsWith('$') &&
+                  !route.src.endsWith('/?$')
+                ) {
+                  route.src = route.src.slice(0, -1) + '/?$';
+                }
+              }
+              // 2. Move the generic trailing-slash 308 stripper (^/(.*)/$) AFTER the 301 redirects
+              //    so legacy WordPress trailing-slash URLs resolve in a single 301 hop instead of 308 -> 301
+              const slashRuleIdx = config.routes.findIndex(
+                (r) => r.src === '^/(.*)/$' && r.status === 308
+              );
+              const lastRedirectIdx = config.routes.reduce(
+                (acc, r, idx) => (r.status === 301 ? idx : acc),
+                -1
+              );
+              if (slashRuleIdx !== -1 && lastRedirectIdx > slashRuleIdx) {
+                const [slashRule] = config.routes.splice(slashRuleIdx, 1);
+                config.routes.splice(lastRedirectIdx, 0, slashRule);
+              }
+              fs.writeFileSync(configPath, JSON.stringify(config, null, '\t'));
+            }
+          }
+        },
+      },
+    }
   ],
   vite: {
     plugins: [tailwindcss()],

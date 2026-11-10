@@ -1,6 +1,5 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "trailingSlash": false,
   "redirects": [
     {
       "source": "/:path*",
@@ -11,6 +10,31 @@
         }
       ],
       "destination": "https://aia-danbury.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap-index.xml",
+      "permanent": true
+    },
+    {
+      "source": "/security.txt",
+      "destination": "/.well-known/security.txt",
+      "permanent": true
+    },
+    {
+      "source": "/es/security.txt",
+      "destination": "/.well-known/security-es.txt",
+      "permanent": true
+    },
+    {
+      "source": "/pt/security.txt",
+      "destination": "/.well-known/security-pt.txt",
+      "permanent": true
+    },
+    {
+      "source": "/tr/security.txt",
+      "destination": "/.well-known/security-tr.txt",
       "permanent": true
     },
     {
@@ -36,12 +60,62 @@
       "permanent": true
     },
     {
+      "source": "/es/personal-insurance/:path*",
+      "destination": "/es/personal",
+      "permanent": true
+    },
+    {
+      "source": "/pt/personal-insurance/:path*",
+      "destination": "/pt/personal",
+      "permanent": true
+    },
+    {
+      "source": "/tr/personal-insurance/:path*",
+      "destination": "/tr/personal",
+      "permanent": true
+    },
+    {
       "source": "/personal-insurance-lines/homeowners-insurance/:path*",
       "destination": "/personal/homeowners",
       "permanent": true
     },
     {
+      "source": "/personal-insurance-lines/auto-insurance/:path*",
+      "destination": "/personal/auto",
+      "permanent": true
+    },
+    {
+      "source": "/personal-insurance-lines/umbrella-insurance/:path*",
+      "destination": "/personal/umbrella",
+      "permanent": true
+    },
+    {
+      "source": "/personal-insurance-lines/renters-insurance/:path*",
+      "destination": "/personal/renters",
+      "permanent": true
+    },
+    {
+      "source": "/personal-insurance-lines/recreational-vehicle-insurance/:path*",
+      "destination": "/personal/auto",
+      "permanent": true
+    },
+    {
+      "source": "/personal-insurance-lines/pet-insurance/:path*",
+      "destination": "/personal",
+      "permanent": true
+    },
+    {
+      "source": "/personal-insurance-lines/:path*",
+      "destination": "/personal",
+      "permanent": true
+    },
+    {
       "source": "/home-owners-insurance/:path*",
+      "destination": "/personal/homeowners",
+      "permanent": true
+    },
+    {
+      "source": "/homeowners-insurance/:path*",
       "destination": "/personal/homeowners",
       "permanent": true
     },
@@ -106,6 +180,26 @@
       "permanent": true
     },
     {
+      "source": "/coi/:path*",
+      "destination": "/certificate-request",
+      "permanent": true
+    },
+    {
+      "source": "/es/coi/:path*",
+      "destination": "/es/certificate-request",
+      "permanent": true
+    },
+    {
+      "source": "/pt/coi/:path*",
+      "destination": "/pt/certificate-request",
+      "permanent": true
+    },
+    {
+      "source": "/tr/coi/:path*",
+      "destination": "/tr/certificate-request",
+      "permanent": true
+    },
+    {
       "source": "/service-center/:path*",
       "destination": "/service",
       "permanent": true
@@ -121,8 +215,98 @@
       "permanent": true
     },
     {
+      "source": "/es/meet-the-team/:path*",
+      "destination": "/es/team",
+      "permanent": true
+    },
+    {
+      "source": "/pt/meet-the-team/:path*",
+      "destination": "/pt/team",
+      "permanent": true
+    },
+    {
+      "source": "/tr/meet-the-team/:path*",
+      "destination": "/tr/team",
+      "permanent": true
+    },
+    {
+      "source": "/offices/:path*",
+      "destination": "/locations",
+      "permanent": true
+    },
+    {
+      "source": "/es/offices/:path*",
+      "destination": "/es/locations",
+      "permanent": true
+    },
+    {
+      "source": "/pt/offices/:path*",
+      "destination": "/pt/locations",
+      "permanent": true
+    },
+    {
+      "source": "/tr/offices/:path*",
+      "destination": "/tr/locations",
+      "permanent": true
+    },
+    {
+      "source": "/locations/danbury-hq/:path*",
+      "destination": "/locations/danbury",
+      "permanent": true
+    },
+    {
+      "source": "/es/locations/danbury-hq/:path*",
+      "destination": "/es/locations/danbury",
+      "permanent": true
+    },
+    {
+      "source": "/pt/locations/danbury-hq/:path*",
+      "destination": "/pt/locations/danbury",
+      "permanent": true
+    },
+    {
+      "source": "/tr/locations/danbury-hq/:path*",
+      "destination": "/tr/locations/danbury",
+      "permanent": true
+    },
+    {
+      "source": "/quote/homeowners/:path*",
+      "destination": "/quote?type=home",
+      "permanent": true
+    },
+    {
+      "source": "/es/quote/homeowners/:path*",
+      "destination": "/es/quote?type=home",
+      "permanent": true
+    },
+    {
+      "source": "/pt/quote/homeowners/:path*",
+      "destination": "/pt/quote?type=home",
+      "permanent": true
+    },
+    {
+      "source": "/tr/quote/homeowners/:path*",
+      "destination": "/tr/quote?type=home",
+      "permanent": true
+    },
+    {
       "source": "/contact-us/:path*",
       "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/es/contact-us/:path*",
+      "destination": "/es/contact",
+      "permanent": true
+    },
+    {
+      "source": "/pt/contact-us/:path*",
+      "destination": "/pt/contact",
+      "permanent": true
+    },
+    {
+      "source": "/tr/contact-us/:path*",
+      "destination": "/tr/contact",
       "permanent": true
     },
     {
