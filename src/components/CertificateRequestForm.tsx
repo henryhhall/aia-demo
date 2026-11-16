@@ -120,7 +120,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       preferredOfficeLabel: 'Servicing AIA Office',
       officeDanbury: 'Danbury HQ (50 Newtown Rd)',
       officeWatertown: 'Watertown Branch (51 Depot St)',
-      officeBridgeport: 'Bridgeport Branch (2465 Main St)',
+      officeBridgeport: 'Bridgeport Branch (3860 Main St)',
 
       // Step 2 Fields
       holderNameLabel: 'Certificate Holder Entity Name',
@@ -260,7 +260,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       preferredOfficeLabel: 'Oficina de AIA de Servicio',
       officeDanbury: 'Sede Danbury (50 Newtown Rd)',
       officeWatertown: 'Sucursal Watertown (51 Depot St)',
-      officeBridgeport: 'Sucursal Bridgeport (2465 Main St)',
+      officeBridgeport: 'Sucursal Bridgeport (3860 Main St)',
 
       holderNameLabel: 'Nombre de la Entidad Titular del Certificado',
       holderNamePlaceholder: 'Ej. Ciudad de Danbury, ABC General Contractors Inc.',
@@ -395,7 +395,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       preferredOfficeLabel: 'Escritório da AIA de Preferência',
       officeDanbury: 'Sede Danbury (50 Newtown Rd)',
       officeWatertown: 'Filial Watertown (51 Depot St)',
-      officeBridgeport: 'Filial Bridgeport (2465 Main St)',
+      officeBridgeport: 'Filial Bridgeport (3860 Main St)',
 
       holderNameLabel: 'Nome da Entidade Titular do Certificado',
       holderNamePlaceholder: 'Ex: City of Danbury, ABC General Contractors Inc.',
@@ -530,7 +530,7 @@ export default function CertificateRequestForm({ lang = 'en' }: CertificateReque
       preferredOfficeLabel: 'Hizmet Almak İstediğiniz AIA Ofisi',
       officeDanbury: 'Danbury Merkez Ofisi (50 Newtown Rd)',
       officeWatertown: 'Watertown Şubesi (51 Depot St)',
-      officeBridgeport: 'Bridgeport Şubesi (2465 Main St)',
+      officeBridgeport: 'Bridgeport Şubesi (3860 Main St)',
 
       holderNameLabel: 'Sertifika Sahibi Kurum Adı (Holder Name)',
       holderNamePlaceholder: 'Örn. City of Danbury, ABC General Contractors Inc.',

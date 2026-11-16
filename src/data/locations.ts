@@ -114,22 +114,20 @@ export const LOCATIONS_DATA: LocationBase[] = [
   {
     id: 'bridgeport',
     slug: 'bridgeport',
-    streetAddress: '2465 Main Street',
+    streetAddress: '3860 Main Street',
     city: 'Bridgeport',
     county: 'Fairfield County',
     state: 'CT',
     postalCode: '06606',
-    fullAddress: '2465 Main Street, Bridgeport, CT 06606',
+    fullAddress: '3860 Main Street, Bridgeport, CT 06606',
     phoneFormatted: '(203) 748-9272',
     phoneRaw: '2037489272',
     email: 'bridgeport@aia-danbury.com',
     hours: 'Mon - Fri 8:30 AM - 5:00 PM EST',
-    directionsUrl: 'https://maps.google.com/?q=2465+Main+Street,+Bridgeport,+CT+06606',
-    // Fixed: Previous pb= string pointed to old 3860 Main St coordinates (41.21407, -73.21209).
-    // This embeds the exact 2465 Main Street, Bridgeport, CT 06606 location (41.1963, -73.1972).
-    embedUrl: 'https://maps.google.com/maps?q=2465+Main+Street,+Bridgeport,+CT+06606&t=m&z=16&output=embed&iwloc=near',
-    lat: 41.1963,
-    lng: -73.1972,
+    directionsUrl: 'https://maps.google.com/?q=3860+Main+Street,+Bridgeport,+CT+06606',
+    embedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1021.0695509775729!2d-73.2120973643344!3d41.214073760533175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e80e8ad160179d%3A0x2174691e2b983696!2sAssociated%20Insurance%20Agency!5e1!3m2!1sen!2sus!4v1791394610287!5m2!1sen!2sus',
+    lat: 41.2141,
+    lng: -73.2121,
     isHQ: false,
     staffIds: [
       'camila-macedo',

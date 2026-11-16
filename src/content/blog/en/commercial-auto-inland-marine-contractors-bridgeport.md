@@ -192,4 +192,4 @@ While Fairfield County contractors manage dense highway transit along the coasta
 
 Whether you operate a single service van in Black Rock or manage a five-truck trade fleet out of the East Side, the commercial insurance specialists at Associated Insurance Agency can audit your auto and tool coverage.
 
-Visit our [Bridgeport Branch Office](/locations/bridgeport) at 2465 Main Street, Bridgeport, CT 06606, or call us directly at 203-748-9272. Our licensed team provides fluent support in **English, Spanish, Portuguese, and Turkish** to ensure your livelihood remains protected on every job site.
+Visit our [Bridgeport Branch Office](/locations/bridgeport) at 3860 Main Street, Bridgeport, CT 06606, or call us directly at 203-748-9272. Our licensed team provides fluent support in **English, Spanish, Portuguese, and Turkish** to ensure your livelihood remains protected on every job site.

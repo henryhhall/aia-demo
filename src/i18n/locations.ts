@@ -216,12 +216,12 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         name: 'Bridgeport Office',
         shortName: 'Bridgeport',
         tag: 'Branch Office',
-        seoTitle: 'Insurance Agency Bridgeport CT | Auto, Home, Business | 2465 Main St',
-        metaDescription: 'Visit Associated Insurance Agency at 2465 Main Street in Bridgeport, CT. Compare auto, home, multi-family, and commercial quotes across multiple carriers.',
+        seoTitle: 'Insurance Agency Bridgeport CT | Auto, Home, Business | 3860 Main St',
+        metaDescription: 'Visit Associated Insurance Agency at 3860 Main Street in Bridgeport, CT. Compare auto, home, multi-family, and commercial quotes across multiple carriers.',
         heroHeadline: 'Trusted Local Insurance in Bridgeport, CT',
         heroSubheadline: 'Personal & Commercial Coverage from Associated Insurance Agency',
         officeOverview: [
-          'Our Bridgeport branch is located at 2465 Main Street in the North End, two blocks from St. Vincent’s Medical Center with direct access from Route 8 and Route 25 (Exits 4 and 5). Free parking is available in front of the office and along Main Street.',
+          'Our Bridgeport branch is located at 3860 Main Street in the North End near the Trumbull town line and Old Town Road, with quick access from Route 8, Route 25 (Exit 6), and the Merritt Parkway (Route 15). Free parking is available at the office and along Main Street.',
           'We write personal and commercial policies throughout coastal Fairfield County. Our licensed agents handle multi-family rental property insurance (including 2-to-4 family homes and triple-deckers), coastal flood coverage along Long Island Sound, commercial auto, workers’ compensation, and same-day Certificates of Insurance (COI) for trade contractors.',
           'As an independent agency, we compare rates across Travelers, Safeco, The Hartford, Progressive, and Guard. Our licensed agents speak English, Spanish, Portuguese, and Turkish, helping you review coverages and file claims without language barriers.',
         ],
@@ -248,11 +248,11 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         communitiesHeading: 'Cities and Towns We Serve',
         communitiesDesc: 'Our Bridgeport office serves policyholders across coastal Fairfield County and the lower Naugatuck Valley:',
         staffHeading: 'Bridgeport Office Team',
-        staffSubheading: 'Licensed agents and customer service representatives based at 2465 Main Street:',
+        staffSubheading: 'Licensed agents and customer service representatives based at 3860 Main Street:',
         faqs: [
           {
             question: 'Where is Associated Insurance Agency located in Bridgeport?',
-            answer: 'Our office is at 2465 Main Street, Bridgeport, CT 06606, between Capitol Avenue and Vincellette Street, near St. Vincent’s Medical Center. You can reach us from Route 8 or Route 25 via Exits 4 and 5.',
+            answer: 'Our office is at 3860 Main Street, Bridgeport, CT 06606, in the North End near Old Town Road and the Trumbull border. You can reach us easily from Route 8 or Route 25 via Exit 6 (Old Town Road) and the Merritt Parkway (Route 15).',
           },
           {
             question: 'Do you have Spanish- and Portuguese-speaking agents in Bridgeport?',
@@ -426,12 +426,12 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         name: 'Sucursal Bridgeport',
         shortName: 'Bridgeport',
         tag: 'Sucursal',
-        seoTitle: 'Agencia de Seguros en Bridgeport CT | Auto, Casa y Negocio | 2465 Main St',
-        metaDescription: 'Associated Insurance Agency en Bridgeport, CT (2465 Main Street). Compare tarifas de autos, casas, edificios multifamiliares y comercios con múltiples aseguradoras. Atención en español.',
+        seoTitle: 'Agencia de Seguros en Bridgeport CT | Auto, Casa y Negocio | 3860 Main St',
+        metaDescription: 'Associated Insurance Agency en Bridgeport, CT (3860 Main Street). Compare tarifas de autos, casas, edificios multifamiliares y comercios con múltiples aseguradoras. Atención en español.',
         heroHeadline: 'Seguros Locales de Confianza en Bridgeport, CT',
         heroSubheadline: 'Cobertura Personal y Comercial de Associated Insurance Agency',
         officeOverview: [
-          'Nuestra sucursal de Bridgeport está ubicada en 2465 Main Street, en el sector North End, a dos cuadras de St. Vincent’s Medical Center y con acceso rápido desde las rutas 8 y 25 (salidas 4 y 5). Disponemos de estacionamiento gratuito frente a la oficina y sobre Main Street.',
+          'Nuestra sucursal de Bridgeport está ubicada en 3860 Main Street, en el sector North End, cerca de Old Town Road y el límite con Trumbull, con acceso rápido desde las rutas 8 y 25 (salida 6) y la Merritt Parkway (Ruta 15). Disponemos de estacionamiento gratuito en la oficina y sobre Main Street.',
           'Emitimos pólizas comerciales y personales en todo el condado de Fairfield. Aseguramos casas multifamiliares de 2 a 4 familias, pólizas contra inundaciones costeras cerca de Long Island Sound, vehículos comerciales, compensación laboral para empleados (CGS § 31-284) y certificados de seguro (COI) el mismo día para contratistas.',
           'Como agencia independiente, comparamos tarifas entre compañías como Travelers, Safeco, The Hartford, Progressive y Guard. Nuestras agentes hablan español, inglés, portugués y turco para explicarle coberturas, deducibles y trámites sin barreras de idioma.',
         ],
@@ -458,11 +458,11 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         communitiesHeading: 'Ciudades que Atendemos',
         communitiesDesc: 'Nuestra oficina de Bridgeport atiende a residentes y empresas de la zona costera de Fairfield y el valle de Naugatuck:',
         staffHeading: 'Equipo de Bridgeport',
-        staffSubheading: 'Agentes licenciadas y representantes de servicio en 2465 Main Street:',
+        staffSubheading: 'Agentes licenciadas y representantes de servicio en 3860 Main Street:',
         faqs: [
           {
             question: '¿Dónde está la oficina de Associated Insurance Agency en Bridgeport?',
-            answer: 'Estamos en 2465 Main Street, Bridgeport, CT 06606, entre Capitol Avenue y Vincellette Street, cerca de St. Vincent’s Medical Center. Puede llegar desde la Ruta 8 o la Ruta 25 por las salidas 4 y 5.',
+            answer: 'Estamos en 3860 Main Street, Bridgeport, CT 06606, en el sector North End cerca de Old Town Road y el límite con Trumbull. Puede llegar fácilmente desde la Ruta 8 o la Ruta 25 por la salida 6 (Old Town Road) y la Merritt Parkway (Ruta 15).',
           },
           {
             question: '¿Atienden en español en la oficina de Bridgeport?',
@@ -636,12 +636,12 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         name: 'Agência de Bridgeport',
         shortName: 'Bridgeport',
         tag: 'Agência',
-        seoTitle: 'Agência de Seguros em Bridgeport CT | Carro, Casa e Empresas | 2465 Main St',
-        metaDescription: 'Associated Insurance Agency em Bridgeport, CT (2465 Main Street). Compare cotações de seguro auto, residencial, comercial e enchente com múltiplas seguradoras. Atendimento em português.',
+        seoTitle: 'Agência de Seguros em Bridgeport CT | Carro, Casa e Empresas | 3860 Main St',
+        metaDescription: 'Associated Insurance Agency em Bridgeport, CT (3860 Main Street). Compare cotações de seguro auto, residencial, comercial e enchente com múltiplas seguradoras. Atendimento em português.',
         heroHeadline: 'Seguros Locais de Confiança em Bridgeport, CT',
         heroSubheadline: 'Cobertura Pessoal e Comercial da Associated Insurance Agency',
         officeOverview: [
-          'Nosso escritório de Bridgeport fica na 2465 Main Street, no North End, a duas quadras do St. Vincent’s Medical Center e com acesso direto pelas rotas 8 e 25 (saídas 4 e 5). Há vagas de estacionamento gratuitas na frente e ao longo da Main Street.',
+          'Nosso escritório de Bridgeport fica na 3860 Main Street, no North End, próximo à Old Town Road e à divisa com Trumbull, com acesso rápido pelas rotas 8 e 25 (saída 6) e pela Merritt Parkway (Rota 15). Há estacionamento gratuito no local e ao longo da Main Street.',
           'Emitimos apólices comerciais e residenciais em todo o litoral de Fairfield County. Cuidamos de seguros para casas multifamiliares de 2 a 4 famílias, seguro contra enchentes (flood) próximo ao Long Island Sound, veículos comerciais, seguro de acidentes de trabalho (Workers’ Comp) e certificados de seguro (COI) no mesmo dia para prestadores de serviço e construtores.',
           'Como agência independente, comparamos preços entre Travelers, Safeco, The Hartford, Progressive e Guard. Nossas corretoras falam português, espanhol, inglês e turco fluentemente, esclarecendo dúvidas sobre coberturas, franquias e sinistros sem complicações.',
         ],
@@ -668,11 +668,11 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         communitiesHeading: 'Cidades Atendidas',
         communitiesDesc: 'Nosso escritório de Bridgeport atende segurados em todo o litoral de Fairfield County e no vale do Naugatuck:',
         staffHeading: 'Equipe de Bridgeport',
-        staffSubheading: 'Corretoras licenciadas e atendimento ao cliente na 2465 Main Street:',
+        staffSubheading: 'Corretoras licenciadas e atendimento ao cliente na 3860 Main Street:',
         faqs: [
           {
             question: 'Onde fica o escritório da Associated Insurance Agency em Bridgeport?',
-            answer: 'Fica na 2465 Main Street, Bridgeport, CT 06606, entre a Capitol Avenue e a Vincellette Street, perto do St. Vincent’s Medical Center. O acesso é direto pelas saídas 4 e 5 das rotas 8 e 25.',
+            answer: 'Fica na 3860 Main Street, Bridgeport, CT 06606, no North End, perto da Old Town Road e da divisa com Trumbull. O acesso é fácil pela saída 6 (Old Town Road) das rotas 8 e 25 ou pela Merritt Parkway (Rota 15).',
           },
           {
             question: 'Vocês têm atendimento em português em Bridgeport?',
@@ -846,12 +846,12 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         name: 'Bridgeport Şubesi',
         shortName: 'Bridgeport',
         tag: 'Şube',
-        seoTitle: 'Bridgeport CT Sigorta Acentesi | Araç, Ev ve Ticari Sigorta | 2465 Main St',
-        metaDescription: 'Associated Insurance Agency Bridgeport ofisi (2465 Main Street). Birden fazla şirketten araç, çok aileli konut, ticari ve sel sigortası tekliflerini karşılaştırın.',
+        seoTitle: 'Bridgeport CT Sigorta Acentesi | Araç, Ev ve Ticari Sigorta | 3860 Main St',
+        metaDescription: 'Associated Insurance Agency Bridgeport ofisi (3860 Main Street). Birden fazla şirketten araç, çok aileli konut, ticari ve sel sigortası tekliflerini karşılaştırın.',
         heroHeadline: 'Bridgeport, CT’de Güvenilir Yerel Sigorta',
         heroSubheadline: 'Associated Insurance Agency’den Bireysel ve Ticari Teminatlar',
         officeOverview: [
-          'Bridgeport ofisimiz 2465 Main Street adresinde, St. Vincent’s Medical Center’a iki sokak mesafede ve Route 8 ile Route 25 otoyollarının 4 ve 5 numaralı çıkışlarının hemen yanındadır. Bina önünde ve cadde üzerinde ücretsiz otopark mevcuttur.',
+          'Bridgeport ofisimiz 3860 Main Street adresinde, North End bölgesinde Old Town Road ve Trumbull sınırına yakın konumda olup Route 8, Route 25 (Çıkış 6) ve Merritt Parkway (Route 15) üzerinden kolayca ulaşılabilir. Ofis alanında ve cadde üzerinde ücretsiz otopark mevcuttur.',
           'Fairfield County kıyı bölgesinde bireysel ve ticari poliçeler düzenliyoruz. Bridgeport genelindeki 2 ila 4 daireli kiralık binalar, Long Island Sound kıyısındaki sel sigortaları (NFIP), ticari araçlar ve inşaat ustaları için aynı gün ACORD 25 sigorta belgesi (COI) düzenliyoruz.',
           'Bağımsız acente olarak Travelers, Safeco, The Hartford, Progressive ve Guard dahil olmak üzere birden fazla sigorta şirketiyle çalışıyoruz. Lisanslı temsilcilerimiz İngilizce, İspanyolca, Portekizce ve Türkçe dillerinde hizmet verir.',
         ],
@@ -878,11 +878,11 @@ export const locationsI18n: Record<'en' | 'es' | 'pt' | 'tr', LocationsDataLocal
         communitiesHeading: 'Hizmet Verdiğimiz Şehirler',
         communitiesDesc: 'Bridgeport ofisimiz kıyı Fairfield bölgesi ve Naugatuck Vadisi ilçelerine hizmet verir:',
         staffHeading: 'Bridgeport Ekibimiz',
-        staffSubheading: '2465 Main Street ofisimizdeki lisanslı sigorta danışmanlarımız ve müşteri temsilcilerimiz:',
+        staffSubheading: '3860 Main Street ofisimizdeki lisanslı sigorta danışmanlarımız ve müşteri temsilcilerimiz:',
         faqs: [
           {
             question: 'Associated Insurance Agency Bridgeport ofisi nerede?',
-            answer: 'Ofisimiz 2465 Main Street, Bridgeport, CT 06606 adresinde, Capitol Avenue ile Vincellette Street arasında ve St. Vincent’s Medical Center yakınındadır. Route 8 veya Route 25 üzerinden 4 ve 5 numaralı çıkışlardan doğrudan ulaşabilirsiniz.',
+            answer: 'Ofisimiz 3860 Main Street, Bridgeport, CT 06606 adresinde, North End bölgesinde Old Town Road ve Trumbull sınırı yakınındadır. Route 8 veya Route 25 üzerinden 6 numaralı çıkıştan (Old Town Road) ve Merritt Parkway (Route 15) üzerinden kolayca ulaşabilirsiniz.',
           },
           {
             question: 'Bridgeport ofisinde hangi diller konuşuluyor?',

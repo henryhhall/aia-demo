@@ -105,7 +105,7 @@ const OFFICE_DIRECTORY: Record<string, { name: string; email: string; phone: str
     name: 'Bridgeport Community Branch',
     email: 'bridgeport@aia-danbury.com',
     phone: '(203) 748-9272',
-    address: '2465 Main Street, Bridgeport, CT 06606',
+    address: '3860 Main Street, Bridgeport, CT 06606',
   },
 };
 

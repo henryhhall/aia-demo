@@ -192,4 +192,4 @@ Embora as empresas do litoral de Fairfield enfrentem tráfego rodoviário intens
 
 Seja você o operador de uma única van em Black Rock ou o gestor de uma frota com cinco caminhões no East Side, os especialistas em seguros comerciais da Associated Insurance Agency estão prontos para revisar suas apólices.
 
-Venha nos visitar em nossa [Filial de Bridgeport](/pt/locations/bridgeport) no endereço 2465 Main Street, Bridgeport, CT 06606, ou telefone diretamente para 203-748-9272. Nossa equipe licenciada atende com total fluência em **português, espanhol, inglês e turco** para garantir a segurança financeira do seu trabalho em qualquer canteiro de obras.
+Venha nos visitar em nossa [Filial de Bridgeport](/pt/locations/bridgeport) no endereço 3860 Main Street, Bridgeport, CT 06606, ou telefone diretamente para 203-748-9272. Nossa equipe licenciada atende com total fluência em **português, espanhol, inglês e turco** para garantir a segurança financeira do seu trabalho em qualquer canteiro de obras.

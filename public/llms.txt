@@ -81,7 +81,7 @@
 - [Associated Insurance Agency CT (Español)](https://aia-danbury.com/es): Agencia de seguros independiente en Danbury, Watertown y Bridgeport para hogar, auto, negocios y responsabilidad civil.
 - [Sede Central en Danbury (Español)](https://aia-danbury.com/es/locations/danbury): Oficina principal en 50 Newtown Road, Suite 1, Danbury, CT 06810.
 - [Sucursal Watertown (Español)](https://aia-danbury.com/es/locations/watertown): Sucursal en 51 Depot St Ste 112, Watertown, CT 06795.
-- [Sucursal Bridgeport (Español)](https://aia-danbury.com/es/locations/bridgeport): Sucursal en 2465 Main Street, Bridgeport, CT 06606.
+- [Sucursal Bridgeport (Español)](https://aia-danbury.com/es/locations/bridgeport): Sucursal en 3860 Main Street, Bridgeport, CT 06606.
 - [Directorio de Sucursales en Connecticut](https://aia-danbury.com/es/locations): Ubicaciones, teléfonos y horarios de nuestras oficinas en Danbury, Watertown y Bridgeport.
 - [Pagar su Factura en Línea](https://aia-danbury.com/es/pay-bill): Pague su prima de seguro directamente y de forma segura con su aseguradora.
 - [Seguro de Auto y RV en Connecticut](https://aia-danbury.com/es/personal/auto): Seguro de autos, camionetas y vehículos recreativos en Connecticut bajo cumplimiento CGS § 14-112.
@@ -98,7 +98,7 @@
 - [Associated Insurance Agency CT (Home)](https://aia-danbury.com): Independent insurance agency in Danbury, Watertown, and Bridgeport providing homeowners, auto, umbrella, and commercial business policies.
 - [Danbury Headquarters (HQ)](https://aia-danbury.com/locations/danbury): Flagship headquarters at 50 Newtown Road, Suite 1, Danbury, CT 06810.
 - [Watertown Branch Office](https://aia-danbury.com/locations/watertown): Litchfield County branch office at 51 Depot St Ste 112, Watertown, CT 06795.
-- [Bridgeport Branch Office](https://aia-danbury.com/locations/bridgeport): Greater Bridgeport branch office at 2465 Main Street, Bridgeport, CT 06606.
+- [Bridgeport Branch Office](https://aia-danbury.com/locations/bridgeport): Greater Bridgeport branch office at 3860 Main Street, Bridgeport, CT 06606.
 - [Connecticut Office Locations Hub](https://aia-danbury.com/locations): Overview of our Danbury, Watertown, and Bridgeport insurance offices.
 - [Pay Your Bill Online](https://aia-danbury.com/pay-bill): Pay your insurance premium directly and securely with your carrier.
 - [Connecticut Auto & RV Insurance](https://aia-danbury.com/personal/auto): Personal car, truck, RV, and camper insurance in Connecticut meeting CGS § 14-112 requirements.
@@ -118,7 +118,7 @@
 - [Associated Insurance Agency CT (Português)](https://aia-danbury.com/pt): Agência de seguros independente em Danbury, Watertown e Bridgeport para casa, carro e empresas.
 - [Sede Principal em Danbury (Português)](https://aia-danbury.com/pt/locations/danbury): Escritório matriz em 50 Newtown Road, Suite 1, Danbury, CT 06810.
 - [Agência Watertown (Português)](https://aia-danbury.com/pt/locations/watertown): Filial em 51 Depot St Ste 112, Watertown, CT 06795.
-- [Agência Bridgeport (Português)](https://aia-danbury.com/pt/locations/bridgeport): Filial em 2465 Main Street, Bridgeport, CT 06606.
+- [Agência Bridgeport (Português)](https://aia-danbury.com/pt/locations/bridgeport): Filial em 3860 Main Street, Bridgeport, CT 06606.
 - [Diretório de Agências em Connecticut](https://aia-danbury.com/pt/locations): Endereços e telefones das nossas unidades em Danbury, Watertown e Bridgeport.
 - [Pagar sua Conta Online](https://aia-danbury.com/pt/pay-bill): Pague sua parcela de seguro diretamente e de forma segura com sua seguradora.
 - [Seguro de Carro e RV em Connecticut](https://aia-danbury.com/pt/personal/auto): Seguro de automóveis, picapes e veículos recreativos em Connecticut conforme a lei CGS § 14-112.
@@ -148,7 +148,7 @@
 - [Associated Insurance Agency CT (Türkçe)](https://aia-danbury.com/tr): Danbury, Watertown ve Bridgeport'ta konut, otomobil ve iş yeri sigortası sunan bağımsız acente.
 - [Danbury Genel Merkezi (Türkçe)](https://aia-danbury.com/tr/locations/danbury): 50 Newtown Road, Suite 1, Danbury, CT 06810 adresindeki merkez ofisimiz.
 - [Watertown Şubesi (Türkçe)](https://aia-danbury.com/tr/locations/watertown): 51 Depot St Ste 112, Watertown, CT 06795 adresindeki şubemiz.
-- [Bridgeport Şubesi (Türkçe)](https://aia-danbury.com/tr/locations/bridgeport): 2465 Main Street, Bridgeport, CT 06606 adresindeki şubemiz.
+- [Bridgeport Şubesi (Türkçe)](https://aia-danbury.com/tr/locations/bridgeport): 3860 Main Street, Bridgeport, CT 06606 adresindeki şubemiz.
 - [Connecticut Şubelerimiz Dizini](https://aia-danbury.com/tr/locations): Danbury, Watertown ve Bridgeport ofislerimizin adres ve iletişim bilgileri.
 - [Faturanızı Çevrimiçi Ödeyin](https://aia-danbury.com/tr/pay-bill): Sigorta priminizi doğrudan ve güvenli bir şekilde sigorta şirketiniz üzerinden ödeyin.
 - [Connecticut Otomobil ve Karavan Sigortası](https://aia-danbury.com/tr/personal/auto): Connecticut'ta CGS § 14-112 uyumlu otomobil, kamyonet ve karavan sigortası.

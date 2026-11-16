@@ -192,4 +192,4 @@ Si bien los contratistas del condado de Fairfield operan en autopistas con inten
 
 Ya sea que opere una sola furgoneta de reparaciones en Black Rock o maneje una flota de cinco camionetas en el East Side, los asesores de seguros comerciales de Associated Insurance Agency están listos para analizar sus pólizas.
 
-Visite nuestra [Oficina de Bridgeport](/es/locations/bridgeport) en 2465 Main Street, Bridgeport, CT 06606, o llámenos al 203-748-9272. Nuestro equipo atiende con fluidez en **español, inglés, portugués y turco** para garantizar que sus herramientas y vehículos estén protegidos en cada trabajo.
+Visite nuestra [Oficina de Bridgeport](/es/locations/bridgeport) en 3860 Main Street, Bridgeport, CT 06606, o llámenos al 203-748-9272. Nuestro equipo atiende con fluidez en **español, inglés, portugués y turco** para garantizar que sus herramientas y vehículos estén protegidos en cada trabajo.

@@ -192,4 +192,4 @@ Fairfield County kıyı hattındaki ustalar yoğun otoyol trafiğiyle uğraşır
 
 İster Black Rock'ta tek bir servis panelvanıyla çalışın, ister East Side'da 5 kamyonluk bir inşaat filosu yönetin; Associated Insurance Agency ticari sigorta uzmanları mevcut poliçelerinizi incelemeye hazırdır.
 
-Bizi 2465 Main Street, Bridgeport, CT 06606 adresindeki [Bridgeport Şubemizde](/tr/locations/bridgeport) ziyaret edebilir veya 203-748-9272 numaralı telefondan arayabilirsiniz. Lisanslı ekibimiz **Türkçe, İngilizce, İspanyolca ve Portekizce** dillerinde kesintisiz hizmet vermektedir.
+Bizi 3860 Main Street, Bridgeport, CT 06606 adresindeki [Bridgeport Şubemizde](/tr/locations/bridgeport) ziyaret edebilir veya 203-748-9272 numaralı telefondan arayabilirsiniz. Lisanslı ekibimiz **Türkçe, İngilizce, İspanyolca ve Portekizce** dillerinde kesintisiz hizmet vermektedir.
